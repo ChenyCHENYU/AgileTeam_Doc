@@ -6,7 +6,7 @@ outline: 'deep'
 
 可能很多开发者（包括笔者）刚上手 Vue 3.0 之后，都会觉得开发过程似乎变得更繁琐了，Vue 官方团队当然不会无视群众的呼声，如果基于脚手架和 .vue 文件开发，那么可以享受到更高效率的开发体验。
 
-在阅读这篇文章之前，需要对 Vue 3.0 的单组件有一定的了解，如果还处于完全没有接触过的阶段，请先抽点时间阅读 [单组件的编写](component.md) 一章。
+在阅读这篇文章之前，需要对 Vue 3.0 的单组件有一定的了解，如果还处于完全没有接触过的阶段，请先抽点时间阅读 [单组件的编写](../introduction/component.md) 一章。
 
 :::tip
 要体验以下新特性，请确保项目下 package.json 里的 [vue](https://www.npmjs.com/package/vue?activeTab=versions) 和 [@vue/compiler-sfc](https://www.npmjs.com/package/@vue/compiler-sfc?activeTab=versions) 都在 v3.1.4 版本以上，最好同步 npm 上当前最新的 @latest 版本，否则在编译过程中可能出现一些奇怪的问题（这两个依赖必须保持同样的版本号）。
@@ -28,7 +28,7 @@ outline: 'deep'
 
 在 Vue 3.0 的 .vue 组件里，遵循 SFC 规范要求（注：SFC，即 Single-File Component，.vue 单组件），标准的 setup 用法是，在 setup 里面定义的数据如果需要在 template 使用，都需要 return 出来。
 
-如果使用的是 TypeScript ，还需要借助 [defineComponent](component.md#defineComponent-的作用) 来帮助对类型的自动推导。
+如果使用的是 TypeScript ，还需要借助 [defineComponent](../introduction/component.md#defineComponent-的作用) 来帮助对类型的自动推导。
 
 ```vue
 <!-- 标准组件格式 -->
@@ -47,7 +47,7 @@ export default defineComponent({
 </script>
 ```
 
-关于标准 setup 和 defineComponent 的说明和用法，可以查阅 [全新的 setup 函数](component.md#全新的-setup-函数-new) 一节。
+关于标准 setup 和 defineComponent 的说明和用法，可以查阅 [全新的 setup 函数](../introduction/component.md#全新的-setup-函数-new) 一节。
 
 script-setup 的推出是为了让熟悉 3.0 的用户可以更高效率的开发组件，减少一些心智负担，只需要给 script 标签添加一个 setup 属性，那么整个 script 就直接会变成 setup 函数，所有顶级变量、函数，均会自动暴露给模板使用（无需再一个个 return 了）。
 
@@ -195,7 +195,7 @@ import Child from '@cp/Child.vue'
 `defineProps` 是一个方法，内部返回一个对象，也就是挂载到这个组件上的所有 props ，它和普通的 props 用法一样，如果不指定为 prop， 则传下来的属性会被放到 attrs 那边去。
 
 :::tip
-前置知识点：[接收 props - 组件之间的通信](communication.md#接收-props)。
+前置知识点：[接收 props - 组件之间的通信](../introduction/communication#接收-props)。
 :::
 
 #### defineProps 的基础用法
@@ -250,7 +250,7 @@ defineProps({
 })
 ```
 
-更多的 props 校验机制，可以点击 [带有类型限制的 props](communication.md#%E5%B8%A6%E6%9C%89%E7%B1%BB%E5%9E%8B%E9%99%90%E5%88%B6%E7%9A%84-props) 和 [可选以及带有默认值的 props](communication.md#%E5%8F%AF%E9%80%89%E4%BB%A5%E5%8F%8A%E5%B8%A6%E6%9C%89%E9%BB%98%E8%AE%A4%E5%80%BC%E7%9A%84-props) 了解更多。
+更多的 props 校验机制，可以点击 [带有类型限制的 props](../introduction/communication#%E5%B8%A6%E6%9C%89%E7%B1%BB%E5%9E%8B%E9%99%90%E5%88%B6%E7%9A%84-props) 和 [可选以及带有默认值的 props](../introduction/communication#%E5%8F%AF%E9%80%89%E4%BB%A5%E5%8F%8A%E5%B8%A6%E6%9C%89%E9%BB%98%E8%AE%A4%E5%80%BC%E7%9A%84-props) 了解更多。
 
 #### 使用类型注解检查 prop
 
@@ -363,7 +363,7 @@ console.log(props.msg)
 :::tip
 注意：从 `3.1.3` 版本开始，该 API 已被改名，加上了复数结尾，带有 s，在此版本之前是没有 s 结尾！
 
-前置知识点：[接收 emits - 组件之间的通信](communication.md#接收-emits)。
+前置知识点：[接收 emits - 组件之间的通信](../introduction/communication#接收-emits)。
 :::
 
 #### defineEmits 的基础用法
@@ -380,7 +380,7 @@ const emit = defineEmits(['chang-name'])
 emit('chang-name', 'Tom')
 ```
 
-由于 `defineEmits` 的用法和原来的 emits 选项差别不大，这里也不重复说明更多的诸如校验之类的用法了，可以查看 [接收 emits](communication.md#接收-emits) 一节了解更多。
+由于 `defineEmits` 的用法和原来的 emits 选项差别不大，这里也不重复说明更多的诸如校验之类的用法了，可以查看 [接收 emits](../introduction/communication#接收-emits) 一节了解更多。
 
 ### attrs 的接收方式变化
 
@@ -424,7 +424,7 @@ const attrs = useAttrs()
 console.log(attrs.msg)
 ```
 
-对 `attrs` 不太了解的话，可以查阅 [获取非 Prop 的 Attribute](communication.md#%E8%8E%B7%E5%8F%96%E9%9D%9E-prop-%E7%9A%84-attribute-new)
+对 `attrs` 不太了解的话，可以查阅 [获取非 Prop 的 Attribute](../introduction/communication#%E8%8E%B7%E5%8F%96%E9%9D%9E-prop-%E7%9A%84-attribute-new)
 
 ### slots 的接收方式变化
 
@@ -515,7 +515,7 @@ export default ChildTSX
 
 ### ref 的通信方式变化
 
-在标准组件写法里，子组件的数据都是默认隐式暴露给父组件的，也就是父组件可以通过 `childComponent.value.foo` 这样的方式直接操作子组件的数据（参见：[DOM 元素与子组件 - 响应式 API 之 ref](component.md#dom-元素与子组件)）。
+在标准组件写法里，子组件的数据都是默认隐式暴露给父组件的，也就是父组件可以通过 `childComponent.value.foo` 这样的方式直接操作子组件的数据（参见：[DOM 元素与子组件 - 响应式 API 之 ref](../introduction/component.md#dom-元素与子组件)）。
 
 但在 script-setup 模式下，所有数据只是默认隐式 return 给 template 使用，不会暴露到组件外，所以父组件是无法直接通过挂载 ref 变量获取子组件的数据。
 

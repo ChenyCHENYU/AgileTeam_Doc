@@ -4,10 +4,10 @@ outline: 'deep'
 
 # 脚手架的升级与配置
 
-相信阅读过 [Vue.js 与工程化](engineering.html#vue-js-与工程化) 一节内容的开发者，可以轻松猜到本书接下来关于 Vue 3 的学习都将基于前端工程化展开，本章将介绍如何配置 Vue 3 的开发环境，并创建基于前端工程化的 Vue 3 项目。
+相信阅读过 [Vue.js 与工程化](../get-familiar-quickly/engineering.md#vue-js-与工程化) 一节内容的开发者，可以轻松猜到本书接下来关于 Vue 3 的学习都将基于前端工程化展开，本章将介绍如何配置 Vue 3 的开发环境，并创建基于前端工程化的 Vue 3 项目。
 
 :::tip
-如果还不熟悉 Node.js 、 npm 依赖管理等前端工程化工具链的使用，请先阅读 [工程化的前期准备](guide.md) 一章。
+如果还不熟悉 Node.js 、 npm 依赖管理等前端工程化工具链的使用，请先阅读 [工程化的前期准备](../get-familiar-quickly/guide.md) 一章。
 :::
 
 ## 全新的 Vue 版本 ~new
@@ -20,7 +20,7 @@ outline: 'deep'
 
 包括 `vue-router` 、 `vuex` 、`vue-loader` 和 `@vue/test-utils` 等相关的生态，同样不需要指定 next 版本了，都配合 Vue 3 指定了新的 latest 默认版本。
 
-所有的文档和官方站点将默认切换到 Vue 3 版本，请查看 [官方文档](links.md#官方文档) 一节了解最新的官方资源站点。
+所有的文档和官方站点将默认切换到 Vue 3 版本，请查看 [官方文档](../links.md#官方文档) 一节了解最新的官方资源站点。
 
 ### 使用 Vue 2
 
@@ -163,7 +163,7 @@ preset init hello-vue3 --template vue3-ts-vite
 
 ### 和 Vite 的区别
 
-Vue CLI 使用的构建工具是基于 Webpack ，可以在 [了解构建工具](guide.md#了解构建工具) 一节了解 Webpack 和 Vite 这两个构建工具的区别。
+Vue CLI 使用的构建工具是基于 Webpack ，可以在 [了解构建工具](../get-familiar-quickly/guide.md#了解构建工具) 一节了解 Webpack 和 Vite 这两个构建工具的区别。
 
 ### 更新 CLI 脚手架
 
@@ -590,7 +590,7 @@ export default defineComponent({
 
 ## 项目初始化
 
-至此，脚手架已经帮搭好了一个可直接运行的基础项目，已经可以正常的 `dev` 和 `build` 了（取决于的项目 [脚本命令的配置](guide.md#脚本命令的配置) ），项目配置和编辑器也都弄好了，是不是可以开始写代码了？
+至此，脚手架已经帮搭好了一个可直接运行的基础项目，已经可以正常的 `dev` 和 `build` 了（取决于的项目 [脚本命令的配置](../get-familiar-quickly/guide.md#脚本命令的配置) ），项目配置和编辑器也都弄好了，是不是可以开始写代码了？
 
 不急，还需要了解一点东西，就是如何初始化一个 Vue 3 项目。
 

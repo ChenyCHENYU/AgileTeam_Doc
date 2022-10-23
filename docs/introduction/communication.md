@@ -595,7 +595,7 @@ export default defineComponent({
 
 ## ref / emits
 
-在学习 [响应式 API 之 ref](component.md#响应式-api-之-ref-new) 的时候，了解到 `ref` 是可以用在 [DOM 元素与子组件](component.md#dom-元素与子组件) 上面。
+在学习 [响应式 API 之 ref](../introduction/component.md#响应式-api-之-ref-new) 的时候，了解到 `ref` 是可以用在 [DOM 元素与子组件](../introduction/component.md#dom-元素与子组件) 上面。
 
 ### 父组件操作子组件 ~new
 
@@ -801,7 +801,7 @@ export default defineComponent({
 
 以 `ref` 和 `reactive` 为例，来看看应该怎么发起 `provide` 和接收 `inject`。
 
-对这 2 个 API 还不熟悉的开发者，建议先阅读一下 [响应式 API 之 ref](component.md#响应式-api-之-ref-new) 和 [响应式 API 之 reactive](component.md#响应式-api-之-reactive-new) 。
+对这 2 个 API 还不熟悉的开发者，建议先阅读一下 [响应式 API 之 ref](../introduction/component.md#响应式-api-之-ref-new) 和 [响应式 API 之 reactive](../introduction/component.md#响应式-api-之-reactive-new) 。
 
 先在 `Grandfather.vue` 里 `provide` 数据：
 
@@ -935,7 +935,7 @@ export default defineComponent({
 引用类型的数据，拿到后可以直接用，属性的值更新后，子孙组件也会被更新。
 
 :::warning
-由于不具备真正的响应性，`return` 给模板使用依然不会更新视图，如果涉及到视图的数据，请依然使用 [响应式 API](component.md#响应式数据的变化-new) 。
+由于不具备真正的响应性，`return` 给模板使用依然不会更新视图，如果涉及到视图的数据，请依然使用 [响应式 API](../introduction/component.md#响应式数据的变化-new) 。
 :::
 
 ### 基本类型的传递与接收
@@ -1067,7 +1067,7 @@ export default defineComponent({
 :::
 
 :::warning
-由于不具备真正的响应性，`return` 给模板使用依然不会更新视图，如果涉及到视图的数据，请依然使用 [响应式 API](component.md#响应式数据的变化-new) 。
+由于不具备真正的响应性，`return` 给模板使用依然不会更新视图，如果涉及到视图的数据，请依然使用 [响应式 API](../introduction/component.md#响应式数据的变化-new) 。
 :::
 
 ## 兄弟组件通信
@@ -1219,7 +1219,7 @@ export default defineComponent({
 })
 ```
 
-关于销毁的时机，可以参考 [组件的生命周期](component.md#组件的生命周期-new) 。
+关于销毁的时机，可以参考 [组件的生命周期](../introduction/component.md#组件的生命周期-new) 。
 
 ### 调用监听事件 ~new
 
@@ -1284,7 +1284,7 @@ Vuex 是 Vue 生态里面非常重要的一个成员，运用于状态管理模�
 
 ### 在了解之前
 
-在对 Vue 3 里是否需要使用 Vuex 的问题上，带有一定的争议，大部分开发者在社区发表的评论都认为通过 [EventBus](#eventbus-new) 和 [provide / inject](#provide-inject) ，甚至 export 一个 [reactive](component.md#响应式-api-之-reactive-new) 对象也足以满足大部分业务需求。
+在对 Vue 3 里是否需要使用 Vuex 的问题上，带有一定的争议，大部分开发者在社区发表的评论都认为通过 [EventBus](#eventbus-new) 和 [provide / inject](#provide-inject) ，甚至 export 一个 [reactive](../introduction/component.md#响应式-api-之-reactive-new) 对象也足以满足大部分业务需求。
 
 见仁见智，请根据自己的实际需要去看是否需要启用它。
 
@@ -1365,7 +1365,7 @@ export default defineComponent({
 
 Pinia 和 Vuex 一样，也是 Vue 生态里面非常重要的一个成员，也都是运用于全局的状态管理。
 
-但面向 [Componsition API](component.md#组件的基本写法) 而生的 Pinia ，更受 Vue 3 喜爱，已被钦定为官方推荐的新状态管理工具。
+但面向 [Componsition API](../introduction/component.md#组件的基本写法) 而生的 Pinia ，更受 Vue 3 喜爱，已被钦定为官方推荐的新状态管理工具。
 
 为了阅读上的方便，对 Pinia 单独开了一章，请跳转至 [全局状态的管理](pinia.md) 阅读。
 

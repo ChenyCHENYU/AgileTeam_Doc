@@ -1,3 +1,12 @@
+/*
+ * @Author: ChenYu
+ * @Date: 2022-10-22 17:14:01
+ * @LastEditors: ChenYu
+ * @LastEditTime: 2022-10-24 01:50:33
+ * @FilePath: \myAgileTeamVitepress\.vitepress\sidebar.ts
+ * @Description:
+ * Copyright (c) ${2022} by ChenYu/天智AgileTeam, All Rights Reserved.
+ */
 import type { DefaultTheme } from 'vitepress'
 
 export const sidebar: DefaultTheme.Sidebar = [
@@ -44,8 +53,6 @@ export const sidebar: DefaultTheme.Sidebar = [
   },
   {
     text: '扩展阅读',
-    items: [
-      { text: '常用文档', link: '/links' },
-    ],
+    items: [{ text: '常用文档', link: '/links' }],
   },
 ]

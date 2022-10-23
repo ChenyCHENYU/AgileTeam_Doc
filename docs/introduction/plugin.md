@@ -10,12 +10,12 @@ outline: 'deep'
 
 ## 插件的安装和引入
 
-在 [前端工程化](guide.md#了解前端工程化) 十分普及的今天，可以说几乎所有要用到的插件，都可以在 [npmjs](https://www.npmjs.com/) 上搜到，除了官方提供的包管理器 npm ，也有很多种安装方式选择。
+在 [前端工程化](../get-familiar-quickly/guide.md#了解前端工程化) 十分普及的今天，可以说几乎所有要用到的插件，都可以在 [npmjs](https://www.npmjs.com/) 上搜到，除了官方提供的包管理器 npm ，也有很多种安装方式选择。
 
 :::tip
-如果还不了解什么是包和包管理器，请先阅读 [了解包和插件](guide.md#了解包和插件) 一节的内容。
+如果还不了解什么是包和包管理器，请先阅读 [了解包和插件](../get-familiar-quickly/guide.md#了解包和插件) 一节的内容。
 
-另外，每个包管理都可以配置镜像源，提升国内的下载速度，对此也可以先阅读 [配置镜像源](guide.md#配置镜像源) 一节了解。
+另外，每个包管理都可以配置镜像源，提升国内的下载速度，对此也可以先阅读 [配置镜像源](../get-familiar-quickly/guide.md#配置镜像源) 一节了解。
 :::
 
 虽然对于个人开发者来说，有一个用的顺手的包管理器就足够日常开发了，但是还是有必要多了解一下不同的包管理器，因为未来可能会面对团队协作开发、为开源项目贡献代码等情况，需要遵循团队要求的包管理机制（例如使用 Monorepo 架构的团队会更青睐于 yarn 或 pnpm 的 Workspace 功能）。
@@ -332,7 +332,7 @@ vue-demo
 在设计本地通用插件的时候，需要遵循 [ES Module 模块设计规范](#用-es-module-设计模块) ，并且做好必要的代码注释（用途、入参、返回值等）。
 
 :::tip
-如果还没有了解过 “模块” 的概念的话，可以先阅读 [了解模块化设计](guide.md#了解模块化设计) 一节的内容。
+如果还没有了解过 “模块” 的概念的话，可以先阅读 [了解模块化设计](../get-familiar-quickly/guide.md#了解模块化设计) 一节的内容。
 :::
 
 一般来说，会有以下三种情况需要考虑。
@@ -562,7 +562,7 @@ createApp(App)
 
 ##### 编写插件
 
-这里以一个 [自定义指令](component.md#自定义指令) 为例，写一个用于管理自定义指令的插件，其中包含两个自定义指令：一个是判断是否有权限，一个是给文本高亮，文本高亮还支持一个插件选项。
+这里以一个 [自定义指令](../introduction/component.md#自定义指令) 为例，写一个用于管理自定义指令的插件，其中包含两个自定义指令：一个是判断是否有权限，一个是给文本高亮，文本高亮还支持一个插件选项。
 
 ```ts{2,4-11,18}
 // src/plugins/directive.ts
@@ -724,7 +724,7 @@ app.mount('#app')
 
  ### 使用全局 API ~new
 
-要在 Vue 组件里使用，因为 Vue 3 的 [生命周期](component.md#组件的生命周期-new) 无法取得实例的 `this` 来操作，需要通过全新的 [getCurrentInstance](https://v3.cn.vuejs.org/api/composition-api.html#getcurrentinstance) 组件来进行处理。
+要在 Vue 组件里使用，因为 Vue 3 的 [生命周期](../introduction/component.md#组件的生命周期-new) 无法取得实例的 `this` 来操作，需要通过全新的 [getCurrentInstance](https://v3.cn.vuejs.org/api/composition-api.html#getcurrentinstance) 组件来进行处理。
 
 ```ts
 // 导入 getCurrentInstance 组件
@@ -750,12 +750,12 @@ export default defineComponent({
 })
 ```
 
-由于使用了 [defineComponent](component.md#defineComponent-的作用) ，它会帮自动推导 `getCurrentInstance()` 的类型为 `ComponentInternalInstance` 或 `null` 。
+由于使用了 [defineComponent](../introduction/component.md#defineComponent-的作用) ，它会帮自动推导 `getCurrentInstance()` 的类型为 `ComponentInternalInstance` 或 `null` 。
 
-所以如果的项目下的 TS 开启了 `--strictNullChecks` 选项，需要对实例变量做一层判断才能正确运行程序（可参考 [DOM 元素与子组件](component.md#dom-元素与子组件) 一节）。
+所以如果的项目下的 TS 开启了 `--strictNullChecks` 选项，需要对实例变量做一层判断才能正确运行程序（可参考 [DOM 元素与子组件](../introduction/component.md#dom-元素与子组件) 一节）。
 
 :::tip
-需要注意的是， `getCurrentInstance` 只能在 [setup](component.md#全新的-setup-函数-new) 函数或者 Vue 3.0 的 [生命周期](component.md#组件的生命周期-new) 钩子中调用。
+需要注意的是， `getCurrentInstance` 只能在 [setup](../introduction/component.md#全新的-setup-函数-new) 函数或者 Vue 3.0 的 [生命周期](../introduction/component.md#组件的生命周期-new) 钩子中调用。
 
 如需在 `setup` 或生命周期钩子外使用，需要先在 `setup` 中调用 `const app = getCurrentInstance();` 获取实例变量，然后再通过 `app` 变量去使用。
 ::: -->
@@ -768,7 +768,7 @@ export default defineComponent({
 
 那么确实是需要用到一些全局 API 怎么办？
 
-对于一般的数据和方法，建议采用 [provide / inject](communication.md#provide-inject) 方案，在根组件（通常是 App.vue ）把需要作为全局使用的数据 / 方法 provide 下去，在需要用到的组件里通过 inject 即可获取到，或者使用 [EventBus](communication.md#eventbus-new) / [Vuex](communication.md#vuex-new) / [Pinia](pinia.md) 等全局通信方案来处理。
+对于一般的数据和方法，建议采用 [provide / inject](../introduction/communication#provide-inject) 方案，在根组件（通常是 App.vue ）把需要作为全局使用的数据 / 方法 provide 下去，在需要用到的组件里通过 inject 即可获取到，或者使用 [EventBus](../introduction/communication#eventbus-new) / [Vuex](../introduction/communication#vuex-new) / [Pinia](pinia.md) 等全局通信方案来处理。
 
 ## npm 包的开发与发布
 
@@ -777,8 +777,8 @@ export default defineComponent({
 :::tip
 在开始本节内容之前，请先阅读或回顾以下两部分内容：
 
-1. 阅读 [了解 package.json](guide.md#了解-package-json) 一节，了解或重温 npm 包清单文件的作用
-2. 阅读 [学习模块化设计](guide.md#学习模块化设计) 一节，了解或重温模块化开发的知识
+1. 阅读 [了解 package.json](../get-familiar-quickly/guide.md#了解-package-json) 一节，了解或重温 npm 包清单文件的作用
+2. 阅读 [学习模块化设计](../get-familiar-quickly/guide.md#学习模块化设计) 一节，了解或重温模块化开发的知识
 
 :::
 
@@ -879,8 +879,8 @@ npm init -y
 
 | <span style="display: inline-block; width: 80px;">字段</span> | <span style="display: inline-block; width: 80px;">是否必填</span> | 作用                                                                                                                                                                                                                                                                                                                  |
 | :-----------------------------------------------------------: | :---------------------------------------------------------------: | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-|                             name                              |                               必填                                | npm 包的名称，遵循 [项目名称的规则](guide.md#项目名称规则)                                                                                                                                                                                                                                                            |
-|                            version                            |                               必填                                | npm 包的版本号，遵循 [语义化版本号的规则](guide.md#语义化版本号管理)                                                                                                                                                                                                                                                  |
+|                             name                              |                               必填                                | npm 包的名称，遵循 [项目名称的规则](../get-familiar-quickly/guide.md#项目名称规则)                                                                                                                                                                                                                                    |
+|                            version                            |                               必填                                | npm 包的版本号，遵循 [语义化版本号的规则](../get-familiar-quickly/guide.md#语义化版本号管理)                                                                                                                                                                                                                          |
 |                             main                              |                               必填                                | 项目的入口文件，通常指向构建产物所在目录的某个文件，该文件通常包含了所有模块的导出。<br><br>如果只指定了 `main` 字段，则使用 `require` 和 `import` 以及浏览器访问 npm 包的 CDN 时，都将默认调用该字段指定的入口文件。<br><br>如果有指定 `module` 和 `browser` 字段，则通常对应 `cjs` 格式的文件，对应 CommonJS 规范。 |
 |                            module                             |                                否                                 | 当项目使用 `import` 引入 npm 包时对应的入口文件，通常指向一个 `es` 格式的文件，对应 ES Module 规范。                                                                                                                                                                                                                  |
 |                            browser                            |                                否                                 | 当项目使用了 npm 包的 CDN 链接，在浏览器访问页面时的入口文件，通常指向一个 `umd` 格式的文件，对应 UMD 规范。                                                                                                                                                                                                          |
@@ -1058,7 +1058,7 @@ export { o as default }
 
 #### 编写 npm 包代码
 
-在开发的过程中，需要遵循模块化开发的要求，当前这个演示包使用 TypeScript 编码，就需要 [使用 ES Module 来设计模块](guide.md#用-es-module-设计模块) ，如果对模块化设计还没有足够的了解，请先回顾相关的内容。
+在开发的过程中，需要遵循模块化开发的要求，当前这个演示包使用 TypeScript 编码，就需要 [使用 ES Module 来设计模块](../get-familiar-quickly/guide.md#用-es-module-设计模块) ，如果对模块化设计还没有足够的了解，请先回顾相关的内容。
 
 先在 src 目录下创建一个名为 utils.ts 的文件，写入以下内容：
 
@@ -1487,7 +1487,7 @@ https://cdn.jsdelivr.net/npm/@vue/reactivity@3.2.40/dist/reactivity.d.ts
 
 #### 生成 DTS 文件
 
-有在 “快速上手 TypeScript ” 一章阅读过 [了解 tsconfig.json](typescript.md#了解-tsconfig-json) 这节内容的开发者，应该对该文件有了一定的了解，如果还没有阅读过也没关系，可以先按照下方的步骤操作，接下来将分布说明如何生成 npm 包的 DTS 类型声明文件（以 `.d.ts` 为扩展名的文件）。
+有在 “快速上手 TypeScript ” 一章阅读过 [了解 tsconfig.json](../get-familiar-quickly/typescript.md#了解-tsconfig-json) 这节内容的开发者，应该对该文件有了一定的了解，如果还没有阅读过也没关系，可以先按照下方的步骤操作，接下来将分布说明如何生成 npm 包的 DTS 类型声明文件（以 `.d.ts` 为扩展名的文件）。
 
 请先全局安装 [typescript](https://www.npmjs.com/package/typescript) 这个包：
 
@@ -1798,7 +1798,7 @@ export {}
 一个 npm 包开发完毕后，就可以进入发布阶段了，这一小节将讲解如何注册 npm 账号并发布到 npmjs 平台上供其他开发者下载使用。
 
 :::tip
-在操作 npm 包发布之前，请先运行 `npm config rm registry` 命令取消 npm 镜像源的绑定，否则会发布失败，在 npm 包发布后，可以再重新 [配置镜像源](guide.md#配置镜像源) 。
+在操作 npm 包发布之前，请先运行 `npm config rm registry` 命令取消 npm 镜像源的绑定，否则会发布失败，在 npm 包发布后，可以再重新 [配置镜像源](../get-familiar-quickly/guide.md#配置镜像源) 。
 :::
 
 #### 注册 npm 账号
@@ -1912,7 +1912,7 @@ npm publish --access public --tag alpha
 ```
 
 :::tip
-请注意，如果是 Alpha 或者 Beta 版本，通常会在版本号上增加 `-alpha.0` 、 `-alpha.1` 这样的 [版本标识符](guide.md#版本标识符)，以便在发布正式版本的时候可以使用无标识符的相同版本号，以保证版本号在遵循 [升级规则](guide.md#基本格式与升级规则) 下的连续性。
+请注意，如果是 Alpha 或者 Beta 版本，通常会在版本号上增加 `-alpha.0` 、 `-alpha.1` 这样的 [版本标识符](../get-familiar-quickly/guide.md#版本标识符)，以便在发布正式版本的时候可以使用无标识符的相同版本号，以保证版本号在遵循 [升级规则](../get-familiar-quickly/guide.md#基本格式与升级规则) 下的连续性。
 :::
 
 <!-- 谷歌广告 -->

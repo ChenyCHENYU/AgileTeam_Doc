@@ -26,7 +26,7 @@ outline: 'deep'
 
 ### 常用的 Web API 类型查询
 
-在 [DOM 元素与子组件](component.md#dom-元素与子组件) 一节有提及到如何对 DOM 元素定义 TS 类型，拿出来放这里更方便查阅。
+在 [DOM 元素与子组件](./introduction/component.md#dom-元素与子组件) 一节有提及到如何对 DOM 元素定义 TS 类型，拿出来放这里更方便查阅。
 
 点击阅读：[文档对象模型](https://developer.mozilla.org/zh-CN/docs/Web/API/Document_Object_Model)
 

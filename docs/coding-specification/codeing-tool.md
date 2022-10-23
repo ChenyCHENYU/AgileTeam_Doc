@@ -1,7 +1,9 @@
 ---
+
 layout: CodeingTool
 title: 编码工具
 outline: 'deep'
+
 ---
 
 # 代码编辑器 Visual Studio Code
@@ -44,17 +46,3 @@ outline: 'deep'
 - ○ 进入项目，格式化代码，测试一下效果
   > :incoming_envelope: 温馨提示：若同步插件集失败，请注意是否为科学上网，请耐心多次尝试哦。  
   > 以后再也不用担心葫芦娃(huoban)的个性 show 了，代码格式都一样，开始专注的搬砖吧！
-
-<!-- <Standard /> -->
-
-<script setup>
-/**
- * 这里路径 @theme 可以直接指向 .vitepress/theme 目录
- * 
- * 注意：在 vitepress 1.0.0-alpha.6 版本前的别名为 /@theme
- * 1.0.0-alpha.6 版本以后的别名改为 @theme
- * 详情参考：https://github.com/vuejs/vitepress/blob/main/CHANGELOG.md
- */
-// import Standard from '../../src/views/Standard.vue'
-// import Standard from '_v/Standard.vue'
-</script>

@@ -150,13 +150,13 @@ Uncaught SyntaxError: Identifier 'foo' has already been declared (at lib-2.js:1:
 - `src` 是源码目录
 - `src/main.ts` 是入口文件
 - `src/views` 是路由组件目录
-- `src/components` 是子组件目录
+- `src/../introduction/components` 是子组件目录
 - `src/router` 是路由目录
 
 虽然也可以自行调整成别的结构，但根据笔者在多年的工作实际接触下来，以及从很多开源项目的代码里看到的，都是沿用脚手架创建的项目结构（不同脚手架创建的结构会有所不同，但基于同一技术栈的项目基本上都具备相同的结构）。
 
 :::tip
-在 [脚手架的升级与配置](upgrade.md) 一章可以学习如何使用脚手架创建 Vue 3 项目。
+在 [脚手架的升级与配置](../introduction/upgrade.md) 一章可以学习如何使用脚手架创建 Vue 3 项目。
 :::
 
 #### 统一的代码风格
@@ -201,7 +201,7 @@ Uncaught SyntaxError: Identifier 'foo' has already been declared (at lib-2.js:1:
 在工程化项目这些问题都可以交给程序去处理，在书写代码的时候，开发者可以先按照自己的习惯书写，然后再执行命令进行格式化，或者是在提交代码的时候配合 Git Hooks 自动格式化，都可以做到统一风格。
 
 :::tip
-在 [添加协作规范](upgrade.md#添加协作规范) 一节可以学习如何给项目添加统一的协作规范。
+在 [添加协作规范](../introduction/upgrade.md#添加协作规范) 一节可以学习如何给项目添加统一的协作规范。
 :::
 
 #### 可复用的模块和组件
@@ -484,7 +484,7 @@ Vue 提供了 Vue Router 实现路由功能，利用 [History API](https://devel
 
 第一个原因在 [求职竞争上的优势](#求职竞争上的优势) 已有进行过说明，掌握一门流行框架已经是前端岗位必备的技能，几乎所有公司在招聘前端工程师的时候都要求会 Vue 。
 
-这里主要讲讲第二个原因，在 [Vue 与工程化之间的关联](#vue-与工程化之间的关联) 里提到了开发者可以编写 `.vue` 文件，这是一个 Vue 专属的文件扩展名，官方名称是 Single-File Component ，简称 SFC ，也就是单文件组件。
+这里主要讲讲第二个原因，在 [Vue 与工程化之间的关联](#vue-与工程化之间的关联) 里提到了开发者可以编写 `.vue` 文件，这是一个 Vue 专属的文件扩展名，官方名称是 Single-File ../introduction/component ，简称 SFC ，也就是单文件组件。
 
 `.vue` 文件最大的特色就是支持像编写 `.html` 文件一样，在文件里写 HTML / CSS / JS 代码，不仅结构相似，在代码书写上，两者的语法也是十分接近：
 
@@ -519,7 +519,7 @@ export default {
 </style>
 ```
 
-Vue 组件不仅支持这些语言的所有基础用法，还增加了非常多更高效的功能，在后面 Vue3 教程的 [单组件的编写](component.md) 一章会有详细的介绍。
+Vue 组件不仅支持这些语言的所有基础用法，还增加了非常多更高效的功能，在后面 Vue3 教程的 [单组件的编写](../introduction/component.md) 一章会有详细的介绍。
 
 ## 现代化的开发概念
 
@@ -636,7 +636,7 @@ SPA 在页面跳转的时候，地址栏也会发生变化，主要有以下两�
 这两个方式的共同特点是更新地址栏 URL 的时候，均不会刷新页面，只是单纯的变更地址栏的访问地址，而网页的内容则通过 AJAX 更新，配合起来就形成了一种网页的 “前进 / 后退” 等行为效果。
 
 :::tip
-Vue Router 默认提供了这两种 URL 改变方式的支持，分别是 `createWebHashHistory` 的 Hash 模式和 `createWebHistory` 对应的 History 模式，在 [路由的使用](router.md) 一章可以学习更多 Vue 路由的使用。
+Vue Router 默认提供了这两种 URL 改变方式的支持，分别是 `createWebHashHistory` 的 Hash 模式和 `createWebHistory` 对应的 History 模式，在 [路由的使用](../introduction/router.md) 一章可以学习更多 Vue 路由的使用。
 :::
 
 理解了实现原理之后，可以把 SPA 的请求过程简化为如下步骤：
@@ -1065,8 +1065,8 @@ Polyfill 会考虑到多种异常情况，最大幅度保证浏览器的兼容�
 除了 “语言转换 / 编译” 这个好处之外，在实际的开发中，构建工具可以更好的提高开发效率、自动化的代码检查、规避上线后的生产风险，例如：
 
 - 项目好多代码可以复用，可以直接抽离成 [模块](#学习模块化设计) 、 [组件](#认识组件化设计) ，交给构建工具去合并打包
-- [TypeScript](typescript.md) 的类型系统和代码检查真好用，也可以放心写，交给构建工具去编译
-- CSS 写起来很慢，可以使用 Sass 、 Less 等 [CSS 预处理器](component.md#使用-css-预处理器) ，利用它们的变量支持、混合继承等功能提高开发效率，最终交给构建工具去编译回 CSS 代码
+- [TypeScript](../get-familiar-quickly/typescript.md) 的类型系统和代码检查真好用，也可以放心写，交给构建工具去编译
+- CSS 写起来很慢，可以使用 Sass 、 Less 等 [CSS 预处理器](../introduction/component.md#使用-css-预处理器) ，利用它们的变量支持、混合继承等功能提高开发效率，最终交给构建工具去编译回 CSS 代码
 - 海量的 [npm 包](#依赖包和插件) 开箱即用，剩下的工作交给构建工具去按需抽离与合并
 - 项目上线前代码要混淆，人工处理太费劲，交给构建工具自动化处理
 - 还有很多列举不完的其他场景…
@@ -1079,7 +1079,7 @@ Webpack 是一个老牌的构建工具，前些年可以说几乎所有的项目
 
 点击访问：[Webpack 官网](https://webpack.js.org)
 
-在升级与配置一章里的 [使用 @vue/cli 创建项目](upgrade.md#使用-vue-cli-创建项目) 会指导如何使用 Vue CLI 创建一个基于 Webpack 的 Vue 项目。
+在升级与配置一章里的 [使用 @vue/cli 创建项目](../introduction/upgrade.md#使用-vue-cli-创建项目) 会指导如何使用 Vue CLI 创建一个基于 Webpack 的 Vue 项目。
 
 ### Vite
 
@@ -1089,7 +1089,7 @@ Vite 的作者也是熟悉的 Vue 作者尤雨溪，它是一个基于 ESM 实�
 
 点击访问：[Vite 官网](https://cn.vitejs.dev)
 
-在升级与配置一章里的 [使用 Vite 创建项目](upgrade.md#使用-vite-创建项目-new) 会指导如何使用流行脚手架创建一个基于 Vite 的 Vue 项目。
+在升级与配置一章里的 [使用 Vite 创建项目](../introduction/upgrade.md#使用-vite-创建项目-new) 会指导如何使用流行脚手架创建一个基于 Vite 的 Vue 项目。
 
 ### 两者的区别
 
@@ -1127,7 +1127,7 @@ Vite 是基于浏览器原生的 ES Module ，所以不需要预先打包，而�
 
 #### 开发环境
 
-前面在编写 [Hello TypeScript](typescript.md#hello-typescript) 这个 demo 的时候，使用了 `npm run dev:ts` 这样的命令来测试 TypeScript 代码的可运行性，可以把这个阶段认为是的一个 “测试环境” ，这个时候代码不管怎么写，它都是 TypeScript 代码，不是最终要编译出来的 JavaScript 。
+前面在编写 [Hello TypeScript](../get-familiar-quickly/typescript.md#hello-typescript) 这个 demo 的时候，使用了 `npm run dev:ts` 这样的命令来测试 TypeScript 代码的可运行性，可以把这个阶段认为是的一个 “测试环境” ，这个时候代码不管怎么写，它都是 TypeScript 代码，不是最终要编译出来的 JavaScript 。
 
 如果基于 Webpack 或者 Vite 这样的构建工具，测试环境提供了更多的功能，例如：
 
@@ -1139,7 +1139,7 @@ Vite 是基于浏览器原生的 ES Module ，所以不需要预先打包，而�
 
 #### 生产环境
 
-在 [Hello TypeScript](typescript.md#hello-typescript) demo 最后配置的一个 `npm run build` 命令，将 TypeScript 代码编译成了 JavaScript ，这个时候 dist 文件夹下的代码文件就处于 “生产环境” 了，因为之后不论源代码怎么修改，都不会直接影响到它们，直到再次执行 build 编译。
+在 [Hello TypeScript](../get-familiar-quickly/typescript.md#hello-typescript) demo 最后配置的一个 `npm run build` 命令，将 TypeScript 代码编译成了 JavaScript ，这个时候 dist 文件夹下的代码文件就处于 “生产环境” 了，因为之后不论源代码怎么修改，都不会直接影响到它们，直到再次执行 build 编译。
 
 可以看出生产环境和开发环境最大的区别就是稳定！除非再次打包发布，否则不会影响到已部署的代码。
 

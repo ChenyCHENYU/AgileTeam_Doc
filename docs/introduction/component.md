@@ -9,7 +9,7 @@ outline: 'deep'
 因为 Vue 3 对 TypeScript 的支持真的是太完善了，以及 TypeScript 的发展趋势越来越好，所以直接使用 TypeScript 来编写组件。
 
 :::tip
-对 TypeScript 不太熟悉的开发者，建议先阅读一遍 “起步准备” 章节里的 [了解 TypeScript](guide.md#了解-typescript) 一节的内容，有了一定的了解之后，再一边写代码一边加深印象。
+对 TypeScript 不太熟悉的开发者，建议先阅读一遍 “起步准备” 章节里的 [了解 TypeScript](../get-familiar-quickly/guide.md#了解-typescript) 一节的内容，有了一定的了解之后，再一边写代码一边加深印象。
 :::
 
 ## 全新的 setup 函数 ~new
@@ -79,7 +79,7 @@ export default defineComponent({
 
 但是 `attrs` 和 `slots` 请保持 `attrs.xxx`、`slots.xxx` 来使用他们数据，不要解构这两个属性，因为他们虽然不是响应式对象，但会随组件本身的更新而更新。
 
-两个参数的具体使用，可以详细了解可查阅 [组件之间的通信](communication.md) 一章。
+两个参数的具体使用，可以详细了解可查阅 [组件之间的通信](../introduction/communication) 一章。
 
 ### defineComponent 的作用
 
@@ -2352,7 +2352,7 @@ const getArticleList = async (): Promise<void> => {
 }
 ```
 
-当然，这种情况也可以在父组件通过 `props` 传递接口 URL ，如果已经学到了 [组件通讯](communication.md) 一章的话。
+当然，这种情况也可以在父组件通过 `props` 传递接口 URL ，如果已经学到了 [组件通讯](../introduction/communication) 一章的话。
 
 #### 获取多级对象的值
 

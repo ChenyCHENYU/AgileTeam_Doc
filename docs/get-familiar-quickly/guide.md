@@ -375,7 +375,7 @@ Node 项目遵循 [语义化版本号](https://semver.org/lang/zh-CN/) 的规则
 
 看到这里，对于 Node 项目的基本创建流程和关键信息都有所了解了吧！来写一个 demo ，实际体验一下如何从初始化项目到打印一个 `Hello World` 到控制台的过程。
 
-请先启动的命令行工具，然后创建一个项目文件夹，这里使用 `mkdir` 命令：  
+请先启动的命令行工具，然后创建一个项目文件夹，这里使用 `mkdir` 命令：
 
 ```bash
 # 语法是 mkdir <dir-name>
@@ -999,7 +999,7 @@ Hello World from bar.
 
 常见的组件有：页头、页脚、导航栏、侧边栏… 甚至小到一个用户头像也可以抽离成组件，因为头像可能只是尺寸、圆角不同而已。
 
-每个组件都有自己的 “作用域” ， JavaScript 部分利用 [模块化](#学习模块化设计) 来实现作用域隔离， HTML 和 CSS 代码则借助 [Style Scoped](component.md#style-scoped) 来生成独有的 hash ，避免全局污染，这些方案组合起来，使得组件与组件之间的代码不会互相影响。
+每个组件都有自己的 “作用域” ， JavaScript 部分利用 [模块化](#学习模块化设计) 来实现作用域隔离， HTML 和 CSS 代码则借助 [Style Scoped](../introduction/component.md#style-scoped) 来生成独有的 hash ，避免全局污染，这些方案组合起来，使得组件与组件之间的代码不会互相影响。
 
 ### 如何实现组件化
 
@@ -1021,7 +1021,7 @@ Hello World from bar.
 </style>
 ```
 
-在后面的 [单组件的编写](component.md) 一章中，会详细介绍如何编写一个 Vue 组件。
+在后面的 [单组件的编写](../introduction/component.md) 一章中，会详细介绍如何编写一个 Vue 组件。
 
 ## 依赖包和插件
 
@@ -1388,7 +1388,7 @@ hello-node
 :::tip
 package-lock.json 文件并不是一成不变的，假如以后 md5 又引用了更多的包，这里记录的信息也会随之增加。
 
-并且不同的包管理器，它的 lock 文件也会不同，如果是使用 yarn 作为包管理器的话，它是生成一个 yarn.lock 文件，而不是 package-lock.json ，有关更多的包管理器，详见 [插件的使用](plugin.md) 一章。
+并且不同的包管理器，它的 lock 文件也会不同，如果是使用 yarn 作为包管理器的话，它是生成一个 yarn.lock 文件，而不是 package-lock.json ，有关更多的包管理器，详见 [插件的使用](../introduction/plugin.md.md) 一章。
 :::
 
 现在已经安装好 md5 包了，接下来看看具体如何使用它。
@@ -1430,7 +1430,7 @@ npm run dev:esm
 
 作为一名前端工程师，了解如何控制代码的兼容性是非常重要的能力。
 
-在 “了解前端工程化” 的 [为什么要使用构建工具](engineering.md#为什么要使用构建工具) 一节里，已简单介绍过 Polyfill 的作用，以及介绍了构建工具可以通过 [Babel](https://github.com/babel/babel) 等方案自动化处理代码的兼容问题，这一小节将讲解 Babel 的配置和使用，亲自体验如何控制代码的兼容性转换。
+在 “了解前端工程化” 的 [为什么要使用构建工具](../get-familiar-quickly/../get-familiar-quickly/engineering.md#为什么要使用构建工具) 一节里，已简单介绍过 Polyfill 的作用，以及介绍了构建工具可以通过 [Babel](https://github.com/babel/babel) 等方案自动化处理代码的兼容问题，这一小节将讲解 Babel 的配置和使用，亲自体验如何控制代码的兼容性转换。
 
 ### 如何查询兼容性
 

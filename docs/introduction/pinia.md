@@ -293,14 +293,14 @@ export default defineComponent({
 和 [使用 store 实例](#使用-store-实例) 以及 [使用 storeToRefs API](#使用-storetorefs-api) 不同，这个方式默认情况下无法直接更新 state 的值。
 
 :::tip
-这里的定义的 `message` 变量是一个只有 getter ，没有 setter 的 [ComputedRef](component.md#类型定义) 数据，所以它是只读的。
+这里的定义的 `message` 变量是一个只有 getter ，没有 setter 的 [ComputedRef](../introduction/component.md#类型定义) 数据，所以它是只读的。
 :::
 
 如果要更新数据怎么办？
 
 1. 可以通过提前定义好的 Store Actions 方法进行更新。
 
-2. 在定义 computed 变量的时候，配置好 [setter](component.md#setter-的使用) 的行为：
+2. 在定义 computed 变量的时候，配置好 [setter](../introduction/component.md#setter-的使用) 的行为：
 
 ```ts
 // 其他代码和上一个例子一样，这里省略...
@@ -326,7 +326,7 @@ console.log(store.message)
 
 Pinia 还提供了一个 `storeToRefs` API 用于把 state 的数据转换为 `ref` 变量。
 
-这是一个专门为 Pinia Stores 设计的 API ，类似于 [toRefs](component.md#响应式-api-之-toref-与-torefs-new) ，区别在于，它会忽略掉 Store 上面的方法和非响应性的数据，只返回 state 上的响应性数据。
+这是一个专门为 Pinia Stores 设计的 API ，类似于 [toRefs](../introduction/component.md#响应式-api-之-toref-与-torefs-new) ，区别在于，它会忽略掉 Store 上面的方法和非响应性的数据，只返回 state 上的响应性数据。
 
 ```ts
 import { defineComponent } from 'vue'
@@ -350,7 +350,7 @@ export default defineComponent({
 })
 ```
 
-通过这个方式拿到的 `message` 变量是一个 [Ref](component.md#响应式-api-之-ref-new) 类型的数据，所以可以像普通的 ref 变量一样进行读取和赋值。
+通过这个方式拿到的 `message` 变量是一个 [Ref](../introduction/component.md#响应式-api-之-ref-new) 类型的数据，所以可以像普通的 ref 变量一样进行读取和赋值。
 
 ```ts
 // 直接赋值即可
@@ -362,7 +362,7 @@ console.log(store.message)
 
 #### 使用 toRefs API
 
-如 [使用 storeToRefs API](#使用-storetorefs-api) 部分所说，该 API 本身的设计就是类似于 [toRefs](component.md#响应式-api-之-toref-与-torefs-new) ，所以也可以直接用 toRefs 把 state 上的数据转成 ref 变量。
+如 [使用 storeToRefs API](#使用-storetorefs-api) 部分所说，该 API 本身的设计就是类似于 [toRefs](../introduction/component.md#响应式-api-之-toref-与-torefs-new) ，所以也可以直接用 toRefs 把 state 上的数据转成 ref 变量。
 
 ```ts
 // 注意 toRefs 是 vue 的 API ，不是 Pinia
@@ -384,7 +384,7 @@ export default defineComponent({
 })
 ```
 
-详见 [使用 toRefs](component.md#使用-torefs) 一节的说明，可以像普通的 ref 变量一样进行读取和赋值。
+详见 [使用 toRefs](../introduction/component.md#使用-torefs) 一节的说明，可以像普通的 ref 变量一样进行读取和赋值。
 
 另外，像上面这样，对 store 执行 toRefs 会把 store 上面的 getters 、 actions 也一起提取，如果只需要提取 state 上的数据，可以这样做：
 
@@ -417,7 +417,7 @@ export default defineComponent({
 })
 ```
 
-详见 [使用 toRef](component.md#使用-toref) 一节的说明，可以像普通的 ref 变量一样进行读取和赋值。
+详见 [使用 toRef](../introduction/component.md#使用-toref) 一节的说明，可以像普通的 ref 变量一样进行读取和赋值。
 
 #### 使用 actions 方法
 
@@ -592,7 +592,7 @@ $subscribe(
 
 #### 添加订阅
 
-`$subscribe` API 的功能类似于 [watch](component.md#watch) ，但它只会在 state 被更新的时候才触发一次，并且在组件被卸载时删除（参考：[组件的生命周期](component.md#组件的生命周期-new)）。
+`$subscribe` API 的功能类似于 [watch](../introduction/component.md#watch) ，但它只会在 state 被更新的时候才触发一次，并且在组件被卸载时删除（参考：[组件的生命周期](../introduction/component.md#组件的生命周期-new)）。
 
 从 [订阅 API 的 TS 类型](#订阅-api-的-ts-类型) 可以看到，它可以接受两个参数，第一个参数是必传的 callback 函数，一般情况下默认用这个方式即可，使用例子：
 
@@ -655,7 +655,7 @@ const unsubscribe = store.$subscribe(
 unsubscribe()
 ```
 
-跟 watch API 的机制非常相似， 它也是返回 [一个取消监听的函数](component.md#取消监听) 用于移除指定的 watch 。
+跟 watch API 的机制非常相似， 它也是返回 [一个取消监听的函数](../introduction/component.md#取消监听) 用于移除指定的 watch 。
 
 ## 管理 getters ~new
 
@@ -664,7 +664,7 @@ unsubscribe()
 ### 给 Store 添加 getter
 
 :::tip
-如果对 Vue 的计算数据不是很熟悉或者没接触过的话，可以先阅读 [数据的计算](component.md#数据的计算-new) 这一节，以便有个初步印象，不会云里雾里。
+如果对 Vue 的计算数据不是很熟悉或者没接触过的话，可以先阅读 [数据的计算](../introduction/component.md#数据的计算-new) 这一节，以便有个初步印象，不会云里雾里。
 :::
 
 #### 添加普通的 getter
@@ -687,7 +687,7 @@ export const useStore = defineStore('main', {
 })
 ```
 
-和 [Options API 的 Computed](component.md#回顾-vue-2-3) 写法一样，也是通过函数来返回计算后的值， Getter 可以通过入参的 `state` 来拿到当前实例的数据（在 Pinia 里，官方更推荐使用箭头函数）。
+和 [Options API 的 Computed](../introduction/component.md#回顾-vue-2-3) 写法一样，也是通过函数来返回计算后的值， Getter 可以通过入参的 `state` 来拿到当前实例的数据（在 Pinia 里，官方更推荐使用箭头函数）。
 
 #### 添加引用 getter 的 getter
 

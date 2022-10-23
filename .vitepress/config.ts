@@ -2,8 +2,8 @@
  * @Author: ChenYu
  * @Date: 2022-10-22 17:14:01
  * @LastEditors: ChenYu
- * @LastEditTime: 2022-10-23 22:12:47
- * @FilePath: \learning-vue3-main\.vitepress\config.ts
+ * @LastEditTime: 2022-10-24 01:21:05
+ * @FilePath: \myAgileTeamVitepress\.vitepress\config.ts
  * @Description: 配置文件
  * Copyright (c) ${2022} by ChenYu/天智AgileTeam, All Rights Reserved.
  */
@@ -23,6 +23,7 @@ export default defineConfig({
   description:
     '这是一个关于 Vue 3 + TypeScript 的团队引导文档，适合前端Vue技术栈，在官方文档的基础上融入自己的一些实践经验。',
   head,
+  // ignoreDeadLinks: true,  // 忽略死链接
   markdown: {
     lineNumbers: false,
   },

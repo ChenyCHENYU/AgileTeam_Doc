@@ -4,7 +4,7 @@ outline: 'deep'
 
 # 快速上手 TypeScript
 
-如果已经看完 [工程化的起步准备](guide.md) 一章，相信此时的已经对 Node 工程项目有了足够的认识了，在此之前的所有代码都是使用 JavaScript 编写的，接下来这一节，将开始介绍 TypeScript ，这是一门新的语言，但是上手非常简单。
+如果已经看完 [工程化的起步准备](../get-familiar-quickly/guide.md) 一章，相信此时的已经对 Node 工程项目有了足够的认识了，在此之前的所有代码都是使用 JavaScript 编写的，接下来这一节，将开始介绍 TypeScript ，这是一门新的语言，但是上手非常简单。
 
 TypeScript 简称 TS ，既是一门新语言，也是 JS 的一个超集，它是在 JavaScript 的基础上增加了一套类型系统，它支持所有的 JS 语句，为工程化开发而生，最终在编译的时候去掉类型和特有的语法，生成 JS 代码。
 
@@ -641,7 +641,7 @@ function isArticle(
 const ele: HTMLElement | null = document.querySelector('.main')
 ```
 
-最后这个使用场景在 Vue 单组件的 [DOM 元素与子组件](component.md#dom-元素与子组件) 一节里也有相关的讲解。
+最后这个使用场景在 Vue 单组件的 [DOM 元素与子组件](../introduction/component.md#dom-元素与子组件) 一节里也有相关的讲解。
 
 当决定使用联合类型的时候，大部分情况下可能需要对变量做一些类型判断再写逻辑，当然有时候也可以无所谓，就像第一个例子拼接字符串那样。
 
@@ -837,7 +837,7 @@ const obj: Obj = {
 
 #### 函数的重载
 
-在未来的实际开发中，可能会接触到一个 API 有多个 TS 类型的情况，比如 Vue 的 [watch API](component.md#api-的-ts-类型) 。
+在未来的实际开发中，可能会接触到一个 API 有多个 TS 类型的情况，比如 Vue 的 [watch API](../introduction/component.md#api-的-ts-类型) 。
 
 Vue 的这个 watch API 在被调用时，需要接收一个数据源参数，当监听单个数据源时，它匹配了类型 1 ，当传入一个数组监听多个数据源时，它匹配了类型 2 。
 
