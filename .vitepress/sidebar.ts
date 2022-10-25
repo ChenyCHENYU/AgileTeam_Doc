@@ -2,7 +2,7 @@
  * @Author: ChenYu
  * @Date: 2022-10-22 17:14:01
  * @LastEditors: ChenYu
- * @LastEditTime: 2022-10-24 01:50:33
+ * @LastEditTime: 2022-10-25 23:13:21
  * @FilePath: \myAgileTeamVitepress\.vitepress\sidebar.ts
  * @Description:
  * Copyright (c) ${2022} by ChenYu/天智AgileTeam, All Rights Reserved.
@@ -23,7 +23,7 @@ export const sidebar: DefaultTheme.Sidebar = [
     ],
   },
   {
-    text: 'Vue3 入门教程',
+    text: 'Vue3 基础指北',
     items: [
       { text: '脚手架的升级与配置', link: '/introduction/upgrade' },
       { text: '单组件的编写', link: '/introduction/component' },
