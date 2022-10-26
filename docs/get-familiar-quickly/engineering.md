@@ -1054,7 +1054,7 @@ Polyfill 会考虑到多种异常情况，最大幅度保证浏览器的兼容�
 - 项目上线前代码要混淆，人工处理太费劲，交给构建工具自动化处理
 - 还有很多列举不完的其他场景…
 
-下面基于接下来要学习的 Vue3 技术栈，介绍两个流行且强相关的构建工具： [Webpack](#webpack) 和 [Vite](#vite) 。
+下面基于接下来要掌握的 Vue3 技术栈，介绍两个流行且强相关的构建工具 [Webpack](#webpack) 和 [Vite](#vite) 。
 
 ### Webpack
 
@@ -1114,21 +1114,30 @@ Vite 是基于浏览器原生的 ES Module ，所以不需要预先打包，而�
 
 如果基于 Webpack 或者 Vite 这样的构建工具，测试环境提供了更多的功能，例如：
 
+<ElCard shadow="hover" style="margin-bottom:16px">
+
 - 可以使用 TypeScript 、 CSS 预处理器之类的需要编译的语言提高开发效率
-- 提供了热重载（ Hot Module Replacement ， 简称 HMR ），当修改了代码之后，无需重新运行或者刷新页面，构建工具会检测的修改自动帮更新
 - 代码不会压缩，并有 Source Mapping 源码映射，方便 BUG 调试
 - 默认提供局域网服务，无需自己做本地部署
-- 更多 …
+- 提供了热重载（ Hot Module Replacement ， 简称 HMR ），当修改了代码之后，无需重新运行或者刷新页面，构建工具会检测的修改自动帮更新
+- 还有更多 …
+
+</ElCard>
 
 #### 生产环境
 
 在 [Hello TypeScript](../get-familiar-quickly/typescript.md#hello-typescript) demo 最后配置的一个 `npm run build` 命令，将 TypeScript 代码编译成了 JavaScript ，这个时候 dist 文件夹下的代码文件就处于 “生产环境” 了，因为之后不论源代码怎么修改，都不会直接影响到它们，直到再次执行 build 编译。
 
-可以看出生产环境和开发环境最大的区别就是稳定！除非再次打包发布，否则不会影响到已部署的代码。
+生产环境和开发环境最大的区别就是稳定！除非再次打包发布，否则不会影响到已部署的代码。
+
+<ElCard shadow="hover">
 
 - 代码会编译为浏览器最兼容的版本，一些不兼容的新语法会进行 [Polyfill](https://developer.mozilla.org/zh-CN/docs/Glossary/Polyfill)
 - 稳定，除非重新发布，否则不会影响到已部署的代码
 - 打包的时候代码会进行压缩混淆，缩小项目的体积，也降低源码被直接曝光的风险
+
+</ElCard>
+<p></p>
 
 #### 环境判断
 

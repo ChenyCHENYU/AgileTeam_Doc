@@ -15,4 +15,9 @@ export const nav: DefaultTheme.NavItem[] = [
     activeMatch: '/docs/',
     link: '/get-familiar-quickly/engineering',
   },
+  {
+    text: '组件',
+    activeMatch: '/docs/',
+    link: '/get-familiar-quickly/component',
+  },
 ]

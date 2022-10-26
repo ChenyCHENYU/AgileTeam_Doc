@@ -39,8 +39,9 @@ outline: 'deep'
 4. 复制 Gist ID 到 Settings Sync 设置界面，View 输入后选择下载配置
 
 ```txt
-44e422400d1ad5726688dddd51955527
+424f89d2da9867691769448e5b1bf657
 ```
+
 
 - ○ 在插件检索区域输入 @installed 查看安装的插件集
 - ○ 进入项目，格式化代码，测试一下效果

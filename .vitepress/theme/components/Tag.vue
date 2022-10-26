@@ -24,3 +24,4 @@ const props = defineProps<Props>()
   border-radius: 4px;
 }
 </style>
+
