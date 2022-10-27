@@ -647,7 +647,7 @@ const ele: HTMLElement | null = document.querySelector('.main')
 
 当决定使用联合类型的时候，大部分情况下可能需要对变量做一些类型判断再写逻辑，当然有时候也可以无所谓，就像第一个例子拼接字符串那样。
 
-这一小节在这里做简单了解即可，因为下面会继续配合不同的知识点把这个联合类型再次拿出来讲，比如 [函数的重载](#函数的重载) 部分。
+这里做简单了解即可，因为后面会结合不同的场景把联合类型再次介绍，比如 [函数的重载](#函数的重载) 部分。
 
 ### 函数
 
@@ -1079,7 +1079,9 @@ console.log(greetingSentence)
 
 #### 需要注意的事情
 
-但是，请不要滥用类型断言，只在能够确保代码正确的情况下去使用它，来看一个反例：
+:::warning
+请不要滥用类型断言，只在能够确保代码正确的情况下去使用它，来看一个反例：
+:::
 
 ```ts
 // 原本要求 age 也是必须的属性之一
@@ -1104,9 +1106,7 @@ console.log(petter) // { name: 'Petter' }
 
 ### 类型推论
 
-还记得在讲 [原始数据类型](#原始数据类型) 的时候，最后提到的：
-
-> 不过在实际的编程过程中，原始数据类型的类型定义是可以省略的，因为 TypeScript 会根据声明变量时赋值的类型，自动帮推导变量类型
+> 在实际的编程过程中，原始数据类型的类型定义是可以省略的，因为 TypeScript 会根据声明变量时赋值的类型，自动帮推导变量类型。
 
 这其实是 TypeScript 的类型推论功能，当在声明变量的时候可以确认它的值，那么 TypeScript 也可以在这个时候帮推导它的类型，这种情况下就可以省略一些代码量。
 
@@ -1143,13 +1143,12 @@ foo = 1 // 1
 foo = true // true
 ```
 
-类型推论可以帮节约很多书写工作量，在确保变量初始化有明确的值的时候，可以省略其类型，但必要的时候，该写上的还是要写上。
+类型推论可以减少代码量，在确保变量初始化有明确的值的时候，可以省略其类型，但必要的时候，该写上的还是要写上。
 
 ## 如何编译为 JavaScript 代码
 
-学习到这里，对于 TypeScript 的入门知识已经学到了吧！
 
-前面学习的时候，一直是基于 `dev:ts` 命令，它调用的是 `ts-node` 来运行的 TS 文件：
+前面介绍的时候，一直是基于 `dev:ts` 命令，它调用的是 `ts-node` 来运行的 TS 文件：
 
 ```json
 {
@@ -1309,7 +1308,7 @@ const greetings = greet(['Petter', 'Tom', 'Jimmy'])
 console.log(greetings)
 ```
 
-的 build script 无需修改，依然只编译 `index.ts` ，但因为导入了 `greet.ts` ，所以 TypeScript 也会一并编译，来试一下运行 `npm run build` ， 现在 dist 目录下有两个文件了：
+依然只编译 `index.ts` ，但因为导入了 `greet.ts` ，所以 TypeScript 也会一并编译，来试一下运行 `npm run build` ， 现在 dist 目录下有两个文件了：
 
 ```bash{2-5}
 hello-node
@@ -1431,7 +1430,7 @@ console.log(greetings)
 
 事实上刚才编译的 JS 文件，因为涉及到模块化，是无法直接在 HTML 页面里使用的（单个文件可以，因为没有涉及模块），实际的项目中，需要借助 [构建工具](#工程化的构建工具) 来帮处理很多编译过程中的兼容性问题。
 
-而刚才用到的诸如 `--target` 这样的选项，可以用一个更简单的方式来管理，类似于 package.json 项目清单， TypeScript 也有一份适用于项目的配置清单，请看 [了解 tsconfig.json](#了解-tsconfig-json) 部分。
+而刚才用到的诸如 `--target` 这样的选项，可以用更简单的方式来管理，类似于 package.json 项目清单， TypeScript 也有适用于项目的配置清单， [了解 tsconfig.json](#了解-tsconfig-json) 部分。
 
 ## 了解 tsconfig.json
 
@@ -1505,7 +1504,7 @@ hello-node
 
 完整的选项可以查看 TypeScript 官网： [tsconfig - typescriptlang](https://www.typescriptlang.org/tsconfig/)
 
-不过实际工作中，的项目都是通过一些脚手架创建的，例如 [Vue CLI](https://github.com/vuejs/vue-cli) ，或者现在的 [Create Vue](https://github.com/vuejs/create-vue) 或者 [Create Preset](https://github.com/awesome-starter/create-preset) ，都会在创建项目模板的时候，帮提前配置好通用的选项，只需要在不满足条件的情况下去调整。
+不过实际工作中，的项目都是通过一些脚手架创建的，例如 [Vue CLI](https://github.com/vuejs/vue-cli) ，或者现在的 [Create Vue](https://github.com/vuejs/create-vue) 或者 [Create Preset](https://github.com/awesome-starter/create-preset) ，都会在创建项目模板的时候，提前配置好通用的选项，只需要在不满足条件的情况下去调整。
 
 <script setup>
 const templateLiterals = '``'
