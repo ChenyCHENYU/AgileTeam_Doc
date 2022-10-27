@@ -9,7 +9,7 @@ outline: 'deep'
 因为 Vue 3 对 TypeScript 的支持真的是太完善了，以及 TypeScript 的发展趋势越来越好，所以直接使用 TypeScript 来编写组件。
 
 :::tip
-对 TypeScript 不太熟悉的开发者，建议先阅读一遍 “起步准备” 章节里的 [了解 TypeScript](../get-familiar-quickly/guide.md#了解-typescript) 一节的内容，有了一定的了解之后，再一边写代码一边加深印象。
+对 TypeScript 不太熟悉的开发者，建议先阅读一遍 “快速上手” 目录下的 [了解 TypeScript](../get-familiar-quickly/guide.md#了解-typescript) 一节的内容，有了一定的了解之后，再一边写代码一边加深印象。
 :::
 
 ## 全新的 setup 函数 ~new
@@ -21,7 +21,7 @@ outline: 'deep'
 Vue 3 的 Composition API 系列里，推出了一个全新的 `setup` 函数，它是一个组件选项，在创建组件之前执行，一旦 props 被解析，并作为组合式 API 的入口点。
 
 :::tip
-说的通俗一点，就是使用 Vue 3 的生命周期的情况下，整个组件相关的业务代码，都可以丢到 `setup` 里编写。
+通俗一点，使用 Vue 3 的生命周期的情况下，整个组件相关的业务代码，都可以丢到 `setup` 里编写。
 
 因为在 `setup` 之后，其他的生命周期才会被启用（点击了解：[组件的生命周期](#组件的生命周期-new)）。
 :::
@@ -42,12 +42,12 @@ export default defineComponent({
 })
 ```
 
-这里写了一个 `defineComponent`，也是本次的新东西，可以点击 [了解 defineComponent](#defineComponent-的作用) 。
+这里写了一个 `defineComponent`，也是本次的新东西，可以了解 [defineComponent 的作用](#definecomponent-的作用) 。
 
 :::warning
 使用 `setup` 的情况下，请牢记一点：不能再用 `this` 来获取 Vue 实例，也就是无法通过 `this.xxx` 、 `this.fn()` 这样来获取实例上的数据，或者执行实例上的方法。
 
-全新的 Vue 3 组件编写，请继续往下看，会一步一步做说明。
+全新的 Vue 3 组件编写，请继续往下看，会一步一步进行说明。
 :::
 
 ### setup 的参数使用
@@ -79,11 +79,11 @@ export default defineComponent({
 
 但是 `attrs` 和 `slots` 请保持 `attrs.xxx`、`slots.xxx` 来使用他们数据，不要解构这两个属性，因为他们虽然不是响应式对象，但会随组件本身的更新而更新。
 
-两个参数的具体使用，可以详细了解可查阅 [组件之间的通信](../introduction/communication) 一章。
+两个参数的具体使用，可以了解 [组件之间的通信](../introduction/communication) 内容板块。
 
 ### defineComponent 的作用
 
-这是 Vue 3 推出的一个全新 API ，`defineComponent` 可以用于 TypeScript 的类型推导，帮简化掉很多编写过程中的类型定义。
+这是 Vue 3 推出的一个全新 API ，`defineComponent` 可以用于 TypeScript 的类型推导，它可以简化掉很多编写过程中的类型定义。
 
 比如，原本需要这样才可以使用 `setup` 函数：
 
@@ -114,7 +114,7 @@ export default {
 }
 ```
 
-是不是很繁琐？（肯定是啊！不用否定……
+是不是很繁琐？（肯定是啊！不用否定……)
 
 使用了 `defineComponent` 之后，就可以省略这些类型定义：
 
@@ -132,7 +132,7 @@ export default defineComponent({
 })
 ```
 
-而且不只适用于 `setup`，只要是 Vue 本身的 API ，`defineComponent` 都可以自动帮推导。
+而且不只适用于 `setup`，只要是 Vue 本身的 API ，`defineComponent` 都可以自动推导。
 
 在编写组件的过程中，只需要维护自己定义的数据类型就可以了，专注于业务。
 
@@ -183,7 +183,7 @@ Vue 3 本身也支持 Options API 风格， Vue 2 也可以通过安装 [@vue/co
 
 在 Vue 3 的 Composition API 写法里，**每个生命周期函数都要先导入才可以使用**，并且所有生命周期函数统一放在 `setup` 里运行。
 
-如果需要在达到 Vue 2 的 `beforeCreate` 和 `created` 目的的话，直接把函数执行在 `setup` 里即可。
+若要达到在 Vue 2 的 `beforeCreate` 和 `created` 目的的话，直接把函数执行在 `setup` 里即可。
 
 比如：
 
@@ -220,7 +220,7 @@ export default defineComponent({
 
 如果是从 Vue 2 就开始写 TypeScript 的话，应该知道在 Vue 2 的时候就已经有了 `Vue.extend` 和 [Class Component](https://class-component.vuejs.org/) 的基础写法；Vue 3 在保留 class 写法的同时，还推出了 `defineComponent` + Composition API 的新写法。
 
-加上视图部分又有 Template 和 TSX 的写法、以及 3.x 对不同版本的生命周期兼容，累计下来，在 Vue 里写 TypeScript ，至少有 9 种不同的组合方式（基于笔者的认知内，未有更多的尝试），堪比孔乙己的回字。
+加上视图部分又有 Template 和 TSX 的写法、以及 3.x 对不同版本的生命周期兼容，累计下来，在 Vue 里写 TypeScript ，至少有 9 种不同的组合方式，堪比孔乙己的回字。
 
 先来回顾一下这些写法组合分别是什么，了解一下 Vue 3 最好使用哪种写法：
 
@@ -238,14 +238,14 @@ export default defineComponent({
 
 目前 Vue 3 从官方对版本升级的态度来看， `defineComponent` 就是为了解决之前 Vue 2 对 TypeScript 类型推导不完善等问题而推出的， Vue 官方也是更希望大家习惯 `defineComponent` 的使用。
 
-| 适用版本 |    基本写法     | 视图写法 | 生命周期版本 | 官方是否推荐 |
-| :------: | :-------------: | :------: | :----------: | :----------: |
-|  Vue 3   | Class Component | Template |    Vue 2     |      ×       |
-|  Vue 3   | defineComponent | Template |    Vue 2     |      ×       |
-|  Vue 3   | defineComponent | Template |    Vue 3     |      √       |
-|  Vue 3   | Class Component |   TSX    |    Vue 2     |      ×       |
-|  Vue 3   | defineComponent |   TSX    |    Vue 2     |      ×       |
-|  Vue 3   | defineComponent |   TSX    |    Vue 3     |      √       |
+| 适用版本 |    基本写法     | 视图写法 | 生命周期版本 |            官方是否推荐             |
+| :------: | :-------------: | :------: | :----------: | :---------------------------------: |
+|  Vue 3   | Class Component | Template |    Vue 2     |  <FontColor text="×" color="red"/>  |
+|  Vue 3   | defineComponent | Template |    Vue 2     |  <FontColor text="×" color="red"/>  |
+|  Vue 3   | defineComponent | Template |    Vue 3     | <FontColor text="√" color="green"/> |
+|  Vue 3   | Class Component |   TSX    |    Vue 2     |  <FontColor text="×" color="red"/>  |
+|  Vue 3   | defineComponent |   TSX    |    Vue 2     |  <FontColor text="×" color="red"/>  |
+|  Vue 3   | defineComponent |   TSX    |    Vue 3     | <FontColor text="√" color="green"/> |
 
 从接下来开始都会以 Composition API + `defineComponent` + `<template />` 的写法，并且按照 Vue 3 的生命周期来作为示范案例。
 
