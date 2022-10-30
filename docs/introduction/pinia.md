@@ -4,19 +4,17 @@ outline: 'deep'
 
 # 全局状态管理
 
-本来这部分打算放在 [组件之间的通信](communication.html#vuex-new) 里，里面也简单介绍了一下 Vuex ，但 Pinia 作为被官方推荐在 Vue 3 项目里作为全局状态管理的新工具，写着写着笔者认为还是单独开一章来写会更方便阅读和理解。
-
-官方推出的全局状态管理工具目前有 [Vuex](https://vuex.vuejs.org/zh/) 和 [Pinia](https://pinia.vuejs.org/) ，两者的作用和用法都比较相似，但 Pinia 的设计更贴近 Vue 3 组合式 API 的用法。
+> 官方推出的全局状态管理工具目前有 [Vuex](https://vuex.vuejs.org/zh/) 和 [Pinia](https://pinia.vuejs.org/) ，两者的作用和用法都比较相似，但 Pinia 的设计更贴近 Vue 3 组合式 API 的用法。
 
 :::tip
-本章内的大部分内容都会和 Vuex 作对比，方便从 Vuex 项目向 Pinia 的迁移。
+下文大部分内容都会和 Vuex 作对比，方便直观了解从 Vuex 项目向 Pinia 的迁移。
 :::
 
 ## 关于 Pinia ~new
 
-由于 Vuex 4.x 版本只是个过渡版，Vuex 4 对 TypeScript 和 Composition API 都不是很友好，虽然官方团队在 GitHub 已有讨论 [Vuex 5](https://github.com/vuejs/rfcs/discussions/270) 的开发提案，但从 2022-02-07 在 Vue 3 被设置为默认版本开始， Pinia 已正式被官方推荐作为全局状态管理的工具。
+由于 Vuex 4.x 版本只是个过渡版，Vuex 4 对 TypeScript 和 Composition API 都不是很友好，虽然官方团队在 GitHub 已有讨论 [Vuex 5](https://github.com/vuejs/rfcs/discussions/270)的开发提案(已关闭) ，但从 2022-02-07 在 Vue 3 被设置为默认版本开始， Pinia 已正式被官方推荐作为全局状态管理的工具。
 
-Pinia 支持 Vue 3 和 Vue 2 ，对 TypeScript 也有很完好的支持，延续本指南的宗旨，在这里只介绍基于 Vue 3 和 TypeScript 的用法。
+Pinia 支持 Vue 3 和 Vue 2 ，对 TypeScript 也有很完好的支持。
 
 点击访问：[Pinia 官网](https://pinia.vuejs.org/)
 
@@ -61,7 +59,7 @@ createApp(App)
 
 在开始写代码之前，先来看一个对比，直观的了解 Pinia 的状态树构成，才能在后面的环节更好的理解每个功能的用途。
 
-鉴于可能有部分开发者之前没有用过 Vuex ，所以加入了 Vue 组件一起对比（ Options API 写法）。
+鉴于可能有部分开发者之前未用过 Vuex ，所以加入 Vue 组件一起对比（ Options API 写法）。
 
 |   作用   | Vue Component |        Vuex         |  Pinia  |
 | :------: | :-----------: | :-----------------: | :-----: |
@@ -69,13 +67,13 @@ createApp(App)
 | 数据计算 |   computed    |       getters       | getters |
 | 行为方法 |    methods    | mutations / actions | actions |
 
-可以看到 Pinia 的结构和用途都和 Vuex 与 Component 非常相似，并且 Pinia 相对于 Vuex ，在行为方法部分去掉了 mutations （同步操作）和 actions （异步操作）的区分，更接近组件的结构，入门成本会更低一些。
+可以看到 Pinia 的结构和用途都和 Vuex 与 Component 非常相似，并且 Pinia 相对于 Vuex ，在行为方法部分去掉了 mutations （同步操作）和 actions （异步操作）的区分，更接近组件的结构，上手成本会更低一些。
 
 下面来创建一个简单的 Store ，开始用 Pinia 来进行状态管理。
 
 ## 创建 Store ~new
 
-和 Vuex 一样， Pinia 的核心也是称之为 Store 。
+> 和 Vuex 一样， Pinia 的核心也是称之为 Store 。
 
 参照 Pinia 官网推荐的项目管理方案，也是先在 `src` 文件夹下创建一个 `stores` 文件夹，并在里面添加一个 `index.ts` 文件，然后就可以来添加一个最基础的 Store 。
 
@@ -109,7 +107,7 @@ export const useStore = defineStore({
 ```
 
 :::tip
-不论是哪种创建形式，都必须为 Store 指定一个唯一 ID 。
+不论是哪种创建形式，都必须为 Store 指定一个唯一 ID，比较推荐第一种方式 。
 :::
 
 另外可以看到这里把导出的函数名命名为 `useStore` ，以 `use` 开头是 Vue 3 对可组合函数的一个命名约定。
@@ -120,7 +118,7 @@ export const useStore = defineStore({
 
 ## 管理 state ~new
 
-在上一小节的 [状态树的结构](#状态树的结构-new) 这里已经了解过， Pinia 是在 `state` 里面定义状态数据。
+> Pinia 也是在 `state` 里面定义状态数据。
 
 ### 给 Store 添加 state
 
@@ -139,7 +137,7 @@ export const useStore = defineStore('main', {
 })
 ```
 
-需要注意一点的是，如果不显式 return ，箭头函数的返回值需要用圆括号 `()` 套起来，这个是箭头函数的要求（详见：[返回对象字面量](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Functions/Arrow_functions#返回对象字面量)）。
+:bell: 需要注意一点的是，如果不显式 return ，箭头函数的返回值需要用圆括号 `()` 套起来，这个是箭头函数的要求（详见：[返回对象字面量](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Functions/Arrow_functions#返回对象字面量)）。
 
 所以相当于这样写：
 
@@ -155,7 +153,7 @@ export const useStore = defineStore('main', {
 })
 ```
 
-笔者还是更喜欢加圆括号的简写方式。
+还是更推荐加圆括号的简写方式。
 
 :::tip
 可能有开发者会问： Vuex 可以用一个对象来定义 state 的数据， Pinia 可以吗？
@@ -165,7 +163,7 @@ export const useStore = defineStore('main', {
 
 ### 手动指定数据类型
 
-虽然 Pinia 会帮推导 TypeScript 的数据类型，但有时候可能不太够用，比如下面这段代码，请留意代码注释的说明：
+虽然 Pinia 会帮助自动推导 TypeScript 的数据类型，但有时候可能不太够用，比如下面这段代码，请留意代码注释的说明：
 
 ```ts
 // ...
@@ -181,7 +179,7 @@ export const useStore = defineStore('main', {
 })
 ```
 
-的预期应该是一个字符串数组 `string[]` ，但是这个时候 Pinia 会帮推导成 `never[]` ，那么类型就对不上了。
+预期应该是一个字符串数组 `string[]` ，但是这个时候 Pinia 会帮推导成 `never[]` ，那么类型就对不上了。
 
 这种情况下就需要手动指定 randomMessages 的类型，可以通过 `as` 来指定：
 
@@ -227,7 +225,7 @@ export const useStore = defineStore('main', {
 
 #### 使用 store 实例
 
-用法上和 Vuex 很相似，但有一点区别是，数据直接是挂在 `store` 上的，而不是 `store.state` 上面！
+用法和 Vuex 相似，有一点区别是，数据直接是挂在 `store` 上的，而不是 `store.state` 上面！
 
 :::tip
 e.g. Vuex 是 `store.state.message` ， Pinia 是 `store.message` 。
@@ -257,7 +255,7 @@ export default defineComponent({
 
 但一些比较复杂的数据这样写会很长，所以有时候更推荐用下面介绍的 [computed API](#使用-computed-api) 和 [storeToRefs API](#使用-storetorefs-api) 等方式来获取。
 
-在数据更新方面，在 Pinia 可以直接通过 Store 实例更新 state （这一点与 Vuex 有明显的不同，[更改 Vuex 的 store 中的状态的唯一方法是提交 mutation](https://vuex.vuejs.org/zh/guide/mutations.html)），所以如果要更新 `message` ，只需要像下面这样，就可以更新 `message` 的值了！
+在数据更新方面，在 Pinia 可以直接通过 Store 实例更新 state （这一点与 Vuex 有明显的不同，[更改 Vuex 的 store 中的状态的唯一方法是提交 mutation](https://vuex.vuejs.org/zh/guide/mutations.html)），Pinia 如果要更新 `message` ，只需要像下面这样，就可以更新 `message` 的值了！
 
 ```ts
 store.message = 'New Message.'
@@ -290,17 +288,16 @@ export default defineComponent({
 </script>
 ```
 
-和 [使用 store 实例](#使用-store-实例) 以及 [使用 storeToRefs API](#使用-storetorefs-api) 不同，这个方式默认情况下无法直接更新 state 的值。
+和 [使用 store 实例](#使用-store-实例) 及 [使用 storeToRefs API](#使用-storetorefs-api) 不同，此方式默认情况下无法直接更新 state 的值。
 
 :::tip
-这里的定义的 `message` 变量是一个只有 getter ，没有 setter 的 [ComputedRef](../introduction/component.md#类型定义) 数据，所以它是只读的。
+在这里使用 `computed` 的定义的 `message` 变量是一个只有 getter ，没有 setter 的 [ComputedRef](../introduction/component.md#类型定义) 数据，所以它是只读的。
 :::
 
 如果要更新数据怎么办？
 
-1. 可以通过提前定义好的 Store Actions 方法进行更新。
-
-2. 在定义 computed 变量的时候，配置好 [setter](../introduction/component.md#setter-的使用) 的行为：
+1. 在定义 computed 变量的时候，配置好 [setter](../introduction/component.md#setter-的使用) 的行为：
+2. 可以通过提前定义好的 Store Actions 方法进行更新。
 
 ```ts
 // 其他代码和上一个例子一样，这里省略...
@@ -384,8 +381,6 @@ export default defineComponent({
 })
 ```
 
-详见 [使用 toRefs](../introduction/component.md#使用-torefs) 一节的说明，可以像普通的 ref 变量一样进行读取和赋值。
-
 另外，像上面这样，对 store 执行 toRefs 会把 store 上面的 getters 、 actions 也一起提取，如果只需要提取 state 上的数据，可以这样做：
 
 ```ts
@@ -417,13 +412,11 @@ export default defineComponent({
 })
 ```
 
-详见 [使用 toRef](../introduction/component.md#使用-toref) 一节的说明，可以像普通的 ref 变量一样进行读取和赋值。
-
 #### 使用 actions 方法
 
 在 Vuex ，如果想通过方法来操作 state 的更新，必须通过 mutation 来提交；而异步操作需要更多一个步骤，必须先通过 action 来触发 mutation ，非常繁琐！
 
-Pinia 所有操作都集合为 action ，无需区分同步和异步，按照平时的函数定义即可更新 state ，具体操作详见 [管理 actions](#管理-actions-new) 一节。
+Pinia 所有操作都集合为 action ，无需区分同步和异步，按照平时的函数定义即可更新 state ，具体操作详见 [管理 actions](#管理-actions-new)。
 
 ### 批量更新 state
 
@@ -525,7 +518,7 @@ console.log(JSON.stringify(store.$state))
 
 虽然可以对所有数据都执行一次 “补丁更新” 来达到 “全量更新” 的目的，但 Pinia 也提供了一个更好的办法。
 
-从前面多次提到 state 数据可以通过 `store.$state` 来拿到，而这个属性本身是可以直接赋值的。
+前面多次提到 state 数据可以通过 `store.$state` 拿到，而这个属性本身是可以直接赋值的。
 
 还是继续用上面的例子， state 上现在有 `message` 和 `randomMessages` 这两个数据，那么要全量更新为新的值，就这么操作：
 
@@ -585,8 +578,8 @@ $subscribe(
 
 可以看到， `$subscribe` 可以接受两个参数：
 
-1. 第一个入参是 callback 函数，必传
-2. 第二个入参是一些选项，可选
+1. 第一个入参是 callback 函数，必传；
+2. 第二个入参是一些选项，可选；
 
 同时还会返回一个函数，执行后可以用于移除当前订阅，下面来看看具体用法。
 
@@ -619,7 +612,7 @@ store.$subscribe((mutation, state) => {
 | events  | 触发本次订阅通知的事件列表                                                                                                                                                                                 |
 | payload | 通过 [传入一个函数](#传入一个函数) 更改时，传递进来的荷载信息，只有 `type` 为 `patch object` 时才有                                                                                                        |
 
-如果不希望组件被卸载时删除订阅，可以传递第二个参数 options 用以保留订阅状态，传入一个对象。
+如不希望组件被卸载时删除订阅，可传递第二个参数 options 以保留订阅状态，传入一个对象。
 
 可以简单指定为 `{ detached: true }` ：
 
@@ -664,7 +657,7 @@ unsubscribe()
 ### 给 Store 添加 getter
 
 :::tip
-如果对 Vue 的计算数据不是很熟悉或者没接触过的话，可以先阅读 [数据的计算](../introduction/component.md#数据的计算-new) 这一节，以便有个初步印象，不会云里雾里。
+如果对 Vue 的计算数据不是很熟悉或者没接触过的话，可以先了解 [数据的计算](../introduction/component.md#数据的计算-new) Computed API。
 :::
 
 #### 添加普通的 getter
