@@ -4,15 +4,11 @@ outline: 'deep'
 
 # 组件之间的通信
 
-经过前面的那几部分的阅读，相信搭一个基础的 Vue 3.0 项目应该没什么问题了！
+> Vue 中，数据驱动，组件数组之间的传输，也是非常重要核心的一部分。
 
-但实际业务开发过程中，还会遇到一些组件之间的通信问题，父子组件通信、兄弟组件通信、爷孙组件通信，还有一些全局通信的场景。
+在实际业务开发过程中，组件之间的数据交互，如父子组件通信、兄弟组件通信、爷孙组件通信，以及一些全局通信的场景。
 
-:::tip
-这一章节的内容，Vue 3 对比 Vue 2 变化都比较大！
-:::
-
-这一章就按使用场景来划分对应的章节吧，在什么场景下遇到问题，也方便快速找到对应的处理办法。
+下面按场景划分对应介绍，了然在什么场景下遇到问题，可以更方便快速找到对应的处理方法。
 
 | 通信场景     | 快速定位                  |
 | :----------- | :------------------------ |
@@ -34,7 +30,7 @@ Father.vue
 
 常用的方法有：
 
-| 方案             | 父组件向子组件 | 子组件向父组件 | 对应章节传送门              |
+| 方案             | 父组件向子组件 | 子组件向父组件 | 对应查询传送门              |
 | :--------------- | :------------- | :------------- | :-------------------------- |
 | props / emits    | props          | emits          | [点击查看](#props-emits)    |
 | v-model / emits  | v-model        | emits          | [点击查看](#v-model-emits)  |
@@ -43,7 +39,7 @@ Father.vue
 | EventBus         | emit / on      | emit / on      | [点击查看](#eventbus-new)   |
 | Vuex             | -              | -              | [点击查看](#vuex-new)       |
 
-为了方便阅读，下面的父组件统一叫 `Father.vue`，子组件统一叫 `Child.vue`。
+为了方便理解，下面的父组件统一叫 `Father.vue`，子组件统一叫 `Child.vue`。
 
 :::warning
 在 Vue 2 ，有的开发者可能喜欢用 `$attrs / $listeners` 来进行通信，但该方案在 Vue 3 已经移除了，详见 [移除 $listeners](https://v3-migration.vuejs.org/breaking-changes/listeners-removed.html) 。
@@ -53,9 +49,13 @@ Father.vue
 
 这是 Vue 跨组件通信最常用，也是基础的一个方案，它的通信过程是：
 
+<ElCard shadow="hover">
+
 1. `Father.vue` 通过 `prop` 向 `Child.vue` 传值（可包含父级定义好的函数）
 
 2. `Child.vue` 通过 `emit` 向 `Father.vue` 触发父组件的事件执行
+
+</ElCard>
 
 ### 下发 props
 
@@ -132,9 +132,9 @@ export default defineComponent({
 
 ### 带有类型限制的 props
 
-> 注：这一小节的步骤是在 `Child.vue` 里操作。
+> 注：这里的步骤是在 `Child.vue` 里操作。
 
-和 TypeScript 一样，类型限制可以为程序带来更好的健壮性， Vue 的 Props 也支持增加类型限制。
+和 TypeScript 一样，类型限制可以让程序更有健壮性， Vue 的 Props 也支持增加类型限制。
 
 相对于传递一个 `string[]` 类型的数组，更推荐的方式是把 Props 定义为一个对象，以对象形式列出 `prop` ，每个 `property` 的名称和值分别是 `prop` 各自的名称和类型，只有合法的类型才允许传入。
 
@@ -189,7 +189,7 @@ export default defineComponent({
 
 ### 可选以及带有默认值的 props
 
-> 注：这一小节的步骤是在 `Child.vue` 里操作。
+> 注：这里的步骤是在 `Child.vue` 里操作。
 
 Props 默认都是可选的，如果不传递，默认值都是 `undefined` ，可能引起程序运行崩溃。 Vue 支持对可选的 Props 设置默认值，也是通过对象的形式配置 Props 的选项。
 
@@ -233,7 +233,7 @@ export default defineComponent({
 
 ### 使用 props ~new
 
-> 注：这一小节的步骤是在 `Child.vue` 里操作。
+> 注：这里的步骤是在 `Child.vue` 里操作。
 
 在 Template 部分， Vue 3 的使用方法和 Vue 2 是一样的，比如要渲染父组件传入的 Props ：
 
@@ -422,7 +422,7 @@ export default defineComponent({
 
 ```vue
 <template>
-  <Child @update-age="updateAge" />
+  <Child @updateAge="updateAge" />
 </template>
 ```
 
@@ -436,13 +436,13 @@ export default defineComponent({
 
 ### 接收 emits
 
-> 注：这一小节的步骤是在 `Child.vue` 里操作。
+> 注：这里的步骤是在 `Child.vue` 里操作。
 
 和 `props` 一样，可以指定是一个数组，把要接收的 `emit` 名称写进去：
 
 ```ts
 export default defineComponent({
-  emits: ['update-age'],
+  emits: ['updateAge'],
 })
 ```
 
@@ -465,7 +465,7 @@ export default defineComponent({
 export default defineComponent({
   emits: {
     // 需要校验
-    'update-age': (age: number) => {
+    updateAge: (age: number) => {
       // 写一些条件拦截，记得返回false
       if (age < 18) {
         console.log('未成年人不允许参与')
@@ -484,7 +484,7 @@ export default defineComponent({
 
 ### 调用 emits ~new
 
-> 注：这一小节的步骤是在 `Child.vue` 里操作。
+> 注：这里的步骤是在 `Child.vue` 里操作。
 
 和 `props` 一样，也需要在 `setup` 的入参里引入 `emit` ，才允许操作。
 
@@ -492,40 +492,45 @@ export default defineComponent({
 
 ```ts
 export default defineComponent({
-  emits: ['update-age'],
+  emits: ['updateAge'],
   setup(props, { emit }) {
     // 2s 后更新年龄
     setTimeout(() => {
-      emit('update-age', 22)
+      emit('updateAge', 22)
     }, 2000)
   },
 })
 ```
 
 :::tip
-`emit` 的第二个参数开始是父组件那边要接收的自定义数据，为了开发上的便利，建议如果需要传多个数据的情况下，直接将第二个参数设置为一个对象，把所有数据都放到对象里，传递和接收起来都会方便很多。
+`emit` 的第二个参数开始是父组件那边要接收的自定义数据，为了开发上的便利，建议若需要传多个数据情况下，直接将第二个参数设置为一个对象，把所有数据都放到对象里，传递和接收起来都会方便很多。
 :::
 
 ## v-model / emits
 
 对比 `props / emits` ，这个方式更为简单：
 
+<ElCard shadow="hover">
+  
 1. 在 `Father.vue` ，通过 `v-model` 向 `Child.vue` 传值
 
-2. `Child.vue` 通过自身设定的 emits 向 `Father.vue` 通知数据更新
+2. 在 `Child.vue` 通过自身设定的 `emits` 向 `Father.vue` 通知数据更新
+
+</ElCard>
 
 `v-model` 的用法和 `props` 非常相似，但是很多操作上更为简化，但操作简单带来的 “副作用” ，就是功能上也没有 `props` 那么多。
 
 ### 绑定 v-model ~new
 
-它的和下发 props 的方式类似，都是在子组件上绑定 `Father.vue` 定义好并 `return` 出来的数据。
+它和下发 props 的方式类似，都是在子组件上绑定 `Father.vue` 定义好并 `return` 出来的数据。
 
 :::tip
 
 1. 和 Vue 2 不同， Vue 3 可以直接绑定 `v-model` ，而无需在子组件指定 `model` 选项。
 
-2. 另外，Vue 3 的 `v-model` 需要使用 `:` 来指定要绑定的属性名，同时也开始支持绑定多个 `v-model`
-   :::
+2. 另外，Vue 3 的 `v-model` 需要使用 `:` 来指定要绑定的属性名，同时也支持绑定多个 `v-model`
+
+:::
 
 来看看具体的操作：
 
@@ -543,21 +548,25 @@ export default defineComponent({
 </template>
 ```
 
-看到这里应该能明白了，一个 `v-model` 其实就是一个 `prop`，它支持的数据类型，和 `prop` 是一样的。
+因为一个 `v-model` 其实就是一个 `prop`，它支持的数据类型，和 `prop` 是一样的。
 
 所以，子组件在接收数据的时候，完全按照 `props` 去定义就可以了。
 
-点击回顾：[接收 props](#接收-props) ，了解在 `Child.vue` 如何接收 `props`，以及相关的 `props` 类型限制等部分内容。
+:::tip
+
+回顾 [接收 props](#接收-props) ，了解在 `Child.vue` 如何接收 `props`，以及相关的 `props` 类型限制等部分内容。
+
+:::
 
 ### 配置 emits
 
-> 注：这一小节的步骤是在 `Child.vue` 里操作。
+> 注：这里的步骤是在 `Child.vue` 里操作。
 
 虽然 `v-model` 的配置和 `prop` 相似，但是为什么出这么两个相似的东西？自然是为了简化一些开发上的操作。
 
 使用 props / emits，如果要更新父组件的数据，还需要在父组件定义好方法，然后 `return` 给 `template` 去绑定事件给子组件，才能够更新。
 
-而使用 `v-model / emits` ，无需如此，可以在 `Child.vue` 直接通过 “update:属性名” 的格式，直接定义一个更新事件：
+**而使用 `v-model / emits` ，无需如此，可以在 `Child.vue` 直接通过 “update:属性名” 的格式，直接定义一个更新事件**：
 
 ```ts
 export default defineComponent({
@@ -575,7 +584,7 @@ export default defineComponent({
 
 ### 调用自身的 emits ~new
 
-> 注：这一小节的步骤是在 `Child.vue` 里操作。
+> 注：这里的步骤是在 `Child.vue` 里操作。
 
 在 `Child.vue` 配置好 emits 之后，就可以在 `setup` 里直接操作数据的更新了：
 
@@ -660,7 +669,7 @@ Grandfather.vue
 
 这一 Part 就是讲一讲 C 和 A 之间的数据传递，常用的方法有：
 
-| 方案             | 爷组件向孙组件 | 孙组件向爷组件 | 对应章节传送门              |
+| 方案             | 爷组件向孙组件 | 孙组件向爷组件 | 对应查询传送门              |
 | :--------------- | :------------- | :------------- | :-------------------------- |
 | provide / inject | provide        | inject         | [点击查看](#provide-inject) |
 | EventBus         | emit / on      | emit / on      | [点击查看](#eventbus-new)   |
@@ -689,7 +698,7 @@ Grandfather.vue
 
 2. 子组件不需要知道 inject property 来自哪里
 
-另外，要切记一点就是：provide 和 inject 绑定并不是可响应的。这是刻意为之的，但如果传入了一个可监听的对象，那么其对象的 property 还是可响应的。
+:bell: 另外，要切记一点就是：provide 和 inject 绑定并不是可响应的。这是刻意为之的，但如果传入了一个可监听的对象，那么其对象的 property 还是可响应的。
 :::
 
 ### 发起 provide ~new
@@ -763,10 +772,10 @@ export default {
 }
 ```
 
-旧版的 `inject` 用法和 `props` 类似， Vue 3 的新版 `inject`， 和 Vue 2 的用法区别也是比较大。
+旧版的 `inject` 用法和 `props` 类似， Vue 3 新版 `inject`， 和 Vue 2 的用法区别也是比较大。
 
 :::tip
-在 Vue 3 ， `inject` 和 `provide` 一样，也是需要先导入然后在 `setup` 里启用，也是一个全新的方法。
+在 Vue 3 ， `inject` 和 `provide` 一样，也需要先导入然后在 `setup` 里启用，也是一个全新的方法。
 
 每次要 `inject` 一个数据的时候，就要单独调用一次。
 :::
@@ -800,8 +809,6 @@ export default defineComponent({
 在前面已经知道，provide 和 inject 本身不可响应，但是并非完全不能够拿到响应的结果，只需要传入的数据具备响应性，它依然能够提供响应支持。
 
 以 `ref` 和 `reactive` 为例，来看看应该怎么发起 `provide` 和接收 `inject`。
-
-对这 2 个 API 还不熟悉的开发者，建议先阅读一下 [响应式 API 之 ref](../introduction/component.md#响应式-api-之-ref-new) 和 [响应式 API 之 reactive](../introduction/component.md#响应式-api-之-reactive-new) 。
 
 先在 `Grandfather.vue` 里 `provide` 数据：
 
@@ -867,7 +874,7 @@ export default defineComponent({
 
 但上面这句话有效的前提是，不破坏数据的响应性，比如 ref 变量，需要完整的传入，而不能只传入它的 `value`，对于 `reactive` 也是同理，不能直接解构去破坏原本的响应性。
 
-切记！切记！！！
+:bell: 切记！切记！！！
 :::
 
 ### 引用类型的传递与接收
@@ -1077,16 +1084,20 @@ export default defineComponent({
 ```
 Father.vue
 ├─Brother.vue
-└─LittleBrother.vue
+├─LittleBrother.vue
 ```
 
 既然没有什么直接关联， ╮(╯▽╰)╭ 所以也没有什么专属于他们的通信方式。
 
-如果他们之间要交流，目前大概有这两类选择：
+如果兄弟组件之间要交互，目前大概有这两类选择：
+
+<ElCard shadow="hover">
 
 1. 【不推荐】先把数据传给 `Father.vue`，再通过 [父子组件通信](#父子组件通信) 的方案去交流
 
 2. 【推荐】借助 [全局组件通信](#全局组件通信) 的方案才能达到目的。
+
+</ElCard>
 
 ## 全局组件通信
 
@@ -1107,7 +1118,7 @@ A.vue
 
 常用的方法有：
 
-| 方案     | 发起方 | 接收方 | 对应章节传送门            |
+| 方案     | 发起方 | 接收方 | 对应查询传送门            |
 | :------- | :----- | :----- | :------------------------ |
 | EventBus | emit   | on     | [点击查看](#eventbus-new) |
 | Vuex     | -      | -      | [点击查看](#vuex-new)     |
@@ -1239,8 +1250,6 @@ export default defineComponent({
 
 ### 旧项目升级 EventBus
 
-在 [Vue 3 的 EventBus](#创建-3-x-的-eventbus-new)，可以看到它的 API 和旧版是非常接近的，只是去掉了 `$` 符号。
-
 如果要对旧的项目进行升级改造，因为原来都是使用了 `$on` 、 `$emit` 等旧的 API ，一个一个组件去修改成新的 API 肯定不现实。
 
 可以在创建 `bus.ts` 的时候，通过自定义一个 `bus` 对象，来挂载 `mitt` 的 API 。
@@ -1275,20 +1284,16 @@ Vuex 是 Vue 生态里面非常重要的一个成员，运用于状态管理模�
 摘取一段官网的介绍，官方也只建议在大型项目里才用它：
 
 > **什么情况下应该使用 Vuex？**<br>
-> Vuex 可以帮助管理共享状态，并附带了更多的概念和框架。这需要对短期和长期效益进行权衡。<br>
+> Vuex 可以帮助管理共享状态，附带了更多的概念和框架。需要对短期和长期效益进行权衡。<br>
 > 如果您不打算开发大型单页应用，使用 Vuex 可能是繁琐冗余的。
-
-:::tip
-2022-04-07 注：如果是全新的项目，建议直接上手 [Pinia](#pinia-new) ，无需再用 Vuex 。
-:::
 
 ### 在了解之前
 
 在对 Vue 3 里是否需要使用 Vuex 的问题上，带有一定的争议，大部分开发者在社区发表的评论都认为通过 [EventBus](#eventbus-new) 和 [provide / inject](#provide-inject) ，甚至 export 一个 [reactive](../introduction/component.md#响应式-api-之-reactive-new) 对象也足以满足大部分业务需求。
 
-见仁见智，请根据自己的实际需要去看是否需要启用它。
+见仁见智，根据自己的实际场景去看是否需要使用它。
 
-好在新版 Vuex 和旧版几乎没什么区别，大家可以了解一下大概的变化之后，按照之前的官网文档去配置，使用其他应该没有太大的问题。
+新版 Vuex 和旧版几乎没什么区别，可以了解一下大概的变化之后，按照之前的官网文档去配置。
 
 ### Vuex 的目录结构
 
@@ -1305,7 +1310,7 @@ src
 
 ### 回顾 Vue 2
 
-在 Vue 2 ，需要先分别导入 `Vue` 和 `Vuex`，`use` 后通过 `new Vuex.Store(...)` 的方式去初始化：
+在 Vue 2 ，要先分别导入 `Vue` 和 `Vuex`，`use` 后通过 `new Vuex.Store(...)` 的方式去初始化：
 
 ```ts
 import Vue from 'vue'
@@ -1323,7 +1328,7 @@ export default new Vuex.Store({
 
 ### 了解 Vue 3 ~new
 
-而 Vue 3 简化了很多，只需要从 `vuex` 里导入 `createStore`，直接通过 `createStore` 去创建即可。
+而 Vue 3 简化很多，只要从 `vuex` 里导入 `createStore`，直接通过 `createStore` 去创建即可。
 
 ```ts
 import { createStore } from 'vuex'
@@ -1338,11 +1343,11 @@ export default createStore({
 
 ### Vuex 的配置
 
-除了初始化方式有一定的改变，Vuex 的其他的配置和原来是一样的，具体可以查看 [使用指南 - Vuex](https://next.vuex.vuejs.org/zh/guide/)
+除了初始化方式有一定的改变，Vuex 的其他的配置和原来是一样的，具体可以查看 [Vuex](https://next.vuex.vuejs.org/zh/guide/)。
 
 ### 在组件里使用 Vuex ~new
 
-和 Vue 2 不同的是， Vue 3 在组件里使用 Vuex ，更像新路由那样，需要通过 `useStore` 去启用。
+和 Vue 2 不同的是， Vue 3 在组件中用 Vuex ，更像新路由那样，需要通过 `useStore` 去启用。
 
 ```ts
 import { defineComponent } from 'vue'
@@ -1361,13 +1366,12 @@ export default defineComponent({
 
 其他的用法，都是跟原来一样的。
 
-## Pinia ~new
+:::tip :bell: Vuex =~> Pinia
 
-Pinia 和 Vuex 一样，也是 Vue 生态里面非常重要的一个成员，也都是运用于全局的状态管理。
+- 面向 Componsition API 而生的 Pinia ，更受 Vue 3 喜爱，已被钦定为官方推荐的新状态管理工具。
+- 若是全新的项目，建议直接上手 [Pinia](#pinia-new) ，无需再用 Vuex，关于 Pinia ，请了解 [全局状态的管理](pinia.md) 板块。
 
-但面向 [Componsition API](../introduction/component.md#组件的基本写法) 而生的 Pinia ，更受 Vue 3 喜爱，已被钦定为官方推荐的新状态管理工具。
-
-为了阅读上的方便，对 Pinia 单独开了一章，请跳转至 [全局状态的管理](pinia.md) 阅读。
+:::
 
 <!-- 谷歌广告 -->
 <ClientOnly>
