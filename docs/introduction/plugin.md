@@ -4,9 +4,9 @@ outline: 'deep'
 
 # 插件的开发和使用
 
-在构建 Vue 项目的过程中，离不开各种开箱即用的插件支持，用以快速完成需求，避免自己造轮子。
+> 在构建 Vue 项目的时候，离不开各种开箱即用的插件支持，来快速完成需求，避免自造轮子。
 
-在 Vue 项目里，可以使用针对 Vue 定制开发的专属插件，也可以使用无框架依赖的通用 JS 插件，插件的表现形式也是丰富多彩，既可以是功能的实现，也可以是组件的封装，本章将从插件的使用到亲自开发一个小插件的过程，逐一讲解。
+在 Vue 项目里，可以使用针对 Vue 定制开发的专属插件，也可以使用无框架依赖的通用 JS 插件，插件的表现形式也是丰富多彩，既可以是功能的实现，也可以是组件的封装，示栗开发一个小插件的过程。
 
 ## 插件的安装和引入
 
@@ -15,10 +15,10 @@ outline: 'deep'
 :::tip
 如果还不了解什么是包和包管理器，请先阅读 [了解包和插件](../get-familiar-quickly/guide.md#了解包和插件) 一节的内容。
 
-另外，每个包管理都可以配置镜像源，提升国内的下载速度，对此也可以先阅读 [配置镜像源](../get-familiar-quickly/guide.md#配置镜像源) 一节了解。
+另外，每个包管理都可以配置镜像源，提升国内的下载速度，对此也可以先查看 [配置镜像源](../get-familiar-quickly/guide.md#配置镜像源) 。
 :::
 
-虽然对于个人开发者来说，有一个用的顺手的包管理器就足够日常开发了，但是还是有必要多了解一下不同的包管理器，因为未来可能会面对团队协作开发、为开源项目贡献代码等情况，需要遵循团队要求的包管理机制（例如使用 Monorepo 架构的团队会更青睐于 yarn 或 pnpm 的 Workspace 功能）。
+虽然对于个人开发者来说，有一个用的顺手的包管理器就足够日常开发了，但是还是有必要多了解一下不同的包管理器，因为面对团队协作开发、甚至为开源项目贡献代码等情况，都需要遵循团队要求的包管理机制（例如使用 Monorepo 架构的团队会更青睐于 yarn 或 pnpm 的 Workspace 功能）。
 
 ### 通过 npm 安装
 
@@ -56,7 +56,7 @@ npm install -g cnpm
 # npm install -g cnpm --registry=https://registry.npmmirror.com
 ```
 
-:::tip
+:::warning
 cnpm 不生成 lock 文件，也不会识别项目下的 lock 文件，所以还是推荐使用 npm 或者其他包管理工具，通过绑定镜像源的方式来管理项目的包。
 :::
 
@@ -70,7 +70,8 @@ cnpm 不生成 lock 文件，也不会识别项目下的 lock 文件，所以还
 npm install -g yarn
 ```
 
-但是安装命令上会有点不同， yarn 是用 `add` 代替 `install` ，用 `remove` 代替 `uninstall` ，例如：
+但是安装命令上会有点不同， yarn 是用 `add` 代替 `install` ，用 `remove` 代替 `uninstall`  
+例如：
 
 ```bash
 # 安装单个包
@@ -145,9 +146,9 @@ pnpm 的 lock 文件是 `pnpm-lock.yaml` ，如果有管理多人协作仓库的
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
 ```
 
-因为本教程都是基于工程化开发，使用的 CLI 脚手架，所以这些内容暂时不谈及 CDN 的使用方式。
+因为项目是基于工程化开发，使用的 CLI 脚手架，所以暂时不谈及 CDN 的使用方式。
 
-通常来说会有细微差别，但影响不大，插件作者也会在插件仓库的 README 或者使用文档里进行告知。
+通常来说有细微差别，但影响不大，插件作者也会在插件仓库的 README 或者使用文档里告知。
 
 ## Vue 专属插件
 
@@ -157,7 +158,7 @@ import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
 
 ### 全局插件的使用 ~new
 
-在本教程最最前面的时候，特地说了一个内容就是 [项目初始化 - 升级与配置](upgrade.md#项目初始化) ，在这里有提到过就是需要通过 `use` 来初始化框架、插件。
+在前面介绍的时候，有一个内容就是 [项目初始化 - 升级与配置](upgrade.md#项目初始化) ，就是需要通过 `use` 来初始化框架、插件。
 
 全局插件的使用，就是在 `main.ts` 通过 `import` 引入，然后通过 `use` 来启动初始化。
 
@@ -197,9 +198,9 @@ createApp(App)
 
 单组件的插件，通常自己本身也是一个 Vue 组件（大部分情况下都会打包为 JS 文件，但本质上是一个 Vue 的 component ）。
 
-单组件的引入，一般都是在需要用到的 `.vue` 文件里单独 `import` ，然后挂到 `template` 里去渲染。
+单组件的引入，一般都在要用到的 `.vue` 文件里单独 `import` ，然后挂到 `template` 里去渲染。
 
-放一个之前打包的单组件插件 [vue-picture-cropper](https://github.com/cheny/vue-picture-cropper) 做案例，理解起来会比较直观：
+参考示栗：
 
 ```vue
 <template>
@@ -250,7 +251,7 @@ export default defineComponent({
 </script>
 ```
 
-哈哈哈哈参考上面的代码，还有注释，应该能大概了解如何使用单组件插件了吧！
+参考上面的代码，还有注释，直白说就是一个.vue 组件。
 
 ## 通用 JS / TS 插件
 
@@ -271,11 +272,11 @@ export default defineComponent({
 })
 ```
 
-全局挂载方法比较特殊，因为插件本身不是专属 Vue，没有 `install` 接口，无法通过 `use` 方法直接启动，下面有一小节内容单独讲这一块的操作，详见 [全局 API 挂载](#全局-api-挂载)。
+全局挂载方法比较特殊，因为插件本身不是专属 Vue，没有 `install` 接口，无法通过 `use` 方法直接启动，下面有一小节内容单独介绍这一块的操作，详见 [全局 API 挂载](#全局-api-挂载)。
 
 ## 本地插件 ~new
 
-插件也不全是来自于网上，有时候针对自己的业务，涉及到一些经常用到的功能模块，也可以抽离出来封装成项目专用的插件。
+> 插件也不全是来自于网上，有时候针对自己的业务，涉及到一些经常用到的功能模块，也可以抽离出来封装成项目专用的插件。
 
 ### 封装的目的
 
@@ -295,7 +296,7 @@ export default defineComponent({
 
 ### 常用的封装类型
 
-常用的本地封装方式有两种：一种是以 [通用 JS / TS 插件](#通用-js-ts-插件) 的形式，一种是以 [Vue 专属插件](#vue-专属插件) 的形式。
+常用的本地封装方式有两种：一种以 [通用 JS / TS 插件](#通用-js-ts-插件) 的形式，一种以 [Vue 专属插件](#vue-专属插件) 的形式。
 
 关于这两者的区别已经在对应的小节有所介绍，接下来来看看如何封装它们。
 
@@ -332,7 +333,7 @@ vue-demo
 在设计本地通用插件的时候，需要遵循 [ES Module 模块设计规范](#用-es-module-设计模块) ，并且做好必要的代码注释（用途、入参、返回值等）。
 
 :::tip
-如果还没有了解过 “模块” 的概念的话，可以先阅读 [了解模块化设计](../get-familiar-quickly/guide.md#了解模块化设计) 一节的内容。
+如果还没有了解过 “模块” 的概念的话，可以查看 [了解模块化设计](../get-familiar-quickly/guide.md#了解模块化设计) 内容板块。
 :::
 
 一般来说，会有以下三种情况需要考虑。
@@ -772,13 +773,13 @@ export default defineComponent({
 
 ## npm 包的开发与发布
 
-相信很多开发者都想发布一个属于自己的 npm 包，在实际的工作中，也会有一些公司出于开发上的便利，也会将一些常用的业务功能抽离为独立的 npm 包，提前掌握包的开发也是非常重要的能力，接下来将介绍如何从 0 到 1 开发一个 npm 包，并将其发布到 [npmjs](https://www.npmjs.com) 上可供其他项目安装使用。
+相信很多开发者都想发布一个属于自己的 npm 包，在实际的工作中，也会有一些团队出于开发上的便利，将一些常用的业务功能抽离为独立的 npm 包，接下来介绍如何从 0 到 1 开发一个 npm 包，并将其发布到 [npmjs](https://www.npmjs.com) 上可供其他项目安装使用。
 
 :::tip
-在开始本节内容之前，请先阅读或回顾以下两部分内容：
+在开始之前，请先查看或回顾以下两部分内容：
 
 1. 阅读 [了解 package.json](../get-familiar-quickly/guide.md#了解-package-json) 一节，了解或重温 npm 包清单文件的作用
-2. 阅读 [学习模块化设计](../get-familiar-quickly/guide.md#学习模块化设计) 一节，了解或重温模块化开发的知识
+2. 阅读 [工程化的前期准备](../get-familiar-quickly/guide.md#学习模块化设计) 一节，了解或重温模块化开发的知识
 
 :::
 
@@ -828,29 +829,19 @@ export default function slash(path) {
 
 因此大部分 npm 包的开发也需要用到构建工具来转换项目源代码，统一输出为一个兼容性更好、适用性更广的 JavaScript 文件，配合 `.d.ts` 文件的类型声明，使用者可以不需要特地配置就可以开箱即用，非常方便，非常友好。
 
-传统的 [Webpack](https://github.com/webpack/webpack) 可以用来构建 npm 包文件，但按照目前更主流的技术选项，编译结果更干净更迷的当属 [Rollup](https://github.com/rollup/rollup) ，但 Rollup 需要配置很多插件功能，这对于刚接触包开发的开发者来说学习成本比较高，而 [Vite](https://github.com/vitejs/vite) 的出现则解决了这个难题，因为 Vite 的底层是基于 Rollup 来完成构建，上层则简化了很多配置上的问题，因此接下来将使用 Vite 来带领开发者入门 npm 包的开发。
+传统的 [Webpack](https://github.com/webpack/webpack) 可以用来构建 npm 包文件，但按照目前更主流的技术选项，编译结果更干净更迷的当属 [Rollup](https://github.com/rollup/rollup) ，但 Rollup 需要配置很多插件功能，这对于刚接触包开发的人来说学习成本比较高，而 [Vite](https://github.com/vitejs/vite) 的出现则解决了这个难题，因为 Vite 的底层是基于 Rollup 来完成构建，上层则简化了很多配置上的问题，因此接下来将使用 Vite 来介绍 npm 包的开发。
 
 :::tip
 在开始使用构建工具之前，请先在命令行使用 `node -v` 命令检查当前的 Node.js 版本号是否在构建工具的支持范围内，避免无法正常使用构建工具。
 
-通常可以在构建工具的官网查询到其支持的 Node 版本，以 Vite 为例，可以在 Vite 官网的 [Node 支持](https://cn.vitejs.dev/guide/migration.html#node-support) 一节了解到当前只能在 Node 14.18+ / 16+ 版本上使用 Vite 。
+通常可以在构建工具的官网查询到其支持的 Node 版本，以 Vite 为例，可以在 Vite 官网的 [Node 支持](https://cn.vitejs.dev/guide/migration.html#node-support) 一节了解到当前只能在 **Node 14.18+ / 16+** 版本上使用 Vite 。
 
 当构建工具所支持的 Node 版本和常用的 Node 版本出现严重冲突时，推荐使用 [nvm](https://github.com/nvm-sh/nvm) / [nvm-windows](https://github.com/coreybutler/nvm-windows) 或者 [n](https://github.com/tj/n) 等 Node 版本管理工具安装多个不同版本的 Node ，即可根据开发需求很方便的切换不同版本的 Node 进行开发。
 :::
 
 ### 项目结构与入口文件
 
-在动手开发具体功能之前，先把项目框架搭起来，熟悉常用的项目结构，以及如何配置项目清单信息。
-
-:::tip
-当前文档所演示的 hello-lib 项目已托管至 [learning-vue3/hello-lib](https://github.com/learning-vue3/hello-lib) 仓库，可使用 Git 克隆命令拉取至本地：
-
-```bash
-git clone https://github.com/learning-vue3/hello-lib.git
-```
-
-成品项目可作为学习过程中的代码参考，但更建议按照教程的讲解步骤，从零开始亲手搭建一个新项目并完成 npm 包的开发流程，可以更有效的提升学习效果。
-:::
+> 在开发具体功能前，先把项目框架搭起来，熟悉常用的项目结构，及如何配置项目清单信息。
 
 #### 初始化项目
 
@@ -893,9 +884,9 @@ npm init -y
 
 ```json
 {
-  "name": "@learning-vue3/lib",
+  "name": "@learning-vue3demodemo/lib",
   "version": "1.0.0",
-  "description": "A library demo for learning-vue3.",
+  "description": "A library demo for learning-vue3demo.",
   "author": "cheny <ycyplus@163.com>",
   "license": "MIT",
   "files": ["dist"],
@@ -918,7 +909,7 @@ npm init -y
 
 #### 安装开发依赖
 
-本次的 npm 包将使用 Vite 进行构建，使用 TypeScript 编写源代码，由于 Vite 本身对 TypeScript 进行了支持，因此只需要将 Vite 安装到开发依赖：
+示栗的 npm 包将使用 Vite 进行构建，使用 TypeScript 编写源代码，由于 Vite 本身对 TypeScript 进行了支持，因此只需要将 Vite 安装到开发依赖：
 
 ```bash
 # 添加 -D 选项将其安装到 devDependencies
@@ -1052,7 +1043,7 @@ export { o as default }
 
 ### 开发 npm 包
 
-这里先从最简单的函数库开始入门包的开发，为什么说它简单呢？因为只需要编写 JavaScript 或 TypeScript 就可以很好的完成开发工作。
+这里先从最简单的函数库开始了解包的开发，为什么说它简单呢？因为只需要编写 JavaScript 或 TypeScript 就可以很好的完成开发工作。
 
 在理解了包的开发流程之后，如果要涉及 Vue 组件包的开发，则安装相关的 Vue 的相关依赖、 Less 等 CSS 预处理器依赖，只要满足了编译条件，就可以正常构建和发布，它们的开发流程是一样的。
 
@@ -1243,8 +1234,8 @@ npm link path/to/my-library
 回归当前的演示包项目，先创建一个基于 TypeScript 的 Vue 新项目作为调试项目，在关联了本地 npm 包之后，就可以在调试项目里编写如下代码，测试 npm 包里的方法是否可以正常使用：
 
 ```ts
-// 请将 `@learning-vue3/lib` 更换为实际的包名称
-import { getRandomNumber } from '@learning-vue3/lib'
+// 请将 `@learning-vue3demo/lib` 更换为实际的包名称
+import { getRandomNumber } from '@learning-vue3demo/lib'
 
 const num = getRandomNumber()
 console.log(num)
@@ -1351,7 +1342,7 @@ console.log(num)
 // ...
 ```
 
-聪明的开发者肯定已经猜到了，这些版权注释肯定不是手动添加的，那么它们是如何自动生成的呢？
+这些版权注释肯定不是手动添加的，那么它们是如何自动生成的呢？
 
 npm 社区提供了非常多开箱即用的注入插件，通常可以通过 “当前使用的构建工具名称” 加上 “plugin banner” 这样的关键字，在 npmjs 网站上搜索是否有相关的插件，以当前使用的 Vite 为例，可以通过 [vite-plugin-banner](https://www.npmjs.com/package/vite-plugin-banner) 实现版权注释的自动注入。
 
@@ -1390,11 +1381,11 @@ export default defineConfig({
 // dist/index.mjs
 
 /**
- * name: @study-vue3/lib
+ * name: @learn-vue3demo/lib
  * version: v1.0.0
  * description: A library demo for vue3.
  * author: cheny <ycyplus@163.com>
- * homepage: https://github.com/vue3/hello-lib
+ * homepage: https://github.com/vue3-demoo/hello-lib
  */
 function o(n = 0, t = 100, e = 'round') {
   return Math[e](Math.random() * (t - n) + n)
@@ -1421,13 +1412,14 @@ export { r as getRandomBoolean, o as getRandomNumber }
 如果在上一小节 [关联本地软链接](#关联本地软链接) 创建 Vue 调试项目时，也是使用了 TypeScript 版本的 Vue 项目，会遇到 VSCode 在下面这句代码上：
 
 ```ts
-import { getRandomNumber } from '@learning-vue3/lib'
+import { getRandomNumber } from '@learning-vue3demo/lib'
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ```
 
-在包名称 `'@learning-vue3/lib'` 的位置提示了一个红色波浪线，把鼠标移上去会显示这么一段话：
+在包名称 `'@learning-vue3demo/lib'` 的位置提示了一个红色波浪线，把鼠标移上去会显示这么一段话：
 
-> 无法找到模块 “@learning-vue3/lib” 的声明文件。 “D:/Project/demo/hello-lib/dist/index.cjs” 隐式拥有 "any" 类型。<br>
-> 尝试使用 `npm i --save-dev @types/learning-vue3__lib` (如果存在)，或者添加一个包含 `declare module '@learning-vue3/lib';` 的新声明 (.d.ts) 文件 ts(7016)
+> 无法找到模块 “@learning-vue3demo/lib” 的声明文件。 “D:/Project/demo/hello-lib/dist/index.cjs” 隐式拥有 "any" 类型。<br>
+> 尝试使用 `npm i --save-dev @types/learning-vue3demo__lib` (如果存在)，或者添加一个包含 `declare module '@learning-vue3demo/lib';` 的新声明 (.d.ts) 文件 ts(7016)
 
 此时在命令行运行 Vue 调试项目的打包命令 `npm run build` ，也会遇到打包失败的报错，控制台同样反馈了这个问题：缺少声明文件。
 
@@ -1437,20 +1429,20 @@ import { getRandomNumber } from '@learning-vue3/lib'
 > hello-vue3@0.0.0 build
 > vue-tsc --noEmit && vite build
 
-src/App.vue:8:30 - error TS7016: Could not find a declaration file for module '@learning-vue3/lib'. 'D:/Project/demo/hello-lib/dist/index.cjs' implicitly has an 'any' type.
-  Try `npm i --save-dev @types/learning-vue3__lib` if it exists or add a new declaration (.d.ts) file containing `declare module '@learning-vue3/lib';`
+src/App.vue:8:30 - error TS7016: Could not find a declaration file for module '@learning-vue3demo/lib'. 'D:/Project/demo/hello-lib/dist/index.cjs' implicitly has an 'any' type.
+  Try `npm i --save-dev @types/learning-vue3demo__lib` if it exists or add a new declaration (.d.ts) file containing `declare module '@learning-vue3demo/lib';`
 
-8 import { getRandomNumber } from '@learning-vue3/lib'
+8 import { getRandomNumber } from '@learning-vue3demo/lib'
                                ~~~~~~~~~~~~~~~~~~~~
 
 
 Found 1 error in src/App.vue:8
 ```
 
-虽然使用者可以按照报错提示，在调试项目下创建一个 `d.ts` 文件并写入以下内容来声明该 npm 包：
+虽然使用可以按照报错提示，在调试项目下创建一个 `d.ts` 文件写入以下内容来声明该 npm 包：
 
 ```ts
-declare module '@learning-vue3/lib'
+declare module '@learning-vue3demo/lib'
 ```
 
 但这需要每个使用者，或者说每个使用到这个包的项目都声明一次，对于使用者来说非常不友好， `declare module` 之后虽然不会报错了，但也无法获得 VSCode 对 npm 包提供的 API 进行 TS 类型的自动推导与类型提示、代码补全等功能支持。
@@ -1487,7 +1479,7 @@ https://cdn.jsdelivr.net/npm/@vue/reactivity@3.2.40/dist/reactivity.d.ts
 
 #### 生成 DTS 文件
 
-有在 “快速上手 TypeScript ” 一章阅读过 [了解 tsconfig.json](../get-familiar-quickly/typescript.md#了解-tsconfig-json) 这节内容的开发者，应该对该文件有了一定的了解，如果还没有阅读过也没关系，可以先按照下方的步骤操作，接下来将分布说明如何生成 npm 包的 DTS 类型声明文件（以 `.d.ts` 为扩展名的文件）。
+接下来将分布说明如何生成 npm 包的 DTS 类型声明文件（以 `.d.ts` 为扩展名的文件）。
 
 请先全局安装 [typescript](https://www.npmjs.com/package/typescript) 这个包：
 
@@ -1616,11 +1608,11 @@ dist/assets/index.aebbe022.js             79.87 KiB / gzip: 31.80 KiB
 ./node_modules/@vue/reactivity/dist/reactivity.d.ts
 ```
 
-这种将多个模块的文件内容合并为一个完整文件的行为通常称之为 Bundle ，本小节将介绍如何生成这种 DTS Bundle 文件。
+这种将多个模块的文件内容合并为一个完整文件的行为通常称之为 Bundle ，这里将介绍如何生成这种 DTS Bundle 文件。
 
 继续回到 hello-lib 这个 npm 包项目，由于 tsc 本身不提供类型文件的合并，所以需要借助第三方依赖来实现，比较流行的第三方包有： [dts-bundle-generator](https://github.com/timocov/dts-bundle-generator) 、 [npm-dts](https://github.com/vytenisu/npm-dts) 、 [dts-bundle](https://github.com/TypeStrong/dts-bundle) 、 [dts-generator](https://github.com/SitePen/dts-generator) 等等。
 
-之前笔者在为公司开发 npm 工具包的时候都对它们进行了一轮体验，鉴于实际开发过程中遇到的一些编译问题，在这里选用问题最少的 dts-bundle-generator 进行开发演示，请先安装到 hello-lib 项目的 devDependencies ：
+鉴于实际开发过程中遇到的一些编译问题，在这里选用问题最少的 dts-bundle-generator 进行开发演示，请先安装到 hello-lib 项目的 devDependencies ：
 
 ```bash
 npm i -D dts-bundle-generator
@@ -1632,7 +1624,7 @@ dts-bundle-generator 支持在 package.json 里配置一个 script ，通过命�
 在使用 Git 等版本控制系统时，如果多个独立项目之间有关联，会把这些项目的代码都存储在同一个代码仓库集中管理，此时这个大型代码仓库就被称之为 Monorepo （其中 Mono 表示单一， Repo 是存储库 Repository 的缩写），当下许多大型项目都基于这种方法管理代码， [Vue 3](https://github.com/vuejs/core) 在 GitHub 的代码仓库也是一个 Monorepo 。
 :::
 
-请在 hello-lib 的根目录下，创建一个与 src 源码目录同级的 scripts 目录，用来存储源码之外的脚本函数。
+在 hello-lib 的根目录下，创建一个与 src 源码目录同级的 scripts 目录，用来存储源码之外的脚本函数。
 
 将以下代码保存到 scripts 目录下，命名为 buildTypes.mjs ：
 
@@ -1736,7 +1728,7 @@ export {}
 
 作为一个完整的 npm 包，应该配备一份操作说明给使用者阅读，复杂的文档可以使用 VitePress 等文档程序独立部署，而简单的项目则只需要完善一份 README 即可。
 
-请创建一个名为 README\.md 的 Markdown 文件在项目根目录下，与 src 源码目录同级，该文件的文件名 README 推荐使用全大写，这是开源社区主流的命名方式，全大写的原因是为了与代码文件进行直观的区分。
+创建一个名为 README\.md 的 Markdown 文件在项目根目录下，与 src 源码目录同级，该文件的文件名 README 推荐使用全大写，这是开源社区主流的命名方式，全大写的原因是为了与代码文件进行直观的区分。
 
 编写 README 使用的 Markdown 是一种轻量级标记语言，可以使用易读易写的纯文本格式编写文档，以 `.md` 作为文件扩展名，当代码托管到 GitHub 仓库或者发布到 npmjs 等平台时， README 文件会作为项目的主页内容呈现。
 
@@ -1795,7 +1787,7 @@ export {}
 
 ### 发布 npm 包
 
-一个 npm 包开发完毕后，就可以进入发布阶段了，这一小节将讲解如何注册 npm 账号并发布到 npmjs 平台上供其他开发者下载使用。
+一个 npm 包开发完毕后，就可以进入发布阶段了，这里介绍如何注册 npm 账号并发布到 npmjs 平台上供其他开发者下载使用。
 
 :::tip
 在操作 npm 包发布之前，请先运行 `npm config rm registry` 命令取消 npm 镜像源的绑定，否则会发布失败，在 npm 包发布后，可以再重新 [配置镜像源](../get-familiar-quickly/guide.md#配置镜像源) 。
@@ -1820,12 +1812,12 @@ npm whoami
 在登录成功之后，命令行会记住账号的登录状态，以后的操作就无需每次都执行登录命令了。
 
 :::tip
-以上操作也可以实用 `npm adduser` 命令代替，直接在命令行完成注册和登录。
+以上操作也可以使用 `npm adduser` 命令代替，直接在命令行完成注册和登录。
 :::
 
 #### 将包发布到 npmjs
 
-在 npm 上发布私有包需要进行付费，因此这里只使用公共包的发布作为演示和讲解，如果开发的是公司内部使用的 npm 包，只要源代码是私有仓库，也可以使用这种方式来发布，当前在这样做之前请先获得公司的同意。
+在 npm 上发布私有包需要进行付费，因此这里只使用公共包的发布作为演示和讲解，如果开发的是公司内部使用的 npm 包，只要源代码是私有仓库，也可以使用这种方式来发布，当然这样做之前请先获得公司的同意。
 
 对于一个普通命名的包，要发布到 npmjs 上非常简单，只需要执行 npm 包管理器自带的一个命令即可：
 
@@ -1843,20 +1835,20 @@ npm publish
 npm publish --access public
 ```
 
-当前的 hello-lib 项目已发布到 npmjs ，可以查看该包的主页 [@learning-vue3/lib](https://www.npmjs.com/package/@learning-vue3/lib) ，也可以通过 npm 安装到项目里使用了：
+把当前的 hello-lib 项目已发布到 npmjs ，就可以查看该包的主页 [@learning-vue3demo/lib](https://www.npmjs.com/package/@learning-vue3demo/lib) ，也可以通过 npm 安装到项目里使用了：
 
 ```bash
-npm i @learning-vue3/lib
+npm i @learning-vue3demo/lib
 ```
 
 并且发布到 npmjs 上的包，都同时获得热门 CDN 服务的自动同步，可以通过包名称获取到 CDN 链接并通过 `<script />` 标签引入到 HTML 页面里：
 
 ```bash
 # 使用 jsDelivr CDN
-https://cdn.jsdelivr.net/npm/@learning-vue3/lib
+https://cdn.jsdelivr.net/npm/@learning-vue3demo/lib
 
 # 使用 UNPKG CDN
-https://unpkg.com/@learning-vue3/lib
+https://unpkg.com/@learning-vue3demo/lib
 ```
 
 此时 CDN 地址对应的 npm 包文件内容，就如前文所述，调用了 package.json 里 browser 字段指定的 UMD 规范文件 `dist/index.min.js` 。
