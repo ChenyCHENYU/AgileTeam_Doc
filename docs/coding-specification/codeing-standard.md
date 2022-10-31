@@ -10,19 +10,270 @@ outline: 'deep'
 
 # 渐进式 "编码规范"
 
-> 编码规范在程序开发中是非常重要的，比如规范中的命名一块，一个不好的命名，可能会引起别人错误理解，对开发效率，项目的质量影响很大，从维护项目上，遵循一套严格的命名规范，无论是对自己还是接手的他人，都会大大降低代码的维护成本，为了大家聚焦参考，从命名开始，将以 Demo 项目逐层下钻的方式展开介绍
+> 编码规范在程序开发中是非常重要的，比如规范中的命名一块，一个不好的命名，可能会引起别人错误理解，对开发效率，项目的质量影响很大，从维护项目上，遵循一套严格的命名规范，无论是对自己还是接手的他人，都会大大降低代码的维护成本，为了大家聚焦参考，从命名开始，将以 Demo 项目逐层下钻的方式展开介绍。
 
 ## 前端开发标准化的意义 ？
 
-● 坚持一致的风格指南  
-● 有效注释，保持干燥，提升抽象复用，增强开发能力  
-● 确保代码可读性，易用性，维护性  
-● 不重复发明轮子  
-● 避免硬编码，避免疲惫时编码，保持简单  
-● 有效的版本控制,有利于项目管理，代码质量把控  
-● 对修改关闭，拓展开放，提高开发的生产力  
-● 赋能交叉协同的沟通效率，相互合作，减少差错和误解  
-● 奖励编码，OneTeam，一起玩的 Happy
+<ElCard >
+
+- 坚持一致的风格指南；
+- 有效注释，保持干燥，提升抽象复用，增强开发能力；
+- 确保代码可读性，易用性，维护性；
+- 避免重复造轮子；
+- 有效的版本控制，有利于项目管理，代码质量把控；
+- 对修改关闭，拓展开放，提高开发的生产力；
+- 赋能交叉协同的沟通效率，相互合作，减少差错和误解；
+- 奖励编码，OneTeam，一起玩的 Happy。
+
+</ElCard>
+
+## 命名规则
+
+> 坚持制定好的代码规范，无论团队人数多少，代码应该同出一门。  
+> 如果你觉得这个规范有不合理的地方。请提出你的建议来讨论。
+
+### 项目命名
+
+全部采用小写方式，以下划线分割。
+
+```txt
+栗：my_project_name
+```
+
+### 目录命名
+
+全部采用小写方式，以中划线分割，有复数结构时，要采用复数命名法。
+
+```txt
+栗：scripts, styles, images, data-models
+```
+
+### JS 文件命名
+
+参照目录命名，全部采用小写方式，以中划线分割。
+
+```txt
+栗：account-model.js
+```
+
+### CSS, SCSS 文件命名
+
+参照目录命名，全部采用小写方式，以中划线分割。
+
+```txt
+栗：retina-sprites.scss
+```
+
+### Template 规则
+
+- 嵌套的节点应该缩进 2 个空格；
+- 在属性上，使用双引号，不要使用单引号；
+- 属性名全小写，用中划线做分隔符。
+
+```vue
+<template>
+  <h1 class="hello-world">Hello, world!</h1>
+</template>
+```
+
+### 属性顺序
+
+属性应该按照特定的顺序出现以保证易读性。
+
+- class；
+- id；
+- name；
+- data-\*；
+- src, for, type, href, value , max-length, max, min, pattern；
+- placeholder, title, alt；
+- aria-\*, role；
+- required, readonly, disabled。
+
+```vue
+<template>
+  <a class="..." id="..." data-modal="toggle" href="#">Example link</a>
+  <input class="form-control" type="text" placeholder="默认提示" />
+</template>
+```
+
+### boolean 属性
+
+boolean 属性不需要声明取值的属性，属性的存在表示取值为 true，不存在则表示取值为 false。
+
+```vue
+<template>
+  <input type="text" disabled />
+  <input type="checkbox" value="1" checked />
+  <select>
+    <option value="1" selected>1</option>
+  </select>
+</template>
+```
+
+### 减少标签数量
+
+遵循一个设计原则，在编写 HTML 代码时，需要尽量避免多余的父节点，任何时候都要用尽量小的复杂度和尽量少的标签来解决问题。
+
+```vue
+<template>
+  <!-- Not well -->
+  <span class="avatar">
+    <img src="..." />
+  </span>
+
+  <!-- Better -->
+  <img class="avatar" src="..." />
+</template>
+```
+
+### CSS,SCSS 定义命名
+
+- 类名使用小写字母，以中划线分隔
+- id 采用驼峰式命名
+- scss 中的变量、函数、混合、placeholder 采用驼峰式命名
+
+```scss
+/* class */
+.element-content {
+    ...
+}
+
+/* id */
+#myDialog {
+    ...
+}
+
+/* 变量 */
+$colorBlack: #000;
+
+/* 函数 */
+@function pxToRem($px) {
+    ...
+}
+
+/* 混合 */
+@mixin centerBlock {
+    ...
+}
+
+/* placeholder */
+%myDialog {
+    ...
+}
+```
+
+### 单行注释
+
+- 双斜线后，必须跟一个空格；
+- 缩进与下一行代码保持一致；
+- 可位于一个代码行的末尾，与代码间隔一个空格。
+
+```js
+if (condition) {
+  // if you made it here, then all security checks passed
+  allowed()
+}
+
+let zhangsan = 'zhangsan' // one space after code
+```
+
+### 多行注释
+
+最少三行, '\*'后跟一个空格，建议在以下情况下使用，具体参照下边的写法：
+
+- 难于理解的代码段；
+- 可能存在错误的代码段；
+- 浏览器特殊的 HACK 代码；
+- 业务逻辑强相关的代码。
+
+```js
+/*
+ * one space after '*'
+ */
+let x = 1
+```
+
+### 文档注释
+
+建议在以下情况下使用：
+
+- 所有常量；
+- 所有函数；
+- 所有类。
+
+```js
+/**
+ * @func foo
+ * @desc 一个带参数的函数
+ * @param {string} a - 参数a
+ * @param {number} b=1 - 参数b默认值为1
+ * @param {string} c=1 - 参数c有两种支持的取值</br>1—表示x</br>2—表示xx
+ * @param {object} d - 参数d为一个对象
+ * @param {string} d.e - 参数d的e属性
+ * @param {string} d.f - 参数d的f属性
+ * @param {object[]} g - 参数g为一个对象数组
+ * @param {string} g.h - 参数g数组中一项的h属性
+ * @param {string} g.i - 参数g数组中一项的i属性
+ * @param {string} [j] - 参数j是一个可选参数
+ */
+function foo(a, b, c, d, g, k, j) {
+    ...
+}
+```
+
+### 变量命名
+
+标准变量采用驼峰式命名（除了对象的属性外）；
+
+- 'ID'在变量名中全大写
+- 'URL'在变量名中全大写
+- 常量全大写，用下划线连接
+
+```js
+let thisIsMyName = 'cheny'
+
+let goodID = '88888888'
+
+let reportURL = 'http://www.tzagileteam.com'
+
+const MAX_COUNT = 10
+
+const getData = () => {}
+```
+
+### 括号
+
+下列关键字后必须有大括号（即使代码块的内容只有一行）：  
+`if`, `else`, `for`, `while`, `do`, `switch,` `try`, `catch`, `finally`, `with`。
+
+```js
+// not good
+if (condition) doSomething()
+
+// good
+if (condition) {
+  doSomething()
+}
+```
+
+### undefined
+
+- 永远不要直接使用 undefined 进行变量判断；
+- 使用 typeof 和字符串'undefined'对变量进行判断。
+
+```js
+// not good
+if (person === undefined) {
+    ...
+}
+
+// good
+if (typeof person === 'undefined') {
+    ...
+}
+```
+
+更多其他的格式标准化，已配置在 vscode 和插件集了，无需关注，直接使用感受即可。
 
 ## 通用约定俗成
 
@@ -37,6 +288,8 @@ outline: 'deep'
 7. css 命名全部小写 html 对大小写不敏感 见名知义使用 - 隔开
 8. 针对特型命名，自定义命名，需见名知意，完全按照命名规范
 9. 合理分类解耦，HTML,CSS,JS 带代码结构上尽量做到互相隔离
+
+等等，等等，等等等...
 
 ## 项目约定俗成
 
@@ -212,7 +465,7 @@ export const getUserInfo = () => {
 > UI 组件方法 - handle 驼峰命名 <Code text="hanleOnChange"/>  
 > 工具函数方法 - d*驼峰命名 <Code text="d_indexFileExportAllModule"/>  
 > emiets 方法 - e*驼峰命名 <Code text="e_setUserInfo"/>  
-> 私有方法 - _驼峰命名 <Code text="\_toFileSwitch_"/>  
+> 私有方法 - \_驼峰命名 <Code text="_toFileSwitch"/>  
 > 异步方法 - async await 驼峰命名 async await <Code text="getDataFn"/>  
 > ......
 
@@ -227,5 +480,3 @@ const getDataFn = async() => {await...}
 ...
 </script>
 ```
-
-
