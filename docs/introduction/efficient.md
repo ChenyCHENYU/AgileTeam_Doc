@@ -4,9 +4,9 @@ outline: 'deep'
 
 # 高效开发
 
-可能很多开发者（包括笔者）刚上手 Vue 3.0 之后，都会觉得开发过程似乎变得更繁琐了，Vue 官方团队当然不会无视群众的呼声，如果基于脚手架和 .vue 文件开发，那么可以享受到更高效率的开发体验。
+> 社区很多开发者刚上手 Vue 3.0 之后，都觉得开发过程似乎变得更繁琐了，Vue 官方团队进行了 3.2 版本升级，如果基于脚手架单组件编写方式开发，就可以享受到更高效率的开发体验。
 
-在阅读这篇文章之前，需要对 Vue 3.0 的单组件有一定的了解，如果还处于完全没有接触过的阶段，请先抽点时间阅读 [单组件的编写](../introduction/component.md) 一章。
+在了解 3.2 版本 `setup` 语法糖之前，需要对 Vue 3.0 的单组件有一定的了解，如果还处于完全没有接触过的阶段，先抽点时间了解 Vue3 [单组件的编写](../introduction/component.md)，熟悉它的前世，才能更好的读懂今生。
 
 :::tip
 要体验以下新特性，请确保项目下 package.json 里的 [vue](https://www.npmjs.com/package/vue?activeTab=versions) 和 [@vue/compiler-sfc](https://www.npmjs.com/package/@vue/compiler-sfc?activeTab=versions) 都在 v3.1.4 版本以上，最好同步 npm 上当前最新的 @latest 版本，否则在编译过程中可能出现一些奇怪的问题（这两个依赖必须保持同样的版本号）。
@@ -18,13 +18,9 @@ outline: 'deep'
 
 :::tip
 截止至 2021-07-16 ，`<script setup>` 方案已在 Vue `3.2.0-beta.1` 版本中脱离实验状态，正式进入 Vue 3.0 的队伍，在新的版本中已经可以作为一个官方标准的开发方案使用（但初期仍需注意与开源社区的项目兼容性问题，特别是 UI 框架）。
-
-另外，Vue 的 `3.1.2` 版本是针对 script-setup 的一个分水岭版本，自 `3.1.4` 开始 script-setup 进入定稿状态，部分旧的 API 已被舍弃，本章节内容将以最新的 API 为准进行整理说明，如果您需要查阅旧版 API 的使用，请参阅 [这里](https://cheny.com/article/vue3-script-setup.html) 。
 :::
 
 ### 新特性的产生背景
-
-在了解它怎么用之前，可以先了解一下它被推出的一些背景，可以帮助对比开发体验上的异同点，以及了解为什么会有这一章节里面的新东西。
 
 在 Vue 3.0 的 .vue 组件里，遵循 SFC 规范要求（注：SFC，即 Single-File Component，.vue 单组件），标准的 setup 用法是，在 setup 里面定义的数据如果需要在 template 使用，都需要 return 出来。
 
@@ -47,9 +43,7 @@ export default defineComponent({
 </script>
 ```
 
-关于标准 setup 和 defineComponent 的说明和用法，可以查阅 [全新的 setup 函数](../introduction/component.md#全新的-setup-函数-new) 一节。
-
-script-setup 的推出是为了让熟悉 3.0 的用户可以更高效率的开发组件，减少一些心智负担，只需要给 script 标签添加一个 setup 属性，那么整个 script 就直接会变成 setup 函数，所有顶级变量、函数，均会自动暴露给模板使用（无需再一个个 return 了）。
+`script-setup` 的推出是为了让熟悉 3.0 的开发者可以更高效率的开发组件，减少一些心智负担，只需要给 script 标签添加一个 setup 属性，那么整个 script 就直接会变成 setup 函数，所有顶级变量、函数，均会自动暴露给模板使用（无需再一个个 return 了）。
 
 Vue 会通过单组件编译器，在编译的时候将其处理回标准组件，所以目前这个方案只适合用 .vue 文件写的工程化项目。
 
@@ -72,7 +66,7 @@ Vue 会通过单组件编译器，在编译的时候将其处理回标准组件�
 
 但是默认的情况下直接使用，项目的 eslint 会提示没有导入，但导入后，控制台的 Vue 编译助手又会提示不需要导入，就很尴尬…
 
-不过不用着急！可以配置 Lint 规则，将这几个编译助手写进全局规则里，这样不导入也不会报错了。
+不用着急！可以配置 Lint 规则，将这几个编译助手写进全局规则里，这样不导入也不会报错了。
 
 ```js
 // 项目根目录下的 .eslintrc.js
@@ -96,7 +90,7 @@ module.exports = {
 | defineExpose | [点击查看](#defineexpose-的基础用法) |
 | withDefaults | [点击查看](#withdefaults-的基础用法) |
 
-下面继续了解 script-setup 的变化。
+下面继续了解 `script-setup` 的变化。
 
 ### template 操作简化
 
@@ -356,9 +350,9 @@ console.log(props.msg)
 
 ### emits 的接收方式变化
 
-和 props 一样，emits 的接收也是需要使用一个全新的 API 来操作，这个 API 就是 `defineEmits` 。
+和 props 一样，emits 的接收也需要使用一个全新的 API 来操作，这个 API 就是 `defineEmits` 。
 
-和 `defineProps` 一样， `defineEmits` 也是一个方法，它接受的入参格式和标准组件的要求是一致的。
+和 `defineProps` 一样， `defineEmits` 也是一个方法，它接受的入参格式和组件要求是一致的。
 
 :::tip
 注意：从 `3.1.3` 版本开始，该 API 已被改名，加上了复数结尾，带有 s，在此版本之前是没有 s 结尾！
@@ -380,7 +374,7 @@ const emit = defineEmits(['chang-name'])
 emit('chang-name', 'Tom')
 ```
 
-由于 `defineEmits` 的用法和原来的 emits 选项差别不大，这里也不重复说明更多的诸如校验之类的用法了，可以查看 [接收 emits](../introduction/communication#接收-emits) 一节了解更多。
+由于 `defineEmits` 的用法和原来的 emits 选项差别不大，这里也不重复说明更多的诸如校验之类的用法了，可以查看 [接收 emits](../introduction/communication#接收-emits) 回顾一下。
 
 ### attrs 的接收方式变化
 
@@ -424,13 +418,13 @@ const attrs = useAttrs()
 console.log(attrs.msg)
 ```
 
-对 `attrs` 不太了解的话，可以查阅 [获取非 Prop 的 Attribute](../introduction/communication#%E8%8E%B7%E5%8F%96%E9%9D%9E-prop-%E7%9A%84-attribute-new)
+对 `attrs` 不太了解的话，可以回顾 [获取非 Prop 的 Attribute](../introduction/communication#%E8%8E%B7%E5%8F%96%E9%9D%9E-prop-%E7%9A%84-attribute-new)
 
 ### slots 的接收方式变化
 
 `slots` 是 Vue 组件的插槽数据，也是在父子通信里的一个重要成员。
 
-对于使用 template 的开发者来说，在 script-setup 里获取插槽数据并不困难，因为跟标准组件的写法是完全一样的，可以直接在 template 里使用 `<slot />` 标签渲染。
+对于使用 `template` 的开发者来说，在 `script-setup` 里获取插槽数据并不困难，因为跟标准组件的写法是完全一样的，可以直接在 `template` 里使用 `<slot />` 标签渲染。
 
 ```vue
 <template>
@@ -454,7 +448,7 @@ export default defineComponent({
 })
 ```
 
-新版本的 Vue 也提供了一个全新的 `useSlots` API 来帮助 script-setup 用户获取插槽。
+新版本的 Vue 也提供了一个全新的 `useSlots` API 来帮助 `script-setup` 用户获取插槽。
 
 :::tip
 请注意，`useSlots` API 需要 Vue `3.1.4` 或更高版本才可以使用。
@@ -489,7 +483,7 @@ import ChildTSX from '@cp/context/Child.tsx'
 在使用 JSX / TSX 编写的子组件里，就可以通过 `useSlots` 来获取父组件传进来的 `slots` 数据进行渲染：
 
 ```tsx
-// 注意：这是一个 .tsx 文件
+// 注意：这是一个 .tsx组件文件
 import { defineComponent, useSlots } from 'vue'
 
 const ChildTSX = defineComponent({
@@ -517,9 +511,9 @@ export default ChildTSX
 
 在标准组件写法里，子组件的数据都是默认隐式暴露给父组件的，也就是父组件可以通过 `childComponent.value.foo` 这样的方式直接操作子组件的数据（参见：[DOM 元素与子组件 - 响应式 API 之 ref](../introduction/component.md#dom-元素与子组件)）。
 
-但在 script-setup 模式下，所有数据只是默认隐式 return 给 template 使用，不会暴露到组件外，所以父组件是无法直接通过挂载 ref 变量获取子组件的数据。
+但在 `script-setup` 模式下，所有数据只是默认隐式 return 给 template 使用，不会暴露到组件外，所以父组件是无法直接通过挂载 ref 变量获取子组件的数据。
 
-在 script-setup 模式下，如果要调用子组件的数据，需要先在子组件显式的暴露出来，才能够正确的拿到，这个操作，就是由 `defineExpose` 来完成。
+在 `script-setup` 模式下，如果要调用子组件的数据，需要先在子组件显式的暴露出来，才能够正确的拿到，这个操作，就是由 `defineExpose` 来完成。
 
 #### defineExpose 的基础用法
 

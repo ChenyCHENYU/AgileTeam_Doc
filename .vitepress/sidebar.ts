@@ -31,7 +31,7 @@ export const sidebar: DefaultTheme.Sidebar = [
       { text: '插件的开发和使用', link: '/introduction/plugin' },
       { text: '组件之间的通信', link: '/introduction/communication' },
       { text: '全局状态的管理', link: '/introduction/pinia' },
-      { text: '高效开发', link: '/introduction/efficient' },
+      { text: 'Vue3.2 语法糖', link: '/introduction/efficient' },
     ],
   },
   {
