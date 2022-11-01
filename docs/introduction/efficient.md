@@ -574,7 +574,7 @@ export default defineComponent({
 <!-- 评论 -->
 <ClientOnly>
   <GitalkComment
-    :issueId="118"
+    :issueId="1"
   />
 </ClientOnly>
 <!-- 评论 -->

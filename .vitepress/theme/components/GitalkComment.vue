@@ -7,10 +7,10 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted } from 'vue'
-import md5 from 'md5'
 import Gitalk from 'gitalk'
 import 'gitalk/dist/gitalk.css'
+import md5 from 'md5'
+import { onMounted } from 'vue'
 
 const props = defineProps<{
   issueId: number
@@ -18,13 +18,14 @@ const props = defineProps<{
 
 function init() {
   const gitalk = new Gitalk({
-    clientID: 'b83f94a1becad40b30df',
-    clientSecret: '43f498e9660b0fb385a0a139277f13e87f26074d',
-    repo: 'learning-vue3',
-    owner: 'chengpeiquan',
-    admin: ['chengpeiquan'],
+    clientID: '80a0a068abb4ac55041c',
+    clientSecret: 'f1b2b79398951d1f298ab0634d75a9b8692a8754',
+    repo: 'document-comment',
+    owner: 'ycyplus',
+    admin: ['ycyplus'],
     id: md5(location.pathname),
     number: props.issueId,
+    // title: document.title,
   })
 
   gitalk.render('gitalk-container')
@@ -42,10 +43,7 @@ onMounted(init)
     Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
   background-color: var(--c-bg-light);
 }
-.gitalk-container
-  :deep(.gt-container)
-  .gt-svg
-  svg {
+.gitalk-container :deep(.gt-container) .gt-svg svg {
   fill: var(--c-brand);
 }
 .gitalk-container :deep(.gt-container) .gt-link {
@@ -59,28 +57,17 @@ onMounted(init)
   color: var(--c-brand);
   background-color: var(--c-bg);
 }
-.gitalk-container
-  :deep(.gt-container)
-  .gt-comments
-  .gt-comments-null {
+.gitalk-container :deep(.gt-container) .gt-comments .gt-comments-null {
   color: var(--c-text);
 }
-.gitalk-container
-  :deep(.gt-container)
-  .gt-comment-content {
+.gitalk-container :deep(.gt-container) .gt-comment-content {
   background-color: var(--c-bg-light);
   box-shadow: none;
 }
-.gitalk-container
-  :deep(.gt-container)
-  .gt-comment-content
-  .gt-comment-body {
+.gitalk-container :deep(.gt-container) .gt-comment-content .gt-comment-body {
   color: var(--c-text) !important;
 }
-.gitalk-container
-  :deep(.gt-container)
-  .gt-comment-content
-  blockquote {
+.gitalk-container :deep(.gt-container) .gt-comment-content blockquote {
   color: var(--c-text-quote) !important;
   border: 0;
   background-color: var(--c-bg-lighter);
