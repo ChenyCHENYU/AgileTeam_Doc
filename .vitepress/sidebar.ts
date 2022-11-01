@@ -2,7 +2,7 @@
  * @Author: ChenYu
  * @Date: 2022-10-22 17:14:01
  * @LastEditors: ChenYu ycyplus@163.com
- * @LastEditTime: 2022-11-01 11:32:15
+ * @LastEditTime: 2022-11-01 12:43:09
  * @FilePath: \my-agile-team-document\.vitepress\sidebar.ts
  * @Description:
  * Copyright (c) ${2022} by ChenYu/天智AgileTeam, All Rights Reserved.
@@ -47,8 +47,10 @@ export const sidebar: DefaultTheme.Sidebar = [
     items: [
       { text: 'Composition API', link: '/actual-ombat/vue3-composition-api' },
       { text: '更多新语法细节', link: '/actual-ombat/vue3-new-grammar' },
-      { text: '组件编写方式', link: '/actual-ombat/vue3-component-writing' },
-      { text: '3.0到3.2渐进式实践', link: '/actual-ombat/vue3-practice' },
+      {
+        text: '掌握 JSX 语法场景',
+        link: '/actual-ombat/vue3-jsx-component-writing',
+      },
     ],
   },
   {
