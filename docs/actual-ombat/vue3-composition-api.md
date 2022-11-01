@@ -24,12 +24,15 @@ Composition API(组合式 api) 本质上就是 vue 抽离了一系列方法可�
 
 ## ref 及延伸方法
 
-下文都以 vue3.2 版 **\<script setup>** 示栗介绍组合 API
+下文都以 vue3.2 版 **`<script setup>`** 示栗介绍组合 API
+
+### ref
+
 ::: tip :eyes: ref
 作用：一般用于定义基本数据类型数据，比如 <FontColor text="String / Boolean / Number"/> 等  
 背后：ref 的背后是使用 reactive 来实现的响应式  
-语法：<Code text="const x = ref(100)"/>  
-访问：在 setup 中使用 .value 来访问  
+语法：`const x = ref(100)`  
+访问：在 setup 中使用 `.value` 来访问  
 :::
 
 ```vue
@@ -47,10 +50,12 @@ const add = () => num.value++ // 在setup中，要使用.value来访问
 </script>
 ```
 
+### isRef
+
 ::: tip :eyes: isRef
-作用：判断一个变量是否为一个 ref 对象  
-背后：ref 的背后是使用 reactive 来实现的响应式  
-语法：<Code text="const bol = isRef(x)"/>  
+作用：判断一个变量是否为一个 `ref` 对象  
+背后：`ref` 的背后是使用 `reactive` 来实现的响应式  
+语法：`const bol = isRef(x)`
 :::
 
 ```vue
@@ -67,10 +72,12 @@ console.log(isRef(world)) // false
 </script>
 ```
 
+### unRef
+
 ::: tip :eyes: unRef
-作用：用于返回一个值，如果访问的是 ref 变量，就返回其 .value 值；如果不是 ref 变量，就直接返回  
-背后：ref 的背后是使用 reactive 来实现的响应式  
-语法：<Code text="const x = unref(y)"/>  
+作用：用于返回值，如果访问的是 `ref` 变量，就返回其 `.value` 值；如果不是 `ref` 变量，就直接返回  
+背后：`ref` 的背后是使用 `reactive` 来实现的响应式  
+语法：`const x = unref(y)`
 :::
 
 ```vue
@@ -91,10 +98,12 @@ console.log(unref(world)) // 'World'
 </script>
 ```
 
+### toRef
+
 ::: tip :eyes: toRef
-作用：把一个 reactive 对象中的某个属性变成 ref 变量  
-背后：ref 的背后是使用 reactive 来实现的响应式  
-语法：<Code text="const x = toRef(reactive(obj), 'key')"/>
+作用：把一个 `reactive` 对象中的某个属性变成 `ref` 变量  
+背后：`ref` 的背后是使用 `reactive` 来实现的响应式  
+语法：`const x = toRef(reactive(obj), 'key')`
 :::
 
 ```vue
@@ -111,11 +120,13 @@ console.log(isRef(age)) // true
 </script>
 ```
 
+### toRefs
+
 ::: tip :eyes: toRefs
-作用：把一个 reactive 响应式对象变成 ref 变量  
-背后：ref 的背后是使用 reactive 来实现的响应式  
-语法：<Code text="const obj1 = toRefs(reactive(obj))"/>  
-应用：在子组件中接收父组件传递过来的 props 时，使用 toRefs 把它变成响应式的
+作用：把一个 `reactive` 响应式对象变成 ref 变量  
+背后：`ref` 的背后是使用 `reactive` 来实现的响应式  
+语法：`const obj1 = toRefs(reactive(obj))`  
+应用：在子组件中接收父组件传递过来的 `props` 时，使用 `toRefs` 把它变成响应式的
 :::
 
 ```vue
@@ -134,17 +145,19 @@ console.log(isRef(info)) // true
 </script>
 ```
 
+### shallowRef，triggerRef
+
 ::: tip :eyes: shallowRef
-作用：对复杂层级的对象，只将其第一层变成 ref 响应(性能优化)  
-背后：ref 的背后是使用 reactive 来实现的响应式  
-语法：<Code text="const x = shallowRef({a:{b:{c:1}}, d:2})"/>  
-应用：在子组件中接收父组件传递过来的 props 时，使用 toRefs 把它变成响应式的  
-注意：如此 a、b、c、d 变化都不会自动更新，需要借助 triggerRef 来强制更新 :bulb:
+作用：对复杂层级的对象，只将其第一层变成 `ref` 响应(性能优化)  
+背后：`ref` 的背后是使用 `reactive` 来实现的响应式  
+语法：`const x = shallowRef({a:{b:{c:1}}, d:2})`  
+应用：在子组件中接收父组件传递过来的 `props` 时，使用 `toRefs` 把它变成响应式的  
+注意：如此 a、b、c、d 变化都不会自动更新，需要借助 triggerRef 来强制更新 :bulb:  
 :::
 
 ::: tip :eyes: triggerRef
-作用：强制更新一个 shallowRef 对象的渲染  
-语法：<Code text="triggerRef(shallowRef对象)"/>  
+作用：强制更新一个 `shallowRef` 对象的渲染  
+语法：`triggerRef(shallowRef对象)`  
 参考代码：同见下栗 :mag:
 :::
 
@@ -181,10 +194,12 @@ const changeD = () => {
 
 ## reactive 及延伸方法
 
+### reactive
+
 ::: tip :eyes: reactive
 作用：定义响应式变量，一般用于定义引用数据类型。如果是基本数据类型  
-语法：<Code text="const info = reactive([] | {})"/>  
-注意：建议使用 ref 来定义，vue3.2 最佳实践推荐使用 ref 替代 reactive 定义响应式数据 :bulb:  
+语法：`const info = reactive([] | {})`  
+注意：建议使用 `ref` 来定义，vue3.2 最佳实践推荐使用 `ref` 替代 `reactive` 定义响应式数据 :bulb:  
 :::
 
 ```vue
@@ -211,9 +226,11 @@ const addRow = () => {
 </script>
 ```
 
+### readonly
+
 ::: tip :eyes: readonly
 作用：修饰符，把一个对象，变成只读的  
-语法：<Code text="const rs = readonly(ref对象 | reactive对象 | 普通对象)"/>  
+语法：`const rs = readonly(ref对象 | reactive对象 | 普通对象)`  
 :::
 
 ```vue
@@ -231,9 +248,11 @@ const change = () => {
 </script>
 ```
 
+### isReadonly
+
 ::: tip :eyes: isReadonly
 作用：判断一个变量是不是只读的  
-语法：<Code text="const bol = isReadonly(变量)"/>  
+语法：`const bol = isReadonly(变量)`
 :::
 
 ```vue
@@ -248,9 +267,11 @@ console.log(isReadonly(user)) // false
 </script>
 ```
 
+### isReactive
+
 ::: tip :eyes: isReactive
-作用：判断一个变量是不是 reactive 的  
-注意：被 readonly 代理过的 reactive 变量，调用 isReactive 也是返回 true 的 :bulb:  
+作用：判断一个变量是不是 `reactive` 的  
+注意：被 `readonly` 代理过的 `reactive` 变量，调用 `isReactive` 也是返回 `true` 的 :bulb:  
 :::
 
 ```vue
@@ -265,9 +286,11 @@ console.log(isReactive(user)) // true
 </script>
 ```
 
+### isProxy
+
 ::: tip :eyes: isProxy
-作用：判断一个变量是不是 readonly 或 reactive 的  
-注意：也就是说，只有 readonly 或 reactive 的才是一个 Proxy 代理对象 :bulb:
+作用：判断一个变量是不是 `readonly` 或 `reactive` 的  
+注意：也就是说，只有 `readonly` 或 `reactive` 的才是一个 `Proxy` 代理对象 :bulb:
 :::
 
 ```vue
@@ -284,10 +307,12 @@ console.log(isProxy(num)) // false
 </script>
 ```
 
+### toRaw
+
 ::: tip :eyes: toRaw
-作用：得到返回 reactive 变量或 readonly 变量的 "原始对象"  
-语法：<Code text="const raw = toRaw(reactive变量或readonly变量)"/>  
-注意：reactive(obj)、readonly(obj) 和 obj 之间是一种代理关系，并且它们之间是一种浅拷贝的关系。obj 变化，会导致 reactive(obj) 同步变化，反之一样 :bulb:
+作用：得到返回 `reactive` 变量或 `readonly` 变量的 "原始对象"  
+语法：`const raw = toRaw(reactive变量或readonly变量)`  
+注意：`reactive(obj)`、`readonly(obj)` 和 `obj` 之间是一种代理关系，并且它们之间是一种浅拷贝的关系。`obj` 变化，会导致 `reactive(obj)` 同步变化，反之一样 :bulb:
 :::
 
 ```vue
@@ -306,9 +331,11 @@ console.log(ii === toRaw(info)) // true
 </script>
 ```
 
+### markRaw
+
 ::: tip :eyes: markRaw
-作用：把一个普通对象标记成 "永久原始"，从此将无法再变成 proxy 了  
-语法：<Code text="const raw = markRaw({a,b})"/>  
+作用：把一个普通对象标记成 "永久原始"，从此将无法再变成 `proxy` 了  
+语法：`const raw = markRaw({a,b})`  
 :::
 
 ```vue
@@ -324,9 +351,11 @@ console.log(isProxy(u2)) // false
 </script>
 ```
 
+### shallowReactive
+
 ::: tip :eyes: shallowReactive
-作用：定义一个 reactive 变量，只对它的第一层进行 Proxy,，所以只有第一层变化时视图才更新  
-语法：<Code text="const obj = shallowReactive({a: { b:9 } })"/>  
+作用：定义一个 `reactive` 变量，只对它的第一层进行 `Proxy`,，所以只有第一层变化时视图才更新  
+语法：`const obj = shallowReactive({a: { b:9 } })`  
 :::
 
 ```vue
@@ -351,9 +380,11 @@ console.log(isProxy(info.d)) // false
 </script>
 ```
 
+### shallowReadonly
+
 ::: tip :eyes: shallowReadonly
-作用：定义一个 reactive 变量，只有第一层是只读的  
-语法：<Code text="const obj = shallowReadonly({a: { b:9 } })"/>  
+作用：定义一个 `reactive` 变量，只有第一层是只读的  
+语法：`const obj = shallowReadonly({a: { b:9 } })`  
 :::
 
 ```vue
@@ -380,7 +411,7 @@ console.log(isReadonly(info.d)) // false
 
 ::: tip :eyes: computed
 作用：对响应式变量进行缓存计算  
-语法：<Code text="const c = computed(fn / { get,set })"/>  
+语法：`const c = computed(fn / { get,set })`  
 :::
 
 ```vue
@@ -425,9 +456,9 @@ const text = computed({
 
 ::: tip :eyes: watch
 作用：用于监听响应式变量的变化，组件初始化时，它不执行  
-语法：<Code text="const stop = watch(x, (new,old)=>{})"/>  
-语法：<Code text="const stop = watch([x,y], ([newX,newY],[oldX,oldY])=>{})"/>  
-注意：调用 stop()可以停止监听 :bulb:
+语法：`const stop = watch(x, (new,old)=>{})`  
+语法：`const stop = watch([x,y], ([newX,newY],[oldX,oldY])=>{})`  
+注意：调用 `stop()` 可以停止监听 :bulb:
 :::
 
 ```vue
@@ -471,10 +502,10 @@ const stopAll = () => {
 
 ::: tip :eyes: watchEffect
 作用：不指定监听属性，相当于是 react 中的 useEffect()，用于执行各种副作用  
-语法：<Code text="const stop = watchEffect(fn)，默认其 flush:'pre'"/> 前置执行的副作用  
-● watchPostEffect，等价于 watchEffect(fn, {flush:'post'})，后置执行的副作用  
-● watchSyncEffect，等价于 watchEffect(fn, {flush:'sync'})，同步执行的副作用  
-注意：watchEffect 会自动收集其内部响应式依赖，当响应式依赖发变化时，这个 watchEffect 将再次执行，直到你手动 stop() 掉它 :bulb:
+语法：`const stop = watchEffect(fn)，默认其 flush:'pre'` 前置执行的副作用  
+● `watchPostEffect`，等价于 `watchEffect(fn, {flush:'post'})`，后置执行的副作用  
+● `watchSyncEffect`，等价于 `watchEffect(fn, {flush:'sync'})`，同步执行的副作用  
+注意：`watchEffect` 会自动收集其内部响应式依赖，当响应式依赖发变化时，这个 `watchEffect` 将再次执行，直到你手动 `stop()` 掉它 :bulb:
 :::
 
 ```vue
@@ -530,12 +561,13 @@ const stopAll = () => {
 ## 生命周期钩子
 
 ::: tip :eyes: 生命周期钩子
-\- 选项式的 beforeCreate、created，被 setup 替代了  
-\- setup 表示组件被创建之前，props 被解析之后执行，它是组合式 API 的入口  
-\- 选项式的 beforeDestroy、destroyed 被更名为 beforeUnmount、unMounted  
-\- 新增了两个选项式的生命周期 renderTracked、renderTriggered，它们只在开发环境有用，常用于调试  
-\- 在使用 setup 组合时，不建议使用选项式的生命周期，应该使用 on\* 系列 hooks 生命周期
-:::
+
+- 选项式的 `beforeCreate`、`created`，被 `setup` 替代了
+- setup 表示组件被创建之前，`props` 被解析之后执行，它是组合式 API 的入口
+- 选项式的 `beforeDestroy`、`destroyed` 被更名为 `beforeUnmount`、`unMounted`
+- 新增两个选项式生命周期 `renderTracked`、`renderTriggered`，它们在开发环境有用，常用于调试
+- 在使用 `setup` 组合时，不建议使用选项式的生命周期，应该使用 **on\*** 系列 hooks 生命周期
+  :::
 
 ```vue
 <template>
@@ -588,8 +620,8 @@ onErrorCaptured(() => console.log('---错误捕获'))
 
 ::: tip :eyes: provide / inject
 作用：在组件树中自上而下地传递数据  
-语法：<Code text="provide('key', value)"/>  
-语法：<Code text="const value = inject('key', '默认值')"/>  
+语法：`provide('key', value)`  
+语法：`const value = inject('key', '默认值')`  
 :::
 
 ```vue
@@ -616,9 +648,9 @@ const msg = inject('msg', 'Hello Vue')
 
 ::: tip :eyes: getCurrentInstance
 作用：用于访问内部组件实例  
-语法：<Code text="const app = getCurrentInstance()"/>  
-场景：常用于访问 app.config.globalProperties 上的全局数据  
-注意：请不要把它当作在组合式 API 中获取 this 的替代方案来使用，切记 :bulb:
+语法：`const app = getCurrentInstance()`  
+场景：常用于访问 `app.config.globalProperties` 上的全局数据  
+注意：请不要把它当作在组合式 API 中获取 `this` 的替代方案来使用，切记 :bulb:
 :::
 
 ```vue
