@@ -15,7 +15,7 @@ outline: 'deep'
 ## ref 获取实例对象
 
 ::: tip :eyes: ref =~> 收集 $refs 对象
-在 Vue2 中，v-for 和 <Code text="ref"/> 同时使用，这会自动收集 <Code text="$refs"/>，当存在嵌套的 v-for 时，这种行为会变得不明确且效率低下，在 Vue3 中，v-for 和 <Code text="ref"/> 同时使用，这不再自动收集 <Code text="$refs"/>，可以手动封装收集 <Code text="ref"/> 对象的方法，将其绑定在 <Code text="ref"/> 属性上
+在 Vue2 中，v-for 和 `ref` 同时使用，这会自动收集 `$refs`，当存在嵌套的 `v-for` 时，这种行为会变得不明确且效率低下，在 Vue3 中，`v-for`和`ref`同时使用，这不再自动收集`$refs`，可以手动封装收集 `ref`对象的方法，将其绑定在`ref` 属性上
 :::
 
 ```vue
@@ -40,7 +40,7 @@ onMounted(() => console.log('refs', refs))
 ## defineAsyncComponent 异步加载
 
 ::: tip :eyes: defineAsyncComponent =~> 异步加载组件
-在 Vue3 中，使用 <Code text="defineAsyncComponent"/> 可以异步地加载组件，但是需要注意的是，这种异步组件是不能用在 <FontColor text="Vue-Router"/> 的路由懒加载中
+在 Vue3 中，使用 `defineAsyncComponent` 可以异步地加载组件，但是需要注意的是，这种异步组件是不能用在 <FontColor text="Vue-Router"/> 的路由懒加载中
 :::
 
 ```vue
@@ -58,10 +58,9 @@ const AsyncChild = defineAsyncComponent({
 ## attrs 获取组件所有属性
 
 ::: tip :eyes: attrs =~> 处理 $attrs 
-Vue3 中的  <Code text="$attrs"/> ，包含了父组件传递过来的所有属性，包括 class 和 style  
-在 Vue2 中，<Code text="$attrs"/> 是接到不到 class 和 style 的  
-在 setup 组件中，使用 <Code text="useAttrs()"/> 访问  
-在非 setup 组件中，使用 <Code text="this.$attrs / setupCtx.attrs"/> 来访问
+Vue3 中的  `$attrs`，包含了父组件传递过来的所有属性，包括`class`和`style` 在 Vue2 中，`$attrs` 是接到不到 `class` 和 `style` 的  
+在 `setup` 组件中，使用 `useAttrs()` 访问  
+在非 `setup` 组件中，使用 `this.$attrs / setupCtx.attrs` 来访问
 
 :::
 
@@ -78,7 +77,7 @@ console.log('attrs', attrs)
 ## directive 指令的变化
 
 ::: tip :eyes: directive =~> 指令
-Vue3 中，使用 <Code text="app.directive()"/> 来定义全局指令，并且定义指令时的钩子函数们也发生了若干变化
+Vue3 中，使用 `app.directive()` 来定义全局指令，并且定义指令时的钩子函数们也发生了若干变化
 :::
 
 ```js
@@ -105,11 +104,11 @@ app.directive('highlight', {
 ## emits 组件通信的变化
 
 ::: tip :eyes: emits =~> 触发事件
-非 <Code text="<script setup>"/> 写法中  
-\- 使用 <Code text="emits"/> 选项接收父组件传递过来的自定义事件
-\- 使用 <Code text="ctx.emit()"/> 或 <Code text="this.$emit()"/> 来触发事件  
-在 <Code text="<script setup>"/> 写法中  
-\- 使用 <Code text="defineEmits"/> 来接收自定义事件，使用 <Code text="defineProps"/> 来接收自定义属性
+**非** `<script setup>` 写法中  
+\- 使用 `emits` 选项接收父组件传递过来的自定义事件  
+\- 使用 `ctx.emit()` 或 `this.$emit()` 来触发事件  
+**在** `<script setup>` 写法中  
+\- 使用 `defineEmits` 来接收自定义事件，使用 `defineProps` 来接收自定义属性
 :::
 
 ```vue
@@ -131,8 +130,10 @@ const emit = defineEmits(['change', 'update:count'])
 
 ## 其他高级功能
 
+### Fragment
+
 ::: warning :zap: 无需 Fragment 根节点
-Vue3 现在正式支持了多根节点的组件，也就是片段，类似 React 中的 <FontColor text="Fragment"/> 使用片段的好处是，当我们要在 template 中添加多个节点时，没必要在外层套一个 div 了，套一层 div 这会导致多了一层 DOM 结构可见，片段可以减少没有必要的 DOM 嵌套
+Vue3 现在正式支持了多根节点的组件，也就是片段，类似 `React` 中的 <FontColor text="Fragment"/> 使用片段的好处是，当我们要在 `template` 中添加多个节点时，没必要在外层套一个 `div` 了，套一层 `div` 这会导致多了一层 **DOM** 结构可见，片段可以减少没有必要的 **DOM** 嵌套
 :::
 
 ```vue
@@ -143,8 +144,11 @@ Vue3 现在正式支持了多根节点的组件，也就是片段，类似 React
 </template>
 ```
 
+### JSX / TSX
+
 ::: warning :zap: .j / tsx 函数式组件
-函数式组件的变化：在 Vue 2 中，要使用 functional 选项来支持函数式组件的封装在 Vue3 中，函数式组件可以直接用普通函数进行创建如果你在 vite 环境中安装了 <FontColor text="`@vitejs/plugin-vue-jsx`" color="gray"/> 插件来支持 JSX 语法，那么定义函数式组件就更加方便了
+\- 在 Vue 2 中，要使用 `functional` 选项来支持函数式组件的封装  
+\- 在 Vue 3 中，函数式组件可以直接用普通函数进行创建如果你在 vite 环境中安装了 <FontColor text="`@vitejs/plugin-vue-jsx`" color="gray"/> 插件来支持 JSX 语法，那么定义函数式组件就更加方便了
 :::
 
 ```tsx
@@ -166,8 +170,10 @@ export default (props, ctx) => {
 }
 ```
 
+### Vue 实例方法 app.use()
+
 ::: warning :zap: Vue 实例方法代替静态方法、属性
-Vue2 中的 Vue 构造函数，在 Vue3 中已经不能再使用了所以 Vue 构造函数上的静态方法、静态属性，比如 <FontColor text="Vue.use / Vue.mixin  / Vue.prototype" color="pink"/> 等都不能使用了，在 Vue3 中新增了一套实例方法来代替，比如 <Code text="app.use()"/> 等
+Vue2 中的 Vue 构造函数，在 Vue3 中已经不能再使用了所以 Vue 构造函数上的静态方法、静态属性，比如 <FontColor text="Vue.use / Vue.mixin  / Vue.prototype" color="pink"/> 等都不能使用了，在 Vue3 中新增了一套实例方法来代替，比如 `app.use()` 等
 :::
 
 ```js
@@ -185,8 +191,10 @@ app.use(router) // 注册路由系统
 app.use(store) // 注册状态管理
 ```
 
+### getCurrentInstance
+
 ::: warning :zap: getCurrentInstance 访问内部组件实例
-在 Vue3 中，使用 <Code text="getCurrentInstance"/> 访问内部组件实例，进而可以获取到 app.config 上的全局数据，比如 <Code text="$route、$router、$store "/> 和自定义数据等这个 API 只能在 <Code text="setup"/> 或 生命周期钩子 中调用
+在 Vue3 中，使用 `getCurrentInstance` 访问内部组件实例，进而可以获取到 app.config 上的全局数据，比如 `$route`、`$router`、`$store` 和自定义数据等，这个 API 只能在 `setup` 或 生命周期中调用
 :::
 
 ```vue
@@ -211,9 +219,11 @@ console.log('store', $store)
 </script>
 ```
 
+### provide，inject 其他使用方式
+
 ::: warning :zap: provide，inject 其他使用方式
-使用 <Code text="provide"/> 和 <Code text="inject"/> 这两个组合 API 可以组件树中传递数据  
-除此之外，还可以应用级别的 <Code text="app.provide()"/> 来注入全局数据在编写插件、类库时使用 <Code text="app.provide()"/> 尤其有用，可以替代 <FontColor text="app.config.globalProperties" color="pink"/>
+使用 `provide` 和 `inject` 这两个组合 API 可以组件树中传递数据  
+除此之外，还可以应用级别的 `app.provide()` 来注入全局数据，那么在编写插件，还有类库的时如果使用 `app.provide()` 尤其有用，可以替代 <FontColor text="app.config.globalProperties" color="pink"/>
 :::
 
 ```vue
@@ -225,9 +235,11 @@ const global = inject('global')
 </script>
 ```
 
+### nextTick 的改进
+
 ::: warning :zap: nextTick 的改进
-在 Vue2 中，<FontColor text="Vue.nextTick()"/> 或 <FontColor text="this.$nextTick"/> 不能支持 Webpack 的 Tree-Shaking 功能  
-在 Vue3 中的 <Code text="nextTick"/> ，考虑到了对 Tree-Shaking 的支持  
+在 Vue2 中，<FontColor text="Vue.nextTick()"/> 或 <FontColor text="this.$nextTick"/> 不能支持 Webpack 的 `Tree-Shaking` 功能  
+在 Vue3 中的 `nextTick` ，考虑到了对 `Tree-Shaking` 的支持  
 :::
 
 ```vue
@@ -250,8 +262,10 @@ watchPostEffect(() => {
 </script>
 ```
 
+### 无需手动添加 key 的优化
+
 ::: warning :zap: 无需手动添加 key 的优化
-Vue3 中，对于 <FontColor text="v-if/v-else/v-else-if"/> 的各分支项，无须再手动绑定 key 了， Vue3 会自动生成唯一的 key 因此，在使用过渡动画 <Code text="<transition> "/>对多个节点进行显示隐藏时，也无须手动加 <FontColor text="key"/> 了
+Vue3 中，对于 <FontColor text="v-if/v-else/v-else-if"/> 的各分支项，无须再手动绑定 <FontColor text="key"/> 了， Vue3 会自动生成唯一的 `key` 因此，在使用过渡动画 `<transition>` 对多个节点进行显示隐藏时，也无须手动加 `key` 了
 :::
 
 ```vue
@@ -281,10 +295,12 @@ const bol = ref(true)
 </script>
 ```
 
+### createApp 的变化
+
 ::: warning :zap: createApp 的变化
 在 Vue2 中，使用 <FontColor text="propsData" color="pink"/> 选项，可以实现在 <FontColor text="new Vue()"/> 时向根组件传递 <FontColor text="props"/> 数据  
 在 Vue3 中，<FontColor text="propsData" color="pink"/> 选项 被淘汰了  
-替代方案是：使用 <Code text="createApp"/> 的第二个参数，在 <FontColor text="app"/> 实例创建时向根组件传入 <Code text="props"/> 数据
+替代方案是：使用 `createApp` 的第二个参数，在 <FontColor text="app"/> 实例创建时向根组件传入 `props` 数据
 :::
 
 ```vue
@@ -302,7 +318,7 @@ console.log('app props', props)
 ```
 
 ::: warning :zap: render 函数的变化
-在 Vue2 中，组件有一个 <FontColor text="render"/> 选项（它本质上是一个渲染函数，这个渲染函数的形参是 h 函数），<Code text="h"/> 函数相当于 React 中的 <FontColor text="createElement()"/> , 在 Vue3 <FontColor text="render"/> 函数选项发生了变化：它的形参不再是 <Code text="h"/> 函数了 ，变成了一个 **全局 API**，须导入后才能使用
+在 Vue2 中，组件有一个 <FontColor text="render"/> 选项（它本质上是一个渲染函数，这个渲染函数的形参是 h 函数），`h` 函数相当于 React 中的 <FontColor text="createElement()"/> , 在 Vue3 `render` 函数选项发生了变化：它的形参不再是 `h` 函数了 ，变成了一个 **全局 API**，须导入后才能使用
 :::
 
 ```ts
@@ -320,8 +336,10 @@ const app = createApp(
 app.$mount('#app')
 ```
 
+### \<suspense> 异步组件加载
+
 ::: warning :zap: \<suspense> 异步组件加载
-Vue3 中新增了内置组件 <Code text="<suspense>"/>，它类似 <FontColor text="React.Suspense"/> 一样，用于给异步组件加载时，指定 Loading 指示器需要注意的是，这个新特征尚未正式发布，其 API 可能随时会发生变动
+Vue3 中新增了内置组件 `<suspense>`，它类似 <FontColor text="React.Suspense"/> 一样，用于给异步组件加载时，指定 Loading 指示器需要注意的是，这个新特征尚未正式发布，其 API 可能随时会发生变动
 :::
 
 ```vue
@@ -346,10 +364,12 @@ const AsyncChild = defineAsyncComponent({
 </script>
 ```
 
+### \<transition> 的变化
+
 ::: warning :zap: \<transition> 的变化
-Vue3 中，过渡动画 <Code text="<transition>"/> 发生了一系列变化  
-之前的 <FontColor text="v-enter" color="pink"/> 变成了现在的 <Code text="v-enter-from"/> ， 之前的 <FontColor text="v-leave" color="pink"/> 变成了现在的 <Code text="v-leave-from"/>  
-另一个变化是：当使用 <Code text="<transition>"/> 作为根结点的组件，从外部被切换时将不再触发过渡效果
+Vue3 中，过渡动画 `<transition>` 发生了一系列变化  
+之前的 <FontColor text="v-enter" color="pink"/> 变成了现在的 `v-enter-from` ， 之前的 <FontColor text="v-leave" color="pink"/> 变成了现在的 `v-leave-from`  
+另一个变化是：当使用 `<transition>` 作为根结点的组件，从外部被切换时将不再触发过渡效果
 :::
 
 ```vue
@@ -392,11 +412,13 @@ const bol = ref(true)
 </style>
 ```
 
+### : 或 v-bind 属性绑定的变化
+
 ::: warning :zap: : 或 v-bind 属性绑定的变化
 在 Vue2 中，静态属性和动态属性同时使用时，不确定最终哪个起作用  
 在 Vue3 中，这是可以确定的 :bulb:  
-\- 当动态属性使用 <Code text=":title"/> 方式绑定时，谁在前面谁起作用  
-\- 当动态属性使用 <Code text="v-bind='object'"/> 方式绑定时，谁在后面谁起作用  
+\- 当动态属性使用 `:title` 方式绑定时，谁在前面谁起作用  
+\- 当动态属性使用 `v-bind='object'` 方式绑定时，谁在后面谁起作用  
 :::
 
 ```vue
@@ -411,8 +433,10 @@ const bol = ref(true)
 </template>
 ```
 
+### watch 常用配置参数
+
 ::: warning :zap: watch 常用的配置参数 deep
-当使用 <Code text="watch"/> 选项侦听数组时，只有在数组被替换时才会触发回调，换句话说，在数组被改变时侦听回调将不再被触发，要想在数组被改变时触发侦听回调，必须指定 <Code text="deep"/> 选项
+当使用 `watch` 选项侦听数组时，只有在数组被替换时才会触发回调，换句话说，在数组被改变时侦听回调将不再被触发，要想在数组被改变时触发侦听回调，必须指定 `deep` 选项
 :::
 
 ```vue
@@ -442,9 +466,11 @@ watch(
 </script>
 ```
 
+### props 的变化和 inject 的亲近
+
 ::: warning :zap: props 的变化和 inject 的亲近
 在 Vue2 中接收 <FontColor text="props"/> 时，如果 prop 的默认值是工厂函数，那么在这个工厂函数里是有 <FontColor text="this"/> 的  
-在 Vue3 中生成 <Code text="props"/> 时 ，prop 默认值的工厂函数不再能访问 <FontColor text="this"/> 了，但是却意外可以访问 <Code text="inject"/>
+在 Vue3 中生成 `props` 时 ，prop 默认值的工厂函数不再能访问 <FontColor text="this"/> 了，但是却意外可以访问 `inject`
 :::
 
 ```vue
@@ -482,8 +508,10 @@ const props = defineProps({
 </script>
 ```
 
+### \<teleport> 组件
+
 ::: warning :zap: \<teleport> 组件
-Vue3 中，新增了 <Code text="<teleport>"/> 组件，这相当于 <FontColor text="ReactDOM.createPortal()"/>，它的作用是把指定的元素或组件渲染到任意父级作用域的其它 DOM 节点上，<Code text="<teleport>"/> 还常用于封装 Modal 弹框组件，如下栗
+Vue3 中，新增了 `<teleport>` 组件，这相当于 <FontColor text="ReactDOM.createPortal()"/>，它的作用是把指定的元素或组件渲染到任意父级作用域的其它 DOM 节点上，`<teleport>` 还常用于封装 Modal 弹框组件，如下栗
 :::
 
 ```vue
@@ -536,15 +564,16 @@ const cancel = () => emit('cancel')
 
 ## v-model 和 v-if，v-for 组合的变化
 
-::: danger :key: v-model 指令的变化和使用  
-\- 在 Vue2 中，<FontColor text="v-model"/> 等价于 <FontColor text=":value + @input"/>  
-\- 在 Vue3 中，移除了 <FontColor text="model" color="pink"/> 选项，移除了 v-bind 指令的 <FontColor text=".sync" color="pink"/> 修饰符  
-\- 在 Vue3 中，<Code text="v-model"/> 等价于 <Code text=":modelValue + @update:modelValue"/>  
-\- 在 Vue3 中，同一个组件上可以同时使用多个 <Code text="v-model"/>  
-\- 在 Vue3 中，还可以自定义 <Code text="v-model"/> 的修饰符
-:::
+::: danger :key: v-model 指令的变化和使用
 
-<ElCard style="text-align:center">封装带有多个 v-model 的自定义组件</ElCard>
+- 在 Vue2 中，<FontColor text="v-model"/> 等价于 <FontColor text=":value + @input"/>
+- 在 Vue3 中，移除了 <FontColor text="model" color="pink"/> 选项，移除了 v-bind 指令的 <FontColor text=".sync" color="pink"/> 修饰符
+- 在 Vue3 中，`v-model` 等价于 <Code text=":modelValue + @update:modelValue"/>
+- 在 Vue3 中，同一个组件上可以同时使用多个 `v-model`
+- 在 Vue3 中，还可以自定义 `v-model` 的修饰符
+  :::
+
+封装带有多个 v-model 的自定义组件：
 
 ```vue
 # GoodFilter.vue
@@ -631,7 +660,7 @@ const priceChange = (ev) => {
 </style>
 ```
 
-<ElCard style="text-align:center">使用带有多个 v-model 的自定义组件</ElCard>
+使用带有多个 v-model 的自定义组件：
 
 ```vue
 <template>
@@ -652,7 +681,7 @@ watch([shop, price], () => {
 
 ::: danger :rocket: v-for，v-if 组合使用
 
-> <ElCard shadow="hover">同一节点上使用 v-for 和 v-if ，在 Vue2 中不推荐这么用，且 v-for 优先级更高。在 Vue3 中，这种写法是允许的，但 v-if 的优秀级更高</ElCard>
+> <ElCard shadow="hover">同一节点上使用 v-for 和 v-if ，在 Vue2 中不推荐这么用，且 v-for 优先级更高。在 Vue3 中，这种写法是允许的，但 v-if 的优秀级更高。</ElCard>
 
 :::
 

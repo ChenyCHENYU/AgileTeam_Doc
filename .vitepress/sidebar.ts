@@ -1,9 +1,9 @@
 /*
  * @Author: ChenYu
  * @Date: 2022-10-22 17:14:01
- * @LastEditors: ChenYu
- * @LastEditTime: 2022-10-25 23:13:21
- * @FilePath: \myAgileTeamVitepress\.vitepress\sidebar.ts
+ * @LastEditors: ChenYu ycyplus@163.com
+ * @LastEditTime: 2022-11-01 11:32:15
+ * @FilePath: \my-agile-team-document\.vitepress\sidebar.ts
  * @Description:
  * Copyright (c) ${2022} by ChenYu/天智AgileTeam, All Rights Reserved.
  */
@@ -46,7 +46,7 @@ export const sidebar: DefaultTheme.Sidebar = [
     text: '聚焦 Vue3 实战',
     items: [
       { text: 'Composition API', link: '/actual-ombat/vue3-composition-api' },
-      { text: '新语法细节', link: '/actual-ombat/vue3-new-grammar' },
+      { text: '更多新语法细节', link: '/actual-ombat/vue3-new-grammar' },
       { text: '组件编写方式', link: '/actual-ombat/vue3-component-writing' },
       { text: '3.0到3.2渐进式实践', link: '/actual-ombat/vue3-practice' },
     ],
