@@ -24,7 +24,7 @@ outline: 'deep'
 
 ### 选项式写法（丢弃）
 
-在 Vue 3.0 的 .vue 组件里，遵循 SFC 规范要求（注：SFC，即 **Single-File Component**，.vue 单组件），标准的 <Code text="setup"/> 用法是，在 `setup` 里面定义的数据如果需要在 `template` 使用，都需要 `return` 出来。
+在 Vue 3.0 的 .vue 组件里，遵循 SFC 规范要求（注：SFC，即 **Single-File Component**，.vue 单组件），标准的 `setup` 用法是，在 `setup` 里面定义的数据如果需要在 `template` 使用，都需要 `return` 出来。
 
 ```vue
 <template>
@@ -85,7 +85,7 @@ const add = () => {
 
 ### JSX 写法（扩展）
 
-> JSX 使自定义 Vue 组件更容易导入和管理，灵活扩展性更强，可以使用 JSX 来单独维护数据交互层，比 <Code text="render"/> 更清晰直观。
+> JSX 使自定义 Vue 组件更容易导入和管理，灵活扩展性更强，可以使用 JSX 来单独维护数据交互层，比 `render` 更清晰直观。
 
 先看个简单栗子：
 

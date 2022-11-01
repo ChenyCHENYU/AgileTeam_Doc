@@ -568,7 +568,7 @@ const cancel = () => emit('cancel')
 
 - 在 Vue2 中，<FontColor text="v-model"/> 等价于 <FontColor text=":value + @input"/>
 - 在 Vue3 中，移除了 <FontColor text="model" color="pink"/> 选项，移除了 v-bind 指令的 <FontColor text=".sync" color="pink"/> 修饰符
-- 在 Vue3 中，`v-model` 等价于 <Code text=":modelValue + @update:modelValue"/>
+- 在 Vue3 中，`v-model` 等价于 `:modelValue + @update:modelValue`
 - 在 Vue3 中，同一个组件上可以同时使用多个 `v-model`
 - 在 Vue3 中，还可以自定义 `v-model` 的修饰符
   :::

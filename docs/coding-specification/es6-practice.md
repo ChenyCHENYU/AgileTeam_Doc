@@ -20,7 +20,7 @@ outline: 'deep'
 \- 注意：在语句块以外引用这些变量时，会造成引用错误 **[暂时性死区]** ReferenceError :bulb:  
 :::
 
-<Tag text="Bad" type="danger"/>
+<ElTag type="danger">Bad</ElTag>
 
 ```js
 // FIXME: 一个var的栗子：
@@ -35,7 +35,7 @@ function getFood(food) {
 getFood(false) // undefined
 ```
 
-<Tag text="Good" type="success"/>
+<ElTag type="success">Good</ElTag>
 
 ```js
 // TODO: 使用 let 替换了 var 后的表现：
@@ -57,7 +57,7 @@ getFood(false) // 'Meow Mix'
 更精简，可读性更高的写法，扁平的解决 this 问题
 :::
 
-<Tag text="Bad" type="danger"/>
+<ElTag type="danger">Bad</ElTag>
 
 ```js
 // FIXME: 传统函数解决 this 方式
@@ -92,7 +92,7 @@ var squares = arr.map(function (x) {
 }) // Function Expression
 ```
 
-<Tag text="Good" type="success"/>
+<ElTag type="success">Good</ElTag>
 
 ```js
 // TODO: 箭头函数解决 this 方式
@@ -111,7 +111,7 @@ const squares = arr.map((x) => x * x)
 .indexOf() 方法通过判断得到 0 或 -1 不够直观，而.includes() 方法会极简地返回一个布尔值结果
 :::
 
-<Tag text="Bad" type="danger"/>
+<ElTag type="danger">Bad</ElTag>
 
 ```js
 var string = 'food',
@@ -119,7 +119,7 @@ var string = 'food',
 console.log(string.indexOf(substring) > -1)
 ```
 
-<Tag text="Good" type="success"/>
+<ElTag type="success">Good</ElTag>
 
 ```js
 const string = 'food',
@@ -134,7 +134,7 @@ console.log(string.includes(substring)) // true
 \- 直接插入变量，可以实现字符串与变量的直接连接输出、识别换行符、内部使用表达式
 :::
 
-<Tag text="Bad" type="danger"/>
+<ElTag type="danger">Bad</ElTag>
 
 ```js
 // FIXME: it's one =~> 转义符
@@ -149,7 +149,7 @@ console.log('My cat is named ' + name + ' and is ' + age + ' years old.')
 var text = 'cat\n' + 'dog\n' + 'nickelodeon'
 ```
 
-<Tag text="Good" type="success"/>
+<ElTag type="success">Good</ElTag>
 
 ```js
 // TODO: it's one =~> 转义符
@@ -174,7 +174,7 @@ let text = `The time and date is ${new Date().toLocaleString()}`
 解构使用非常便捷的语法，直接将数组或者对象中的值直接分别导出到多个变量中，精准获取数据
 :::
 
-<Tag text="Bad" type="danger"/>
+<ElTag type="danger">Bad</ElTag>
 
 ```js
 // FIXME: array
@@ -189,7 +189,7 @@ var occupation = luke.occupation,
   father = luke.father
 ```
 
-<Tag text="Good" type="success"/>
+<ElTag type="success">Good</ElTag>
 
 ```js
 // TODO: array
@@ -241,7 +241,7 @@ ES5 中，许多种方法来处理函数的
 ES6 中，可以使用非常简洁的语法来处理上面提到的集中情况
 :::
 
-<Tag text="Bad" type="danger"/>
+<ElTag type="danger">Bad</ElTag>
 
 ```js
 // FIXME: 默认参数
@@ -266,7 +266,7 @@ function initializeCanvas(options) {
 }
 ```
 
-<Tag text="Good" type="success"/>
+<ElTag type="success">Good</ElTag>
 
 ```js
 // TODO: 默认参数
@@ -306,7 +306,7 @@ function initializeCanvas({
 使用 Promises，可以通过清晰的路径将错误事件让上传递，避免了大量嵌套错误处理回调函数使代码变得难以阅读理解，并且可以适当地处理它们，此外，Promise 处理后的值，无论是解决（resolved）还是拒绝（rejected）的结果值，都是不可改变的
 :::
 
-<Tag text="Bad" type="danger"/>
+<ElTag type="danger">Bad</ElTag>
 
 ```js
 // FIXME: 可怕的回调地域
@@ -358,7 +358,7 @@ function* getData() {
 随着 ES2016 版本的发布，它提供了一种更轻松的、更简单，更直观，更漂亮的可以替代的实现上面 Generators 配合 Promises 组合代码的一种语法糖编码方式
 :::
 
-<Tag text="Bad" type="danger"/>
+<ElTag type="danger">Bad</ElTag>
 
 ```js
 // FIXME: 请求接口，获取异步数据
@@ -372,7 +372,7 @@ function getJSON(url) {
 }
 ```
 
-<Tag text="Good" type="success"/>
+<ElTag type="success">Good</ElTag>
 
 ```js
 // TODO: 请求接口，获取异步数据
