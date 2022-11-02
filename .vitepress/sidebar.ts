@@ -2,7 +2,7 @@
  * @Author: ChenYu
  * @Date: 2022-10-22 17:14:01
  * @LastEditors: ChenYu ycyplus@163.com
- * @LastEditTime: 2022-11-01 12:43:09
+ * @LastEditTime: 2022-11-02 11:34:22
  * @FilePath: \my-agile-team-document\.vitepress\sidebar.ts
  * @Description:
  * Copyright (c) ${2022} by ChenYu/天智AgileTeam, All Rights Reserved.
@@ -50,6 +50,10 @@ export const sidebar: DefaultTheme.Sidebar = [
       {
         text: '掌握 JSX 语法场景',
         link: '/actual-ombat/vue3-jsx-component-writing',
+      },
+      {
+        text: 'Git 的使用',
+        link: '/actual-ombat/git',
       },
     ],
   },

@@ -1,19 +1,19 @@
 /*
  * @Author: ChenYu
  * @Date: 2022-10-22 17:14:01
- * @LastEditors: ChenYu
- * @LastEditTime: 2022-10-24 01:21:05
- * @FilePath: \myAgileTeamVitepress\.vitepress\config.ts
+ * @LastEditors: ChenYu ycyplus@163.com
+ * @LastEditTime: 2022-11-02 10:01:46
+ * @FilePath: \my-agile-team-document\.vitepress\config.ts
  * @Description: 配置文件
  * Copyright (c) ${2022} by ChenYu/天智AgileTeam, All Rights Reserved.
  */
 import { resolve } from 'path'
-import { defineConfig } from 'vitepress'
 import banner from 'vite-plugin-banner'
+import { defineConfig } from 'vitepress'
+import pkg from '../package.json'
 import { head } from './head'
 import { nav } from './nav'
 import { sidebar } from './sidebar'
-import pkg from '../package.json'
 
 export default defineConfig({
   srcDir: 'docs',
@@ -36,7 +36,7 @@ export default defineConfig({
     socialLinks: [
       {
         icon: 'github',
-        link: 'https://github.com/chengxingquan/learning-vue3',
+        link: 'https://github.com/ycyplus',
       },
     ],
     // editLink: {
