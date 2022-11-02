@@ -565,16 +565,10 @@ export default defineComponent({
 </script>
 ```
 
-<!-- 谷歌广告 -->
-<ClientOnly>
-  <GoogleAdsense />
-</ClientOnly>
-<!-- 谷歌广告 -->
-
 <!-- 评论 -->
 <ClientOnly>
   <GitalkComment
-    :issueId="1"
+    :issueId="10"
   />
 </ClientOnly>
 <!-- 评论 -->

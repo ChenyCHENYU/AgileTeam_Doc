@@ -1373,16 +1373,10 @@ export default defineComponent({
 
 :::
 
-<!-- 谷歌广告 -->
-<ClientOnly>
-  <GoogleAdsense />
-</ClientOnly>
-<!-- 谷歌广告 -->
-
 <!-- 评论 -->
 <ClientOnly>
   <GitalkComment
-    :issueId="62"
+    :issueId="8"
   />
 </ClientOnly>
 <!-- 评论 -->

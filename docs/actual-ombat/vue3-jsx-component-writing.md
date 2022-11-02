@@ -839,7 +839,7 @@ const clickConfirmOrCancel = (tableData: any, row: any, index?: number) => {
 <!-- 评论 -->
 <ClientOnly>
   <GitalkComment
-    :issueId="163"
+    :issueId="16"
   />
 </ClientOnly>
 

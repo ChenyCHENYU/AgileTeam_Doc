@@ -1147,7 +1147,6 @@ foo = true // true
 
 ## 如何编译为 JavaScript 代码
 
-
 前面介绍的时候，一直是基于 `dev:ts` 命令，它调用的是 `ts-node` 来运行的 TS 文件：
 
 ```json
@@ -1506,20 +1505,10 @@ hello-node
 
 不过实际工作中，的项目都是通过一些脚手架创建的，例如 [Vue CLI](https://github.com/vuejs/vue-cli) ，或者现在的 [Create Vue](https://github.com/vuejs/create-vue) 或者 [Create Preset](https://github.com/awesome-starter/create-preset) ，都会在创建项目模板的时候，提前配置好通用的选项，只需要在不满足条件的情况下去调整。
 
-<script setup>
-const templateLiterals = '``'
-</script>
-
-<!-- 谷歌广告 -->
-<ClientOnly>
-  <GoogleAdsense />
-</ClientOnly>
-<!-- 谷歌广告 -->
-
 <!-- 评论 -->
 <ClientOnly>
   <GitalkComment
-    :issueId="193"
+    :issueId="3"
   />
 </ClientOnly>
 <!-- 评论 -->

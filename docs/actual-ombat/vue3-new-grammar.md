@@ -722,7 +722,7 @@ watch([shop, price], () => {
 <!-- 评论 -->
 <ClientOnly>
   <GitalkComment
-    :issueId="163"
+    :issueId="15"
   />
 </ClientOnly>
 <!-- 评论 -->

@@ -382,3 +382,11 @@ async function main() {
   console.log(data)
 }
 ```
+
+<!-- 评论 -->
+<ClientOnly>
+  <GitalkComment
+    :issueId="13"
+  />
+</ClientOnly>
+<!-- 评论 -->

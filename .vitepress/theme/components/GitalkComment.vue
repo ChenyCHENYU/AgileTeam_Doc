@@ -25,7 +25,8 @@ function init() {
     admin: ['ycyplus'],
     id: md5(location.pathname),
     number: props.issueId,
-    // title: document.title,
+    labels: ['Gitalk'],
+    perPage: 50,
   })
 
   gitalk.render('gitalk-container')
