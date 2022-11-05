@@ -1,24 +1,46 @@
 ---
 layout: home
 title: 天智AgileTeam前端
-outline: 'deep'
+
+hero:
+  name: Agile Front end development
+  text: 拥抱开放，拥抱变化
+  tagline: 抛砖引玉，希望以在线文档方式，以不同的视野，借助社区和伙伴的力量，持续集成，也基于项目实践，沉淀技术栈，同时拓展 π 型的综合能力。
+  image:
+    src: /assets/img/robot.png
+    alt: VitePress
+  actions:
+    - theme: brand
+      text: 查看文档
+      link: /get-familiar-quickly/engineering
+    - theme: alt
+      text: 查看组件
+      link: /get-familiar-quickly/component
+
+features:
+  - icon: ⚡️
+    title: Vite, Vue3, TypeScript
+    details: 拥抱标准化最新技术栈，持续更新维护
+  - icon: 🖖
+    title: 前端，且不限于前端
+    details: 基于前端，不限于前端，拓展更多的可能，服务前端
+  - icon: 🛠️
+    title: 库，ui框架，工具
+    details: 精益驱动，提升产能，快速交付，高效开发才是根本
 ---
 
 <script setup>
-/**
- * 这里路径 @theme 可以直接指向 .vitepress/theme 目录
- * 
- * 注意：在 vitepress 1.0.0-alpha.6 版本前的别名为 /@theme
- * 1.0.0-alpha.6 版本以后的别名改为 @theme
- * 详情参考：https://github.com/vuejs/vitepress/blob/main/CHANGELOG.md
- */
-import Home from '@theme/Home.vue'
+
+// import Home from '@theme/Home.vue'
 
 </script>
 
-<!-- # 前言
-
-Vue 3.0 从 2020 年 9 月份中旬正式发布，到 2022 年 2 月份代替 Vue 2 成为 Vue 的默认版本，经过长达两年的市场验证，行文将以 Vue.js 的 3.0 版本为核心技术栈，围绕 “前端工程化” 和 TypeScript 的知识点展开介绍，结合开发实践经验，大部分知识点都搭配了通俗易懂的讲解和可实现的代码案例，在阅读的过程中可以亲自敲代码加强学习印象，毕竟上手一个新技术栈最快的方法，就是一边 Reading 一边 Coding 。 -->
-
 <Home />
 
+<style>
+
+:root {
+  --vp-home-hero-name-color: transparent;
+  --vp-home-hero-name-background: -webkit-linear-gradient(120deg, #bd34fe, #409eff);
+}
+</style>
