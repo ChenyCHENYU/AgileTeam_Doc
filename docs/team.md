@@ -91,6 +91,7 @@ const coreMembers = [
     avatar: '/assets/team/杨博.png',
     name: 'Youwei',
     title: 'Developers',
+    desc: '风物长，宜放眼量',
     links: [
     //   { icon: 'github', link: 'https://github.com/yyx990803' },
     ]
