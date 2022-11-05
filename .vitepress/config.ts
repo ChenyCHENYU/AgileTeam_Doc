@@ -2,7 +2,7 @@
  * @Author: ChenYu
  * @Date: 2022-10-22 17:14:01
  * @LastEditors: ChenYu ycyplus@163.com
- * @LastEditTime: 2022-11-05 18:18:35
+ * @LastEditTime: 2022-11-05 20:15:50
  * @FilePath: \my-agile-team-document\.vitepress\config.ts
  * @Description: 配置文件
  * Copyright (c) ${2022} by ChenYu/天智AgileTeam, All Rights Reserved.
@@ -53,9 +53,9 @@ export default defineConfig({
       copyright: 'Copyright © 2022 Cheny - 西安天智',
     },
     algolia: {
-      appId: '5LYK75VPNC',
-      apiKey: '1d995a4b40491d50f3e8d607e5667017',
-      indexName: 'cheny',
+      appId: 'RD79285UB5',
+      apiKey: 'c7927cdb74ae7fae0d50bd9703cd0d6c',
+      indexName: 'cheny_index',
       placeholder: '请输入关键词',
       buttonText: '搜索',
     },
