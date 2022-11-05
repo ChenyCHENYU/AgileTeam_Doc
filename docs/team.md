@@ -133,6 +133,12 @@ const partners = [
     ],
     desc: '开源作者，基于 Vue3 的 ui 框架 《FightingDesign》创造者'
   },
+  {
+    avatar: 'https://q2.qlogo.cn/headimg_dl?spec=100&dst_uin=1157445650',
+    name: 'Fate',
+    title: '你们敲的是代码，我敲的是脑子',
+    desc: '??? css 资深玩家可还行？其他领域？你说，看我知道不知道'
+  },
 //   {
 //     avatar: 'https://avatars.githubusercontent.com/u/73180970?v=4',
 //     name: 'Fate',
