@@ -79,7 +79,7 @@ $ git config --global user.email cheny@email.com
 
 ## 项目中常用 Git 命令小解
 
-### git clone
+### git clone 克隆代码
 
 将代码从托管平台克隆到本地。
 
@@ -117,7 +117,7 @@ cat ~/.ssh/id_rsa.pub
 
 然后就可以愉快的拉取平台上已授权的所有项目代码了。
 
-### git add
+### git add 暂存提交
 
 将工作区代码提交到暂存区。
 
@@ -128,7 +128,7 @@ cat ~/.ssh/id_rsa.pub
 
 :::
 
-### git status
+### git status 暂存状态
 
 查看当前操作的哪些修改被提交到了暂存区。
 
@@ -139,7 +139,7 @@ cat ~/.ssh/id_rsa.pub
 
 :::
 
-### git commit
+### git commit 提交本地仓库
 
 将暂存区代码提交到本地仓库。
 
@@ -150,7 +150,7 @@ cat ~/.ssh/id_rsa.pub
 
 :::
 
-### git push
+### git push 推送远端
 
 将本地仓储的代码推送到了远端代码托管平台仓库。
 
@@ -162,7 +162,7 @@ cat ~/.ssh/id_rsa.pub
 
 :::
 
-### git pull
+### git pull 拉取更新
 
 将远端的仓库代码拉取到本地更新。
 
@@ -174,7 +174,7 @@ cat ~/.ssh/id_rsa.pub
 
 :::
 
-### git branch
+### git branch 分支操作
 
 用来创建分支，查看分支，删除分支。
 
@@ -191,7 +191,7 @@ cat ~/.ssh/id_rsa.pub
 
 :bell: 注意：删除远端分支可以使用 `git push origin --delete test` 强制远端 test 分支。
 
-### git checkout
+### git checkout 切换分支
 
 用来进行分支的切换。
 
@@ -203,7 +203,7 @@ cat ~/.ssh/id_rsa.pub
 
 :::
 
-### git fetch
+### git fetch 更新分支
 
 同步更新远端仓库的分支指针到本地。
 
@@ -215,7 +215,7 @@ cat ~/.ssh/id_rsa.pub
 
 :::
 
-### git stash
+### git stash 临时缓存
 
 用于临时想要保存当前修改，但想回到之前最后一次提交干净的工作仓库时进行的操作。  
 看不懂？好吧，场景直白点就是说，想把当前写了一半的代码，临时存储下来做个记号，然后切换到正式分支上处理着急解决的问题，处理完毕以后切换回来继续未完成的代码编写。
@@ -231,7 +231,7 @@ cat ~/.ssh/id_rsa.pub
 
 :::
 
-### git log 和 git reflog
+### git log 和 git reflog 记录查询
 
 :::tip 命令：`git log`| `git reflog`
 
@@ -263,7 +263,7 @@ $ git add -f .DS_Store (.DS_Store 是文件名)
 
 这些命令一般项目上不常用，但是在根据场景需要的时候，那是大大的便利哇。
 
-### git checkout --patch
+### git checkout --patch 穿梭同步
 
 用来将其他分支的修改，轻量的将文件上传同步到当前的分支上，这句话也可以反过来解读。
 
@@ -275,7 +275,7 @@ $ git add -f .DS_Store (.DS_Store 是文件名)
 
 :::
 
-### git remote
+### git remote 远程操作
 
 对于远程仓储地址信息的查看，设置（包括别名，fetct / push 地址）。
 
@@ -287,7 +287,7 @@ $ git add -f .DS_Store (.DS_Store 是文件名)
 
 :::
 
-### git push -u
+### git push -u 默认推送
 
 指定默认推送地址，使用别名即可。
 
@@ -307,7 +307,7 @@ $ git fetch --prune origin
 
 :bell: 注意：看到 `:gone`  的标识，说明远程分支已经被删除。
 
-### git branch -vv
+### git branch -vv 失效分支
 
 用来查看关联失效的分支。
 
@@ -326,7 +326,7 @@ $ git branch -vv
 $ git branch --set-upstream-to=origin/master master
 ```
 
-### git diff
+### git diff 版本比对
 
 用来比较不同版本之间的差异，可以同分支，也可以不同分支之间进行比较。
 
@@ -353,7 +353,7 @@ $ git branch --set-upstream-to=origin/master master
 $ git diff dev_base_cheny
 ```
 
-### git cherry-pick
+### git cherry-pick 条件合并
 
 用来复制记录到当前分支，该命令可以避免将整个分支合并过来，只合并需要的版本记录。
 :::tip **命令** `cherry-pick`

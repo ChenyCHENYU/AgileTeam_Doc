@@ -2,7 +2,7 @@
  * @Author: ChenYu
  * @Date: 2022-10-22 17:14:01
  * @LastEditors: ChenYu ycyplus@163.com
- * @LastEditTime: 2022-11-02 11:34:22
+ * @LastEditTime: 2022-11-03 10:05:10
  * @FilePath: \my-agile-team-document\.vitepress\sidebar.ts
  * @Description:
  * Copyright (c) ${2022} by ChenYu/天智AgileTeam, All Rights Reserved.
@@ -54,6 +54,10 @@ export const sidebar: DefaultTheme.Sidebar = [
       {
         text: 'Git 的使用',
         link: '/actual-ombat/git',
+      },
+      {
+        text: 'Npm、Nvm、Yarn、Pnpm 使用',
+        link: '/actual-ombat/npm',
       },
     ],
   },
