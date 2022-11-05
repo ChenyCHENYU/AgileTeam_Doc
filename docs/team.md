@@ -1,0 +1,157 @@
+---
+layout: page
+---
+
+<script setup>
+import {
+  VPTeamPage,
+  VPTeamPageTitle,
+  VPTeamMembers,
+   VPTeamPageSection
+} from 'vitepress/theme'
+
+
+
+
+const coreMembers = [
+  {
+    // avatar: 'https://www.github.com/yyx990803.png',
+    avatar: '/assets/team/cheny.png',
+    name: 'Cheny',
+    title: 'Creator',
+    // links: [
+    //   { icon: 'github', link: 'https://github.com/yyx990803' },
+    //   { icon: 'yotube', link: 'https://gitee.com/ycyplus163' },
+    // ],
+     desc: '不忘初心，方得始终'
+  },
+  {
+    avatar: '/assets/team/张东.png',
+    name: '张东',
+    title: 'Developers',
+    desc: '只要拼不死，就往死里拼',
+    links: [
+    //   { icon: 'github', link: 'https://github.com/yyx990803' },
+    ]
+  },
+  {
+    avatar: '/assets/team/曹翔.png',
+    name: '曹翔',
+    title: 'Developers',
+    links: [
+    //   { icon: 'github', link: 'https://github.com/yyx990803' },
+    ]
+  },
+  {
+    avatar: '/assets/team/王凯文.png',
+    name: 'Kevin',
+    title: 'Developers',
+    desc: '人生如逆旅，我亦是行人',
+    links: [
+    //   { icon: 'github', link: 'https://github.com/yyx990803' },
+    ]
+  },
+  {
+    avatar: '/assets/team/马佳瑞.png',
+    name: 'Destiny',
+    title: 'Developers',
+    desc: ' 挣钱脱发，花钱植发',
+    links: [
+    //   { icon: 'github', link: 'https://github.com/yyx990803' },
+    ]
+  },
+  {
+    avatar: '/assets/team/董亚婷.png',
+    name: 'Aris',
+    title: 'Developers',
+    desc: '爱敲代码，糊涂时读书，独处时思考',
+    links: [
+    //   { icon: 'github', link: 'https://github.com/yyx990803' },
+    ]
+  },
+  {
+    avatar: '/assets/team/杨佩.png',
+    name: 'Amy',
+    title: 'Developers',
+    desc: '每天都要优雅的写好每一行代码',
+    links: [
+    //   { icon: 'github', link: 'https://github.com/yyx990803' },
+    ]
+  },
+  {
+    avatar: '/assets/team/赵保山.png',
+    name: 'Brenton',
+    title: 'Developers',
+    desc: '在谷底也要开花，在海底也要望月',
+    links: [
+    //   { icon: 'github', link: 'https://github.com/yyx990803' },
+    ]
+  },
+  {
+    avatar: '/assets/team/杨博.png',
+    name: 'Youwei',
+    title: 'Developers',
+    links: [
+    //   { icon: 'github', link: 'https://github.com/yyx990803' },
+    ]
+  },
+  {
+    avatar: '/assets/team/何文静.png',
+    name: '何文静',
+    title: 'Developers',
+    desc:'信言不美，美言不信',
+    links: [
+    //   { icon: 'github', link: 'https://github.com/yyx990803' },
+    ]
+  },
+  {
+    avatar: '/assets/team/陈晶华.png',
+    name: '陈晶华',
+    title: 'Developers',
+    desc:'所有的胜利都是有备而来',
+    links: [
+    //   { icon: 'github', link: 'https://github.com/yyx990803' },
+    ]
+  },
+]
+
+
+const partners = [
+  {
+    avatar: 'https://avatars.githubusercontent.com/u/24845958?v=4',
+    name: 'chengpeiquan',
+    title: '前端工程师 / 贝斯手 / 猫奴',
+    desc: '优秀的社区开源作者，文档部分的核心贡献者',
+  },
+  {
+    avatar: 'https://avatars.githubusercontent.com/u/73180970?v=4',
+    name: '田同学',
+    title: '最怕你一生碌碌无为，还安慰自己平凡可贵',
+    links: [
+       { icon: 'github', link: 'https://github.com/Tyh2001' },
+       {icon:'twitter', link: 'https://twitter.com/tyh20011'}
+    ],
+    desc: '开源作者，基于 Vue3 的 ui 框架 《FightingDesign》创造者'
+  },
+//   {
+//     avatar: 'https://avatars.githubusercontent.com/u/73180970?v=4',
+//     name: 'Fate',
+//     title: '',
+//   },
+]
+</script>
+
+<VPTeamPage>
+  <VPTeamPageTitle>
+    <template #title>我们的团队</template>
+    <template #lead>核心成员</template>
+  </VPTeamPageTitle>
+  <VPTeamMembers size="medium" :members="coreMembers" />
+  <VPTeamPageSection>
+    <template #title>特别感谢</template>
+    <template #lead>社区伙伴</template>
+    <template #members>
+      <VPTeamMembers size="small" :members="partners" />
+    </template>
+  </VPTeamPageSection>
+</VPTeamPage>

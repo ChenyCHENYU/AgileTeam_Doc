@@ -3,12 +3,12 @@ layout: home
 title: 天智AgileTeam前端
 
 hero:
-  name: Agile Front end development
+  name: Agile Front end Development
   text: 拥抱开放，拥抱变化
   tagline: 抛砖引玉，希望以在线文档方式，以不同的视野，借助社区和伙伴的力量，持续集成，也基于项目实践，沉淀技术栈，同时拓展 π 型的综合能力。
   image:
     src: /assets/img/robot.png
-    alt: VitePress
+    alt: robot
   actions:
     - theme: brand
       text: 查看文档
@@ -29,10 +29,11 @@ features:
     details: 精益驱动，提升产能，快速交付，高效开发才是根本
 ---
 
+<VPTeamMembers size="small" :members="members" />
+
 <script setup>
 
 // import Home from '@theme/Home.vue'
-
 </script>
 
 <Home />

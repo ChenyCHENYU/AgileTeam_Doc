@@ -1,9 +1,9 @@
 /*
  * @Author: ChenYu
  * @Date: 2022-10-22 17:14:01
- * @LastEditors: ChenYu
- * @LastEditTime: 2022-10-23 20:30:11
- * @FilePath: \learning-vue3-main\.vitepress\nav.ts
+ * @LastEditors: ChenYu ycyplus@163.com
+ * @LastEditTime: 2022-11-05 17:12:51
+ * @FilePath: \my-agile-team-document\.vitepress\nav.ts
  * @Description: 右上侧导航
  * Copyright (c) ${2022} by ChenYu/天智AgileTeam, All Rights Reserved.
  */
@@ -19,5 +19,10 @@ export const nav: DefaultTheme.NavItem[] = [
     text: '组件',
     activeMatch: '/docs/',
     link: '/get-familiar-quickly/component',
+  },
+  {
+    text: '伟大的贡献者',
+    activeMatch: '/docs/',
+    link: '/team',
   },
 ]
