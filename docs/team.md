@@ -35,9 +35,16 @@ const coreMembers = [
     ]
   },
   {
-    avatar: '/assets/team/曹翔.png',
-    name: '曹翔',
+    avatar: '/assets/team/赵成刚.png',
+    name: '赵成刚',
     title: 'Developers',
+    desc: '快乐编码，快乐捞钱'
+  },
+  {
+    avatar: '/assets/team/曹翔.png',
+    name: 'Asher',
+    title: 'Developers',
+    desc: '人若有志，万事可为',
     links: [
     //   { icon: 'github', link: 'https://github.com/yyx990803' },
     ]
