@@ -2,79 +2,128 @@
  * @Author: ChenYu
  * @Date: 2022-10-22 17:14:01
  * @LastEditors: ChenYu ycyplus@163.com
- * @LastEditTime: 2022-11-07 11:43:51
+ * @LastEditTime: 2022-11-07 12:16:37
  * @FilePath: \my-agile-team-document\.vitepress\sidebar.ts
  * @Description:
  * Copyright (c) ${2022} by ChenYu/天智AgileTeam, All Rights Reserved.
  */
 import type { DefaultTheme } from 'vitepress'
 
+const BASEIS = '/basis'
+const COMPONENT = 'component'
+
 export const sidebar: DefaultTheme.Sidebar = {
   '/basis/': [
     {
       text: '快速上手',
       items: [
-        { text: '了解前端工程化', link: '/get-familiar-quickly/engineering' },
-        { text: '工程化的前期准备', link: '/get-familiar-quickly/guide' },
+        {
+          text: '了解前端工程化',
+          link: `${BASEIS}/get-familiar-quickly/engineering`,
+        },
+        {
+          text: '工程化的前期准备',
+          link: `${BASEIS}/get-familiar-quickly/guide`,
+        },
         {
           text: '快速上手 TypeScript',
-          link: '/get-familiar-quickly/typescript',
+          link: `${BASEIS}/get-familiar-quickly/typescript`,
         },
       ],
     },
     {
       text: 'Vue3 基础指北',
       items: [
-        { text: '脚手架的升级与配置', link: '/introduction/upgrade' },
-        { text: '单组件的编写', link: '/introduction/component' },
-        { text: '路由的使用', link: '/introduction/router' },
-        { text: '插件的开发和使用', link: '/introduction/plugin' },
-        { text: '组件之间的通信', link: '/introduction/communication' },
-        { text: '全局状态的管理', link: '/introduction/pinia' },
-        { text: 'Vue3.2 语法糖', link: '/introduction/efficient' },
+        {
+          text: '脚手架的升级与配置',
+          link: `${BASEIS}/introduction/upgrade`,
+        },
+        {
+          text: '单组件的编写',
+          link: `${BASEIS}/introduction/component`,
+        },
+        {
+          text: '路由的使用',
+          link: `${BASEIS}/introduction/router`,
+        },
+        {
+          text: '插件的开发和使用',
+          link: `${BASEIS}/introduction/plugin`,
+        },
+        {
+          text: '组件之间的通信',
+          link: `${BASEIS}/introduction/communication`,
+        },
+        {
+          text: '全局状态的管理',
+          link: `${BASEIS}/introduction/pinia`,
+        },
+        {
+          text: 'Vue3.2 语法糖',
+          link: `${BASEIS}/introduction/efficient`,
+        },
       ],
     },
     {
       text: '编码风格及规范',
       items: [
-        { text: '编码工具', link: '/coding-specification/codeing-tool' },
-        { text: '编码规范', link: '/coding-specification/codeing-standard' },
-        { text: 'ES6实践', link: '/coding-specification/es6-practice' },
+        {
+          text: '编码工具',
+          link: `${BASEIS}/coding-specification/codeing-tool`,
+        },
+        {
+          text: '编码规范',
+          link: `${BASEIS}/coding-specification/codeing-standard`,
+        },
+        {
+          text: 'ES6实践',
+          link: `${BASEIS}/coding-specification/es6-practice`,
+        },
       ],
     },
     {
       text: '聚焦 Vue3 实战',
       items: [
-        { text: 'Composition API', link: '/actual-ombat/vue3-composition-api' },
-        { text: '更多新语法细节', link: '/actual-ombat/vue3-new-grammar' },
+        {
+          text: 'Composition API',
+          link: `${BASEIS}/actual-ombat/vue3-composition-api`,
+        },
+        {
+          text: '更多新语法细节',
+          link: `${BASEIS}/actual-ombat/vue3-new-grammar`,
+        },
         {
           text: '掌握 JSX 语法场景',
-          link: '/actual-ombat/vue3-jsx-component-writing',
+          link: `${BASEIS}/actual-ombat/vue3-jsx-component-writing`,
         },
         {
           text: 'Git 的使用',
-          link: '/actual-ombat/git',
+          link: `${BASEIS}/actual-ombat/git`,
         },
         {
           text: 'Npm、Nvm、Yarn、Pnpm 使用',
-          link: '/actual-ombat/npm',
+          link: `${BASEIS}/actual-ombat/npm`,
         },
       ],
     },
     {
       text: '扩展阅读',
-      items: [{ text: '常用文档', link: '/links' }],
+      items: [
+        {
+          text: '常用文档',
+          link: `${BASEIS}/links`,
+        },
+      ],
     },
   ],
-  '/component/': [],
-  '/config/': [
+  '/component/': [
     {
-      text: 'Config',
+      text: '组件',
       items: [
-        // This shows `/config/index.md` page.
-        { text: 'Index', link: '/config/' }, // /config/index.md
-        { text: 'Three', link: '/config/three' }, // /config/three.md
-        { text: 'Four', link: '/config/four' }, // /config/four.md
+        {
+          text: '前言',
+          link: `${COMPONENT}/index`,
+        },
       ],
     },
   ],
