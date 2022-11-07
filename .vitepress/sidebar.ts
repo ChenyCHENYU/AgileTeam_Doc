@@ -2,7 +2,7 @@
  * @Author: ChenYu
  * @Date: 2022-10-22 17:14:01
  * @LastEditors: ChenYu ycyplus@163.com
- * @LastEditTime: 2022-11-07 12:16:37
+ * @LastEditTime: 2022-11-07 14:34:07
  * @FilePath: \my-agile-team-document\.vitepress\sidebar.ts
  * @Description:
  * Copyright (c) ${2022} by ChenYu/天智AgileTeam, All Rights Reserved.
@@ -122,6 +122,15 @@ export const sidebar: DefaultTheme.Sidebar = {
       items: [
         {
           text: '前言',
+          link: `${COMPONENT}/index`,
+        },
+      ],
+    },
+    {
+      text: '常用组件',
+      items: [
+        {
+          text: 'C_Table',
           link: `${COMPONENT}/index`,
         },
       ],

@@ -145,13 +145,19 @@ const partners = [
     avatar: 'https://q2.qlogo.cn/headimg_dl?spec=100&dst_uin=1157445650',
     name: 'Fate',
     title: '你敲代码，我敲脑子',
-    desc: '??? css 资深玩家可还行？其他领域？你说，看我知道不知道'
+    desc: 'css 资深玩家，有丰富的可视化看板动效开发经验'
   },
   {
-    avatar: 'https://q2.qlogo.cn/headimg_dl?spec=100&dst_uin=1157445650',
+    avatar: 'https://avatars.githubusercontent.com/u/44045271?v=4',
     name: '坏、毛病',
     title: '震有科技前端负责人',
     desc: '重度编码洁癖，擅长代码重构设计，有大量C转B项目和可视化开发的经验'
+  },
+  {
+    avatar: 'https://avatars.githubusercontent.com/u/13547390?v=4',
+    name: '雪源',
+    title: '广联达前端组长',
+    desc: '资深前端开发，Vue发烧选手'
   },
 
 ]
