@@ -12,10 +12,10 @@ hero:
   actions:
     - theme: brand
       text: 查看文档
-      link: /get-familiar-quickly/engineering
+      link: /basis/get-familiar-quickly/engineering
     - theme: alt
       text: 查看组件
-      link: /get-familiar-quickly/component
+      link: /component/
 
 features:
   - icon: ⚡️
