@@ -2,7 +2,7 @@
  * @Author: ChenYu
  * @Date: 2022-10-22 17:14:01
  * @LastEditors: ChenYu ycyplus@163.com
- * @LastEditTime: 2022-11-07 14:48:44
+ * @LastEditTime: 2022-11-12 18:17:40
  * @FilePath: \my-agile-team-document\.vitepress\sidebar.ts
  * @Description:
  * Copyright (c) ${2022} by ChenYu/天智AgileTeam, All Rights Reserved.
@@ -130,8 +130,17 @@ export const sidebar: DefaultTheme.Sidebar = {
       text: '常用组件',
       items: [
         {
-          text: 'C_Table',
-          link: `${COMPONENT}/table`,
+          text: 'Icon',
+          link: `${COMPONENT}/icon`,
+        },
+      ],
+    },
+    {
+      text: '其他',
+      items: [
+        {
+          text: '几种 icon 的使用方式',
+          link: `${COMPONENT}/icon`,
         },
       ],
     },
