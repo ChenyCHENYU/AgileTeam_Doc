@@ -12,13 +12,13 @@ outline: 'deep'
 
 ### Props
 
-| 属性          | 类型     | 默认值 | 说明         |
-| ------------- | -------- | ------ | ------------ |
-| iconName      | `string` | ''     | 图标名称     |
-| color         | `string` | black  | 图标颜色     |
-| size          | `number` | 18     | 图标大小     |
-| iconClassName | `string` | -      | 图标样式定义 |
-| outside       | `string` | false  | 是否外部图标 |
+| 属性          | 类型     | 默认值  | 说明         |
+| ------------- | -------- | ------- | ------------ |
+| iconName      | `string` | ''      | 图标名称     |
+| color         | `string` | 'black' | 图标颜色     |
+| size          | `number` | 18      | 图标大小     |
+| iconClassName | `string` | -       | 图标样式定义 |
+| outside       | `string` | false   | 是否外部图标 |
 
 ### Interface
 
@@ -40,6 +40,8 @@ const props = withDefaults(defineProps<Props>(), {
 ```
 
 ## Scene
+
+使用方式较多，如果使用量较大，最灵活的还是外部图标库的使用方法。
 
 ### UI 框架图标使用
 
