@@ -50,7 +50,7 @@ withDefaults(defineProps<Props>(), {
 
 ### 用栗
 
-```vue
+```vue{3,8}
 <template>
   <div style="width: 200px">
     <C_Menu :MENU_DATA="MENU_DATA" name="a" index="b" icon="c" children="d" />
@@ -97,4 +97,4 @@ export const MENU_DATA = [
 ]
 ```
 
-其他更多交互形式以及使用场景可以参考 `ElementPlus` 菜单组件：[ElMenu](http://element-plus.org/zh-CN/component/menu.html#%E4%BE%A7%E6%A0%8F)
+其他更多交互形式以及使用场景可以参考 `ElementPlus` 菜单组件：[ElMenu](http://element-plus.org/zh-CN/component/menu.html#%E4%BE%A7%E6%A0%8F)，更多属性传递可通过原组件的 `attrs` 进行使用。

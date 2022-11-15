@@ -48,7 +48,7 @@ const props = withDefaults(defineProps<Props>(), {
 
 ### 示栗
 
-```vue
+```vue{2,6-7}
 <template>
   <C_Date @e_changeStartEndDate="e_changeStartEndDate" />
 </template>

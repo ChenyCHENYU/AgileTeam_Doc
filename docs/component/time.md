@@ -52,7 +52,7 @@ withDefaults(defineProps<Props>(), {
 
 ### 示栗
 
-```vue
+```vue{2,7-10,12-13}
 <template>
   <C_Time @e_changeStartEndTime="e_changeStartEndTime" :attrs="attrs" />
 </template>

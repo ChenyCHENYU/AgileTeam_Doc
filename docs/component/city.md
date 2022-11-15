@@ -22,7 +22,7 @@ outline: 'deep'
 
 ### 示栗
 
-```vue
+```vue{2,5}
 <template>
   <C_City @e_getCityName="e_getCityName" />
 </template>

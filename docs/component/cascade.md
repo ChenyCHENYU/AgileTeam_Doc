@@ -53,7 +53,7 @@ const props = withDefaults(defineProps<Props>(), {
 
 ### 示栗
 
-```vue
+```vue{2,7}
 <template>
   <C_Cascade :sourceData="allAreas" @e_changeArae="e_changeArae" />
 </template>

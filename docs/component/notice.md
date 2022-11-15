@@ -49,7 +49,7 @@ withDefaults(defineProps<Props>(), {
 
 ### 示栗
 
-```vue
+```vue{2-11,14,16-17}
 <template>
   <C_Notice value="12">
     <template #default>
@@ -61,7 +61,6 @@ withDefaults(defineProps<Props>(), {
       />
     </template>
   </C_Notice>
-  <br />
 </template>
 <script lang="ts" setup>
 import { ACTIONS, LIST } from './data'

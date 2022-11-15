@@ -40,7 +40,7 @@ const props = withDefaults(defineProps<Props>(), {
 
 ### 用栗
 
-```vue
+```vue{2-10}
 <template>
   <C_Progress :percentage="60" isAnimation :time="3000" />
   <C_Progress
@@ -54,4 +54,4 @@ const props = withDefaults(defineProps<Props>(), {
 </template>
 ```
 
-其他更多交互形式以及使用场景可以参考 `ElementPlus` 进度条组件：[ElProgress](http://element-plus.org/zh-CN/component/progress.html)
+其他更多交互形式以及使用场景可以参考 `ElementPlus` 进度条组件：[ElProgress](http://element-plus.org/zh-CN/component/progress.html)，更多属性传递可通过原组件的 `attrs` 进行使用。
