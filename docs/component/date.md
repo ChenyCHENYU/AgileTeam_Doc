@@ -36,6 +36,12 @@ const props = withDefaults(defineProps<Props>(), {
 })
 ```
 
+### Events
+
+| 事件名               | 说明                   | 回调参数               |
+| -------------------- | ---------------------- | ---------------------- |
+| e_changeStartEndDate | 获取当前的开始结束日期 | `[startDate, endDate]` |
+
 ## Scene
 
 需要开始结束日期，通过两级 `input` 交互的情况。
@@ -53,4 +59,4 @@ const e_changeStartEndDate = ([startDate, endDate]: Date[]) =>
 </script>
 ```
 
-其他更多交互形式以及使用场景可以参考 `ElementPlus` 日期选择器：[ElDatePicker](hhttps://element-plus.gitee.io/zh-CN/component/date-picker.html)
+其他更多交互形式以及使用场景可以参考 `ElementPlus` 日期选择器：[ElDatePicker](hhttps://element-plus.gitee.io/zh-CN/component/date-picker.html)，更多属性传递可通过原组件的 `attrs` 进行使用。

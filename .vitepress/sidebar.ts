@@ -2,7 +2,7 @@
  * @Author: ChenYu
  * @Date: 2022-10-22 17:14:01
  * @LastEditors: ChenYu
- * @LastEditTime: 2022-11-15 22:58:06
+ * @LastEditTime: 2022-11-15 23:19:07
  * @FilePath: \my-agile-team-document\.vitepress\sidebar.ts
  * @Description:
  * Copyright (c) ${2022} by ChenYu/天智AgileTeam, All Rights Reserved.
@@ -130,32 +130,36 @@ export const sidebar: DefaultTheme.Sidebar = {
       text: '常用组件',
       items: [
         {
-          text: 'Icon',
+          text: 'Icon 图标',
           link: `${COMPONENT}/icon`,
         },
         {
-          text: 'Cascade',
+          text: 'Cascade 级联选择器',
           link: `${COMPONENT}/cascade`,
         },
         {
-          text: 'Notice',
+          text: 'Notice 通知',
           link: `${COMPONENT}/notice`,
         },
         {
-          text: 'Menu',
+          text: 'Menu 菜单',
           link: `${COMPONENT}/menu`,
         },
         {
-          text: 'Progress',
+          text: 'Progress 进度条',
           link: `${COMPONENT}/progress`,
         },
         {
-          text: 'Time',
+          text: 'Time 时间选择器',
           link: `${COMPONENT}/time`,
         },
         {
-          text: 'Date',
+          text: 'Date 日期选择器',
           link: `${COMPONENT}/date`,
+        },
+        {
+          text: 'City 城市选择器',
+          link: `${COMPONENT}/city`,
         },
       ],
     },

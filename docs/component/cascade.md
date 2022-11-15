@@ -41,6 +41,12 @@ const props = withDefaults(defineProps<Props>(), {
 })
 ```
 
+### Events
+
+| 事件名       | 说明                 | 回调参数   |
+| ------------ | -------------------- | ---------- |
+| e_changeArae | 选择级联后获取的数据 | `areaData` |
+
 ## Scene
 
 该组件使用场景，一般常用于省市区级联。
@@ -58,4 +64,4 @@ const e_changeArae = (areaData) => console.log('areaData ===>', areaData)
 </script>
 ```
 
-其他更多交互形式以及使用场景可以参考 `ElementPlus` 级联选择器：[ElCascade](http://element-plus.org/zh-CN/component/cascader.html#%E5%9F%BA%E7%A1%80%E7%94%A8%E6%B3%95)
+其他更多交互形式以及使用场景可以参考 `ElementPlus` 级联选择器：[ElCascade](http://element-plus.org/zh-CN/component/cascader.html#%E5%9F%BA%E7%A1%80%E7%94%A8%E6%B3%95)，更多属性传递可通过原组件的 `attrs` 进行使用。

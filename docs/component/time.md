@@ -40,6 +40,12 @@ withDefaults(defineProps<Props>(), {
 })
 ```
 
+### Events
+
+| 事件名               | 说明                   | 回调参数              |
+| -------------------- | ---------------------- | --------------------- |
+| e_changeStartEndTime | 获取当前的开始结束时间 | `[starTiem, endTime]` |
+
 ## Scene
 
 需要开始结束时间，通过两级 `input` 交互，以及步进控制。
@@ -63,4 +69,4 @@ const e_changeStartEndTime = ([starTiem, endTime]: string[]) =>
 </script>
 ```
 
-其他更多交互形式以及使用场景可以参考 `ElementPlus` 时间选择器：[ElTimePicker](https://element-plus.gitee.io/zh-CN/component/time-picker.html)
+其他更多交互形式以及使用场景可以参考 `ElementPlus` 时间选择器：[ElTimePicker](https://element-plus.gitee.io/zh-CN/component/time-picker.html)，更多属性传递可通过原组件的 `attrs` 进行使用。

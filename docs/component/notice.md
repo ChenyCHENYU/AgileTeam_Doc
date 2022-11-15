@@ -36,6 +36,13 @@ withDefaults(defineProps<Props>(), {
 })
 ```
 
+### Events
+
+| 事件名        | 说明                 | 回调参数           |
+| ------------- | -------------------- | ------------------ |
+| e_clickItem   | 点击当前的通知项触发 | `{index, item:{}}` |
+| e_clickAction | 点击当前的操作项触发 | `{index, item:{}}` |
+
 ## Scene
 
 一般情况下，此类通知组件，基本在应用中顶层使用，且只使用一次，当然，也可以多路复用，其中的 `List` 组件根据业务需要自行调整即可。
@@ -59,7 +66,7 @@ withDefaults(defineProps<Props>(), {
 <script lang="ts" setup>
 import { ACTIONS, LIST } from './data'
 
-const e_clickItem = (val: any) => console.log(val)
-const e_clickAction = (val: any) => console.log(val)
+const e_clickItem = (val) => console.log(val)
+const e_clickAction = (val) => console.log(val)
 </script>
 ```
