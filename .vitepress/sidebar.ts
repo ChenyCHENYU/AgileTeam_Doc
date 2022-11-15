@@ -2,7 +2,7 @@
  * @Author: ChenYu
  * @Date: 2022-10-22 17:14:01
  * @LastEditors: ChenYu
- * @LastEditTime: 2022-11-15 22:14:56
+ * @LastEditTime: 2022-11-15 22:58:06
  * @FilePath: \my-agile-team-document\.vitepress\sidebar.ts
  * @Description:
  * Copyright (c) ${2022} by ChenYu/天智AgileTeam, All Rights Reserved.
@@ -152,6 +152,10 @@ export const sidebar: DefaultTheme.Sidebar = {
         {
           text: 'Time',
           link: `${COMPONENT}/time`,
+        },
+        {
+          text: 'Date',
+          link: `${COMPONENT}/date`,
         },
       ],
     },
