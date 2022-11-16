@@ -8,7 +8,6 @@ def getHost(){
     remote.allowAnyHosts = true
     return remote
 }
-
 pipeline {
   agent any
     environment{
@@ -20,19 +19,6 @@ pipeline {
         def BUILD_ENV ="master"
     }
     stages {
-        stage('init-server'){
-            steps {
-                script {dev
-                    if ( BUILD_ENV == 'master' ) {
-                        BUILD_IP ="121.89.210.252"
-                        DIST_DIR ="/www/server/nginx/html"
-                    }else if ( BUILD_ENV == 'prod' ) {
-                        BUILD_IP ="192.168.8.147"
-                    }
-                   server = getHost()
-                }
-            }
-        }
         stage('build') { 
           steps {
             // sh '''npm install --registry=https://registry.npm.taobao.org --unsafe-perm'''
