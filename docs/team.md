@@ -126,6 +126,12 @@ const coreMembers = [
 
 const partners = [
   {
+    avatar: 'https://avatars.githubusercontent.com/u/13547390?v=4',
+    name: '雪源',
+    title: '广联达前端组长',
+    desc: '资深前端开发，Vue发烧选手'
+  },
+  {
     avatar: 'https://avatars.githubusercontent.com/u/24845958?v=4',
     name: 'chengpeiquan',
     title: '前端工程师 / 贝斯手 / 猫奴',
@@ -135,11 +141,7 @@ const partners = [
     avatar: 'https://avatars.githubusercontent.com/u/73180970?v=4',
     name: '田同学',
     title: '最怕你一生碌碌无为，还安慰自己平凡可贵',
-    links: [
-       { icon: 'github', link: 'https://github.com/Tyh2001' },
-       {icon:'twitter', link: 'https://twitter.com/tyh20011'}
-    ],
-    desc: '开源作者，基于 Vue3 的 ui 框架 《FightingDesign》创造者'
+    desc: '基于 Vue3 的 ui 框架 《FightingDesign》作者'
   },
   {
     avatar: 'https://q2.qlogo.cn/headimg_dl?spec=100&dst_uin=1157445650',
@@ -152,13 +154,7 @@ const partners = [
     name: '坏、毛病',
     title: '震有科技前端负责人',
     desc: '重度编码洁癖，擅长代码重构设计，有大量C转B项目和可视化开发的经验'
-  },
-  {
-    avatar: 'https://avatars.githubusercontent.com/u/13547390?v=4',
-    name: '雪源',
-    title: '广联达前端组长',
-    desc: '资深前端开发，Vue发烧选手'
-  },
+  }
 
 ]
 </script>
