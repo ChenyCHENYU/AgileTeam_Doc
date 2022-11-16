@@ -2,7 +2,7 @@
  * @Author: ChenYu
  * @Date: 2022-10-22 17:14:01
  * @LastEditors: ChenYu ycyplus@163.com
- * @LastEditTime: 2022-11-16 08:50:29
+ * @LastEditTime: 2022-11-16 14:34:50
  * @FilePath: \my-agile-team-document\.vitepress\sidebar.ts
  * @Description:
  * Copyright (c) ${2022} by ChenYu/天智AgileTeam, All Rights Reserved.
@@ -164,6 +164,18 @@ export const sidebar: DefaultTheme.Sidebar = {
         {
           text: 'Form 表单',
           link: `${COMPONENT}/form`,
+        },
+        {
+          text: 'FormSearch 表单搜索',
+          link: `${COMPONENT}/form-search`,
+        },
+        {
+          text: 'Table 表格',
+          link: `${COMPONENT}/table`,
+        },
+        {
+          text: 'Calendar 日历',
+          link: `${COMPONENT}/calendar`,
         },
       ],
     },
