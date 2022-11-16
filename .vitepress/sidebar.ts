@@ -1,8 +1,8 @@
 /*
  * @Author: ChenYu
  * @Date: 2022-10-22 17:14:01
- * @LastEditors: ChenYu
- * @LastEditTime: 2022-11-15 23:19:07
+ * @LastEditors: ChenYu ycyplus@163.com
+ * @LastEditTime: 2022-11-16 08:50:29
  * @FilePath: \my-agile-team-document\.vitepress\sidebar.ts
  * @Description:
  * Copyright (c) ${2022} by ChenYu/天智AgileTeam, All Rights Reserved.
@@ -160,6 +160,10 @@ export const sidebar: DefaultTheme.Sidebar = {
         {
           text: 'City 城市选择器',
           link: `${COMPONENT}/city`,
+        },
+        {
+          text: 'Form 表单',
+          link: `${COMPONENT}/form`,
         },
       ],
     },
