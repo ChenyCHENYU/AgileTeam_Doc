@@ -36,7 +36,7 @@ onMounted(init)
 </script>
 
 <style scoped>
-.gitalk-container :deep(.gt-container) a {
+/* .gitalk-container :deep(.gt-container) a {
   color: var(--c-brand) !important;
 }
 .gitalk-container :deep(.gt-container) .gt-header-textarea {
@@ -74,13 +74,13 @@ onMounted(init)
   background-color: var(--c-bg-lighter);
   padding: 1em;
   margin-top: 1em !important;
-}
+} */
 .gitalk-container :deep(.gt-container) .gt-avatar {
   border-radius: 50%;
   overflow: hidden;
 }
-.gitalk-container :deep(.gt-container) .gt-avatar img {
+/* .gitalk-container :deep(.gt-container) .gt-avatar img {
   height: 100%;
   object-fit: cover;
-}
+} */
 </style>
