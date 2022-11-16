@@ -126,10 +126,22 @@ const coreMembers = [
 
 const partners = [
   {
+    avatar: 'https://avatars.githubusercontent.com/u/9710546?s=200&v=4',
+    name: '杰克',
+    title: '技术卷王，西安前端社群群主',
+    desc: '不要@我，有事儿你直接说'
+  },
+  {
     avatar: 'https://avatars.githubusercontent.com/u/13547390?v=4',
     name: '雪源',
     title: '广联达前端组长',
     desc: '资深前端开发，Vue发烧选手'
+  },
+  {
+    avatar: 'https://avatars.githubusercontent.com/u/51934415?v=4',
+    name: 'Brian',
+    title: '全栈大佬，10年互联网老鸟',
+    desc: '一线大厂出身，精通全栈、全端开发，负责过多个领域的全栈项目开发，纵跨技术、直播、新媒体等多个行业领域，自创多种优化流程，热爱分享'
   },
   {
     avatar: 'https://avatars.githubusercontent.com/u/24845958?v=4',
