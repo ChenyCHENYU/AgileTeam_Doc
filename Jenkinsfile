@@ -1,23 +1,5 @@
-def getHost(){
-    def remote = [:]
-    remote.name = 'my-agileteam-document'
-    remote.host = BUILD_IP
-    remote.user = 'root'
-    remote.port = 22
-    remote.password = 'xatz@123'
-    remote.allowAnyHosts = true
-    return remote
-}
 pipeline {
   agent any
-    environment{
-        def server = 'getHost()'
-        def BUILD_NUMBER ="${env.BUILD_NUMBER}"
-        def JOB_NAME ="${env.JOB_NAME}"
-        def DIST_DIR ="/www/server/nginx/html"
-        def BUILD_IP ="121.89.210.252"
-        def BUILD_ENV ="master"
-    }
     stages {
         stage('build') { 
           steps {
@@ -29,9 +11,9 @@ pipeline {
         }
         stage('push') {
           steps {
-                sh '''rm -rf Document_platform'''
-                sh '''mv dist Document_platform'''
-                sshPut remote: server, from: 'Document_platform', into: DIST_DIR
+                sh '''ssh root@121.89.210.252 "rm -rf /www/server/nginx/html/Document_platform"'''
+                sh '''scp -r dist/ root@121.89.210.252:/www/server/nginx/html/'''
+                sh '''ssh root@121.89.210.252 "mv /www/server/nginx/html/dist /www/server/nginx/html/Document_platform"'''
           }
         }
     }
