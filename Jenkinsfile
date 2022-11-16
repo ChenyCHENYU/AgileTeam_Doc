@@ -17,6 +17,7 @@ pipeline {
         def DIST_DIR ="/www/server/nginx/html"
         def BUILD_IP ="121.89.210.252"
         def BUILD_ENV ="master"
+        server = getHost()
     }
     stages {
         stage('build') { 
