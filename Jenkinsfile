@@ -11,13 +11,12 @@ def getHost(){
 pipeline {
   agent any
     environment{
-        def server = ''
+        def server = 'getHost()'
         def BUILD_NUMBER ="${env.BUILD_NUMBER}"
         def JOB_NAME ="${env.JOB_NAME}"
         def DIST_DIR ="/www/server/nginx/html"
         def BUILD_IP ="121.89.210.252"
         def BUILD_ENV ="master"
-        server = getHost()
     }
     stages {
         stage('build') { 
