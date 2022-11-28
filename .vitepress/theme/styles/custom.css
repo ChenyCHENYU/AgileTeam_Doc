@@ -11,6 +11,7 @@ body {
   text-align: justify;
 }
 
+
 /* 滚动条 */
 ::-webkit-scrollbar {
   width: 7px;
@@ -52,3 +53,9 @@ body {
     } */
   }
 
+
+
+
+/* a.VPLink.link.active {
+  color: #42b883 !important;
+} */
