@@ -166,6 +166,12 @@ const partners = [
     name: '坏、毛病',
     title: '震有科技前端负责人',
     desc: '重度编码洁癖，擅长代码重构设计，有大量C转B项目和可视化开发的经验'
+  },
+  {
+    avatar: 'https://avatars.githubusercontent.com/u/23090352?v=4',
+    name: 'lili',
+    title: '资深前端',
+    desc: '坐标东北沈阳的一个前端老炮儿，出道9年，热爱编码，热爱生活，喜欢极限编程'
   }
 
 ]
