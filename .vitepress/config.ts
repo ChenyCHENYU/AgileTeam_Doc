@@ -1,8 +1,8 @@
 /*
  * @Author: ChenYu
  * @Date: 2022-10-22 17:14:01
- * @LastEditors: ChenYu ycyplus@163.com
- * @LastEditTime: 2022-11-07 14:41:51
+ * @LastEditors: ChenYu
+ * @LastEditTime: 2022-12-16 16:12:20
  * @FilePath: \my-agile-team-document\.vitepress\config.ts
  * @Description: 配置文件
  * Copyright (c) ${2022} by ChenYu/天智AgileTeam, All Rights Reserved.
@@ -14,6 +14,7 @@ import pkg from '../package.json'
 import { head } from './head'
 import { nav } from './nav'
 import { sidebar } from './sidebar'
+import { gitee, blog } from './svg'
 
 export default defineConfig({
   srcDir: 'docs',
@@ -36,7 +37,15 @@ export default defineConfig({
     socialLinks: [
       {
         icon: 'github',
-        link: 'https://github.com/ycyplus',
+        link: 'https://github.com/ChenyCHENYU',
+      },
+      {
+        icon: gitee,
+        link: 'https://gitee.com/ycyplus163',
+      },
+      {
+        icon: blog,
+        link: 'https://yangchenyu.com',
       },
     ],
     // editLink: {
