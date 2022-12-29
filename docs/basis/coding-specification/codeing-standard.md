@@ -16,14 +16,14 @@ outline: 'deep'
 
 <ElCard >
 
-- 坚持一致的风格指南；
-- 有效注释，保持干燥，提升抽象复用，增强开发能力；
-- 确保代码可读性，易用性，维护性；
-- 避免重复造轮子；
-- 有效的版本控制，有利于项目管理，代码质量把控；
-- 对修改关闭，拓展开放，提高开发的生产力；
-- 赋能交叉协同的沟通效率，相互合作，减少差错和误解；
-- 相互驱动，奖励编码，OneTeam，一起玩的 Happy。
+\- 坚持一致的风格指南；  
+\- 有效注释，保持干燥，提升抽象复用，增强开发能力；  
+\- 确保代码可读性，易用性，维护性；  
+\- 避免重复造轮子；  
+\- 有效的版本控制，有利于项目管理，代码质量把控；  
+\- 对修改关闭，拓展开放，提高开发的生产力；  
+\- 赋能交叉协同的沟通效率，相互合作，减少差错和误解；  
+\- 相互驱动，奖励编码，OneTeam，一起玩的 Happy。  
 
 </ElCard>
 
@@ -80,14 +80,14 @@ outline: 'deep'
 
 属性应该按照特定的顺序出现以保证易读性。
 
-- class；
-- id；
-- name；
-- data-\*；
-- src, for, type, href, value , max-length, max, min, pattern；
-- placeholder, title, alt；
-- aria-\*, role；
-- required, readonly, disabled。
+\- class；  
+\- id；   
+\- name；  
+\- data-\*；  
+\- src, for, type, href, value , max-length, max, min, pattern；  
+\- placeholder, title, alt；  
+\- aria-\*, role；  
+\- required, readonly, disabled。  
 
 ```vue
 <template>

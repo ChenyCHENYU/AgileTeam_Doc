@@ -2,7 +2,7 @@
   "name": "myagileteam",
   "version": "2.0.0",
   "description": "An agile team wants to share the introduction documents based on the gradual expansion of vue。",
-  "author": "cheny <ycyplus@163.com>",
+  "author": "cheny <ycyplus@gmail.com>",
   "private": true,
   "scripts": {
     "dev": "vitepress dev --host",

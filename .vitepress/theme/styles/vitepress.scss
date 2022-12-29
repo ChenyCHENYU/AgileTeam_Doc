@@ -65,7 +65,7 @@
     th,
     tr,
     td {
-      border: none;
+      // border: none;
       background: none;
     }
     tr:nth-child(2n) {
@@ -145,4 +145,9 @@
 // 粘性卡片
 .f-sticky-card {
   margin-top: 20px;
+}
+
+ul,
+li {
+  list-style-type: none;
 }
