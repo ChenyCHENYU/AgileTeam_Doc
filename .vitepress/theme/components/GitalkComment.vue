@@ -18,8 +18,8 @@ const props = defineProps<{
 
 function init() {
   const gitalk = new Gitalk({
-    clientID: '17dc226441fadc9be5be',
-    clientSecret: 'b8bed5ac7bb795d208a41f5d5c992c50ea7da862',
+    clientID: '8229eea3157442610af2',
+    clientSecret: 'e368b6212d4aa6ad83cf9cae66ef98603b326dae',
     repo: 'document-comment',
     owner: 'chenyCHENYU',
     admin: ['chenyCHENYU'],

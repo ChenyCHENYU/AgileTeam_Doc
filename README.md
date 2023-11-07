@@ -11,5 +11,3 @@ import Home from '@theme/Home.vue'
 </script>
 
 <Home />
-
-
