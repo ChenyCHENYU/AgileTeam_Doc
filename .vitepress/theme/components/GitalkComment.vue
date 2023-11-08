@@ -16,7 +16,6 @@ const props = defineProps<{
   issueId: number
 }>()
 
-
 function init() {
   const gitalk = new Gitalk({
     clientID: '8229eea3157442610af2',
@@ -66,7 +65,7 @@ onMounted(init)
   background-color: var(--c-bg-light);
   box-shadow: none;
 }
-.gitalk-container :deep(.gt-container) .gt-comment-content .gt-comment-body {
+.gitalk-container :deep(.gt-container) .gt-comment-content .gt-comme·nt-body {
   color: var(--c-text) !important;
 }
 .gitalk-container :deep(.gt-container) .gt-comment-content blockquote {
