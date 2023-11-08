@@ -25,16 +25,16 @@
   ],
   "license": "MIT",
   "devDependencies": {
-    "@types/node": "^18.8.5",
+    "@types/node": "^20.9.0",
     "gitalk": "^1.8.0",
     "md5": "^2.3.0",
-    "sass": "^1.55.0",
-    "vite-plugin-banner": "^0.5.0",
-    "vitepress": "1.0.0-alpha.21",
-    "vue": "^3.2.40",
+    "sass": "^1.69.5",
+    "vite-plugin-banner": "^0.7.1",
+    "vitepress": "1.0.0-rc.25",
+    "vue": "^3.3.8",
     "vue-baidu-analytics": "^2.2.0"
   },
   "dependencies": {
-    "element-plus": "^2.2.19"
+    "element-plus": "^2.4.2"
   }
 }

@@ -16,6 +16,7 @@ const props = defineProps<{
   issueId: number
 }>()
 
+
 function init() {
   const gitalk = new Gitalk({
     clientID: '8229eea3157442610af2',
