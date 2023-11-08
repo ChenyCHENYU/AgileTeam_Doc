@@ -3,9 +3,9 @@ layout: home
 title: 天智AgileTeam前端
 
 hero:
-  name: Agile Front end Development
+  name: Development Teams Based Agile Thinking
   text: 拥抱开放，拥抱变化
-  tagline: 抛砖引玉，希望以在线文档方式，以不同的视野，借助社区和伙伴的力量，持续集成，也基于项目实践，沉淀技术栈，同时拓展 π 型的综合能力。
+  tagline: 以不同的角色，不同的视野，同时借助社区和伙伴的力量，持续集成，优化完善，也基于项目实践，沉淀技术栈，管理思想，同步拓展 π 型的综合能力。
   image:
     src: /assets/img/robot.png
     alt: robot
@@ -15,7 +15,7 @@ hero:
       link: /basis/get-familiar-quickly/engineering
     - theme: alt
       text: 查看组件
-      link: /component/
+      link: /component/preface
 
 features:
   - icon: ⚡️
