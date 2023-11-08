@@ -1145,12 +1145,14 @@ Vite 是基于浏览器原生的 ES Module ，所以不需要预先打包，而�
 
 在 Vite ，还可以通过判断 `import.meta.env.DEV` 为 `true` 时是开发环境，判断 `import.meta.env.PROD` 为 `true` 时是生产环境（这两个值永远相反）。
 
-有关环境变量的问题可以查阅以下文档：
+有关环境变量的问题可以查阅以下文档： ~~~~
 
 |  工具   | 文档                                                            |
 | :-----: | :-------------------------------------------------------------- |
 | Webpack | [模式](https://www.webpackjs.com/concepts/mode/)                |
 |  Vite   | [环境变量和模式](https://cn.vitejs.dev/guide/env-and-mode.html) |
+
+如下内容信息描述。。。。测试
 
 <script setup>
 const env = 'process.env' + '.NODE_ENV'
