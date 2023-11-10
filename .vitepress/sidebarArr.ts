@@ -198,6 +198,14 @@ export const PO_DOC = [
         text: '设计原则',
         link: `${PO}/standard/principle`,
       },
+      {
+        text: '视觉风格',
+        link: `${PO}/standard/visual-style`,
+      },
+      {
+        text: '通用模式',
+        link: `${PO}/standard/universal-mode`,
+      },
     ],
   },
 ]

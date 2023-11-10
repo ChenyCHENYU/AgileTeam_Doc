@@ -2,7 +2,7 @@
  * @Author: ChenYu
  * @Date: 2022-10-22 17:14:01
  * @LastEditors: ChenYu ycyplus@gmail.com
- * @LastEditTime: 2023-11-10 08:55:44
+ * @LastEditTime: 2023-11-10 18:28:35
  * @FilePath: \my-agile-team-document\.vitepress\nav.ts
  * @Description: 右上侧导航
  * Copyright (c) ${2022} by ChenYu/天智AgileTeam, All Rights Reserved.
@@ -49,7 +49,7 @@ export const nav: DefaultTheme.NavItem[] = [
     ]
   },
   {
-    text: '伟大的贡献者',
+    text: '团队英雄墙',
     link: '/team',
   },
 ]
