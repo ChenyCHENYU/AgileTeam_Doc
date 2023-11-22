@@ -211,6 +211,10 @@ export const PO_DOC = [
         text: '调研问卷提纲',
         link: `${PO}/requirement/survey`,
       },
+      {
+        text: '需求池',
+        link: `${PO}/requirement/demand-pool`,
+      },
     ],
   },
 ]
