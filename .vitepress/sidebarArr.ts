@@ -1,11 +1,9 @@
-
 const WEB = '/web'
 const COMPONENT = '/web-component'
 
-
 // 前端文档相关的sidebar
 
-export const WEB_DOC =   [
+export const WEB_DOC = [
   {
     text: '快速上手',
     items: [
@@ -176,8 +174,6 @@ export const WEB_COMPONENT = [
   },
 ]
 
-
-
 const PO = '/po'
 
 // 产品文档相关的sidebar
@@ -205,6 +201,15 @@ export const PO_DOC = [
       {
         text: '通用模式',
         link: `${PO}/standard/universal-mode`,
+      },
+    ],
+  },
+  {
+    text: '需求的一些处理方式',
+    items: [
+      {
+        text: '调研问卷提纲',
+        link: `${PO}/requirement/survey`,
       },
     ],
   },
