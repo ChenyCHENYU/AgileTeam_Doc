@@ -212,8 +212,12 @@ export const PO_DOC = [
         link: `${PO}/requirement/survey`,
       },
       {
-        text: '需求池',
+        text: '需求池示例',
         link: `${PO}/requirement/demand-pool`,
+      },
+      {
+        text: '需求规格说明书',
+        link: `${PO}/requirement/specification`,
       },
     ],
   },
