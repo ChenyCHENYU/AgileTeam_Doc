@@ -223,6 +223,10 @@ export const PO_DOC = [
         text: '需求分析标准工作方法',
         link: `${PO}/requirement/analyze`,
       },
+      {
+        text: '需求分析工具表单',
+        link: `${PO}/requirement/tool-form`,
+      },
     ],
   },
 ]
