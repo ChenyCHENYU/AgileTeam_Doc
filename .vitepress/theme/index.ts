@@ -13,6 +13,7 @@ import type { Theme } from 'vitepress'
 import { inBrowser } from 'vitepress'
 import DefaultTheme from 'vitepress/theme'
 import FontColor from './components/FontColor.vue'
+import ElImg from './components/ElImg.vue'
 import GitalkComment from './components/GitalkComment.vue'
 import GoogleAdsense from './components/GoogleAdsense.vue'
 import ImgWrap from './components/ImgWrap.vue'
@@ -30,6 +31,7 @@ const theme: Theme = {
     app.component('GoogleAdsense', GoogleAdsense)
     app.component('ImgWrap', ImgWrap)
     app.component('FontColor', FontColor)
+    app.component('ElImg', ElImg)
 
     if (inBrowser) {
       if (isInvalidRoute()) {

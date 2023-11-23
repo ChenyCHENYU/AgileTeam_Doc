@@ -205,7 +205,7 @@ export const PO_DOC = [
     ],
   },
   {
-    text: '需求的一些处理方式',
+    text: '产品需求的管理方法',
     items: [
       {
         text: '调研问卷提纲',
@@ -219,6 +219,12 @@ export const PO_DOC = [
         text: '需求规格说明书',
         link: `${PO}/requirement/specification`,
       },
+      {
+        text: '需求分析标准工作方法',
+        link: `${PO}/requirement/analyze`,
+      },
     ],
   },
 ]
+
+
