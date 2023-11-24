@@ -231,6 +231,18 @@ export const PO_DOC = [
         text: '解决方案模板',
         link: `${PO}/requirement/scheme`,
       },
+      {
+        text: '需求调研标准流程',
+        link: `${PO}/requirement/survey-criteria`,
+      },
+      {
+        text: '需求调研计划',
+        link: `${PO}/requirement/plan`,
+      },
+      {
+        text: '需求调研报告',
+        link: `${PO}/requirement/report`,
+      },
     ],
   },
 ]
