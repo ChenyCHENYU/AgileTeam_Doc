@@ -227,8 +227,11 @@ export const PO_DOC = [
         text: '需求分析工具表单',
         link: `${PO}/requirement/tool-form`,
       },
+      {
+        text: '解决方案模板',
+        link: `${PO}/requirement/scheme`,
+      },
     ],
   },
 ]
-
 

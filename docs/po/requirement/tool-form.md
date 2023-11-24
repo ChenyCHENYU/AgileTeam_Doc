@@ -59,3 +59,7 @@ outline: 'deep'
 ## 质量场景分析表
 
 <ElImg src="https://cheny-chenyu.oss-cn-chengdu.aliyuncs.com/my-agile-team-document/po-64.png"/>
+
+## 关于模板
+
+excel 模板参考语雀产品组。 ➡️ [传送门](https://xc0mg8.yuque.com/xc0mg8/bg1lss/wshvoigpve04p1hd)
