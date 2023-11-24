@@ -62,7 +62,7 @@ outline: 'deep'
 
 -
 
-<img alt="问题管理" src=https://cheny-chenyu.oss-cn-chengdu.aliyuncs.com/my-agile-team-document/po-13.png width="1000"/>
+<ElImg src="https://cheny-chenyu.oss-cn-chengdu.aliyuncs.com/my-agile-team-document/po-13.png"/>
 
 ## 备注
 

@@ -146,7 +146,7 @@ eg：不要为了编辑内容而打开另一个页面，应该直接在上下
 
 邀请就是引导用户进入下一个交互层次的提醒和暗示，通常包括意符（eg：实时的提示信息）和可供性，以表明在下一个界面可以做什么。当可供性中可感知的部分（Perceived Affordance）表现为意符时，人机交互的过程往往更加自然、顺畅。
 
-<img alt="图片" src=https://cheny-chenyu.oss-cn-chengdu.aliyuncs.com/my-agile-team-document/po-1.png width="1000"/>
+<ElImg src="https://cheny-chenyu.oss-cn-chengdu.aliyuncs.com/my-agile-team-document/po-1.png"/>
 
 ## 静态邀请
 
@@ -179,7 +179,7 @@ eg：不要为了编辑内容而打开另一个页面，应该直接在上下
 
 虽然反馈太多（准确的说，错误的反馈太多）是一个问题，但是反馈太少甚至没有反馈的系统，则让人感觉迟钝和笨拙，用户体验更差。
 
-<img alt="图片" src=https://cheny-chenyu.oss-cn-chengdu.aliyuncs.com/my-agile-team-document/po-2.png width="1000"/>
+<ElImg src="https://cheny-chenyu.oss-cn-chengdu.aliyuncs.com/my-agile-team-document/po-2.png"/>
 
 ## 查询模式
 
@@ -200,5 +200,3 @@ eg：不要为了编辑内容而打开另一个页面，应该直接在上下
 点击刷新：告知用户有新内容，并提供按钮等工具帮助用户查看新内容。
 
 定时刷新：无需用户介入，定时展示新内容。
-
-
