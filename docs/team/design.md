@@ -16,7 +16,7 @@ import {
 const coreMembers = [
   {
     // avatar: 'https://www.github.com/yyx990803.png',
-    avatar: '/assets/team/cheny.png',
+    avatar: '/assets/team/傅会文.png',
     name: '傅会文',
     title: 'Ui Tech Lead',
     // links: [
@@ -26,7 +26,7 @@ const coreMembers = [
      desc: ''
   },
   {
-    avatar: '/assets/team/张东.png',
+    avatar: '/assets/team/刘凯.png',
     name: '刘凯',
     title: 'Ui Design',
     desc: '',
@@ -35,7 +35,7 @@ const coreMembers = [
     ]
   },
     {
-    avatar: '/assets/team/杨佩.png',
+    avatar: '/assets/team/廉国崴.png',
     name: '廉国崴',
     title: 'Ui Design',
     desc: '',
@@ -44,15 +44,15 @@ const coreMembers = [
     ]
   },
   {
-    avatar: '/assets/team/赵成刚.png',
+    avatar: '/assets/team/刘旭洋.png',
     name: '刘旭洋',
-    title: '建模师 Tech Lead',
+    title: 'Modeler Tech Lead',
     desc: ''
   },
   {
-    avatar: '/assets/team/徐杨沛.png',
-    name: '徐杨沛',
-    title: '建模师',
+    avatar: '/assets/team/许扬沛.png',
+    name: '许扬沛',
+    title: 'Modeler',
     desc: '',
     links: [
     //   { icon: 'github', link: 'https://github.com/yyx990803' },

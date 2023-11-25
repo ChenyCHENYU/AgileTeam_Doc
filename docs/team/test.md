@@ -16,53 +16,53 @@ import {
 const coreMembers = [
   {
     // avatar: 'https://www.github.com/yyx990803.png',
-    avatar: '/assets/team/cheny.png',
+    avatar: '/assets/team/李斌.png',
     name: '李斌',
-    title: 'QC Lead',
+    title: 'Quality Control Lead',
     // links: [
     //   { icon: 'github', link: 'https://github.com/yyx990803' },
     //   { icon: 'yotube', link: 'https://gitee.com/ycyplus163' },
     // ],
-     desc: '不忘初心，方得始终'
+     desc: ''
   },
   {
-    avatar: '/assets/team/张东.png',
+    avatar: '/assets/team/千静妮.png',
     name: '千静妮',
-    title: 'QC',
-    desc: '只要拼不死，就往死里拼',
+    title: 'Quality Control',
+    desc: '',
     links: [
     //   { icon: 'github', link: 'https://github.com/yyx990803' },
     ]
   },
   {
-    avatar: '/assets/team/赵成刚.png',
+    avatar: '/assets/team/孙飞燕.png',
     name: '孙飞燕',
-    title: 'Tech Lead',
-    desc: '快乐编码，快乐捞钱'
+    title: 'Quality Control',
+    desc: ''
   },
   {
-    avatar: '/assets/team/曹翔.png',
+    avatar: '/assets/team/马艳平.png',
     name: '马艳平',
-    title: 'Architect',
-    desc: '人若有志，万事可为',
+    title: 'Quality Control',
+    desc: '',
     links: [
     //   { icon: 'github', link: 'https://github.com/yyx990803' },
     ]
   },
   {
-    avatar: '/assets/team/王凯文.png',
+    avatar: '/assets/team/王超.png',
     name: '王超',
-    title: 'Developers',
-    desc: '人生如逆旅，我亦是行人',
+    title: 'Quality Control',
+    desc: '',
     links: [
     //   { icon: 'github', link: 'https://github.com/yyx990803' },
     ]
   },
   {
-    avatar: '/assets/team/马佳瑞.png',
+    avatar: '/assets/team/廖磊.png',
     name: '廖磊',
-    title: 'Developers',
-    desc: ' 挣钱脱发，花钱植发',
+    title: 'Quality Control',
+    desc: ' ',
     links: [
     //   { icon: 'github', link: 'https://github.com/yyx990803' },
     ]

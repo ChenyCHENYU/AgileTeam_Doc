@@ -16,7 +16,7 @@ import {
 const coreMembers = [
   {
     // avatar: 'https://www.github.com/yyx990803.png',
-    avatar: '/assets/team/cheny.png',
+    avatar: '/assets/team/付晨璞.png',
     name: '付晨璞',
     title: 'Tech Lead',
     // links: [
@@ -26,7 +26,7 @@ const coreMembers = [
      desc: ''
   },
   {
-    avatar: '/assets/team/张东.png',
+    avatar: '/assets/team/史乐乐.png',
     name: '史乐乐',
     title: 'Product Manager',
     desc: '',
@@ -35,22 +35,22 @@ const coreMembers = [
     ]
   },
     {
-    avatar: '/assets/team/杨佩.png',
+    avatar: '/assets/team/加霖.png',
     name: '加霖',
-    title: 'Developers',
+    title: 'Product Manager',
     desc: '',
     links: [
     //   { icon: 'github', link: 'https://github.com/yyx990803' },
     ]
   },
   {
-    avatar: '/assets/team/赵成刚.png',
+    avatar: '/assets/team/巩敏政.png',
     name: '巩敏政',
     title: 'Product Manager',
     desc: ''
   },
   {
-    avatar: '/assets/team/曹翔.png',
+    avatar: '/assets/team/李彦芝.png',
     name: '李彦芝',
     title: 'Product Manager',
     desc: '',
@@ -59,7 +59,7 @@ const coreMembers = [
     ]
   },
   {
-    avatar: '/assets/team/王凯文.png',
+    avatar: '/assets/team/白赟.png',
     name: '白赟',
     title: 'Product Manager',
     desc: '',
@@ -68,7 +68,7 @@ const coreMembers = [
     ]
   },
   {
-    avatar: '/assets/team/马佳瑞.png',
+    avatar: '/assets/team/雷振杰.png',
     name: '雷振杰',
     title: 'Product Manager',
     desc: ' ',
@@ -77,7 +77,7 @@ const coreMembers = [
     ]
   },
   {
-    avatar: '/assets/team/董亚婷.png',
+    avatar: '/assets/team/李孟奇.png',
     name: '李孟奇',
     title: 'Product Manager',
     desc: '',
@@ -104,5 +104,3 @@ const coreMembers = [
     </template>
   </VPTeamPageSection> -->
 </VPTeamPage>
-
-

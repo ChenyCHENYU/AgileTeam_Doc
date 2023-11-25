@@ -16,7 +16,7 @@ import {
 const coreMembers = [
   {
     // avatar: 'https://www.github.com/yyx990803.png',
-    avatar: '/assets/team/cheny.png',
+    avatar: '/assets/team/杨晓明.png',
     name: '杨晓明',
     title: 'Technical Director',
     // links: [
@@ -26,52 +26,52 @@ const coreMembers = [
      desc: '不忘初心，方得始终'
   },
   {
-    avatar: '/assets/team/张东.png',
+    avatar: '/assets/team/王宇坤.png',
     name: '王宇坤',
     title: 'Technical Supervisor',
-    desc: '只要拼不死，就往死里拼',
+    desc: '',
     links: [
     //   { icon: 'github', link: 'https://github.com/yyx990803' },
     ]
   },
   {
-    avatar: '/assets/team/赵成刚.png',
+    avatar: '/assets/team/郝伟伟.png',
     name: '郝伟伟',
     title: 'Tech Lead',
-    desc: '快乐编码，快乐捞钱'
+    desc: ''
   },
   {
-    avatar: '/assets/team/曹翔.png',
+    avatar: '/assets/team/潘超越.png',
     name: '潘超越',
     title: 'Architect',
-    desc: '人若有志，万事可为',
+    desc: '',
     links: [
     //   { icon: 'github', link: 'https://github.com/yyx990803' },
     ]
   },
   {
-    avatar: '/assets/team/王凯文.png',
+    avatar: '/assets/team/何光明.png',
     name: '何光明',
     title: 'Developers',
-    desc: '人生如逆旅，我亦是行人',
+    desc: '',
     links: [
     //   { icon: 'github', link: 'https://github.com/yyx990803' },
     ]
   },
   {
-    avatar: '/assets/team/马佳瑞.png',
+    avatar: '/assets/team/苏杰.png',
     name: '苏杰',
     title: 'Developers',
-    desc: ' 挣钱脱发，花钱植发',
+    desc: ' ',
     links: [
     //   { icon: 'github', link: 'https://github.com/yyx990803' },
     ]
   },
   {
-    avatar: '/assets/team/董亚婷.png',
+    avatar: '/assets/team/马钧.png',
     name: '马钧',
     title: 'Developers',
-    desc: '爱敲代码，糊涂时读书，独处时思考',
+    desc: '',
     links: [
     //   { icon: 'github', link: 'https://github.com/yyx990803' },
     ]
@@ -86,56 +86,56 @@ const coreMembers = [
     ]
   },
   {
-    avatar: '/assets/team/赵保山.png',
+    avatar: '/assets/team/兰杨岩.png',
     name: '兰杨岩',
     title: 'Developers',
-    desc: '在谷底也要开花，在海底也要望月',
+    desc: '',
     links: [
     //   { icon: 'github', link: 'https://github.com/yyx990803' },
     ]
   },
   {
-    avatar: '/assets/team/杨博.png',
-    name: '李扬',
+    avatar: '/assets/team/李杨.png',
+    name: '李杨',
     title: 'Developers',
-    desc: '风物长，宜放眼量',
+    desc: '',
     links: [
     //   { icon: 'github', link: 'https://github.com/yyx990803' },
     ]
   },
 
   {
-    avatar: '/assets/team/陈晶华.png',
+    avatar: '/assets/team/权雷雷.png',
     name: '权雷雷',
     title: 'Developers',
-    desc:'所有的胜利都是有备而来',
+    desc:'',
     links: [
     //   { icon: 'github', link: 'https://github.com/yyx990803' },
     ]
   },
   {
-    avatar: '/assets/team/陈晶华.png',
+    avatar: '/assets/team/宋凯.png',
     name: '宋凯',
     title: 'Developers',
-    desc:'所有的胜利都是有备而来',
+    desc:'',
     links: [
     //   { icon: 'github', link: 'https://github.com/yyx990803' },
     ]
   },
   {
-    avatar: '/assets/team/陈晶华.png',
+    avatar: '/assets/team/陈超.png',
     name: '陈超',
     title: 'Developers',
-    desc:'所有的胜利都是有备而来',
+    desc:'',
     links: [
     //   { icon: 'github', link: 'https://github.com/yyx990803' },
     ]
   },
   {
-    avatar: '/assets/team/陈晶华.png',
-    name: '周沾',
+    avatar: '/assets/team/周湛.png',
+    name: '周湛', 
     title: 'Developers',
-    desc:'所有的胜利都是有备而来',
+    desc:'',
     links: [
     //   { icon: 'github', link: 'https://github.com/yyx990803' },
     ]

@@ -17,7 +17,7 @@ const coreMembers = [
   {
     // avatar: 'https://www.github.com/yyx990803.png',
     avatar: '/assets/team/cheny.png',
-    name: 'Cheny',
+    name: 'CHENY',
     title: 'Creator',
     // links: [
     //   { icon: 'github', link: 'https://github.com/yyx990803' },
@@ -114,19 +114,19 @@ const coreMembers = [
     ]
   },
   {
-    avatar: '/assets/team/陈晶华.png',
+    avatar: '/assets/team/原宁宁.png',
     name: '原宁宁',
     title: 'Developers',
-    desc:'所有的胜利都是有备而来',
+    desc:'',
     links: [
     //   { icon: 'github', link: 'https://github.com/yyx990803' },
     ]
   },
   {
-    avatar: '/assets/team/陈晶华.png',
+    avatar: '/assets/team/丁铭.png',
     name: '丁铭',
     title: 'Developers',
-    desc:'所有的胜利都是有备而来',
+    desc:'',
     links: [
     //   { icon: 'github', link: 'https://github.com/yyx990803' },
     ]
@@ -200,4 +200,3 @@ const partners = [
     </template>
   </VPTeamPageSection>
 </VPTeamPage>
-
