@@ -59,7 +59,7 @@ export default defineConfig({
     },
     footer: {
       message: 'Released under the MIT License',
-      copyright: 'Copyright © 2022 Cheny - 西安天智',
+      copyright: 'Copyright © 2022 CHENY - 西安天智',
     },
     algolia: {
       appId: 'RD79285UB5',

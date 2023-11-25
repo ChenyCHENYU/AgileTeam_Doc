@@ -113,6 +113,24 @@ const coreMembers = [
     //   { icon: 'github', link: 'https://github.com/yyx990803' },
     ]
   },
+  {
+    avatar: '/assets/team/陈晶华.png',
+    name: '原宁宁',
+    title: 'Developers',
+    desc:'所有的胜利都是有备而来',
+    links: [
+    //   { icon: 'github', link: 'https://github.com/yyx990803' },
+    ]
+  },
+  {
+    avatar: '/assets/team/陈晶华.png',
+    name: '丁铭',
+    title: 'Developers',
+    desc:'所有的胜利都是有备而来',
+    links: [
+    //   { icon: 'github', link: 'https://github.com/yyx990803' },
+    ]
+  },
 ]
 
 
@@ -165,13 +183,12 @@ const partners = [
     title: '资深前端',
     desc: '坐标东北沈阳的一个前端老炮儿，出道9年，热爱编码，热爱生活，喜欢极限编程'
   }
-
 ]
 </script>
 
 <VPTeamPage>
   <VPTeamPageTitle>
-    <template #title>我们的团队</template>
+    <template #title>我们的前端</template>
     <template #lead>核心成员</template>
   </VPTeamPageTitle>
   <VPTeamMembers size="medium" :members="coreMembers" />
@@ -183,3 +200,4 @@ const partners = [
     </template>
   </VPTeamPageSection>
 </VPTeamPage>
+
