@@ -57,7 +57,7 @@ Guide：一些保证 ETC 体系化的约定，如：排版、文案、Action Pla
 省略无用词汇，不重复用户已知事实；在绝大多数交互场景下，都无需界面描述出全部的细节。  
 尽量提供简短、易于快速获取的内容。
 
-<ElImg src="https://cheny-chenyu.oss-cn-chengdu.aliyuncs.com/my-agile-team-document/po-3.png"/>
+<ElImg src="https://cheny-chenyu.oss-cn-chengdu.aliyuncs.com/my-agile-team-document/po/po-3.png"/>
 
 ## 使用用户熟悉的语言
 
@@ -65,7 +65,7 @@ Guide：一些保证 ETC 体系化的约定，如：排版、文案、Action Pla
 
 间接、暧昧模糊的说法，生僻和过于『文雅』的用词，会增加用户的认知负荷，所以应当尽量避免使用这类用户无法识别的词汇。
 
-<ElImg src="https://cheny-chenyu.oss-cn-chengdu.aliyuncs.com/my-agile-team-document/po-4.png"/>
+<ElImg src="https://cheny-chenyu.oss-cn-chengdu.aliyuncs.com/my-agile-team-document/po/po-4.png"/>
 
 ## 表述一致
 
@@ -75,7 +75,7 @@ Guide：一些保证 ETC 体系化的约定，如：排版、文案、Action Pla
 - 操作的名称和目标页面标题的名称保持一致。  
 :::
 
-<ElImg src="https://cheny-chenyu.oss-cn-chengdu.aliyuncs.com/my-agile-team-document/po-5.png"/>
+<ElImg src="https://cheny-chenyu.oss-cn-chengdu.aliyuncs.com/my-agile-team-document/po/po-5.png"/>
 
 ## 突出重点
 
@@ -83,7 +83,7 @@ Guide：一些保证 ETC 体系化的约定，如：排版、文案、Action Pla
 
 :bell: 注：如考虑安全性问题时，隐私信息也可调整为『点击后可见』的方式。
 
-<ElImg src="https://cheny-chenyu.oss-cn-chengdu.aliyuncs.com/my-agile-team-document/po-6.png"/>
+<ElImg src="https://cheny-chenyu.oss-cn-chengdu.aliyuncs.com/my-agile-team-document/po/po-6.png"/>
 
 ## 完整、直接地阐述信息
 
@@ -97,11 +97,11 @@ Guide：一些保证 ETC 体系化的约定，如：排版、文案、Action Pla
 业用语要精准，并是所属行业认可通用用词；时间的表述必须明确。  
 统计文案格式：数字+单位+动词/名词。
 
-<ElImg src="https://cheny-chenyu.oss-cn-chengdu.aliyuncs.com/my-agile-team-document/po-7.png"/>
+<ElImg src="https://cheny-chenyu.oss-cn-chengdu.aliyuncs.com/my-agile-team-document/po/po-7.png"/>
 
 操作文案格式：动词+名词。
 
-<ElImg src="https://cheny-chenyu.oss-cn-chengdu.aliyuncs.com/my-agile-team-document/po-8.png"/>
+<ElImg src="https://cheny-chenyu.oss-cn-chengdu.aliyuncs.com/my-agile-team-document/po/po-8.png"/>
 
 ## 语气
 
@@ -114,7 +114,7 @@ Guide：一些保证 ETC 体系化的约定，如：排版、文案、Action Pla
 :bell: 注：不要在同一个句式中混用『你』和『我』，交互中指代混乱会让用户相
 当纠结。
 
-<ElImg src="https://cheny-chenyu.oss-cn-chengdu.aliyuncs.com/my-agile-team-document/po-9.png"/>
+<ElImg src="https://cheny-chenyu.oss-cn-chengdu.aliyuncs.com/my-agile-team-document/po/po-9.png"/>
 
 ## 友好、尊重用户
 
@@ -125,7 +125,7 @@ Guide：一些保证 ETC 体系化的约定，如：排版、文案、Action Pla
 
 不要使用过于绝对的表述，这样会让用户觉得不适。
 
-<ElImg src="https://cheny-chenyu.oss-cn-chengdu.aliyuncs.com/my-agile-team-document/po-10.png"/>
+<ElImg src="https://cheny-chenyu.oss-cn-chengdu.aliyuncs.com/my-agile-team-document/po/po-10.png"/>
 
 ## 大小写和标点符号
 
@@ -172,7 +172,7 @@ Guide：一些保证 ETC 体系化的约定，如：排版、文案、Action Pla
 正确得使用标点符号会让句子看起来更清晰和具有可读性。  
 具体使用请参考 1995 年中国标准出版社出版的《标点符号用法》，下图为重点列出的在设计中需要注意的部分。
 
-<ElImg src="https://cheny-chenyu.oss-cn-chengdu.aliyuncs.com/my-agile-team-document/po-11.png"/>
+<ElImg src="https://cheny-chenyu.oss-cn-chengdu.aliyuncs.com/my-agile-team-document/po/po-11.png"/>
 
 ## 导航
 
