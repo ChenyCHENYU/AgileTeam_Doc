@@ -1,7 +1,8 @@
-const WEB = '/web'
-const COMPONENT = '/web-component'
 
 // 前端文档相关的sidebar
+
+const WEB = '/web'
+const COMPONENT = '/web-component'
 
 export const WEB_DOC = [
   {
@@ -174,9 +175,10 @@ export const WEB_COMPONENT = [
   },
 ]
 
-const PO = '/po'
 
 // 产品文档相关的sidebar
+
+const PO = '/po'
 
 export const PO_DOC = [
   {
@@ -245,5 +247,38 @@ export const PO_DOC = [
       },
     ],
   },
+]
+
+
+
+// 设计文档相关的sidebar
+const UI = 'design'
+
+export const UI_DOC = [
+
+]
+
+// 后端文档相关的sidebar
+
+const REAR_END = 'rear-end'
+
+export const REAR_END_DOC = [
+  {
+    text: '天智 java 规范',
+    items: [
+      {
+        text: '',
+        link: `${REAR_END}/standard/norm`,
+      },
+    ],
+  },
+]
+
+// 测试文档相关的sidebar
+
+const QC = 'qc'
+
+export const QC_DOC = [
+
 ]
 

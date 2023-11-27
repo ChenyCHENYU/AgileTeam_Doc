@@ -54,10 +54,8 @@ const coreMembers = [
     name: '许扬沛',
     title: 'Modeler',
     desc: '',
-    links: [
-    //   { icon: 'github', link: 'https://github.com/yyx990803' },
-    ]
-  },
+
+  }
 ]
 
 

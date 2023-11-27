@@ -2,7 +2,7 @@
  * @Author: ChenYu
  * @Date: 2022-10-22 17:14:01
  * @LastEditors: ChenYu ycyplus@gmail.com
- * @LastEditTime: 2023-11-24 12:29:06
+ * @LastEditTime: 2023-11-27 09:43:58
  * @FilePath: \my-agile-team-document\.vitepress\nav.ts
  * @Description: 右上侧导航
  * Copyright (c) ${2022} by ChenYu/天智AgileTeam, All Rights Reserved.
@@ -32,7 +32,9 @@ export const nav: DefaultTheme.NavItem[] = [
   {
     text: '后端',
     activeMatch: '/java/',
-    items: [{ text: '后端文档', link: '/item-1' }],
+    items: [
+      { text: '后端文档', link: '/rear-end/standard/norm'},
+  ],
   },
   {
     text: '测试',
@@ -48,10 +50,10 @@ export const nav: DefaultTheme.NavItem[] = [
     activeMatch: '/team/',
     items: [
       { text: '产品伙伴', link: '/team/po' },
-      { text: '设计伙伴', link: '/team/design' },
+      { text: '设计伙伴', link: '/team/ui' },
       { text: '前端伙伴', link: '/team/front-end' },
       { text: '后端伙伴', link: '/team/rear-end' },
-      { text: '测试伙伴', link: '/team/test' },
+      { text: '测试伙伴', link: '/team/qc' },
     ],
   },
 ]
