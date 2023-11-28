@@ -2,9 +2,9 @@
  * @Description: vitepress 执行入库文件
  * @Author: ChenYu ycyplus@163.com
  * @Date: 2022-10-24 18:01:30
- * @LastEditors: ChenYu ycyplus@163.com
- * @LastEditTime: 2022-11-28 18:11:28
- * @FilePath: \my-agile-team-document\.vitepress\theme\index.ts
+ * @LastEditors: ChenYu ycyplus@gmail.com
+ * @LastEditTime: 2023-11-28 17:01:16
+ * @FilePath: \my-agile-team-document\.vitepress\theme\index.mts
  * Copyright (c) 2022 西安天智 AgileTeam by ChenYu email: ycyplus@163.com, All Rights Reserved.
  */
 import ElementPlus from 'element-plus'

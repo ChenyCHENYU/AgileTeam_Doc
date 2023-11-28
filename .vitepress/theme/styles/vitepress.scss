@@ -1,7 +1,7 @@
 :root {
   --vp-c-green: #5d80f4;
   --vp-c-brand-dark: #5d80f4;
-  --vp-c-bg-alt: #fff; // 侧边栏
+  // --vp-c-bg-alt: #fff; // 侧边栏
 }
 
 .dark {
@@ -23,6 +23,7 @@
       cursor: pointer;
       user-select: none;
       margin: 0 !important;
+
 
       &:hover {
         transition: 0.5s;
@@ -151,3 +152,5 @@ ul,
 li {
   list-style-type: none;
 }
+
+

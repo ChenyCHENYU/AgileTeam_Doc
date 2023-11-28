@@ -4,13 +4,17 @@
   "description": "An agile team wants to share the introduction documents based on the gradual expansion of vue。",
   "author": "cheny <ycyplus@gmail.com>",
   "private": true,
+  "type": "module",
   "scripts": {
     "dev": "vitepress dev --host",
     "build": "vitepress build",
     "serve": "vitepress serve",
     "deploy": "npm run build && gh-pages -d dist",
     "backup": "git add . && git commit -m \"chore: backup\" && git push",
-    "up": "npx npm-check-updates -u"
+    "up": "npx npm-check-updates -u",
+    "docs:dev": "vitepress dev",
+    "docs:build": "vitepress build",
+    "docs:preview": "vitepress preview"
   },
   "repository": {
     "type": "git",

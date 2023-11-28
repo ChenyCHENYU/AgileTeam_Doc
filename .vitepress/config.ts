@@ -1,8 +1,8 @@
 /*
  * @Author: ChenYu
  * @Date: 2022-10-22 17:14:01
- * @LastEditors: ChenYu
- * @LastEditTime: 2022-12-16 16:12:20
+ * @LastEditors: ChenYu ycyplus@gmail.com
+ * @LastEditTime: 2023-11-28 15:55:02
  * @FilePath: \my-agile-team-document\.vitepress\config.ts
  * @Description: 配置文件
  * Copyright (c) ${2022} by ChenYu/天智AgileTeam, All Rights Reserved.
@@ -59,7 +59,7 @@ export default defineConfig({
     },
     footer: {
       message: 'Released under the MIT License',
-      copyright: 'Copyright © 2022 CHENY - 西安天智',
+      copyright: 'Copyright © 2022 Cheny - 西安天智',
     },
     algolia: {
       appId: 'RD79285UB5',
