@@ -35,6 +35,15 @@ const coreMembers = [
     ]
   },
   {
+    avatar: '/assets/team/陶夺旗.png',
+    name: '陶夺旗',
+    title: 'Android / PM',
+    desc: '天生傲骨，怎可认输',
+    links: [
+    //   { icon: 'github', link: 'https://github.com/yyx990803' },
+    ]
+  },
+  {
     avatar: '/assets/team/赵成刚.png',
     name: '赵成刚',
     title: 'Developers',
@@ -117,7 +126,7 @@ const coreMembers = [
     avatar: '/assets/team/原宁宁.png',
     name: '原宁宁',
     title: 'Developers',
-    desc:'',
+    desc:'知行合一，追求卓越',
     links: [
     //   { icon: 'github', link: 'https://github.com/yyx990803' },
     ]
@@ -126,7 +135,7 @@ const coreMembers = [
     avatar: '/assets/team/丁铭.png',
     name: '丁铭',
     title: 'Developers',
-    desc:'',
+    desc:'My Heart Will Go On',
     links: [
     //   { icon: 'github', link: 'https://github.com/yyx990803' },
     ]

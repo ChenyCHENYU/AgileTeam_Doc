@@ -264,11 +264,15 @@ const REAR_END = 'rear-end'
 
 export const REAR_END_DOC = [
   {
-    text: '天智 java 规范',
+    text: '后端标准规范',
     items: [
       {
-        text: '',
+        text: '天智 java 规范',
         link: `${REAR_END}/standard/norm`,
+      },
+      {
+        text: '版本管理(后续完善迁移)',
+        link: `${REAR_END}/edition`,
       },
     ],
   },

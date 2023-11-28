@@ -23,13 +23,13 @@ const coreMembers = [
     //   { icon: 'github', link: 'https://github.com/yyx990803' },
     //   { icon: 'yotube', link: 'https://gitee.com/ycyplus163' },
     // ],
-     desc: '不忘初心，方得始终'
+     desc: '初心如磐，笃行致远， 行而不辍，未来可期'
   },
   {
     avatar: '/assets/team/王宇坤.png',
     name: '王宇坤',
     title: 'Technical Supervisor',
-    desc: '',
+    desc: '智慧源于勤奋，未来属于创新',
     links: [
     //   { icon: 'github', link: 'https://github.com/yyx990803' },
     ]
@@ -38,13 +38,13 @@ const coreMembers = [
     avatar: '/assets/team/郝伟伟.png',
     name: '郝伟伟',
     title: 'Tech Lead',
-    desc: ''
+    desc: '凡事换位思考，人生就会瞬间豁然开朗'
   },
   {
     avatar: '/assets/team/潘超越.png',
     name: '潘超越',
     title: 'Architect',
-    desc: '',
+    desc: '认知是我们的一生之敌',
     links: [
     //   { icon: 'github', link: 'https://github.com/yyx990803' },
     ]
@@ -53,7 +53,7 @@ const coreMembers = [
     avatar: '/assets/team/何光明.png',
     name: '何光明',
     title: 'Developers',
-    desc: '',
+    desc: '相信自己，并了解你自己',
     links: [
     //   { icon: 'github', link: 'https://github.com/yyx990803' },
     ]
@@ -62,7 +62,7 @@ const coreMembers = [
     avatar: '/assets/team/苏杰.png',
     name: '苏杰',
     title: 'Developers',
-    desc: ' ',
+    desc: '只有高手才能活下来！',
     links: [
     //   { icon: 'github', link: 'https://github.com/yyx990803' },
     ]
@@ -71,7 +71,7 @@ const coreMembers = [
     avatar: '/assets/team/马钧.png',
     name: '马钧',
     title: 'Developers',
-    desc: '',
+    desc: '正义绝不妥协！',
     links: [
     //   { icon: 'github', link: 'https://github.com/yyx990803' },
     ]
@@ -80,7 +80,7 @@ const coreMembers = [
     avatar: '/assets/team/杨佩.png',
     name: '肖斌',
     title: 'Developers',
-    desc: '每天都要优雅的写好每一行代码',
+    desc: '',
     links: [
     //   { icon: 'github', link: 'https://github.com/yyx990803' },
     ]
@@ -89,7 +89,7 @@ const coreMembers = [
     avatar: '/assets/team/兰杨岩.png',
     name: '兰杨岩',
     title: 'Developers',
-    desc: '',
+    desc: '勇敢的人先享受世界！',
     links: [
     //   { icon: 'github', link: 'https://github.com/yyx990803' },
     ]
@@ -98,7 +98,7 @@ const coreMembers = [
     avatar: '/assets/team/李杨.png',
     name: '李杨',
     title: 'Developers',
-    desc: '',
+    desc: '用代码改变世界，用科技引领未来',
     links: [
     //   { icon: 'github', link: 'https://github.com/yyx990803' },
     ]
@@ -108,7 +108,7 @@ const coreMembers = [
     avatar: '/assets/team/权雷雷.png',
     name: '权雷雷',
     title: 'Developers',
-    desc:'',
+    desc:'纵有疾风起，人生不言弃',
     links: [
     //   { icon: 'github', link: 'https://github.com/yyx990803' },
     ]
@@ -117,7 +117,7 @@ const coreMembers = [
     avatar: '/assets/team/宋凯.png',
     name: '宋凯',
     title: 'Developers',
-    desc:'',
+    desc:'脚踏实地,不负韶华',
     links: [
     //   { icon: 'github', link: 'https://github.com/yyx990803' },
     ]
@@ -126,7 +126,7 @@ const coreMembers = [
     avatar: '/assets/team/陈超.png',
     name: '陈超',
     title: 'Developers',
-    desc:'',
+    desc:'知足常乐',
     links: [
     //   { icon: 'github', link: 'https://github.com/yyx990803' },
     ]
@@ -135,7 +135,7 @@ const coreMembers = [
     avatar: '/assets/team/周湛.png',
     name: '周湛', 
     title: 'Developers',
-    desc:'',
+    desc:'精诚所至，金石为开',
     links: [
     //   { icon: 'github', link: 'https://github.com/yyx990803' },
     ]

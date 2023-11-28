@@ -10,6 +10,9 @@
         }"
       >
       </ElImage>
+      <span style="color: rgb(198, 198, 198)">
+        {{ title ? '图：' + title : '' }}</span
+      >
     </div>
   </div>
 </template>
@@ -18,6 +21,7 @@
 defineProps<{
   src: string
   style: object
+  title?: string
 }>()
 </script>
 

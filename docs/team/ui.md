@@ -23,13 +23,13 @@ const coreMembers = [
     //   { icon: 'github', link: 'https://github.com/yyx990803' },
     //   { icon: 'yotube', link: 'https://gitee.com/ycyplus163' },
     // ],
-     desc: ''
+     desc: 'UI出品，必是精品'
   },
   {
     avatar: '/assets/team/刘凯.png',
     name: '刘凯',
     title: 'Ui Design',
-    desc: '',
+    desc: '有道无术术可求,有术无道止于术',
     links: [
     //   { icon: 'github', link: 'https://github.com/yyx990803' },
     ]
@@ -38,7 +38,7 @@ const coreMembers = [
     avatar: '/assets/team/廉国崴.png',
     name: '廉国崴',
     title: 'Ui Design',
-    desc: '',
+    desc: '凡事预则立，不预则废',
     links: [
     //   { icon: 'github', link: 'https://github.com/yyx990803' },
     ]
@@ -47,13 +47,13 @@ const coreMembers = [
     avatar: '/assets/team/刘旭洋.png',
     name: '刘旭洋',
     title: 'Modeler Tech Lead',
-    desc: ''
+    desc: '成大事者，争百年，不争一息'
   },
   {
     avatar: '/assets/team/许扬沛.png',
     name: '许扬沛',
     title: 'Modeler',
-    desc: '',
+    desc: '耐心和持久胜过激烈和狂热',
 
   }
 ]

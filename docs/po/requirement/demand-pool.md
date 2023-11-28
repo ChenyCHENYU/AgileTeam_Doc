@@ -25,7 +25,7 @@ outline: 'deep'
 
 -
 
-<img alt="问题管理" src=https://cheny-chenyu.oss-cn-chengdu.aliyuncs.com/my-agile-team-document/po/po-12.png width="1000"/>
+<img alt="问题管理" src=https://cheny-chenyu.oss-cn-chengdu.aliyuncs.com/my-agile-team-document/po/12.png width="1000"/>
 
 ## 需求管理
 
@@ -62,7 +62,7 @@ outline: 'deep'
 
 -
 
-<ElImg src="https://cheny-chenyu.oss-cn-chengdu.aliyuncs.com/my-agile-team-document/po/po-13.png"/>
+<ElImg src="https://cheny-chenyu.oss-cn-chengdu.aliyuncs.com/my-agile-team-document/po/13.png"/>
 
 ## 备注
 

@@ -23,13 +23,13 @@ const coreMembers = [
     //   { icon: 'github', link: 'https://github.com/yyx990803' },
     //   { icon: 'yotube', link: 'https://gitee.com/ycyplus163' },
     // ],
-     desc: ''
+     desc: 'Connecting The Dots'
   },
   {
     avatar: '/assets/team/史乐乐.png',
     name: '史乐乐',
     title: 'Product Manager',
-    desc: '',
+    desc: '冲',
     links: [
     //   { icon: 'github', link: 'https://github.com/yyx990803' },
     ]
@@ -38,7 +38,7 @@ const coreMembers = [
     avatar: '/assets/team/加霖.png',
     name: '加霖',
     title: 'Product Manager',
-    desc: '',
+    desc: '好的软件特征是，明明没用过，但总觉得用过似的',
     links: [
     //   { icon: 'github', link: 'https://github.com/yyx990803' },
     ]
@@ -47,13 +47,13 @@ const coreMembers = [
     avatar: '/assets/team/巩敏政.png',
     name: '巩敏政',
     title: 'Product Manager',
-    desc: ''
+    desc: '世界一直在变化，结果由我们来决定'
   },
   {
     avatar: '/assets/team/李彦芝.png',
     name: '李彦芝',
     title: 'Product Manager',
-    desc: '',
+    desc: '山不向我走来，我便向山走去',
     links: [
     //   { icon: 'github', link: 'https://github.com/yyx990803' },
     ]
@@ -62,7 +62,7 @@ const coreMembers = [
     avatar: '/assets/team/白赟.png',
     name: '白赟',
     title: 'Product Manager',
-    desc: '',
+    desc: '大道至简',
     links: [
     //   { icon: 'github', link: 'https://github.com/yyx990803' },
     ]
@@ -71,7 +71,7 @@ const coreMembers = [
     avatar: '/assets/team/雷振杰.png',
     name: '雷振杰',
     title: 'Product Manager',
-    desc: ' ',
+    desc: '永不停歇，持续迭代',
     links: [
     //   { icon: 'github', link: 'https://github.com/yyx990803' },
     ]
