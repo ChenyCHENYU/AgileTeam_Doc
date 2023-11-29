@@ -4,7 +4,7 @@ pipeline {
         stage('build') { 
           steps {
             // sh '''npm install --registry=https://registry.npm.taobao.org --unsafe-perm'''
-            sh '''/root/node-js/node-v14.18.3-linux-x64/bin/n 14.18.3'''
+            sh '''/root/node-js/node-v14.18.3-linux-x64/bin/n 20.10.0'''
             sh '''yarn install'''
             sh '''yarn build'''
           }
