@@ -4,8 +4,8 @@ pipeline {
         stage('build') { 
           steps {
             script {
-                echo '*****当前nodejs环境是V16.13.2*****'
-                nodejs('nodejs-16.13.2') {
+                echo '*****当前nodejs环境是V20.10.0*****'
+                nodejs('nodejs-20.10.0') {
                 sh '''npm install -g yarn'''
                 sh '''yarn config set registry https://registry.npmmirror.com'''
                 sh '''yarn install'''
