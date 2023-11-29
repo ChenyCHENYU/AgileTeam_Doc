@@ -1,8 +1,8 @@
 <!--
  * @Author: ChenYu
  * @Date: 2022-10-08 09:23:49
- * @LastEditors: ChenYu ycyplus@163.com
- * @LastEditTime: 2022-11-05 14:24:34
+ * @LastEditors: ChenYu ycyplus@gmail.com
+ * @LastEditTime: 2023-11-29 09:41:39
  * @FilePath: \my-agile-team-document\.vitepress\theme\Home.vue
  * @Description: 入口页面
  * Copyright (c) ${2022} by ChenYu/天智AgileTeam, All Rights Reserved. 
