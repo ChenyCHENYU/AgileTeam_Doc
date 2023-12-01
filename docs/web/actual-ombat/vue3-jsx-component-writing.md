@@ -1,6 +1,4 @@
 ---
-layout: Vue3JSXComponentWriting
-title: Vue3 JSX Component Writing Method
 outline: 'deep'
 ---
 
@@ -831,7 +829,7 @@ const clickConfirmOrCancel = (tableData: any, row: any, index?: number) => {
   currentEdit.value = ''
   // 编辑行的也在这里复用处理
 
-  
+
   isEditLine.value = false
 }
 ```

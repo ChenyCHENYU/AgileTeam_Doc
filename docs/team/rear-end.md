@@ -140,6 +140,24 @@ const coreMembers = [
     //   { icon: 'github', link: 'https://github.com/yyx990803' },
     ]
   },
+  {
+    avatar: '/assets/team/郭森淼.png',
+    name: '郭森淼', 
+    title: 'Big Data',
+    desc:'Dare and the world always yields',
+    links: [
+    //   { icon: 'github', link: 'https://github.com/yyx990803' },
+    ]
+  },
+  {
+    avatar: '/assets/team/薛旭杰.png',
+    name: '薛旭杰', 
+    title: 'DevOps',
+    desc:'洞察力是取胜的关键!一定不要让你的警觉松懈!',
+    links: [
+    //   { icon: 'github', link: 'https://github.com/yyx990803' },
+    ]
+  },
 ]
 
 

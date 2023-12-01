@@ -1,6 +1,4 @@
 ---
-layout: Vue3CompositionApi
-title: Vue3 Composition API
 outline: 'deep'
 ---
 

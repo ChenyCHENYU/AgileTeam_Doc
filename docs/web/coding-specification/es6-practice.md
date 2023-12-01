@@ -1,6 +1,4 @@
 ---
-layout: ES6CodeingPractice
-title: ES6实践
 outline: 'deep'
 ---
 

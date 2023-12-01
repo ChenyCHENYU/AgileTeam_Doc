@@ -1,6 +1,4 @@
 ---
-layout: Vue3NewGrammar
-title: Vue3 新语法细节
 outline: 'deep'
 ---
 
