@@ -77,10 +77,10 @@ const coreMembers = [
     ]
   },
   {
-    avatar: '/assets/team/杨佩.png',
+    avatar: '/assets/team/肖斌.png',
     name: '肖斌',
     title: 'Developers',
-    desc: '',
+    desc: '只要思想不滑坡，办法总比困难多',
     links: [
     //   { icon: 'github', link: 'https://github.com/yyx990803' },
     ]
