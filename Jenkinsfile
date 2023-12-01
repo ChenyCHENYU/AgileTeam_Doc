@@ -44,7 +44,7 @@ pipeline {
             steps {
                 script {
                     def remote = [:]
-                        remote.name = 'root'
+                        remote.name = "root"
                         remote.host = "${TARGET_SERVER}"
                         remote.allowAnyHosts = true
                     withCredentials([usernamePassword(credentialsId: 'ssh-gw', passwordVariable: 'password', usernameVariable: 'username')]) {
