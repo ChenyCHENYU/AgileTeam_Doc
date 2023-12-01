@@ -2,7 +2,7 @@ pipeline {
   agent any
     environment{
         def NODE_VERSION="${node_version}"
-        def TARGET_SERVER="${server_ip}"
+        def TARGET_SERVER="121.89.210.252"
     }
     stages {
         stage('编译web工程代码') {
