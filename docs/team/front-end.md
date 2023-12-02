@@ -28,7 +28,7 @@ const coreMembers = [
   {
     avatar: '/assets/team/张东.png',
     name: '张东',
-    title: 'Developers',
+    title: 'Group Leader',
     desc: '只要拼不死，就往死里拼',
     links: [
     //   { icon: 'github', link: 'https://github.com/yyx990803' },
