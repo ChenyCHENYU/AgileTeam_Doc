@@ -4,10 +4,16 @@ outline: 'deep'
 
 # 天智 java 规范
 
+> 天智 java 规范是在阿里 java 规范的认知上，结合实践，聚焦总结的团队规范，但整体以阿里规范为标准参考，下面是阿里规范的文件，可在线查看或下载。
+
+:::details Java 开发手册(黄山版).pdf
+
+<embed src="/pdf/Java开发手册(黄山版).pdf" type="application/pdf" width="100%" height="600px" />
+::::
+
 ## java 代码结构规范
 
-随着公司研发项目越来越多，需要使用统一的代码结构说明规范，提升研发同事了解项目代码架构的效率。经过会议讨论，形成 Java
-项目结构的规范入下：
+:bell: 随着公司研发项目越来越多，需要使用统一的代码结构说明规范，提升研发同事了解项目代码架构的效率。经过会议讨论，形成 `Java` 项目结构的规范入下：
 
 ### 模块或服务结构规范
 
@@ -838,7 +844,7 @@ groovyScript("def returnType = \"${_1}\"; def result ='';if(returnType=='null'||
 
 ```xml
 <checkstyleConfigLocation>
-${project.parent.relativePath}/src/checkstyle/ali_checks.xml
+    ${project.parent.relativePath}/src/checkstyle/ali_checks.xml
 </checkstyleConfigLocation>
 ```
 
