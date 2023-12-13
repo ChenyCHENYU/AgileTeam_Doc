@@ -15,7 +15,8 @@ import {
   WEB_DOC,
   WEB_COMPONENT, 
   PO_DOC,
-  REAR_END_DOC
+  REAR_END_DOC,
+  QC_DOC
 } from './sidebarArr'
 
 
@@ -24,5 +25,6 @@ export const sidebar: DefaultTheme.Sidebar = {
   '/web-component/': WEB_COMPONENT,
   '/po/': PO_DOC,
   '/rear-end/': REAR_END_DOC,
+  '/qc/': QC_DOC,
 }
 

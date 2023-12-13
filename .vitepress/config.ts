@@ -2,7 +2,7 @@
  * @Author: ChenYu
  * @Date: 2022-10-22 17:14:01
  * @LastEditors: ChenYu ycyplus@gmail.com
- * @LastEditTime: 2023-11-29 09:55:41
+ * @LastEditTime: 2023-12-13 09:08:11
  * @FilePath: \my-agile-team-document\.vitepress\config.ts
  * @Description: 配置文件
  * Copyright (c) ${2022} by ChenYu/天智AgileTeam, All Rights Reserved.
@@ -27,13 +27,16 @@ export default defineConfig({
   // ignoreDeadLinks: true,  // 忽略死链接
   markdown: {
     lineNumbers: false,
+    
   },
+  lastUpdated: true, // string | boolean  // 开启最后更新时间
   themeConfig: {
     // logo: '/logo.svg',
     nav,
     sidebar,
     outline: 3,
     outlineTitle: '本页导航',
+    lastUpdatedText: "最后更新时间", // string
     socialLinks: [
       {
         icon: 'github',

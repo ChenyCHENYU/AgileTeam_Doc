@@ -283,6 +283,15 @@ export const REAR_END_DOC = [
 const QC = 'qc'
 
 export const QC_DOC = [
+  {
+    text: '测试标准流程',
+    items: [
+      {
+        text: '测试流程规范',
+        link: `${QC}/standard/norm`,
+      },
 
+    ],
+  },
 ]
 
