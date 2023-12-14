@@ -252,7 +252,7 @@ export const PO_DOC = [
 
 
 // 设计文档相关的sidebar
-const UI = 'design'
+const UI = '/design'
 
 export const UI_DOC = [
 
@@ -260,7 +260,7 @@ export const UI_DOC = [
 
 // 后端文档相关的sidebar
 
-const REAR_END = 'rear-end'
+const REAR_END = '/rear-end'
 
 export const REAR_END_DOC = [
   {
@@ -280,7 +280,7 @@ export const REAR_END_DOC = [
 
 // 测试文档相关的sidebar
 
-const QC = 'qc'
+const QC = '/qc'
 
 export const QC_DOC = [
   {
@@ -293,6 +293,10 @@ export const QC_DOC = [
       {
         text: '测试策略设计',
         link: `${QC}/standard/strategy`,
+      },
+      {
+        text: '测试用例设计方法标准',
+        link: `${QC}/standard/use-case`,
       },
 
     ],

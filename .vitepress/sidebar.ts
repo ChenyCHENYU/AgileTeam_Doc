@@ -2,7 +2,7 @@
  * @Author: ChenYu
  * @Date: 2022-10-22 17:14:01
  * @LastEditors: ChenYu ycyplus@gmail.com
- * @LastEditTime: 2023-11-09 16:11:58
+ * @LastEditTime: 2023-12-14 14:12:32
  * @FilePath: \my-agile-team-document\.vitepress\sidebar.ts
  * @Description:
  * Copyright (c) ${2022} by ChenYu/天智AgileTeam, All Rights Reserved.
@@ -27,4 +27,6 @@ export const sidebar: DefaultTheme.Sidebar = {
   '/rear-end/': REAR_END_DOC,
   '/qc/': QC_DOC,
 }
+
+
 
