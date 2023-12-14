@@ -295,8 +295,12 @@ export const QC_DOC = [
         link: `${QC}/standard/strategy`,
       },
       {
-        text: '测试用例设计方法标准',
+        text: '测试用例设计标准',
         link: `${QC}/standard/use-case`,
+      },
+      {
+        text: '测试用例设计方法',
+        link: `${QC}/standard/desgin`,
       },
 
     ],
