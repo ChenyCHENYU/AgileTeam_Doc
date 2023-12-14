@@ -290,6 +290,10 @@ export const QC_DOC = [
         text: '测试流程规范',
         link: `${QC}/standard/norm`,
       },
+      {
+        text: '测试策略设计',
+        link: `${QC}/standard/strategy`,
+      },
 
     ],
   },

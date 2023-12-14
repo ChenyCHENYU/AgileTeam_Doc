@@ -2,8 +2,8 @@
   <div class="demo-image__error">
     <div class="block">
       <ElImage
-        :src="src"
-        :preview-src-list="[src]"
+        :src="src.includes('https') ? src : dSrc + src"
+        :preview-src-list="[dSrc + src]"
         hide-on-click-modal
         :style="{
           width: '100%',
@@ -23,6 +23,9 @@ defineProps<{
   style: object
   title?: string
 }>()
+
+const dSrc =
+  'https://cheny-chenyu.oss-cn-chengdu.aliyuncs.com/my-agile-team-document/'
 </script>
 
 <style scoped>
