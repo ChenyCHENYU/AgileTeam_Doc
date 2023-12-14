@@ -15,17 +15,6 @@ import {
 
 const coreMembers = [
   {
-    // avatar: 'https://www.github.com/yyx990803.png',
-    avatar: '/assets/team/杨晓明.png',
-    name: '杨晓明',
-    title: 'Technical Director',
-    // links: [
-    //   { icon: 'github', link: 'https://github.com/yyx990803' },
-    //   { icon: 'yotube', link: 'https://gitee.com/ycyplus163' },
-    // ],
-     desc: '初心如磐，笃行致远， 行而不辍，未来可期'
-  },
-  {
     avatar: '/assets/team/王宇坤.png',
     name: '王宇坤',
     title: 'Technical Supervisor',
