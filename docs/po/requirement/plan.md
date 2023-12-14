@@ -6,15 +6,15 @@ outline: 'deep'
 
 ## 调研计划模板一
 
-<ElImg src="https://cheny-chenyu.oss-cn-chengdu.aliyuncs.com/my-agile-team-document/po/66.png"/>
+<ElImg src="po/66.png"/>
 
 ## 调研计划示例一
 
-<ElImg src="https://cheny-chenyu.oss-cn-chengdu.aliyuncs.com/my-agile-team-document/po/68.png"/>
+<ElImg src="po/68.png"/>
 
 ## 调研计划示例二
 
-<ElImg src="https://cheny-chenyu.oss-cn-chengdu.aliyuncs.com/my-agile-team-document/po/69.png"/>
+<ElImg src="po/69.png"/>
 
 ## 关于模板
 

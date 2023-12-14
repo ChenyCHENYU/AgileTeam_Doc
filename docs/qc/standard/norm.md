@@ -30,7 +30,7 @@ outline: 'deep'
 
 ### 3.1、流程图
 
-<ElImg src="https://cheny-chenyu.oss-cn-chengdu.aliyuncs.com/my-agile-team-document/qc/1.png"/>
+<ElImg src="qc/1.png"/>
 
 ### 3.2、迭代开始前
 

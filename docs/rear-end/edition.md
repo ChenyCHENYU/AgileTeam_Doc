@@ -14,9 +14,9 @@ outline: 'deep'
 
 代码分支管理，命名方式如下，分支之间的切换如下。
 
-<ElImg src="https://cheny-chenyu.oss-cn-chengdu.aliyuncs.com/my-agile-team-document/convention/1.png" title="分支管理图"/>
+<ElImg src="convention/1.png" title="分支管理图"/>
 
-<ElImg src="https://cheny-chenyu.oss-cn-chengdu.aliyuncs.com/my-agile-team-document/convention/2.png" title="代码管理图"/>
+<ElImg src="convention/2.png" title="代码管理图"/>
 
 #### Java 软件版本管理
 
@@ -50,4 +50,4 @@ outline: 'deep'
 </plugin>
 ```
 
-<ElImg src="https://cheny-chenyu.oss-cn-chengdu.aliyuncs.com/my-agile-team-document/convention/3.png" title="版本管理示意图"/>
+<ElImg src="convention/3.png" title="版本管理示意图"/>

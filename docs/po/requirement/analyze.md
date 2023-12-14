@@ -44,17 +44,17 @@ outline: 'deep'
 
 模型 1：三个层次的软件需求
 
-<ElImg src="https://cheny-chenyu.oss-cn-chengdu.aliyuncs.com/my-agile-team-document/po/21.png"/>
+<ElImg src="po/21.png"/>
 
 模型 2：用户体验要素
 
-<ElImg src="https://cheny-chenyu.oss-cn-chengdu.aliyuncs.com/my-agile-team-document/po/22.png"/>
+<ElImg src="po/22.png"/>
 
 -
 
 模型 3：业务导向需求分析
 
-<ElImg src="https://cheny-chenyu.oss-cn-chengdu.aliyuncs.com/my-agile-team-document/po/23.png"/>
+<ElImg src="po/23.png"/>
 
 ## 价值与优先级
 
@@ -133,12 +133,12 @@ outline: 'deep'
 
 :bell: **定位问题与机会的参考路径**：
 
-<ElImg src="https://cheny-chenyu.oss-cn-chengdu.aliyuncs.com/my-agile-team-document/po/24.png"/>
+<ElImg src="po/24.png"/>
 </ElCard>
 
 使用《问题卡片》记录问题与机会：
 
-<ElImg src="https://cheny-chenyu.oss-cn-chengdu.aliyuncs.com/my-agile-team-document/po/25.png"/>
+<ElImg src="po/25.png"/>
 
 定义出问题和目标后的三种描述方式：
 
@@ -178,14 +178,14 @@ SMART 原则，具体的、可衡量的、可实现的、有相关性的、有�
 
 :eyes: **提供识别项目中的关键干系人的常见思路：**
 
-<ElImg src="https://cheny-chenyu.oss-cn-chengdu.aliyuncs.com/my-agile-team-document/po/26.png"/>
+<ElImg src="po/26.png"/>
 </ElCard>
 
 使用干系人列表，管理干系人范围及定位：
 
 -
 
-<ElImg src="https://cheny-chenyu.oss-cn-chengdu.aliyuncs.com/my-agile-team-document/po/27.png"/>
+<ElImg src="po/27.png"/>
 
 **裁剪说明**
 
@@ -197,19 +197,19 @@ SMART 原则，具体的、可衡量的、可实现的、有相关性的、有�
 
 可以按以下路径思考：
 
-<ElImg src="https://cheny-chenyu.oss-cn-chengdu.aliyuncs.com/my-agile-team-document/po/28.png"/>
+<ElImg src="po/28.png"/>
 
 阻力点类似于 KANO 模型中的反向（逆向）需求，或负需求。
 
 干系人的分析完成后，可用下表记录：
 
 <p style="text-align:center">
-  <ElImg src="https://cheny-chenyu.oss-cn-chengdu.aliyuncs.com/my-agile-team-document/po/33.png"/>
+  <ElImg src="po/33.png"/>
 </p>
 
 可以将表 2、表 3 结合使用：
 
-<ElImg src="https://cheny-chenyu.oss-cn-chengdu.aliyuncs.com/my-agile-team-document/po/34.png"/>
+<ElImg src="po/34.png"/>
 
 **裁剪说明**
 
@@ -236,15 +236,15 @@ SMART 原则，具体的、可衡量的、可实现的、有相关性的、有�
 
 可以按以下路径思考划分业务子系统：
 
-<ElImg src="https://cheny-chenyu.oss-cn-chengdu.aliyuncs.com/my-agile-team-document/po/35.png"/>
+<ElImg src="po/35.png"/>
 
 使用下表，记录业务子系统间及服务接口：
 
-<ElImg src="https://cheny-chenyu.oss-cn-chengdu.aliyuncs.com/my-agile-team-document/po/29.png"/>
+<ElImg src="po/29.png"/>
 
 -
 
-<ElImg src="https://cheny-chenyu.oss-cn-chengdu.aliyuncs.com/my-agile-team-document/po/30.png"/>
+<ElImg src="po/30.png"/>
 
 **裁剪说明**
 
@@ -258,14 +258,14 @@ SMART 原则，具体的、可衡量的、可实现的、有相关性的、有�
 
 :eyes: **分析思路如下：**
 
-<ElImg src="https://cheny-chenyu.oss-cn-chengdu.aliyuncs.com/my-agile-team-document/po/31.png"/>
+<ElImg src="po/31.png"/>
 
 </ElCard>
 
 使用下表进行记录：
 
 <p style="text-align:center">
-  <ElImg src="https://cheny-chenyu.oss-cn-chengdu.aliyuncs.com/my-agile-team-document/po/32.png"/>
+  <ElImg src="po/32.png"/>
 </p>
 
 **裁剪说明**
@@ -282,7 +282,7 @@ SMART 原则，具体的、可衡量的、可实现的、有相关性的、有�
 
 可以按照下图思路进行：
 
- <ElImg src="https://cheny-chenyu.oss-cn-chengdu.aliyuncs.com/my-agile-team-document/po/36.png"/>
+ <ElImg src="po/36.png"/>
 
 如何去着手识别业务流程呢？可以借助一个定义：企业或组织的核心价值在于响应外部客户的服务请求，通过一系列的协作满足服务请求，为客户带来价值，同时为企业／组织带来价值。也就是说，从全局上看业务流程的起点通常就是这些外部服务请求。
 
@@ -297,7 +297,7 @@ SMART 原则，具体的、可衡量的、可实现的、有相关性的、有�
 
 :::
 
- <ElImg src="https://cheny-chenyu.oss-cn-chengdu.aliyuncs.com/my-agile-team-document/po/37.png"/>
+ <ElImg src="po/37.png"/>
 
 </ElCard>
 
@@ -334,7 +334,7 @@ SMART 原则，具体的、可衡量的、可实现的、有相关性的、有�
 
 使用下表来记录描述
 
-<ElImg src="https://cheny-chenyu.oss-cn-chengdu.aliyuncs.com/my-agile-team-document/po/38.png"/>
+<ElImg src="po/38.png"/>
 
 **裁剪说明**
 
@@ -348,7 +348,7 @@ SMART 原则，具体的、可衡量的、可实现的、有相关性的、有�
 
 识别业务场景，可以按照下图思路：
 
-<ElImg src="https://cheny-chenyu.oss-cn-chengdu.aliyuncs.com/my-agile-team-document/po/39.png"/>
+<ElImg src="po/39.png"/>
 
 可以使用用户故事，对业务场景进行描述。
 
@@ -364,11 +364,11 @@ SMART 原则，具体的、可衡量的、可实现的、有相关性的、有�
 
 对业务场景进行分析可以按下图思路进行：
 
-<ElImg src="https://cheny-chenyu.oss-cn-chengdu.aliyuncs.com/my-agile-team-document/po/40.png"/>
+<ElImg src="po/40.png"/>
 
 在进行业务场景分析后，可以使用下表记录业务场景：
 
-<ElImg src="https://cheny-chenyu.oss-cn-chengdu.aliyuncs.com/my-agile-team-document/po/41.png"/>
+<ElImg src="po/41.png"/>
 
 （1）场景概述：说明该场景／任务的名称（任务名称）、该场景／任务的执行目的（任务简述）、执行该场景／任务的前提条件（任务前提），以及该任务出现的频率（任务频率）。
 
@@ -392,15 +392,15 @@ SMART 原则，具体的、可衡量的、可实现的、有相关性的、有�
 
 可按照下图进行工作：
 
-<ElImg src="https://cheny-chenyu.oss-cn-chengdu.aliyuncs.com/my-agile-team-document/po/42.png"/>
+<ElImg src="po/42.png"/>
 
 使用下表记录管控点：
 
-<ElImg src="https://cheny-chenyu.oss-cn-chengdu.aliyuncs.com/my-agile-team-document/po/43.png"/>
+<ElImg src="po/43.png"/>
 
 使用下表进行管控点分析:
 
-<ElImg src="https://cheny-chenyu.oss-cn-chengdu.aliyuncs.com/my-agile-team-document/po/44.png"/>
+<ElImg src="po/44.png"/>
 
 （1）相关干系人：指出该管控点有哪些管理层用户会使用到，如果他们的阅读重心不同，还应该用文字指出。特别是当相关干系人包含决策层和管理层时，他们的角度通常都会有所不同。
 
@@ -418,12 +418,12 @@ SMART 原则，具体的、可衡量的、可实现的、有相关性的、有�
 
 当识别出管控点并对其分析之后，如果需要使用业务报表来实现，那么接下来应对各个报表的需求进行描述。参考思路如下：
 
-<ElImg src="https://cheny-chenyu.oss-cn-chengdu.aliyuncs.com/my-agile-team-document/po/45.png"/>
+<ElImg src="po/45.png"/>
 
 按下表对业务报表进行描述：
 
 <p style="text-align:center">
-  <ElImg src="https://cheny-chenyu.oss-cn-chengdu.aliyuncs.com/my-agile-team-document/po/46.png"/>
+  <ElImg src="po/46.png"/>
 </p>
 
 （1）报表概述：包括报表名称、使用者、业务意图、使用频率四个栏目，也就是讲清楚该报表叫什么、谁会使用、多久用一次、用来干什么。
@@ -440,7 +440,7 @@ SMART 原则，具体的、可衡量的、可实现的、有相关性的、有�
 
 本任务的核心目标是：分析系统投入使用之后，运行维护阶段所需要提供的辅助功能，主要包括配置、运维、升级迁移及其他三方面。
 
- <ElImg src="https://cheny-chenyu.oss-cn-chengdu.aliyuncs.com/my-agile-team-document/po/47.png"/>
+ <ElImg src="po/47.png"/>
 
 **更改/优化的需求**
 
@@ -448,7 +448,7 @@ SMART 原则，具体的、可衡量的、可实现的、有相关性的、有�
 
 :::tip :eyes:
 **如何发现和分析问题？提供一种思考路径：**
-<ElImg src="https://cheny-chenyu.oss-cn-chengdu.aliyuncs.com/my-agile-team-document/po/48.png"/>
+<ElImg src="po/48.png"/>
 :::
 
 ### 数据主线
@@ -530,7 +530,7 @@ E/R 图和类图。由于 E/R 图只能描述关联关系，而类图能够呈�
 
 可以通过下表进行记录和描述：
 
-<ElImg src="https://cheny-chenyu.oss-cn-chengdu.aliyuncs.com/my-agile-team-document/po/49.png"/>
+<ElImg src="po/49.png"/>
 
 **剪裁说明**
 
@@ -600,7 +600,7 @@ E/R 图和类图。由于 E/R 图只能描述关联关系，而类图能够呈�
 
 :eyes: **在学习借鉴现有产品/方案时可参考下述思路：**
 
-<ElImg src="https://cheny-chenyu.oss-cn-chengdu.aliyuncs.com/my-agile-team-document/po/50.png"/>
+<ElImg src="po/50.png"/>
 
 </ElCard>
 

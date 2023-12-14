@@ -20,17 +20,17 @@ outline: 'deep'
 `Java` 代码结构采用功能域形式进行功能模块及子服务拆分。对外提
 供的接口采用 `api` 包封装。项目根目录需要提供一键整服务部署方案，方式可采用 `jenkins` 或脚本形式。根目录需要有 `ReadME.md `文件针对项目功能模块或子服务及项目的主要环境进行说明（**可使用正式环境基础管理平台-门户配置-帮助手册-在线编辑器进行文件上传及编写，然后复制保存至项目根目录**）。
 
-<ElImg src="https://cheny-chenyu.oss-cn-chengdu.aliyuncs.com/my-agile-team-document/rear-end/1.png"/>
+<ElImg src="rear-end/1.png"/>
 
-<ElImg src="https://cheny-chenyu.oss-cn-chengdu.aliyuncs.com/my-agile-team-document/rear-end/2.png"/>
+<ElImg src="rear-end/2.png"/>
 
 ### 服务内代码结构规范
 
 代码包命名规范统一使用 `com.xatz` 进行公司标识拆分，项目内依赖外部数据库文件时需要留存说明，外部依赖包统一上传至私服。代码结构秉承 **“先职能，后功能”** 的形式编写，例如：顶层结构 `controller` 下细分功能域文件夹。服务模块需要有一键部署脚本，并具有功能清单介绍及功能域文件夹介绍。
 
-<ElImg src="https://cheny-chenyu.oss-cn-chengdu.aliyuncs.com/my-agile-team-document/rear-end/3.png"/>
+<ElImg src="rear-end/3.png"/>
 
-<ElImg src="https://cheny-chenyu.oss-cn-chengdu.aliyuncs.com/my-agile-team-document/rear-end/4.png"/>
+<ElImg src="rear-end/4.png"/>
 
 ### Java 代码结构管理审查机制
 
@@ -44,7 +44,7 @@ outline: 'deep'
 
 `Yapi` **目录层级管理**：接口管理目录采用项目的菜单目录进行接口分类，可复用接口需要遵循以下格式新建。前端针对复用接口需要去复用目录进行接口联调。
 
-<ElImg src="https://cheny-chenyu.oss-cn-chengdu.aliyuncs.com/my-agile-team-document/rear-end/5.png" title="重复接口示栗"/>
+<ElImg src="rear-end/5.png" title="重复接口示栗"/>
 
 `Yapi` **接口状态管理**：接口状态分为未完成、已完成，均由 `Java` 研发修改，接口状态未完成表示业务逻辑未完成，接口状态已完成表示业务逻辑已完成。接口 `tag` **命名格式为**：`版本号-已审核、版本号-已上线`，已审核表示前端或前端及测试审核通过可进行业务逻辑研发由前端调整，`版本号-已上线` 表示测试已经通过，处于上线或待上线状态由测试调整。
 
@@ -60,7 +60,7 @@ outline: 'deep'
 
 `Idea`安装插件 `YapiUpload`。
 
-<ElImg src="https://cheny-chenyu.oss-cn-chengdu.aliyuncs.com/my-agile-team-document/rear-end/6.png" title="接口上传插件安装示例"/>
+<ElImg src="rear-end/6.png" title="接口上传插件安装示例"/>
 
 #### 插件配置
 
@@ -75,17 +75,17 @@ outline: 'deep'
 </component>
 ```
 
-<ElImg src="https://cheny-chenyu.oss-cn-chengdu.aliyuncs.com/my-agile-team-document/rear-end/7.png" title="接口上传插件配置示例"/>
+<ElImg src="rear-end/7.png" title="接口上传插件配置示例"/>
 
-<ElImg src="https://cheny-chenyu.oss-cn-chengdu.aliyuncs.com/my-agile-team-document/rear-end/8.png" title="token说明"/>
+<ElImg src="rear-end/8.png" title="token说明"/>
 
-<ElImg src="https://cheny-chenyu.oss-cn-chengdu.aliyuncs.com/my-agile-team-document/rear-end/9.png" title="Id说明"/>
+<ElImg src="rear-end/9.png" title="Id说明"/>
 
 #### 接口上传管理
 
 确定接口生成时机及方式，通过数据库表自动生成接口完善入参、出参、接口路径推送至 `YAPi` 形成接口，然后进行业务逻辑研发（非强制要求）。接口上传步骤，光标移动至 `contorller` 方法名或者类名右键或者快捷进行接口上传，可参考如下图：
 
-<ElImg src="https://cheny-chenyu.oss-cn-chengdu.aliyuncs.com/my-agile-team-document/rear-end/10.png" title="接口上传插件上传示例"/>
+<ElImg src="rear-end/10.png" title="接口上传插件上传示例"/>
 
 #### 接口管理验证机制
 
@@ -99,7 +99,7 @@ outline: 'deep'
 
 `IDEA` 设置 `Settings-> Editor -> File and Code Templates`。
 
-<ElImg src="https://cheny-chenyu.oss-cn-chengdu.aliyuncs.com/my-agile-team-document/rear-end/11.png" />
+<ElImg src="rear-end/11.png" />
 
 ### Class java 类 注释模板
 
@@ -166,9 +166,9 @@ public interface ${NAME} {
 
 `Settings-> Editor -> Live Templates` 点击右侧 + 新建快捷键分组。快捷键大家自定义。
 
-<ElImg src="https://cheny-chenyu.oss-cn-chengdu.aliyuncs.com/my-agile-team-document/rear-end/12.png" />
+<ElImg src="rear-end/12.png" />
 
-<ElImg src="https://cheny-chenyu.oss-cn-chengdu.aliyuncs.com/my-agile-team-document/rear-end/13.png" />
+<ElImg src="rear-end/13.png" />
 
 ### 自定义快捷注释
 
@@ -223,7 +223,7 @@ groovyScript("def returnType = \"${_1}\"; def result ='';if(returnType=='null'||
 
 ### 表设计模板
 
-<ElImg src="https://cheny-chenyu.oss-cn-chengdu.aliyuncs.com/my-agile-team-document/rear-end/14.png" />
+<ElImg src="rear-end/14.png" />
 
 ## 代码编写规范
 
@@ -248,15 +248,15 @@ groovyScript("def returnType = \"${_1}\"; def result ='';if(returnType=='null'||
 
 `安装插件->导入模板`（输入本人 git 名称）-> 基于 idea 数据库进行代码生成->选择包路径及项目路径。
 
-<ElImg src="https://cheny-chenyu.oss-cn-chengdu.aliyuncs.com/my-agile-team-document/rear-end/15.png" />
+<ElImg src="rear-end/15.png" />
 
-<ElImg src="https://cheny-chenyu.oss-cn-chengdu.aliyuncs.com/my-agile-team-document/rear-end/16.png" />
+<ElImg src="rear-end/16.png" />
 
-<ElImg src="https://cheny-chenyu.oss-cn-chengdu.aliyuncs.com/my-agile-team-document/rear-end/17.png" />
+<ElImg src="rear-end/17.png" />
 
-<ElImg src="https://cheny-chenyu.oss-cn-chengdu.aliyuncs.com/my-agile-team-document/rear-end/18.png" />
+<ElImg src="rear-end/18.png" />
 
-<ElImg src="https://cheny-chenyu.oss-cn-chengdu.aliyuncs.com/my-agile-team-document/rear-end/19.png" />
+<ElImg src="rear-end/19.png" />
 
 `EsayCodeConfig.json` 导入文件，(复制生成文件即可)：
 
@@ -418,7 +418,7 @@ groovyScript("def returnType = \"${_1}\"; def result ='';if(returnType=='null'||
 
 安装第三方插件 `CheckStyle-IDEA` -> 配置，`CheckStyle` 检查模板->手动检查代码-> `idea` 引入代码规范模板。
 
-<ElImg src="https://cheny-chenyu.oss-cn-chengdu.aliyuncs.com/my-agile-team-document/rear-end/20.png" title="CheckStyle-IDEA插件安装"/>
+<ElImg src="rear-end/20.png" title="CheckStyle-IDEA插件安装"/>
 
 代码检查规范，`ali_checks` 文件：
 
@@ -636,11 +636,11 @@ groovyScript("def returnType = \"${_1}\"; def result ='';if(returnType=='null'||
 </module>
 ```
 
-<ElImg src="https://cheny-chenyu.oss-cn-chengdu.aliyuncs.com/my-agile-team-document/rear-end/21.png" title="配置检查模板"/>
+<ElImg src="rear-end/21.png" title="配置检查模板"/>
 
-<ElImg src="https://cheny-chenyu.oss-cn-chengdu.aliyuncs.com/my-agile-team-document/rear-end/22.png" title="手动检查代码"/>
+<ElImg src="rear-end/22.png" title="手动检查代码"/>
 
-<ElImg src="https://cheny-chenyu.oss-cn-chengdu.aliyuncs.com/my-agile-team-document/rear-end/21.png" title="idea规范检查模板"/>
+<ElImg src="rear-end/21.png" title="idea规范检查模板"/>
 
 #### 强制检查配置：项目配置参考以下文件 `check.xml`。
 
