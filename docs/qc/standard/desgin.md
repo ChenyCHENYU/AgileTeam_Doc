@@ -440,7 +440,6 @@ d）试题分析报告。按试题号排序，列出各题学生答对的百分�
 
 </ElCard>
 
-![](media/5.png)
 
 <ElImg src="qc/5.png"/>
 
