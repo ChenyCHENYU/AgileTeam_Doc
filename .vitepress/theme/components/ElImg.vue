@@ -30,7 +30,7 @@ const dSrc =
 
 <style scoped>
 .demo-image__error .block {
-  padding: 30px 0;
+  padding: 16px 0;
   text-align: center;
   display: inline-block;
   width: 99%;
@@ -41,7 +41,6 @@ const dSrc =
 .demo-image__error .el-image {
   padding: 0 5px;
   width: 100%;
-  height: 200px;
 }
 
 .demo-image__error .image-slot {

@@ -25,7 +25,7 @@ outline: 'deep'
 
 -
 
-<img alt="问题管理" src=po/12.png width="1000"/>
+<ElImg src="po/12.png" />
 
 ## 需求管理
 
@@ -62,7 +62,7 @@ outline: 'deep'
 
 -
 
-<ElImg src="po/13.png"/>
+<ElImg src="po/13.png" />
 
 ## 备注
 

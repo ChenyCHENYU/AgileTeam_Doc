@@ -12,13 +12,13 @@ outline: 'deep'
 
 -
 
-<img alt="预期读者" src=po/14.png width="1000"/>
+<ElImg src="po/14.png" />
 
 ### 相关资料
 
 -
 
-<img alt="相关资料" src=po/15.png width="1000"/>
+<ElImg src="po/15.png" />
 
 ## 产品概述
 
@@ -28,13 +28,13 @@ outline: 'deep'
 
 -
 
-<img alt="用户分析" src=po/16.png width="1000"/>
+<ElImg src="po/16.png" />
 
 ### 系统概述
 
 -
 
-<img alt="系统概述" src=po/17.png width="1000"/>
+<ElImg src="po/17.png" />
 
 ### 系统关系图
 
@@ -44,7 +44,7 @@ outline: 'deep'
 
 -
 
-<img alt="功能清单" src=po/18.png width="1000"/>
+<ElImg src="po/18.png" />
 
 ### 业务流程图
 
@@ -62,13 +62,13 @@ outline: 'deep'
 
 -
 
-<img alt="功能点" src=po/19.png width="1000"/>
+<ElImg src="po/19.png" />
 
 ## 非功能需求
 
 -
 
-<img alt="功能点" src=po/20.png width="1000"/>
+<ElImg src="po/20.png" />
 
 ## 关于模板
 
