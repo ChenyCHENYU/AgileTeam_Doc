@@ -2,7 +2,7 @@
  * @Author: ChenYu
  * @Date: 2022-10-22 17:14:01
  * @LastEditors: ChenYu ycyplus@gmail.com
- * @LastEditTime: 2023-12-13 09:08:11
+ * @LastEditTime: 2024-07-23 15:10:10
  * @FilePath: \my-agile-team-document\.vitepress\config.ts
  * @Description: 配置文件
  * Copyright (c) ${2022} by ChenYu/天智AgileTeam, All Rights Reserved.
@@ -56,6 +56,7 @@ export default defineConfig({
     //     'https://github.com/cheny/cangku/edit/main/docs/:path',
     //   text: '在 GitHub 上编辑本章内容',
     // },
+    
     docFooter: {
       prev: '上一章',
       next: '下一章',

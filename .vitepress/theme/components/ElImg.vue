@@ -6,7 +6,7 @@
         :preview-src-list="[dSrc + src]"
         hide-on-click-modal
         :style="{
-          width: '100%',
+          width: width ? width : '100%',
         }"
       >
       </ElImage>
@@ -22,6 +22,7 @@ defineProps<{
   src: string
   style: object
   title?: string
+  width?: string
 }>()
 
 const dSrc =

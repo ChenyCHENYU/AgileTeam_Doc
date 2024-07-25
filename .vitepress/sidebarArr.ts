@@ -1,4 +1,3 @@
-
 // 前端文档相关的sidebar
 
 const WEB = '/web'
@@ -175,7 +174,6 @@ export const WEB_COMPONENT = [
   },
 ]
 
-
 // 产品文档相关的sidebar
 
 const PO = '/po'
@@ -249,13 +247,51 @@ export const PO_DOC = [
   },
 ]
 
-
-
 // 设计文档相关的sidebar
-const UI = '/design'
+const UI = '/ui'
 
 export const UI_DOC = [
-
+  {
+    text: 'ui 设计规范',
+    items: [
+      {
+        text: '浅谈设计规范',
+        link: `${UI}/standard/introduction`,
+      },
+      {
+        text: '文字规范',
+        link: `${UI}/standard/text`,
+      },
+      {
+        text: '色彩规范',
+        link: `${UI}/standard/color`,
+      },
+      {
+        text: '阴影规范',
+        link: `${UI}/standard/shadow`,
+      },
+      {
+        text: '圆角规范',
+        link: `${UI}/standard/fillet`,
+      },
+      {
+        text: '布局规范',
+        link: `${UI}/standard/layout`,
+      },
+      {
+        text: '图标规范',
+        link: `${UI}/standard/icon`,
+      },
+      {
+        text: '文案规范',
+        link: `${UI}/standard/copywriting`,
+      },
+      {
+        text: '组件库规范',
+        link: `${UI}/standard/components`,
+      },
+    ],
+  },
 ]
 
 // 后端文档相关的sidebar
@@ -302,8 +338,10 @@ export const QC_DOC = [
         text: '测试用例设计方法',
         link: `${QC}/standard/desgin`,
       },
-
+      {
+        text: '测试过程度量规范',
+        link: `${QC}/standard/desgin`,
+      },
     ],
   },
 ]
-

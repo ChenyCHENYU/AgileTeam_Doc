@@ -18,7 +18,7 @@ export const nav: DefaultTheme.NavItem[] = [
   {
     text: '设计',
     activeMatch: '/ui/',
-    items: [{ text: '设计文档', link: '/item-1' }],
+    items: [{ text: '设计文档', link: '/ui/standard/introduction' }],
   },
 
   {
