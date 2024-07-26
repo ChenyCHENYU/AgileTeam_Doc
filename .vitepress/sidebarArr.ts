@@ -292,6 +292,36 @@ export const UI_DOC = [
       },
     ],
   },
+  {
+    text: 'ui 工作流程',
+    items: [
+      {
+        text: '需求分析',
+        link: `${UI}/work-flow/demand-analysis`,
+      },
+      {
+        text: '原型设计',
+        link: `${UI}/work-flow/prototype`,
+      },
+      {
+        text: '视觉设计',
+        link: `${UI}/work-flow/visual`,
+      },
+      {
+        text: '设计评审',
+        link: `${UI}/work-flow/review`,
+      },
+    ],
+  },
+  {
+    text: 'ui 其他资料',
+    items: [
+      {
+        text: '图片资源',
+        link: `${UI}/other/imgs`,
+      },
+    ],
+  },
 ]
 
 // 后端文档相关的sidebar
