@@ -350,26 +350,26 @@ const QC = '/qc'
 
 export const QC_DOC = [
   {
-    text: '测试标准流程',
+    text: 'QC 测试规范',
     items: [
       {
-        text: '测试流程规范',
+        text: '流程规范',
         link: `${QC}/standard/norm`,
       },
       {
-        text: '测试策略设计',
+        text: '策略设计',
         link: `${QC}/standard/strategy`,
       },
       {
-        text: '测试用例设计标准',
+        text: '用例设计标准',
         link: `${QC}/standard/use-case`,
       },
       {
-        text: '测试用例设计方法',
+        text: '用例设计方法',
         link: `${QC}/standard/desgin`,
       },
       {
-        text: '测试过程度量规范',
+        text: '过程度量规范',
         link: `${QC}/standard/desgin`,
       },
     ],
