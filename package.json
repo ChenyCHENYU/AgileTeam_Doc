@@ -10,7 +10,7 @@
     "build": "vitepress build",
     "serve": "vitepress serve",
     "deploy": "npm run build && gh-pages -d dist",
-    "backup": "git add . && git commit -m \"chore: backup\" && git push gf",
+    "backup": "git add . && git commit -m \"chore: backup\" && git push",
     "up": "npx npm-check-updates -u",
     "docs:dev": "vitepress dev",
     "docs:build": "vitepress build",
