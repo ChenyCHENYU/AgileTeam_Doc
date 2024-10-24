@@ -7,6 +7,7 @@ import {
   REAR_END_DOC,
   QC_DOC,
   UI_DOC,
+  MANAGE_DOC
 } from './sidebarArr'
 
 export const sidebar: DefaultTheme.Sidebar = {
@@ -16,4 +17,5 @@ export const sidebar: DefaultTheme.Sidebar = {
   '/rear-end/': REAR_END_DOC,
   '/qc/': QC_DOC,
   '/ui/': UI_DOC,
+  '/manage/': MANAGE_DOC,
 }

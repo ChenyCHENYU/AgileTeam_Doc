@@ -2,9 +2,9 @@ import {
   __commonJS
 } from "./chunk-5WRI5ZAA.js";
 
-// node_modules/.pnpm/gitalk@1.8.0_react-dom@15.7.0_react@15.7.0/node_modules/gitalk/dist/gitalk.js
+// node_modules/gitalk/dist/gitalk.js
 var require_gitalk = __commonJS({
-  "node_modules/.pnpm/gitalk@1.8.0_react-dom@15.7.0_react@15.7.0/node_modules/gitalk/dist/gitalk.js"(exports, module) {
+  "node_modules/gitalk/dist/gitalk.js"(exports, module) {
     (function webpackUniversalModuleDefinition(root, factory) {
       if (typeof exports === "object" && typeof module === "object")
         module.exports = factory();

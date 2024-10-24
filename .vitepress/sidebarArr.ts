@@ -375,3 +375,54 @@ export const QC_DOC = [
     ],
   },
 ]
+
+// 管理文档相关的sidebar
+
+const JOB_RESPONSIBILITY = '/manage/job-responsibility'
+
+const TEMPLATES = '/manage/templates'
+
+export const MANAGE_DOC = [
+  {
+    text: '履职规范要求', // 管理标准规范
+    items: [
+      {
+        text: 'PM：项目经理',
+        link: `${JOB_RESPONSIBILITY}/pm`,
+      },
+      {
+        text: 'PO：产品经理',
+        link: `${JOB_RESPONSIBILITY}/po`,
+      },
+      {
+        text: 'UX：界面交互设计师',
+        link: `${JOB_RESPONSIBILITY}/ui`,
+      },
+      {
+        text: 'RD：前端工程师',
+        link: `${JOB_RESPONSIBILITY}/rd`,
+      },
+      {
+        text: 'BD：后端工程师',
+        link: `${JOB_RESPONSIBILITY}/bd`,
+      },
+      {
+        text: 'QC：测试工程师',
+        link: `${JOB_RESPONSIBILITY}/qc`,
+      },
+      {
+        text: 'OP：运维工程师',
+        link: `${JOB_RESPONSIBILITY}/op`,
+      },
+    ],
+  },
+  {
+    text: '模板库',
+    items: [
+      {
+        text: '项目管理',
+        link: `${TEMPLATES}/pm-template`,
+      },
+    ],
+  },
+]

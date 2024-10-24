@@ -1,6 +1,6 @@
 {
-  "name": "myagileteam",
-  "version": "2.0.0",
+  "name": "AGILETEAM",
+  "version": "2.0.1",
   "description": "An agile team wants to share the introduction documents based on the gradual expansion of vue。",
   "author": "cheny <ycyplus@gmail.com>",
   "private": true,
@@ -10,7 +10,7 @@
     "build": "vitepress build",
     "serve": "vitepress serve",
     "deploy": "npm run build && gh-pages -d dist",
-    "backup": "git add . && git commit -m \"chore: backup\" && git push",
+    "backup": "git add . && git commit -m \"chore: backup\" && git push gf",
     "up": "npx npm-check-updates -u",
     "docs:dev": "vitepress dev",
     "docs:build": "vitepress build",
