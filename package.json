@@ -7,7 +7,7 @@
   "type": "module",
   "scripts": {
     "dev": "vitepress dev --host",
-    "build": "vitepress build --out public",
+    "build": "vitepress build --output public",
     "serve": "vitepress serve",
     "deploy": "npm run build && gh-pages -d dist",
     "backup": "git add . && git commit -m \"chore: backup\" && git push",
