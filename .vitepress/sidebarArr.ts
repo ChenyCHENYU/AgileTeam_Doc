@@ -384,7 +384,7 @@ const TEMPLATES = '/manage/templates'
 
 export const MANAGE_DOC = [
   {
-    text: '履职规范要求', // 管理标准规范
+    text: '职责模型（心法）',
     items: [
       {
         text: 'PM：项目经理',
@@ -417,11 +417,21 @@ export const MANAGE_DOC = [
     ],
   },
   {
-    text: '模板库',
+    text: '模板库（打法）',
     items: [
       {
-        text: '项目管理',
+        text: 'PM：Manager',
+
         link: `${TEMPLATES}/pm-template`,
+      },
+    ],
+  },
+  {
+    text: '考核模型（办法）',
+    items: [
+      {
+        text: 'PM：Verify',
+        link: `${TEMPLATES}/pm-verify`,
       },
     ],
   },
