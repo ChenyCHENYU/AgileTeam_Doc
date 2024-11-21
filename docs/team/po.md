@@ -14,76 +14,85 @@ import {
 
 
 const coreMembers = [
-  {
-    // avatar: 'https://www.github.com/yyx990803.png',
-    avatar: '/assets/team/付晨璞.png',
-    name: '付晨璞',
-    title: 'Tech Lead',
-    // links: [
-    //   { icon: 'github', link: 'https://github.com/yyx990803' },
-    //   { icon: 'yotube', link: 'https://gitee.com/ycyplus163' },
-    // ],
-     desc: 'Connecting The Dots'
-  },
+
   {
     avatar: '/assets/team/史乐乐.png',
     name: '史乐乐',
-    title: 'Product Manager',
+    title: 'Product Owner Lead',
     desc: '冲',
-    links: [
-    //   { icon: 'github', link: 'https://github.com/yyx990803' },
-    ]
   },
-    {
-    avatar: '/assets/team/加霖.png',
-    name: '加霖',
-    title: 'Product Manager',
-    desc: '好的软件特征是，明明没用过，但总觉得用过似的',
-    links: [
-    //   { icon: 'github', link: 'https://github.com/yyx990803' },
-    ]
-  },
+
   {
     avatar: '/assets/team/巩敏政.png',
     name: '巩敏政',
-    title: 'Product Manager',
+    title: 'Product Owner Lead',
     desc: '世界一直在变化，结果由我们来决定'
   },
-  {
-    avatar: '/assets/team/李彦芝.png',
-    name: '李彦芝',
-    title: 'Product Manager',
-    desc: '山不向我走来，我便向山走去',
-    links: [
-    //   { icon: 'github', link: 'https://github.com/yyx990803' },
-    ]
-  },
+
   {
     avatar: '/assets/team/白赟.png',
     name: '白赟',
-    title: 'Product Manager',
+    title: 'Product Owner',
     desc: '大道至简',
     links: [
     //   { icon: 'github', link: 'https://github.com/yyx990803' },
     ]
   },
   {
-    avatar: '/assets/team/雷振杰.png',
-    name: '雷振杰',
-    title: 'Product Manager',
-    desc: '永不停歇，持续迭代',
+    avatar: '/assets/team/白彬彬.png',
+    name: '白彬彬',
+    title: 'Product Owner',
+    desc: '大道至简',
     links: [
     //   { icon: 'github', link: 'https://github.com/yyx990803' },
     ]
   },
   {
-    avatar: '/assets/team/李孟奇.png',
-    name: '李孟奇',
-    title: 'Product Manager',
-    desc: '',
+    avatar: '/assets/team/樊聪.png',
+    name: '樊聪',
+    title: 'Product Owner',
+    desc: '大道至简',
     links: [
     //   { icon: 'github', link: 'https://github.com/yyx990803' },
     ]
+  },
+
+]
+
+
+
+const partners = [
+  {
+    avatar: '/assets/team/付晨璞.png',
+    name: '付晨璞',
+    title: 'Product Owner',
+    desc: 'Connecting The Dots'
+  },
+  {
+    avatar: '/assets/team/加霖.png',
+    name: '加霖',
+    title: 'Product Owner',
+    desc: '好的软件特征是，明明没用过，但总觉得用过似的',
+  },
+  {
+    avatar: '/assets/team/李彦芝.png',
+    name: '李彦芝',
+    title: 'Product Owner',
+    desc: '山不向我走来，我便向山走去',
+  },
+    {
+    avatar: '/assets/team/雷振杰.png',
+    name: '雷振杰',
+    title: 'Product Owner',
+    desc: '永不停歇，持续迭代',
+
+  },
+  {
+    avatar: '/assets/team/李孟奇.png',
+    name: '李孟奇',
+    title: 'Product Owner',
+    desc: '嗷，向优秀的产品迈进',
+
   },
 ]
 
@@ -96,11 +105,11 @@ const coreMembers = [
     <template #lead>核心成员</template>
   </VPTeamPageTitle>
   <VPTeamMembers size="medium" :members="coreMembers" />
-  <!-- <VPTeamPageSection>
+  <VPTeamPageSection>
     <template #title>特别感谢</template>
-    <template #lead>社区伙伴</template>
+    <template #lead>协同伙伴</template>
     <template #members>
       <VPTeamMembers size="small" :members="partners" />
     </template>
-  </VPTeamPageSection> -->
+  </VPTeamPageSection>
 </VPTeamPage>

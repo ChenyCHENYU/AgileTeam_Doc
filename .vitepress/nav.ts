@@ -2,7 +2,7 @@
  * @Author: ChenYu
  * @Date: 2022-10-22 17:14:01
  * @LastEditors: ChenYu ycyplus@gmail.com
- * @LastEditTime: 2024-10-11 14:37:05
+ * @LastEditTime: 2024-11-21 10:27:38
  * @FilePath: \my-agile-team-document\.vitepress\nav.ts
  * @Description: 右上侧导航
  * Copyright (c) ${2022} by ChenYu/天智AgileTeam, All Rights Reserved.
@@ -62,6 +62,8 @@ export const nav: DefaultTheme.NavItem[] = [
       { text: '前端伙伴', link: '/team/front-end' },
       { text: '后端伙伴', link: '/team/rear-end' },
       { text: '测试伙伴', link: '/team/qc' },
+      { text: '运维伙伴', link: '/team/op' },
+      { text: '虚拟小组', link: '/team/manage' },
     ],
   },
 ]
