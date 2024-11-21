@@ -98,7 +98,7 @@ const coreMembers = [
     avatar: '/assets/team/陈俊宇.png',
     name: '陈俊宇',
     title: 'Developers',
-    desc: '',
+    desc: '太阳升起的瞬间，对于昨天已成永远',
     links: [
     //   { icon: 'github', link: 'https://github.com/yyx990803' },
     ]
@@ -107,7 +107,7 @@ const coreMembers = [
     avatar: '/assets/team/刘莹发.png',
     name: '刘莹发',
     title: 'Developers',
-    desc: '',
+    desc: '心怀梦想，脚踏实地',
     links: [
     //   { icon: 'github', link: 'https://github.com/yyx990803' },
     ]
@@ -116,7 +116,7 @@ const coreMembers = [
     avatar: '/assets/team/董庆.png',
     name: '董庆',
     title: 'Developers',
-    desc: '',
+    desc: '把握当下',
     links: [
     //   { icon: 'github', link: 'https://github.com/yyx990803' },
     ]

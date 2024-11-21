@@ -33,10 +33,22 @@ const coreMembers = [
         link: 'https://www.robotadmin.cn/'
       },
     ],
-     desc: '不忘初心，方得始终',
+    desc: '不忘初心，方得始终',
     sponsor: 'https://www.tzagileteam.com/',
     actionText: 'Contribution'
   },
+  {
+    avatar: '/assets/team/何乾.png',
+    name: '何乾',
+    title: 'OM',
+    desc:'扶我青云志，踏歌至山巅'
+    },
+  {
+    avatar: '/assets/team/孔慧.png',
+    name: '孔慧',
+    title: 'HRD',
+    desc:'准备好，跟着节奏走就对了'
+  }
 ]
 
 const tecList = [
@@ -47,19 +59,19 @@ const tecList = [
     desc: '冲',
   },
   {
-    avatar: '/assets/team/潘超越.png',
-    name: '潘超越',
-    title: 'Tech Lead Architect',
-    desc: '认知是我们的一生之敌',
+    avatar: '/assets/team/张东.png',
+    name: '张东',
+    title: 'Tech Lead',
+    desc: '只要拼不死，就往死里拼',
     links: [
     //   { icon: 'github', link: 'https://github.com/yyx990803' },
     ]
   },
   {
-    avatar: '/assets/team/张东.png',
-    name: '张东',
-    title: 'Tech Lead',
-    desc: '只要拼不死，就往死里拼',
+    avatar: '/assets/team/潘超越.png',
+    name: '潘超越',
+    title: 'Tech Lead Architect',
+    desc: '认知是我们的一生之敌',
     links: [
     //   { icon: 'github', link: 'https://github.com/yyx990803' },
     ]
@@ -137,7 +149,7 @@ const pmoSubList = [
 <VPTeamPage>
   <VPTeamPageTitle>
     <template #title>TEC & PMO</template>
-    <template #lead>组长</template>
+    <template #lead>组长 | PMS | 委员</template>
   </VPTeamPageTitle>
   <VPTeamMembers size="medium" :members="coreMembers" />
   <VPTeamPageSection>

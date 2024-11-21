@@ -27,7 +27,7 @@ const coreMembers = [
     avatar: '/assets/team/赵建昌.png',
     name: '赵建昌',
     title: 'Tech Lead',
-    desc: '',
+    desc: '知行合一，方能成就',
     links: [
     //   { icon: 'github', link: 'https://github.com/yyx990803' },
     ]
@@ -76,7 +76,7 @@ const coreMembers = [
     avatar: '/assets/team/张杰.png',
     name: '张杰',
     title: 'Developers',
-    desc: '',
+    desc: '快乐是旅程，而非终点',
     links: [
     //   { icon: 'github', link: 'https://github.com/yyx990803' },
     ]
@@ -103,7 +103,7 @@ const coreMembers = [
     avatar: '/assets/team/王云一.png',
     name: '王云一',
     title: 'Developers',
-    desc: '',
+    desc: '心脏是最强大的肌肉',
     links: [
     //   { icon: 'github', link: 'https://github.com/yyx990803' },
     ]
@@ -112,7 +112,7 @@ const coreMembers = [
     avatar: '/assets/team/罗栋楠.png',
     name: '罗栋楠',
     title: 'Developers',
-    desc: '',
+    desc: '遇事不要慌，太阳明早会照常升起',
     links: [
     //   { icon: 'github', link: 'https://github.com/yyx990803' },
     ]
@@ -121,7 +121,7 @@ const coreMembers = [
     avatar: '/assets/team/李建超.png',
     name: '李建超',
     title: 'Developers',
-    desc: '',
+    desc: '不为小事烦恼，宽容待人才是明智之举',
     links: [
     //   { icon: 'github', link: 'https://github.com/yyx990803' },
     ]
@@ -130,13 +130,13 @@ const coreMembers = [
     avatar: '/assets/team/邓源鹤.png',
     name: '邓源鹤',
     title: 'Developers',
-    desc: '',
+    desc: '不去羡慕别人的成功，只专注当下的努力，用奋斗拼搏出一个未来',
   },
   {
     avatar: '/assets/team/许志成.png',
     name: '许志成',
     title: 'Developers',
-    desc: '',
+    desc: '乐观的人永葆青春，悲观的人虽生犹死',
   },
 ]
 

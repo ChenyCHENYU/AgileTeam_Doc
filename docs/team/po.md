@@ -42,7 +42,7 @@ const coreMembers = [
     avatar: '/assets/team/白彬彬.png',
     name: '白彬彬',
     title: 'Product Owner',
-    desc: '大道至简',
+    desc: '生死看淡，不服就干',
     links: [
     //   { icon: 'github', link: 'https://github.com/yyx990803' },
     ]
@@ -51,7 +51,7 @@ const coreMembers = [
     avatar: '/assets/team/樊聪.png',
     name: '樊聪',
     title: 'Product Owner',
-    desc: '大道至简',
+    desc: '快乐工作，快乐生活',
     links: [
     //   { icon: 'github', link: 'https://github.com/yyx990803' },
     ]
