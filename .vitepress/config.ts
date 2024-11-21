@@ -14,20 +14,18 @@ import pkg from '../package.json'
 import { head } from './head'
 import { nav } from './nav'
 import { sidebar } from './sidebar'
-import { gitee, blog } from './svg'
+import { gitee, blog, robot } from './svg'
 
 export default defineConfig({
   srcDir: 'docs',
   outDir: 'dist',
   lang: 'zh-CN',
   title: '天智AgileTeam',
-  description:
-    '这是一个关于 Vue 3 + TypeScript 的团队引导文档，适合前端Vue技术栈，在官方文档的基础上融入自己的一些实践经验。',
+  description: '这是一个关于软件研发团队的综合性文档平台，为各角色进行交叉赋能',
   head,
   // ignoreDeadLinks: true,  // 忽略死链接
   markdown: {
     lineNumbers: false,
-    
   },
   lastUpdated: true, // string | boolean  // 开启最后更新时间
   themeConfig: {
@@ -36,7 +34,7 @@ export default defineConfig({
     sidebar,
     outline: 3,
     outlineTitle: '本页导航',
-    lastUpdatedText: "最后更新时间", // string
+    lastUpdatedText: '最后更新时间', // string
     socialLinks: [
       {
         icon: 'github',
@@ -50,13 +48,12 @@ export default defineConfig({
         icon: blog,
         link: 'https://yangchenyu.com',
       },
+      {
+        icon: robot,
+        link: 'https://www.robotadmin.cn/',
+      },
     ],
-    // editLink: {
-    //   pattern:
-    //     'https://github.com/cheny/cangku/edit/main/docs/:path',
-    //   text: '在 GitHub 上编辑本章内容',
-    // },
-    
+
     docFooter: {
       prev: '上一章',
       next: '下一章',
@@ -85,4 +82,3 @@ export default defineConfig({
     ],
   },
 })
-
