@@ -36,13 +36,17 @@ outline: 'deep'
 
 1. 安装插件 Setting Sync [VsCode Plugin Setting Sync](https://marketplace.visualstudio.com/items?itemName=Shan.code-settings-sync)。
 
-![vscode, Setting Sync](/assets/img/settingsync.png)  
+<ElImg src="img/settingsync.png" title="vscode, Setting Sync"/>
+
 2. Ctrl + Shift + P 输入 sync 后，按如下步骤进行操作。
 
-![vscode, Sync Selct Options](/assets/img/sync-select-options.png)  
-![vscode, Sync Download Option](/assets/img/sync-download-option.png)  
-![vscode, Sync Gist Enter](/assets/img/sync-open-setting.png)  
-![vscode, Sync Gist Enter](/assets/img/sync-gist.png)
+<ElImg src="img/sync-select-options.png" title="vscode, Sync Selct Options"/>
+
+<ElImg src="img/sync-download-option.png" title="vscode, Sync Download Option"/>
+
+<ElImg src="img/sync-open-setting.png" title="vscode, Syncopen Setting"/>
+
+<ElImg src="img/sync-gist.png" title="vscode, Sync Gist Enter"/>
 
 3. 复制 Gist ID 到 Settings Sync 设置界面，View 输入后选择下载配置。
 
@@ -59,7 +63,7 @@ outline: 'deep'
 
 ## 插件集掠影
 
-![vscode, plugins](/assets/img/plugins.png)
+<ElImg src="img/plugins.png" title="vscode, plugins"/>
 
 ## 简单介绍集成的插件
 

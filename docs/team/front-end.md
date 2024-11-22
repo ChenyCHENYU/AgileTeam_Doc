@@ -10,135 +10,101 @@ import {
    VPTeamPageSection
 } from 'vitepress/theme'
 
-
-
+import { baseURL } from './baseURL.ts'
 
 const coreMembers = [
   {
-    avatar: '/assets/team/张东.png',
+    avatar: `${baseURL}/张东.png`,
     name: '张东',
     title: 'Tech Lead',
     desc: '只要拼不死，就往死里拼',
-    links: [
-    //   { icon: 'github', link: 'https://github.com/yyx990803' },
-    ]
   },
   {
-    avatar: '/assets/team/杨佩.png',
+    avatar: `${baseURL}/杨佩.png`,
     name: 'Amy',
     title: 'Tech Lead',
     desc: '每天都要优雅的写好每一行代码',
-    links: [
-    //   { icon: 'github', link: 'https://github.com/yyx990803' },
-    ]
   },
   {
-    avatar: '/assets/team/曹翔.png',
+    avatar: `${baseURL}/曹翔.png`,
     name: 'Asher',
     title: 'Developers',
     desc: '人若有志，万事可为',
-    links: [
-    //   { icon: 'github', link: 'https://github.com/yyx990803' },
-    ]
   },
   {
-    avatar: '/assets/team/赵保山.png',
+    avatar: `${baseURL}/赵保山.png`,
     name: 'Brenton',
     title: 'Developers',
     desc: '在谷底也要开花，在海底也要望月',
-    links: [
-    //   { icon: 'github', link: 'https://github.com/yyx990803' },
-    ]
   },
   {
-    avatar: '/assets/team/马佳瑞.png',
+    avatar: `${baseURL}/马佳瑞.png`,
     name: 'Destiny',
     title: 'Developers',
     desc: ' 挣钱脱发，花钱植发',
-    links: [
-    //   { icon: 'github', link: 'https://github.com/yyx990803' },
-    ]
   },
   {
-    avatar: '/assets/team/赵成刚.png',
+    avatar: `${baseURL}/赵成刚.png`,
     name: '赵成刚',
     title: 'Developers',
     desc: '快乐编码，快乐捞钱'
   },
 
   {
-    avatar: '/assets/team/陈晶华.png',
+    avatar: `${baseURL}/陈晶华.png`,
     name: '陈晶华',
     title: 'Developers',
     desc:'所有的胜利都是有备而来',
-    links: [
-    //   { icon: 'github', link: 'https://github.com/yyx990803' },
-    ]
   },
 
   {
-    avatar: '/assets/team/杨博.png',
+    avatar: `${baseURL}/杨博.png`,
     name: 'Youwei',
     title: 'Developers',
     desc: '风物长，宜放眼量',
-    links: [
-    //   { icon: 'github', link: 'https://github.com/yyx990803' },
-    ]
   },
   {
-    avatar: '/assets/team/董亚婷.png',
+    avatar: `${baseURL}/董亚婷.png`,
     name: 'Aris',
     title: 'Developers',
     desc: '爱敲代码，糊涂时读书，独处时思考',
-    links: [
-    //   { icon: 'github', link: 'https://github.com/yyx990803' },
-    ]
   },
   {
-    avatar: '/assets/team/陈俊宇.png',
+    avatar: `${baseURL}/陈俊宇.png`,
     name: '陈俊宇',
     title: 'Developers',
     desc: '太阳升起的瞬间，对于昨天已成永远',
-    links: [
-    //   { icon: 'github', link: 'https://github.com/yyx990803' },
-    ]
   },
   {
-    avatar: '/assets/team/刘莹发.png',
+    avatar: `${baseURL}/刘莹发.png`,
     name: '刘莹发',
     title: 'Developers',
     desc: '心怀梦想，脚踏实地',
-    links: [
-    //   { icon: 'github', link: 'https://github.com/yyx990803' },
-    ]
   },
   {
-    avatar: '/assets/team/董庆.png',
+    avatar: `${baseURL}/董庆.png`,
     name: '董庆',
     title: 'Developers',
     desc: '把握当下',
-    links: [
-    //   { icon: 'github', link: 'https://github.com/yyx990803' },
-    ]
   },
 ]
 
 
 const partners = [
   {
-    avatar: '/assets/team/王凯文.png',
+    avatar: `${baseURL}/王凯文.png`,
     name: 'Kevin',
     title: 'Developers',
     desc: '人生如逆旅，我亦是行人',
   },
     {
-    avatar: '/assets/team/原宁宁.png',
+    avatar: `${baseURL}/原宁宁.png`,
     name: '原宁宁',
     title: 'Developers',
     desc:'知行合一，追求卓越',
   },
   {
-    avatar: '/assets/team/丁铭.png',
+    avatar: `${baseURL}/丁铭.png`,
     name: '丁铭',
     title: 'Developers',
     desc:'My Heart Will Go On',

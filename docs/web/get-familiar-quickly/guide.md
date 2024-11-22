@@ -987,7 +987,7 @@ Hello World from bar.
 
 <ClientOnly>
   <ImgWrap
-    src="/assets/img/components.png"
+    src="https://cheny-chenyu.oss-cn-chengdu.aliyuncs.com/my-agile-team-document/img/components.png"
     alt="把页面拆分成多个组件，降低维护成本（摘自 Vue 官网）"
   />
 </ClientOnly>
@@ -1447,7 +1447,7 @@ npm run dev:esm
 
 <ClientOnly>
   <ImgWrap
-    src="/assets/img/caniuse-es6-classes.jpg"
+    src="https://cheny-chenyu.oss-cn-chengdu.aliyuncs.com/my-agile-team-document/img/caniuse-es6-classes.jpg"
     alt="在 caniuse 网站上查询 ES6 `class` 的兼容情况"
   />
 </ClientOnly>

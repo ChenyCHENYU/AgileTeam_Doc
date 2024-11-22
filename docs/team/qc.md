@@ -10,24 +10,23 @@ import {
    VPTeamPageSection
 } from 'vitepress/theme'
 
-
-
+import { baseURL } from './baseURL.ts'
 
 const coreMembers = [
   {
-    avatar: '/assets/team/千静妮.png',
+    avatar: `${baseURL}/千静妮.png`,
     name: '千静妮',
     title: 'Quality Control Lead',
     desc: '知行合一，笃行致远',
   },
   {
-    avatar: '/assets/team/王超.png',
+    avatar: `${baseURL}/王超.png`,
     name: '王超',
     title: 'Quality Control',
     desc: '每天都是一个新的开始，走向更好的自己',
   },
   {
-    avatar: '/assets/team/孙飞燕.png',
+    avatar: `${baseURL}/孙飞燕.png`,
     name: '孙飞燕',
     title: 'Quality Control',
     desc: '道阻且长，行则将至'
@@ -37,19 +36,19 @@ const coreMembers = [
 
 const partners = [
   {
-    avatar: '/assets/team/李斌.png',
+    avatar: `${baseURL}/李斌.png`,
     name: '李斌',
     title: 'Quality Control',
      desc: '千里之行，始于足下'
   },
   {
-    avatar: '/assets/team/马艳平.png',
+    avatar: `${baseURL}/马艳平.png`,
     name: '马艳平',
     title: 'Quality Control',
     desc: '行而不辍，未来可期',
   },
   {
-    avatar: '/assets/team/廖磊.png',
+    avatar: `${baseURL}/廖磊.png`,
     name: '廖磊',
     title: 'Quality Control',
     desc: '时间不在于拥有多少，而在于怎么使用',

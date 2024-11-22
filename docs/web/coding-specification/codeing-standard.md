@@ -293,7 +293,7 @@ if (typeof person === 'undefined') {
 
 ### 目录定义
 
-![vscode, Project Dirs](/assets/img/project-dir.png)
+<ElImg src="img/project-dir.png" title="vscode, Project Dirs"/>
 
 ### 命名定义
 
@@ -367,7 +367,7 @@ components 目录下 C_Table.vue 示栗：
 - 全局组件封装过程中，服务于全局组局的局部组件，参考 RenderSlot 组件命名方式 `AaBb`
   :::
 
-![components, C_Table](/assets/img/C_Table.png)
+<ElImg src="img/C_Table.png" title="components, C_Table"/>
 
 ::: tip :pushpin: script setup 示栗
 
@@ -379,8 +379,9 @@ components 目录下 C_Table.vue 示栗：
 - UI 框架 API 方法，以 `handle` 前缀开头，驼峰规则
   :::
 
-![components, C_Table-detail](/assets/img/C_Table-detail.png)
-![components, C_Table-computed](/assets/img/computed.png)
+<ElImg src="img/C_Table-detail.png" title="components, C_Table-detail"/>
+
+<ElImg src="img/computed.png" title="components, C_Table-computed"/>
 
 <!-- TODO: constant  -->
 
@@ -393,7 +394,7 @@ constant 目录下：
 
 :::
 
-![const, const](/assets/img/const.png)
+<ElImg src="img/const.png" title="const"/>
 
 <!-- TODO: hooks  -->
 
@@ -402,7 +403,7 @@ hooks 目录下：
 注意函数注释规范，选中函数名字，快捷键 `Ctrl + Win + T`
 :::
 
-![const, const](/assets/img/useCopy.png)
+<ElImg src="img/useCopy.png" title="useCopy"/>
 
 <!-- TODO: router  -->
 
@@ -415,7 +416,7 @@ router 目录下：
 
 :::
 
-![router, demo](/assets/img/router.png)
+<ElImg src="img/router.png" title="router-demo"/>
 
 <!-- TODO: store  -->
 
@@ -427,7 +428,7 @@ store 目录下：
 
 :::
 
-![store, app](/assets/img/store.png)
+<ElImg src="img/store.png" title="store，app"/>
 
 <!-- TODO: styles  -->
 
@@ -439,7 +440,7 @@ styles 目录下：
 - 其他参考上面介绍的关于 CSS,SCSS 命名规则即可
   :::
 
-![styles](/assets/img/styles.png)
+<ElImg src="img/styles.png" title="styles"/>
 
 <!-- TODO: utils  -->
 
@@ -455,8 +456,9 @@ utils 目录下：
 
 :::
 
-![utils](/assets/img/utils.png)
-![utils, d_tools](/assets/img/d_tools.png)
+<ElImg src="img/utils.png" title="utils"/>
+
+<ElImg src="img/d_tools.png" title="d_tools"/>
 
 <!-- TODO: views  -->
 
@@ -479,7 +481,7 @@ views 目录下：
 
 :::
 
-![views, table](/assets/img/views-table.png)
+<ElImg src="img/views-table.png" title="views-table"/>
 
 其他规则在使用中，结合实践集思广益，陆续定义完善......
 

@@ -2,6 +2,10 @@
 outline: 'deep'
 ---
 
+<script>
+  import { baseURL } from '../../team/baseURL.ts'
+</script>
+
 # Npm、Nvm、Yarn、Pnpm 的高效使用
 
 对于包管理器的使用，掌握这些就够了。
@@ -299,15 +303,15 @@ $ npm install -g yarn
 
 使用 NPM 配置的项目，磁盘总大小 **1260 MB**
 
-![npm 配置图](/assets/img/npm-config.png)
+<ElImg src="img/npm-config.png" title="npm 配置图"/>
 
 使用 PNPM 配置的项目，磁盘总大小 **500 MB**
 
-![pnpm 配置图](/assets/img/pnpm-config.png)
+<ElImg src="img/pnpm-config.png" title="pnpm 配置图"/>
 
 安装依赖的速度
 
-![安装依赖速度](/assets/img/安装依赖速度.png)
+<ElImg src="img/01.png" title="安装依赖速度"/>
 
 ### pnpm 的使用
 

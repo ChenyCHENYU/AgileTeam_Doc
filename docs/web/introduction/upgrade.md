@@ -504,7 +504,7 @@ Vue Devtools 是一个浏览器扩展，支持 Chrome 、 Firefox 等浏览器�
 
 <ClientOnly>
   <ImgWrap
-    src="/assets/img/vue-devtools-inspector.jpg"
+    src="https://cheny-chenyu.oss-cn-chengdu.aliyuncs.com/my-agile-team-document/img/vue-devtools-inspector.jpg"
     alt="Vue Devtools 的 Inspector 界面"
   />
 </ClientOnly>
@@ -513,7 +513,7 @@ Vue Devtools 是一个浏览器扩展，支持 Chrome 、 Firefox 等浏览器�
 
 <ClientOnly>
   <ImgWrap
-    src="/assets/img/vue-devtools-timeline.jpg"
+    src="https://cheny-chenyu.oss-cn-chengdu.aliyuncs.com/my-agile-team-document/img/vue-devtools-timeline.jpg"
     alt="Vue Devtools 的 Timeline 界面"
   />
 </ClientOnly>

@@ -12,12 +12,12 @@ import {
 
 import { gitee, blog, robot} from '../../.vitepress/svg.ts'
 
-
+import { baseURL } from './baseURL.ts'
 
 
 const coreMembers = [
   {
-    avatar: '/assets/team/cheny.png',
+    avatar: `${baseURL}/cheny.png`,
     name: 'CHENY',
     title: 'Creator',
     links: [
@@ -31,13 +31,13 @@ const coreMembers = [
     actionText: 'Contribution'
   },
   {
-    avatar: '/assets/team/何乾.png',
+    avatar: `${baseURL}/何乾.png`,
     name: '何乾',
     title: 'OM',
     desc:'扶我青云志，踏歌至山巅'
     },
   {
-    avatar: '/assets/team/孔慧.png',
+    avatar: `${baseURL}/孔慧.png`,
     name: '孔慧',
     title: 'HRD',
     desc:'准备好，跟着节奏走就对了'
@@ -46,31 +46,31 @@ const coreMembers = [
 
 const tecList = [
   {
-    avatar: '/assets/team/史乐乐.png',
+    avatar: `${baseURL}/史乐乐.png`,
     name: '史乐乐',
     title: 'Product Owner Lead',
     desc: '冲',
   },
   {
-    avatar: '/assets/team/张东.png',
+    avatar: `${baseURL}/张东.png`,
     name: '张东',
     title: 'Tech Lead',
     desc: '只要拼不死，就往死里拼',
   },
   {
-    avatar: '/assets/team/潘超越.png',
+    avatar: `${baseURL}/潘超越.png`,
     name: '潘超越',
     title: 'Tech Lead Architect',
     desc: '认知是我们的一生之敌',
   },
   {
-    avatar: '/assets/team/千静妮.png',
+    avatar: `${baseURL}/千静妮.png`,
     name: '千静妮',
     title: 'Quality Control Lead',
     desc: '知行合一，笃行致远',
   },
   {
-    avatar: '/assets/team/薛旭杰.png',
+    avatar: `${baseURL}/薛旭杰.png`,
     name: '薛旭杰', 
     title: 'DevOps Lead',
     desc:'洞察力是取胜的关键，一定不要让你的警觉松懈',
@@ -78,7 +78,7 @@ const tecList = [
 ]
 const pmoList = [
   {
-    avatar: '/assets/team/潘超越.png',
+    avatar: `${baseURL}/潘超越.png`,
     name: '潘超越',
     title: 'Platform PM',
     desc: '认知是我们的一生之敌',
@@ -87,7 +87,7 @@ const pmoList = [
     ]
   },
   {
-    avatar: '/assets/team/陶夺旗.png',
+    avatar: `${baseURL}/陶夺旗.png`,
     name: '陶夺旗',
     title: 'PM',
     desc: '天生傲骨，怎可认输',
@@ -96,13 +96,13 @@ const pmoList = [
     ]
   },
   {
-    avatar: '/assets/team/郝伟伟.png',
+    avatar: `${baseURL}/郝伟伟.png`,
     name: '郝伟伟',
     title: 'PM',
     desc: '凡事换位思考，人生就会瞬间豁然开朗'
   },
   {
-    avatar: '/assets/team/巩敏政.png',
+    avatar: `${baseURL}/巩敏政.png`,
     name: '巩敏政',
     title: 'PO PM',
     desc: '世界一直在变化，结果由我们来决定'
@@ -111,13 +111,13 @@ const pmoList = [
 
 const pmoSubList = [
   {
-    avatar: '/assets/team/何光明.png',
+    avatar: `${baseURL}/何光明.png`,
     name: '何光明',
     title: 'PM Substitute',
     desc: '相信自己，并了解你自己',
   },
   {
-    avatar: '/assets/team/肖斌.png',
+    avatar: `${baseURL}/肖斌.png`,
     name: '肖斌',
     title: 'PM Substitute',
     desc: '只要思想不滑坡，办法总比困难多',

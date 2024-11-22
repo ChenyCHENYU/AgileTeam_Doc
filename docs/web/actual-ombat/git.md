@@ -20,7 +20,7 @@ outline: 'deep'
 
 下图很直观的展示了工作区、版本库中的暂存区和版本库之间的关系。
 
-![Git 工作区、暂存区、版本库之间的关系](/assets/img/git.jpg)
+<ElImg src="img/git.jpg" title="Git 工作区、暂存区、版本库之间的关系"/>
 
 - 图左侧为工作区，右侧为版本库。在版本库中标记为 **index** 的区域是暂存，标记为 **master** 的是 **master** 分支所代表的目录树。
 
@@ -37,7 +37,7 @@ outline: 'deep'
 全局变量配置需要根据自己的电脑系统，下面以 w10 为栗，注意路径层级下钻到 `/bin` 目录。
 :::
 
-![Git 全局变量配置](/assets/img/git配置.png)
+<ElImg src="img/02.png" title="Git 全局变量配置"/>
 
 安装配置完成以后，验证是否安装成功。
 
@@ -99,7 +99,8 @@ ssh-keygen -t rsa -C "your email"
 ```
 
 如图：
-![.ssh 生成图](/assets/img/ssh.png)
+
+<ElImg src="img/ssh.png" title=".ssh 生成图"/>
 
 看到这样的界面，表示生成成功，然后继续在终端面板输入如下命令：
 
@@ -109,11 +110,11 @@ cat ~/.ssh/id_rsa.pub
 
 复制里面的 **ssh-rsa** 公钥信息， **ssh-rsa** 开头，邮箱结尾。
 
-![.ssh 生成图](/assets/img/ras-pub.png)
+<ElImg src="img/ras-pub.png" title=".ssh 生成图"/>
 
 2、然后把复制的信息，塞到代码托管平台 **SSH 配置** 的地方。
 
-![SSH 配置](/assets/img/ssh配置.png)
+<ElImg src="img/03.png" title="SSH 配置"/>
 
 然后就可以愉快的拉取平台上已授权的所有项目代码了。
 
