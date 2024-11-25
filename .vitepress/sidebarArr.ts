@@ -421,8 +421,11 @@ export const MANAGE_DOC = [
     items: [
       {
         text: 'PM：Manager',
-
         link: `${TEMPLATES}/pm-template`,
+      },
+      {
+        text: 'PO：Manager',
+        link: `${TEMPLATES}/po-template`,
       },
     ],
   },
