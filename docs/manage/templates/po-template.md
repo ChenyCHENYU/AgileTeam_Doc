@@ -48,11 +48,74 @@ outline: 'deep'
 
 :eyes: 模板下载请到`语雀`研发部。 ➡️ [传送门](https://xc0mg8.yuque.com/xc0mg8/kotaew/pfe8tmbgptxugsfc#qKnYY)
 
-> 忽有所得, 忽有所感, CHENY 自勉 ing...
+### 07. 培训计划（售前）
 
-:::tip 😊
-从不给自己设限，从不妄自菲薄，不如就学，模仿，偷，优秀的想法靠模仿，伟大的想法靠偷，走出我们自己的研发管理之路，这才是可持续的长久之道，规避邯郸学步。 道法术器，我们器和术都有了，现在在做的事儿就法，规则，制度，流程，心态，打法，办法，这条路上持续的沉淀优化下去，我们才能逐步去做到技乎于道； 这也是我们管理组件化，管理模块化，管理容器化，管理工程化的一条路径，到最后都是相通的。
+<ElImg src="manage/po/07.png" title="培训计划（售前）"/>
+
+:eyes: 模板下载请到`语雀`研发部。 ➡️ [传送门](https://xc0mg8.yuque.com/xc0mg8/kotaew/pfe8tmbgptxugsfc#S7sej)
+
+### 08. 培训资料归档
+
+:::warning :bell:
+培训资料统一产品组归档，上传小组语雀。
 :::
 
+### 09. 需求调研计划
 
+<ElImg src="manage/po/09.png" title="09-需求调研计划"/>
 
+:eyes: 模板下载请到`语雀`研发部。 ➡️ [传送门](https://xc0mg8.yuque.com/xc0mg8/kotaew/pfe8tmbgptxugsfc#ArJ70)
+
+### 10. 需求调研报告
+
+<ElImg src="manage/po/10.png" title="10-需求调研报告"/>
+
+:eyes: 模板下载请到`语雀`研发部。 ➡️ [传送门](https://xc0mg8.yuque.com/xc0mg8/kotaew/pfe8tmbgptxugsfc#bTAde)
+
+### 11. 需求规格说明书
+
+<ElImg src="manage/po/11.png" title="11-需求概要说明书"/>
+
+:eyes: 模板下载请到`语雀`研发部。 ➡️ [传送门](https://xc0mg8.yuque.com/xc0mg8/kotaew/pfe8tmbgptxugsfc#SwNts)
+
+### 12. 详细设计说明书
+
+<ElImg src="manage/po/12.png" title="12-详细设计说明书"/>
+
+:eyes: 模板下载请到`语雀`研发部。 ➡️ [传送门](https://xc0mg8.yuque.com/xc0mg8/kotaew/pfe8tmbgptxugsfc#SwNts)
+
+### 13. 功能模块清单
+
+<ElImg src="manage/po/13.png" title="13-功能模块清单"/>
+
+### 14. 产品原型图
+
+<ElImg src="manage/po/14.png" title="14-产品原型图"/>
+
+### 15. 产品流程图
+
+<ElImg src="manage/po/15.png" title="15-产品流程图"/>
+
+### 16. 产品架构图
+
+<ElImg src="manage/po/16.png" title="16-功能架构图"/>
+
+:eyes: `13-16` 模板下载请到`语雀`研发部。 ➡️ [请产品组定义标准模板内审后上传语雀](https://www.tzagileteam.com/manage/templates/po-template.html#%E8%AF%B4%E6%98%8E)
+
+### 17-21. 产品计划到计划闭环（禅道）
+
+<ElImg src="manage/po/17-21.png" title="17-21-产品计划到计划闭环（禅道）"/>
+
+:eyes: `17-21` 模板下载请到`语雀`研发部。 ➡️ [产品计划到闭环（禅道操作）](https://xc0mg8.yuque.com/xc0mg8/kotaew/pfe8tmbgptxugsfc#I0Ix6)
+
+### 22. 操作使用说明书
+
+<ElImg src="manage/pm/34.png" title="34-操作使用说明书"/>
+
+:eyes: 模板下载请到`语雀`研发部。 ➡️ [传送门](https://xc0mg8.yuque.com/xc0mg8/kotaew/pfe8tmbgptxugsfc#iTuK0)
+
+### 23. 客户培训计划表
+
+<ElImg src="manage/po/23.png" title="客户培训计划签到表"/>
+
+:eyes: 模板下载请到`语雀`研发部。 ➡️ [传送门](https://xc0mg8.yuque.com/xc0mg8/kotaew/pfe8tmbgptxugsfc#CQBz3)
