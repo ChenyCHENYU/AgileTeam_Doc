@@ -49,10 +49,6 @@ export const nav: DefaultTheme.NavItem[] = [
     activeMatch: '^/manage[-]*',
     items: [{ text: '岗位职责', link: '/manage/job-responsibility/pm' }],
   },
-  // {
-  //   text: '团队英雄墙',
-  //   link: '/team',
-  // },
   {
     text: '团队英雄墙',
     activeMatch: '/team/',
