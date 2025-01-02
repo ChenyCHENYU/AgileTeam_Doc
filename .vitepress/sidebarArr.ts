@@ -427,6 +427,10 @@ export const MANAGE_DOC = [
         text: 'PO：Manager',
         link: `${TEMPLATES}/po-template`,
       },
+      {
+        text: 'UX：Manager',
+        link: `${TEMPLATES}/ui-template`,
+      },
     ],
   },
   {
