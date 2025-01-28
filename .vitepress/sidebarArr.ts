@@ -368,10 +368,6 @@ export const QC_DOC = [
         text: '用例设计方法',
         link: `${QC}/standard/desgin`,
       },
-      {
-        text: '过程度量规范',
-        link: `${QC}/standard/desgin`,
-      },
     ],
   },
 ]
