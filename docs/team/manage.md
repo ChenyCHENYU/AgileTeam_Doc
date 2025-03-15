@@ -77,15 +77,15 @@ const tecList = [
   },
 ]
 const pmoList = [
-  {
-    avatar: `${baseURL}/潘超越.png`,
-    name: '潘超越',
-    title: 'Platform PM',
-    desc: '认知是我们的一生之敌',
-    links: [
-    //   { icon: 'github', link: 'https://github.com/yyx990803' },
-    ]
-  },
+  // {
+  //   avatar: `${baseURL}/潘超越.png`,
+  //   name: '潘超越',
+  //   title: 'Platform PM',
+  //   desc: '认知是我们的一生之敌',
+  //   links: [
+  //   //   { icon: 'github', link: 'https://github.com/yyx990803' },
+  //   ]
+  // },
   {
     avatar: `${baseURL}/陶夺旗.png`,
     name: '陶夺旗',
@@ -107,14 +107,20 @@ const pmoList = [
     title: 'PO PM',
     desc: '世界一直在变化，结果由我们来决定'
   },
-]
-
-const pmoSubList = [
   {
     avatar: `${baseURL}/何光明.png`,
     name: '何光明',
     title: 'PM Substitute',
     desc: '相信自己，并了解你自己',
+  },
+]
+
+const pmoSubList = [
+  {
+    avatar: `${baseURL}/马钧.png`,
+    name: '马钧',
+    title: 'Developers',
+    desc: '正义绝不妥协！',
   },
   {
     avatar: `${baseURL}/肖斌.png`,
