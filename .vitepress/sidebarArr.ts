@@ -69,6 +69,10 @@ export const WEB_DOC = [
         text: 'ES6实践',
         link: `${WEB}/coding-specification/es6-practice`,
       },
+      {
+        text: 'git提交规范',
+        link: `${WEB}/coding-specification/git-commit`,
+      },
     ],
   },
   {

@@ -130,7 +130,6 @@ const pmoSubList = [
   },
 ]
 
-
 </script>
 
 <VPTeamPage>
@@ -145,7 +144,7 @@ const pmoSubList = [
     <template #members>
       <VPTeamMembers size="small" :members="tecList" />
     </template>
-  </VPTeamPageSection>
+  </VPTeamPageSection>    
   <VPTeamPageSection>
     <template #title>Project Management Office</template>
     <template #lead>核心成员</template>
@@ -161,3 +160,4 @@ const pmoSubList = [
     </template>
   </VPTeamPageSection>
 </VPTeamPage>
+

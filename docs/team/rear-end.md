@@ -163,3 +163,4 @@ const partners = [
     </template>
   </VPTeamPageSection>
 </VPTeamPage>
+
