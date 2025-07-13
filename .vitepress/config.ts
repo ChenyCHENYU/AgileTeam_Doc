@@ -2,8 +2,8 @@
  * @Author: ChenYu
  * @Date: 2022-10-22 17:14:01
  * @LastEditors: ChenYu ycyplus@gmail.com
- * @LastEditTime: 2024-11-21 19:08:00
- * @FilePath: \my-agile-team-document\.vitepress\config.ts
+ * @LastEditTime: 2025-07-13 23:21:33
+ * @FilePath: \AgileTeam_Doc\.vitepress\config.ts
  * @Description: 配置文件
  * Copyright (c) ${2022} by ChenYu/天智AgileTeam, All Rights Reserved.
  */
@@ -15,6 +15,7 @@ import { head } from './head'
 import { nav } from './nav'
 import { sidebar } from './sidebar'
 import { gitee, blog, robot } from './svg'
+import UnoCSS from '@unocss/vite'
 
 export default defineConfig({
   srcDir: 'docs',
@@ -74,6 +75,7 @@ export default defineConfig({
       port: 5188,
     },
     plugins: [
+      UnoCSS(),
       banner({
         content: `/**\n * name: ${pkg.name}\n * version: v${pkg.version}\n * description: ${pkg.description}\n * author: ${pkg.author}\n * homepage: ${pkg.homepage}\n */`,
         outDir: resolve(__dirname, '../dist'),

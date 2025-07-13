@@ -1,27 +1,25 @@
-/*
- * @Description: vitepress 执行入库文件
- * @Author: ChenYu ycyplus@163.com
- * @Date: 2022-10-24 18:01:30
- * @LastEditors: ChenYu ycyplus@gmail.com
- * @LastEditTime: 2023-11-28 17:01:16
- * @FilePath: \my-agile-team-document\.vitepress\theme\index.mts
- * Copyright (c) 2022 西安天智 AgileTeam by ChenYu email: ycyplus@163.com, All Rights Reserved.
- */
 import ElementPlus from 'element-plus'
 import 'element-plus/dist/index.css'
 import type { Theme } from 'vitepress'
 import { inBrowser } from 'vitepress'
 import DefaultTheme from 'vitepress/theme'
+
+// 组件引入
 import FontColor from './components/FontColor.vue'
 import ElImg from './components/ElImg.vue'
 import GitalkComment from './components/GitalkComment.vue'
 import GoogleAdsense from './components/GoogleAdsense.vue'
 import ImgWrap from './components/ImgWrap.vue'
+
+// 插件引入
 import { registerAnalytics, siteIds, trackPageview } from './plugins/analytics'
 import { isInvalidRoute, redirect } from './plugins/redirect'
 import { replaceSymbol, setSymbolStyle } from './plugins/symbol'
-import './styles/custom.css'
+
+// 样式引入
 import './styles/vitepress.scss'
+import './styles/custom.css'
+import 'uno.css' // UnoCSS 放最后，确保优先级
 
 const theme: Theme = {
   ...DefaultTheme,

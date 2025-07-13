@@ -2,14 +2,19 @@
  * @Author: ChenYu
  * @Date: 2022-10-22 17:14:01
  * @LastEditors: ChenYu ycyplus@gmail.com
- * @LastEditTime: 2024-11-21 10:27:38
- * @FilePath: \my-agile-team-document\.vitepress\nav.ts
+ * @LastEditTime: 2025-07-13 15:34:40
+ * @FilePath: \AgileTeam_Doc\.vitepress\nav.ts
  * @Description: 右上侧导航
  * Copyright (c) ${2022} by ChenYu/天智AgileTeam, All Rights Reserved.
  */
 import type { DefaultTheme } from 'vitepress'
 
 export const nav: DefaultTheme.NavItem[] = [
+  {
+    text: 'Robot Admin',
+    activeMatch: '/robot/',
+    items: [{ text: '组件文档', link: '/robot/components/preface' }],
+  },
   {
     text: '产品',
     activeMatch: '/po/',

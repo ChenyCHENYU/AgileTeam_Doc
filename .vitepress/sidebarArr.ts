@@ -1,5 +1,28 @@
 // 前端文档相关的sidebar
 
+const ROBOT = '/robot'
+
+export const ROBOT_DOC = [
+  {
+    text: '写在前面的话',
+    items: [
+      {
+        text: '前言',
+        link: `${ROBOT}/components/preface`,
+      },
+    ],
+  },
+  {
+    text: '手摸手组件系列',
+    items: [
+      {
+        text: 'C_Icon 图标',
+        link: `${ROBOT}/components/icon`,
+      },
+    ],
+  },
+]
+
 const WEB = '/web'
 const COMPONENT = '/web-component'
 

@@ -1,6 +1,7 @@
 {
   "name": "agile-team-doc",
   "version": "2.1.0",
+  "homepage": "https://github.com/ChenyCHENYU/AgileTeam_Doc",
   "description": "敏捷团队构建的线上文档，希望同时帮助到团队伙伴和社区的大家",
   "author": "CHENY <ycyplus@gmail.com>",
   "private": true,
@@ -32,6 +33,7 @@
   "license": "MIT",
   "devDependencies": {
     "@types/node": "^20.10.0",
+    "gh-pages": "^6.3.0",
     "gitalk": "^1.8.0",
     "md5": "^2.3.0",
     "sass": "^1.69.5",
@@ -41,6 +43,8 @@
     "vue-baidu-analytics": "^2.2.0"
   },
   "dependencies": {
-    "element-plus": "^2.4.3"
+    "@unocss/vite": "^66.3.3",
+    "element-plus": "^2.4.3",
+    "unocss": "^66.3.3"
   }
 }
