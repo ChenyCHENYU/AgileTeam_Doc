@@ -1,0 +1,61 @@
+:root {
+  scroll-behavior: smooth;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+.vp-doc p,
+.vp-doc li + li {
+  text-align: justify;
+}
+
+
+/* 滚动条 */
+::-webkit-scrollbar {
+  width: 7px;
+}
+
+
+/* 滚动滑块 */
+::-webkit-scrollbar-thumb {
+  background: #dddddd;
+  border-radius: 6px;
+}
+
+/* 顶部 logo */
+.VPNavBarTitle.has-sidebar {
+  /* border: none; */
+}
+
+
+.vp-doc {
+  /* 代码片段下拉菜单 */
+  /* details {
+    padding: 10px !important;
+    margin: 10px 0 !important;
+
+    summary {
+      text-align: center;
+      cursor: pointer;
+      user-select: none;
+      margin: 0 !important;
+
+      &:hover {
+        transition: 0.5s;
+        color: #2d5af1;
+      }
+    }
+
+    &::before {
+      content: "" !important;
+    } */
+  }
+
+
+
+
+/* a.VPLink.link.active {
+  color: #42b883 !important;
+} */
