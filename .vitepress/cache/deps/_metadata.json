@@ -1,52 +1,52 @@
 {
-  "hash": "36a0f809",
-  "configHash": "24425e8d",
-  "lockfileHash": "df421d23",
-  "browserHash": "6ddc4cbe",
+  "hash": "a8e70722",
+  "configHash": "4eac5a66",
+  "lockfileHash": "e59440f0",
+  "browserHash": "c1975fd8",
   "optimized": {
     "vue": {
-      "src": "../../../node_modules/.pnpm/vue@3.4.33/node_modules/vue/dist/vue.runtime.esm-bundler.js",
+      "src": "../../../node_modules/vue/dist/vue.runtime.esm-bundler.js",
       "file": "vue.js",
-      "fileHash": "c89ae5ab",
+      "fileHash": "e4af7671",
       "needsInterop": false
     },
     "vitepress > @vue/devtools-api": {
-      "src": "../../../node_modules/.pnpm/@vue+devtools-api@7.3.6/node_modules/@vue/devtools-api/dist/index.js",
+      "src": "../../../node_modules/@vue/devtools-api/dist/index.js",
       "file": "vitepress___@vue_devtools-api.js",
-      "fileHash": "c3c4e72c",
+      "fileHash": "0014066a",
       "needsInterop": false
     },
     "vitepress > @vueuse/core": {
-      "src": "../../../node_modules/.pnpm/@vueuse+core@10.11.0_vue@3.4.33/node_modules/@vueuse/core/index.mjs",
+      "src": "../../../node_modules/@vueuse/core/index.mjs",
       "file": "vitepress___@vueuse_core.js",
-      "fileHash": "798f3176",
+      "fileHash": "5771dccc",
       "needsInterop": false
     },
     "element-plus": {
-      "src": "../../../node_modules/.pnpm/element-plus@2.7.7_vue@3.4.33/node_modules/element-plus/es/index.mjs",
+      "src": "../../../node_modules/element-plus/es/index.mjs",
       "file": "element-plus.js",
-      "fileHash": "f42a1f4b",
+      "fileHash": "2b37167f",
       "needsInterop": false
     },
     "gitalk": {
-      "src": "../../../node_modules/.pnpm/gitalk@1.8.0/node_modules/gitalk/dist/gitalk.js",
+      "src": "../../../node_modules/gitalk/dist/gitalk.js",
       "file": "gitalk.js",
-      "fileHash": "e9751255",
+      "fileHash": "e14aca2b",
       "needsInterop": true
     },
     "md5": {
-      "src": "../../../node_modules/.pnpm/md5@2.3.0/node_modules/md5/md5.js",
+      "src": "../../../node_modules/md5/md5.js",
       "file": "md5.js",
-      "fileHash": "b2f60c90",
+      "fileHash": "2ff9fdd5",
       "needsInterop": true
     }
   },
   "chunks": {
-    "chunk-ILR7M4D7": {
-      "file": "chunk-ILR7M4D7.js"
+    "chunk-Z5MM7V3J": {
+      "file": "chunk-Z5MM7V3J.js"
     },
-    "chunk-NPKGJGRW": {
-      "file": "chunk-NPKGJGRW.js"
+    "chunk-LEKUBJB2": {
+      "file": "chunk-LEKUBJB2.js"
     },
     "chunk-5WRI5ZAA": {
       "file": "chunk-5WRI5ZAA.js"

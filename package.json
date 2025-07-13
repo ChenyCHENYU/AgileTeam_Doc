@@ -1,8 +1,8 @@
 {
-  "name": "AGILETEAM",
-  "version": "2.0.1",
-  "description": "An agile team wants to share the introduction documents based on the gradual expansion of vue。",
-  "author": "cheny <ycyplus@gmail.com>",
+  "name": "agile-team-doc",
+  "version": "2.1.0",
+  "description": "敏捷团队构建的线上文档，希望同时帮助到团队伙伴和社区的大家",
+  "author": "CHENY <ycyplus@gmail.com>",
   "private": true,
   "type": "module",
   "scripts": {
@@ -18,14 +18,16 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://gitee.com/ycyplus163/my-agile-team-document"
+    "url": "https://github.com/ChenyCHENYU/AgileTeam_Doc.git"
   },
   "keywords": [
     "vue3",
     "vue",
     "TypeScript",
     "ts",
-    "agile team"
+    "agile team",
+    "项目管理",
+    "团队管理"
   ],
   "license": "MIT",
   "devDependencies": {

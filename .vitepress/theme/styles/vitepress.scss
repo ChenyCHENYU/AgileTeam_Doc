@@ -1,3 +1,4 @@
+@use "sass:color";
 :root {
   --vp-c-green: #5d80f4;
   --vp-c-brand-dark: #5d80f4;
@@ -118,7 +119,7 @@
   }
 
   .VPLink.link.link.active {
-    background: lighten(#2d5af1, 39%);
+    background: color.scale(#2d5af1, $lightness: 39%);
     box-sizing: border-box;
 
     .link-text {
