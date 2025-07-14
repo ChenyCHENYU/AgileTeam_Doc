@@ -11,7 +11,8 @@
     "antv",
     "codeing",
     "desgin",
-    "ombat"
+    "ombat",
+    "unocss"
   ],
   "ignorePaths": [
     "*.md"

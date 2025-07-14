@@ -2,7 +2,7 @@
  * @Author: ChenYu ycyplus@gmail.com
  * @Date: 2025-07-12 19:57:20
  * @LastEditors: ChenYu ycyplus@gmail.com
- * @LastEditTime: 2025-07-14 23:47:01
+ * @LastEditTime: 2025-07-15 00:13:34
  * @FilePath: \AgileTeam_Doc\.vitepress\theme\index.ts
  * @Description:
  * Copyright (c) 2025 by CHENY, All Rights Reserved 😎.
@@ -27,18 +27,8 @@ import { replaceSymbol, setSymbolStyle } from './plugins/symbol'
 
 // 样式引入
 import './styles/vitepress.scss'
-import './styles/custom.css'
-import 'uno.css' // UnoCSS 放最后，确保优先级
-
-/**
- * 设置页面变化监听
- */
-const setupPageChangeListeners = (router: any) => {
-  // 监听路由变化
-  router.onAfterRouteChanged = () => {
-    replaceSymbol()
-  }
-}
+import 'uno.css' // UnoCSS 放中间
+import './styles/custom.css' // 自定义样式放最后
 
 const theme: Theme = {
   ...DefaultTheme,
@@ -56,7 +46,7 @@ const theme: Theme = {
       // 处理无效路由重定向
       if (isInvalidRoute()) {
         redirect()
-        return // 如果需要重定向，提前返回
+        return
       }
 
       // 设置基础样式
@@ -69,6 +59,12 @@ const theme: Theme = {
       setupPageChangeListeners(router)
     }
   },
+}
+
+const setupPageChangeListeners = (router: any) => {
+  router.onAfterRouteChanged = () => {
+    replaceSymbol()
+  }
 }
 
 export default theme
