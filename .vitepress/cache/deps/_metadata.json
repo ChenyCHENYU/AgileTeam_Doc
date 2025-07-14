@@ -2,43 +2,49 @@
   "hash": "9fad3b43",
   "configHash": "553eab44",
   "lockfileHash": "9e2b6e01",
-  "browserHash": "5a2aacf8",
+  "browserHash": "8a20fc53",
   "optimized": {
     "vue": {
       "src": "../../../node_modules/vue/dist/vue.runtime.esm-bundler.js",
       "file": "vue.js",
-      "fileHash": "4349cd85",
+      "fileHash": "c0fb0038",
       "needsInterop": false
     },
     "vitepress > @vue/devtools-api": {
       "src": "../../../node_modules/@vue/devtools-api/dist/index.js",
       "file": "vitepress___@vue_devtools-api.js",
-      "fileHash": "39c839f3",
+      "fileHash": "a3dddf4a",
       "needsInterop": false
     },
     "vitepress > @vueuse/core": {
       "src": "../../../node_modules/@vueuse/core/index.mjs",
       "file": "vitepress___@vueuse_core.js",
-      "fileHash": "7735c2d7",
+      "fileHash": "b4104ebc",
       "needsInterop": false
     },
     "element-plus": {
       "src": "../../../node_modules/element-plus/es/index.mjs",
       "file": "element-plus.js",
-      "fileHash": "6966098c",
+      "fileHash": "1c766bfb",
       "needsInterop": false
     },
     "gitalk": {
       "src": "../../../node_modules/gitalk/dist/gitalk.js",
       "file": "gitalk.js",
-      "fileHash": "440a1ecf",
+      "fileHash": "a54e6665",
       "needsInterop": true
     },
     "md5": {
       "src": "../../../node_modules/md5/md5.js",
       "file": "md5.js",
-      "fileHash": "61e71c9d",
+      "fileHash": "662bd802",
       "needsInterop": true
+    },
+    "@vercel/analytics": {
+      "src": "../../../node_modules/@vercel/analytics/dist/index.mjs",
+      "file": "@vercel_analytics.js",
+      "fileHash": "8fb129af",
+      "needsInterop": false
     }
   },
   "chunks": {

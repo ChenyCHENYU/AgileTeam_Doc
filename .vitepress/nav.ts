@@ -2,7 +2,7 @@
  * @Author: ChenYu
  * @Date: 2022-10-22 17:14:01
  * @LastEditors: ChenYu ycyplus@gmail.com
- * @LastEditTime: 2025-07-13 15:34:40
+ * @LastEditTime: 2025-07-14 23:53:35
  * @FilePath: \AgileTeam_Doc\.vitepress\nav.ts
  * @Description: 右上侧导航
  * Copyright (c) ${2022} by ChenYu/天智AgileTeam, All Rights Reserved.
@@ -31,7 +31,7 @@ export const nav: DefaultTheme.NavItem[] = [
     activeMatch: '^/web[-]*',
     items: [
       { text: '前端文档', link: '/web/get-familiar-quickly/engineering' },
-      { text: '前端组件', link: '/web-component/preface' },
+      // { text: '前端组件', link: '/web-component/preface' },
     ],
   },
   {

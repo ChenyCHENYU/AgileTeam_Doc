@@ -166,72 +166,9 @@ export const WEB_DOC = [
   },
 ]
 
-// 前端组件相关的sidebar
 
-export const WEB_COMPONENT = [
-  {
-    text: '组件',
-    items: [
-      {
-        text: '前言',
-        link: `${COMPONENT}/preface`,
-      },
-    ],
-  },
-  {
-    text: '常用组件',
-    items: [
-      {
-        text: 'Icon 图标',
-        link: `${COMPONENT}/icon`,
-      },
-      {
-        text: 'Cascade 级联选择器',
-        link: `${COMPONENT}/cascade`,
-      },
-      {
-        text: 'Notice 通知',
-        link: `${COMPONENT}/notice`,
-      },
-      {
-        text: 'Menu 菜单',
-        link: `${COMPONENT}/menu`,
-      },
-      {
-        text: 'Progress 进度条',
-        link: `${COMPONENT}/progress`,
-      },
-      {
-        text: 'Time 时间选择器',
-        link: `${COMPONENT}/time`,
-      },
-      {
-        text: 'Date 日期选择器',
-        link: `${COMPONENT}/date`,
-      },
-      {
-        text: 'City 城市选择器',
-        link: `${COMPONENT}/city`,
-      },
-      {
-        text: 'Form 表单',
-        link: `${COMPONENT}/form`,
-      },
-      {
-        text: 'FormSearch 表单搜索',
-        link: `${COMPONENT}/form-search`,
-      },
-      {
-        text: 'Table 表格',
-        link: `${COMPONENT}/table`,
-      },
-      {
-        text: 'Calendar 日历',
-        link: `${COMPONENT}/calendar`,
-      },
-    ],
-  },
-]
+
+
 
 // 产品文档相关的sidebar
 

@@ -3,12 +3,11 @@ import type { DefaultTheme } from 'vitepress'
 import {
   ROBOT_DOC,
   WEB_DOC,
-  WEB_COMPONENT,
   PO_DOC,
   REAR_END_DOC,
   QC_DOC,
   UI_DOC,
-  MANAGE_DOC
+  MANAGE_DOC,
 } from './sidebarArr'
 
 export const sidebar: DefaultTheme.Sidebar = {
@@ -16,7 +15,6 @@ export const sidebar: DefaultTheme.Sidebar = {
   '/po/': PO_DOC,
   '/ui/': UI_DOC,
   '/web/': WEB_DOC,
-  '/web-component/': WEB_COMPONENT,
   '/rear-end/': REAR_END_DOC,
   '/qc/': QC_DOC,
   '/manage/': MANAGE_DOC,
