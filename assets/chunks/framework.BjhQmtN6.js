@@ -3,7 +3,7 @@
  * version: v2.1.0
  * description: 敏捷团队构建的线上文档，希望同时帮助到团队伙伴和社区的大家
  * author: CHENY <ycyplus@gmail.com>
- * homepage: undefined
+ * homepage: https://github.com/ChenyCHENYU/AgileTeam_Doc
  */
 /**
 * @vue/shared v3.5.17
