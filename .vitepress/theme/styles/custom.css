@@ -6,8 +6,7 @@ body {
   overflow-x: hidden;
 }
 
-.vp-doc p,
-.vp-doc li + li {
+.vp-doc p, .vp-doc li + li {
   text-align: justify;
 }
 
@@ -39,23 +38,43 @@ body {
   font-size: 14px;
   line-height: 1.6;
   background-color: var(--vp-c-bg);
+  /* 🔥 关键修复：添加表格布局控制 */
+  table-layout: auto !important;
+  overflow-wrap: break-word !important;
 }
 
-.vp-doc th,
-.vp-doc td {
+.vp-doc th, .vp-doc td {
   border: 1px solid var(--vp-c-divider) !important;
   padding: 12px 16px !important;
   text-align: left !important;
   vertical-align: top !important;
+  /* 🔥 关键修复：添加文字换行控制 */
+  word-wrap: break-word !important;
+  word-break: break-word !important;
+  white-space: normal !important;
+  overflow-wrap: break-word !important;
+  /* 🔥 关键修复：添加最小宽度限制 */
+  min-width: 80px !important;
 }
 
 .vp-doc th {
   background-color: var(--vp-c-bg-soft) !important;
   font-weight: 600 !important;
   color: var(--vp-c-text-1) !important;
+  /* 🔥 表头不换行，保持整洁 */
+  white-space: nowrap !important;
 }
+
 .vp-doc td {
   color: var(--vp-c-text-2) !important;
+}
+
+/* 🔥 关键修复：针对最后一列的特殊处理 */
+.vp-doc td:last-child,
+.vp-doc th:last-child {
+  width: auto !important;
+  min-width: 120px !important;
+  max-width: 300px !important;
 }
 
 /* 表格交互效果 */
@@ -68,11 +87,33 @@ body {
   .vp-doc table {
     font-size: 12px !important;
     margin: 16px 0 !important;
+    /* 🔥 移动端使用固定布局更好控制 */
+    table-layout: fixed !important;
   }
-
+  
   .vp-doc th,
   .vp-doc td {
     padding: 8px 12px !important;
+    /* 🔥 移动端减少最小宽度限制 */
+    min-width: auto !important;
+  }
+  
+  /* 🔥 移动端列宽重新分配 */
+  .vp-doc th:first-child,
+  .vp-doc td:first-child {
+    width: 25% !important;
+  }
+  
+  .vp-doc th:nth-child(2),
+  .vp-doc td:nth-child(2) {
+    width: 35% !important;
+  }
+  
+  .vp-doc th:last-child,
+  .vp-doc td:last-child {
+    width: 40% !important;
+    min-width: auto !important;
+    max-width: none !important;
   }
 }
 
@@ -82,4 +123,7 @@ body {
   padding: 2px 4px !important;
   border-radius: 3px !important;
   font-size: 0.9em !important;
+  /* 🔥 代码块允许换行 */
+  white-space: pre-wrap !important;
+  word-break: break-all !important;
 }
