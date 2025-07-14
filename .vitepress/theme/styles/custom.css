@@ -11,51 +11,75 @@ body {
   text-align: justify;
 }
 
-
-/* 滚动条 */
+/* 滚动条 - 支持主题切换 */
 ::-webkit-scrollbar {
   width: 7px;
 }
 
+::-webkit-scrollbar-track {
+  background: var(--vp-c-bg);
+}
 
-/* 滚动滑块 */
 ::-webkit-scrollbar-thumb {
-  background: #dddddd;
+  background: var(--vp-c-divider);
   border-radius: 6px;
+  transition: background 0.2s;
 }
 
-/* 顶部 logo */
-.VPNavBarTitle.has-sidebar {
-  /* border: none; */
+::-webkit-scrollbar-thumb:hover {
+  background: var(--vp-c-divider-light);
 }
 
+/* 表格样式重置和优化 */
+.vp-doc table {
+  display: table !important;
+  width: 100% !important;
+  border-collapse: collapse !important;
+  margin: 20px 0 !important;
+  font-size: 14px;
+  line-height: 1.6;
+  background-color: var(--vp-c-bg);
+}
 
-.vp-doc {
-  /* 代码片段下拉菜单 */
-  /* details {
-    padding: 10px !important;
-    margin: 10px 0 !important;
+.vp-doc th,
+.vp-doc td {
+  border: 1px solid var(--vp-c-divider) !important;
+  padding: 12px 16px !important;
+  text-align: left !important;
+  vertical-align: top !important;
+}
 
-    summary {
-      text-align: center;
-      cursor: pointer;
-      user-select: none;
-      margin: 0 !important;
+.vp-doc th {
+  background-color: var(--vp-c-bg-soft) !important;
+  font-weight: 600 !important;
+  color: var(--vp-c-text-1) !important;
+}
+.vp-doc td {
+  color: var(--vp-c-text-2) !important;
+}
 
-      &:hover {
-        transition: 0.5s;
-        color: #2d5af1;
-      }
-    }
+/* 表格交互效果 */
+.vp-doc tbody tr:hover {
+  background-color: var(--vp-c-bg-soft-mute);
+}
 
-    &::before {
-      content: "" !important;
-    } */
+/* 响应式适配 */
+@media (max-width: 768px) {
+  .vp-doc table {
+    font-size: 12px !important;
+    margin: 16px 0 !important;
   }
 
+  .vp-doc th,
+  .vp-doc td {
+    padding: 8px 12px !important;
+  }
+}
 
-
-
-/* a.VPLink.link.active {
-  color: #42b883 !important;
-} */
+/* 确保代码块在表格中正确显示 */
+.vp-doc table code {
+  background-color: var(--vp-c-bg-mute) !important;
+  padding: 2px 4px !important;
+  border-radius: 3px !important;
+  font-size: 0.9em !important;
+}
