@@ -2,7 +2,7 @@
  * @Author: ChenYu
  * @Date: 2022-10-22 17:14:01
  * @LastEditors: ChenYu ycyplus@gmail.com
- * @LastEditTime: 2025-07-13 23:21:33
+ * @LastEditTime: 2025-07-14 17:56:34
  * @FilePath: \AgileTeam_Doc\.vitepress\config.ts
  * @Description: 配置文件
  * Copyright (c) ${2022} by ChenYu/天智AgileTeam, All Rights Reserved.
@@ -21,7 +21,7 @@ export default defineConfig({
   srcDir: 'docs',
   outDir: 'dist',
   lang: 'zh-CN',
-  title: '天智AgileTeam',
+  title: 'AGILE TEAM',
   description: '这是一个关于软件研发团队的综合性文档平台，为各角色进行交叉赋能',
   head,
   // ignoreDeadLinks: true,  // 忽略死链接

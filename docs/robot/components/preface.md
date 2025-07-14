@@ -1,3 +1,7 @@
+---
+outline: 'deep'
+---
+
 # 🚀 Robot Admin 组件库
 
 <div class="bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl p-12 my-8 text-center text-white">
@@ -6,9 +10,9 @@
     企业级组件开发体验
   </h1>
   <div class="text-lg opacity-90 leading-relaxed space-y-2">
-    <p>- 当极致性能遇上保姆设计，当类型安全拥抱开发效率，你也可以拥抱一下我</p>
-    <p>- <strong>先提供 30+ 精心打磨的组件</strong>，让每一个都是生产级的高效武器，后续持续完善</p>
-    <p>- 最后，希望你用得愉快！</p>
+    <p>- 当极致性能遇上保姆设计，当类型安全拥抱开发效率，你可以拥抱一下我</p>
+    <p>- 先提供 30+ 精心打磨的组件，让每一个都是生产级的高效武器</p>
+    <p>- 我会持续维护和完善，最后，希望你用得愉快！</p>
   </div>
 </div>
 

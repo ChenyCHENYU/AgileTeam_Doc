@@ -16,8 +16,40 @@ export const ROBOT_DOC = [
     text: '手摸手组件系列',
     items: [
       {
-        text: 'C_Icon 图标',
+        text: '[C_Icon] 图标',
         link: `${ROBOT}/components/icon`,
+      },
+      {
+        text: '[C_Cascade] 级联选择器',
+        link: `${ROBOT}/components/cascade`,
+      },
+      {
+        text: '[C_Progress] 进度条',
+        link: `${ROBOT}/components/progress`,
+      },
+      {
+        text: '[C_Time] 时间选择器',
+        link: `${ROBOT}/components/time`,
+      },
+      {
+        text: '[C_Date] 日期选择器',
+        link: `${ROBOT}/components/date`,
+      },
+      {
+        text: '[C_City] 城市选择器',
+        link: `${ROBOT}/components/city`,
+      },
+      {
+        text: '[C_Form] 表单',
+        link: `${ROBOT}/components/form`,
+      },
+      {
+        text: '[C_FormSearch] 搜索表单',
+        link: `${ROBOT}/components/form-search`,
+      },
+      {
+        text: '[C_Table] 表格',
+        link: `${ROBOT}/components/table`,
       },
     ],
   },
