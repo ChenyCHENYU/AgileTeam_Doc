@@ -90,25 +90,25 @@ body {
     /* 🔥 移动端使用固定布局更好控制 */
     table-layout: fixed !important;
   }
-  
+
   .vp-doc th,
   .vp-doc td {
     padding: 8px 12px !important;
     /* 🔥 移动端减少最小宽度限制 */
     min-width: auto !important;
   }
-  
+
   /* 🔥 移动端列宽重新分配 */
   .vp-doc th:first-child,
   .vp-doc td:first-child {
     width: 25% !important;
   }
-  
+
   .vp-doc th:nth-child(2),
   .vp-doc td:nth-child(2) {
     width: 35% !important;
   }
-  
+
   .vp-doc th:last-child,
   .vp-doc td:last-child {
     width: 40% !important;

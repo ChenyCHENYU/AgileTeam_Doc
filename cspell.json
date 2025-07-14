@@ -21,7 +21,8 @@
     "preflights",
     "Segoe",
     "tzagileteam",
-    "unocss"
+    "unocss",
+    "unplugin"
   ],
   "ignorePaths": [
     "*.md"
