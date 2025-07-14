@@ -44,6 +44,7 @@
   },
   "dependencies": {
     "@unocss/vite": "^66.3.3",
+    "@vercel/analytics": "^1.5.0",
     "element-plus": "^2.4.3",
     "unocss": "^66.3.3"
   }
