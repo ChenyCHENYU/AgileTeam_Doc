@@ -15,18 +15,28 @@
 /* 2. 左侧边栏固定+宽度设置 */
 .VPSidebar {
   position: fixed !important;
-    left: 0 !important;
-    padding-left: 40px !important;
-    width: 272px !important;
+  left: 0 !important;
+  padding-left: 40px !important;
+  width: 272px !important;
 }
 
-/* 3. 右侧目录导航固定，内容带20px左间距 */
+/* 3. 右侧目录导航固定，内容带20px左间距 且支持滚动且滚动条隐藏 */
 .VPDocAside {
   position: fixed !important;
-    right: 40px !important;
-    width: 224px !important;
-    padding-right: 0 !important;
+  right: 40px !important;
+  width: 224px !important;
+  top: var(--vp-nav-height, 56px); /* 适配主题导航高度 */
+  bottom: 0;
+  max-height: calc(100vh - var(--vp-nav-height, 56px));
+  overflow-y: auto;
+  padding-right: 0 !important;
+  scrollbar-width: none; /* Firefox隐藏滚动条但可滚动 */
 }
+.VPDocAside::-webkit-scrollbar {
+  width: 0 !important;
+  background: transparent !important;
+}
+
 .VPDocAside .content {
   padding-left: 20px !important;
 }
@@ -36,11 +46,9 @@
   margin-left: 272px !important;
   padding: 0 !important;
 }
-
 .VPContent.has-sidebar.has-aside {
   margin-right: 264px !important;
 }
-
 .VPContent:not(.has-sidebar) {
   margin: 0 !important;
   padding: 0 !important;
@@ -58,16 +66,13 @@
   max-width: none !important;
   padding: 120px 0 40px !important;
 }
-
 .VPHome .VPHero .main {
   padding-top: 0 !important;
 }
-
 .VPHome .VPFeatures {
   max-width: none !important;
   padding: 40px 0 !important;
 }
-
 .VPHome .VPFooter {
   text-align: center !important;
 }
@@ -75,10 +80,9 @@
 /* 内容容器响应宽度 */
 .VPDoc.has-aside .content-container {
   max-width: calc(100vw - 272px - 264px - 120px) !important;
-    min-width: 600px !important;
+  min-width: 600px !important;
 }
-@media (min-width:1600px),
-(min-width:1900px) {
+@media (min-width:1600px), (min-width:1900px) {
   .VPDoc.has-aside .content-container {
     max-width: calc(100vw - 272px - 264px - 120px) !important;
     margin: 0 60px !important;
@@ -88,21 +92,21 @@
 /* 5. 顶部导航栏固定，内容居中 */
 .VPNav {
   position: fixed !important;
-    top: 0 !important;
-    left: 0 !important;
-    right: 0 !important;
-    z-index: 1000 !important;
-    background: var(--vp-c-bg) !important;
-    border-bottom: 1px solid var(--vp-c-divider) !important;
-    padding: 0 !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  z-index: 1000 !important;
+  background: var(--vp-c-bg) !important;
+  border-bottom: 1px solid var(--vp-c-divider) !important;
+  padding: 0 !important;
 }
 .VPNav .container {
   max-width: none !important;
-    padding: 0 40px !important;
-    display: flex !important;
-    justify-content: space-between !important;
-    align-items: center !important;
-    height: var(--vp-nav-height) !important;
+  padding: 0 40px !important;
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  height: var(--vp-nav-height) !important;
 }
 
 /* 6. 内容页title位置 & 导航栏内容处理 */
@@ -131,12 +135,12 @@ body:has(.VPSidebar) .VPNavBarContent {
   display: flex !important;
   justify-content: flex-end !important;
 }
+
 /* 首页导航相关 */
 .VPContent:not(.has-sidebar)~.VPNav,
 body:not(:has(.VPSidebar)) .VPNav {
   overflow: visible !important;
 }
-
 .VPContent:not(.has-sidebar)~.VPNav .container,
 body:not(:has(.VPSidebar)) .VPNav .container {
   max-width: none !important;
@@ -157,7 +161,6 @@ body:not(:has(.VPSidebar)) .VPNav .VPNavBarTitle {
   flex-shrink: 0 !important;
   z-index: 1002 !important;
 }
-
 .VPContent:not(.has-sidebar)~.VPNav .VPNavBarContent,
 body:not(:has(.VPSidebar)) .VPNav .VPNavBarContent {
   width: 100% !important;
@@ -204,46 +207,36 @@ body:not(:has(.VPSidebar)) .VPNav .VPNavBarMenuGroup {
     padding-left: 24px !important;
     width: 256px !important;
   }
-
   .VPDocAside {
     right: 24px !important;
     width: 200px !important;
   }
-
   .VPContent.has-sidebar {
     margin-left: 256px !important;
   }
-
   .VPContent.has-sidebar.has-aside {
     margin-right: 224px !important;
   }
-
   .VPDoc.has-aside .content-container {
-
     max-width: calc(100vw - 256px - 224px - 120px) !important;
     margin: 0 60px !important;
     min-width: 500px !important;
   }
-
   .vp-doc {
     padding: 32px 0 96px !important;
   }
-
   .VPHome {
     padding: 0 24px !important;
   }
-
   .VPNav .container,
   .VPContent:not(.has-sidebar)~.VPNav .container,
   body:not(:has(.VPSidebar)) .VPNav .container {
     padding: 0 24px !important;
   }
-
   .VPContent.has-sidebar~.VPNav .VPNavBarTitle {
     left: 24px !important;
     width: 208px !important;
   }
-
   .VPContent.has-sidebar~.VPNav .VPNavBarContent {
     margin-left: 256px !important;
     padding-right: 24px !important;
@@ -257,46 +250,43 @@ body:not(:has(.VPSidebar)) .VPNav .VPNavBarMenuGroup {
     width: auto !important;
     left: auto !important;
   }
-
   .VPDocAside {
     position: relative !important;
     right: auto !important;
     width: auto !important;
     padding-right: 16px !important;
+    top: unset;
+    bottom: unset;
+    max-height: none;
+    overflow-y: visible;
+    scrollbar-width: none;
   }
-
   .VPContent.has-sidebar,
   .VPContent.has-sidebar.has-aside {
     margin-left: 0 !important;
     margin-right: 0 !important;
   }
-
   .vp-doc {
     max-width: none !important;
     padding: 24px 16px 96px !important;
   }
-
   .VPHome {
     padding: 0 16px !important;
   }
-
   .VPNav .container,
   .VPContent:not(.has-sidebar)~.VPNav .container,
   body:not(:has(.VPSidebar)) .VPNav .container {
     padding: 0 16px !important;
   }
-
   .VPNavBarTitle {
     position: relative !important;
     left: auto !important;
     transform: none !important;
   }
-
   .VPNavBarContent {
     margin-left: auto !important;
     padding-right: 0 !important;
   }
-
   .vp-doc table {
     display: block !important;
     overflow-x: auto !important;
@@ -329,25 +319,23 @@ body:not(:has(.VPSidebar)) .VPNav .VPNavBarMenuGroup {
 }
 .vp-doc div[class*="language-"] {
   margin: 16px 0 !important;
-    border-radius: 6px !important;
-    overflow-x: auto !important;
-    scrollbar-width: thin;
+  border-radius: 6px !important;
+  overflow-x: auto !important;
+  scrollbar-width: thin;
 }
 .vp-doc div[class*="language-"] pre {
   margin: 0 !important;
-    padding: 20px 24px !important;
-    overflow-x: auto !important;
+  padding: 20px 24px !important;
+  overflow-x: auto !important;
 }
 .vp-doc div[class*="language-"]::-webkit-scrollbar {
   width: 7px !important;
   height: 7px !important;
 }
-
 .vp-doc div[class*="language-"]::-webkit-scrollbar-thumb {
   background: #ddd !important;
   border-radius: 6px !important;
 }
-
 .vp-doc div[class*="language-"]::-webkit-scrollbar-thumb:hover {
   background: #ccc !important;
 }
@@ -398,7 +386,6 @@ body:not(:has(.VPSidebar)) .VPNav .VPNavBarMenuGroup {
   background: rgba(45, 90, 241, 0.8);
   box-sizing: border-box;
 }
-
 .VPSidebarGroup .VPLink.link.link.active .link-text {
   font-weight: 600;
 }
