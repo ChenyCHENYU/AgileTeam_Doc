@@ -1,6 +1,6 @@
 ---
 layout: home
-title: 天智AgileTeam前端
+title: Agile Team 前端
 
 hero:
   name: Development Teams Based Agile Thinking
@@ -32,14 +32,12 @@ features:
     details: 管理需要角色转变，提升认知，思考如何有效的进行技术管理，高效精细化的项目管理
 ---
 
-<VPTeamMembers size="small" :members="members" />
+<!-- <VPTeamMembers size="small" :members="members" /> -->
 
 <script setup>
 
-// import Home from '@theme/Home.vue'
 </script>
 
-<Home />
 
 <style>
 

@@ -1,12 +1,3 @@
-/*
- * @Author: ChenYu ycyplus@gmail.com
- * @Date: 2025-07-15 14:58:11
- * @LastEditors: ChenYu ycyplus@gmail.com
- * @LastEditTime: 2025-07-15 15:23:25
- * @FilePath: \AgileTeam_Doc\.vitepress\config.ts
- * @Description:
- * Copyright (c) 2025 by CHENY, All Rights Reserved 😎.
- */
 import { resolve } from 'path'
 import banner from 'vite-plugin-banner'
 import { defineConfig } from 'vitepress'
@@ -62,9 +53,15 @@ export default defineConfig({
   vite: {
     server: {
       port: 5188,
+      fs: {
+        allow: ['..']
+      }
     },
     ssr: {
-      noExternal: ['element-plus'],
+      noExternal: ['element-plus']
+    },
+    optimizeDeps: {
+      exclude: ['vitepress']
     },
     plugins: [
       UnoCSS(),
@@ -73,21 +70,11 @@ export default defineConfig({
         dts: resolve(__dirname, '../auto-imports.d.ts'),
       }),
       Components({
-        resolvers: [
-          ElementPlusResolver({
-            importStyle: false,
-          }),
-          // 自定义解析器：排除 VitePress 内置组件和 Home 组件
-          (componentName) => {
-            if (componentName.startsWith('VP') || componentName === 'Home') {
-              return
-            }
-            return null
-          },
-        ],
-        dts: resolve(__dirname, '../components.d.ts'),
-        exclude: [/[\\/]node_modules[\\/]vitepress[\\/]/],
+        dirs: [resolve(__dirname, './theme/components')],
+        extensions: ['vue'],
         include: [/\.vue$/, /\.vue\?vue/, /\.md$/],
+        resolvers: [ElementPlusResolver({ importStyle: false })],
+        dts: resolve(__dirname, '../components.d.ts'),
       }),
       banner({
         content: `/**\n * name: ${pkg.name}\n * version: v${pkg.version}\n * description: ${pkg.description}\n * author: ${pkg.author}\n * homepage: ${pkg.homepage}\n */`,

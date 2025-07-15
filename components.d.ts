@@ -8,9 +8,19 @@ export {}
 /* prettier-ignore */
 declare module 'vue' {
   export interface GlobalComponents {
+    ElButton: typeof import('element-plus/es')['ElButton']
     ElCard: typeof import('element-plus/es')['ElCard']
+    ElDivider: typeof import('element-plus/es')['ElDivider']
     ElImage: typeof import('element-plus/es')['ElImage']
+    ElImg: typeof import('./.vitepress/theme/components/ElImg.vue')['default']
+    ElLink: typeof import('element-plus/es')['ElLink']
+    ElMain: typeof import('element-plus/es')['ElMain']
     ElTable: typeof import('element-plus/es')['ElTable']
     ElTableColumn: typeof import('element-plus/es')['ElTableColumn']
+    ElTag: typeof import('element-plus/es')['ElTag']
+    FontColor: typeof import('./.vitepress/theme/components/FontColor.vue')['default']
+    GitalkComment: typeof import('./.vitepress/theme/components/GitalkComment.vue')['default']
+    GoogleAdsense: typeof import('./.vitepress/theme/components/GoogleAdsense.vue')['default']
+    ImgWrap: typeof import('./.vitepress/theme/components/ImgWrap.vue')['default']
   }
 }

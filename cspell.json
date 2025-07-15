@@ -24,7 +24,8 @@
     "Segoe",
     "tzagileteam",
     "unocss",
-    "unplugin"
+    "unplugin",
+    "vitepress"
   ],
   "ignorePaths": [
     "*.md"

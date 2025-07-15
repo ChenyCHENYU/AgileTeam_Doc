@@ -56,7 +56,6 @@ export const ROBOT_DOC = [
 ]
 
 const WEB = '/web'
-const COMPONENT = '/web-component'
 
 export const WEB_DOC = [
   {
@@ -152,6 +151,10 @@ export const WEB_DOC = [
       {
         text: 'Npm、Nvm、Yarn、Pnpm 使用',
         link: `${WEB}/actual-ombat/npm`,
+      },
+      {
+        text: '测试页面',
+        link: `${WEB}/actual-ombat/test-demo`,
       },
     ],
   },
