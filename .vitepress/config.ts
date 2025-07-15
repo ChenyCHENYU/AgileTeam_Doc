@@ -2,7 +2,7 @@
  * @Author: ChenYu
  * @Date: 2022-10-22 17:14:01
  * @LastEditors: ChenYu ycyplus@gmail.com
- * @LastEditTime: 2025-07-15 00:55:10
+ * @LastEditTime: 2025-07-15 09:19:20
  * @FilePath: \AgileTeam_Doc\.vitepress\config.ts
  * @Description: 配置文件
  * Copyright (c) ${2022} by ChenYu/天智AgileTeam, All Rights Reserved.
@@ -76,15 +76,34 @@ export default defineConfig({
     server: {
       port: 5188,
     },
+    // 🔥 关键：SSR 配置
+    ssr: {
+      noExternal: ['element-plus', '@element-plus/icons-vue']
+    },
+    // 🔥 关键：CSS 构建配置
+    css: {
+      preprocessorOptions: {
+        scss: {
+          additionalData: `@use "element-plus/theme-chalk/src/common/var.scss" as *;`
+        }
+      }
+    },
     plugins: [
       UnoCSS(),
 
       // 🔥 Element Plus 按需导入配置
       AutoImport({
         resolvers: [ElementPlusResolver()],
+        dts: true,
       }),
       Components({
-        resolvers: [ElementPlusResolver()],
+        resolvers: [
+          ElementPlusResolver({
+            // 🔥 重要：启用样式导入，但使用 sass 避免 CSS 导入问题
+            importStyle: 'sass'
+          })
+        ],
+        dts: true,
       }),
 
       banner({
@@ -93,5 +112,16 @@ export default defineConfig({
         debug: false,
       }),
     ],
+    // 🔥 关键：构建配置
+    build: {
+      rollupOptions: {
+        external: [],
+        output: {
+          chunkFileNames: 'assets/js/[name]-[hash].js',
+          entryFileNames: 'assets/js/[name]-[hash].js',
+          assetFileNames: 'assets/[ext]/[name]-[hash].[ext]',
+        }
+      }
+    }
   },
 })

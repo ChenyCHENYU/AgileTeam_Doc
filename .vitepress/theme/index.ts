@@ -1,6 +1,5 @@
 import type { Theme } from 'vitepress'
 import { inBrowser } from 'vitepress'
-import { inject } from '@vercel/analytics'
 import DefaultTheme from 'vitepress/theme'
 
 // 组件引入
@@ -16,15 +15,28 @@ import { replaceSymbol, setSymbolStyle } from './plugins/symbol'
 
 // 样式引入
 import 'uno.css'
+// 🔥 添加Element Plus样式
+import 'element-plus/dist/index.css'
 import './styles/vitepress.scss'
 import './styles/custom.css'
+
+// 🔥 条件导入Vercel Analytics避免类型错误
+let inject: any
+if (inBrowser) {
+  import('@vercel/analytics')
+    .then((module) => {
+      inject = module.inject
+      inject()
+    })
+    .catch(() => {
+      // Vercel Analytics导入失败时的fallback
+      console.log('Vercel Analytics not available')
+    })
+}
 
 const theme: Theme = {
   ...DefaultTheme,
   enhanceApp({ app, router }) {
-    // 🔥 移除 Element Plus 全局注册
-    // app.use(ElementPlus)
-
     // 注册 Vue 组件
     app.component('GitalkComment', GitalkComment)
     app.component('GoogleAdsense', GoogleAdsense)
@@ -40,7 +52,6 @@ const theme: Theme = {
       }
 
       setSymbolStyle()
-      inject()
       setupPageChangeListeners(router)
     }
   },

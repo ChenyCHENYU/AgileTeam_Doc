@@ -16,12 +16,12 @@
     "sourceMap": true,
     "baseUrl": ".",
     "rootDir": ".",
-    "types": ["node"],
+    "types": ["node", "vite/client"],
     "paths": {
       "@/*": ["docs/*"]
     },
     "lib": ["ESNext", "DOM", "DOM.Iterable"]
   },
-  "include": ["docs/**/*", ".vitepress/**/*"],
-  "exclude": ["node_modules"]
+  "include": ["docs/**/*", ".vitepress/**/*", "*.d.ts"],
+  "exclude": ["node_modules", "dist"]
 }
