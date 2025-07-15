@@ -1,129 +1,316 @@
-/* 🔥 真正有效的布局优化 - 基于你的需求 */
+/* ===== 通用布局优化 ===== */
 
-/* 1. 强制重置 VitePress 的布局限制 */
 .VPLayout {
   max-width: none !important;
+  padding-top: var(--vp-nav-height) !important;
 }
 
 .VPDoc .container {
   max-width: none !important;
   width: 80% !important;
+  margin: 0 !important;
+  padding-top: 60px !important;
 }
 
-/* 2. 左侧边栏 - 保持你的设置 */
+/* 2. 左侧边栏固定+宽度设置 */
 .VPSidebar {
-  padding-left: 40px !important;
-  width: 272px !important;
   position: fixed !important;
-  left: 0 !important;
+    left: 0 !important;
+    padding-left: 40px !important;
+    width: 272px !important;
 }
 
-/* 3. 右侧目录导航 - 靠右40px边距，左侧20px边距 */
+/* 3. 右侧目录导航固定，内容带20px左间距 */
 .VPDocAside {
   position: fixed !important;
-  right: 40px !important;
-  width: 224px !important;
-  padding-right: 0 !important;
+    right: 40px !important;
+    width: 224px !important;
+    padding-right: 0 !important;
 }
-
 .VPDocAside .content {
-  padding: 0 0 0 20px !important; /* 左侧20px边距 */
+  padding-left: 20px !important;
 }
 
-/* 4. 内容区域 - 真正的居中布局 */
+/* 4. 内容区域排版 */
 .VPContent.has-sidebar {
-  margin-left: 272px !important; /* 左侧边栏宽度 */
-  padding-left: 0 !important;
-  padding-right: 0 !important;
+  margin-left: 272px !important;
+  padding: 0 !important;
 }
 
 .VPContent.has-sidebar.has-aside {
-  margin-right: 264px !important; /* 右侧导航宽度 + 40px边距 */
+  margin-right: 264px !important;
 }
 
+.VPContent:not(.has-sidebar) {
+  margin: 0 !important;
+  padding: 0 !important;
+}
 
+/* 首页内容和 Hero 区居中+宽度限制 */
+.VPHome,
+.VPHome .VPHero .container,
+.VPHome .VPFeatures .container {
+  max-width: 1152px !important;
+  margin: 0 auto !important;
+  padding: 0 40px !important;
+}
+.VPHome .VPHero {
+  max-width: none !important;
+  padding: 120px 0 40px !important;
+}
 
-/* 关键：设置内容容器的最大宽度 - 离左右侧导航60px */
+.VPHome .VPHero .main {
+  padding-top: 0 !important;
+}
+
+.VPHome .VPFeatures {
+  max-width: none !important;
+  padding: 40px 0 !important;
+}
+
+.VPHome .VPFooter {
+  text-align: center !important;
+}
+
+/* 内容容器响应宽度 */
 .VPDoc.has-aside .content-container {
-  max-width: calc(100vw - 272px - 264px - 120px) !important; /* 左右各60px间距 */
-  min-width: 600px !important;
+  max-width: calc(100vw - 272px - 264px - 120px) !important;
+    min-width: 600px !important;
 }
-
-/* 动态调整内容宽度但保持60px间距 */
-@media (min-width: 1600px) {
+@media (min-width:1600px),
+(min-width:1900px) {
   .VPDoc.has-aside .content-container {
     max-width: calc(100vw - 272px - 264px - 120px) !important;
     margin: 0 60px !important;
   }
 }
 
-@media (min-width: 1900px) {
-  .VPDoc.has-aside .content-container {
-    max-width: calc(100vw - 272px - 264px - 120px) !important;
-    margin: 0 60px !important;
-  }
-}
-
-/* 5. 顶部导航栏优化 - 固定定位 */
+/* 5. 顶部导航栏固定，内容居中 */
 .VPNav {
   position: fixed !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  z-index: 1000 !important;
-  background: var(--vp-c-bg) !important;
-  border-bottom: 1px solid var(--vp-c-divider) !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    z-index: 1000 !important;
+    background: var(--vp-c-bg) !important;
+    border-bottom: 1px solid var(--vp-c-divider) !important;
+    padding: 0 !important;
 }
-
 .VPNav .container {
   max-width: none !important;
+    padding: 0 40px !important;
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    height: var(--vp-nav-height) !important;
+}
+
+/* 6. 内容页title位置 & 导航栏内容处理 */
+.VPContent.has-sidebar~.VPNav .VPNavBarTitle,
+.has-sidebar .VPNavBarTitle,
+.layout-doc .VPNavBarTitle,
+body:has(.VPSidebar) .VPNavBarTitle,
+.VPNav .VPNavBarTitle[class] {
+  position: absolute !important;
+  left: 40px !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  z-index: 1001 !important;
+  width: 232px !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  white-space: nowrap !important;
+}
+.VPContent.has-sidebar~.VPNav .VPNavBarContent,
+.has-sidebar .VPNavBarContent,
+.layout-doc .VPNavBarContent,
+body:has(.VPSidebar) .VPNavBarContent {
+  margin-left: 272px !important;
+  padding-right: 40px !important;
+  flex: 1 !important;
+  display: flex !important;
+  justify-content: flex-end !important;
+}
+/* 首页导航相关 */
+.VPContent:not(.has-sidebar)~.VPNav,
+body:not(:has(.VPSidebar)) .VPNav {
+  overflow: visible !important;
+}
+
+.VPContent:not(.has-sidebar)~.VPNav .container,
+body:not(:has(.VPSidebar)) .VPNav .container {
+  max-width: none !important;
+  width: 100vw !important;
+  margin: 0 !important;
+  padding: 0 40px !important;
+  overflow: visible !important;
+  position: relative !important;
+  z-index: 1000 !important;
+}
+.VPContent:not(.has-sidebar)~.VPNav .VPNavBarTitle,
+body:not(:has(.VPSidebar)) .VPNav .VPNavBarTitle {
+  position: relative !important;
+  left: auto !important;
+  overflow: visible !important;
+  text-overflow: initial !important;
+  white-space: normal !important;
+  flex-shrink: 0 !important;
+  z-index: 1002 !important;
+}
+
+.VPContent:not(.has-sidebar)~.VPNav .VPNavBarContent,
+body:not(:has(.VPSidebar)) .VPNav .VPNavBarContent {
+  width: 100% !important;
+  margin: 0 !important;
   padding: 0 !important;
   display: flex !important;
   justify-content: space-between !important;
   align-items: center !important;
-}
-
-/* 头部 title 位置 - 在左侧导航上方 */
-.VPNavBarTitle {
-  position: absolute !important;
-  left: 40px !important;
+  position: relative !important;
   z-index: 1001 !important;
+  overflow: visible !important;
 }
-
-/* 头部导航内容靠右 */
-.VPNavBarContent {
+/* 7. 搜索框与菜单（首页相关） */
+.VPContent:not(.has-sidebar)~.VPNav .VPNavBarSearch,
+body:not(:has(.VPSidebar)) .VPNav .VPNavBarSearch {
+  position: relative !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow: visible !important;
+  z-index: 1003 !important;
+  flex-shrink: 0 !important;
+  min-width: 200px !important;
+  width: auto !important;
+  pointer-events: auto !important;
+}
+.VPContent:not(.has-sidebar)~.VPNav .VPNavBarSearch *,
+body:not(:has(.VPSidebar)) .VPNav .VPNavBarSearch * {
+  pointer-events: auto !important;
+  z-index: 1004 !important;
+}
+.VPContent:not(.has-sidebar)~.VPNav .VPNavBarMenuGroup,
+body:not(:has(.VPSidebar)) .VPNav .VPNavBarMenuGroup {
   margin-left: auto !important;
-  padding-right: 40px !important;
+  margin-right: 16px !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 16px !important;
+  z-index: 1002 !important;
 }
 
-/* 为固定头部留出空间 */
-.VPLayout {
-  padding-top: var(--vp-nav-height) !important;
-}
-
-/* 6. 取消 VitePress 默认的复杂计算 */
-@media (min-width: 1440px) {
-  .VPSidebar[data-v-6750ea26] {
-    padding-left: 40px !important;
-    width: 272px !important;
-    left: 0 !important;
+/* 8. 响应式调整 */
+@media (min-width:1024px) and (max-width:1439px) {
+  .VPSidebar {
+    padding-left: 24px !important;
+    width: 256px !important;
   }
-  
-  .VPDocAside[data-v-] {
-    right: 40px !important;
-    width: 224px !important;
+
+  .VPDocAside {
+    right: 24px !important;
+    width: 200px !important;
+  }
+
+  .VPContent.has-sidebar {
+    margin-left: 256px !important;
+  }
+
+  .VPContent.has-sidebar.has-aside {
+    margin-right: 224px !important;
+  }
+
+  .VPDoc.has-aside .content-container {
+
+    max-width: calc(100vw - 256px - 224px - 120px) !important;
+    margin: 0 60px !important;
+    min-width: 500px !important;
+  }
+
+  .vp-doc {
+    padding: 32px 0 96px !important;
+  }
+
+  .VPHome {
+    padding: 0 24px !important;
+  }
+
+  .VPNav .container,
+  .VPContent:not(.has-sidebar)~.VPNav .container,
+  body:not(:has(.VPSidebar)) .VPNav .container {
+    padding: 0 24px !important;
+  }
+
+  .VPContent.has-sidebar~.VPNav .VPNavBarTitle {
+    left: 24px !important;
+    width: 208px !important;
+  }
+
+  .VPContent.has-sidebar~.VPNav .VPNavBarContent {
+    margin-left: 256px !important;
+    padding-right: 24px !important;
+  }
+}
+
+@media (max-width:1023px) {
+  .VPSidebar {
+    position: relative !important;
+    padding-left: 16px !important;
+    width: auto !important;
+    left: auto !important;
+  }
+
+  .VPDocAside {
+    position: relative !important;
+    right: auto !important;
+    width: auto !important;
+    padding-right: 16px !important;
+  }
+
+  .VPContent.has-sidebar,
+  .VPContent.has-sidebar.has-aside {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+
+  .vp-doc {
+    max-width: none !important;
+    padding: 24px 16px 96px !important;
+  }
+
+  .VPHome {
+    padding: 0 16px !important;
+  }
+
+  .VPNav .container,
+  .VPContent:not(.has-sidebar)~.VPNav .container,
+  body:not(:has(.VPSidebar)) .VPNav .container {
+    padding: 0 16px !important;
+  }
+
+  .VPNavBarTitle {
+    position: relative !important;
+    left: auto !important;
+    transform: none !important;
+  }
+
+  .VPNavBarContent {
+    margin-left: auto !important;
     padding-right: 0 !important;
   }
+
+  .vp-doc table {
+    display: block !important;
+    overflow-x: auto !important;
+    white-space: nowrap !important;
+  }
 }
 
-/* 7. 表格样式 - 充分利用内容区域 */
+/* 9. 表格与代码块区域美化 */
 .vp-doc table {
   width: 100% !important;
   border-collapse: collapse !important;
   margin: 20px 0 !important;
   table-layout: auto !important;
 }
-
 .vp-doc th,
 .vp-doc td {
   border: 1px solid var(--vp-c-divider) !important;
@@ -132,7 +319,6 @@
   vertical-align: top !important;
   word-wrap: break-word !important;
 }
-
 .vp-doc th {
   background-color: var(--vp-c-bg-soft) !important;
   font-weight: 600 !important;
@@ -141,107 +327,37 @@
 .vp-doc tbody tr:nth-child(even) {
   background-color: var(--vp-c-bg-soft) !important;
 }
-
-/* 8. 代码块优化 */
 .vp-doc div[class*="language-"] {
   margin: 16px 0 !important;
-  border-radius: 6px !important;
-  overflow-x: auto !important;
+    border-radius: 6px !important;
+    overflow-x: auto !important;
+    scrollbar-width: thin;
 }
-
 .vp-doc div[class*="language-"] pre {
   margin: 0 !important;
-  padding: 20px 24px !important;
-  overflow-x: auto !important;
-}
-
-/* 9. 中等屏幕适配 */
-@media (min-width: 1024px) and (max-width: 1439px) {
-  .VPSidebar {
-    padding-left: 24px !important;
-    width: 256px !important;
-  }
-  
-  .VPDocAside {
-    right: 24px !important;
-    width: 200px !important;
-  }
-  
-  .VPContent.has-sidebar {
-    margin-left: 256px !important;
-  }
-  
-  .VPContent.has-sidebar.has-aside {
-    margin-right: 224px !important;
-  }
-  
-  .VPDoc.has-aside .content-container {
-    max-width: calc(100vw - 256px - 224px - 120px) !important; /* 中等屏幕也保持60px间距 */
-    margin: 0 60px !important;
-    min-width: 500px !important;
-  }
-  
-  .vp-doc {
-    padding: 32px 0 96px !important; /* 移除左右内边距，统一由容器控制 */
-  }
-  
-  .VPNavBarTitle {
-    left: 24px !important;
-  }
-  
-  .VPNavBarContent {
-    padding-right: 24px !important;
-  }
-}
-
-/* 10. 小屏幕 - 恢复默认布局 */
-@media (max-width: 1023px) {
-  .VPSidebar {
-    position: relative !important;
-    padding-left: 16px !important;
-    width: auto !important;
-    left: auto !important;
-  }
-  
-  .VPDocAside {
-    position: relative !important;
-    right: auto !important;
-    width: auto !important;
-    padding-right: 16px !important;
-  }
-  
-  .VPContent.has-sidebar {
-    margin-left: 0 !important;
-  }
-  
-  .VPContent.has-sidebar.has-aside {
-    margin-right: 0 !important;
-  }
-  
-  .vp-doc {
-    max-width: none !important;
-    padding: 24px 16px 96px !important;
-  }
-  
-  .VPNav .container {
-    padding: 0 16px !important;
-  }
-  
-  /* 移动端表格滚动 */
-  .vp-doc table {
-    display: block !important;
+    padding: 20px 24px !important;
     overflow-x: auto !important;
-    white-space: nowrap !important;
-  }
+}
+.vp-doc div[class*="language-"]::-webkit-scrollbar {
+  width: 7px !important;
+  height: 7px !important;
 }
 
-/* 11. 保持你的现有样式 */
+.vp-doc div[class*="language-"]::-webkit-scrollbar-thumb {
+  background: #ddd !important;
+  border-radius: 6px !important;
+}
+
+.vp-doc div[class*="language-"]::-webkit-scrollbar-thumb:hover {
+  background: #ccc !important;
+}
+
+/* 10. 主题色+通用变量+滚动条隐藏 */
 :root {
   --vp-c-green: #5d80f4;
   --vp-c-brand-dark: #5d80f4;
   scroll-behavior: smooth;
 }
-
 .dark {
   --vp-c-bg-alt: #242424;
 }
@@ -292,26 +408,37 @@
 }
 
 ::-webkit-scrollbar {
-  width: 7px;
+  width: 0px !important;
+  background: transparent !important;
 }
 
-::-webkit-scrollbar-thumb {
-  background: #dddddd;
-  border-radius: 6px;
-}
-
+::-webkit-scrollbar-thumb,
 ::-webkit-scrollbar-thumb:hover {
-  background: #cccccc;
+  background: transparent !important;
 }
 
 .f-sticky-card {
   margin-top: 20px;
 }
 
+html,
 body {
   overflow-x: hidden;
+  scroll-behavior: smooth;
 }
 
-.container {
-  margin: 0 !important;
+body {
+  overflow-y: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+body::-webkit-scrollbar,
+.vp-doc::-webkit-scrollbar,
+.VPHome::-webkit-scrollbar {
+  display: none;
+}
+
+.social-links {
+  margin-right: 40px !important;
 }
