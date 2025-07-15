@@ -38,11 +38,11 @@ const theme: Theme = {
 
       setSymbolStyle()
       setupPageChangeListeners(router)
-      
-      // 🔥 简化 Vercel Analytics 导入
-      import('@vercel/analytics').then(({ inject }) => {
-        inject()
-      }).catch(() => {})
+      import('@vercel/analytics')
+        .then(({ inject }) => {
+          inject()
+        })
+        .catch(() => {})
     }
   },
 }
