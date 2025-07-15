@@ -15,27 +15,12 @@ import { replaceSymbol, setSymbolStyle } from './plugins/symbol'
 
 // 样式引入
 import 'uno.css'
-// 🔥 添加Element Plus样式
 import 'element-plus/dist/index.css'
 import './styles/vitepress.scss'
 import './styles/custom.css'
 
-// 🔥 条件导入Vercel Analytics避免类型错误
-let inject: any
-if (inBrowser) {
-  import('@vercel/analytics')
-    .then((module) => {
-      inject = module.inject
-      inject()
-    })
-    .catch(() => {
-      // Vercel Analytics导入失败时的fallback
-      console.log('Vercel Analytics not available')
-    })
-}
-
 const theme: Theme = {
-  ...DefaultTheme,
+  extends: DefaultTheme, // 🔥 改回 extends
   enhanceApp({ app, router }) {
     // 注册 Vue 组件
     app.component('GitalkComment', GitalkComment)
@@ -53,6 +38,11 @@ const theme: Theme = {
 
       setSymbolStyle()
       setupPageChangeListeners(router)
+      
+      // 🔥 简化 Vercel Analytics 导入
+      import('@vercel/analytics').then(({ inject }) => {
+        inject()
+      }).catch(() => {})
     }
   },
 }

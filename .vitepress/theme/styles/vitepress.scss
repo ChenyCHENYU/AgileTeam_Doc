@@ -1,157 +1,317 @@
-@use "sass:color";
+/* 🔥 真正有效的布局优化 - 基于你的需求 */
+
+/* 1. 强制重置 VitePress 的布局限制 */
+.VPLayout {
+  max-width: none !important;
+}
+
+.VPDoc .container {
+  max-width: none !important;
+  width: 80% !important;
+}
+
+/* 2. 左侧边栏 - 保持你的设置 */
+.VPSidebar {
+  padding-left: 40px !important;
+  width: 272px !important;
+  position: fixed !important;
+  left: 0 !important;
+}
+
+/* 3. 右侧目录导航 - 靠右40px边距，左侧20px边距 */
+.VPDocAside {
+  position: fixed !important;
+  right: 40px !important;
+  width: 224px !important;
+  padding-right: 0 !important;
+}
+
+.VPDocAside .content {
+  padding: 0 0 0 20px !important; /* 左侧20px边距 */
+}
+
+/* 4. 内容区域 - 真正的居中布局 */
+.VPContent.has-sidebar {
+  margin-left: 272px !important; /* 左侧边栏宽度 */
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+.VPContent.has-sidebar.has-aside {
+  margin-right: 264px !important; /* 右侧导航宽度 + 40px边距 */
+}
+
+
+
+/* 关键：设置内容容器的最大宽度 - 离左右侧导航60px */
+.VPDoc.has-aside .content-container {
+  max-width: calc(100vw - 272px - 264px - 120px) !important; /* 左右各60px间距 */
+  min-width: 600px !important;
+}
+
+/* 动态调整内容宽度但保持60px间距 */
+@media (min-width: 1600px) {
+  .VPDoc.has-aside .content-container {
+    max-width: calc(100vw - 272px - 264px - 120px) !important;
+    margin: 0 60px !important;
+  }
+}
+
+@media (min-width: 1900px) {
+  .VPDoc.has-aside .content-container {
+    max-width: calc(100vw - 272px - 264px - 120px) !important;
+    margin: 0 60px !important;
+  }
+}
+
+/* 5. 顶部导航栏优化 - 固定定位 */
+.VPNav {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  z-index: 1000 !important;
+  background: var(--vp-c-bg) !important;
+  border-bottom: 1px solid var(--vp-c-divider) !important;
+}
+
+.VPNav .container {
+  max-width: none !important;
+  padding: 0 !important;
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+}
+
+/* 头部 title 位置 - 在左侧导航上方 */
+.VPNavBarTitle {
+  position: absolute !important;
+  left: 40px !important;
+  z-index: 1001 !important;
+}
+
+/* 头部导航内容靠右 */
+.VPNavBarContent {
+  margin-left: auto !important;
+  padding-right: 40px !important;
+}
+
+/* 为固定头部留出空间 */
+.VPLayout {
+  padding-top: var(--vp-nav-height) !important;
+}
+
+/* 6. 取消 VitePress 默认的复杂计算 */
+@media (min-width: 1440px) {
+  .VPSidebar[data-v-6750ea26] {
+    padding-left: 40px !important;
+    width: 272px !important;
+    left: 0 !important;
+  }
+  
+  .VPDocAside[data-v-] {
+    right: 40px !important;
+    width: 224px !important;
+    padding-right: 0 !important;
+  }
+}
+
+/* 7. 表格样式 - 充分利用内容区域 */
+.vp-doc table {
+  width: 100% !important;
+  border-collapse: collapse !important;
+  margin: 20px 0 !important;
+  table-layout: auto !important;
+}
+
+.vp-doc th,
+.vp-doc td {
+  border: 1px solid var(--vp-c-divider) !important;
+  padding: 12px 16px !important;
+  text-align: left !important;
+  vertical-align: top !important;
+  word-wrap: break-word !important;
+}
+
+.vp-doc th {
+  background-color: var(--vp-c-bg-soft) !important;
+  font-weight: 600 !important;
+}
+
+.vp-doc tbody tr:nth-child(even) {
+  background-color: var(--vp-c-bg-soft) !important;
+}
+
+/* 8. 代码块优化 */
+.vp-doc div[class*="language-"] {
+  margin: 16px 0 !important;
+  border-radius: 6px !important;
+  overflow-x: auto !important;
+}
+
+.vp-doc div[class*="language-"] pre {
+  margin: 0 !important;
+  padding: 20px 24px !important;
+  overflow-x: auto !important;
+}
+
+/* 9. 中等屏幕适配 */
+@media (min-width: 1024px) and (max-width: 1439px) {
+  .VPSidebar {
+    padding-left: 24px !important;
+    width: 256px !important;
+  }
+  
+  .VPDocAside {
+    right: 24px !important;
+    width: 200px !important;
+  }
+  
+  .VPContent.has-sidebar {
+    margin-left: 256px !important;
+  }
+  
+  .VPContent.has-sidebar.has-aside {
+    margin-right: 224px !important;
+  }
+  
+  .VPDoc.has-aside .content-container {
+    max-width: calc(100vw - 256px - 224px - 120px) !important; /* 中等屏幕也保持60px间距 */
+    margin: 0 60px !important;
+    min-width: 500px !important;
+  }
+  
+  .vp-doc {
+    padding: 32px 0 96px !important; /* 移除左右内边距，统一由容器控制 */
+  }
+  
+  .VPNavBarTitle {
+    left: 24px !important;
+  }
+  
+  .VPNavBarContent {
+    padding-right: 24px !important;
+  }
+}
+
+/* 10. 小屏幕 - 恢复默认布局 */
+@media (max-width: 1023px) {
+  .VPSidebar {
+    position: relative !important;
+    padding-left: 16px !important;
+    width: auto !important;
+    left: auto !important;
+  }
+  
+  .VPDocAside {
+    position: relative !important;
+    right: auto !important;
+    width: auto !important;
+    padding-right: 16px !important;
+  }
+  
+  .VPContent.has-sidebar {
+    margin-left: 0 !important;
+  }
+  
+  .VPContent.has-sidebar.has-aside {
+    margin-right: 0 !important;
+  }
+  
+  .vp-doc {
+    max-width: none !important;
+    padding: 24px 16px 96px !important;
+  }
+  
+  .VPNav .container {
+    padding: 0 16px !important;
+  }
+  
+  /* 移动端表格滚动 */
+  .vp-doc table {
+    display: block !important;
+    overflow-x: auto !important;
+    white-space: nowrap !important;
+  }
+}
+
+/* 11. 保持你的现有样式 */
 :root {
   --vp-c-green: #5d80f4;
   --vp-c-brand-dark: #5d80f4;
-  // --vp-c-bg-alt: #fff; // 侧边栏
+  scroll-behavior: smooth;
 }
 
 .dark {
-  --vp-c-bg-alt: #242424; // 深色模式侧边栏
+  --vp-c-bg-alt: #242424;
 }
 
 .sidebar-link-item.active {
   background: rgba(82, 179, 94, 0.1);
 }
 
-.vp-doc {
-  // 代码片段下拉菜单
-  details {
-    padding: 10px !important;
-    margin: 10px 0 !important;
-
-    summary {
-      text-align: center;
-      cursor: pointer;
-      user-select: none;
-      margin: 0 !important;
-
-
-      &:hover {
-        transition: 0.5s;
-        color: #2d5af1;
-      }
-    }
-
-    &::before {
-      content: '' !important;
-    }
-  }
-
-  .f-dropdown {
-    ul {
-      list-style: none;
-    }
-  }
-
-  ul {
-    list-style: disc;
-    padding-left: 0;
-
-    li {
-      margin-top: 0;
-    }
-  }
-
-  .f-up-load__file-list {
-    margin: 0;
-  }
-
-  ul.f-list {
-    list-style: none;
-  }
-
-  // 移除表格默认样式
-  table {
-    margin: 0;
-
-    th,
-    tr,
-    td {
-      // border: none;
-      background: none;
-    }
-    tr:nth-child(2n) {
-      background: none;
-    }
-  }
-
-  // 表格
-  .vp-table__container {
-    width: 100%;
-    overflow-y: hidden;
-    overflow-x: auto;
-
-    table {
-      width: 100%;
-      display: inline-table;
-    }
-
-    th,
-    tr:nth-child(2n) {
-      background-color: transparent;
-    }
-
-    td,
-    th {
-      text-align: center;
-      font-size: 15px;
-      border-bottom: 1px solid #eee;
-    }
-  }
-
-  p.f-text {
-    line-height: 1;
-  }
+.vp-doc details {
+  padding: 10px !important;
+  margin: 10px 0 !important;
 }
 
-// 顶部 logo
+.vp-doc details summary {
+  text-align: center;
+  cursor: pointer;
+  user-select: none;
+  margin: 0 !important;
+}
+
+.vp-doc details summary:hover {
+  transition: 0.5s;
+  color: #2d5af1;
+}
+
 .VPNavBarTitle.has-sidebar {
   border: none;
 }
 
-// 左侧选项链接
-.VPSidebarGroup {
-  .VPLink.link.link {
-    margin: 0;
-    padding: 5px 18px;
-    transition: 0.4s;
-    padding-left: 14px !important;
-  }
-
-  .VPLink.link.link.active {
-    background: color.scale(#2d5af1, $lightness: 39%);
-    box-sizing: border-box;
-
-    .link-text {
-      font-weight: 600;
-    }
-  }
+.VPSidebarGroup .VPLink.link.link {
+  margin: 0;
+  padding: 5px 18px;
+  transition: 0.4s;
+  padding-left: 14px !important;
 }
 
-// 菜单栏
+.VPSidebarGroup .VPLink.link.link.active {
+  background: rgba(45, 90, 241, 0.8);
+  box-sizing: border-box;
+}
+
+.VPSidebarGroup .VPLink.link.link.active .link-text {
+  font-weight: 600;
+}
+
 .VPSidebar.open {
   z-index: 99999;
 }
 
-// 滚动条
 ::-webkit-scrollbar {
   width: 7px;
 }
 
-// 滚动滑块
 ::-webkit-scrollbar-thumb {
   background: #dddddd;
   border-radius: 6px;
 }
 
-// 粘性卡片
+::-webkit-scrollbar-thumb:hover {
+  background: #cccccc;
+}
+
 .f-sticky-card {
   margin-top: 20px;
 }
 
-ul,
-li {
-  list-style-type: none;
+body {
+  overflow-x: hidden;
 }
 
-
+.container {
+  margin: 0 !important;
+}

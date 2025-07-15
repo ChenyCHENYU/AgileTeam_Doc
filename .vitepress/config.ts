@@ -1,11 +1,11 @@
 /*
- * @Author: ChenYu
- * @Date: 2022-10-22 17:14:01
+ * @Author: ChenYu ycyplus@gmail.com
+ * @Date: 2025-07-15 09:02:07
  * @LastEditors: ChenYu ycyplus@gmail.com
- * @LastEditTime: 2025-07-15 09:19:20
+ * @LastEditTime: 2025-07-15 10:22:18
  * @FilePath: \AgileTeam_Doc\.vitepress\config.ts
- * @Description: 配置文件
- * Copyright (c) ${2022} by ChenYu/天智AgileTeam, All Rights Reserved.
+ * @Description:
+ * Copyright (c) 2025 by CHENY, All Rights Reserved 😎.
  */
 import { resolve } from 'path'
 import banner from 'vite-plugin-banner'
@@ -76,52 +76,26 @@ export default defineConfig({
     server: {
       port: 5188,
     },
-    // 🔥 关键：SSR 配置
     ssr: {
-      noExternal: ['element-plus', '@element-plus/icons-vue']
-    },
-    // 🔥 关键：CSS 构建配置
-    css: {
-      preprocessorOptions: {
-        scss: {
-          additionalData: `@use "element-plus/theme-chalk/src/common/var.scss" as *;`
-        }
-      }
+      noExternal: ['element-plus'],
     },
     plugins: [
       UnoCSS(),
-
-      // 🔥 Element Plus 按需导入配置
       AutoImport({
         resolvers: [ElementPlusResolver()],
-        dts: true,
       }),
       Components({
         resolvers: [
           ElementPlusResolver({
-            // 🔥 重要：启用样式导入，但使用 sass 避免 CSS 导入问题
-            importStyle: 'sass'
-          })
+            importStyle: false, // 🔥 关键：禁用自动样式导入
+          }),
         ],
-        dts: true,
       }),
-
       banner({
         content: `/**\n * name: ${pkg.name}\n * version: v${pkg.version}\n * description: ${pkg.description}\n * author: ${pkg.author}\n * homepage: ${pkg.homepage}\n */`,
         outDir: resolve(__dirname, '../dist'),
         debug: false,
       }),
     ],
-    // 🔥 关键：构建配置
-    build: {
-      rollupOptions: {
-        external: [],
-        output: {
-          chunkFileNames: 'assets/js/[name]-[hash].js',
-          entryFileNames: 'assets/js/[name]-[hash].js',
-          assetFileNames: 'assets/[ext]/[name]-[hash].[ext]',
-        }
-      }
-    }
   },
 })
