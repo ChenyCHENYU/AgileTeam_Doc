@@ -13,7 +13,7 @@ export const ROBOT_DOC = [
     ],
   },
   {
-    text: '手摸手组件系列',
+    text: '示范组件',
     items: [
       {
         text: '[C_Icon] 图标',
@@ -50,6 +50,44 @@ export const ROBOT_DOC = [
       {
         text: '[C_Table] 表格',
         link: `${ROBOT}/components/table`,
+      },
+    ],
+  },
+  {
+    text: '插件组件',
+    items: [
+      {
+        text: '[C_FullCalendar] 日历',
+        link: `${ROBOT}/components/calendar`,
+      },
+      {
+        text: '[C_Cascade] 拖拽',
+        link: `${ROBOT}/components/dragable`,
+      },
+    ],
+  },
+  {
+    text: '编辑器组件',
+    items: [
+      {
+        text: '[C_Code] 代码编辑器',
+        link: `${ROBOT}/components/code`,
+      },
+      {
+        text: '[C_Markdown] MD编辑器',
+        link: `${ROBOT}/components/markdown`,
+      },
+      {
+        text: '[C_Editor] 富文本编辑器',
+        link: `${ROBOT}/components/editor`,
+      },
+      {
+        text: '[C_Workflow] 工作流编辑器',
+        link: `${ROBOT}/components/work-flow`,
+      },
+      {
+        text: '[C_AntV] 图形编辑器',
+        link: `${ROBOT}/components/antv`,
       },
     ],
   },
@@ -168,10 +206,6 @@ export const WEB_DOC = [
     ],
   },
 ]
-
-
-
-
 
 // 产品文档相关的sidebar
 
