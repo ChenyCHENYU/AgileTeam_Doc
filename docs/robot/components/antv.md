@@ -4241,8 +4241,6 @@ perf(render): optimize large dataset rendering
 
 Copyright (c) 2025 by ChenYu, All Rights Reserved.
 
-本项目采用 MIT 许可证，详情请参阅 [LICENSE](LICENSE) 文件。
-
 ---
 
 **💡 提示**: 这个通用图表组件基于强大的 AntV 生态系统构建，提供了统一的接口来使用不同类型的专业图表。无论是数据库设计的 ER 图、业务流程的 BPMN 图，还是软件架构的 UML 图，都能通过一个组件轻松实现。支持智能数据适配、主题定制、性能优化等企业级功能，结合完整的 TypeScript 支持和响应式设计，让专业图表的使用变得简单高效。如果遇到问题请先查看文档和故障排除部分，或者在团队群里讨论。让我们一起打造更专业的可视化图表体验！ 📊

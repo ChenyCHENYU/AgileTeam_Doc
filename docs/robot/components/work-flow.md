@@ -4695,7 +4695,6 @@ test(workflow): add workflow validation tests
 
 Copyright (c) 2025 by ChenYu, All Rights Reserved.
 
-本项目采用 MIT 许可证，详情请参阅 [LICENSE](LICENSE) 文件。
 
 ---
 
