@@ -16,6 +16,7 @@ declare module 'vue' {
     ElTableColumn: typeof import('element-plus/es')['ElTableColumn']
     ElTag: typeof import('element-plus/es')['ElTag']
     FontColor: typeof import('./.vitepress/theme/components/FontColor.vue')['default']
+    GiscusComment: typeof import('./.vitepress/theme/components/GiscusComment.vue')['default']
     GitalkComment: typeof import('./.vitepress/theme/components/GitalkComment.vue')['default']
     GoogleAdsense: typeof import('./.vitepress/theme/components/GoogleAdsense.vue')['default']
     ImgWrap: typeof import('./.vitepress/theme/components/ImgWrap.vue')['default']

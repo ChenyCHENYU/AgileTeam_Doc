@@ -43,6 +43,7 @@
     "vue-baidu-analytics": "^2.2.0"
   },
   "dependencies": {
+    "@giscus/vue": "^3.1.1",
     "@unocss/vite": "^66.3.3",
     "@vercel/analytics": "^1.5.0",
     "element-plus": "^2.4.3",

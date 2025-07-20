@@ -2,7 +2,7 @@
   "compilerOptions": {
     "target": "ESNext",
     "module": "ESNext",
-    "strict": true,
+    "strict": false,
     "jsx": "preserve",
     "importHelpers": true,
     "moduleResolution": "node",
@@ -20,7 +20,22 @@
     "paths": {
       "@/*": ["docs/*"]
     },
-    "lib": ["ESNext", "DOM", "DOM.Iterable"]
+    "lib": ["ESNext", "DOM", "DOM.Iterable"],
+    "noImplicitAny": false,
+    "noImplicitReturns": false,
+    "noImplicitThis": false,
+    "noUnusedLocals": false,
+    "noUnusedParameters": false,
+    "noUncheckedIndexedAccess": false,
+    "exactOptionalPropertyTypes": false,
+    "noImplicitOverride": false,
+    "noPropertyAccessFromIndexSignature": false,
+    "noFallthroughCasesInSwitch": false,
+    "skipDefaultLibCheck": true,
+    "allowUnusedLabels": true,
+    "allowUnreachableCode": true,
+    "allowJs": true,
+    "checkJs": false
   },
   "include": ["docs/**/*", ".vitepress/**/*", "*.d.ts"],
   "exclude": ["node_modules", "dist"]

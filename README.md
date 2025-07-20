@@ -95,9 +95,6 @@ npm run deploy
 - `refactor:` 重构代码
 - `test:` 测试相关
 
-## 📝 License
-
-MIT License - 详见 [LICENSE](LICENSE) 文件
 
 ## 🔗 相关链接
 
