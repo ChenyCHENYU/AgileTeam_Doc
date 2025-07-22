@@ -430,3 +430,13 @@ body::-webkit-scrollbar,
   margin-right: 40px !important;
 }
 
+
+/* 搜索框激活时隐藏导航栏 */
+.DocSearch--active header[class*="VPNav"],
+.search-active header[class*="VPNav"],
+body:has(.DocSearch-Modal) header[class*="VPNav"],
+body[data-algolia-search-active] header[class*="VPNav"] {
+  opacity: 0 !important;
+  pointer-events: none !important;
+  transition: opacity 0.2s ease !important;
+}
