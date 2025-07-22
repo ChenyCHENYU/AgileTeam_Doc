@@ -1,3 +1,12 @@
+/*
+ * @Author: ChenYu ycyplus@gmail.com
+ * @Date: 2025-07-15 14:58:11
+ * @LastEditors: ChenYu ycyplus@gmail.com
+ * @LastEditTime: 2025-07-22 13:50:59
+ * @FilePath: \AgileTeam_Doc\.vitepress\config.ts
+ * @Description:
+ * Copyright (c) 2025 by CHENY, All Rights Reserved 😎.
+ */
 import { resolve } from 'path'
 import banner from 'vite-plugin-banner'
 import { defineConfig } from 'vitepress'
@@ -48,20 +57,23 @@ export default defineConfig({
       apiKey: '35845c2d394000ae9f0bd56f5c274ca6',
       indexName: 'tzagileteam',
       placeholder: '请输入关键词',
+      searchParameters: {
+        facetFilters: ['language:zh-CN'],
+      },
     },
   },
   vite: {
     server: {
       port: 5188,
       fs: {
-        allow: ['..']
-      }
+        allow: ['..'],
+      },
     },
     ssr: {
-      noExternal: ['element-plus']
+      noExternal: ['element-plus'],
     },
     optimizeDeps: {
-      exclude: ['vitepress']
+      exclude: ['vitepress'],
     },
     plugins: [
       UnoCSS(),
