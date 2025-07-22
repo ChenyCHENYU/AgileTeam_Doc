@@ -431,12 +431,98 @@ body::-webkit-scrollbar,
 }
 
 
-/* 搜索框激活时隐藏导航栏 */
-.DocSearch--active header[class*="VPNav"],
-.search-active header[class*="VPNav"],
-body:has(.DocSearch-Modal) header[class*="VPNav"],
-body[data-algolia-search-active] header[class*="VPNav"] {
-  opacity: 0 !important;
+/* VitePress 本地搜索激活时导航栏蒙版效果 */
+
+/* 本地搜索模态框激活时的导航栏蒙版处理 */
+body:has(.VPLocalSearchBox) .VPNav,
+body:has([class*="VPLocalSearch"]) .VPNav,
+body[class*="search-active"] .VPNav,
+html[class*="search-active"] .VPNav {
   pointer-events: none !important;
-  transition: opacity 0.2s ease !important;
+  transition: all 0.25s ease !important;
+  position: relative !important;
+  z-index: 999 !important;
+}
+
+/* 导航栏内容保持可见 */
+body:has(.VPLocalSearchBox) .VPNav .container,
+body:has([class*="VPLocalSearch"]) .VPNav .container,
+body[class*="search-active"] .VPNav .container,
+html[class*="search-active"] .VPNav .container {
+  position: relative !important;
+  z-index: 2 !important;
+  opacity: 1 !important;
+}
+
+/* 添加蒙版覆盖层，不影响导航栏内容可见性 */
+body:has(.VPLocalSearchBox) .VPNav::after,
+body:has([class*="VPLocalSearch"]) .VPNav::after,
+body[class*="search-active"] .VPNav::after,
+html[class*="search-active"] .VPNav::after {
+  content: '' !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  background: rgba(255, 255, 255, 0.1) !important;
+  backdrop-filter: blur(1px) !important;
+  -webkit-backdrop-filter: blur(1px) !important;
+  z-index: 1 !important;
+  transition: all 0.25s ease !important;
+  pointer-events: none !important;
+}
+
+/* 暗色模式下的蒙版调整 */
+.dark body:has(.VPLocalSearchBox) .VPNav::after,
+.dark body:has([class*="VPLocalSearch"]) .VPNav::after,
+.dark body[class*="search-active"] .VPNav::after {
+  background: rgba(0, 0, 0, 0.2) !important;
+}
+
+/* 确保搜索框层级最高 */
+.VPLocalSearchBox,
+[class*="VPLocalSearch"] {
+  z-index: 10000 !important;
+}
+
+/* 搜索框关闭时恢复导航栏 */
+body:not(:has(.VPLocalSearchBox)) .VPNav,
+body:not([class*="search-active"]) .VPNav {
+  pointer-events: auto !important;
+  transition: all 0.25s ease !important;
+}
+
+body:not(:has(.VPLocalSearchBox)) .VPNav::after,
+body:not([class*="search-active"]) .VPNav::after {
+  opacity: 0 !important;
+  visibility: hidden !important;
+}
+
+/* JavaScript辅助方案的蒙版样式 */
+.js-search-active .VPNav {
+  pointer-events: none !important;
+  transition: all 0.25s ease !important;
+  position: relative !important;
+}
+
+.js-search-active .VPNav .container {
+  position: relative !important;
+  z-index: 2 !important;
+  opacity: 1 !important;
+}
+
+.js-search-active .VPNav::after {
+  content: '' !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  background: rgba(255, 255, 255, 0.1) !important;
+  backdrop-filter: blur(1px) !important;
+  -webkit-backdrop-filter: blur(1px) !important;
+  z-index: 1 !important;
+  transition: all 0.25s ease !important;
+  pointer-events: none !important;
 }

@@ -2,7 +2,7 @@
  * @Author: ChenYu ycyplus@gmail.com
  * @Date: 2025-07-15 14:58:11
  * @LastEditors: ChenYu ycyplus@gmail.com
- * @LastEditTime: 2025-07-22 13:50:59
+ * @LastEditTime: 2025-07-22 16:45:37
  * @FilePath: \AgileTeam_Doc\.vitepress\config.ts
  * @Description:
  * Copyright (c) 2025 by CHENY, All Rights Reserved 😎.
@@ -52,15 +52,18 @@ export default defineConfig({
       message: 'Released under the MIT License',
       copyright: 'Copyright © 2022 CHENY - 西安天智',
     },
-    algolia: {
-      appId: '7DC0L4NJ6E',
-      apiKey: '35845c2d394000ae9f0bd56f5c274ca6',
-      indexName: 'tzagileteam',
-      placeholder: '请输入关键词',
-      searchParameters: {
-        facetFilters: ['language:zh-CN'],
-      },
+    search: {
+      provider: 'local',
     },
+    // algolia: {
+    //   appId: '7DC0L4NJ6E',
+    //   apiKey: '35845c2d394000ae9f0bd56f5c274ca6',
+    //   indexName: 'tzagileteam',
+    //   placeholder: '请输入关键词',
+    //   searchParameters: {
+    //     facetFilters: ['language:zh-CN'],
+    //   },
+    // },
   },
   vite: {
     server: {
