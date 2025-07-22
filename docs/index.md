@@ -15,7 +15,7 @@ hero:
       link: /web/get-familiar-quickly/engineering
     - theme: alt
       text: 查看组件
-      link: /component/preface
+      link: /robot/components/preface.html
 
 features:
   - icon: ⚡️
