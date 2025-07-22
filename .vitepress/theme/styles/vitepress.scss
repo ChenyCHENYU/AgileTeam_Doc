@@ -25,12 +25,12 @@
   position: fixed !important;
   right: 40px !important;
   width: 224px !important;
-  top: var(--vp-nav-height, 56px); /* 适配主题导航高度 */
+  top: var(--vp-nav-height, 56px);
   bottom: 0;
   max-height: calc(100vh - var(--vp-nav-height, 56px));
   overflow-y: auto;
   padding-right: 0 !important;
-  scrollbar-width: none; /* Firefox隐藏滚动条但可滚动 */
+  scrollbar-width: none;
 }
 .VPDocAside::-webkit-scrollbar {
   width: 0 !important;
@@ -433,7 +433,6 @@ body::-webkit-scrollbar,
 
 /* VitePress 本地搜索激活时导航栏蒙版效果 */
 
-/* 本地搜索模态框激活时的导航栏蒙版处理 */
 body:has(.VPLocalSearchBox) .VPNav,
 body:has([class*="VPLocalSearch"]) .VPNav,
 body[class*="search-active"] .VPNav,
