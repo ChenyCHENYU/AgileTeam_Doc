@@ -835,12 +835,3 @@ const clickConfirmOrCancel = (tableData: any, row: any, index?: number) => {
 ```
 
 更多深入的细节，参考组件板块或后台项目代码。
-
-<!-- 评论 -->
-<ClientOnly>
-  <GitalkComment
-    :issueId="16"
-  />
-</ClientOnly>
-
-<!-- 评论 -->

@@ -1373,10 +1373,3 @@ export default defineComponent({
 
 :::
 
-<!-- 评论 -->
-<ClientOnly>
-  <GitalkComment
-    :issueId="8"
-  />
-</ClientOnly>
-<!-- 评论 -->

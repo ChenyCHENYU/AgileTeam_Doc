@@ -717,10 +717,3 @@ watch([shop, price], () => {
 
 <ElDivider></ElDivider>
 
-<!-- 评论 -->
-<ClientOnly>
-  <GitalkComment
-    :issueId="15"
-  />
-</ClientOnly>
-<!-- 评论 -->

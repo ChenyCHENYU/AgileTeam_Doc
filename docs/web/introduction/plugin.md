@@ -1906,11 +1906,3 @@ npm publish --access public --tag alpha
 :::tip
 请注意，如果是 Alpha 或者 Beta 版本，通常会在版本号上增加 `-alpha.0` 、 `-alpha.1` 这样的 [版本标识符](../get-familiar-quickly/guide.md#版本标识符)，以便在发布正式版本的时候可以使用无标识符的相同版本号，以保证版本号在遵循 [升级规则](../get-familiar-quickly/guide.md#基本格式与升级规则) 下的连续性。
 :::
-
-<!-- 评论 -->
-<ClientOnly>
-  <GitalkComment
-    :issueId="7"
-  />
-</ClientOnly>
-<!-- 评论 -->

@@ -485,10 +485,3 @@ views 目录下：
 
 其他规则在使用中，结合实践集思广益，陆续定义完善......
 
-<!-- 评论 -->
-<ClientOnly>
-  <GitalkComment
-    :issueId="12"
-  />
-</ClientOnly>
-<!-- 评论 -->

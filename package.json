@@ -34,7 +34,6 @@
   "devDependencies": {
     "@types/node": "^20.10.0",
     "gh-pages": "^6.3.0",
-    "gitalk": "^1.8.0",
     "md5": "^2.3.0",
     "sass": "^1.69.5",
     "vite-plugin-banner": "^0.7.1",

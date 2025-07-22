@@ -1,13 +1,12 @@
 import type { Theme } from 'vitepress'
-import { inBrowser } from 'vitepress'
+import { inBrowser, useData } from 'vitepress'
 import DefaultTheme from 'vitepress/theme'
+import { h } from 'vue'
 
 // 组件引入
-import FontColor from './components/FontColor.vue'
-import ElImg from './components/ElImg.vue'
-import GitalkComment from './components/GitalkComment.vue'
-import GoogleAdsense from './components/GoogleAdsense.vue'
-import ImgWrap from './components/ImgWrap.vue'
+
+import GiscusComment from './components/GiscusComment.vue'
+
 
 // 插件引入
 import { isInvalidRoute, redirect } from './plugins/redirect'
@@ -20,14 +19,23 @@ import './styles/vitepress.scss'
 import './styles/custom.css'
 
 const theme: Theme = {
-  extends: DefaultTheme, // 🔥 改回 extends
+  extends: DefaultTheme,
+  Layout: () => {
+    return h(DefaultTheme.Layout, null, {
+      'doc-footer-before': () => {
+        const { page, frontmatter } = useData()
+
+        if (frontmatter.value.comments === false) {
+          return null
+        }
+
+        return h(GiscusComment, {
+          key: page.value.relativePath,
+        })
+      },
+    })
+  },
   enhanceApp({ app, router }) {
-    // 注册 Vue 组件
-    app.component('GitalkComment', GitalkComment)
-    app.component('GoogleAdsense', GoogleAdsense)
-    app.component('ImgWrap', ImgWrap)
-    app.component('FontColor', FontColor)
-    app.component('ElImg', ElImg)
 
     // 浏览器端初始化
     if (inBrowser) {

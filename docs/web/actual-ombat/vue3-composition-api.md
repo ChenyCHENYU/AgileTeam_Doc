@@ -662,10 +662,3 @@ console.log('全局数据', global)
 </script>
 ```
 
-<!-- 评论 -->
-<ClientOnly>
-  <GitalkComment
-    :issueId="14"
-  />
-</ClientOnly>
-<!-- 评论 -->

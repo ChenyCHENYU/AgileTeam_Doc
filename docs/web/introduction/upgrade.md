@@ -519,10 +519,3 @@ Vue Devtools 是一个浏览器扩展，支持 Chrome 、 Firefox 等浏览器�
 </ClientOnly>
 
 更多的用法可以在 [Vue Devtools 官网](https://devtools.vuejs.org/) 了解。
-
-<ClientOnly>
-  <GitalkComment
-    :issueId="4"
-  />
-</ClientOnly>
-<!-- 评论 -->

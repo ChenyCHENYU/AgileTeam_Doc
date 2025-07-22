@@ -381,10 +381,3 @@ async function main() {
 }
 ```
 
-<!-- 评论 -->
-<ClientOnly>
-  <GitalkComment
-    :issueId="13"
-  />
-</ClientOnly>
-<!-- 评论 -->

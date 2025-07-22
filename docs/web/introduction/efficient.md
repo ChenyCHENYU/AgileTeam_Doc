@@ -564,11 +564,3 @@ export default defineComponent({
 })
 </script>
 ```
-
-<!-- 评论 -->
-<ClientOnly>
-  <GitalkComment
-    :issueId="10"
-  />
-</ClientOnly>
-<!-- 评论 -->

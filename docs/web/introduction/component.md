@@ -3471,11 +3471,3 @@ $color-red = #ff0000
 ```
 
 预处理器也支持 `scoped`，用法请查阅 [样式表的组件作用域](#样式表的组件作用域) 部分。
-
-<!-- 评论 -->
-<ClientOnly>
-  <GitalkComment
-    :issueId="5"
-  />
-</ClientOnly>
-<!-- 评论 -->

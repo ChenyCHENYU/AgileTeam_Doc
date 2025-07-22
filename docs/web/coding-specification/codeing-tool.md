@@ -155,10 +155,3 @@ export default defineComponent({
 
 更多插件根据个性化需要，自行了解下载，等我后面有时间了更新下安装的插件集使用。
 
-<!-- 评论 -->
-<ClientOnly>
-  <GitalkComment
-    :issueId="11"
-  />
-</ClientOnly>
-<!-- 评论 -->

@@ -103,6 +103,7 @@ watch(currentTheme, (newTheme) => {
 
 <style scoped>
 .giscus-wrapper {
+  margin-bottom: 50px;
   background: linear-gradient(
     120deg,
     rgba(238, 174, 202, 0.2) 0%,
