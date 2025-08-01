@@ -1,7 +1,8 @@
 import type { DefaultTheme } from 'vitepress'
 
 import {
-  ROBOT_DOC,
+  ROBOT_GUIDE_DOC,
+  ROBOT_COMPONENTS_DOC,
   WEB_DOC,
   PO_DOC,
   REAR_END_DOC,
@@ -11,7 +12,8 @@ import {
 } from './sidebarArr'
 
 export const sidebar: DefaultTheme.Sidebar = {
-  '/robot/': ROBOT_DOC,
+  '/robot/guide/': ROBOT_GUIDE_DOC,
+  '/robot/components/': ROBOT_COMPONENTS_DOC,
   '/po/': PO_DOC,
   '/ui/': UI_DOC,
   '/web/': WEB_DOC,
@@ -19,3 +21,4 @@ export const sidebar: DefaultTheme.Sidebar = {
   '/qc/': QC_DOC,
   '/manage/': MANAGE_DOC,
 }
+

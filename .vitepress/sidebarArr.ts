@@ -2,7 +2,81 @@
 
 const ROBOT = '/robot'
 
-export const ROBOT_DOC = [
+
+export const ROBOT_GUIDE_DOC = [
+  {
+    text: '开始入门',
+    items: [
+      {
+        text: '概述',
+        link: `${ROBOT}/guide/overview`,
+      },
+    ],
+  },
+  {
+    text: '深度搜索',
+    collapsed: false,
+    items: [
+      {
+        text: '架构',
+        collapsed: false,
+        items: [
+          {
+            text: '应用架构',
+            link: `${ROBOT}/components/icon/overview`,
+          },
+          {
+            text: '组件系统',
+            link: `${ROBOT}/components/icon/basic`,
+          },
+          {
+            text: '插件架构',
+            link: `${ROBOT}/components/icon/library`,
+          },
+        ],
+      },
+      {
+        text: '核心功能',
+        collapsed: true,
+        items: [
+          {
+            text: '认证与授权',
+            link: `${ROBOT}/components/button/basic`,
+          },
+          {
+            text: '路由与导航',
+            link: `${ROBOT}/components/button/types`,
+          },
+          {
+            text: '状态管理',
+            link: `${ROBOT}/components/button/sizes`,
+          },
+        ],
+      },
+    ],
+  },
+  {
+    text: '表单组件',
+    collapsed: false,
+    items: [
+      {
+        text: '级联选择器',
+        items: [
+          {
+            text: '基础用法',
+            link: `${ROBOT}/components/cascade/basic`,
+          },
+          {
+            text: '数据源配置',
+            link: `${ROBOT}/components/cascade/datasource`,
+          },
+        ],
+      },
+    ],
+  },
+]
+
+export const ROBOT_COMPONENTS_DOC = [
   {
     text: '写在前面的话',
     items: [
