@@ -10,7 +10,8 @@ import {
    VPTeamPageSection
 } from 'vitepress/theme'
 
-import { gitee, blog, robot } from "@icons/svg"
+import { gitee, blog, robot } from "../../.vitepress/theme/icons/svg"
+
 
 import { baseURL } from './baseURL.ts'
 
