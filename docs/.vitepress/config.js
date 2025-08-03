@@ -4,7 +4,6 @@ import { head, nav, sidebar, socialLinks, search } from "./_config/index";
 
 export default defineConfig({
   srcDir: "document",
-  outDir: "../../dist",
   lang: "zh-CN",
   base: "/",
   title: "AGILE TEAM",

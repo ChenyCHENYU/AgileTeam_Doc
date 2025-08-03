@@ -1,0 +1,28 @@
+# VitePress 构建输出
+dist/
+
+# VitePress 缓存和临时文件
+docs/.vitepress/cache/
+docs/.vitepress/dist/
+document/.vitepress/
+
+# 如果构建过程中还生成项目根目录的 .vitepress，也排除
+.vitepress/
+
+# 依赖
+node_modules/
+
+# 日志
+*.log
+
+# 环境变量
+.env*
+
+# 编辑器
+.vscode/
+.idea/
+.DS_Store
+
+# 临时文件
+tmp/
+temp/
