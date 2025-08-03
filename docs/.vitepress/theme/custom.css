@@ -1,0 +1,189 @@
+/* VitePress 宽屏优化 - 超精简版 */
+/* 只修改宽度，不干扰任何VitePress内部逻辑 */
+
+:root {
+  /* 设置整体最大宽度 */
+  --vp-layout-max-width: 1920px;
+}
+
+/* ===== 核心宽屏设置 ===== */
+
+/* 无侧边栏页面（如首页） */
+.VPDoc:not(.has-sidebar) .container {
+  max-width: 1584px !important;
+}
+
+.VPDoc:not(.has-sidebar) .content {
+  max-width: 1264px !important;
+}
+
+/* 有右侧目录的文档页面 - 关键！大幅扩展中间内容区域 */
+.VPDoc.has-aside .content-container {
+  max-width: 1600px !important;  /* 从1168px大幅扩展到1600px */
+}
+
+/* 有侧边栏无右侧目录的页面 */
+.VPDoc.has-sidebar:not(.has-aside) .content {
+  max-width: 1600px !important;  /* 大幅扩展 */
+}
+
+/* 直接扩展文档内容区域 - 强制覆盖VitePress默认限制 */
+.VPDoc .content {
+  max-width: 1600px !important;
+}
+
+/* 确保内容容器能够利用更多空间 */
+.vp-doc {
+  max-width: none !important;  /* 强制移除内容的宽度限制 */
+  width: 100% !important;      /* 强制充分利用容器宽度 */
+}
+
+/* ===== 导航和页脚宽度适配 ===== */
+
+/* 导航栏宽度适配 */
+.VPNavBar .container {
+  max-width: var(--vp-layout-max-width);
+  margin: 0 auto;
+}
+
+/* 页脚宽度适配 */
+.VPFooter .container {
+  max-width: var(--vp-layout-max-width);
+  margin: 0 auto;
+}
+
+/* ===== 超宽屏优化 ===== */
+@media (min-width: 1920px) {
+  :root {
+    --vp-layout-max-width: 2400px;
+  }
+  
+  .VPDoc:not(.has-sidebar) .container {
+    max-width: 2000px !important;
+  }
+  
+  .VPDoc:not(.has-sidebar) .content {
+    max-width: 1600px !important;
+  }
+  
+  .VPDoc.has-aside .content-container {
+    max-width: 2000px !important;  /* 超宽屏下进一步扩展 */
+  }
+  
+  .VPDoc.has-sidebar:not(.has-aside) .content {
+    max-width: 2000px !important;
+  }
+  
+  .VPDoc .content {
+    max-width: 2000px !important;
+  }
+}
+
+/* ===== 内容区域样式优化 ===== */
+
+/* 文档内容基础样式 */
+.vp-doc {
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+/* 代码块优化 - 充分利用宽度 */
+.vp-doc div[class*="language-"] {
+  margin: 16px 0;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.vp-doc pre {
+  margin: 0;
+  padding: 24px;
+}
+
+/* 表格优化 - 关键！让表格能够利用全部宽度 */
+.vp-doc table {
+  display: table;
+  width: 100%;
+  margin: 24px 0;
+  border-collapse: collapse;
+  overflow-x: auto;
+  min-width: 100%;
+}
+
+.vp-doc th, .vp-doc td {
+  padding: 8px 16px;
+  border: 1px solid var(--vp-c-divider);
+  text-align: left;
+}
+
+/* 确保表格容器能够撑满宽度 */
+.vp-doc .table-container,
+.vp-doc > div:has(table) {
+  width: 100%;
+  overflow-x: auto;
+}
+
+/* 图片优化 */
+.vp-doc img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin: 16px 0;
+}
+
+/* 段落和列表间距 */
+.vp-doc p {
+  margin: 16px 0;
+}
+
+.vp-doc ul, .vp-doc ol {
+  margin: 16px 0;
+  padding-left: 32px;
+}
+
+.vp-doc li {
+  margin: 8px 0;
+}
+
+/* 标题间距 */
+.vp-doc h1 {
+  margin-top: 0;
+  margin-bottom: 32px;
+}
+
+.vp-doc h2 {
+  margin-top: 48px;
+  margin-bottom: 24px;
+}
+
+.vp-doc h3 {
+  margin-top: 32px;
+  margin-bottom: 16px;
+}
+
+/* 响应式字体大小 */
+@media (max-width: 767px) {
+  .vp-doc {
+    font-size: 14px;
+  }
+}
+
+/* ===== 防止滚动条跳动 + 平滑滚动 ===== */
+html {
+  overflow-y: scroll;
+  scroll-behavior: smooth;  /* 关键！恢复平滑滚动效果 */
+}
+
+/* 确保所有滚动都是平滑的 */
+* {
+  scroll-behavior: smooth;
+}
+
+/* 为锚点跳转设置合适的偏移量，避免被固定导航栏遮挡 */
+.vp-doc h1, 
+.vp-doc h2, 
+.vp-doc h3, 
+.vp-doc h4, 
+.vp-doc h5, 
+.vp-doc h6 {
+  scroll-margin-top: 80px;  /* 为固定导航栏预留空间 */
+}
