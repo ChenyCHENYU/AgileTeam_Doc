@@ -225,23 +225,18 @@ AgileTeam_Doc/
 <sub>项目发起人 & 架构师</sub>
 </td>
 <td align="center" width="150px">
-<img src="https://via.placeholder.com/100x100.png?text=ZD" width="100px;" alt="张东"/>
+<img src="https://cheny-chenyu.oss-cn-chengdu.aliyuncs.com/my-agile-team-document/team/张东.png" width="100px;" alt="张东"/>
 <br /><b>张东</b><br />
 <sub>前端技术专家</sub>
 </td>
 <td align="center" width="150px">
-<img src="https://via.placeholder.com/100x100.png?text=ZCG" width="100px;" alt="赵成刚"/>
-<br /><b>赵成刚</b><br />
+<img src="https://cheny-chenyu.oss-cn-chengdu.aliyuncs.com/my-agile-team-document/team/潘超越.png" width="100px;" alt="潘超越"/>
+<br /><b>潘超越</b><br />
 <sub>后端架构师</sub>
 </td>
 <td align="center" width="150px">
-<img src="https://via.placeholder.com/100x100.png?text=A" width="100px;" alt="Asher"/>
-<br /><b>Asher</b><br />
-<sub>产品设计师</sub>
-</td>
-<td align="center" width="150px">
-<img src="https://via.placeholder.com/100x100.png?text=K" width="100px;" alt="Kevin"/>
-<br /><b>Kevin</b><br />
+<img src="https://cheny-chenyu.oss-cn-chengdu.aliyuncs.com/my-agile-team-document/team/薛旭杰.png" width="100px;" alt="薛旭杰"/>
+<br /><b>薛旭杰</b><br />
 <sub>DevOps工程师</sub>
 </td>
 </tr>
