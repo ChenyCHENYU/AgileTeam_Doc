@@ -430,6 +430,9 @@ src/
 
 ---
 
+<!-- GitHub徽章组件 -->
+<GitHubBadges />
+
 <style>
 .hero-banner {
   background: linear-gradient(135deg, #4fc08d 0%, #42b883 100%);
