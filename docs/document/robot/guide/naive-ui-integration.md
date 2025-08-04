@@ -13,6 +13,11 @@ NaiveUI 是 Robot Admin 中使用的主要 UI 组件框架，用于提供高质�
 
 ## 🎯 集成架构概述
 
+
+
+<ImgPreview src="robot/guide/15.png" title="集成流转图" width="70%"/>
+
+
 Naive UI 是一个支持 TypeScript 的 Vue 3 组件库，提供了一整套可定制主题的 UI 组件。Robot Admin 通过插件架构集成 NaiveUI，并实现了一个复杂的主题系统，支持亮色和暗色模式。
 
 ### 核心集成特性

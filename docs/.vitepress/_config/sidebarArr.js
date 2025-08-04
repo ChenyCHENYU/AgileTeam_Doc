@@ -76,11 +76,11 @@ export const ROBOT_GUIDE_DOC = [
           },
           {
             text: "主题定制",
-            link: `${ROBOT}/guide/route-nav`,
+            link: `${ROBOT}/guide/theme-customization`,
           },
           {
             text: "UnoCSS使用",
-            link: `${ROBOT}/guide/state-manager`,
+            link: `${ROBOT}/guide/unocss-use`,
           },
         ],
       },
