@@ -6,9 +6,9 @@
   "author": "CHENY <ycyplus@gmail.com>",
   "type": "module",
   "scripts": {
-    "dev": "vitepress dev",
+    "dev": "vitepress dev docs",
     "build": "vitepress build docs --outDir dist",
-    "preview": "vitepress preview"
+    "preview": "vitepress preview docs"
   },
   "repository": {
     "type": "git",
