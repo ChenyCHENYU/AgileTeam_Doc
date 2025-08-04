@@ -40,7 +40,7 @@ export const ROBOT_GUIDE_DOC = [
           },
           {
             text: "插件架构",
-            link: `${ROBOT}/components/icon/library`,
+            link: `${ROBOT}/guide/plugin-architecture`,
           },
         ],
       },
