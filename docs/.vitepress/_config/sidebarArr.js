@@ -12,6 +12,14 @@ export const ROBOT_GUIDE_DOC = [
         text: "快速上手",
         link: `${ROBOT}/guide/get-started`,
       },
+      {
+        text: "项目结构",
+        link: `${ROBOT}/guide/project-structure`,
+      },
+      {
+        text: "开发环境搭建",
+        link: `${ROBOT}/guide/dev-env`,
+      },
     ],
   },
   {

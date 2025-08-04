@@ -6,7 +6,7 @@ outline: 'deep'
 
 > 圆角是用一段与图形两边相切的圆弧替换原来的直角，圆角的大小用圆弧的半径 `R` 表示。在界面中运用圆角主要有以下两个好处：
 
-<ElImg src="ui/14.png"/>
+<DocImage src="ui/14.png"/>
 
 :::tip :eyes: 优势
 
@@ -16,4 +16,4 @@ outline: 'deep'
 
 :::
 
-<ElImg src="ui/15.png"/>
+<DocImage src="ui/15.png"/>

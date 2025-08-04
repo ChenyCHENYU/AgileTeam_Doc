@@ -440,11 +440,11 @@ d）试题分析报告。按试题号排序，列出各题学生答对的百分�
 
 </ElCard>
 
-<ElImg src="qc/5.png"/>
+<DocImage src="qc/5.png"/>
 
 输出条件及相应的测试用例表。
 
-<ElImg src="qc/6.png"/>
+<DocImage src="qc/6.png"/>
 
 #### 实例 2
 
@@ -492,11 +492,11 @@ d）试题分析报告。按试题号排序，列出各题学生答对的百分�
 
 ④ 与：若 c1 和 c2 都是 1，则 ei 为 1；否则 ei 为 0。“与”也可有任意个输入。
 
-<ElImg src="qc/7.png"/>
+<DocImage src="qc/7.png"/>
 
-<ElImg src="qc/8.png"/>
+<DocImage src="qc/8.png"/>
 
-<ElImg src="qc/9.png"/>
+<DocImage src="qc/9.png"/>
 
 **2、约束**
 
@@ -518,7 +518,7 @@ B. 输出条件约束类型
 
 输出条件的约束只有 M 约束（强制）：若结果 a 是 1，则结果 b 强制为 0。
 
-<ElImg src="qc/10.png"/>
+<DocImage src="qc/10.png"/>
 
 :::
 
@@ -566,7 +566,7 @@ B. 输出条件约束类型
 
 23——给出信息 M。
 
-<ElImg src="qc/11.png" title="因果图"/>
+<DocImage src="qc/11.png" title="因果图"/>
 
 </ElCard>
 
@@ -584,7 +584,7 @@ B. 输出条件约束类型
 
 因果图
 
-<ElImg src="qc/12.png" title="因果图"/>
+<DocImage src="qc/12.png" title="因果图"/>
 
 </ElCard>
 
@@ -666,7 +666,7 @@ B. 输出条件约束类型
 
 ④ 填入动作桩和动作顶。这样便得到形如图的初始判定表。
 
-<ElImg src="qc/13.png"/>
+<DocImage src="qc/13.png"/>
 
 </ElCard>
 
@@ -682,7 +682,7 @@ B. 输出条件约束类型
 
 2.请用判定表的方法对测试用例进行设计
 
-<ElImg src="qc/14.png"/>
+<DocImage src="qc/14.png"/>
 
 </ElCard>
 
@@ -692,7 +692,7 @@ B. 输出条件约束类型
 
 > 如果想对文件进行修改，输入的第一列字符必须是 A/B,第二例字符必须是一个数字，如果第一列字符不正确，则给出信息 L，如果第二列字符不正确，则给出信息 M。
 
-<ElImg src="qc/15.png"/>
+<DocImage src="qc/15.png"/>
 
 #### 实例 4
 
@@ -714,7 +714,7 @@ B. 输出条件约束类型
 
 若选择充值按钮后不输入纸币，提示错误。
 
-<ElImg src="qc/16.png"/>
+<DocImage src="qc/16.png"/>
 
 </ElCard>
 
@@ -812,7 +812,7 @@ m 表示每个因素包含的取值个数（各因素的水平数，即各因素
 
 :::details 例如：
 
-<ElImg src="qc/17.png"/>
+<DocImage src="qc/17.png"/>
 
 - 有 4 个控件；
 - 每个控件有 3 个取值；
@@ -823,7 +823,7 @@ m 表示每个因素包含的取值个数（各因素的水平数，即各因素
 
 **正交排列表格式如下：**
 
-<ElImg src="qc/18.png"/>
+<DocImage src="qc/18.png"/>
 
 ### 正交排列法的使用步骤
 
@@ -884,7 +884,7 @@ m 表示每个因素包含的取值个数（各因素的水平数，即各因素
 
 <ElCard shadow="hover">
 
-<ElImg src="qc/19.png"/>
+<DocImage src="qc/19.png"/>
 
 **步骤一**：根据所测程序中控件的个数（因素）以及每个控件的取值个数（水平），选取一个合格的正交排列表。
 
@@ -892,15 +892,15 @@ m 表示每个因素包含的取值个数（各因素的水平数，即各因素
 - 每个控件有 3 个取值（水平）
 - 选取
 
-<ElImg src="qc/20.png" title="正交排列表"/>
+<DocImage src="qc/20.png" title="正交排列表"/>
 
 **步骤二**：把控件及其取值列举出来，并对其进行编号。
 
-<ElImg src="qc/21.png"/>
+<DocImage src="qc/21.png"/>
 
 **步骤三**：把控件及其取值映射到正交排列表中，测试用例如下
 
-<ElImg src="qc/22.png"/>
+<DocImage src="qc/22.png"/>
 
 :bell: 注意：这是进行测试的最少组合数量，但是，在测试中有 72 中（81-9）组合没有测试到。当然，如果时间允许，应该再补充一些用例。因为遗漏的组合越多，存在缺陷的可能性越大。
 
@@ -912,21 +912,21 @@ m 表示每个因素包含的取值个数（各因素的水平数，即各因素
 
 **114 系统查询企业单位**
 
-<ElImg src="qc/23.png"/>
+<DocImage src="qc/23.png"/>
 
 每个输入框有：填、不填两个选项，也就是需要测试用例数：2\^5=32
 
 **步骤一**：常用正交表中有 L4(2\^3)和 L8(2\^7)可选，这里选择多的：L8(2\^7)；
 
-<ElImg src="qc/24.png"/>
+<DocImage src="qc/24.png"/>
 
 **步骤二**： 把控件及其取值列举出来，并对其进行编号；
 
-<ElImg src="qc/25.png"/>
+<DocImage src="qc/25.png"/>
 
 **步骤三**： 把控件及其取值映射到正交排列表中，测试用例如下；
 
-<ElImg src="qc/26.png"/>
+<DocImage src="qc/26.png"/>
 
 </ElCard>
 
@@ -948,11 +948,11 @@ m 表示每个因素包含的取值个数（各因素的水平数，即各因素
 
 :::
 
-<ElImg src="qc/27.png" title="因素状态表"/>
+<DocImage src="qc/27.png" title="因素状态表"/>
 
 我们先将中文字转换成字母，便于设计。得到：
 
-<ElImg src="qc/28.png" title="因素状态表"/>
+<DocImage src="qc/28.png" title="因素状态表"/>
 
 **我们分析一下：**
 
@@ -976,23 +976,23 @@ L16(45)
 
 **正交矩阵为：**
 
-<ElImg src="qc/29.png"/>
+<DocImage src="qc/29.png"/>
 
 用字母替代正交矩阵：
 
-<ElImg src="qc/30.png"/>
+<DocImage src="qc/30.png"/>
 
 我们看到：
 
 第一列水平值为 3、第三列水平值为 3、第四列水平值 3、2 都需要由各自的字母替代。
 
-<ElImg src="qc/31.png"/>
+<DocImage src="qc/31.png"/>
 
 第五列去掉没有意义。通过分析，由于四个因素里有三个的水平值小于 3，所以从第 13 行到 16 行的测试用例可以忽略。
 
 那么这样的话，就可以有 12 个测试用例了（我这里只写一个）：
 
-<ElImg src="qc/32.png"/>
+<DocImage src="qc/32.png"/>
 
 </ElCard>
 
@@ -1302,21 +1302,21 @@ m 是每个控件的取值个数（因数水平）
 
 **第一步**：确定基本流和备选流：
 
-<ElImg src="qc/33.png"/>
+<DocImage src="qc/33.png"/>
 
 **第二步**：我们根据基本流和备选流来确定场景：
 
-<ElImg src="qc/34.png"/>
+<DocImage src="qc/34.png"/>
 
 **第三步**：设计用例
 
 在下面的矩阵中，`V`（有效）用于表明这个条件必须是 `VALID`（有效的）才可执行基本流，而 `I`（无效）用于表明这种条件下将激活所需备选流。下表中使用的“n/a”（不适用）表明这个条件不适用于测试用例。
 
-<ElImg src="qc/35.png"/>
+<DocImage src="qc/35.png"/>
 
 **第四步**：设计数据，把数据填入用例表
 
-<ElImg src="qc/36.png"/>
+<DocImage src="qc/36.png"/>
 
 </ElCard>
 

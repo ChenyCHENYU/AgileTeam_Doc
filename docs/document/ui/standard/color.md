@@ -8,13 +8,13 @@ outline: 'deep'
 
 颜色是设计中最重要的元素，颜色的运用与搭配决定设计的品质感。在 UI 设计中，颜色的使用规范主要在于：`品牌主色、文本颜色、界面颜色`（`背景色、线框色`）等。
 
-<ElImg src="ui/83.png"/>
+<DocImage src="ui/83.png"/>
 
-<ElImg src="ui/84.png"/>
+<DocImage src="ui/84.png"/>
 
 ### 色彩的作用
 
-<ElImg src="ui/7.png"/>
+<DocImage src="ui/7.png"/>
 
 <ElCard shadow="hover">
 
@@ -31,7 +31,7 @@ outline: 'deep'
 
 ### 组成
 
-<ElImg src="ui/8.png"/>
+<DocImage src="ui/8.png"/>
 
 在真实的设计场景中，对色彩的复杂度要求是非常高的。色彩规范应该基本覆盖一套产品对用色的所有场景。
 
@@ -50,7 +50,7 @@ outline: 'deep'
 
 ### 色彩系统的原则
 
-<ElImg src="ui/9.png"/>
+<DocImage src="ui/9.png"/>
 
 **理性的**：我们在选色时，尽可能避免个人的设计风格，减少配色的主观性，理性有逻辑地选色。
 
@@ -70,7 +70,7 @@ outline: 'deep'
 
 而 `HCL` 就避免了这个缺点，在 `HCL` 中，只要两种颜色的 `L` 相同，感官明度就是相同的，`HCL` 可以完美的量化我们对色彩明度的感觉。但是目前主流的设计软件基本上不支持 `HCL` 色彩空间配色，因此要借助插件或者网站。这里推荐 `Figma` 的一个插件：`HCL color`。[➡️ 传送门](http://tristen.ca/hcl-picker/#/hcl/12/1.03/000000/F69877)
 
-<ElImg src="ui/10.png"/>
+<DocImage src="ui/10.png"/>
 
 ## 落地
 
@@ -87,4 +87,4 @@ outline: 'deep'
 > 在需要替换某个色值时，只需要在底层对变量改变即可实现全局的更改，提高了很多效率。
 > 开发同事完全从库中取色，保证了色彩的准确性，提高了设计稿的落地率。
 
-<ElImg src="ui/11.png"/>
+<DocImage src="ui/11.png"/>

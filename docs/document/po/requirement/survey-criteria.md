@@ -35,7 +35,7 @@ outline: 'deep'
 
 需求调研标准工作流程包括 7 个步骤，4 大类产物，如下图所示：
 
-<ElImg src="po/65.png"/>
+<DocImage src="po/65.png"/>
 
 :::tip :eyes: **七个步骤包括：**
 
@@ -210,11 +210,11 @@ outline: 'deep'
 
 ## 附录二 - 需求调研计划表
 
-<ElImg src="po/66.png"/>
+<DocImage src="po/66.png"/>
 
 ## 附录三 - 需求调研报告
 
-<ElImg src="po/67.png"/>
+<DocImage src="po/67.png"/>
 
 ## 关于模板
 

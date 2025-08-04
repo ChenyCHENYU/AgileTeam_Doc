@@ -6,15 +6,15 @@ outline: 'deep'
 
 ## 调研计划模板一
 
-<ElImg src="po/66.png"/>
+<DocImage src="po/66.png"/>
 
 ## 调研计划示例一
 
-<ElImg src="po/68.png"/>
+<DocImage src="po/68.png"/>
 
 ## 调研计划示例二
 
-<ElImg src="po/69.png"/>
+<DocImage src="po/69.png"/>
 
 ## 关于模板
 

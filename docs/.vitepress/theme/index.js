@@ -2,8 +2,8 @@
  * @Author: ChenYu ycyplus@gmail.com
  * @Date: 2025-08-02 15:09:20
  * @LastEditors: ChenYu ycyplus@gmail.com
- * @LastEditTime: 2025-08-03 14:02:06
- * @FilePath: \agile_team_doc\docs\.vitepress\theme\index.js
+ * @LastEditTime: 2025-08-04 09:17:38
+ * @FilePath: \AgileTeam_Doc\docs\.vitepress\theme\index.js
  * @Description:
  * Copyright (c) 2025 by CHENY, All Rights Reserved 😎.
  */
@@ -16,6 +16,7 @@ import { useData } from "vitepress";
 import GiscusComment from "@components/GiscusComment.vue";
 import GitHubBadges from "@components/GitHubBadges.vue";
 import ImgWrap from "@components/ImgWrap.vue";
+import DocImage from "@components/DocImage.vue";
 import "./custom.css";
 import "./styles/home.css";
 
@@ -62,5 +63,6 @@ export default {
     app.component("GiscusComment", GiscusComment);
     app.component("GitHubBadges", GitHubBadges);
     app.component("ImgWrap", ImgWrap);
+    app.component("DocImage", DocImage);
   },
 };

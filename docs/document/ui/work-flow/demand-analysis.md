@@ -8,15 +8,15 @@ outline: 'deep'
 
 ## 工作流程
 
-<ElImg src="ui/32.png"/>
+<DocImage src="ui/32.png"/>
 
 以上的流程都是与设计师密切相关的内容，我们的关注点不能只有`视觉效果`，`孤立的设计`容易脱离产品，反复修改，因此`前期分析`与`后期支持`都值得我们重视。
 
-<ElImg src="ui/33.png"/>
+<DocImage src="ui/33.png"/>
 
 产品立项后的第一阶段是`需求分析`阶段，当我们拿到一个新的需求时，首先要了解的就是产品的需求是什么，了解`市场背景`、`产品定位`、`概念`，`客户的需求`是什么。
 
-<ElImg src="ui/34.png"/>
+<DocImage src="ui/34.png"/>
 
 :::tip :eyes:
 
@@ -38,7 +38,7 @@ outline: 'deep'
 
 </ElCard>
 
-<ElImg src="ui/35.png"/>
+<DocImage src="ui/35.png"/>
 
 ## 产品分析纬度
 
@@ -64,4 +64,4 @@ outline: 'deep'
 
 ➡️ [语雀](https://www.yuque.com)
 
-<ElImg src="ui/36.png"/>
+<DocImage src="ui/36.png"/>

@@ -408,7 +408,7 @@ outline: 'deep'
 
 知乎上有个比较精简的分类，我觉得还是比较贴切，可以适当照照镜子。
 
-<ElImg src="manage/po/1.png" title="产品定位分类浅析"/>
+<DocImage src="manage/po/1.png" title="产品定位分类浅析"/>
 
 **1、产品视角**
 

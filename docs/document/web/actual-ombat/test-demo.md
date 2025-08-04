@@ -20,4 +20,4 @@ outline: 'deep'
 
 下图很直观的展示了工作区、版本库中的暂存区和版本库之间的关系。
 
-<ElImg src="img/git.jpg" title="Git 工作区、暂存区、版本库之间的关系"/>
+<DocImage src="img/git.jpg" title="Git 工作区、暂存区、版本库之间的关系"/>

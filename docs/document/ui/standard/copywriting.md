@@ -16,25 +16,25 @@ outline: 'deep'
 而通过构建文案规范，可以规范文案的使用和编写，提高文案的质量，给用户带来连贯一致的使用体验。
 :::
 
-<ElImg src="ui/24.png"/>
+<DocImage src="ui/24.png"/>
 
 ## 文案撰写的原则
 
 这里给大家介绍一些产品文案通用的一些原则，包括，`准确`，`简洁`、`用户视角`。
 
-<ElImg src="ui/25.png"/>
+<DocImage src="ui/25.png"/>
 
 ### 准确原则
 
-<ElImg src="ui/26.png"/>
+<DocImage src="ui/26.png"/>
 
 ### 简洁原则
 
-<ElImg src="ui/27.png"/>
+<DocImage src="ui/27.png"/>
 
 ### 用户视角原则
 
-<ElImg src="ui/28.png"/>
+<DocImage src="ui/28.png"/>
 
 ## 落地
 

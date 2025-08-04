@@ -25,7 +25,7 @@ outline: 'deep'
 
 -
 
-<ElImg src="po/12.png" />
+<DocImage src="po/12.png" />
 
 ## 需求管理
 
@@ -62,7 +62,7 @@ outline: 'deep'
 
 -
 
-<ElImg src="po/13.png" />
+<DocImage src="po/13.png" />
 
 ## 备注
 

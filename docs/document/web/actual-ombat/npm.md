@@ -303,15 +303,15 @@ $ npm install -g yarn
 
 使用 NPM 配置的项目，磁盘总大小 **1260 MB**
 
-<ElImg src="img/npm-config.png" title="npm 配置图"/>
+<DocImage src="img/npm-config.png" title="npm 配置图"/>
 
 使用 PNPM 配置的项目，磁盘总大小 **500 MB**
 
-<ElImg src="img/pnpm-config.png" title="pnpm 配置图"/>
+<DocImage src="img/pnpm-config.png" title="pnpm 配置图"/>
 
 安装依赖的速度
 
-<ElImg src="img/01.png" title="安装依赖速度"/>
+<DocImage src="img/01.png" title="安装依赖速度"/>
 
 ### pnpm 的使用
 
