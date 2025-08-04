@@ -54,11 +54,11 @@ export const ROBOT_GUIDE_DOC = [
           },
           {
             text: "路由与导航",
-            link: `${ROBOT}/components/button/types`,
+            link: `${ROBOT}/guide/route-nav`,
           },
           {
             text: "状态管理",
-            link: `${ROBOT}/components/button/sizes`,
+            link: `${ROBOT}/guide/state-manager`,
           },
         ],
       },

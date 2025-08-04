@@ -34,7 +34,6 @@ Robot Admin 框架实现了一个灵活且强大的插件架构，支持模块�
 
 应用程序引导过程展示了插件注册的结构化方法：
 
-<ImgPreview src="robot/guide/plugin-registration-flow.png" title="插件注册流程图" width="65%"/>
 
 ::: code-group
 
