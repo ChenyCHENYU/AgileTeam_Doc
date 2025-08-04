@@ -66,6 +66,24 @@ export const ROBOT_GUIDE_DOC = [
           },
         ],
       },
+      {
+        text: "UI框架",
+        collapsed: false,
+        items: [
+          {
+            text: "NaiveUI集成",
+            link: `${ROBOT}/guide/naive-ui-integration`,
+          },
+          {
+            text: "主题定制",
+            link: `${ROBOT}/guide/route-nav`,
+          },
+          {
+            text: "UnoCSS使用",
+            link: `${ROBOT}/guide/state-manager`,
+          },
+        ],
+      },
     ],
   },
   {
