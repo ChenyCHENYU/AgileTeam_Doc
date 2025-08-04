@@ -46,11 +46,11 @@ export const ROBOT_GUIDE_DOC = [
       },
       {
         text: "核心功能",
-        collapsed: true,
+        collapsed: false,
         items: [
           {
             text: "认证与授权",
-            link: `${ROBOT}/components/button/basic`,
+            link: `${ROBOT}/guide/auth`,
           },
           {
             text: "路由与导航",
