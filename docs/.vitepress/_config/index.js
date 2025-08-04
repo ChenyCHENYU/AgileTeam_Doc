@@ -1,5 +1,5 @@
-export { head } from "./head";
-export { nav } from "./nav";
-export { sidebar } from "./sidebar";
-export { socialLinks } from "./socialLinks";
-export { search } from "./search";
+export { default as head } from "./head";
+export { default as nav } from "./nav";
+export { default as sidebar } from "./sidebar";
+export { default as socialLinks } from "./socialLinks";
+export { default as search } from "./search";

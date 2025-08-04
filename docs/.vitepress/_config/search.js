@@ -1,4 +1,4 @@
-export const search = {
+export default {
   provider: "local",
   options: {
     locales: {

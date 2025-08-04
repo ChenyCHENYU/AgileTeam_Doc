@@ -13,7 +13,7 @@ export default defineConfig({
   cleanUrls: true,
   head,
 
-  // 开启最后更新时间 (关键配置)
+  // 开启最后更新时间
   lastUpdated: true,
 
   // 主题配置
@@ -26,13 +26,13 @@ export default defineConfig({
     socialLinks,
     search,
 
-    // 页面大纲设置 (修复配置)
+    // 页面大纲设置
     outline: {
       level: [2, 3],
       label: "本页导航",
     },
 
-    // 最后更新时间显示文本 (移到正确位置)
+    // 最后更新时间显示文本
     lastUpdated: {
       text: "最后更新",
       formatOptions: {
@@ -82,31 +82,20 @@ export default defineConfig({
       dark: "github-dark",
     },
     lineNumbers: true,
-    config: (md) => {
-      // 自定义markdown配置
-    },
   },
 
   // 构建配置
   vite: {
+    server: {
+      port: 5888,
+      host: true,
+      open: true,
+      warmup: {
+        clientFiles: ["./theme/custom.css", "./_config/index.js"],
+      },
+    },
     resolve: {
       alias: [
-        {
-          find: "@",
-          replacement: fileURLToPath(new URL("../", import.meta.url)),
-        },
-        {
-          find: "@docs",
-          replacement: fileURLToPath(new URL("../document", import.meta.url)),
-        },
-        {
-          find: "@config",
-          replacement: fileURLToPath(new URL("./_config", import.meta.url)),
-        },
-        {
-          find: "@theme",
-          replacement: fileURLToPath(new URL("./theme", import.meta.url)),
-        },
         {
           find: "@icons",
           replacement: fileURLToPath(new URL("./theme/icons", import.meta.url)),
@@ -114,12 +103,6 @@ export default defineConfig({
         {
           find: "@components",
           replacement: fileURLToPath(new URL("./components", import.meta.url)),
-        },
-        {
-          find: "@public",
-          replacement: fileURLToPath(
-            new URL("../document/public", import.meta.url)
-          ),
         },
       ],
     },
@@ -129,6 +112,9 @@ export default defineConfig({
           additionalData: `@import ".vitepress/theme/custom.css";`,
         },
       },
+    },
+    esbuild: {
+      target: "esnext",
     },
   },
 });

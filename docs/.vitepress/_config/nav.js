@@ -1,4 +1,4 @@
-export const nav = [
+export default [
   {
     text: "Robot Admin",
     activeMatch: "^/robot/",

@@ -1,3 +1,12 @@
+/*
+ * @Author: ChenYu ycyplus@gmail.com
+ * @Date: 2025-08-02 20:05:40
+ * @LastEditors: ChenYu ycyplus@gmail.com
+ * @LastEditTime: 2025-08-04 23:04:44
+ * @FilePath: \agile_team_doc\docs\.vitepress\_config\sidebar.js
+ * @Description:
+ * Copyright (c) 2025 by CHENY, All Rights Reserved 😎.
+ */
 import {
   ROBOT_GUIDE_DOC,
   ROBOT_COMPONENTS_DOC,
@@ -9,7 +18,7 @@ import {
   MANAGE_DOC,
 } from "./sidebarArr";
 
-export const sidebar = {
+export default {
   "/robot/guide/": ROBOT_GUIDE_DOC,
   "/robot/components/": ROBOT_COMPONENTS_DOC,
   "/po/": PO_DOC,
