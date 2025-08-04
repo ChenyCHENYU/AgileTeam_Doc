@@ -60,6 +60,10 @@ export const ROBOT_GUIDE_DOC = [
             text: "状态管理",
             link: `${ROBOT}/guide/state-manager`,
           },
+          {
+            text: "API集成",
+            link: `${ROBOT}/guide/api-integration`,
+          },
         ],
       },
     ],
