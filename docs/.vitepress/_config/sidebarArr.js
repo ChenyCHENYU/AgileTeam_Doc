@@ -84,22 +84,21 @@ export const ROBOT_GUIDE_DOC = [
           },
         ],
       },
-    ],
-  },
-  {
-    text: "表单组件",
-    collapsed: false,
-    items: [
       {
-        text: "级联选择器",
+        text: "实用工具",
+        collapsed: false,
         items: [
           {
-            text: "基础用法",
-            link: `${ROBOT}/components/cascade/basic`,
+            text: "可用Hooks",
+            link: `${ROBOT}/guide/use-hooks`,
           },
           {
-            text: "数据源配置",
-            link: `${ROBOT}/components/cascade/datasource`,
+            text: "自定义指令",
+            link: `${ROBOT}/guide/custom-directive`,
+          },
+          {
+            text: "TypeScript类型系统",
+            link: `${ROBOT}/guide/typescript-type-system`,
           },
         ],
       },
