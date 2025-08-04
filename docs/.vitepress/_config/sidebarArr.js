@@ -102,6 +102,20 @@ export const ROBOT_GUIDE_DOC = [
           },
         ],
       },
+      {
+        text: "构建与部署",
+        collapsed: false,
+        items: [
+          {
+            text: "Vite配置",
+            link: `${ROBOT}/guide/vite-config`,
+          },
+          {
+            text: "构建优化",
+            link: `${ROBOT}/guide/build-optimization`,
+          },
+        ],
+      },
     ],
   },
 ];
