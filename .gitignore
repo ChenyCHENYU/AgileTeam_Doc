@@ -4,10 +4,11 @@ dist/
 # VitePress 缓存和临时文件
 docs/.vitepress/cache/
 docs/.vitepress/dist/
-document/.vitepress/
 
-# 如果构建过程中还生成项目根目录的 .vitepress，也排除
-.vitepress/
+
+# 只忽略根目录的 .vitepress，不影响 docs/.vitepress
+/.vitepress/
+
 
 # 依赖
 node_modules/
