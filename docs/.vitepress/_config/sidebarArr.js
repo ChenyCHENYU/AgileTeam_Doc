@@ -36,7 +36,7 @@ export const ROBOT_GUIDE_DOC = [
           },
           {
             text: "组件系统",
-            link: `${ROBOT}/components/icon/basic`,
+            link: `${ROBOT}/guide/component-system`,
           },
           {
             text: "插件架构",
