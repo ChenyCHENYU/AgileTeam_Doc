@@ -234,6 +234,7 @@ const handleAdvancedLongPress = () => console.log('高级长按触发')
 
 :::
 
+
 ## 🛠️ 创建自定义指令
 
 在 Robot Admin 框架中创建新指令非常简单：
@@ -401,6 +402,9 @@ Robot Admin 框架使用自动指令注册系统：
 1. **自动发现**：扫描 `src/directives/modules/` 目录下的所有 `.ts` 文件
 2. **自动注册**：在应用程序初始化时自动注册所有指令
 3. **命名规范**：文件名转换为指令名（例如：`myDirective.ts` → `v-my-directive`）
+
+<ImgPreview src="robot/guide/17.png" title="指令注册系统" width="80%"/>
+
 
 ### 目录结构
 

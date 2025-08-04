@@ -13,12 +13,7 @@ import {
 import { baseURL } from './baseURL.ts'
 
 const coreMembers = [
-  {
-    avatar: `${baseURL}/千静妮.png`,
-    name: '千静妮',
-    title: 'Quality Control Lead',
-    desc: '知行合一，笃行致远',
-  },
+
   {
     avatar: `${baseURL}/王超.png`,
     name: '王超',

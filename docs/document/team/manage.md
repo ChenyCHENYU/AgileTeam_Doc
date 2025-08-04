@@ -66,12 +66,6 @@ const tecList = [
     desc: '认知是我们的一生之敌',
   },
   {
-    avatar: `${baseURL}/千静妮.png`,
-    name: '千静妮',
-    title: 'Quality Control Lead',
-    desc: '知行合一，笃行致远',
-  },
-  {
     avatar: `${baseURL}/薛旭杰.png`,
     name: '薛旭杰', 
     title: 'DevOps Lead',
