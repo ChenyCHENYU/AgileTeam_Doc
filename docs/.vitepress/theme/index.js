@@ -16,7 +16,7 @@ import { useData } from "vitepress";
 import GiscusComment from "@components/GiscusComment.vue";
 import GitHubBadges from "@components/GitHubBadges.vue";
 import ImgWrap from "@components/ImgWrap.vue";
-import DocImage from "@components/DocImage.vue";
+import ImgPreview from "@components/ImgPreview.vue";
 import "./custom.css";
 import "./styles/home.css";
 
@@ -63,6 +63,6 @@ export default {
     app.component("GiscusComment", GiscusComment);
     app.component("GitHubBadges", GitHubBadges);
     app.component("ImgWrap", ImgWrap);
-    app.component("DocImage", DocImage);
+    app.component("ImgPreview", ImgPreview);
   },
 };

@@ -14,9 +14,9 @@ outline: 'deep'
 
 代码分支管理，命名方式如下，分支之间的切换如下。
 
-<DocImage src="convention/1.png" title="分支管理图"/>
+<ImgPreview src="convention/1.png" title="分支管理图"/>
 
-<DocImage src="convention/2.png" title="代码管理图"/>
+<ImgPreview src="convention/2.png" title="代码管理图"/>
 
 #### Java 软件版本管理
 
@@ -50,4 +50,4 @@ outline: 'deep'
 </plugin>
 ```
 
-<DocImage src="convention/3.png" title="版本管理示意图"/>
+<ImgPreview src="convention/3.png" title="版本管理示意图"/>

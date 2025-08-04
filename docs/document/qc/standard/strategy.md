@@ -119,7 +119,7 @@ outline: 'deep'
 
 根据测试四象限，从业务和技术的角度、以及程序和产品的角度将测试内容进行类划分，如下图所示。
 
-<DocImage src="qc/2.png"/>
+<ImgPreview src="qc/2.png"/>
 
 依据敏捷的分层计划原则，测试测试也采用不同级别的测试，可以参考 `Epic-Feature-Story-Task` 制定策略。
 
@@ -139,7 +139,7 @@ Task 为迭代内的测试，通常进行`单元测试`、`模块测试`、`代�
 
 如下图所示。
 
-<DocImage src="qc/3.png"/>
+<ImgPreview src="qc/3.png"/>
 
 ### Where
 
@@ -161,4 +161,4 @@ Task 为迭代内的测试，通常进行`单元测试`、`模块测试`、`代�
 
 ## 测试策略示例
 
-<DocImage src="qc/4.png"/>
+<ImgPreview src="qc/4.png"/>

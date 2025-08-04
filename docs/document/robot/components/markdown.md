@@ -1118,7 +1118,7 @@ ${articleContent.value}`
                 @change="handleDocumentChange"
                 @auto-save="handleDocumentAutoSave"
                 @word-count-change="handleWordCountChange"
-                @upload-image="handleDocImageUpload"
+                @upload-image="handleImgPreviewUpload"
               />
 
               <div class="editor-footer">
@@ -1479,7 +1479,7 @@ ${articleContent.value}`
     message.info('文档已自动保存')
   }
 
-  const handleDocImageUpload = (event, insertImage, files) => {
+  const handleImgPreviewUpload = (event, insertImage, files) => {
     Array.from(files).forEach(file => {
       const reader = new FileReader()
       reader.onload = (e) => {

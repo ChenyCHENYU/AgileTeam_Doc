@@ -14,43 +14,43 @@ outline: 'deep'
 
 ### 01. 项目方案-建议书
 
-<DocImage src="manage/po/01.png" title="01-方案建议书"/>
+<ImgPreview src="manage/po/01.png" title="01-方案建议书"/>
 
 :eyes: 模板下载请到`语雀`研发部。 ➡️ [传送门](https://xc0mg8.yuque.com/xc0mg8/kotaew/pfe8tmbgptxugsfc#tMp46)
 
 ### 02. 方案宣讲 ppt
 
-<DocImage src="manage/po/02.png" title="02-方案宣讲 ppt"/>
+<ImgPreview src="manage/po/02.png" title="02-方案宣讲 ppt"/>
 
 :eyes: 模板下载请到`语雀`研发部。 ➡️ [传送门](https://xc0mg8.yuque.com/xc0mg8/kotaew/pfe8tmbgptxugsfc#nLptY)
 
 ### 03. 功能范围评估表
 
-<DocImage src="manage/po/03.png" title="03-功能范围评估表"/>
+<ImgPreview src="manage/po/03.png" title="03-功能范围评估表"/>
 
 :eyes: 模板下载请到`语雀`研发部。 ➡️ [传送门](https://xc0mg8.yuque.com/xc0mg8/kotaew/pfe8tmbgptxugsfc#E1MPb)
 
 ### 04. 客户信息资料记录归档
 
-<DocImage src="manage/po/04.png" title="04-客户信息资料记录归档"/>
+<ImgPreview src="manage/po/04.png" title="04-客户信息资料记录归档"/>
 
 :eyes: 模板下载请到`语雀`研发部。 ➡️ [传送门](https://xc0mg8.yuque.com/xc0mg8/kotaew/pfe8tmbgptxugsfc#ZyTZV)
 
 ### 05. 产品方案白皮书 ppt
 
-<DocImage src="manage/po/05.png" title="05-产品方案白皮书 ppt"/>
+<ImgPreview src="manage/po/05.png" title="05-产品方案白皮书 ppt"/>
 
 :eyes: 模板下载请到`语雀`研发部。 ➡️ [传送门](https://xc0mg8.yuque.com/xc0mg8/kotaew/pfe8tmbgptxugsfc#LqcQc)
 
 ### 06. 产品方案白皮书 word
 
-<DocImage src="manage/po/06.png" title="产品方案白皮书 word"/>
+<ImgPreview src="manage/po/06.png" title="产品方案白皮书 word"/>
 
 :eyes: 模板下载请到`语雀`研发部。 ➡️ [传送门](https://xc0mg8.yuque.com/xc0mg8/kotaew/pfe8tmbgptxugsfc#qKnYY)
 
 ### 07. 培训计划（售前）
 
-<DocImage src="manage/po/07.png" title="培训计划（售前）"/>
+<ImgPreview src="manage/po/07.png" title="培训计划（售前）"/>
 
 :eyes: 模板下载请到`语雀`研发部。 ➡️ [传送门](https://xc0mg8.yuque.com/xc0mg8/kotaew/pfe8tmbgptxugsfc#S7sej)
 
@@ -62,66 +62,66 @@ outline: 'deep'
 
 ### 09. 需求调研计划
 
-<DocImage src="manage/po/09.png" title="09-需求调研计划"/>
+<ImgPreview src="manage/po/09.png" title="09-需求调研计划"/>
 
 :eyes: 模板下载请到`语雀`研发部。 ➡️ [传送门](https://xc0mg8.yuque.com/xc0mg8/kotaew/pfe8tmbgptxugsfc#ArJ70)
 
 ### 10. 需求调研报告
 
-<DocImage src="manage/po/10.png" title="10-需求调研报告"/>
+<ImgPreview src="manage/po/10.png" title="10-需求调研报告"/>
 
 :eyes: 模板下载请到`语雀`研发部。 ➡️ [传送门](https://xc0mg8.yuque.com/xc0mg8/kotaew/pfe8tmbgptxugsfc#bTAde)
 
 ### 11. 需求规格说明书
 
-<DocImage src="manage/po/11.png" title="11-需求概要说明书"/>
+<ImgPreview src="manage/po/11.png" title="11-需求概要说明书"/>
 
 :eyes: 模板下载请到`语雀`研发部。 ➡️ [传送门](https://xc0mg8.yuque.com/xc0mg8/kotaew/pfe8tmbgptxugsfc#SwNts)
 
 ### 12. 详细设计说明书
 
-<DocImage src="manage/po/12.png" title="12-详细设计说明书"/>
+<ImgPreview src="manage/po/12.png" title="12-详细设计说明书"/>
 
 :eyes: 模板下载请到`语雀`研发部。 ➡️ [传送门](https://xc0mg8.yuque.com/xc0mg8/kotaew/pfe8tmbgptxugsfc#SwNts)
 
 ### 13. 功能模块清单
 
-<DocImage src="manage/po/13.png" title="13-功能模块清单"/>
+<ImgPreview src="manage/po/13.png" title="13-功能模块清单"/>
 
 ### 14. 产品原型图
 
-<DocImage src="manage/po/14.png" title="14-产品原型图"/>
+<ImgPreview src="manage/po/14.png" title="14-产品原型图"/>
 
 ### 15. 产品流程图
 
-<DocImage src="manage/po/15.png" title="15-产品流程图"/>
+<ImgPreview src="manage/po/15.png" title="15-产品流程图"/>
 
 ### 16. 产品架构图
 
-<DocImage src="manage/po/16.png" title="16-功能架构图"/>
+<ImgPreview src="manage/po/16.png" title="16-功能架构图"/>
 
 :eyes: `13-16` 模板下载请到`语雀`研发部。 ➡️ [请产品组定义标准模板内审后上传语雀](https://www.tzagileteam.com/manage/templates/po-template.html#%E8%AF%B4%E6%98%8E)
 
 ### 17-21. 产品计划到计划闭环（禅道）
 
-<DocImage src="manage/po/17-21.png" title="17-21-产品计划到计划闭环（禅道）"/>
+<ImgPreview src="manage/po/17-21.png" title="17-21-产品计划到计划闭环（禅道）"/>
 
 :eyes: `17-21` 模板下载请到`语雀`研发部。 ➡️ [产品计划到闭环（禅道操作）](https://xc0mg8.yuque.com/xc0mg8/kotaew/pfe8tmbgptxugsfc#I0Ix6)
 
 ### 22. 操作使用说明书
 
-<DocImage src="manage/pm/34.png" title="34-操作使用说明书"/>
+<ImgPreview src="manage/pm/34.png" title="34-操作使用说明书"/>
 
 :eyes: 模板下载请到`语雀`研发部。 ➡️ [传送门](https://xc0mg8.yuque.com/xc0mg8/kotaew/pfe8tmbgptxugsfc#iTuK0)
 
 ### 23. 客户培训计划表
 
-<DocImage src="manage/po/23.png" title="客户培训计划签到表"/>
+<ImgPreview src="manage/po/23.png" title="客户培训计划签到表"/>
 
 :eyes: 模板下载请到`语雀`研发部。 ➡️ [传送门](https://xc0mg8.yuque.com/xc0mg8/kotaew/pfe8tmbgptxugsfc#CQBz3)
 
 ### 24. 需求池
 
-<DocImage src="manage/po/24.png" title="需求池"/>
+<ImgPreview src="manage/po/24.png" title="需求池"/>
 
 :eyes: 模板下载请到`语雀`研发部。 ➡️ [传送门](https://xc0mg8.yuque.com/xc0mg8/kotaew/pfe8tmbgptxugsfc#CQBz3)

@@ -30,7 +30,7 @@ outline: 'deep'
 
 ### 3.1、流程图
 
-<DocImage src="qc/1.png"/>
+<ImgPreview src="qc/1.png"/>
 
 ### 3.2、迭代开始前
 

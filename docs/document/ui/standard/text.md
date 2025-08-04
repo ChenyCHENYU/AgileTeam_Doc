@@ -14,7 +14,7 @@ outline: 'deep'
 我们使用的字体一般是基于`用户有什么字体`，而由于 `win` 和 `Mac` 默认字体不同，所以要提前预留好字体风格类似的多种字体。并且可以设置多个字体，通过逗号隔开，如果第一个字体用户没有，那么会自动替换成下一个字体。
 :::
 
-<DocImage src="ui/5.png"/>
+<ImgPreview src="ui/5.png"/>
 
 字号上，`精简为主`，可以用`字重`和`颜色`来表现`层级`，就不要用字号来体现。淘宝在 2019 年的改版中便升级了这一点。将原来的 `11` 个字体层级缩减至了 `7`个。
 
@@ -22,7 +22,7 @@ outline: 'deep'
 
 但是会遇到额外间距的问题。
 
-<DocImage src="ui/6.png"/>
+<ImgPreview src="ui/6.png"/>
 
 前段时间`谷歌`发布了新的 `CSS` 更新“`leading trim`”，可能会是之后的行高解决方案。感兴趣的小伙伴可以点击链接了解一下。
 
@@ -32,7 +32,7 @@ outline: 'deep'
 
 不同的字体气质不一样，并且不同场景下带给人的感受也不一样。所以需要在设计的时候考虑到字体的设计效果，然后在设计规范中注明。
 
-<DocImage src="ui/85.png"/>
+<ImgPreview src="ui/85.png"/>
 
 ### 界面常用字体推荐
 
@@ -47,13 +47,13 @@ outline: 'deep'
 
 > 线上中文字体推荐使用`思源黑体、华文黑体、冬青黑体、微软雅黑、苹方-简、黑体-简`。其中 `iOS` 系统默认中文字体是「`苹方 PingFang`」，`Android` 系统中文字体使用「`思源黑体 Noto Sans CJK`」。
 
-<DocImage src="ui/70.png"/>
+<ImgPreview src="ui/70.png"/>
 
 #### 英文字体推荐
 
 > 线上英文字体推荐使用 `San Francisco、Helvetica Neue、Roboto、Avenir Next、Open Sans`。其中 `iOS` 系统默认英文字体为「`San Francisco`」，`Android` 系统默认英文字体为「`Roboto`」。
 
-<DocImage src="ui/71.png"/>
+<ImgPreview src="ui/71.png"/>
 
 #### 数字字体推荐
 
@@ -63,7 +63,7 @@ outline: 'deep'
 
 `Helvetica Neue` 除了上文介绍的简洁朴素、中性严谨、没有多余的修饰外，还是 Helvetica 的升级版，拥有了更多的字重，可以作为 `iOS` 和 `Android` 跨平台数字字体使用。
 
-<DocImage src="ui/72.png"/>
+<ImgPreview src="ui/72.png"/>
 
 ### 字号
 
@@ -77,7 +77,7 @@ outline: 'deep'
 
 `iOS11` 系统中，使用 `San Francisco` 作为系统英文字体，包含了以下几种字号的文本样式。
 
-<DocImage src="ui/73.png"/>
+<ImgPreview src="ui/73.png"/>
 
 <div class="font-table">
 
@@ -104,13 +104,13 @@ table th:first-of-type,table th:nth-of-type(2),table th:nth-of-type(3) {width: 2
 
 :::
 
-<DocImage src="ui/74.png"/>
+<ImgPreview src="ui/74.png"/>
 
 #### Material Design 字号规则
 
 在 `Material Design` 设计体系中，使用 `Roboto` 作为英文字体，规定了以下文字排版的常用字号。
 
-<DocImage src="ui/75.png"/>
+<ImgPreview src="ui/75.png"/>
 
 长篇幅正文，每行建议 `60` 字符左右，短文本建议每行 `30` 字符左右。
 
@@ -118,7 +118,7 @@ table th:first-of-type,table th:nth-of-type(2),table th:nth-of-type(3) {width: 2
 
 `Ant Design` 受到 `5` 音阶以及自然律的启发定义了 `10` 种不同的字号，从小到大依次为：`12px、14px、16px、20px、24px、30px、38px、46px、56px、68px`。
 
-<DocImage src="ui/76.png"/>
+<ImgPreview src="ui/76.png"/>
 
 建议主要字号为 `14px`，其余字号的选择可根据具体情况进行自由的定义，尽量控制在 `3-5` 种之间，保持克制的原则。
 
@@ -126,7 +126,7 @@ table th:first-of-type,table th:nth-of-type(2),table th:nth-of-type(3) {width: 2
 
 `Kiwi` 是饿了么的中后台设计语言，致力于打造出能够「了解、洞察、温暖、激励用户」的产品。
 
-<DocImage src="ui/77.png"/>
+<ImgPreview src="ui/77.png"/>
 
 在 `Kiwi Web` 中，规定最小字号为 `12px`，主要文本字号为 `14px`，最大字号为 `46px`。
 
@@ -134,7 +134,7 @@ table th:first-of-type,table th:nth-of-type(2),table th:nth-of-type(3) {width: 2
 
 行高可以理解为一个包裹在字体外面的无形的框，字体距框的上下空隙为半行距。
 
-<DocImage src="ui/78.png"/>
+<ImgPreview src="ui/78.png"/>
 
 参考 `W3C` 原理，眼睛到屏幕的距离 `25cm` 为最佳阅读距离。
 

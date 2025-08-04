@@ -18,11 +18,11 @@ outline: 'deep'
 **我认为的设计规范是以下的定义：`设计规范由设计原则`、`设计语言`和`组件库`构成，在设计原则的指导下使用设计语言和组件库创建体验一致的用户界面。**
 :::
 
-<DocImage src="ui/1.png"/>
+<ImgPreview src="ui/1.png"/>
 
 设计原则：即整个设计规范所要遵循的全局规则，为设计提供方向指导。以下给出几个例子：
 
-<DocImage src="ui/2.png"/>
+<ImgPreview src="ui/2.png"/>
 
 :::tip :eyes: 基本分类
 
@@ -85,7 +85,7 @@ outline: 'deep'
 
 ### 设计规范的优势
 
-<DocImage src="ui/3.png"/>
+<ImgPreview src="ui/3.png"/>
 
 <ElCard shadow="hover">
 
@@ -116,7 +116,7 @@ outline: 'deep'
 
 ### 落不了地的原因？
 
-<DocImage src="ui/4.png"/>
+<ImgPreview src="ui/4.png"/>
 
 <ElCard shadow="hover">
 
@@ -158,10 +158,10 @@ outline: 'deep'
 
 UI 设计中，设计规范是一个关键步骤。知名大厂基本上都有一套自己的完整规范体系，在整理设计规范时，以大平台规范体系作为参考，针对产品自身情况增删，整理出我们自己所需要的规范内容，能有效地避免规范内容遗漏缺失。
 
-<DocImage src="ui/82.png"/>
+<ImgPreview src="ui/82.png"/>
 
 ## 规范优先级
 
 了解规范的内容有哪些之后，我们需要确认的是规范优先级，规范内容庞大复杂，基础的、必要的、高性价比的放在第一个版本中，复杂的往后放，随着产品的迭代，规范才会越来越完整。
 
-<DocImage src="ui/97.png"/>
+<ImgPreview src="ui/97.png"/>

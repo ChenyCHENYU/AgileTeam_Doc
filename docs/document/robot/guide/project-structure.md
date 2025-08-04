@@ -25,7 +25,7 @@ Robot Admin 遵循基于功能的组织模式，具有清晰的关注点分离�
 
 以下是项目结构的高级可视化：
 
-<DocImage src="robot/guide/1.png" title="项目结构可视化" width="60%"/>
+<ImgPreview src="robot/guide/1.png" title="项目结构可视化" width="60%"/>
 
 ## 📁 核心源代码结构
 
@@ -504,7 +504,7 @@ console.log(`✅ 分支验证通过: ${currentBranch}`);
 
 理解应用程序如何初始化很重要。main.ts文件展示了一个清晰的分阶段方法：
 
-<DocImage src="robot/guide/2.png" title="应用程序初始化流程" width="60%"/>
+<ImgPreview src="robot/guide/2.png" title="应用程序初始化流程" width="60%"/>
 
 这一序列确保在应用程序挂载到DOM之前正确初始化所有依赖项。
 

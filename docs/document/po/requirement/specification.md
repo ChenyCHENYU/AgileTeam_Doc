@@ -12,13 +12,13 @@ outline: 'deep'
 
 -
 
-<DocImage src="po/14.png" />
+<ImgPreview src="po/14.png" />
 
 ### 相关资料
 
 -
 
-<DocImage src="po/15.png" />
+<ImgPreview src="po/15.png" />
 
 ## 产品概述
 
@@ -28,13 +28,13 @@ outline: 'deep'
 
 -
 
-<DocImage src="po/16.png" />
+<ImgPreview src="po/16.png" />
 
 ### 系统概述
 
 -
 
-<DocImage src="po/17.png" />
+<ImgPreview src="po/17.png" />
 
 ### 系统关系图
 
@@ -44,7 +44,7 @@ outline: 'deep'
 
 -
 
-<DocImage src="po/18.png" />
+<ImgPreview src="po/18.png" />
 
 ### 业务流程图
 
@@ -62,13 +62,13 @@ outline: 'deep'
 
 -
 
-<DocImage src="po/19.png" />
+<ImgPreview src="po/19.png" />
 
 ## 非功能需求
 
 -
 
-<DocImage src="po/20.png" />
+<ImgPreview src="po/20.png" />
 
 ## 关于模板
 

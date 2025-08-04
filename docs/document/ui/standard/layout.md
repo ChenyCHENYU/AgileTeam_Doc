@@ -20,9 +20,9 @@ outline: 'deep'
 
 > 以我们的生活来举例的话，例如我们去买月饼，大盒子里装了四个小盒子，每个小盒子里是一个月饼。
 
-<DocImage src="ui/16.png"/>
+<ImgPreview src="ui/16.png"/>
 
-<DocImage src="ui/17.png"/>
+<ImgPreview src="ui/17.png"/>
 
 ### 设计师如何利用盒子模型？
 
@@ -32,13 +32,13 @@ outline: 'deep'
 
 以`标签页`为例，我们设计时，不只是画个横线与文字就行了，这样开发无法理解到设计稿，后面还会继续找我们询问`触控热区`。
 
-<DocImage src="ui/18.png"/>
+<ImgPreview src="ui/18.png"/>
 
 ## 导航
 
 导航将网站的信息架构分组归类展示给用户，方便用户到达想去的界面。
 
-<DocImage src="ui/19.png"/>
+<ImgPreview src="ui/19.png"/>
 
 ### 顶部导航
 
@@ -93,7 +93,7 @@ outline: 'deep'
 
 #### 优势
 
-<DocImage src="ui/20.png"/>
+<ImgPreview src="ui/20.png"/>
 
 <ElCard>
 
@@ -111,7 +111,7 @@ outline: 'deep'
 
 ### 组成与原理
 
-<DocImage src="ui/21.png"/>
+<ImgPreview src="ui/21.png"/>
 
 > 栅格系统包括`页边距`，`列`和`水槽`。
 
@@ -137,7 +137,7 @@ outline: 'deep'
 
 另外一般我们会使得大模块的纵向间距与栅格系统中的水槽大小相同。
 
-<DocImage src="ui/22.png"/>
+<ImgPreview src="ui/22.png"/>
 
 ## 界面布局
 
@@ -151,7 +151,7 @@ outline: 'deep'
 
 • 明确决策信息和操作的优先级及内容特点，选择合理布局。
 
-<DocImage src="ui/86.png"/>
+<ImgPreview src="ui/86.png"/>
 :::
 
 </ElCard>

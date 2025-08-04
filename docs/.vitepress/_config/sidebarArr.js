@@ -32,7 +32,7 @@ export const ROBOT_GUIDE_DOC = [
         items: [
           {
             text: "应用架构",
-            link: `${ROBOT}/components/icon/overview`,
+            link: `${ROBOT}/guide/app-architecture`,
           },
           {
             text: "组件系统",
