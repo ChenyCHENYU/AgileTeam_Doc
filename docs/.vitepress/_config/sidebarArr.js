@@ -122,8 +122,8 @@ export const ROBOT_GUIDE_DOC = [
     text: "项目架构",
     items: [
       {
-        text: "为什么要工程化",
-        link: `${ROBOT}/guide/why-engineering`,
+        text: "工程化实践",
+        link: `${ROBOT}/guide/engineering-practice`,
       },
     ],
   },
