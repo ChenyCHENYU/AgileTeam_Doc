@@ -118,6 +118,15 @@ export const ROBOT_GUIDE_DOC = [
       },
     ],
   },
+  {
+    text: "项目架构",
+    items: [
+      {
+        text: "为什么要工程化",
+        link: `${ROBOT}/guide/why-engineering`,
+      },
+    ],
+  },
 ];
 
 export const ROBOT_COMPONENTS_DOC = [
