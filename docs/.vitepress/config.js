@@ -90,9 +90,6 @@ export default defineConfig({
       port: 5888,
       host: true,
       open: true,
-      warmup: {
-        clientFiles: ["./theme/custom.css", "./_config/index.js"],
-      },
     },
     resolve: {
       alias: [
