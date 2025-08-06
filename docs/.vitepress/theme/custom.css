@@ -1,5 +1,5 @@
-/* VitePress 宽屏优化 - 超精简版 */
-/* 只修改宽度，不干扰任何VitePress内部逻辑 */
+/* VitePress 宽屏优化 */
+
 
 :root {
   /* 设置整体最大宽度 */
@@ -38,22 +38,37 @@
   width: 100% !important;      /* 强制充分利用容器宽度 */
 }
 
-/* ===== 导航和页脚宽度适配 ===== */
-
-/* 导航栏宽度适配 */
-.VPNavBar .container {
-  max-width: var(--vp-layout-max-width);
-  margin: 0 auto;
+/* ===== 关键修复：1920px精确处理 ===== */
+/* 让1920px的表现与1919px完全一致 */
+@media (min-width: 1920px) and (max-width: 1920px) {
+  /* 强制使用1919px时的布局参数 */
+  :root {
+    --vp-layout-max-width: 1919px;
+  }
+  
+  .VPDoc:not(.has-sidebar) .container {
+    max-width: 1583px !important;  /* 比1584少1px */
+  }
+  
+  .VPDoc:not(.has-sidebar) .content {
+    max-width: 1263px !important;  /* 比1264少1px */
+  }
+  
+  .VPDoc.has-aside .content-container {
+    max-width: 1599px !important;  /* 比1600少1px */
+  }
+  
+  .VPDoc.has-sidebar:not(.has-aside) .content {
+    max-width: 1599px !important;  /* 比1600少1px */
+  }
+  
+  .VPDoc .content {
+    max-width: 1599px !important;  /* 比1600少1px */
+  }
 }
 
-/* 页脚宽度适配 */
-.VPFooter .container {
-  max-width: var(--vp-layout-max-width);
-  margin: 0 auto;
-}
-
-/* ===== 超宽屏优化 ===== */
-@media (min-width: 1920px) {
+/* ===== 超宽屏优化（1921px开始才生效）===== */
+@media (min-width: 1921px) {
   :root {
     --vp-layout-max-width: 2400px;
   }
@@ -77,6 +92,20 @@
   .VPDoc .content {
     max-width: 2000px !important;
   }
+}
+
+/* ===== 导航和页脚宽度适配 ===== */
+
+/* 导航栏宽度适配 */
+.VPNavBar .container {
+  max-width: var(--vp-layout-max-width);
+  margin: 0 auto;
+}
+
+/* 页脚宽度适配 */
+.VPFooter .container {
+  max-width: var(--vp-layout-max-width);
+  margin: 0 auto;
 }
 
 /* ===== 内容区域样式优化 ===== */
@@ -170,7 +199,7 @@
 /* ===== 防止滚动条跳动 + 平滑滚动 ===== */
 html {
   overflow-y: scroll;
-  scroll-behavior: smooth;  /* 关键！恢复平滑滚动效果 */
+  scroll-behavior: smooth;  
 }
 
 /* 确保所有滚动都是平滑的 */
