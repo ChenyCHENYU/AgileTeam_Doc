@@ -218,6 +218,15 @@ export const ROBOT_COMPONENTS_DOC = [
       },
     ],
   },
+  {
+    text: "布局组件",
+    items: [
+      {
+        text: "[C_Breadcrumb] 面包屑",
+        link: `${ROBOT}/components/breadcrumb`,
+      }
+    ],
+  },
 ];
 
 const WEB = "/web";
