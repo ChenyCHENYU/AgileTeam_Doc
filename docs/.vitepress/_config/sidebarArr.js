@@ -230,6 +230,10 @@ export const ROBOT_COMPONENTS_DOC = [
         link: `${ROBOT}/components/menu`,
       },
       {
+        text: "[C_MenuTop] 菜单头部",
+        link: `${ROBOT}/components/menu-top`,
+      },
+      {
         text: "[C_Guide] 引导",
         link: `${ROBOT}/components/guide`,
       },
