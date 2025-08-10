@@ -178,6 +178,10 @@ export const ROBOT_COMPONENTS_DOC = [
         text: "[C_Table] 表格",
         link: `${ROBOT}/components/table`,
       },
+      {
+        text: "[C_FilePreview] 文件预览",
+        link: `${ROBOT}/components/file-preview`,
+      },
     ],
   },
   {
