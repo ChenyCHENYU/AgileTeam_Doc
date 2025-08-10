@@ -230,6 +230,10 @@ export const ROBOT_COMPONENTS_DOC = [
         link: `${ROBOT}/components/layout`,
       },
       {
+        text: "[C_Header] 头部",
+        link: `${ROBOT}/components/header`,
+      },
+      {
         text: "[C_GlobalSearch] 搜索",
         link: `${ROBOT}/components/global-search`,
       },
