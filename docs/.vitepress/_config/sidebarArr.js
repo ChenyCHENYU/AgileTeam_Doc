@@ -242,7 +242,7 @@ export const ROBOT_COMPONENTS_DOC = [
         link: `${ROBOT}/components/tags-view`,
       },
       {
-        text: "[C_Captcha] 验证器",
+        text: "[C_Captcha] 拼图验证码",
         link: `${ROBOT}/components/captcha`,
       },
     ],
