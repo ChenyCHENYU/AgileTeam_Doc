@@ -224,7 +224,11 @@ export const ROBOT_COMPONENTS_DOC = [
       {
         text: "[C_Breadcrumb] 面包屑",
         link: `${ROBOT}/components/breadcrumb`,
-      }
+      },
+      {
+        text: "[C_Menu] 菜单",
+        link: `${ROBOT}/components/menu`,
+      },
     ],
   },
 ];
