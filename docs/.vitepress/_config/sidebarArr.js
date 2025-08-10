@@ -237,6 +237,14 @@ export const ROBOT_COMPONENTS_DOC = [
         text: "[C_Guide] 引导",
         link: `${ROBOT}/components/guide`,
       },
+      {
+        text: "[C_TagsView] 标签页",
+        link: `${ROBOT}/components/tags-view`,
+      },
+      {
+        text: "[C_Captcha] 验证器",
+        link: `${ROBOT}/components/captcha`,
+      },
     ],
   },
 ];
