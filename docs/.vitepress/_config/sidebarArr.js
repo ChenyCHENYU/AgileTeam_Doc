@@ -226,24 +226,32 @@ export const ROBOT_COMPONENTS_DOC = [
     text: "布局组件",
     items: [
       {
-        text: "[C_Breadcrumb] 面包屑",
-        link: `${ROBOT}/components/breadcrumb`,
+        text: "[C_Layout] 布局",
+        link: `${ROBOT}/components/layout`,
       },
       {
-        text: "[C_Menu] 菜单",
-        link: `${ROBOT}/components/menu`,
-      },
-      {
-        text: "[C_MenuTop] 菜单头部",
-        link: `${ROBOT}/components/menu-top`,
+        text: "[C_GlobalSearch] 搜索",
+        link: `${ROBOT}/components/global-search`,
       },
       {
         text: "[C_Guide] 引导",
         link: `${ROBOT}/components/guide`,
       },
       {
+        text: "[C_Breadcrumb] 面包屑",
+        link: `${ROBOT}/components/breadcrumb`,
+      },
+      {
         text: "[C_TagsView] 标签页",
         link: `${ROBOT}/components/tags-view`,
+      },
+      {
+        text: "[C_MenuTop] 菜单头部",
+        link: `${ROBOT}/components/menu-top`,
+      },
+      {
+        text: "[C_Menu] 菜单",
+        link: `${ROBOT}/components/menu`,
       },
       {
         text: "[C_Captcha] 拼图验证码",
