@@ -62,7 +62,7 @@
   top: var(--vp-nav-height) !important; /* 从导航栏底部开始 */
   left: 0 !important;
   bottom: 0 !important;
-  width: 240px !important;
+  width: 260px !important;
   z-index: 10 !important;
   padding-top: 0 !important; /* 移除额外的padding-top */
   height: calc(100vh - var(--vp-nav-height)) !important; /* 高度为视口减去导航栏 */
@@ -108,7 +108,7 @@
       padding-left: 0 !important;
     }
     
-    /* 修复有侧边栏时的内容对齐 */
+                                /* 修复右侧边栏时的内容对齐 */
     .VPDoc.has-sidebar .container {
       margin-left: 240px !important; /* 侧边栏宽度 */
       padding-left: 32px !important;
@@ -237,7 +237,7 @@
 
   /* 侧边栏和右侧目录保持合理宽度 */
   .VPSidebar {
-    width: clamp(240px, 10vw, 300px) !important;
+    width: clamp(260px, 10vw, 300px) !important;
   }
 
   .VPDocAside {
@@ -484,6 +484,11 @@ html {
   padding-top: var(--vp-nav-height) !important;
 }
 
-#VPContent {
-  padding-top: 0;
+#VPContent.is-home {
+  padding-top: 0 !important;
 }
+
+.VPHero .container {
+  gap: 380px !important;
+}
+
