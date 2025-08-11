@@ -34,10 +34,10 @@ npm install naive-ui
   <C_Date mode="date" @change="handleDateChange" />
 
   <!-- 日期范围选择 -->
-  <C_Date mode="daterange" @change="handleRangeChange" />
+  <C_Date mode="daterange" @change="handleRangeChange" /> // [!code highlight]
 
   <!-- 智能双日期选择 -->
-  <C_Date mode="smart-range" @update:smartRange="handleSmartRangeChange" />
+  <C_Date mode="smart-range" @update:smartRange="handleSmartRangeChange" /> // [!code highlight]
 </template>
 
 <script setup>
@@ -64,7 +64,7 @@ const handleSmartRangeChange = (value) => {
     <div class="demo-section">
       <h4>单日期选择</h4>
       <C_Date
-        mode="date"
+        mode="date" // [!code highlight]
         placeholder="请选择日期"
         @update:singleDate="handleSingleDate"
       />
@@ -74,7 +74,7 @@ const handleSmartRangeChange = (value) => {
     <div class="demo-section">
       <h4>日期时间选择</h4>
       <C_Date
-        mode="datetime"
+        mode="datetime" // [!code highlight]
         placeholder="请选择日期时间"
         value-format="yyyy-MM-dd HH:mm:ss"
         @update:singleDateTime="handleSingleDateTime"
@@ -85,7 +85,7 @@ const handleSmartRangeChange = (value) => {
     <div class="demo-section">
       <h4>日期范围选择</h4>
       <C_Date
-        mode="daterange"
+        mode="daterange" // [!code highlight]
         start-placeholder="开始日期"
         end-placeholder="结束日期"
         @update:dateRange="handleDateRange"
@@ -96,7 +96,7 @@ const handleSmartRangeChange = (value) => {
     <div class="demo-section">
       <h4>日期时间范围选择</h4>
       <C_Date
-        mode="datetimerange"
+        mode="datetimerange" // [!code highlight]
         start-placeholder="开始日期时间"
         end-placeholder="结束日期时间"
         value-format="yyyy-MM-dd HH:mm:ss"
@@ -108,7 +108,7 @@ const handleSmartRangeChange = (value) => {
     <div class="demo-section">
       <h4>智能双日期选择</h4>
       <C_Date
-        mode="smart-range"
+        mode="smart-range" // [!code highlight]
         start-placeholder="选择开始日期"
         end-placeholder="选择结束日期"
         @update:smartRange="handleSmartRange"
@@ -216,8 +216,7 @@ type DateRangeValue = [number, number] | null
 
 ## 🎨 使用示例
 
-### 场景 1: 假期申请系统
-
+::: details 🏖️ 假期申请系统 - 智能假期时间选择
 ```vue
 <template>
   <div class="vacation-application">
@@ -233,7 +232,7 @@ type DateRangeValue = [number, number] | null
 
       <n-form-item label="假期时间" path="dateRange">
         <C_Date
-          mode="smart-range"
+          mode="smart-range" // [!code highlight]
           start-placeholder="假期开始日期"
           end-placeholder="假期结束日期"
           :disabled-before-today="true"
@@ -292,8 +291,8 @@ const vacationRules = {
     trigger: 'change',
   },
   dateRange: {
-    validator: (rule, value) => {
-      if (!value || value.length !== 2) {
+    validator: (rule, value) => { // [!code highlight]
+      if (!value || !Array.isArray(value) || value.length !== 2) {
         return new Error('请选择完整的假期时间')
       }
 
@@ -362,9 +361,9 @@ const formatDate = (timestamp) => {
 }
 </style>
 ```
+:::
 
-### 场景 2: 活动报名时间管理
-
+::: details 🎉 活动报名时间管理 - 报名时间限制配置
 ```vue
 <template>
   <div class="event-registration">
@@ -380,7 +379,7 @@ const formatDate = (timestamp) => {
 
         <n-form-item label="活动日期">
           <C_Date
-            mode="daterange"
+            mode="daterange" // [!code highlight]
             start-placeholder="活动开始日期"
             end-placeholder="活动结束日期"
             :disabled-before-today="true"
@@ -390,7 +389,7 @@ const formatDate = (timestamp) => {
 
         <n-form-item label="报名时间">
           <C_Date
-            mode="smart-range"
+            mode="smart-range" // [!code highlight]
             start-placeholder="报名开始时间"
             end-placeholder="报名截止时间"
             :disabled-before-today="true"
@@ -452,7 +451,7 @@ const eventForm = ref({
 const eventPreview = ref(null)
 
 // 报名截止时间不能晚于活动开始时间
-const registrationEndDateProps = computed(() => ({
+const registrationEndDateProps = computed(() => ({ // [!code highlight]
   isDateDisabled: (timestamp) => {
     if (!eventForm.value.eventDate || !eventForm.value.eventDate[0]) {
       return false
@@ -463,7 +462,7 @@ const registrationEndDateProps = computed(() => ({
   },
 }))
 
-const handleEventDateChange = (value) => {
+const handleEventDateChange = (value) => { // [!code highlight]
   eventForm.value.eventDate = value
   // 如果活动日期改变，重置报名时间
   eventForm.value.registrationDate = null
@@ -546,9 +545,9 @@ const formatDate = (timestamp) => {
 }
 </style>
 ```
+:::
 
-### 场景 3: 财务报表查询
-
+::: details 📊 财务报表查询 - 动态时间范围和快捷选择
 ```vue
 <template>
   <div class="financial-report">
@@ -561,13 +560,13 @@ const formatDate = (timestamp) => {
               v-model:value="queryForm.reportType"
               :options="reportTypes"
               placeholder="请选择报表类型"
-              @update:value="handleReportTypeChange"
+              @update:value="handleReportTypeChange" // [!code highlight]
             />
           </n-form-item>
 
           <n-form-item label="查询时间">
             <C_Date
-              :mode="datePickerMode"
+              :mode="datePickerMode" // [!code highlight]
               :start-placeholder="startPlaceholder"
               :end-placeholder="endPlaceholder"
               :placeholder="singlePlaceholder"
@@ -594,7 +593,7 @@ const formatDate = (timestamp) => {
             v-for="quick in quickDates"
             :key="quick.label"
             size="small"
-            @click="handleQuickDate(quick)"
+            @click="handleQuickDate(quick)" // [!code highlight]
           >
             {{ quick.label }}
           </n-button>
@@ -646,7 +645,7 @@ const reportTypes = [
   { label: '自定义区间', value: 'custom' },
 ]
 
-const quickDates = computed(() => {
+const quickDates = computed(() => { // [!code highlight]
   const today = new Date()
   const getDateTimestamp = (date) => {
     date.setHours(0, 0, 0, 0)
@@ -696,7 +695,7 @@ const quickDates = computed(() => {
 })
 
 // 根据报表类型确定日期选择器模式
-const datePickerMode = computed(() => {
+const datePickerMode = computed(() => { // [!code highlight]
   const { reportType } = queryForm.value
   if (reportType === 'daily') return 'date'
   if (reportType === 'custom') return 'daterange'
@@ -887,9 +886,9 @@ const formatDate = (timestamp) => {
 }
 </style>
 ```
+:::
 
-### 场景 4: 任务进度跟踪
-
+::: details 📈 任务进度跟踪 - 计划与实际时间对比分析
 ```vue
 <template>
   <div class="task-tracking">
@@ -906,7 +905,7 @@ const formatDate = (timestamp) => {
 
           <n-form-item label="计划时间">
             <C_Date
-              mode="smart-range"
+              mode="smart-range" // [!code highlight]
               start-placeholder="计划开始时间"
               end-placeholder="计划结束时间"
               :disabled-before-today="false"
@@ -916,7 +915,7 @@ const formatDate = (timestamp) => {
 
           <n-form-item label="实际时间">
             <C_Date
-              mode="smart-range"
+              mode="smart-range" // [!code highlight]
               start-placeholder="实际开始时间"
               end-placeholder="实际结束时间"
               :disabled-before-today="false"
@@ -1035,7 +1034,7 @@ const progressMarks = {
 }
 
 // 实际开始时间限制
-const actualStartDateProps = computed(() => ({
+const actualStartDateProps = computed(() => ({ // [!code highlight]
   isDateDisabled: (timestamp) => {
     // 实际开始时间不能早于计划开始时间
     if (taskForm.value.plannedDate && taskForm.value.plannedDate[0]) {
@@ -1064,7 +1063,7 @@ const canAnalyze = computed(() => {
   )
 })
 
-const handlePlannedDateChange = (value) => {
+const handlePlannedDateChange = (value) => { // [!code highlight]
   taskForm.value.plannedDate = value
   // 重置实际时间
   taskForm.value.actualDate = null
@@ -1285,11 +1284,11 @@ const formatDate = (timestamp) => {
 }
 </style>
 ```
+:::
 
 ## 🛠️ 高级用法
 
-### 动态禁用规则
-
+::: details 🔒 动态禁用规则 - 智能日期限制
 ```vue
 <template>
   <div class="dynamic-disable">
@@ -1300,7 +1299,7 @@ const formatDate = (timestamp) => {
 
     <C_Date
       mode="daterange"
-      :start-date-props="dynamicStartProps"
+      :start-date-props="dynamicStartProps" // [!code highlight]
       :end-date-props="dynamicEndProps"
       @change="handleDateChange"
     />
@@ -1310,7 +1309,7 @@ const formatDate = (timestamp) => {
 <script setup>
 const weekendsOnly = ref(false)
 
-const dynamicStartProps = computed(() => ({
+const dynamicStartProps = computed(() => ({ // [!code highlight]
   isDateDisabled: (timestamp) => {
     if (!weekendsOnly.value) return false
 
@@ -1340,9 +1339,9 @@ const handleDateChange = (value) => {
 }
 </script>
 ```
+:::
 
-### 自定义格式化
-
+::: details 🎨 自定义格式化 - 多种日期格式支持
 ```vue
 <template>
   <div class="custom-format">
@@ -1350,7 +1349,7 @@ const handleDateChange = (value) => {
       v-model:value="dateFormat"
       @update:value="handleFormatChange"
     >
-      <n-radio value="yyyy-MM-dd">标准格式 (2024-01-01)</n-radio>
+      <n-radio value="yyyy-MM-dd">标准格式 (2024-01-01)</n-radio> // [!code highlight]
       <n-radio value="yyyy/MM/dd">斜杠格式 (2024/01/01)</n-radio>
       <n-radio value="MM-dd-yyyy">美式格式 (01-01-2024)</n-radio>
       <n-radio value="dd/MM/yyyy">欧式格式 (01/01/2024)</n-radio>
@@ -1358,7 +1357,7 @@ const handleDateChange = (value) => {
 
     <C_Date
       mode="daterange"
-      :value-format="dateFormat"
+      :value-format="dateFormat" // [!code highlight]
       @change="handleDateChange"
     />
 
@@ -1370,7 +1369,7 @@ const handleDateChange = (value) => {
 const dateFormat = ref('yyyy-MM-dd')
 const formattedResult = ref('')
 
-const handleFormatChange = (format) => {
+const handleFormatChange = (format) => { // [!code highlight]
   console.log('格式变更:', format)
 }
 
@@ -1389,9 +1388,9 @@ const formatTimestamp = (timestamp) => {
 }
 </script>
 ```
+:::
 
-### 联动多个日期选择器
-
+::: details 🔗 联动多个日期选择器 - 项目阶段时间级联
 ```vue
 <template>
   <div class="cascading-dates">
@@ -1405,7 +1404,7 @@ const formatTimestamp = (timestamp) => {
           start-placeholder="需求分析开始"
           end-placeholder="需求分析结束"
           :disabled-before-today="true"
-          @update:smartRange="handlePhase1Change"
+          @update:smartRange="handlePhase1Change" // [!code highlight]
         />
       </div>
 
@@ -1415,7 +1414,7 @@ const formatTimestamp = (timestamp) => {
           mode="smart-range"
           start-placeholder="开发开始"
           end-placeholder="开发结束"
-          :start-date-props="phase2StartProps"
+          :start-date-props="phase2StartProps" // [!code highlight]
           :end-date-props="phase2EndProps"
           @update:smartRange="handlePhase2Change"
         />
@@ -1427,7 +1426,7 @@ const formatTimestamp = (timestamp) => {
           mode="smart-range"
           start-placeholder="测试开始"
           end-placeholder="测试结束"
-          :start-date-props="phase3StartProps"
+          :start-date-props="phase3StartProps" // [!code highlight]
           :end-date-props="phase3EndProps"
           @update:smartRange="handlePhase3Change"
         />
@@ -1458,7 +1457,7 @@ const phase2Date = ref(null) // 开发
 const phase3Date = ref(null) // 测试
 
 // 开发阶段不能早于需求分析结束
-const phase2StartProps = computed(() => ({
+const phase2StartProps = computed(() => ({ // [!code highlight]
   isDateDisabled: (timestamp) => {
     if (!phase1Date.value || !phase1Date.value[1]) return false
     return timestamp < phase1Date.value[1]
@@ -1513,7 +1512,7 @@ const phaseTimeline = computed(() => {
   ]
 })
 
-const handlePhase1Change = (value) => {
+const handlePhase1Change = (value) => { // [!code highlight]
   phase1Date.value = value
   // 重置后续阶段
   if (value) {
@@ -1611,6 +1610,7 @@ const formatDate = (timestamp) => {
 }
 </style>
 ```
+:::
 
 ## 🔧 自定义样式
 
@@ -1618,7 +1618,7 @@ const formatDate = (timestamp) => {
 
 ```scss
 .c-date-wrapper {
-  --date-primary-color: #1890ff;
+  --date-primary-color: #1890ff; // [!code highlight]
   --date-border-color: #d9d9d9;
   --date-hover-border-color: #40a9ff;
   --date-focus-border-color: #1890ff;
@@ -1639,7 +1639,7 @@ const formatDate = (timestamp) => {
   width: 100%;
 
   :deep(.flex) {
-    @media (max-width: 768px) {
+    @media (max-width: 768px) { // [!code highlight]
       flex-direction: column;
       gap: 8px;
     }
@@ -1662,7 +1662,7 @@ const formatDate = (timestamp) => {
 </template>
 
 <style scoped>
-.custom-spacing :deep(.gap-2\.5) {
+.custom-spacing :deep(.gap-2\.5) { // [!code highlight]
   gap: 16px;
 
   @media (max-width: 768px) {
@@ -1676,49 +1676,67 @@ const formatDate = (timestamp) => {
 
 ### 1. 模式选择
 
-```vue
-<!-- ✅ 推荐：根据需求选择合适的模式 -->
-<C_Date mode="smart-range" />
+::: code-group
+
+```vue [✅ 推荐]
+<!-- 根据需求选择合适的模式 -->
+<C_Date mode="smart-range" /> // [!code highlight]
 <!-- 需要联动限制时 -->
 <C_Date mode="daterange" />
 <!-- 简单范围选择时 -->
+```
 
-<!-- ❌ 不推荐：所有场景都使用同一种模式 -->
-<C_Date mode="daterange" />
+```vue [❌ 不推荐]
+<!-- 所有场景都使用同一种模式 -->
+<C_Date mode="daterange" /> // [!code error]
 <!-- 所有场景 -->
 ```
 
+:::
+
 ### 2. 禁用规则设置
 
-```vue
-<!-- ✅ 推荐：合理设置禁用规则 -->
+::: code-group
+
+```vue [✅ 推荐]
+<!-- 合理设置禁用规则 -->
 <C_Date
-  :disabled-before-today="true"  <!-- 预约类业务 -->
+  :disabled-before-today="true"  <!-- 预约类业务 --> // [!code highlight]
   :disabled-after-today="false"
 />
+```
 
-<!-- ❌ 不推荐：过度限制 -->
+```vue [❌ 不推荐]
+<!-- 过度限制 -->
 <C_Date
   :disabled-before-today="true"
-  :disabled-after-today="true"  <!-- 只能选今天 -->
+  :disabled-after-today="true"  <!-- 只能选今天 --> // [!code error]
 />
 ```
+
+:::
 
 ### 3. 事件监听
 
-```vue
-<!-- ✅ 推荐：监听具体事件 -->
-<C_Date
-  mode="smart-range"
-  @update:smartRange="handleSmartRange"
-/>
+::: code-group
 
-<!-- ❌ 不推荐：只监听通用事件 -->
+```vue [✅ 推荐]
+<!-- 监听具体事件 -->
 <C_Date
   mode="smart-range"
-  @change="handleChange"  <!-- 不如具体事件清晰 -->
+  @update:smartRange="handleSmartRange" // [!code highlight]
 />
 ```
+
+```vue [❌ 不推荐]
+<!-- 只监听通用事件 -->
+<C_Date
+  mode="smart-range"
+  @change="handleChange"  <!-- 不如具体事件清晰 --> // [!code error]
+/>
+```
+
+:::
 
 ## 🐛 故障排除
 
@@ -1734,10 +1752,10 @@ const formatDate = (timestamp) => {
 
 ```vue
 <!-- 确保正确配置 -->
-<C_Date mode="smart-range" @update:smartRange="handleSmartRange" />
+<C_Date mode="smart-range" @update:smartRange="handleSmartRange" /> // [!code highlight]
 
 <script setup>
-const handleSmartRange = (value) => {
+const handleSmartRange = (value) => { // [!code highlight]
   console.log('智能范围变更:', value)
   // 确保事件处理函数存在
 }
@@ -1748,19 +1766,25 @@ const handleSmartRange = (value) => {
 
 **A2:** 检查 valueFormat 设置：
 
-```vue
-<!-- ✅ 正确的格式设置 -->
-<C_Date
-  mode="datetime"
-  value-format="yyyy-MM-dd HH:mm:ss"
-/>
+::: code-group
 
-<!-- ❌ 格式字符串错误 -->
+```vue [✅ 正确]
+<!-- 正确的格式设置 -->
 <C_Date
   mode="datetime"
-  value-format="YYYY-mm-dd"  <!-- 应该是 yyyy-MM-dd -->
+  value-format="yyyy-MM-dd HH:mm:ss" // [!code highlight]
 />
 ```
+
+```vue [❌ 错误]
+<!-- 格式字符串错误 -->
+<C_Date
+  mode="datetime"
+  value-format="YYYY-mm-dd"  <!-- 应该是 yyyy-MM-dd --> // [!code error]
+/>
+```
+
+:::
 
 #### Q3: 禁用规则不生效？
 
@@ -1770,13 +1794,13 @@ const handleSmartRange = (value) => {
 <template>
   <C_Date
     mode="smart-range"
-    :start-date-props="startProps"
+    :start-date-props="startProps" // [!code highlight]
     :end-date-props="endProps"
   />
 </template>
 
 <script setup>
-const startProps = computed(() => ({
+const startProps = computed(() => ({ // [!code highlight]
   isDateDisabled: (timestamp) => {
     // 禁用逻辑
     return false
@@ -1805,7 +1829,7 @@ const endProps = computed(() => ({
 <script setup>
 const datePickerRef = ref()
 
-const handleClear = () => {
+const handleClear = () => { // [!code highlight]
   datePickerRef.value?.clearAll()
 }
 </script>
@@ -1818,20 +1842,20 @@ const handleClear = () => {
 ```vue
 <!-- ✅ 推荐：根据业务特点选择 -->
 <!-- 预约业务：使用智能范围，禁用过去日期 -->
-<C_Date mode="smart-range" :disabled-before-today="true" />
+<C_Date mode="smart-range" :disabled-before-today="true" /> // [!code highlight]
 
 <!-- 报表查询：使用普通范围，允许历史日期 -->
-<C_Date mode="daterange" :disabled-after-today="true" />
+<C_Date mode="daterange" :disabled-after-today="true" /> // [!code highlight]
 
 <!-- 生日选择：使用单日期，禁用未来日期 -->
-<C_Date mode="date" :disabled-after-today="true" />
+<C_Date mode="date" :disabled-after-today="true" /> // [!code highlight]
 ```
 
 ### 2. 合理的默认值设置
 
 ```vue
 <script setup>
-const getIntelligentDefaults = () => {
+const getIntelligentDefaults = () => { // [!code highlight]
   const now = new Date()
   const tomorrow = new Date(now.getTime() + 24 * 60 * 60 * 1000)
   const nextWeek = new Date(now.getTime() + 7 * 24 * 60 * 60 * 1000)
@@ -1855,7 +1879,7 @@ const getIntelligentDefaults = () => {
 <template>
   <n-form :model="formData" :rules="dateRules">
     <n-form-item label="活动时间" path="eventDate">
-      <C_Date mode="smart-range" @update:smartRange="handleEventDateChange" />
+      <C_Date mode="smart-range" @update:smartRange="handleEventDateChange" /> // [!code highlight]
     </n-form-item>
   </n-form>
 </template>
@@ -1867,7 +1891,7 @@ const formData = ref({
 
 const dateRules = {
   eventDate: {
-    validator: (rule, value) => {
+    validator: (rule, value) => { // [!code highlight]
       if (!value || !Array.isArray(value) || value.length !== 2) {
         return new Error('请选择完整的活动时间')
       }
@@ -1900,7 +1924,7 @@ const handleEventDateChange = (value) => {
 ```vue
 <script setup>
 // 使用计算属性优化禁用函数
-const disabledDateCache = new Map()
+const disabledDateCache = new Map() // [!code highlight]
 
 const optimizedDisabledDate = computed(() => {
   return (timestamp) => {
