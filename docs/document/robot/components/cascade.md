@@ -18,21 +18,40 @@ outline: 'deep'
 
 ## 📦 安装
 
-```bash
+::: code-group
+
+```bash [bun (推荐)]
+# 基于 Naive UI，确保已安装依赖
+bun install naive-ui
+```
+
+```bash [pnpm]
+# 基于 Naive UI，确保已安装依赖
+pnpm install naive-ui
+```
+
+```bash [yarn]
+# 基于 Naive UI，确保已安装依赖
+yarn add naive-ui
+```
+
+```bash [npm]
 # 基于 Naive UI，确保已安装依赖
 npm install naive-ui
 ```
+
+:::
 
 ## 🎯 快速开始
 
 ### 基础使用
 
-```vue
+```vue {5,14}
 <template>
   <!-- 最简单的使用方式 -->
   <C_Cascade
     :data="cascadeData"
-    v-model="selectedValue" // [!code highlight]
+    v-model="selectedValue"
     @change="handleChange"
   />
 </template>
@@ -46,7 +65,7 @@ const cascadeData = [
   {
     label: '浙江省',
     value: 'zhejiang',
-    children: [ // [!code highlight]
+    children: [
       {
         label: '杭州市',
         value: 'hangzhou',
@@ -67,11 +86,11 @@ const handleChange = (value) => {
 
 ### 自定义占位符
 
-```vue
+```vue {4}
 <template>
   <C_Cascade
     :data="cascadeData"
-    :placeholders="['选择省份', '选择城市', '选择区县']" // [!code highlight]
+    :placeholders="['选择省份', '选择城市', '选择区县']"
     v-model="selectedValue"
   />
 </template>
@@ -138,13 +157,13 @@ interface CascadeValue {
 ## 🎨 使用示例
 
 ::: details 🌍 地区选择器 - 省市区三级联动
-```vue
+```vue {6,7,8,9,23}
 <template>
   <div class="region-selector">
     <h3>请选择地区</h3>
     <C_Cascade
       :data="regionData"
-      :placeholders="['省份', '城市', '区县']" // [!code highlight]
+      :placeholders="['省份', '城市', '区县']"
       v-model="selectedRegion"
       @change="handleRegionChange"
     />
@@ -198,7 +217,7 @@ const regionData = [
   },
 ]
 
-const handleRegionChange = (value) => { // [!code highlight]
+const handleRegionChange = (value) => {
   console.log('地区变更:', value)
 }
 
@@ -217,12 +236,12 @@ const getSelectedPath = () => {
 :::
 
 ::: details 🏢 部门选择器 - 组织架构级联
-```vue
+```vue {6,7,8,9,39}
 <template>
   <div class="department-selector">
     <C_Cascade
       :data="departmentData"
-      :placeholders="['选择公司', '选择部门', '选择小组']" // [!code highlight]
+      :placeholders="['选择公司', '选择部门', '选择小组']"
       v-model="selectedDepartment"
       @change="handleDepartmentChange"
     />
@@ -257,7 +276,7 @@ const departmentData = [
   },
 ]
 
-const handleDepartmentChange = (value) => { // [!code highlight]
+const handleDepartmentChange = (value) => {
   // 可以根据选择结果进行权限控制等操作
   if (value.tertiary) {
     console.log('已选择到具体小组:', value.tertiary.label)
@@ -268,13 +287,13 @@ const handleDepartmentChange = (value) => { // [!code highlight]
 :::
 
 ::: details 🛍️ 分类选择器 - 商品分类管理
-```vue
+```vue {6,7,8,9,50}
 <template>
   <div class="category-selector">
     <h3>商品分类</h3>
     <C_Cascade
       :data="categoryData"
-      :placeholders="['一级分类', '二级分类', '三级分类']" // [!code highlight]
+      :placeholders="['一级分类', '二级分类', '三级分类']"
       v-model="selectedCategory"
       @change="handleCategoryChange"
     />
@@ -320,7 +339,7 @@ const categoryData = [
   },
 ]
 
-const handleCategoryChange = (value) => { // [!code highlight]
+const handleCategoryChange = (value) => {
   // 根据分类选择加载对应商品
   if (value.tertiary) {
     loadProductsByCategory(value.tertiary.value)
@@ -337,12 +356,12 @@ const loadProductsByCategory = (categoryId) => {
 ## 🛠️ 高级用法
 
 ::: details 🔄 动态数据加载 - 异步获取级联数据
-```vue
+```vue {5,6,7,19}
 <template>
   <C_Cascade
     :data="dynamicData"
     v-model="selectedValue"
-    @change="handleDynamicChange" // [!code highlight]
+    @change="handleDynamicChange"
   />
 </template>
 
@@ -360,7 +379,7 @@ onMounted(async () => {
   }
 })
 
-const handleDynamicChange = async (value) => { // [!code highlight]
+const handleDynamicChange = async (value) => {
   // 当选择第一级时，动态加载第二级数据
   if (value.primary && !value.secondary) {
     const item = dynamicData.value.find((x) => x.value === value.primary.value)
@@ -382,13 +401,13 @@ const handleDynamicChange = async (value) => { // [!code highlight]
 :::
 
 ::: details 📋 表单集成 - 与 Naive UI 表单组件结合
-```vue
+```vue {5,6,7,8,17,18,19,20,21,22,23}
 <template>
   <n-form :model="formData" :rules="rules" ref="formRef">
     <n-form-item label="所属地区" path="region">
       <C_Cascade
         :data="regionData"
-        v-model="formData.region" // [!code highlight]
+        v-model="formData.region"
         :placeholders="['省份', '城市', '区县']"
       />
     </n-form-item>
@@ -408,7 +427,7 @@ const formData = ref({
 
 const rules = {
   region: {
-    validator: (rule, value) => { // [!code highlight]
+    validator: (rule, value) => {
       if (!value.tertiary) {
         return new Error('请选择完整的地区信息')
       }
@@ -434,17 +453,17 @@ const handleReset = () => {
 :::
 
 ::: details 🎨 自定义样式 - 响应式设计和主题定制
-```vue
+```vue {5}
 <template>
   <C_Cascade
     :data="cascadeData"
     v-model="selectedValue"
-    class="custom-cascade" // [!code highlight]
+    class="custom-cascade"
   />
 </template>
 
 <style scoped>
-.custom-cascade { // [!code highlight]
+.custom-cascade {
   :deep(.n-select-item) {
     min-width: 160px;
     border-radius: 8px;
@@ -479,12 +498,12 @@ const handleReset = () => {
 
 ::: code-group
 
-```javascript [✅ 推荐]
+```javascript [✅ 推荐] {4,5}
 // 规范的数据结构
 const correctData = [
   {
-    label: '选项名称', // 必须：显示文本 // [!code highlight]
-    value: 'option_value', // 必须：唯一值 // [!code highlight]
+    label: '选项名称', // 必须：显示文本
+    value: 'option_value', // 必须：唯一值
     children: [ // 可选：子级数据
       {
         label: '子选项',
@@ -495,12 +514,12 @@ const correctData = [
 ]
 ```
 
-```javascript [❌ 不推荐]
+```javascript [❌ 不推荐] {4,5}
 // 缺少必要字段
 const incorrectData = [
   {
-    name: '选项名称', // 错误：应该是 label // [!code error]
-    id: 'option_id', // 错误：应该是 value // [!code error]
+    name: '选项名称', // 错误：应该是 label
+    id: 'option_id', // 错误：应该是 value
   },
 ]
 ```
@@ -513,12 +532,12 @@ const incorrectData = [
 
 ```vue [✅ 推荐]
 <!-- 合理的数据量 -->
-<C_Cascade :data="reasonableData" /> // [!code highlight]
+<C_Cascade :data="reasonableData" />
 ```
 
 ```vue [❌ 不推荐]
 <!-- 过多的数据层级 -->
-<!-- 避免超过 1000+ 选项的单级数据 --> // [!code error]
+<!-- 避免超过 1000+ 选项的单级数据 -->
 ```
 
 :::
@@ -527,18 +546,18 @@ const incorrectData = [
 
 ::: code-group
 
-```vue [✅ 推荐]
+```vue [✅ 推荐] {5}
 <!-- 完整的验证逻辑 -->
 <C_Cascade
   :data="cascadeData"
   v-model="formData.region"
-  @change="validateRegion" // [!code highlight]
+  @change="validateRegion"
 />
 ```
 
 ```vue [❌ 不推荐]
 <!-- 缺少验证 -->
-<C_Cascade :data="cascadeData" v-model="formData.region" /> // [!code error]
+<C_Cascade :data="cascadeData" v-model="formData.region" />
 ```
 
 :::
@@ -555,11 +574,11 @@ const incorrectData = [
 2. 检查 children 字段是否存在
 3. 确认 value 值唯一性
 
-```vue
+```vue {3}
 <!-- 检查数据结构 -->
 <template>
   <div>
-    <pre>{{ JSON.stringify(cascadeData, null, 2) }}</pre> // [!code highlight]
+    <pre>{{ JSON.stringify(cascadeData, null, 2) }}</pre>
     <C_Cascade :data="cascadeData" v-model="selectedValue" />
   </div>
 </template>
@@ -571,17 +590,17 @@ const incorrectData = [
 
 ::: code-group
 
-```vue [✅ 正确]
+```vue [✅ 正确] {3}
 <script setup>
 // 正确的初始值
-const selectedValue = ref({}) // [!code highlight]
+const selectedValue = ref({})
 </script>
 ```
 
-```vue [❌ 错误]
+```vue [❌ 错误] {3}
 <script setup>
 // 错误的初始值
-const selectedValue = ref(null) // 应该是对象 // [!code error]
+const selectedValue = ref(null) // 应该是对象
 </script>
 ```
 
@@ -591,10 +610,10 @@ const selectedValue = ref(null) // 应该是对象 // [!code error]
 
 **A3:** 确保正确导入 Naive UI 样式：
 
-```javascript
+```javascript {3}
 // main.js
 import { createApp } from 'vue'
-import naive from 'naive-ui' // [!code highlight]
+import naive from 'naive-ui'
 import 'vfonts/Lato.css'
 import 'vfonts/FiraCode.css'
 
@@ -606,14 +625,14 @@ app.use(naive)
 
 **A4:** 添加错误处理：
 
-```vue
+```vue {6}
 <script setup>
 const loadData = async () => {
   try {
     const data = await fetchCascadeData()
     cascadeData.value = data
   } catch (error) {
-    console.error('数据加载失败:', error) // [!code highlight]
+    console.error('数据加载失败:', error)
     // 显示错误提示
     $message.error('数据加载失败，请重试')
   }
@@ -625,9 +644,9 @@ const loadData = async () => {
 
 ### 1. 数据预处理
 
-```javascript
+```javascript {2}
 // ✅ 推荐：统一数据格式
-const preprocessData = (rawData) => { // [!code highlight]
+const preprocessData = (rawData) => {
   return rawData.map((item) => ({
     label: item.name || item.label,
     value: item.id || item.value,
@@ -638,10 +657,10 @@ const preprocessData = (rawData) => { // [!code highlight]
 
 ### 2. 异步加载优化
 
-```vue
+```vue {3}
 <script setup>
 // ✅ 推荐：缓存机制
-const dataCache = new Map() // [!code highlight]
+const dataCache = new Map()
 
 const loadLevelData = async (parentValue) => {
   if (dataCache.has(parentValue)) {
@@ -657,10 +676,10 @@ const loadLevelData = async (parentValue) => {
 
 ### 3. 用户体验优化
 
-```vue
+```vue {3}
 <template>
   <!-- 加载状态 -->
-  <n-spin :show="loading"> // [!code highlight]
+  <n-spin :show="loading">
     <C_Cascade
       :data="cascadeData"
       v-model="selectedValue"
@@ -674,13 +693,13 @@ const loadLevelData = async (parentValue) => {
 
 ### 4. 响应式设计
 
-```scss
+```scss {5,6,7,8,9,10,11,12,13,14,15,16}
 .cascade-container {
   .n-cascade-selector {
     display: flex;
     gap: 12px;
 
-    @media (max-width: 768px) { // [!code highlight]
+    @media (max-width: 768px) {
       flex-direction: column;
       gap: 8px;
     }
@@ -708,18 +727,6 @@ const loadLevelData = async (parentValue) => {
 - ✨ 自定义占位符
 - ✨ 基于 Naive UI 的稳定实现
 
-## 🤝 贡献指南
-
-1. Fork 项目
-2. 创建功能分支 (`git checkout -b feature/amazing-feature`)
-3. 提交更改 (`git commit -m 'Add amazing feature'`)
-4. 推送到分支 (`git push origin feature/amazing-feature`)
-5. 创建 Pull Request
-
-## 📄 许可证
-
-Copyright (c) 2025 by ChenYu, All Rights Reserved.
-
----
+<!--@include: ./snippets/contribute.md -->
 
 **💡 提示**: 这个组件设计用于团队协作，支持地区选择、部门选择、分类选择等多种场景。如果遇到问题请先查看文档，或者在团队群里讨论。让我们一起打造更好的开发体验！ 🚀

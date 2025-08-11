@@ -19,26 +19,45 @@ outline: 'deep'
 
 ## 📦 安装
 
-```bash
+::: code-group
+
+```bash [bun (推荐)]
+# 基于 Naive UI，确保已安装依赖
+bun install naive-ui
+```
+
+```bash [pnpm]
+# 基于 Naive UI，确保已安装依赖
+pnpm install naive-ui
+```
+
+```bash [yarn]
+# 基于 Naive UI，确保已安装依赖
+yarn add naive-ui
+```
+
+```bash [npm]
 # 基于 Naive UI，确保已安装依赖
 npm install naive-ui
 ```
+
+:::
 
 ## 🎯 快速开始
 
 ### 基础使用
 
-```vue
+```vue {4,10}
 <template>
   <!-- 最简单的时间段选择 -->
   <C_Time 
-    mode="range" // [!code highlight]
+    mode="range"
     @change-range="handleRangeChange"
   />
 
   <!-- 单个时间选择 -->
   <C_Time 
-    mode="single" // [!code highlight]
+    mode="single"
     @change-single="handleSingleChange"
   />
 </template>
@@ -56,7 +75,7 @@ const handleSingleChange = (time) => {
 
 ### 双模式对比
 
-```vue
+```vue {9,20}
 <template>
   <div class="time-demo">
     <!-- 时间段选择模式 -->
@@ -66,7 +85,7 @@ const handleSingleChange = (time) => {
         mode="range"
         start-placeholder="选择开始时间"
         end-placeholder="选择结束时间"
-        :enable-time-restriction="true" // [!code highlight]
+        :enable-time-restriction="true"
         @change-range="handleRangeChange"
       />
     </div>
@@ -77,7 +96,7 @@ const handleSingleChange = (time) => {
       <C_Time 
         mode="single"
         placeholder="请选择时间"
-        format="HH:mm:ss" // [!code highlight]
+        format="HH:mm:ss"
         :use-seconds="true"
         @change-single="handleSingleChange"
       />
@@ -150,7 +169,7 @@ interface Props {
 ## 🎨 使用示例
 
 ::: details ⏰ 工作时间设置 - 上下班时间配置
-```vue
+```vue {7,8,9,10,11}
 <template>
   <div class="work-time-setting">
     <h3>工作时间设置</h3>
@@ -159,7 +178,7 @@ interface Props {
       start-placeholder="上班时间"
       end-placeholder="下班时间"
       format="HH:mm"
-      :minute-step="15" // [!code highlight]
+      :minute-step="15"
       :enable-time-restriction="true"
       :default-start-time="workTimeStart"
       :default-end-time="workTimeEnd"
@@ -173,11 +192,11 @@ interface Props {
 </template>
 
 <script setup>
-const workTimeStart = ref(new Date().setHours(9, 0, 0, 0)) // [!code highlight]
+const workTimeStart = ref(new Date().setHours(9, 0, 0, 0))
 const workTimeEnd = ref(new Date().setHours(18, 0, 0, 0))
 const workTimeDisplay = ref('')
 
-const handleWorkTimeChange = (startTime, endTime) => { // [!code highlight]
+const handleWorkTimeChange = (startTime, endTime) => {
   if (startTime && endTime) {
     const start = new Date(startTime).toLocaleTimeString('zh-CN', { 
       hour: '2-digit', 
@@ -209,7 +228,7 @@ const handleWorkTimeChange = (startTime, endTime) => { // [!code highlight]
 :::
 
 ::: details 📅 会议预约系统 - 完整的预约流程
-```vue
+```vue {14,15,16,17,18,25,26,27,28,29}
 <template>
   <div class="meeting-booking">
     <h3>会议预约</h3>
@@ -224,7 +243,7 @@ const handleWorkTimeChange = (startTime, endTime) => { // [!code highlight]
           start-placeholder="会议开始时间"
           end-placeholder="会议结束时间"
           format="HH:mm"
-          :minute-step="15" // [!code highlight]
+          :minute-step="15"
           :enable-time-restriction="true"
           @change-range="handleMeetingTimeChange"
         />
@@ -232,7 +251,7 @@ const handleWorkTimeChange = (startTime, endTime) => { // [!code highlight]
 
       <n-form-item label="提醒时间" path="reminderTime">
         <C_Time 
-          mode="single" // [!code highlight]
+          mode="single"
           placeholder="提前提醒时间"
           format="HH:mm"
           :minute-step="5"
@@ -274,7 +293,7 @@ const meetingRules = {
     trigger: 'blur'
   },
   timeRange: {
-    validator: (rule, value) => { // [!code highlight]
+    validator: (rule, value) => {
       if (!value || !value.start || !value.end) {
         return new Error('请选择会议时间')
       }
@@ -341,7 +360,7 @@ const formatTime = (timestamp) => {
 :::
 
 ::: details 🏪 营业时间管理 - 一周时间设置
-```vue
+```vue {23,24,25,26,27,28,29}
 <template>
   <div class="business-hours">
     <h3>营业时间管理</h3>
@@ -363,11 +382,11 @@ const formatTime = (timestamp) => {
             start-placeholder="开始营业"
             end-placeholder="结束营业"
             format="HH:mm"
-            :minute-step="30" // [!code highlight]
+            :minute-step="30"
             :enable-time-restriction="true"
             :default-start-time="day.startTime"
             :default-end-time="day.endTime"
-            @change-range="handleBusinessTimeChange(index, $event)"
+            @change-range="(start, end) => handleBusinessTimeChange(index, start, end)"
           />
         </div>
       </div>
@@ -394,17 +413,17 @@ const businessHours = ref([
   { name: '周四', isOpen: true, startTime: null, endTime: null },
   { name: '周五', isOpen: true, startTime: null, endTime: null },
   { name: '周六', isOpen: true, startTime: null, endTime: null },
-  { name: '周日', isOpen: false, startTime: null, endTime: null }, // [!code highlight]
+  { name: '周日', isOpen: false, startTime: null, endTime: null },
 ])
 
-const handleDayToggle = (index) => { // [!code highlight]
+const handleDayToggle = (index) => {
   if (!businessHours.value[index].isOpen) {
     businessHours.value[index].startTime = null
     businessHours.value[index].endTime = null
   }
 }
 
-const handleBusinessTimeChange = (index, [startTime, endTime]) => {
+const handleBusinessTimeChange = (index, startTime, endTime) => {
   businessHours.value[index].startTime = startTime
   businessHours.value[index].endTime = endTime
 }
@@ -473,157 +492,21 @@ const getDayHoursText = (day) => {
 ```
 :::
 
-::: details ⚡ 精确时间控制 - 毫秒级时间设置
-```vue
-<template>
-  <div class="precise-time-control">
-    <h3>精确时间控制</h3>
-    
-    <!-- 毫秒级时间选择 -->
-    <div class="precision-section">
-      <h4>高精度时间</h4>
-      <C_Time 
-        mode="single"
-        placeholder="选择精确时间"
-        format="HH:mm:ss" // [!code highlight]
-        :use-seconds="true"
-        :hour-step="1"
-        :minute-step="1"
-        :second-step="1"
-        @change-single="handlePreciseTimeChange"
-      />
-      <p v-if="preciseTime" class="time-info">
-        精确时间: {{ formatPreciseTime(preciseTime) }}
-      </p>
-    </div>
-
-    <!-- 15分钟间隔时间 -->
-    <div class="interval-section">
-      <h4>15分钟间隔时间</h4>
-      <C_Time 
-        mode="range"
-        start-placeholder="开始时间"
-        end-placeholder="结束时间"
-        format="HH:mm"
-        :minute-step="15" // [!code highlight]
-        :enable-time-restriction="true"
-        @change-range="handleIntervalTimeChange"
-      />
-    </div>
-
-    <!-- 自定义步进值 -->
-    <div class="custom-step-section">
-      <h4>自定义步进值</h4>
-      <div class="step-controls">
-        <n-input-number 
-          v-model:value="customMinuteStep" 
-          :min="1" 
-          :max="30"
-          placeholder="分钟步进"
-        />
-        <n-input-number 
-          v-model:value="customSecondStep" 
-          :min="1" 
-          :max="30"
-          placeholder="秒步进"
-        />
-      </div>
-      
-      <C_Time 
-        mode="single"
-        placeholder="自定义步进时间"
-        format="HH:mm:ss"
-        :use-seconds="true"
-        :minute-step="customMinuteStep" // [!code highlight]
-        :second-step="customSecondStep"
-        @change-single="handleCustomStepTimeChange"
-      />
-    </div>
-  </div>
-</template>
-
-<script setup>
-const preciseTime = ref(null)
-const customMinuteStep = ref(5) // [!code highlight]
-const customSecondStep = ref(10)
-
-const handlePreciseTimeChange = (time) => {
-  preciseTime.value = time
-}
-
-const handleIntervalTimeChange = (startTime, endTime) => {
-  console.log('间隔时间:', {
-    start: startTime ? formatTime(startTime) : null,
-    end: endTime ? formatTime(endTime) : null
-  })
-}
-
-const handleCustomStepTimeChange = (time) => {
-  console.log('自定义步进时间:', time ? formatPreciseTime(time) : null)
-}
-
-const formatTime = (timestamp) => {
-  return new Date(timestamp).toLocaleTimeString('zh-CN', { 
-    hour: '2-digit', 
-    minute: '2-digit' 
-  })
-}
-
-const formatPreciseTime = (timestamp) => {
-  return new Date(timestamp).toLocaleTimeString('zh-CN', { 
-    hour: '2-digit', 
-    minute: '2-digit',
-    second: '2-digit'
-  })
-}
-</script>
-
-<style scoped>
-.precise-time-control {
-  max-width: 500px;
-  margin: 0 auto;
-  padding: 24px;
-}
-
-.precision-section,
-.interval-section,
-.custom-step-section {
-  margin-bottom: 32px;
-  padding: 16px;
-  border: 1px solid #e8e8e8;
-  border-radius: 8px;
-}
-
-.step-controls {
-  display: flex;
-  gap: 12px;
-  margin-bottom: 16px;
-}
-
-.time-info {
-  margin-top: 8px;
-  color: #666;
-  font-size: 14px;
-}
-</style>
-```
-:::
-
 ## 🛠️ 高级用法
 
 ::: details 🌈 动态配置时间格式 - 自适应格式选择
-```vue
+```vue {12,13,14,15}
 <template>
   <div class="dynamic-format">
     <n-radio-group v-model:value="timeFormat" @update:value="handleFormatChange">
       <n-radio value="HH:mm">小时:分钟</n-radio>
-      <n-radio value="HH:mm:ss">小时:分钟:秒</n-radio> // [!code highlight]
+      <n-radio value="HH:mm:ss">小时:分钟:秒</n-radio>
       <n-radio value="mm:ss">分钟:秒</n-radio>
     </n-radio-group>
 
     <C_Time 
       mode="range"
-      :format="timeFormat" // [!code highlight]
+      :format="timeFormat"
       :use-hours="includeHours"
       :use-minutes="includeMinutes"
       :use-seconds="includeSeconds"
@@ -635,7 +518,7 @@ const formatPreciseTime = (timestamp) => {
 <script setup>
 const timeFormat = ref('HH:mm')
 
-const includeHours = computed(() => timeFormat.value.includes('HH')) // [!code highlight]
+const includeHours = computed(() => timeFormat.value.includes('HH'))
 const includeMinutes = computed(() => timeFormat.value.includes('mm'))
 const includeSeconds = computed(() => timeFormat.value.includes('ss'))
 
@@ -651,7 +534,7 @@ const handleTimeChange = (startTime, endTime) => {
 :::
 
 ::: details 🔒 条件性禁用控制 - 智能权限管理
-```vue
+```vue {11,12,13}
 <template>
   <div class="conditional-disable">
     <n-switch 
@@ -664,7 +547,7 @@ const handleTimeChange = (startTime, endTime) => {
 
     <C_Time 
       mode="range"
-      :enable-time-restriction="enableRestriction" // [!code highlight]
+      :enable-time-restriction="enableRestriction"
       :start-time-props="startTimeProps"
       :end-time-props="endTimeProps"
       @change-range="handleTimeChange"
@@ -675,7 +558,7 @@ const handleTimeChange = (startTime, endTime) => {
 <script setup>
 const enableRestriction = ref(true)
 
-const startTimeProps = computed(() => ({ // [!code highlight]
+const startTimeProps = computed(() => ({
   disabled: !enableRestriction.value
 }))
 
@@ -697,7 +580,7 @@ const handleTimeChange = (startTime, endTime) => {
 :::
 
 ::: details ⚡ 时间预设快捷选择 - 一键设置常用时间
-```vue
+```vue {13,14,15}
 <template>
   <div class="time-presets">
     <div class="preset-buttons">
@@ -705,7 +588,7 @@ const handleTimeChange = (startTime, endTime) => {
         v-for="preset in timePresets" 
         :key="preset.label"
         size="small"
-        @click="handlePresetSelect(preset)" // [!code highlight]
+        @click="handlePresetSelect(preset)"
       >
         {{ preset.label }}
       </n-button>
@@ -725,7 +608,7 @@ const handleTimeChange = (startTime, endTime) => {
 const timePickerRef = ref()
 const selectedPreset = ref({ startTime: null, endTime: null })
 
-const timePresets = [ // [!code highlight]
+const timePresets = [
   {
     label: '上午时段',
     startTime: new Date().setHours(9, 0, 0, 0),
@@ -772,7 +655,7 @@ const handleTimeChange = (startTime, endTime) => {
 
 ```scss
 .c-time-wrapper {
-  --time-primary-color: #1890ff; // [!code highlight]
+  --time-primary-color: #1890ff;
   --time-border-color: #d9d9d9;
   --time-hover-border-color: #40a9ff;
   --time-focus-border-color: #1890ff;
@@ -785,11 +668,11 @@ const handleTimeChange = (startTime, endTime) => {
 
 ```vue
 <template>
-  <C_Time mode="range" class="custom-separator" /> // [!code highlight]
+  <C_Time mode="range" class="custom-separator" />
 </template>
 
 <style scoped>
-.custom-separator :deep(.range-separator) { // [!code highlight]
+.custom-separator :deep(.range-separator) {
   color: #1890ff;
   font-weight: bold;
   font-size: 14px;
@@ -817,7 +700,7 @@ const handleTimeChange = (startTime, endTime) => {
   flex-wrap: wrap;
   gap: 12px;
 
-  @media (max-width: 768px) { // [!code highlight]
+  @media (max-width: 768px) {
     flex-direction: column;
     
     .range-separator {
@@ -834,19 +717,19 @@ const handleTimeChange = (startTime, endTime) => {
 
 ::: code-group
 
-```vue [✅ 推荐]
+```vue [✅ 推荐] {4}
 <!-- 格式与配置一致 -->
 <C_Time 
   format="HH:mm:ss" 
-  :use-seconds="true" // [!code highlight]
+  :use-seconds="true"
 />
 ```
 
-```vue [❌ 不推荐]
+```vue [❌ 不推荐] {4}
 <!-- 格式与配置不匹配 -->
 <C_Time 
   format="HH:mm:ss" 
-  :use-seconds="false" // [!code error]
+  :use-seconds="false"
 />
 ```
 
@@ -856,19 +739,19 @@ const handleTimeChange = (startTime, endTime) => {
 
 ::: code-group
 
-```vue [✅ 推荐]
+```vue [✅ 推荐] {4}
 <!-- 在时间段选择中启用限制 -->
 <C_Time 
   mode="range" 
-  :enable-time-restriction="true" // [!code highlight]
+  :enable-time-restriction="true"
 />
 ```
 
-```vue [❌ 不推荐]
+```vue [❌ 不推荐] {4}
 <!-- 在单个时间选择中启用限制（无效） -->
 <C_Time 
   mode="single" 
-  :enable-time-restriction="true" // [!code error]
+  :enable-time-restriction="true"
 />
 ```
 
@@ -880,12 +763,12 @@ const handleTimeChange = (startTime, endTime) => {
 
 ```vue [✅ 推荐]
 <!-- 合理的步进值 -->
-<C_Time :minute-step="15" :second-step="10" /> // [!code highlight]
+<C_Time :minute-step="15" :second-step="10" />
 ```
 
 ```vue [❌ 不推荐]
 <!-- 过大的步进值 -->
-<C_Time :minute-step="45" :second-step="30" /> // [!code error]
+<C_Time :minute-step="45" :second-step="30" />
 ```
 
 :::
@@ -902,16 +785,16 @@ const handleTimeChange = (startTime, endTime) => {
 2. 检查是否启用了 `enableTimeRestriction`
 3. 确认时间选择器没有被禁用
 
-```vue
+```vue {4}
 <!-- 确保正确配置 -->
 <C_Time 
   mode="range"
-  :enable-time-restriction="true" // [!code highlight]
+  :enable-time-restriction="true"
   @change-start="handleStartChange"
 />
 
 <script setup>
-const handleStartChange = (time) => { // [!code highlight]
+const handleStartChange = (time) => {
   console.log('开始时间已选择:', time)
   // 现在可以选择结束时间了
 }
@@ -924,19 +807,19 @@ const handleStartChange = (time) => { // [!code highlight]
 
 ::: code-group
 
-```vue [✅ 正确]
+```vue [✅ 正确] {6}
 <!-- 正确的格式配置 -->
 <C_Time 
   format="HH:mm:ss"
   :use-hours="true"
   :use-minutes="true"
-  :use-seconds="true" // [!code highlight]
+  :use-seconds="true"
 />
 ```
 
-```vue [❌ 错误]
+```vue [❌ 错误] {2}
 <!-- 格式字符串错误 -->
-<C_Time format="hh:mm:ss" />  <!-- 应该使用 HH --> // [!code error]
+<C_Time format="hh:mm:ss" />  <!-- 应该使用 HH -->
 ```
 
 :::
@@ -945,11 +828,11 @@ const handleStartChange = (time) => { // [!code highlight]
 
 **A3:** 确保正确监听事件：
 
-```vue
+```vue {4,5,6}
 <template>
   <C_Time 
     mode="range"
-    @change-range="handleRangeChange" // [!code highlight]
+    @change-range="handleRangeChange"
     @change-start="handleStartChange"
     @change-end="handleEndChange"
   />
@@ -957,7 +840,7 @@ const handleStartChange = (time) => { // [!code highlight]
 
 <script setup>
 // 确保事件处理函数存在
-const handleRangeChange = (startTime, endTime) => { // [!code highlight]
+const handleRangeChange = (startTime, endTime) => {
   console.log('时间段变更:', startTime, endTime)
 }
 
@@ -975,10 +858,10 @@ const handleEndChange = (time) => {
 
 **A4:** 检查默认值设置：
 
-```vue
+```vue {3,4}
 <script setup>
 // ✅ 正确设置默认时间
-const defaultStart = new Date().setHours(9, 0, 0, 0) // [!code highlight]
+const defaultStart = new Date().setHours(9, 0, 0, 0)
 const defaultEnd = new Date().setHours(17, 0, 0, 0)
 </script>
 
@@ -995,31 +878,31 @@ const defaultEnd = new Date().setHours(17, 0, 0, 0)
 
 ### 1. 根据场景选择模式
 
-```vue
+```vue {3,6,9}
 <!-- ✅ 推荐：根据业务场景选择 -->
 <!-- 工作时间设置：使用 range 模式 -->
-<C_Time mode="range" /> // [!code highlight]
+<C_Time mode="range" />
 
 <!-- 闹钟设置：使用 single 模式 -->
-<C_Time mode="single" /> // [!code highlight]
+<C_Time mode="single" />
 
 <!-- 会议时长：使用 range 模式 -->
-<C_Time mode="range" :enable-time-restriction="true" /> // [!code highlight]
+<C_Time mode="range" :enable-time-restriction="true" />
 ```
 
 ### 2. 合理设置步进值
 
-```vue
+```vue {4,5}
 <template>
   <C_Time 
-    :minute-step="businessMinuteStep" // [!code highlight]
+    :minute-step="businessMinuteStep"
     :second-step="businessSecondStep"
   />
 </template>
 
 <script setup>
 // 根据业务精度要求设置步进值
-const businessMinuteStep = computed(() => { // [!code highlight]
+const businessMinuteStep = computed(() => {
   // 预约类业务：15分钟步进
   if (businessType.value === 'appointment') return 15
   // 考勤类业务：1分钟步进
@@ -1032,9 +915,9 @@ const businessMinuteStep = computed(() => { // [!code highlight]
 
 ### 3. 智能默认值
 
-```vue
+```vue {3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21}
 <script setup>
-const intelligentDefaults = computed(() => { // [!code highlight]
+const intelligentDefaults = computed(() => {
   const now = new Date()
   const currentHour = now.getHours()
   
@@ -1058,7 +941,7 @@ const intelligentDefaults = computed(() => { // [!code highlight]
 <template>
   <C_Time 
     mode="range"
-    :default-start-time="intelligentDefaults.start" // [!code highlight]
+    :default-start-time="intelligentDefaults.start"
     :default-end-time="intelligentDefaults.end"
   />
 </template>
@@ -1066,13 +949,13 @@ const intelligentDefaults = computed(() => { // [!code highlight]
 
 ### 4. 表单验证集成
 
-```vue
+```vue {5,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27}
 <template>
   <n-form :model="formData" :rules="timeRules">
     <n-form-item label="工作时间" path="workTime">
       <C_Time 
         mode="range"
-        @change-range="handleWorkTimeChange" // [!code highlight]
+        @change-range="handleWorkTimeChange"
       />
     </n-form-item>
   </n-form>
@@ -1085,7 +968,7 @@ const formData = ref({
 
 const timeRules = {
   workTime: {
-    validator: (rule, value) => { // [!code highlight]
+    validator: (rule, value) => {
       if (!value || !value.start || !value.end) {
         return new Error('请选择完整的工作时间')
       }

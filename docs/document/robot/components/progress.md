@@ -19,25 +19,44 @@ outline: 'deep'
 
 ## 📦 安装
 
-```bash
+::: code-group
+
+```bash [bun (推荐)]
+# 基于 Naive UI，确保已安装依赖
+bun install naive-ui
+```
+
+```bash [pnpm]
+# 基于 Naive UI，确保已安装依赖
+pnpm install naive-ui
+```
+
+```bash [yarn]
+# 基于 Naive UI，确保已安装依赖
+yarn add naive-ui
+```
+
+```bash [npm]
 # 基于 Naive UI，确保已安装依赖
 npm install naive-ui
 ```
+
+:::
 
 ## 🎯 快速开始
 
 ### 基础使用
 
-```vue
+```vue {5,8}
 <template>
   <!-- 最简单的使用方式 -->
   <C_Progress :percentage="75" />
 
   <!-- 带动画效果 -->
-  <C_Progress :percentage="60" :is-animation="true" :time="2000" /> // [!code highlight]
+  <C_Progress :percentage="60" :is-animation="true" :time="2000" />
 
   <!-- 圆形进度条 -->
-  <C_Progress type="circle" :percentage="80" :stroke-width="10" /> // [!code highlight]
+  <C_Progress type="circle" :percentage="80" :stroke-width="10" />
 </template>
 
 <script setup>
@@ -47,23 +66,23 @@ import { ref } from 'vue'
 
 ### 四种进度条类型
 
-```vue
+```vue {3,6,9,15}
 <template>
   <!-- 1. 线性进度条 (默认) -->
-  <C_Progress type="line" :percentage="75" :height="10" /> // [!code highlight]
+  <C_Progress type="line" :percentage="75" :height="10" />
 
   <!-- 2. 圆形进度条 -->
-  <C_Progress type="circle" :percentage="60" :stroke-width="8" /> // [!code highlight]
+  <C_Progress type="circle" :percentage="60" :stroke-width="8" />
 
   <!-- 3. 多圆环进度条 -->
   <C_Progress
-    type="multiple-circle" // [!code highlight]
+    type="multiple-circle"
     :percentage="[75, 60, 45]"
     :color="['#ff6b6b', '#4ecdc4', '#45b7d1']"
   />
 
   <!-- 4. 仪表盘进度条 -->
-  <C_Progress type="dashboard" :percentage="85" :gap-degree="120" /> // [!code highlight]
+  <C_Progress type="dashboard" :percentage="85" :gap-degree="120" />
 </template>
 ```
 
@@ -123,13 +142,13 @@ interface Props {
 ## 🎨 使用示例
 
 ::: details 📁 文件上传进度 - 实时进度展示
-```vue
+```vue {6,7,8,9,10}
 <template>
   <div class="upload-progress">
     <h3>文件上传</h3>
     <C_Progress
       :percentage="uploadProgress"
-      :is-animation="true" // [!code highlight]
+      :is-animation="true"
       :time="1000"
       status="info"
       :height="8"
@@ -142,7 +161,7 @@ interface Props {
 const uploadProgress = ref(0)
 
 // 模拟文件上传
-const simulateUpload = () => { // [!code highlight]
+const simulateUpload = () => {
   const timer = setInterval(() => {
     uploadProgress.value += Math.random() * 10
     if (uploadProgress.value >= 100) {
@@ -160,14 +179,14 @@ onMounted(() => {
 :::
 
 ::: details 🎯 技能评估圆环 - 多技能水平展示
-```vue
+```vue {10,11,12,13,14,15,16,24}
 <template>
   <div class="skills-assessment">
     <h3>技能评估</h3>
     <div class="skills-grid">
       <div v-for="skill in skills" :key="skill.name" class="skill-item">
         <C_Progress
-          type="circle" // [!code highlight]
+          type="circle"
           :percentage="skill.level"
           :color="skill.color"
           :stroke-width="6"
@@ -182,7 +201,7 @@ onMounted(() => {
 
 <script setup>
 const skills = ref([
-  { name: 'Vue.js', level: 90, color: '#4fc08d' }, // [!code highlight]
+  { name: 'Vue.js', level: 90, color: '#4fc08d' },
   { name: 'React', level: 75, color: '#61dafb' },
   { name: 'TypeScript', level: 85, color: '#3178c6' },
   { name: 'Node.js', level: 70, color: '#68a063' },
@@ -208,19 +227,19 @@ const skills = ref([
 :::
 
 ::: details 🔄 多维度数据展示 - 项目进度总览
-```vue
+```vue {7,8,9,10,11,12,13,17,20}
 <template>
   <div class="multi-dimension">
     <h3>项目进度总览</h3>
     <C_Progress
-      type="multiple-circle" // [!code highlight]
+      type="multiple-circle"
       :percentage="projectProgress"
       :color="progressColors"
       :stroke-width="8"
       :circle-gap="4"
       :is-animation="true"
     >
-      <template #indicator> // [!code highlight]
+      <template #indicator>
         <div class="custom-indicator">
           <div class="progress-legend">
             <div
@@ -244,7 +263,7 @@ const skills = ref([
 </template>
 
 <script setup>
-const projectProgress = ref([85, 70, 92]) // [!code highlight]
+const projectProgress = ref([85, 70, 92])
 const progressColors = ['#ff6b6b', '#4ecdc4', '#45b7d1']
 const progressLabels = ['前端开发', '后端开发', '测试进度']
 </script>
@@ -273,7 +292,7 @@ const progressLabels = ['前端开发', '后端开发', '测试进度']
 :::
 
 ::: details 📊 仪表盘监控 - 系统性能监控
-```vue
+```vue {12,13,14,15,16,17,18,19,29,30,31,32,33}
 <template>
   <div class="dashboard-monitor">
     <h3>系统监控</h3>
@@ -284,7 +303,7 @@ const progressLabels = ['前端开发', '后端开发', '测试进度']
         class="metric-card"
       >
         <C_Progress
-          type="dashboard" // [!code highlight]
+          type="dashboard"
           :percentage="metric.value"
           :color="getStatusColor(metric.value)"
           :gap-degree="75"
@@ -308,7 +327,7 @@ const systemMetrics = ref([
   { name: '网络带宽', value: 30, description: '网络流量' },
 ])
 
-const getStatusColor = (value) => { // [!code highlight]
+const getStatusColor = (value) => {
   if (value < 50) return '#52c41a'
   if (value < 80) return '#faad14'
   return '#ff4d4f'
@@ -358,12 +377,12 @@ const getStatus = (value) => {
 ## 🛠️ 高级用法
 
 ::: details 🌈 渐变色配置 - 自定义渐变效果
-```vue
+```vue {6,7,8,9}
 <template>
   <div class="gradient-progress">
     <C_Progress
       :percentage="75"
-      :color="gradientConfig" // [!code highlight]
+      :color="gradientConfig"
       :height="12"
       :border-radius="6"
     />
@@ -371,7 +390,7 @@ const getStatus = (value) => {
 </template>
 
 <script setup>
-const gradientConfig = { // [!code highlight]
+const gradientConfig = {
   stops: ['#ffecd2', '#fcb69f'],
 }
 
@@ -386,12 +405,12 @@ const multiGradientConfig = [
 :::
 
 ::: details 🔄 动态进度更新 - 实时进度控制
-```vue
+```vue {5,6,7,8,15}
 <template>
   <div class="dynamic-progress">
     <C_Progress
       :percentage="dynamicProgress"
-      :is-animation="true" // [!code highlight]
+      :is-animation="true"
       :time="500"
       :color="progressColor"
     />
@@ -406,7 +425,7 @@ const multiGradientConfig = [
 <script setup>
 const dynamicProgress = ref(0)
 
-const progressColor = computed(() => { // [!code highlight]
+const progressColor = computed(() => {
   if (dynamicProgress.value < 30) return '#ff4757'
   if (dynamicProgress.value < 70) return '#ffa502'
   return '#2ed573'
@@ -428,7 +447,7 @@ const resetProgress = () => {
 :::
 
 ::: details 🎨 自定义指示器 - 个性化进度展示
-```vue
+```vue {8,9,10,11,12,13,14,15,16,17,18,26}
 <template>
   <div class="custom-indicator-demo">
     <C_Progress
@@ -437,7 +456,7 @@ const resetProgress = () => {
       :stroke-width="12"
       :show-indicator="true"
     >
-      <template #indicator> // [!code highlight]
+      <template #indicator>
         <div class="score-indicator">
           <div class="score-number">{{ score }}</div>
           <div class="score-label">分数</div>
@@ -451,7 +470,7 @@ const resetProgress = () => {
 <script setup>
 const score = ref(88)
 
-const getGrade = (value) => { // [!code highlight]
+const getGrade = (value) => {
   if (value >= 90) return 'A'
   if (value >= 80) return 'B'
   if (value >= 70) return 'C'
@@ -492,7 +511,7 @@ const getGrade = (value) => { // [!code highlight]
 
 ```scss
 .c-progress {
-  --progress-primary-color: #1890ff; // [!code highlight]
+  --progress-primary-color: #1890ff;
   --progress-success-color: #52c41a;
   --progress-warning-color: #faad14;
   --progress-error-color: #ff4d4f;
@@ -503,17 +522,17 @@ const getGrade = (value) => { // [!code highlight]
 
 ### 响应式设计
 
-```vue
+```vue {4,5}
 <template>
   <C_Progress
     :percentage="75"
-    :height="progressHeight" // [!code highlight]
+    :height="progressHeight"
     :stroke-width="strokeWidth"
   />
 </template>
 
 <script setup>
-const progressHeight = computed(() => { // [!code highlight]
+const progressHeight = computed(() => {
   return window.innerWidth > 768 ? 12 : 8
 })
 
@@ -531,12 +550,12 @@ const strokeWidth = computed(() => {
 
 ```vue [✅ 推荐]
 <!-- 合理的动画时长 -->
-<C_Progress :percentage="75" :is-animation="true" :time="2000" /> // [!code highlight]
+<C_Progress :percentage="75" :is-animation="true" :time="2000" />
 ```
 
 ```vue [❌ 不推荐]
 <!-- 过长的动画 -->
-<C_Progress :percentage="75" :is-animation="true" :time="10000" /> // [!code error]
+<C_Progress :percentage="75" :is-animation="true" :time="10000" />
 ```
 
 :::
@@ -547,12 +566,12 @@ const strokeWidth = computed(() => {
 
 ```vue [✅ 推荐]
 <!-- 合理的圆环数量 -->
-<C_Progress type="multiple-circle" :percentage="[75, 60, 45]" /> // [!code highlight]
+<C_Progress type="multiple-circle" :percentage="[75, 60, 45]" />
 ```
 
 ```vue [❌ 不推荐]
 <!-- 过多的圆环 -->
-<C_Progress type="multiple-circle" :percentage="[75, 60, 45, 30, 20, 10]" /> // [!code error]
+<C_Progress type="multiple-circle" :percentage="[75, 60, 45, 30, 20, 10]" />
 ```
 
 :::
@@ -561,21 +580,21 @@ const strokeWidth = computed(() => {
 
 ::: code-group
 
-```vue [✅ 推荐]
+```vue [✅ 推荐] {4}
 <!-- 一致的颜色数量 -->
 <C_Progress
   type="multiple-circle"
   :percentage="[75, 60, 45]"
-  :color="['#ff6b6b', '#4ecdc4', '#45b7d1']" // [!code highlight]
+  :color="['#ff6b6b', '#4ecdc4', '#45b7d1']"
 />
 ```
 
-```vue [❌ 不推荐]
+```vue [❌ 不推荐] {4}
 <!-- 颜色数量不匹配 -->
 <C_Progress
   type="multiple-circle"
   :percentage="[75, 60, 45]"
-  :color="['#ff6b6b']" // [!code error]
+  :color="['#ff6b6b']"
 />
 ```
 
@@ -593,16 +612,16 @@ const strokeWidth = computed(() => {
 2. 检查 `percentage` 初始值是否为 0
 3. 确认组件已正确挂载
 
-```vue
+```vue {2}
 <!-- 正确的动画配置 -->
-<C_Progress :percentage="targetValue" :is-animation="true" :time="2000" /> // [!code highlight]
+<C_Progress :percentage="targetValue" :is-animation="true" :time="2000" />
 
 <script setup>
 const targetValue = ref(0)
 
 onMounted(() => {
   // 延迟设置目标值触发动画
-  setTimeout(() => { // [!code highlight]
+  setTimeout(() => {
     targetValue.value = 75
   }, 100)
 })
@@ -615,18 +634,18 @@ onMounted(() => {
 
 ::: code-group
 
-```vue [✅ 正确]
+```vue [✅ 正确] {4}
 <!-- 正确的多圆环配置 -->
 <C_Progress
   type="multiple-circle"
-  :percentage="[75, 60, 45]" // [!code highlight]
+  :percentage="[75, 60, 45]"
   :color="['#ff6b6b', '#4ecdc4', '#45b7d1']"
 />
 ```
 
-```vue [❌ 错误]
+```vue [❌ 错误] {2}
 <!-- 错误：单个数值 -->
-<C_Progress type="multiple-circle" :percentage="75" /> // [!code error]
+<C_Progress type="multiple-circle" :percentage="75" />
 ```
 
 :::
@@ -635,8 +654,8 @@ onMounted(() => {
 
 **A3:** 确保设置了正确的插槽：
 
-```vue
-<C_Progress :show-indicator="true"> // [!code highlight]
+```vue {1}
+<C_Progress :show-indicator="true">
   <template #indicator>
     <!-- 自定义内容 -->
   </template>
@@ -647,35 +666,35 @@ onMounted(() => {
 
 ### 1. 合理选择类型
 
-```vue
+```vue {3,6,9,12}
 <!-- ✅ 推荐：根据场景选择类型 -->
 <!-- 文件上传：线性进度条 -->
-<C_Progress type="line" :percentage="uploadProgress" /> // [!code highlight]
+<C_Progress type="line" :percentage="uploadProgress" />
 
 <!-- 技能评估：圆形进度条 -->
-<C_Progress type="circle" :percentage="skillLevel" /> // [!code highlight]
+<C_Progress type="circle" :percentage="skillLevel" />
 
 <!-- 多维度数据：多圆环 -->
-<C_Progress type="multiple-circle" :percentage="multiData" /> // [!code highlight]
+<C_Progress type="multiple-circle" :percentage="multiData" />
 
 <!-- 监控面板：仪表盘 -->
-<C_Progress type="dashboard" :percentage="cpuUsage" /> // [!code highlight]
+<C_Progress type="dashboard" :percentage="cpuUsage" />
 ```
 
 ### 2. 动画优化
 
-```vue
+```vue {4,5}
 <template>
   <C_Progress
     :percentage="progress"
-    :is-animation="shouldAnimate" // [!code highlight]
+    :is-animation="shouldAnimate"
     :time="animationDuration"
   />
 </template>
 
 <script setup>
 // 根据性能动态调整动画
-const shouldAnimate = computed(() => { // [!code highlight]
+const shouldAnimate = computed(() => {
   return !reducedMotion.value && performance.now() > 0
 })
 
@@ -687,10 +706,10 @@ const animationDuration = computed(() => {
 
 ### 3. 无障碍支持
 
-```vue
+```vue {3,4,5,6,7}
 <template>
   <div
-    role="progressbar" // [!code highlight]
+    role="progressbar"
     :aria-valuenow="percentage"
     aria-valuemin="0"
     aria-valuemax="100"

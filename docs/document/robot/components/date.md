@@ -19,25 +19,44 @@ outline: 'deep'
 
 ## 📦 安装
 
-```bash
+::: code-group
+
+```bash [bun (推荐)]
+# 基于 Naive UI，确保已安装依赖
+bun install naive-ui
+```
+
+```bash [pnpm]
+# 基于 Naive UI，确保已安装依赖
+pnpm install naive-ui
+```
+
+```bash [yarn]
+# 基于 Naive UI，确保已安装依赖
+yarn add naive-ui
+```
+
+```bash [npm]
 # 基于 Naive UI，确保已安装依赖
 npm install naive-ui
 ```
+
+:::
 
 ## 🎯 快速开始
 
 ### 基础使用
 
-```vue
+```vue {3,6,9}
 <template>
   <!-- 最简单的单日期选择 -->
   <C_Date mode="date" @change="handleDateChange" />
 
   <!-- 日期范围选择 -->
-  <C_Date mode="daterange" @change="handleRangeChange" /> // [!code highlight]
+  <C_Date mode="daterange" @change="handleRangeChange" />
 
   <!-- 智能双日期选择 -->
-  <C_Date mode="smart-range" @update:smartRange="handleSmartRangeChange" /> // [!code highlight]
+  <C_Date mode="smart-range" @update:smartRange="handleSmartRangeChange" />
 </template>
 
 <script setup>
@@ -55,16 +74,15 @@ const handleSmartRangeChange = (value) => {
 </script>
 ```
 
-### 五种选择模式
-
-```vue
+::: details 🔄 五种选择模式 - 覆盖所有日期选择场景
+```vue {7,16,25,34,43}
 <template>
   <div class="date-modes-demo">
     <!-- 1. 单日期选择 -->
     <div class="demo-section">
       <h4>单日期选择</h4>
       <C_Date
-        mode="date" // [!code highlight]
+        mode="date"
         placeholder="请选择日期"
         @update:singleDate="handleSingleDate"
       />
@@ -74,7 +92,7 @@ const handleSmartRangeChange = (value) => {
     <div class="demo-section">
       <h4>日期时间选择</h4>
       <C_Date
-        mode="datetime" // [!code highlight]
+        mode="datetime"
         placeholder="请选择日期时间"
         value-format="yyyy-MM-dd HH:mm:ss"
         @update:singleDateTime="handleSingleDateTime"
@@ -85,7 +103,7 @@ const handleSmartRangeChange = (value) => {
     <div class="demo-section">
       <h4>日期范围选择</h4>
       <C_Date
-        mode="daterange" // [!code highlight]
+        mode="daterange"
         start-placeholder="开始日期"
         end-placeholder="结束日期"
         @update:dateRange="handleDateRange"
@@ -96,7 +114,7 @@ const handleSmartRangeChange = (value) => {
     <div class="demo-section">
       <h4>日期时间范围选择</h4>
       <C_Date
-        mode="datetimerange" // [!code highlight]
+        mode="datetimerange"
         start-placeholder="开始日期时间"
         end-placeholder="结束日期时间"
         value-format="yyyy-MM-dd HH:mm:ss"
@@ -108,7 +126,7 @@ const handleSmartRangeChange = (value) => {
     <div class="demo-section">
       <h4>智能双日期选择</h4>
       <C_Date
-        mode="smart-range" // [!code highlight]
+        mode="smart-range"
         start-placeholder="选择开始日期"
         end-placeholder="选择结束日期"
         @update:smartRange="handleSmartRange"
@@ -148,6 +166,7 @@ const handleSmartRange = (value) => {
 }
 </style>
 ```
+:::
 
 ## 📖 API 文档
 
@@ -194,8 +213,7 @@ const handleSmartRange = (value) => {
 | **startDate**      | `Ref<number \| null>`           | 智能范围开始日期 |
 | **endDate**        | `Ref<number \| null>`           | 智能范围结束日期 |
 
-### 类型定义
-
+::: details 🔧 类型定义 - 完整的 TypeScript 接口
 #### 日期选择器模式
 
 ```typescript
@@ -213,11 +231,12 @@ type DatePickerMode =
 type DateValue = number | null
 type DateRangeValue = [number, number] | null
 ```
+:::
 
 ## 🎨 使用示例
 
 ::: details 🏖️ 假期申请系统 - 智能假期时间选择
-```vue
+```vue {14,15,16,17,18}
 <template>
   <div class="vacation-application">
     <h3>假期申请</h3>
@@ -232,11 +251,10 @@ type DateRangeValue = [number, number] | null
 
       <n-form-item label="假期时间" path="dateRange">
         <C_Date
-          mode="smart-range" // [!code highlight]
+          mode="smart-range"
           start-placeholder="假期开始日期"
           end-placeholder="假期结束日期"
           :disabled-before-today="true"
-          value-format="yyyy-MM-dd"
           @update:smartRange="handleVacationDateChange"
         />
       </n-form-item>
@@ -291,7 +309,7 @@ const vacationRules = {
     trigger: 'change',
   },
   dateRange: {
-    validator: (rule, value) => { // [!code highlight]
+    validator: (rule, value) => {
       if (!value || !Array.isArray(value) || value.length !== 2) {
         return new Error('请选择完整的假期时间')
       }
@@ -364,7 +382,7 @@ const formatDate = (timestamp) => {
 :::
 
 ::: details 🎉 活动报名时间管理 - 报名时间限制配置
-```vue
+```vue {15,16,17,18,25,26,27,28,29,30}
 <template>
   <div class="event-registration">
     <h3>活动报名时间设置</h3>
@@ -379,7 +397,7 @@ const formatDate = (timestamp) => {
 
         <n-form-item label="活动日期">
           <C_Date
-            mode="daterange" // [!code highlight]
+            mode="daterange"
             start-placeholder="活动开始日期"
             end-placeholder="活动结束日期"
             :disabled-before-today="true"
@@ -389,19 +407,12 @@ const formatDate = (timestamp) => {
 
         <n-form-item label="报名时间">
           <C_Date
-            mode="smart-range" // [!code highlight]
+            mode="smart-range"
             start-placeholder="报名开始时间"
             end-placeholder="报名截止时间"
             :disabled-before-today="true"
             :end-date-props="registrationEndDateProps"
             @update:smartRange="handleRegistrationDateChange"
-          />
-        </n-form-item>
-
-        <n-form-item label="活动地点">
-          <n-input
-            v-model:value="eventForm.location"
-            placeholder="请输入活动地点"
           />
         </n-form-item>
 
@@ -428,7 +439,6 @@ const formatDate = (timestamp) => {
         <div class="event-info">
           <p><strong>活动时间:</strong> {{ eventPreview.eventDate }}</p>
           <p><strong>报名时间:</strong> {{ eventPreview.registrationDate }}</p>
-          <p><strong>活动地点:</strong> {{ eventPreview.location }}</p>
           <p><strong>活动描述:</strong> {{ eventPreview.description }}</p>
           <n-tag :type="eventPreview.registrationStatus.type">
             {{ eventPreview.registrationStatus.text }}
@@ -444,14 +454,13 @@ const eventForm = ref({
   name: '',
   eventDate: null,
   registrationDate: null,
-  location: '',
   description: '',
 })
 
 const eventPreview = ref(null)
 
 // 报名截止时间不能晚于活动开始时间
-const registrationEndDateProps = computed(() => ({ // [!code highlight]
+const registrationEndDateProps = computed(() => ({
   isDateDisabled: (timestamp) => {
     if (!eventForm.value.eventDate || !eventForm.value.eventDate[0]) {
       return false
@@ -462,7 +471,7 @@ const registrationEndDateProps = computed(() => ({ // [!code highlight]
   },
 }))
 
-const handleEventDateChange = (value) => { // [!code highlight]
+const handleEventDateChange = (value) => {
   eventForm.value.eventDate = value
   // 如果活动日期改变，重置报名时间
   eventForm.value.registrationDate = null
@@ -483,8 +492,7 @@ const handleSaveEvent = () => {
 const handlePreviewEvent = () => {
   if (!validateEventForm()) return
 
-  const { name, eventDate, registrationDate, location, description } =
-    eventForm.value
+  const { name, eventDate, registrationDate, description } = eventForm.value
 
   eventPreview.value = {
     name,
@@ -492,16 +500,15 @@ const handlePreviewEvent = () => {
     registrationDate: `${formatDate(registrationDate[0])} 至 ${formatDate(
       registrationDate[1]
     )}`,
-    location,
     description,
     registrationStatus: getRegistrationStatus(registrationDate),
   }
 }
 
 const validateEventForm = () => {
-  const { name, eventDate, registrationDate, location } = eventForm.value
+  const { name, eventDate, registrationDate } = eventForm.value
 
-  if (!name || !eventDate || !registrationDate || !location) {
+  if (!name || !eventDate || !registrationDate) {
     $message.warning('请填写完整的活动信息')
     return false
   }
@@ -548,7 +555,7 @@ const formatDate = (timestamp) => {
 :::
 
 ::: details 📊 财务报表查询 - 动态时间范围和快捷选择
-```vue
+```vue {18,19,20,21,22}
 <template>
   <div class="financial-report">
     <h3>财务报表查询</h3>
@@ -560,16 +567,15 @@ const formatDate = (timestamp) => {
               v-model:value="queryForm.reportType"
               :options="reportTypes"
               placeholder="请选择报表类型"
-              @update:value="handleReportTypeChange" // [!code highlight]
+              @update:value="handleReportTypeChange"
             />
           </n-form-item>
 
           <n-form-item label="查询时间">
             <C_Date
-              :mode="datePickerMode" // [!code highlight]
+              :mode="datePickerMode"
               :start-placeholder="startPlaceholder"
               :end-placeholder="endPlaceholder"
-              :placeholder="singlePlaceholder"
               :disabled-after-today="true"
               value-format="yyyy-MM-dd"
               @change="handleDateChange"
@@ -593,7 +599,7 @@ const formatDate = (timestamp) => {
             v-for="quick in quickDates"
             :key="quick.label"
             size="small"
-            @click="handleQuickDate(quick)" // [!code highlight]
+            @click="handleQuickDate(quick)"
           >
             {{ quick.label }}
           </n-button>
@@ -640,12 +646,10 @@ const reportTypes = [
   { label: '日报表', value: 'daily' },
   { label: '周报表', value: 'weekly' },
   { label: '月报表', value: 'monthly' },
-  { label: '季度报表', value: 'quarterly' },
-  { label: '年度报表', value: 'yearly' },
   { label: '自定义区间', value: 'custom' },
 ]
 
-const quickDates = computed(() => { // [!code highlight]
+const quickDates = computed(() => {
   const today = new Date()
   const getDateTimestamp = (date) => {
     date.setHours(0, 0, 0, 0)
@@ -656,11 +660,6 @@ const quickDates = computed(() => { // [!code highlight]
     {
       label: '今天',
       value: getDateTimestamp(new Date(today)),
-      mode: 'date',
-    },
-    {
-      label: '昨天',
-      value: getDateTimestamp(new Date(today.getTime() - 24 * 60 * 60 * 1000)),
       mode: 'date',
     },
     {
@@ -681,21 +680,11 @@ const quickDates = computed(() => { // [!code highlight]
       ],
       mode: 'range',
     },
-    {
-      label: '本季度',
-      value: [
-        getDateTimestamp(
-          new Date(today.getFullYear(), Math.floor(today.getMonth() / 3) * 3, 1)
-        ),
-        getDateTimestamp(new Date(today)),
-      ],
-      mode: 'range',
-    },
   ]
 })
 
 // 根据报表类型确定日期选择器模式
-const datePickerMode = computed(() => { // [!code highlight]
+const datePickerMode = computed(() => {
   const { reportType } = queryForm.value
   if (reportType === 'daily') return 'date'
   if (reportType === 'custom') return 'daterange'
@@ -707,8 +696,6 @@ const startPlaceholder = computed(() => {
   const placeholders = {
     weekly: '选择周开始日期',
     monthly: '选择月份开始',
-    quarterly: '选择季度开始',
-    yearly: '选择年份开始',
     custom: '自定义开始日期',
   }
   return placeholders[reportType] || '开始日期'
@@ -719,15 +706,9 @@ const endPlaceholder = computed(() => {
   const placeholders = {
     weekly: '选择周结束日期',
     monthly: '选择月份结束',
-    quarterly: '选择季度结束',
-    yearly: '选择年份结束',
     custom: '自定义结束日期',
   }
   return placeholders[reportType] || '结束日期'
-})
-
-const singlePlaceholder = computed(() => {
-  return '请选择日期'
 })
 
 const reportPeriod = computed(() => {
@@ -888,408 +869,10 @@ const formatDate = (timestamp) => {
 ```
 :::
 
-::: details 📈 任务进度跟踪 - 计划与实际时间对比分析
-```vue
-<template>
-  <div class="task-tracking">
-    <h3>任务进度跟踪</h3>
-    <n-card>
-      <div class="task-form">
-        <n-form :model="taskForm" label-placement="left" label-width="100px">
-          <n-form-item label="任务名称">
-            <n-input
-              v-model:value="taskForm.name"
-              placeholder="请输入任务名称"
-            />
-          </n-form-item>
-
-          <n-form-item label="计划时间">
-            <C_Date
-              mode="smart-range" // [!code highlight]
-              start-placeholder="计划开始时间"
-              end-placeholder="计划结束时间"
-              :disabled-before-today="false"
-              @update:smartRange="handlePlannedDateChange"
-            />
-          </n-form-item>
-
-          <n-form-item label="实际时间">
-            <C_Date
-              mode="smart-range" // [!code highlight]
-              start-placeholder="实际开始时间"
-              end-placeholder="实际结束时间"
-              :disabled-before-today="false"
-              :start-date-props="actualStartDateProps"
-              :end-date-props="actualEndDateProps"
-              @update:smartRange="handleActualDateChange"
-            />
-          </n-form-item>
-
-          <n-form-item label="任务状态">
-            <n-select
-              v-model:value="taskForm.status"
-              :options="taskStatusOptions"
-              placeholder="请选择任务状态"
-            />
-          </n-form-item>
-
-          <n-form-item label="完成进度">
-            <n-slider
-              v-model:value="taskForm.progress"
-              :step="5"
-              :marks="progressMarks"
-              :tooltip="false"
-            />
-            <span class="progress-text">{{ taskForm.progress }}%</span>
-          </n-form-item>
-
-          <n-form-item>
-            <n-button type="primary" @click="handleUpdateTask"
-              >更新任务</n-button
-            >
-            <n-button @click="handleAnalyzeTask" :disabled="!canAnalyze"
-              >分析进度</n-button
-            >
-          </n-form-item>
-        </n-form>
-      </div>
-
-      <!-- 任务分析结果 -->
-      <div v-if="taskAnalysis" class="task-analysis">
-        <n-divider title-placement="left">任务分析</n-divider>
-
-        <div class="analysis-grid">
-          <n-card size="small" title="时间对比">
-            <div class="time-comparison">
-              <div class="time-item">
-                <span class="label">计划用时:</span>
-                <span class="value">{{ taskAnalysis.plannedDuration }} 天</span>
-              </div>
-              <div class="time-item">
-                <span class="label">实际用时:</span>
-                <span class="value">{{ taskAnalysis.actualDuration }} 天</span>
-              </div>
-              <div class="time-item">
-                <span class="label">时间偏差:</span>
-                <span :class="['value', taskAnalysis.timeVariance.type]">
-                  {{ taskAnalysis.timeVariance.text }}
-                </span>
-              </div>
-            </div>
-          </n-card>
-
-          <n-card size="small" title="进度状态">
-            <div class="progress-status">
-              <n-progress
-                type="circle"
-                :percentage="taskForm.progress"
-                :status="getProgressStatus()"
-              />
-              <div class="status-info">
-                <p>当前状态: {{ getStatusText(taskForm.status) }}</p>
-                <p>预计完成: {{ taskAnalysis.estimatedCompletion }}</p>
-              </div>
-            </div>
-          </n-card>
-
-          <n-card size="small" title="风险评估">
-            <div class="risk-assessment">
-              <n-tag :type="taskAnalysis.riskLevel.type" size="large">
-                {{ taskAnalysis.riskLevel.text }}
-              </n-tag>
-              <p class="risk-description">{{ taskAnalysis.riskDescription }}</p>
-            </div>
-          </n-card>
-        </div>
-      </div>
-    </n-card>
-  </div>
-</template>
-
-<script setup>
-const taskForm = ref({
-  name: '',
-  plannedDate: null,
-  actualDate: null,
-  status: 'not-started',
-  progress: 0,
-})
-
-const taskAnalysis = ref(null)
-
-const taskStatusOptions = [
-  { label: '未开始', value: 'not-started' },
-  { label: '进行中', value: 'in-progress' },
-  { label: '已暂停', value: 'paused' },
-  { label: '已完成', value: 'completed' },
-  { label: '已取消', value: 'cancelled' },
-]
-
-const progressMarks = {
-  0: '0%',
-  25: '25%',
-  50: '50%',
-  75: '75%',
-  100: '100%',
-}
-
-// 实际开始时间限制
-const actualStartDateProps = computed(() => ({ // [!code highlight]
-  isDateDisabled: (timestamp) => {
-    // 实际开始时间不能早于计划开始时间
-    if (taskForm.value.plannedDate && taskForm.value.plannedDate[0]) {
-      return timestamp < taskForm.value.plannedDate[0]
-    }
-    return false
-  },
-}))
-
-// 实际结束时间限制
-const actualEndDateProps = computed(() => ({
-  isDateDisabled: (timestamp) => {
-    // 实际结束时间不能早于实际开始时间
-    if (taskForm.value.actualDate && taskForm.value.actualDate[0]) {
-      return timestamp < taskForm.value.actualDate[0]
-    }
-    return false
-  },
-}))
-
-const canAnalyze = computed(() => {
-  return (
-    taskForm.value.plannedDate &&
-    taskForm.value.actualDate &&
-    taskForm.value.actualDate[0]
-  )
-})
-
-const handlePlannedDateChange = (value) => { // [!code highlight]
-  taskForm.value.plannedDate = value
-  // 重置实际时间
-  taskForm.value.actualDate = null
-}
-
-const handleActualDateChange = (value) => {
-  taskForm.value.actualDate = value
-}
-
-const handleUpdateTask = () => {
-  if (!taskForm.value.name || !taskForm.value.plannedDate) {
-    $message.warning('请填写任务名称和计划时间')
-    return
-  }
-
-  $message.success('任务更新成功')
-
-  // 如果可以分析，自动触发分析
-  if (canAnalyze.value) {
-    handleAnalyzeTask()
-  }
-}
-
-const handleAnalyzeTask = () => {
-  if (!canAnalyze.value) {
-    $message.warning('请先填写完整的时间信息')
-    return
-  }
-
-  const { plannedDate, actualDate, progress, status } = taskForm.value
-
-  // 计算时间对比
-  const plannedDuration =
-    Math.ceil((plannedDate[1] - plannedDate[0]) / (1000 * 60 * 60 * 24)) + 1
-  const actualStart = actualDate[0]
-  const actualEnd = actualDate[1] || Date.now()
-  const actualDuration =
-    Math.ceil((actualEnd - actualStart) / (1000 * 60 * 60 * 24)) + 1
-
-  const timeVariance = calculateTimeVariance(plannedDuration, actualDuration)
-  const riskLevel = assessRisk(progress, status, timeVariance.value)
-  const estimatedCompletion = calculateEstimatedCompletion(
-    actualStart,
-    progress
-  )
-
-  taskAnalysis.value = {
-    plannedDuration,
-    actualDuration,
-    timeVariance,
-    riskLevel,
-    riskDescription: getRiskDescription(riskLevel),
-    estimatedCompletion,
-  }
-}
-
-const calculateTimeVariance = (planned, actual) => {
-  const variance = actual - planned
-  const percentage = ((variance / planned) * 100).toFixed(1)
-
-  if (variance > 0) {
-    return {
-      value: variance,
-      type: 'error',
-      text: `延期 ${variance} 天 (+${percentage}%)`,
-    }
-  } else if (variance < 0) {
-    return {
-      value: variance,
-      type: 'success',
-      text: `提前 ${Math.abs(variance)} 天 (${percentage}%)`,
-    }
-  } else {
-    return {
-      value: 0,
-      type: 'info',
-      text: '按期进行',
-    }
-  }
-}
-
-const assessRisk = (progress, status, timeVariance) => {
-  if (status === 'completed') {
-    return { type: 'success', text: '已完成' }
-  }
-
-  if (status === 'cancelled') {
-    return { type: 'error', text: '已取消' }
-  }
-
-  if (timeVariance > 5 || progress < 30) {
-    return { type: 'error', text: '高风险' }
-  } else if (timeVariance > 2 || progress < 50) {
-    return { type: 'warning', text: '中等风险' }
-  } else {
-    return { type: 'success', text: '低风险' }
-  }
-}
-
-const getRiskDescription = (riskLevel) => {
-  const descriptions = {
-    高风险: '任务存在较大延期风险，建议调整计划或增加资源',
-    中等风险: '任务进度稍有滞后，需要密切关注',
-    低风险: '任务进展良好，按计划进行',
-    已完成: '任务已成功完成',
-    已取消: '任务已被取消',
-  }
-  return descriptions[riskLevel.text] || ''
-}
-
-const calculateEstimatedCompletion = (actualStart, progress) => {
-  if (progress >= 100) return '已完成'
-  if (progress === 0) return '未开始'
-
-  const now = Date.now()
-  const daysPassed = Math.ceil((now - actualStart) / (1000 * 60 * 60 * 24))
-  const totalEstimatedDays = Math.ceil((daysPassed / progress) * 100)
-  const remainingDays = totalEstimatedDays - daysPassed
-
-  const estimatedDate = new Date(now + remainingDays * 24 * 60 * 60 * 1000)
-  return estimatedDate.toLocaleDateString('zh-CN')
-}
-
-const getProgressStatus = () => {
-  const { progress, status } = taskForm.value
-
-  if (status === 'completed') return 'success'
-  if (status === 'cancelled') return 'error'
-  if (progress < 30) return 'error'
-  if (progress < 70) return 'warning'
-  return 'info'
-}
-
-const getStatusText = (status) => {
-  return (
-    taskStatusOptions.find((option) => option.value === status)?.label || '未知'
-  )
-}
-
-const formatDate = (timestamp) => {
-  return new Date(timestamp).toLocaleDateString('zh-CN')
-}
-</script>
-
-<style scoped>
-.task-tracking {
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: 24px;
-}
-
-.task-form {
-  margin-bottom: 24px;
-}
-
-.progress-text {
-  margin-left: 12px;
-  font-weight: bold;
-  color: #1890ff;
-}
-
-.analysis-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 16px;
-}
-
-.time-comparison {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.time-item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.label {
-  color: #666;
-}
-
-.value {
-  font-weight: bold;
-
-  &.success {
-    color: #52c41a;
-  }
-
-  &.error {
-    color: #ff4d4f;
-  }
-
-  &.info {
-    color: #1890ff;
-  }
-}
-
-.progress-status {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-}
-
-.status-info p {
-  margin: 4px 0;
-}
-
-.risk-assessment {
-  text-align: center;
-}
-
-.risk-description {
-  margin-top: 12px;
-  color: #666;
-  font-size: 14px;
-}
-</style>
-```
-:::
-
 ## 🛠️ 高级用法
 
 ::: details 🔒 动态禁用规则 - 智能日期限制
-```vue
+```vue {9,10,14,15,16,17,18,19,20,21,25,26,27,28,29,30}
 <template>
   <div class="dynamic-disable">
     <n-switch v-model:value="weekendsOnly" @update:value="handleWeekendToggle">
@@ -1299,7 +882,7 @@ const formatDate = (timestamp) => {
 
     <C_Date
       mode="daterange"
-      :start-date-props="dynamicStartProps" // [!code highlight]
+      :start-date-props="dynamicStartProps"
       :end-date-props="dynamicEndProps"
       @change="handleDateChange"
     />
@@ -1309,7 +892,7 @@ const formatDate = (timestamp) => {
 <script setup>
 const weekendsOnly = ref(false)
 
-const dynamicStartProps = computed(() => ({ // [!code highlight]
+const dynamicStartProps = computed(() => ({
   isDateDisabled: (timestamp) => {
     if (!weekendsOnly.value) return false
 
@@ -1342,14 +925,14 @@ const handleDateChange = (value) => {
 :::
 
 ::: details 🎨 自定义格式化 - 多种日期格式支持
-```vue
+```vue {12,15}
 <template>
   <div class="custom-format">
     <n-radio-group
       v-model:value="dateFormat"
       @update:value="handleFormatChange"
     >
-      <n-radio value="yyyy-MM-dd">标准格式 (2024-01-01)</n-radio> // [!code highlight]
+      <n-radio value="yyyy-MM-dd">标准格式 (2024-01-01)</n-radio>
       <n-radio value="yyyy/MM/dd">斜杠格式 (2024/01/01)</n-radio>
       <n-radio value="MM-dd-yyyy">美式格式 (01-01-2024)</n-radio>
       <n-radio value="dd/MM/yyyy">欧式格式 (01/01/2024)</n-radio>
@@ -1357,7 +940,7 @@ const handleDateChange = (value) => {
 
     <C_Date
       mode="daterange"
-      :value-format="dateFormat" // [!code highlight]
+      :value-format="dateFormat"
       @change="handleDateChange"
     />
 
@@ -1369,7 +952,7 @@ const handleDateChange = (value) => {
 const dateFormat = ref('yyyy-MM-dd')
 const formattedResult = ref('')
 
-const handleFormatChange = (format) => { // [!code highlight]
+const handleFormatChange = (format) => {
   console.log('格式变更:', format)
 }
 
@@ -1391,7 +974,7 @@ const formatTimestamp = (timestamp) => {
 :::
 
 ::: details 🔗 联动多个日期选择器 - 项目阶段时间级联
-```vue
+```vue {13,14,15,16,24,25,26,27,28,35,36,37,38,39}
 <template>
   <div class="cascading-dates">
     <h4>项目阶段时间设置</h4>
@@ -1404,7 +987,7 @@ const formatTimestamp = (timestamp) => {
           start-placeholder="需求分析开始"
           end-placeholder="需求分析结束"
           :disabled-before-today="true"
-          @update:smartRange="handlePhase1Change" // [!code highlight]
+          @update:smartRange="handlePhase1Change"
         />
       </div>
 
@@ -1414,7 +997,7 @@ const formatTimestamp = (timestamp) => {
           mode="smart-range"
           start-placeholder="开发开始"
           end-placeholder="开发结束"
-          :start-date-props="phase2StartProps" // [!code highlight]
+          :start-date-props="phase2StartProps"
           :end-date-props="phase2EndProps"
           @update:smartRange="handlePhase2Change"
         />
@@ -1426,7 +1009,7 @@ const formatTimestamp = (timestamp) => {
           mode="smart-range"
           start-placeholder="测试开始"
           end-placeholder="测试结束"
-          :start-date-props="phase3StartProps" // [!code highlight]
+          :start-date-props="phase3StartProps"
           :end-date-props="phase3EndProps"
           @update:smartRange="handlePhase3Change"
         />
@@ -1457,7 +1040,7 @@ const phase2Date = ref(null) // 开发
 const phase3Date = ref(null) // 测试
 
 // 开发阶段不能早于需求分析结束
-const phase2StartProps = computed(() => ({ // [!code highlight]
+const phase2StartProps = computed(() => ({
   isDateDisabled: (timestamp) => {
     if (!phase1Date.value || !phase1Date.value[1]) return false
     return timestamp < phase1Date.value[1]
@@ -1512,7 +1095,7 @@ const phaseTimeline = computed(() => {
   ]
 })
 
-const handlePhase1Change = (value) => { // [!code highlight]
+const handlePhase1Change = (value) => {
   phase1Date.value = value
   // 重置后续阶段
   if (value) {
@@ -1614,11 +1197,10 @@ const formatDate = (timestamp) => {
 
 ## 🔧 自定义样式
 
-### CSS 变量
-
+::: details 🎨 CSS 变量定制 - 主题色彩配置
 ```scss
 .c-date-wrapper {
-  --date-primary-color: #1890ff; // [!code highlight]
+  --date-primary-color: #1890ff;
   --date-border-color: #d9d9d9;
   --date-hover-border-color: #40a9ff;
   --date-focus-border-color: #1890ff;
@@ -1626,9 +1208,9 @@ const formatDate = (timestamp) => {
   --date-disabled-text-color: #ccc;
 }
 ```
+:::
 
-### 响应式布局
-
+::: details 📱 响应式布局 - 移动端适配
 ```vue
 <template>
   <C_Date mode="smart-range" class="responsive-date" />
@@ -1639,7 +1221,7 @@ const formatDate = (timestamp) => {
   width: 100%;
 
   :deep(.flex) {
-    @media (max-width: 768px) { // [!code highlight]
+    @media (max-width: 768px) {
       flex-direction: column;
       gap: 8px;
     }
@@ -1653,16 +1235,16 @@ const formatDate = (timestamp) => {
 }
 </style>
 ```
+:::
 
-### 自定义间距样式
-
+::: details 🌈 自定义间距样式 - 组件间距调整
 ```vue
 <template>
   <C_Date mode="smart-range" class="custom-spacing" />
 </template>
 
 <style scoped>
-.custom-spacing :deep(.gap-2\.5) { // [!code highlight]
+.custom-spacing :deep(.gap-2\.5) {
   gap: 16px;
 
   @media (max-width: 768px) {
@@ -1671,6 +1253,7 @@ const formatDate = (timestamp) => {
 }
 </style>
 ```
+:::
 
 ## ⚠️ 注意事项
 
@@ -1678,9 +1261,9 @@ const formatDate = (timestamp) => {
 
 ::: code-group
 
-```vue [✅ 推荐]
+```vue [✅ 推荐] {2,4}
 <!-- 根据需求选择合适的模式 -->
-<C_Date mode="smart-range" /> // [!code highlight]
+<C_Date mode="smart-range" />
 <!-- 需要联动限制时 -->
 <C_Date mode="daterange" />
 <!-- 简单范围选择时 -->
@@ -1688,7 +1271,7 @@ const formatDate = (timestamp) => {
 
 ```vue [❌ 不推荐]
 <!-- 所有场景都使用同一种模式 -->
-<C_Date mode="daterange" /> // [!code error]
+<C_Date mode="daterange" />
 <!-- 所有场景 -->
 ```
 
@@ -1698,19 +1281,19 @@ const formatDate = (timestamp) => {
 
 ::: code-group
 
-```vue [✅ 推荐]
+```vue [✅ 推荐] {4}
 <!-- 合理设置禁用规则 -->
 <C_Date
-  :disabled-before-today="true"  <!-- 预约类业务 --> // [!code highlight]
+  :disabled-before-today="true"  <!-- 预约类业务 -->
   :disabled-after-today="false"
 />
 ```
 
-```vue [❌ 不推荐]
+```vue [❌ 不推荐] {4}
 <!-- 过度限制 -->
 <C_Date
   :disabled-before-today="true"
-  :disabled-after-today="true"  <!-- 只能选今天 --> // [!code error]
+  :disabled-after-today="true"  <!-- 只能选今天 -->
 />
 ```
 
@@ -1720,19 +1303,19 @@ const formatDate = (timestamp) => {
 
 ::: code-group
 
-```vue [✅ 推荐]
+```vue [✅ 推荐] {4}
 <!-- 监听具体事件 -->
 <C_Date
   mode="smart-range"
-  @update:smartRange="handleSmartRange" // [!code highlight]
+  @update:smartRange="handleSmartRange"
 />
 ```
 
-```vue [❌ 不推荐]
+```vue [❌ 不推荐] {4}
 <!-- 只监听通用事件 -->
 <C_Date
   mode="smart-range"
-  @change="handleChange"  <!-- 不如具体事件清晰 --> // [!code error]
+  @change="handleChange"  <!-- 不如具体事件清晰 -->
 />
 ```
 
@@ -1742,65 +1325,63 @@ const formatDate = (timestamp) => {
 
 ### 常见问题
 
-#### Q1: 智能范围模式结束日期无法选择？
-
+::: details ❓ Q1: 智能范围模式结束日期无法选择？
 **A1:** 检查以下几点：
 
 1. 确认已选择开始日期
 2. 检查禁用规则设置
 3. 确认事件监听正确
 
-```vue
+```vue {2}
 <!-- 确保正确配置 -->
-<C_Date mode="smart-range" @update:smartRange="handleSmartRange" /> // [!code highlight]
+<C_Date mode="smart-range" @update:smartRange="handleSmartRange" />
 
 <script setup>
-const handleSmartRange = (value) => { // [!code highlight]
+const handleSmartRange = (value) => {
   console.log('智能范围变更:', value)
   // 确保事件处理函数存在
 }
 </script>
 ```
+:::
 
-#### Q2: 日期格式显示不正确？
-
+::: details ❓ Q2: 日期格式显示不正确？
 **A2:** 检查 valueFormat 设置：
 
 ::: code-group
 
-```vue [✅ 正确]
+```vue [✅ 正确] {4}
 <!-- 正确的格式设置 -->
 <C_Date
   mode="datetime"
-  value-format="yyyy-MM-dd HH:mm:ss" // [!code highlight]
+  value-format="yyyy-MM-dd HH:mm:ss"
 />
 ```
 
-```vue [❌ 错误]
+```vue [❌ 错误] {4}
 <!-- 格式字符串错误 -->
 <C_Date
   mode="datetime"
-  value-format="YYYY-mm-dd"  <!-- 应该是 yyyy-MM-dd --> // [!code error]
+  value-format="YYYY-mm-dd"  <!-- 应该是 yyyy-MM-dd -->
 />
 ```
 
 :::
 
-#### Q3: 禁用规则不生效？
-
+::: details ❓ Q3: 禁用规则不生效？
 **A3:** 确保使用正确的属性：
 
-```vue
+```vue {5,6}
 <template>
   <C_Date
     mode="smart-range"
-    :start-date-props="startProps" // [!code highlight]
+    :start-date-props="startProps"
     :end-date-props="endProps"
   />
 </template>
 
 <script setup>
-const startProps = computed(() => ({ // [!code highlight]
+const startProps = computed(() => ({
   isDateDisabled: (timestamp) => {
     // 禁用逻辑
     return false
@@ -1815,12 +1396,12 @@ const endProps = computed(() => ({
 }))
 </script>
 ```
+:::
 
-#### Q4: 清空功能不工作？
-
+::: details ❓ Q4: 清空功能不工作？
 **A4:** 使用暴露的 clearAll 方法：
 
-```vue
+```vue {2,7}
 <template>
   <C_Date ref="datePickerRef" />
   <n-button @click="handleClear">清空日期</n-button>
@@ -1829,33 +1410,34 @@ const endProps = computed(() => ({
 <script setup>
 const datePickerRef = ref()
 
-const handleClear = () => { // [!code highlight]
+const handleClear = () => {
   datePickerRef.value?.clearAll()
 }
 </script>
 ```
+:::
 
 ## 🎯 最佳实践
 
 ### 1. 根据业务场景选择模式
 
-```vue
+```vue {3,6,9}
 <!-- ✅ 推荐：根据业务特点选择 -->
 <!-- 预约业务：使用智能范围，禁用过去日期 -->
-<C_Date mode="smart-range" :disabled-before-today="true" /> // [!code highlight]
+<C_Date mode="smart-range" :disabled-before-today="true" />
 
 <!-- 报表查询：使用普通范围，允许历史日期 -->
-<C_Date mode="daterange" :disabled-after-today="true" /> // [!code highlight]
+<C_Date mode="daterange" :disabled-after-today="true" />
 
 <!-- 生日选择：使用单日期，禁用未来日期 -->
-<C_Date mode="date" :disabled-after-today="true" /> // [!code highlight]
+<C_Date mode="date" :disabled-after-today="true" />
 ```
 
 ### 2. 合理的默认值设置
 
 ```vue
 <script setup>
-const getIntelligentDefaults = () => { // [!code highlight]
+const getIntelligentDefaults = () => {
   const now = new Date()
   const tomorrow = new Date(now.getTime() + 24 * 60 * 60 * 1000)
   const nextWeek = new Date(now.getTime() + 7 * 24 * 60 * 60 * 1000)
@@ -1875,11 +1457,11 @@ const getIntelligentDefaults = () => { // [!code highlight]
 
 ### 3. 表单验证集成
 
-```vue
+```vue {5,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27}
 <template>
   <n-form :model="formData" :rules="dateRules">
     <n-form-item label="活动时间" path="eventDate">
-      <C_Date mode="smart-range" @update:smartRange="handleEventDateChange" /> // [!code highlight]
+      <C_Date mode="smart-range" @update:smartRange="handleEventDateChange" />
     </n-form-item>
   </n-form>
 </template>
@@ -1891,7 +1473,7 @@ const formData = ref({
 
 const dateRules = {
   eventDate: {
-    validator: (rule, value) => { // [!code highlight]
+    validator: (rule, value) => {
       if (!value || !Array.isArray(value) || value.length !== 2) {
         return new Error('请选择完整的活动时间')
       }
@@ -1921,10 +1503,10 @@ const handleEventDateChange = (value) => {
 
 ### 4. 性能优化
 
-```vue
+```vue {3,6,7,8,9,10,11,12,13,14,17,18,19}
 <script setup>
 // 使用计算属性优化禁用函数
-const disabledDateCache = new Map() // [!code highlight]
+const disabledDateCache = new Map()
 
 const optimizedDisabledDate = computed(() => {
   return (timestamp) => {
@@ -1957,18 +1539,6 @@ onUnmounted(() => {
 - ✨ 丰富的事件系统
 - ✨ 暴露清空方法和内部状态
 
-## 🤝 贡献指南
-
-1. Fork 项目
-2. 创建功能分支 (`git checkout -b feature/amazing-feature`)
-3. 提交更改 (`git commit -m 'Add amazing feature'`)
-4. 推送到分支 (`git push origin feature/amazing-feature`)
-5. 创建 Pull Request
-
-## 📄 许可证
-
-Copyright (c) 2025 by ChenYu, All Rights Reserved.
-
----
+<!--@include: ./snippets/contribute.md -->
 
 **💡 提示**: 这个组件设计用于团队协作，支持假期申请、活动报名、财务报表、任务跟踪等多种场景。如果遇到问题请先查看文档，或者在团队群里讨论。让我们一起打造更好的开发体验！ 🚀
