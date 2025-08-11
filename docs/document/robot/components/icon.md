@@ -33,7 +33,7 @@ npm install @iconify/vue
   <C_Icon name="mdi:home" />
 
   <!-- 指定大小和颜色 -->
-  <C_Icon name="mdi:heart" :size="24" color="red" />
+  <C_Icon name="mdi:heart" :size="24" color="red" /> // [!code highlight]
 </template>
 ```
 
@@ -42,23 +42,23 @@ npm install @iconify/vue
 ```vue
 <template>
   <!-- 1. Iconify 图标 (默认推荐) -->
-  <C_Icon name="mdi:account" />
+  <C_Icon name="mdi:account" /> // [!code highlight]
   <C_Icon name="heroicons:user-solid" />
 
   <!-- 2. UnoCSS 图标 -->
-  <C_Icon type="unocss" name="i-mdi-home" />
+  <C_Icon type="unocss" name="i-mdi-home" /> // [!code highlight]
 
   <!-- 3. 组件图标 -->
-  <C_Icon type="component" :name="CustomIconComponent" />
+  <C_Icon type="component" :name="CustomIconComponent" /> // [!code highlight]
 
   <!-- 4. SVG 路径 -->
   <C_Icon
-    type="svg"
+    type="svg" // [!code highlight]
     svg-path="M12 2L2 7V10C2 16 7 21 12 21S22 16 22 10V7L12 2Z"
   />
 
   <!-- 5. 图片图标 -->
-  <C_Icon type="image" name="/assets/icons/custom-icon.png" alt="自定义图标" />
+  <C_Icon type="image" name="/assets/icons/custom-icon.png" alt="自定义图标" /> // [!code highlight]
 </template>
 ```
 
@@ -104,15 +104,14 @@ npm install @iconify/vue
 
 ## 🎨 使用示例
 
-### 场景 1: 导航菜单
-
+::: details 💡 导航菜单 - 可点击的导航图标
 ```vue
 <template>
   <nav class="nav-menu">
     <C_Icon
       name="mdi:home"
       :size="20"
-      color="var(--primary-color)"
+      color="var(--primary-color)" // [!code highlight]
       clickable
       @click="handleNavClick('home')"
     />
@@ -125,9 +124,9 @@ npm install @iconify/vue
   </nav>
 </template>
 ```
+:::
 
-### 场景 2: 加载状态
-
+::: details ⏳ 加载状态 - 动态加载效果
 ```vue
 <template>
   <div class="loading-demo">
@@ -135,7 +134,7 @@ npm install @iconify/vue
       name="mdi:loading"
       :size="24"
       color="blue"
-      :loading="isLoading"
+      :loading="isLoading" // [!code highlight]
       :rotate="isLoading ? 360 : 0"
     />
     <span>{{ isLoading ? '加载中...' : '加载完成' }}</span>
@@ -151,39 +150,39 @@ setTimeout(() => {
 }, 3000)
 </script>
 ```
+:::
 
-### 场景 3: 错误处理
-
+::: details ⚠️ 错误处理 - 智能回退机制
 ```vue
 <template>
   <div class="error-demo">
     <C_Icon
       name="invalid-icon-name"
-      fallback-icon="mdi:alert"
+      fallback-icon="mdi:alert" // [!code highlight]
       @error="handleIconError"
     />
   </div>
 </template>
 
 <script setup>
-const handleIconError = (type, error) => {
+const handleIconError = (type, error) => { // [!code highlight]
   console.log(`图标加载失败: ${type}`, error)
   // 可以在这里进行错误上报
 }
 </script>
 ```
+:::
 
-### 场景 4: 自定义组件图标
-
+::: details 🎨 自定义组件图标 - 传入 Vue 组件
 ```vue
 <template>
   <div class="custom-icon-demo">
     <C_Icon
-      type="component"
+      type="component" // [!code highlight]
       :name="MyCustomIcon"
       :size="32"
       color="purple"
-      :component-props="{ variant: 'filled' }"
+      :component-props="{ variant: 'filled' }" // [!code highlight]
     />
   </div>
 </template>
@@ -192,18 +191,18 @@ const handleIconError = (type, error) => {
 import MyCustomIcon from './MyCustomIcon.vue'
 </script>
 ```
+:::
 
 ## 🛠️ 高级用法
 
-### 动态图标切换
-
+::: details 🔄 动态图标切换 - 点击切换图标和颜色
 ```vue
 <template>
   <div class="dynamic-icon">
     <C_Icon
       :name="currentIcon"
       :size="28"
-      :color="iconColor"
+      :color="iconColor" // [!code highlight]
       clickable
       @click="toggleIcon"
     />
@@ -211,28 +210,28 @@ import MyCustomIcon from './MyCustomIcon.vue'
 </template>
 
 <script setup>
-const icons = ['mdi:heart-outline', 'mdi:heart']
+const icons = ['mdi:heart-outline', 'mdi:heart'] // [!code highlight]
 const colors = ['gray', 'red']
 const currentIndex = ref(0)
 
 const currentIcon = computed(() => icons[currentIndex.value])
 const iconColor = computed(() => colors[currentIndex.value])
 
-const toggleIcon = () => {
+const toggleIcon = () => { // [!code highlight]
   currentIndex.value = (currentIndex.value + 1) % icons.length
 }
 </script>
 ```
+:::
 
-### 图标动画效果
-
+::: details 🎬 图标动画效果 - 旋转动画实现
 ```vue
 <template>
   <div class="animated-icon">
     <C_Icon
       name="mdi:sync"
       :size="24"
-      :rotate="rotateAngle"
+      :rotate="rotateAngle" // [!code highlight]
       clickable
       @click="startRotation"
     />
@@ -242,7 +241,7 @@ const toggleIcon = () => {
 <script setup>
 const rotateAngle = ref(0)
 
-const startRotation = () => {
+const startRotation = () => { // [!code highlight]
   const animate = () => {
     rotateAngle.value += 5
     if (rotateAngle.value < 360) {
@@ -255,6 +254,7 @@ const startRotation = () => {
 }
 </script>
 ```
+:::
 
 ## 🔧 自定义样式
 
@@ -263,7 +263,7 @@ const startRotation = () => {
 ```scss
 .c-icon {
   --icon-color: currentColor;
-  --icon-hover-color: var(--primary-color);
+  --icon-hover-color: var(--primary-color); // [!code highlight]
   --icon-error-color: #ff4757;
   --icon-loading-color: #3742fa;
 }
@@ -273,11 +273,11 @@ const startRotation = () => {
 
 ```vue
 <template>
-  <C_Icon name="mdi:star" custom-class="my-star-icon" />
+  <C_Icon name="mdi:star" custom-class="my-star-icon" /> // [!code highlight]
 </template>
 
 <style scoped>
-.my-star-icon {
+.my-star-icon { // [!code highlight]
   transition: all 0.3s ease;
 
   &:hover {
@@ -292,34 +292,57 @@ const startRotation = () => {
 
 ### 1. 图标命名规范
 
-```vue
-<!-- ✅ 推荐：使用标准前缀 -->
-<C_Icon name="mdi:home" />
-<C_Icon name="heroicons:user-solid" />
+::: code-group
 
-<!-- ❌ 不推荐：缺少前缀 -->
-<C_Icon name="home" />
+```vue [✅ 推荐]
+<!-- 使用标准前缀 -->
+<C_Icon name="mdi:home" /> // [!code highlight]
+<C_Icon name="heroicons:user-solid" />
 ```
+
+```vue [❌ 不推荐]
+<!-- 缺少前缀 -->
+<C_Icon name="home" /> // [!code error]
+```
+
+:::
 
 ### 2. 性能优化
 
-```vue
-<!-- ✅ 推荐：合理使用size -->
-<C_Icon name="mdi:home" :size="16" />
+::: code-group
 
-<!-- ❌ 不推荐：过大的图标 -->
-<C_Icon name="mdi:home" :size="200" />
+```vue [✅ 推荐]
+<!-- 合理使用size -->
+<C_Icon name="mdi:home" :size="16" /> // [!code highlight]
 ```
+
+```vue [❌ 不推荐]
+<!-- 过大的图标 -->
+<C_Icon name="mdi:home" :size="200" /> // [!code error]
+```
+
+:::
 
 ### 3. 无障碍支持
 
-```vue
-<!-- ✅ 推荐：提供有意义的标签 -->
-<C_Icon name="mdi:close" clickable aria-label="关闭弹窗" title="关闭" />
+::: code-group
 
-<!-- ❌ 不推荐：缺少无障碍支持 -->
-<C_Icon name="mdi:close" clickable />
+```vue [✅ 推荐]
+<!-- 提供有意义的标签 -->
+<C_Icon 
+  name="mdi:close" 
+  clickable 
+  aria-label="关闭弹窗" // [!code highlight]
+  title="关闭" 
+/>
 ```
+
+```vue [❌ 不推荐]
+<!-- 缺少无障碍支持 -->
+<C_Icon name="mdi:close" clickable /> // [!code error]
+```
+
+:::
 
 ## 🐛 故障排除
 
@@ -336,7 +359,7 @@ const startRotation = () => {
 
 ```vue
 <!-- 使用回退图标 -->
-<C_Icon name="可能不存在的图标" fallback-icon="mdi:help" />
+<C_Icon name="可能不存在的图标" fallback-icon="mdi:help" /> // [!code highlight]
 ```
 
 #### Q2: 图标加载慢怎么办？
@@ -347,7 +370,7 @@ const startRotation = () => {
 // 在应用启动时预加载
 import { preloadIcons } from '@iconify/vue'
 
-preloadIcons(['mdi:home', 'mdi:user', 'mdi:settings'])
+preloadIcons(['mdi:home', 'mdi:user', 'mdi:settings']) // [!code highlight]
 ```
 
 #### Q3: 如何处理图标错误？
@@ -356,11 +379,11 @@ preloadIcons(['mdi:home', 'mdi:user', 'mdi:settings'])
 
 ```vue
 <template>
-  <C_Icon name="mdi:home" @error="handleError" />
+  <C_Icon name="mdi:home" @error="handleError" /> // [!code highlight]
 </template>
 
 <script setup>
-const handleError = (type, error) => {
+const handleError = (type, error) => { // [!code highlight]
   // 错误处理逻辑
   console.error(`图标错误 [${type}]:`, error)
 }
@@ -371,28 +394,34 @@ const handleError = (type, error) => {
 
 ### 1. 统一图标库
 
-```vue
-<!-- ✅ 推荐：统一使用一个图标库 -->
-<C_Icon name="mdi:home" />
+::: code-group
+
+```vue [✅ 推荐]
+<!-- 统一使用一个图标库 -->
+<C_Icon name="mdi:home" /> // [!code highlight]
 <C_Icon name="mdi:user" />
 <C_Icon name="mdi:settings" />
+```
 
-<!-- ❌ 不推荐：混用不同图标库 -->
-<C_Icon name="mdi:home" />
+```vue [❌ 不推荐]
+<!-- 混用不同图标库 -->
+<C_Icon name="mdi:home" /> // [!code error]
 <C_Icon name="heroicons:user" />
 <C_Icon name="tabler:settings" />
 ```
+
+:::
 
 ### 2. 响应式设计
 
 ```vue
 <template>
-  <C_Icon name="mdi:menu" :size="iconSize" />
+  <C_Icon name="mdi:menu" :size="iconSize" /> // [!code highlight]
 </template>
 
 <script setup>
 const iconSize = computed(() => {
-  return window.innerWidth > 768 ? 24 : 20
+  return window.innerWidth > 768 ? 24 : 20 // [!code highlight]
 })
 </script>
 ```
@@ -401,12 +430,12 @@ const iconSize = computed(() => {
 
 ```vue
 <template>
-  <C_Icon name="mdi:sun" :color="themeColor" />
+  <C_Icon name="mdi:sun" :color="themeColor" /> // [!code highlight]
 </template>
 
 <script setup>
 const themeColor = computed(() => {
-  return isDark.value ? '#ffd700' : '#ff6b35'
+  return isDark.value ? '#ffd700' : '#ff6b35' // [!code highlight]
 })
 </script>
 ```
