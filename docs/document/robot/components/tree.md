@@ -21,7 +21,7 @@ outline: 'deep'
 
 组件已全局注册，直接使用即可：
 
-```vue
+```vue 
 <template>
   <C_Tree :data="treeData" />
 </template>
@@ -31,7 +31,7 @@ outline: 'deep'
 
 ### 基础用法
 
-```vue
+```vue 
 <template>
   <C_Tree 
     :data="basicTreeData"
@@ -65,7 +65,7 @@ const handleNodeSelect = (node, selectedKeys) => {
 
 ### 菜单模式
 
-```vue
+```vue {3}
 <template>
   <C_Tree 
     mode="menu"
@@ -102,7 +102,7 @@ const menuData = [
 
 ### 文件模式
 
-```vue
+```vue {3}
 <template>
   <C_Tree 
     mode="file"
@@ -239,7 +239,7 @@ interface StatusConfig {
 
 ## 🎨 使用示例
 
-### 场景 1: 系统菜单管理
+::: details 📋 场景 1: 系统菜单管理
 
 ```vue
 <template>
@@ -340,8 +340,9 @@ const handleAddMenu = (parentNode) => {
 }
 </script>
 ```
+:::
 
-### 场景 2: 文件目录浏览
+::: details 📁 场景 2: 文件目录浏览
 
 ```vue
 <template>
@@ -479,8 +480,9 @@ const handleFileAction = (action, node) => {
 }
 </script>
 ```
+:::
 
-### 场景 3: 组织架构管理
+::: details 🏢 场景 3: 组织架构管理
 
 ```vue
 <template>
@@ -595,8 +597,9 @@ const orgActions = [
 ]
 </script>
 ```
+:::
 
-### 场景 4: 自定义配置
+::: details 🎨 场景 4: 自定义配置
 
 ```vue
 <template>
@@ -711,10 +714,11 @@ const handleNodeDrop = (dropInfo) => {
 }
 </script>
 ```
+:::
 
 ## 🎨 样式定制
 
-### 自定义树形样式
+::: details 🎨 自定义树形样式
 
 ```scss
 // 自定义树形容器
@@ -811,44 +815,11 @@ const handleNodeDrop = (dropInfo) => {
 }
 ```
 
-### 自定义图标样式
-
-```scss
-// 自定义节点图标
-.node-icon {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 18px;
-  height: 18px;
-  margin-right: 8px;
-  
-  // 不同类型的图标样式
-  &.icon-folder {
-    color: #f39c12;
-  }
-  
-  &.icon-file {
-    color: #3498db;
-  }
-  
-  &.icon-image {
-    color: #e74c3c;
-  }
-}
-
-// 状态标签样式
-.status-tag {
-  margin-left: 8px;
-  font-size: 12px;
-  padding: 2px 6px;
-  border-radius: 10px;
-}
-```
+:::
 
 ## ⚙️ 高级用法
 
-### 异步加载节点
+::: details 🔄 异步加载节点
 
 ```vue
 <script setup>
@@ -871,8 +842,9 @@ const lazyLoadConfig = {
 }
 </script>
 ```
+:::
 
-### 虚拟滚动
+::: details 📊 虚拟滚动
 
 ```vue
 <template>
@@ -901,8 +873,9 @@ const generateBigData = (count = 10000) => {
 const bigTreeData = ref(generateBigData())
 </script>
 ```
+:::
 
-### 批量操作
+::: details ✅ 批量操作
 
 ```vue
 <template>
@@ -959,10 +932,11 @@ const batchDelete = async () => {
 }
 </script>
 ```
+:::
 
 ## 🐛 常见问题
 
-### Q1: 树形数据不更新？
+::: details ❓ Q1: 树形数据不更新？
 
 **A1:** 确保数据是响应式的：
 
@@ -973,8 +947,9 @@ const treeData = ref([...])
 // ❌ 错误
 const treeData = [...]
 ```
+:::
 
-### Q2: 节点操作按钮不显示？
+::: details ❓ Q2: 节点操作按钮不显示？
 
 **A2:** 检查 actions 配置和 show 条件：
 
@@ -988,8 +963,9 @@ const actions = [
   }
 ]
 ```
+:::
 
-### Q3: 自定义图标不生效？
+::: details ❓ Q3: 自定义图标不生效？
 
 **A3:** 确保图标库已正确引入：
 
@@ -1004,8 +980,9 @@ const iconConfig = {
 }
 </script>
 ```
+:::
 
-### Q4: 搜索功能无效？
+::: details ❓ Q4: 搜索功能无效？
 
 **A4:** 检查搜索字段配置：
 
@@ -1017,6 +994,7 @@ const iconConfig = {
   :search-pattern="searchKeyword"
 />
 ```
+:::
 
 ## 🎯 最佳实践
 
@@ -1129,7 +1107,7 @@ const handleKeydown = (event) => {
 
 ## 📝 更新日志
 
-### v1.0.0 (2025-08-11)
+### v1.0.0 (2025-07-28)
 
 - ✨ 初始版本发布
 - ✨ 支持菜单、文件、组织架构三种预设模式
