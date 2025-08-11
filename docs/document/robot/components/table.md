@@ -23,16 +23,37 @@ outline: 'deep'
 
 ## 📦 安装
 
-```bash
+::: code-group
+
+```bash [bun (推荐)]
+# 基于 Naive UI，确保已安装依赖
+
+
+bun install naive-ui
+```
+
+```bash [pnpm]
+# 基于 Naive UI，确保已安装依赖
+pnpm install naive-ui
+```
+
+```bash [yarn]
+# 基于 Naive UI，确保已安装依赖
+yarn add naive-ui
+```
+
+```bash [npm]
 # 基于 Naive UI，确保已安装依赖
 npm install naive-ui
 ```
+
+:::
 
 ## 🎯 快速开始
 
 ### 基础用法
 
-```vue
+```vue {4,5,6,7,8}
 <template>
   <!-- 最简单的表格 -->
   <C_Table
@@ -69,7 +90,7 @@ npm install naive-ui
 
 ### 多种编辑模式
 
-```vue
+```vue {6,7,8,9,10,11,12,13,14,15,16,17}
 <template>
   <div class="edit-mode-demo">
     <!-- 编辑模式切换 -->
@@ -217,7 +238,7 @@ npm install naive-ui
 | **expandAll** | `-` | `void` | 展开所有行 |
 | **collapseAll** | `-` | `void` | 折叠所有行 |
 
-### 类型定义
+::: details 🔧 类型定义 - 完整的 TypeScript 接口定义
 
 #### 表格列配置
 
@@ -276,12 +297,12 @@ interface PaginationConfig {
   size?: 'small' | 'medium' | 'large'
 }
 ```
+:::
 
 ## 🎨 使用示例
 
-### 场景 1: 员工管理表格
-
-```vue
+::: details 👥 员工管理表格 - 完整的CRUD操作示例
+```vue {6,7,8,9,10,11,12,13,14,15,16}
 <template>
   <div class="employee-management">
     <n-card title="员工管理" style="margin-bottom: 16px;">
@@ -294,12 +315,7 @@ interface PaginationConfig {
             </template>
             添加员工
           </n-button>
-          <n-button @click="handleExport">
-            <template #icon>
-              <n-icon><Download /></n-icon>
-            </template>
-            导出数据
-          </n-button>
+          <n-button @click="handleExport">导出数据</n-button>
         </n-space>
       </template>
 
@@ -352,7 +368,6 @@ interface PaginationConfig {
       status: 'active',
       description: '资深人力资源专员'
     },
-    // 更多数据...
   ])
 
   const employeeColumns = [
@@ -487,7 +502,7 @@ interface PaginationConfig {
         icon: 'mdi:shield-key',
         type: 'warning',
         onClick: handleAuthorize,
-        show: (row) => row.status === 'active' // 只有在职员工显示授权
+        show: (row) => row.status === 'active'
       }
     ]
   }
@@ -516,7 +531,6 @@ interface PaginationConfig {
     
     employeeData.value.unshift(newEmployee)
     
-    // 自动开始编辑
     setTimeout(() => {
       employeeTableRef.value?.startEdit(newEmployee.id)
     }, 100)
@@ -525,12 +539,8 @@ interface PaginationConfig {
   const handleSave = async (rowData, rowIndex) => {
     loading.value = true
     try {
-      // 模拟API调用
       await new Promise(resolve => setTimeout(resolve, 1000))
-      
-      // 更新数据
       employeeData.value[rowIndex] = { ...rowData }
-      
       message.success('员工信息保存成功')
     } catch (error) {
       message.error('保存失败，请重试')
@@ -571,7 +581,6 @@ interface PaginationConfig {
   }
 
   const handleExport = () => {
-    // 导出逻辑
     console.log('导出员工数据')
   }
 
@@ -580,10 +589,10 @@ interface PaginationConfig {
   }
 </script>
 ```
+:::
 
-### 场景 2: 产品管理表格（带展开功能）
-
-```vue
+::: details 📦 产品管理表格 - 展开功能和选择功能
+```vue {4,5,6,7,8,9,10,11}
 <template>
   <div class="product-management">
     <C_Table
@@ -688,7 +697,6 @@ interface PaginationConfig {
 
   // 加载产品详情（展开行内容）
   const loadProductDetails = async (row) => {
-    // 模拟API调用
     await new Promise(resolve => setTimeout(resolve, 500))
     
     return {
@@ -746,10 +754,10 @@ interface PaginationConfig {
   }
 </script>
 ```
+:::
 
-### 场景 3: 订单管理表格（自定义操作）
-
-```vue
+::: details 📋 订单管理表格 - 自定义操作和状态管理
+```vue {4,5,6,7,8,9}
 <template>
   <C_Table
     :data="orderData"
@@ -863,10 +871,8 @@ interface PaginationConfig {
   const handleProcessOrder = async (row) => {
     loading.value = true
     try {
-      // 模拟API调用
       await new Promise(resolve => setTimeout(resolve, 1000))
       
-      // 更新状态
       const index = orderData.value.findIndex(item => item.id === row.id)
       if (index !== -1) {
         orderData.value[index].status = 'processed'
@@ -929,12 +935,12 @@ interface PaginationConfig {
   }
 </script>
 ```
+:::
 
 ## 🛠️ 高级用法
 
-### 预设配置模式
-
-```vue
+::: details ⚡ 预设配置模式 - 快速搭建CRUD表格
+```vue {5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20}
 <template>
   <C_Table
     :data="tableData"
@@ -975,10 +981,10 @@ interface PaginationConfig {
   }
 </script>
 ```
+:::
 
-### 动态行操作
-
-```vue
+::: details 🔄 动态行操作 - 添加、删除、复制和移动
+```vue {5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20}
 <template>
   <C_Table
     ref="tableRef"
@@ -1027,10 +1033,10 @@ interface PaginationConfig {
   }
 </script>
 ```
+:::
 
-### 自定义渲染和验证
-
-```vue
+::: details 🎨 自定义渲染和验证 - 复杂字段处理
+```vue {4,5,6,7}
 <template>
   <C_Table
     :data="tableData"
@@ -1142,11 +1148,12 @@ interface PaginationConfig {
   }
 </script>
 ```
+:::
+
 
 ## 🎨 自定义样式
 
-### CSS 变量
-
+::: details 🎨 CSS 变量
 ```scss
 .c-table-wrapper {
   --table-border-color: #e5e7eb;
@@ -1159,10 +1166,10 @@ interface PaginationConfig {
   --table-border-radius: 8px;
 }
 ```
+:::
 
-### 响应式设计
-
-```vue
+::: details 📱 响应式设计
+```vue {6,7,8,9,10,11,12,13,14,15}
 <template>
   <C_Table
     :data="tableData"
@@ -1224,20 +1231,25 @@ interface PaginationConfig {
   }
 </style>
 ```
+:::
 
 ## ⚠️ 注意事项
 
 ### 1. 数据绑定
 
-```vue
-<!-- ✅ 推荐：使用响应式数据 -->
+::: code-group
+
+```vue [✅ 推荐] {3,4,5}
+<!-- 使用响应式数据 -->
 <script setup>
   const tableData = ref([
     { id: 1, name: '张三' }
   ])
 </script>
+```
 
-<!-- ❌ 不推荐：直接赋值 -->
+```vue [❌ 不推荐] {3,4,5}
+<!-- 直接赋值 -->
 <script setup>
   const tableData = [
     { id: 1, name: '张三' }
@@ -1245,10 +1257,14 @@ interface PaginationConfig {
 </script>
 ```
 
+:::
+
 ### 2. 列配置
 
-```javascript
-// ✅ 推荐：完整的列配置
+::: code-group
+
+```javascript [✅ 推荐] {3,4,5,6,7,8,9}
+// 完整的列配置
 const columns = [
   {
     key: 'name',
@@ -1259,8 +1275,10 @@ const columns = [
     editType: 'input'
   }
 ]
+```
 
-// ❌ 不推荐：缺少必要配置
+```javascript [❌ 不推荐] {3,4,5,6}
+// 缺少必要配置
 const columns = [
   {
     key: 'name',
@@ -1269,10 +1287,14 @@ const columns = [
 ]
 ```
 
+:::
+
 ### 3. 事件处理
 
-```javascript
-// ✅ 推荐：完整的错误处理
+::: code-group
+
+```javascript [✅ 推荐] {2,3,4,5,6,7,8,9,10,11,12,13,14}
+// 完整的错误处理
 const handleSave = async (rowData, rowIndex) => {
   try {
     loading.value = true
@@ -1285,19 +1307,20 @@ const handleSave = async (rowData, rowIndex) => {
     loading.value = false
   }
 }
+```
 
-// ❌ 不推荐：缺少错误处理
+```javascript [❌ 不推荐] {2,3}
+// 缺少错误处理
 const handleSave = (rowData, rowIndex) => {
   console.log('保存数据:', rowData)
 }
 ```
 
+:::
+
 ## 🐛 故障排除
 
-### 常见问题
-
-#### Q1: 编辑模式无效？
-
+::: details ❓ Q1: 编辑模式无效？
 **A1:** 检查编辑配置：
 
 ```javascript
@@ -1319,9 +1342,9 @@ const columns = [
   edit-mode="modal" // 指定编辑模式
 />
 ```
+:::
 
-#### Q2: 分页不显示？
-
+::: details ❓ Q2: 分页不显示？
 **A2:** 检查分页配置：
 
 ```javascript
@@ -1336,9 +1359,9 @@ const paginationConfig = {
   pageSize: 10
 }
 ```
+:::
 
-#### Q3: 自定义操作不显示？
-
+::: details ❓ Q3: 自定义操作不显示？
 **A3:** 检查操作配置：
 
 ```javascript
@@ -1354,9 +1377,9 @@ const actions = {
   ]
 }
 ```
+:::
 
-#### Q4: 表单验证不生效？
-
+::: details ❓ Q4: 表单验证不生效？
 **A4:** 检查验证配置：
 
 ```javascript
@@ -1374,12 +1397,13 @@ const columns = [
   }
 ]
 ```
+:::
 
 ## 🎯 最佳实践
 
 ### 1. 数据结构设计
 
-```javascript
+```javascript {2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19}
 // ✅ 推荐：统一的数据结构
 interface TableRecord {
   id: string | number // 必须有唯一标识
@@ -1399,7 +1423,7 @@ const tableData = ref<TableRecord[]>([
 
 ### 2. 列配置管理
 
-```javascript
+```javascript {2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29}
 // ✅ 推荐：模块化的列配置
 const createUserColumns = () => [
   {
@@ -1427,48 +1451,9 @@ const createUserColumns = () => [
 const userColumns = createUserColumns()
 ```
 
-### 3. 操作配置策略
+### 3. 性能优化
 
-```javascript
-// ✅ 推荐：基于角色的操作配置
-const createUserActions = (userRole: string) => {
-  const baseActions = {
-    detail: {},
-    custom: []
-  }
-
-  if (userRole === 'admin') {
-    baseActions.edit = {}
-    baseActions.delete = {
-      confirmText: (row) => `确定要删除用户"${row.name}"吗？`
-    }
-    baseActions.custom.push({
-      key: 'resetPassword',
-      label: '重置密码',
-      icon: 'mdi:lock-reset',
-      type: 'warning',
-      onClick: handleResetPassword
-    })
-  }
-
-  if (userRole === 'manager') {
-    baseActions.edit = {}
-    baseActions.custom.push({
-      key: 'approve',
-      label: '审批',
-      icon: 'mdi:check-circle',
-      type: 'success',
-      onClick: handleApprove
-    })
-  }
-
-  return baseActions
-}
-```
-
-### 4. 性能优化
-
-```vue
+```vue {10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42}
 <template>
   <C_Table
     :data="tableData"
@@ -1508,9 +1493,9 @@ const createUserActions = (userRole: string) => {
 </script>
 ```
 
-### 5. 错误处理
+### 4. 错误处理
 
-```javascript
+```javascript {2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59}
 // ✅ 推荐：完整的错误处理策略
 const handleSave = async (rowData, rowIndex) => {
   const loadingKey = `save-${rowIndex}`
@@ -1576,18 +1561,6 @@ const handleSave = async (rowData, rowIndex) => {
 - ✨ 简单的编辑支持
 - ✨ 基本的操作按钮
 
-## 🤝 贡献指南
-
-1. Fork 项目
-2. 创建功能分支 (`git checkout -b feature/amazing-feature`)
-3. 提交更改 (`git commit -m 'Add amazing feature'`)
-4. 推送到分支 (`git push origin feature/amazing-feature`)
-5. 创建 Pull Request
-
-## 📄 许可证
-
-Copyright (c) 2025 by ChenYu, All Rights Reserved.
-
----
+<!--@include: ./snippets/contribute.md -->
 
 **💡 提示**: 这个表格组件是为了提升数据管理效率而设计的全功能解决方案。从简单的数据展示到复杂的CRUD操作，从单个字段编辑到完整的表单验证，都能轻松应对。支持分页、选择、展开、导出等企业级功能，让数据管理变得简单而高效。结合强大的自定义能力和完善的类型系统，能够满足各种复杂的业务需求。如果遇到问题请先查看文档，或者在团队群里讨论。让我们一起打造更强大的数据管理体验！ 🚀
