@@ -203,29 +203,33 @@ export const ROBOT_COMPONENTS_DOC = [
         text: "[C_FilePreview] 文件预览",
         link: `${ROBOT}/components/file-preview`,
       },
+      {
+        text: "[C_VtableGantt] 甘特图",
+        link: `${ROBOT}/components/vtable-gantt`,
+      },
     ],
   },
   {
     text: "编辑器组件",
     items: [
       {
-        text: "[C_Code] 代码编辑器",
+        text: "[C_Code] 代码",
         link: `${ROBOT}/components/code`,
       },
       {
-        text: "[C_Markdown] MD编辑器",
+        text: "[C_Markdown] markdown",
         link: `${ROBOT}/components/markdown`,
       },
       {
-        text: "[C_Editor] 富文本编辑器",
+        text: "[C_Editor] 富文本",
         link: `${ROBOT}/components/editor`,
       },
       {
-        text: "[C_Workflow] 工作流编辑器",
+        text: "[C_Workflow] 工作流",
         link: `${ROBOT}/components/work-flow`,
       },
       {
-        text: "[C_AntV] 图形编辑器",
+        text: "[C_AntV] 图形引擎",
         link: `${ROBOT}/components/antv`,
       },
     ],
