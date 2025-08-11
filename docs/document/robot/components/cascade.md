@@ -32,7 +32,7 @@ npm install naive-ui
   <!-- 最简单的使用方式 -->
   <C_Cascade
     :data="cascadeData"
-    v-model="selectedValue"
+    v-model="selectedValue" // [!code highlight]
     @change="handleChange"
   />
 </template>
@@ -46,7 +46,7 @@ const cascadeData = [
   {
     label: '浙江省',
     value: 'zhejiang',
-    children: [
+    children: [ // [!code highlight]
       {
         label: '杭州市',
         value: 'hangzhou',
@@ -71,7 +71,7 @@ const handleChange = (value) => {
 <template>
   <C_Cascade
     :data="cascadeData"
-    :placeholders="['选择省份', '选择城市', '选择区县']"
+    :placeholders="['选择省份', '选择城市', '选择区县']" // [!code highlight]
     v-model="selectedValue"
   />
 </template>
@@ -137,15 +137,14 @@ interface CascadeValue {
 
 ## 🎨 使用示例
 
-### 场景 1: 地区选择器
-
+::: details 🌍 地区选择器 - 省市区三级联动
 ```vue
 <template>
   <div class="region-selector">
     <h3>请选择地区</h3>
     <C_Cascade
       :data="regionData"
-      :placeholders="['省份', '城市', '区县']"
+      :placeholders="['省份', '城市', '区县']" // [!code highlight]
       v-model="selectedRegion"
       @change="handleRegionChange"
     />
@@ -199,7 +198,7 @@ const regionData = [
   },
 ]
 
-const handleRegionChange = (value) => {
+const handleRegionChange = (value) => { // [!code highlight]
   console.log('地区变更:', value)
 }
 
@@ -215,15 +214,15 @@ const getSelectedPath = () => {
 }
 </script>
 ```
+:::
 
-### 场景 2: 部门选择器
-
+::: details 🏢 部门选择器 - 组织架构级联
 ```vue
 <template>
   <div class="department-selector">
     <C_Cascade
       :data="departmentData"
-      :placeholders="['选择公司', '选择部门', '选择小组']"
+      :placeholders="['选择公司', '选择部门', '选择小组']" // [!code highlight]
       v-model="selectedDepartment"
       @change="handleDepartmentChange"
     />
@@ -258,7 +257,7 @@ const departmentData = [
   },
 ]
 
-const handleDepartmentChange = (value) => {
+const handleDepartmentChange = (value) => { // [!code highlight]
   // 可以根据选择结果进行权限控制等操作
   if (value.tertiary) {
     console.log('已选择到具体小组:', value.tertiary.label)
@@ -266,16 +265,16 @@ const handleDepartmentChange = (value) => {
 }
 </script>
 ```
+:::
 
-### 场景 3: 分类选择器
-
+::: details 🛍️ 分类选择器 - 商品分类管理
 ```vue
 <template>
   <div class="category-selector">
     <h3>商品分类</h3>
     <C_Cascade
       :data="categoryData"
-      :placeholders="['一级分类', '二级分类', '三级分类']"
+      :placeholders="['一级分类', '二级分类', '三级分类']" // [!code highlight]
       v-model="selectedCategory"
       @change="handleCategoryChange"
     />
@@ -321,7 +320,7 @@ const categoryData = [
   },
 ]
 
-const handleCategoryChange = (value) => {
+const handleCategoryChange = (value) => { // [!code highlight]
   // 根据分类选择加载对应商品
   if (value.tertiary) {
     loadProductsByCategory(value.tertiary.value)
@@ -333,17 +332,17 @@ const loadProductsByCategory = (categoryId) => {
 }
 </script>
 ```
+:::
 
 ## 🛠️ 高级用法
 
-### 动态数据加载
-
+::: details 🔄 动态数据加载 - 异步获取级联数据
 ```vue
 <template>
   <C_Cascade
     :data="dynamicData"
     v-model="selectedValue"
-    @change="handleDynamicChange"
+    @change="handleDynamicChange" // [!code highlight]
   />
 </template>
 
@@ -361,7 +360,7 @@ onMounted(async () => {
   }
 })
 
-const handleDynamicChange = async (value) => {
+const handleDynamicChange = async (value) => { // [!code highlight]
   // 当选择第一级时，动态加载第二级数据
   if (value.primary && !value.secondary) {
     const item = dynamicData.value.find((x) => x.value === value.primary.value)
@@ -380,16 +379,16 @@ const handleDynamicChange = async (value) => {
 }
 </script>
 ```
+:::
 
-### 表单集成
-
+::: details 📋 表单集成 - 与 Naive UI 表单组件结合
 ```vue
 <template>
   <n-form :model="formData" :rules="rules" ref="formRef">
     <n-form-item label="所属地区" path="region">
       <C_Cascade
         :data="regionData"
-        v-model="formData.region"
+        v-model="formData.region" // [!code highlight]
         :placeholders="['省份', '城市', '区县']"
       />
     </n-form-item>
@@ -409,7 +408,7 @@ const formData = ref({
 
 const rules = {
   region: {
-    validator: (rule, value) => {
+    validator: (rule, value) => { // [!code highlight]
       if (!value.tertiary) {
         return new Error('请选择完整的地区信息')
       }
@@ -432,20 +431,20 @@ const handleReset = () => {
 }
 </script>
 ```
+:::
 
-### 自定义样式
-
+::: details 🎨 自定义样式 - 响应式设计和主题定制
 ```vue
 <template>
   <C_Cascade
     :data="cascadeData"
     v-model="selectedValue"
-    class="custom-cascade"
+    class="custom-cascade" // [!code highlight]
   />
 </template>
 
 <style scoped>
-.custom-cascade {
+.custom-cascade { // [!code highlight]
   :deep(.n-select-item) {
     min-width: 160px;
     border-radius: 8px;
@@ -472,19 +471,21 @@ const handleReset = () => {
 }
 </style>
 ```
+:::
 
 ## ⚠️ 注意事项
 
 ### 1. 数据结构规范
 
-```javascript
-// ✅ 推荐：规范的数据结构
+::: code-group
+
+```javascript [✅ 推荐]
+// 规范的数据结构
 const correctData = [
   {
-    label: '选项名称', // 必须：显示文本
-    value: 'option_value', // 必须：唯一值
-    children: [
-      // 可选：子级数据
+    label: '选项名称', // 必须：显示文本 // [!code highlight]
+    value: 'option_value', // 必须：唯一值 // [!code highlight]
+    children: [ // 可选：子级数据
       {
         label: '子选项',
         value: 'sub_option',
@@ -492,39 +493,55 @@ const correctData = [
     ],
   },
 ]
+```
 
-// ❌ 不推荐：缺少必要字段
+```javascript [❌ 不推荐]
+// 缺少必要字段
 const incorrectData = [
   {
-    name: '选项名称', // 错误：应该是 label
-    id: 'option_id', // 错误：应该是 value
+    name: '选项名称', // 错误：应该是 label // [!code error]
+    id: 'option_id', // 错误：应该是 value // [!code error]
   },
 ]
 ```
 
+:::
+
 ### 2. 性能优化
 
-```vue
-<!-- ✅ 推荐：合理的数据量 -->
-<C_Cascade :data="reasonableData" />
+::: code-group
 
-<!-- ❌ 不推荐：过多的数据层级 -->
-<!-- 避免超过 1000+ 选项的单级数据 -->
+```vue [✅ 推荐]
+<!-- 合理的数据量 -->
+<C_Cascade :data="reasonableData" /> // [!code highlight]
 ```
+
+```vue [❌ 不推荐]
+<!-- 过多的数据层级 -->
+<!-- 避免超过 1000+ 选项的单级数据 --> // [!code error]
+```
+
+:::
 
 ### 3. 表单验证
 
-```vue
-<!-- ✅ 推荐：完整的验证逻辑 -->
+::: code-group
+
+```vue [✅ 推荐]
+<!-- 完整的验证逻辑 -->
 <C_Cascade
   :data="cascadeData"
   v-model="formData.region"
-  @change="validateRegion"
+  @change="validateRegion" // [!code highlight]
 />
-
-<!-- ❌ 不推荐：缺少验证 -->
-<C_Cascade :data="cascadeData" v-model="formData.region" />
 ```
+
+```vue [❌ 不推荐]
+<!-- 缺少验证 -->
+<C_Cascade :data="cascadeData" v-model="formData.region" /> // [!code error]
+```
+
+:::
 
 ## 🐛 故障排除
 
@@ -542,7 +559,7 @@ const incorrectData = [
 <!-- 检查数据结构 -->
 <template>
   <div>
-    <pre>{{ JSON.stringify(cascadeData, null, 2) }}</pre>
+    <pre>{{ JSON.stringify(cascadeData, null, 2) }}</pre> // [!code highlight]
     <C_Cascade :data="cascadeData" v-model="selectedValue" />
   </div>
 </template>
@@ -552,15 +569,23 @@ const incorrectData = [
 
 **A2:** 检查 v-model 绑定：
 
-```vue
-<script setup>
-// ✅ 正确的初始值
-const selectedValue = ref({})
+::: code-group
 
-// ❌ 错误的初始值
-const selectedValue = ref(null) // 应该是对象
+```vue [✅ 正确]
+<script setup>
+// 正确的初始值
+const selectedValue = ref({}) // [!code highlight]
 </script>
 ```
+
+```vue [❌ 错误]
+<script setup>
+// 错误的初始值
+const selectedValue = ref(null) // 应该是对象 // [!code error]
+</script>
+```
+
+:::
 
 #### Q3: 样式显示异常怎么办？
 
@@ -569,7 +594,7 @@ const selectedValue = ref(null) // 应该是对象
 ```javascript
 // main.js
 import { createApp } from 'vue'
-import naive from 'naive-ui'
+import naive from 'naive-ui' // [!code highlight]
 import 'vfonts/Lato.css'
 import 'vfonts/FiraCode.css'
 
@@ -588,7 +613,7 @@ const loadData = async () => {
     const data = await fetchCascadeData()
     cascadeData.value = data
   } catch (error) {
-    console.error('数据加载失败:', error)
+    console.error('数据加载失败:', error) // [!code highlight]
     // 显示错误提示
     $message.error('数据加载失败，请重试')
   }
@@ -602,7 +627,7 @@ const loadData = async () => {
 
 ```javascript
 // ✅ 推荐：统一数据格式
-const preprocessData = (rawData) => {
+const preprocessData = (rawData) => { // [!code highlight]
   return rawData.map((item) => ({
     label: item.name || item.label,
     value: item.id || item.value,
@@ -616,7 +641,7 @@ const preprocessData = (rawData) => {
 ```vue
 <script setup>
 // ✅ 推荐：缓存机制
-const dataCache = new Map()
+const dataCache = new Map() // [!code highlight]
 
 const loadLevelData = async (parentValue) => {
   if (dataCache.has(parentValue)) {
@@ -635,7 +660,7 @@ const loadLevelData = async (parentValue) => {
 ```vue
 <template>
   <!-- 加载状态 -->
-  <n-spin :show="loading">
+  <n-spin :show="loading"> // [!code highlight]
     <C_Cascade
       :data="cascadeData"
       v-model="selectedValue"
@@ -655,7 +680,7 @@ const loadLevelData = async (parentValue) => {
     display: flex;
     gap: 12px;
 
-    @media (max-width: 768px) {
+    @media (max-width: 768px) { // [!code highlight]
       flex-direction: column;
       gap: 8px;
     }
