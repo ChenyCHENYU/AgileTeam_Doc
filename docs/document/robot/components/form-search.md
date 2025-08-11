@@ -20,16 +20,35 @@ outline: 'deep'
 
 ## 📦 安装
 
-```bash
+::: code-group
+
+```bash [bun (推荐)]
+# 基于 Naive UI，确保已安装依赖
+bun install naive-ui
+```
+
+```bash [pnpm]
+# 基于 Naive UI，确保已安装依赖
+pnpm install naive-ui
+```
+
+```bash [yarn]
+# 基于 Naive UI，确保已安装依赖
+yarn add naive-ui
+```
+
+```bash [npm]
 # 基于 Naive UI，确保已安装依赖
 npm install naive-ui
 ```
+
+:::
 
 ## 🎯 快速开始
 
 ### 基础用法
 
-```vue
+```vue {4,5,6,7}
 <template>
   <!-- 最简单的搜索表单 -->
   <C_FormSearch
@@ -80,7 +99,7 @@ npm install naive-ui
 
 ### 多种搜索控件
 
-```vue
+```vue {6,7,8,9,10}
 <template>
   <C_FormSearch
     :form-item-list="richSearchFields"
@@ -198,7 +217,7 @@ npm install naive-ui
 | **cleanFn** | `-` | `void` | 手动触发重置 |
 | **changeFoldState** | `-` | `void` | 切换展开收起状态 |
 
-### 类型定义
+::: details 🔧 类型定义 - 完整的 TypeScript 接口定义
 
 #### 搜索表单项接口
 
@@ -232,11 +251,30 @@ interface SearchFormParams {
 }
 ```
 
+#### 表单配置接口
+
+```typescript
+export interface FormConfig<T extends BaseFormParams> {
+  params: T
+  items: SearchFormItem[]
+  historyKey: string
+}
+```
+
+#### 基础表单参数
+
+```typescript
+export interface BaseFormParams {
+  pageNum: number
+  pageSize: number
+}
+```
+:::
+
 ## 🎨 使用示例
 
-### 场景 1: 用户管理搜索
-
-```vue
+::: details 📝 用户管理搜索 - 完整的管理系统搜索示例
+```vue {6,7,8,9,10,11,12}
 <template>
   <div class="user-management">
     <n-card title="用户管理" style="margin-bottom: 16px;">
@@ -449,10 +487,10 @@ interface SearchFormParams {
   }
 </style>
 ```
+:::
 
-### 场景 2: 演示页面（参考你的代码结构）
-
-```vue
+::: details 🎬 演示页面 - 多种字段配置和功能展示
+```vue {20,24,34}
 <template>
   <div class="search-demo">
     <NH1 class="main-title">表单搜索组件场景示例</NH1>
@@ -626,8 +664,7 @@ interface SearchFormParams {
   .search-demo {
     padding: 20px;
 
-    h2 {
-      color: var(--n-text-color);
+    .main-title {
       margin-bottom: 24px;
       text-align: center;
     }
@@ -636,7 +673,6 @@ interface SearchFormParams {
       margin-bottom: 40px;
 
       h3 {
-        color: var(--n-text-color);
         margin-bottom: 16px;
         padding-bottom: 8px;
         border-bottom: 2px solid var(--n-primary-color);
@@ -655,9 +691,9 @@ interface SearchFormParams {
   }
 </style>
 ```
+:::
 
-### 场景 3: 数据配置（参考你的 data.ts 结构）
-
+::: details 🗂️ 数据配置 - 完整的类型定义和配置示例
 ```typescript
 // 基础类型定义
 export interface OptionItem {
@@ -745,13 +781,140 @@ export const basicFormConfig: FormConfig<BasicFormParams> = {
   ],
   historyKey: 'basic_search_history',
 }
+
+// 高级示例配置
+export const advancedFormConfig: FormConfig<AdvancedFormParams> = {
+  params: {
+    keyword: '',
+    category: null,
+    level: null,
+    region: '',
+    timeRange: null,
+    price: '',
+    tags: '',
+    department: null,
+    priority: null,
+    assignee: '',
+    project: '',
+    version: '',
+    pageNum: 1,
+    pageSize: 10,
+  },
+  items: [
+    {
+      type: 'input',
+      prop: 'keyword',
+      placeholder: '请输入关键词',
+    },
+    {
+      type: 'select',
+      prop: 'category',
+      placeholder: '请选择分类',
+      list: [
+        { labelDefault: '技术文档', value: 'tech' },
+        { labelDefault: '产品需求', value: 'product' },
+        { labelDefault: '运营活动', value: 'operation' },
+      ],
+    },
+    {
+      type: 'select',
+      prop: 'level',
+      placeholder: '请选择级别',
+      list: [
+        { labelDefault: '高优先级', value: 'high' },
+        { labelDefault: '中优先级', value: 'medium' },
+        { labelDefault: '低优先级', value: 'low' },
+      ],
+    },
+    {
+      type: 'input',
+      prop: 'region',
+      placeholder: '请输入地区',
+    },
+    {
+      type: 'date-range',
+      prop: 'timeRange',
+    },
+    {
+      type: 'input',
+      prop: 'price',
+      placeholder: '请输入价格范围',
+    },
+    {
+      type: 'input',
+      prop: 'tags',
+      placeholder: '请输入标签',
+    },
+    {
+      type: 'select',
+      prop: 'department',
+      placeholder: '请选择部门',
+      list: [
+        { labelDefault: '技术部', value: 'tech' },
+        { labelDefault: '产品部', value: 'product' },
+        { labelDefault: '运营部', value: 'operation' },
+      ],
+    },
+    {
+      type: 'select',
+      prop: 'priority',
+      placeholder: '请选择优先级',
+      list: [
+        { labelDefault: '紧急', value: 'urgent' },
+        { labelDefault: '普通', value: 'normal' },
+        { labelDefault: '延后', value: 'delayed' },
+      ],
+    },
+    {
+      type: 'input',
+      prop: 'assignee',
+      placeholder: '请输入负责人',
+    },
+    {
+      type: 'input',
+      prop: 'project',
+      placeholder: '请输入项目名称',
+    },
+    {
+      type: 'input',
+      prop: 'version',
+      placeholder: '请输入版本号',
+    },
+  ],
+  historyKey: 'advanced_search_history',
+}
+
+// 搜索结果类型
+export interface SearchResult {
+  id: number
+  title: string
+  type: string
+  timestamp: string
+  params: Record<string, any>
+}
+
+// 生成模拟搜索结果
+export function generateMockResults(
+  type: string,
+  params: Record<string, any>
+): SearchResult[] {
+  return [
+    {
+      id: Date.now(),
+      title: `${type} 搜索结果`,
+      type,
+      timestamp: new Date().toISOString(),
+      params,
+    },
+  ]
+}
 ```
+:::
 
 ## 🛠️ 高级用法
 
-### 自定义防抖处理
-
-```vue
+::: details 🔄 自定义防抖处理 - 优化搜索性能
+```vue {10,11,12,13,14,15,16,17,18,19,20}
 <template>
   <C_FormSearch
     ref="searchRef"
@@ -792,10 +955,10 @@ export const basicFormConfig: FormConfig<BasicFormParams> = {
   }
 </script>
 ```
+:::
 
-### 搜索条件联动
-
-```vue
+::: details 🔗 搜索条件联动 - 智能字段关联
+```vue {5,15,16,17,26,27,28,38,39,40,50,51,52}
 <template>
   <C_FormSearch
     :form-item-list="linkedSearchFields"
@@ -867,10 +1030,10 @@ export const basicFormConfig: FormConfig<BasicFormParams> = {
   }
 </script>
 ```
+:::
 
-### 搜索结果缓存
-
-```vue
+::: details 💾 搜索结果缓存 - 提升用户体验
+```vue {3,4,5,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72}
 <template>
   <C_FormSearch
     :form-item-list="searchFields"
@@ -937,324 +1100,10 @@ export const basicFormConfig: FormConfig<BasicFormParams> = {
   }
 </script>
 ```
+:::
 
-## 🎨 自定义样式
-
-### CSS 变量
-
-```scss
-.c-form-search-wrapper {
-  --search-primary-color: #1890ff;
-  --search-border-color: #d9d9d9;
-  --search-hover-color: #40a9ff;
-  --search-history-bg: #ffffff;
-  --search-history-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  --search-item-gap: 16px;
-  --search-border-radius: 6px;
-}
-```
-
-### 响应式布局
-
-```vue
-<template>
-  <C_FormSearch
-    :form-item-list="responsiveFields"
-    :form-params="searchParams"
-    :class="searchFormClass"
-  />
-</template>
-
-<script setup>
-  const breakpoint = useBreakpoint()
-  
-  const searchFormClass = computed(() => ({
-    'search-form-mobile': breakpoint.value.xs,
-    'search-form-tablet': breakpoint.value.md,
-    'search-form-desktop': breakpoint.value.lg
-  }))
-</script>
-
-<style scoped>
-  .search-form-mobile :deep(.form-search-item-box) {
-    flex: 1 1 100%;
-    min-width: auto;
-  }
-
-  .search-form-tablet :deep(.form-search-item-box) {
-    flex: 1 1 calc(50% - 8px);
-    min-width: 200px;
-  }
-
-  .search-form-desktop :deep(.form-search-item-box) {
-    flex: 1 1 calc(25% - 12px);
-    min-width: 220px;
-  }
-</style>
-```
-
-### 主题定制
-
-```vue
-<template>
-  <div class="custom-search-theme">
-    <!-- 深色主题 -->
-    <C_FormSearch
-      :form-item-list="searchFields"
-      :form-params="searchParams"
-      class="dark-search-theme"
-    />
-
-    <!-- 彩色主题 -->
-    <C_FormSearch
-      :form-item-list="searchFields"
-      :form-params="searchParams"
-      class="colorful-search-theme"
-    />
-  </div>
-</template>
-
-<style scoped>
-  .dark-search-theme {
-    --search-bg-color: #1f1f1f;
-    --search-text-color: #ffffff;
-    --search-border-color: #434343;
-    --search-primary-color: #177ddc;
-    --search-history-bg: #2f2f2f;
-  }
-
-  .colorful-search-theme {
-    --search-primary-color: linear-gradient(45deg, #ff6b6b, #4ecdc4);
-    --search-hover-color: #ff6b6b;
-    --search-focus-shadow: 0 0 0 2px rgba(255, 107, 107, 0.2);
-    --search-border-radius: 12px;
-  }
-</style>
-```
-
-## ⚠️ 注意事项
-
-### 1. 搜索参数绑定
-
-```vue
-<!-- ✅ 推荐：使用响应式对象 -->
-<script setup>
-  const searchParams = ref({
-    username: '',
-    status: null
-  })
-</script>
-
-<!-- ❌ 不推荐：直接赋值对象 -->
-<script setup>
-  const searchParams = {
-    username: '',
-    status: null
-  }
-</script>
-```
-
-### 2. 历史记录配置
-
-```vue
-<!-- ✅ 推荐：为不同页面设置不同的历史记录键 -->
-<C_FormSearch
-  form-search-input-history-string="user-management-search"
-  :form-item-list="searchFields"
-  :form-params="searchParams"
-/>
-
-<!-- ❌ 不推荐：使用通用键名 -->
-<C_FormSearch
-  form-search-input-history-string="search"
-  :form-item-list="searchFields"
-  :form-params="searchParams"
-/>
-```
-
-### 3. 搜索条件验证
-
-```javascript
-// ✅ 推荐：完整的搜索条件验证
-const validateSearchParams = (params) => {
-  const validKeys = Object.keys(params).filter(
-    key => !['pageNum', 'pageSize'].includes(key)
-  )
-  
-  return validKeys.some(key => {
-    const value = params[key]
-    if (Array.isArray(value)) {
-      return value.length > 0 && value[0] !== null
-    }
-    return value !== null && value !== undefined && value !== ''
-  })
-}
-
-// ❌ 不推荐：简单的空值检查
-const validateSearchParams = (params) => {
-  return Object.values(params).some(value => !!value)
-}
-```
-
-## 🐛 故障排除
-
-### 常见问题
-
-#### Q1: 历史记录不显示？
-
-**A1:** 检查历史记录配置：
-
-```javascript
-// 确保设置了历史记录存储键
-<C_FormSearch
-  form-search-input-history-string="your-unique-key" // 必须设置
-  :form-item-list="searchFields"
-  :form-params="searchParams"
-/>
-```
-
-#### Q2: 展开收起按钮不出现？
-
-**A2:** 检查字段数量：
-
-```javascript
-// 展开收起功能需要超过7个字段
-const searchFields = [
-  // 至少需要8个或以上的字段
-  { type: 'input', prop: 'field1' },
-  { type: 'input', prop: 'field2' },
-  // ... 需要更多字段
-]
-```
-
-#### Q3: 搜索参数不更新？
-
-**A3:** 检查参数绑定：
-
-```vue
-<!-- 确保使用响应式数据 -->
-<script setup>
-  const searchParams = ref({}) // 使用 ref
-  // 或
-  const searchParams = reactive({}) // 使用 reactive
-</script>
-```
-
-#### Q4: 选择器选项不显示？
-
-**A4:** 检查选项配置：
-
-```javascript
-// 确保选项格式正确
-const list = [
-  { labelDefault: '显示文本', value: '值' }, // ✅ 正确格式
-  { label: '显示文本', value: '值' }, // ✅ 备用格式
-  { value: '值' }, // ❌ 缺少显示文本
-]
-```
-
-## 🎯 最佳实践
-
-### 1. 搜索字段设计
-
-```javascript
-// ✅ 推荐：语义化的字段配置
-const searchFields = [
-  {
-    type: 'input',
-    prop: 'username',
-    placeholder: '请输入用户名或邮箱', // 明确的提示信息
-  },
-  {
-    type: 'select',
-    prop: 'status',
-    placeholder: '请选择用户状态',
-    list: [
-      { labelDefault: '正常', value: 1 }, // 清晰的标签
-      { labelDefault: '禁用', value: 0 },
-      { labelDefault: '待激活', value: 2 }
-    ]
-  }
-]
-```
-
-### 2. 历史记录管理
-
-```javascript
-// 为不同模块设置不同的历史记录键
-const userManagementHistory = 'user-management-search'
-const articleManagementHistory = 'article-management-search'
-const orderManagementHistory = 'order-management-search'
-
-// 避免使用通用键名
-// ❌ 不推荐
-const genericHistory = 'search-history'
-```
-
-### 3. 防抖优化（使用自定义指令）
-
-```vue
-<template>
-  <!-- 使用防抖指令优化搜索交互 -->
-  <C_FormSearch
-    :form-item-list="searchFields"
-    :form-params="searchParams"
-    @search="handleSearch"
-  >
-    <!-- 自定义搜索按钮使用防抖指令 -->
-    <template #action="{ validate }">
-      <n-space>
-        <n-button
-          type="primary"
-          v-debounce="{ delay: 300, immediate: false }"
-          @click="validate"
-        >
-          搜索
-        </n-button>
-        <n-button @click="handleReset">重置</n-button>
-      </n-space>
-    </template>
-  </C_FormSearch>
-</template>
-
-<script setup>
-  // 大型选项数据优化
-  const departmentOptions = shallowRef([
-    // 大量部门数据，使用 shallowRef 避免深度响应式
-  ])
-
-  // 搜索结果缓存
-  const searchCache = new Map()
-  const CACHE_EXPIRE_TIME = 5 * 60 * 1000 // 5分钟
-
-  const handleSearch = async (params) => {
-    const cacheKey = JSON.stringify(params)
-    
-    // 检查缓存
-    const cached = searchCache.get(cacheKey)
-    if (cached && Date.now() - cached.timestamp < CACHE_EXPIRE_TIME) {
-      tableData.value = cached.data
-      message.success('使用缓存数据')
-      return
-    }
-
-    // 执行搜索
-    const result = await performSearch(params)
-    
-    // 缓存结果
-    searchCache.set(cacheKey, {
-      data: result,
-      timestamp: Date.now()
-    })
-    
-    tableData.value = result
-  }
-</script>
-```
-
-### 高级验证示例
-
-```vue
+::: details ✅ 高级验证示例 - 集成验证工具
+```vue {14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162}
 <template>
   <C_FormSearch
     :form-item-list="advancedSearchFields"
@@ -1422,10 +1271,370 @@ const genericHistory = 'search-history'
   }
 </script>
 ```
+:::
 
-### 5. 类型安全和代码规范
+## 🎨 自定义样式
 
-```typescript
+::: details 🎨 CSS 变量定制 - 主题色彩和尺寸配置
+```scss
+.c-form-search-wrapper {
+  --search-primary-color: #1890ff;
+  --search-border-color: #d9d9d9;
+  --search-hover-color: #40a9ff;
+  --search-history-bg: #ffffff;
+  --search-history-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  --search-item-gap: 16px;
+  --search-border-radius: 6px;
+  --search-button-height: 32px;
+  --search-input-height: 32px;
+}
+```
+:::
+
+::: details 📱 响应式布局 - 移动端适配优化
+```vue {5,6}
+<template>
+  <C_FormSearch
+    :form-item-list="responsiveFields"
+    :form-params="searchParams"
+    :class="searchFormClass"
+  />
+</template>
+
+<script setup>
+  const breakpoint = useBreakpoint()
+  
+  const searchFormClass = computed(() => ({
+    'search-form-mobile': breakpoint.value.xs,
+    'search-form-tablet': breakpoint.value.md,
+    'search-form-desktop': breakpoint.value.lg
+  }))
+</script>
+
+<style scoped>
+  .search-form-mobile :deep(.form-search-item-box) {
+    flex: 1 1 100%;
+    min-width: auto;
+  }
+
+  .search-form-tablet :deep(.form-search-item-box) {
+    flex: 1 1 calc(50% - 8px);
+    min-width: 200px;
+  }
+
+  .search-form-desktop :deep(.form-search-item-box) {
+    flex: 1 1 calc(25% - 12px);
+    min-width: 220px;
+  }
+
+  @media (max-width: 768px) {
+    :deep(.form-search-tool) {
+      flex-direction: column;
+      gap: 8px;
+    }
+  }
+</style>
+```
+:::
+
+::: details 🌈 主题定制 - 深色主题和彩色主题
+```vue
+<template>
+  <div class="custom-search-theme">
+    <!-- 深色主题 -->
+    <C_FormSearch
+      :form-item-list="searchFields"
+      :form-params="searchParams"
+      class="dark-search-theme"
+    />
+
+    <!-- 彩色主题 -->
+    <C_FormSearch
+      :form-item-list="searchFields"
+      :form-params="searchParams"
+      class="colorful-search-theme"
+    />
+  </div>
+</template>
+
+<style scoped>
+.dark-search-theme {
+  --search-bg-color: #1f1f1f;
+  --search-text-color: #ffffff;
+  --search-border-color: #434343;
+  --search-primary-color: #177ddc;
+  --search-history-bg: #2f2f2f;
+  --search-hover-bg: rgba(255, 255, 255, 0.1);
+}
+
+.colorful-search-theme {
+  --search-primary-color: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+  --search-hover-color: #ff6b6b;
+  --search-focus-shadow: 0 0 0 2px rgba(255, 107, 107, 0.2);
+  --search-border-radius: 12px;
+  --search-history-bg: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.colorful-search-theme :deep(.n-button--primary-type) {
+  background: var(--search-primary-color);
+  border: none;
+}
+</style>
+```
+:::
+
+## ⚠️ 注意事项
+
+### 1. 搜索参数绑定
+
+::: code-group
+
+```vue [✅ 推荐] {3,4}
+<!-- 使用响应式对象 -->
+<script setup>
+  const searchParams = ref({
+    username: '',
+    status: null
+  })
+</script>
+```
+
+```vue [❌ 不推荐] {3,4}
+<!-- 直接赋值对象 -->
+<script setup>
+  const searchParams = {
+    username: '',
+    status: null
+  }
+</script>
+```
+
+:::
+
+### 2. 历史记录配置
+
+::: code-group
+
+```vue [✅ 推荐] {3}
+<!-- 为不同页面设置不同的历史记录键 -->
+<C_FormSearch
+  form-search-input-history-string="user-management-search"
+  :form-item-list="searchFields"
+  :form-params="searchParams"
+/>
+```
+
+```vue [❌ 不推荐] {3}
+<!-- 使用通用键名 -->
+<C_FormSearch
+  form-search-input-history-string="search"
+  :form-item-list="searchFields"
+  :form-params="searchParams"
+/>
+```
+
+:::
+
+### 3. 搜索条件验证
+
+::: code-group
+
+```javascript [✅ 推荐] {2,3,4,5,6,7,8,9,10,11,12,13,14}
+// 完整的搜索条件验证
+const validateSearchParams = (params) => {
+  const validKeys = Object.keys(params).filter(
+    key => !['pageNum', 'pageSize'].includes(key)
+  )
+  
+  return validKeys.some(key => {
+    const value = params[key]
+    if (Array.isArray(value)) {
+      return value.length > 0 && value[0] !== null
+    }
+    return value !== null && value !== undefined && value !== ''
+  })
+}
+```
+
+```javascript [❌ 不推荐] {2,3}
+// 简单的空值检查
+const validateSearchParams = (params) => {
+  return Object.values(params).some(value => !!value)
+}
+```
+
+:::
+
+## 🐛 故障排除
+
+::: details ❓ Q1: 历史记录不显示？
+**A1:** 检查历史记录配置：
+
+```javascript
+// 确保设置了历史记录存储键
+<C_FormSearch
+  form-search-input-history-string="your-unique-key" // 必须设置
+  :form-item-list="searchFields"
+  :form-params="searchParams"
+/>
+```
+:::
+
+::: details ❓ Q2: 展开收起按钮不出现？
+**A2:** 检查字段数量：
+
+```javascript
+// 展开收起功能需要超过7个字段
+const searchFields = [
+  // 至少需要8个或以上的字段
+  { type: 'input', prop: 'field1' },
+  { type: 'input', prop: 'field2' },
+  // ... 需要更多字段
+]
+```
+:::
+
+::: details ❓ Q3: 搜索参数不更新？
+**A3:** 检查参数绑定：
+
+```vue
+<!-- 确保使用响应式数据 -->
+<script setup>
+  const searchParams = ref({}) // 使用 ref
+  // 或
+  const searchParams = reactive({}) // 使用 reactive
+</script>
+```
+:::
+
+::: details ❓ Q4: 选择器选项不显示？
+**A4:** 检查选项配置：
+
+```javascript
+// 确保选项格式正确
+const list = [
+  { labelDefault: '显示文本', value: '值' }, // ✅ 正确格式
+  { label: '显示文本', value: '值' }, // ✅ 备用格式
+  { value: '值' }, // ❌ 缺少显示文本
+]
+```
+:::
+
+::: details ❓ Q5: 日期范围不生效？
+**A5:** 检查日期字段配置：
+
+```javascript
+// 确保日期范围字段类型正确
+{
+  type: 'date-range', // 必须是 'date-range'
+  prop: 'dateRange',
+  placeholder: '请选择日期范围'
+}
+```
+:::
+
+## 🎯 最佳实践
+
+### 1. 搜索字段设计
+
+```javascript {4,5,6,7,8,9,10,11,12,13,14,15,16,17,18}
+// ✅ 推荐：语义化的字段配置
+const searchFields = [
+  {
+    type: 'input',
+    prop: 'username',
+    placeholder: '请输入用户名或邮箱', // 明确的提示信息
+  },
+  {
+    type: 'select',
+    prop: 'status',
+    placeholder: '请选择用户状态',
+    list: [
+      { labelDefault: '正常', value: 1 }, // 清晰的标签
+      { labelDefault: '禁用', value: 0 },
+      { labelDefault: '待激活', value: 2 }
+    ]
+  }
+]
+```
+
+### 2. 历史记录管理
+
+```javascript {2,3,4,5,6,7,8,9}
+// 为不同模块设置不同的历史记录键
+const userManagementHistory = 'user-management-search'
+const articleManagementHistory = 'article-management-search'
+const orderManagementHistory = 'order-management-search'
+
+// 避免使用通用键名
+// ❌ 不推荐
+const genericHistory = 'search-history'
+```
+
+### 3. 防抖优化
+
+```vue {8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69}
+<template>
+  <!-- 使用防抖指令优化搜索交互 -->
+  <C_FormSearch
+    :form-item-list="searchFields"
+    :form-params="searchParams"
+    @search="handleSearch"
+  >
+    <!-- 自定义搜索按钮使用防抖指令 -->
+    <template #action="{ validate }">
+      <n-space>
+        <n-button
+          type="primary"
+          v-debounce="{ delay: 300, immediate: false }"
+          @click="validate"
+        >
+          搜索
+        </n-button>
+        <n-button @click="handleReset">重置</n-button>
+      </n-space>
+    </template>
+  </C_FormSearch>
+</template>
+
+<script setup>
+  // 大型选项数据优化
+  const departmentOptions = shallowRef([
+    // 大量部门数据，使用 shallowRef 避免深度响应式
+  ])
+
+  // 搜索结果缓存
+  const searchCache = new Map()
+  const CACHE_EXPIRE_TIME = 5 * 60 * 1000 // 5分钟
+
+  const handleSearch = async (params) => {
+    const cacheKey = JSON.stringify(params)
+    
+    // 检查缓存
+    const cached = searchCache.get(cacheKey)
+    if (cached && Date.now() - cached.timestamp < CACHE_EXPIRE_TIME) {
+      tableData.value = cached.data
+      message.success('使用缓存数据')
+      return
+    }
+
+    // 执行搜索
+    const result = await performSearch(params)
+    
+    // 缓存结果
+    searchCache.set(cacheKey, {
+      data: result,
+      timestamp: Date.now()
+    })
+    
+    tableData.value = result
+  }
+</script>
+```
+
+### 4. 类型安全和代码规范
+
+```typescript {2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62}
 // 定义精确的搜索参数类型
 interface UserSearchParams {
   username: string
@@ -1496,18 +1705,6 @@ const handleSearch = (params: UserSearchParams) => {
 - ✨ 基于Naive UI的统一视觉风格
 - ✨ 支持防抖指令优化搜索交互
 
-## 🤝 贡献指南
-
-1. Fork 项目
-2. 创建功能分支 (`git checkout -b feature/amazing-feature`)
-3. 提交更改 (`git commit -m 'Add amazing feature'`)
-4. 推送到分支 (`git push origin feature/amazing-feature`)
-5. 创建 Pull Request
-
-## 📄 许可证
-
-Copyright (c) 2025 by ChenYu, All Rights Reserved.
-
----
+<!--@include: ./snippets/contribute.md -->
 
 **💡 提示**: 这个搜索组件专为提升数据检索效率而设计，支持智能历史记录、响应式布局和多种搜索控件。无论是简单的关键词搜索还是复杂的多条件筛选，都能提供流畅的用户体验。结合防抖指令和类型安全设计，让搜索功能既高效又可靠。如果遇到问题请先查看文档，或者在团队群里讨论。让我们一起打造更高效的搜索体验！ 🔍
