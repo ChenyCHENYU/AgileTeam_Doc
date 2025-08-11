@@ -497,3 +497,8 @@ html {
   gap: 380px !important;
 }
 
+/* 高亮显示关键代码 */
+
+.vp-doc [class*='language-'] code .highlighted {
+  background-color: rgba(0, 255, 149, 0.295) !important;
+}
