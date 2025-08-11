@@ -234,14 +234,6 @@ export const ROBOT_COMPONENTS_DOC = [
         link: `${ROBOT}/components/header`,
       },
       {
-        text: "[C_GlobalSearch] 搜索",
-        link: `${ROBOT}/components/global-search`,
-      },
-      {
-        text: "[C_Guide] 引导",
-        link: `${ROBOT}/components/guide`,
-      },
-      {
         text: "[C_Breadcrumb] 面包屑",
         link: `${ROBOT}/components/breadcrumb`,
       },
@@ -257,12 +249,30 @@ export const ROBOT_COMPONENTS_DOC = [
         text: "[C_Menu] 菜单",
         link: `${ROBOT}/components/menu`,
       },
+
+    ],
+  },
+    {
+    text: "其他组件",
+    items: [
+      {
+        text: "[C_GlobalSearch] 搜索",
+        link: `${ROBOT}/components/global-search`,
+      },
+      {
+        text: "[C_Guide] 引导",
+        link: `${ROBOT}/components/guide`,
+      },
+      {
+        text: "[C_Notice] 通知",
+        link: `${ROBOT}/components/notice`,
+      },
       {
         text: "[C_Captcha] 拼图验证码",
         link: `${ROBOT}/components/captcha`,
       },
     ],
-  },
+  }
 ];
 
 const WEB = "/web";
