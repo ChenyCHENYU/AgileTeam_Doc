@@ -8,7 +8,8 @@
   "scripts": {
     "dev": "vitepress dev docs",
     "build": "vitepress build docs --outDir dist",
-    "preview": "vitepress preview docs"
+    "preview": "vitepress preview docs",
+    "push": "git push origin main && git push gitee main"
   },
   "repository": {
     "type": "git",

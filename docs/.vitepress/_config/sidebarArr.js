@@ -179,8 +179,12 @@ export const ROBOT_COMPONENTS_DOC = [
         link: `${ROBOT}/components/table`,
       },
       {
-        text: "[C_FilePreview] 文件预览",
-        link: `${ROBOT}/components/file-preview`,
+        text: "[C_Steps] 步骤条",
+        link: `${ROBOT}/components/steps`,
+      },
+      {
+        text: "[C_Tree] 树",
+        link: `${ROBOT}/components/tree`,
       },
     ],
   },
@@ -194,6 +198,10 @@ export const ROBOT_COMPONENTS_DOC = [
       {
         text: "[C_Cascade] 拖拽",
         link: `${ROBOT}/components/dragable`,
+      },
+      {
+        text: "[C_FilePreview] 文件预览",
+        link: `${ROBOT}/components/file-preview`,
       },
     ],
   },
@@ -249,10 +257,9 @@ export const ROBOT_COMPONENTS_DOC = [
         text: "[C_Menu] 菜单",
         link: `${ROBOT}/components/menu`,
       },
-
     ],
   },
-    {
+  {
     text: "其他组件",
     items: [
       {
@@ -272,7 +279,7 @@ export const ROBOT_COMPONENTS_DOC = [
         link: `${ROBOT}/components/captcha`,
       },
     ],
-  }
+  },
 ];
 
 const WEB = "/web";
