@@ -90,7 +90,7 @@ npm install naive-ui
 
 ### 多种编辑模式
 
-```vue {6,7,8,9,10,11,12,13,14,15,16,17}
+```vue {6-9}
 <template>
   <div class="edit-mode-demo">
     <!-- 编辑模式切换 -->
@@ -1239,7 +1239,7 @@ interface PaginationConfig {
 
 ::: code-group
 
-```vue [✅ 推荐] {3,4,5}
+```vue [✅ 推荐] 
 <!-- 使用响应式数据 -->
 <script setup>
   const tableData = ref([
@@ -1263,7 +1263,7 @@ interface PaginationConfig {
 
 ::: code-group
 
-```javascript [✅ 推荐] {3,4,5,6,7,8,9}
+```javascript [✅ 推荐] 
 // 完整的列配置
 const columns = [
   {
@@ -1277,7 +1277,7 @@ const columns = [
 ]
 ```
 
-```javascript [❌ 不推荐] {3,4,5,6}
+```javascript [❌ 不推荐] 
 // 缺少必要配置
 const columns = [
   {

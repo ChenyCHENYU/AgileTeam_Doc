@@ -20,7 +20,7 @@ outline: 'deep'
 
 组件已全局注册，直接使用即可：
 
-```vue
+```vue 
 <template>
   <C_Steps :steps="steps" />
 </template>
@@ -30,7 +30,7 @@ outline: 'deep'
 
 ### 基础用法
 
-```vue
+```vue {3,4}
 <template>
   <C_Steps 
     v-model:current="currentStep" 
@@ -60,7 +60,7 @@ const steps = [
 
 ### 可点击步骤
 
-```vue
+```vue {3-6}
 <template>
   <C_Steps 
     v-model:current="currentStep"
@@ -79,7 +79,7 @@ const handleStepChange = (index) => {
 
 ### 垂直布局
 
-```vue
+```vue {3-5}
 <template>
   <C_Steps 
     :steps="steps"
@@ -132,8 +132,7 @@ interface StepItem {
 
 ## 🎨 使用示例
 
-### 场景 1: 表单分步填写
-
+::: details 📝 表单分步填写
 ```vue
 <template>
   <div class="form-wizard">
@@ -224,9 +223,9 @@ const submitForm = () => {
 }
 </script>
 ```
+:::
 
-### 场景 2: 订单状态展示
-
+::: details 📦 订单状态展示
 ```vue
 <template>
   <NCard title="订单状态">
@@ -287,9 +286,9 @@ onMounted(() => {
 })
 </script>
 ```
+:::
 
-### 场景 3: 流程审批状态
-
+::: details 🔄 流程审批状态
 ```vue
 <template>
   <div class="approval-flow">
@@ -365,9 +364,9 @@ const handleStepClick = (index) => {
 }
 </script>
 ```
+:::
 
-### 场景 4: 错误状态处理
-
+::: details ⚠️ 错误状态处理
 ```vue
 <template>
   <C_Steps 
@@ -444,9 +443,9 @@ const retryDeploy = async () => {
 }
 </script>
 ```
+:::
 
-### 场景 5: 自定义图标步骤
-
+::: details 🎨 自定义图标步骤
 ```vue
 <template>
   <C_Steps 
@@ -485,10 +484,11 @@ const customSteps = [
 ]
 </script>
 ```
+:::
 
 ## 🎨 样式定制
 
-### 自定义步骤条样式
+::: details 🎨 自定义步骤条样式
 
 ```scss
 // 自定义步骤条容器
@@ -658,9 +658,11 @@ const customSteps = [
 }
 ```
 
+:::
+
 ## ⚙️ 高级用法
 
-### 动态步骤更新
+::: details 🔄 动态步骤更新
 
 ```vue
 <script setup>
@@ -688,8 +690,9 @@ const batchUpdateSteps = (updates) => {
 }
 </script>
 ```
+:::
 
-### 步骤验证
+::: details 🔐 步骤验证
 
 ```vue
 <script setup>
@@ -721,10 +724,11 @@ const handleStepChange = async (index) => {
 }
 </script>
 ```
+:::
 
 ## 🐛 常见问题
 
-### Q1: 步骤状态不更新？
+::: details ❓ Q1: 步骤状态不更新？
 
 **A1:** 确保使用响应式数据：
 
@@ -737,8 +741,9 @@ steps.value[0].status = 'finish'
 const steps = [...]
 steps[0].status = 'finish'
 ```
+:::
 
-### Q2: 垂直布局样式异常？
+::: details ❓ Q2: 垂直布局样式异常？
 
 **A2:** 检查容器高度设置：
 
@@ -747,8 +752,9 @@ steps[0].status = 'finish'
   min-height: 400px; // 确保有足够高度
 }
 ```
+:::
 
-### Q3: 自定义图标不显示？
+::: details ❓ Q3: 自定义图标不显示？
 
 **A3:** 确保图标类名正确：
 
@@ -763,8 +769,9 @@ const steps = [
 ]
 </script>
 ```
+:::
 
-### Q4: 点击事件不触发？
+::: details ❓ Q4: 点击事件不触发？
 
 **A4:** 检查 clickable 属性：
 
@@ -775,12 +782,13 @@ const steps = [
   @change="handleChange"
 />
 ```
+:::
 
 ## 🎯 最佳实践
 
 ### 1. 步骤数据结构
 
-```javascript
+```javascript 
 // 推荐的步骤数据结构
 const createStep = (title, options = {}) => ({
   title,
@@ -795,7 +803,7 @@ const createStep = (title, options = {}) => ({
 
 ### 2. 状态管理
 
-```javascript
+```javascript 
 // 使用状态管理器统一管理步骤
 export const useStepsStore = defineStore('steps', {
   state: () => ({
@@ -821,7 +829,7 @@ export const useStepsStore = defineStore('steps', {
 
 ### 3. 无障碍支持
 
-```vue
+```vue 
 <template>
   <div
     role="progressbar" 
