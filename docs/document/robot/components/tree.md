@@ -31,7 +31,7 @@ outline: 'deep'
 
 ### 基础用法
 
-```vue 
+```vue {2-5}
 <template>
   <C_Tree 
     :data="basicTreeData"
@@ -65,7 +65,7 @@ const handleNodeSelect = (node, selectedKeys) => {
 
 ### 菜单模式
 
-```vue {3}
+```vue {2-7}
 <template>
   <C_Tree 
     mode="menu"
@@ -102,7 +102,7 @@ const menuData = [
 
 ### 文件模式
 
-```vue {3}
+```vue {2-6}
 <template>
   <C_Tree 
     mode="file"
@@ -1123,20 +1123,6 @@ const handleKeydown = (event) => {
 - 🔄 批量操作增强
 - 🔄 更多预设模式
 
-## 🤝 贡献指南
-
-组件位置：`src/components/global/C_Tree/index.vue`
-
-如需扩展功能，请考虑：
-1. 保持配置的一致性和可扩展性
-2. 确保预设模式的完整性
-3. 维护良好的性能表现
-4. 更新相关类型定义和文档
-
-## 📄 许可证
-
-Copyright (c) 2025 by ChenYu, All Rights Reserved 😎
-
----
+<!--@include: ./snippets/contribute.md -->
 
 **💡 提示**: 树形组件提供了丰富的预设模式和灵活的自定义配置，适用于菜单管理、文件浏览、组织架构等多种场景。组件内置了完整的工具栏和操作系统，可以快速构建功能完善的树形界面。建议根据具体业务场景选择合适的预设模式，并通过自定义配置满足特殊需求。
