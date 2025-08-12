@@ -29,6 +29,8 @@ outline: 'deep'
 # 基于 Naive UI，确保已安装依赖
 
 
+
+
 bun install naive-ui
 ```
 
@@ -1248,7 +1250,7 @@ interface PaginationConfig {
 </script>
 ```
 
-```vue [❌ 不推荐] {3,4,5}
+```vue [❌ 不推荐] 
 <!-- 直接赋值 -->
 <script setup>
   const tableData = [
@@ -1293,7 +1295,7 @@ const columns = [
 
 ::: code-group
 
-```javascript [✅ 推荐] {2,3,4,5,6,7,8,9,10,11,12,13,14}
+```javascript [✅ 推荐]
 // 完整的错误处理
 const handleSave = async (rowData, rowIndex) => {
   try {
@@ -1309,7 +1311,7 @@ const handleSave = async (rowData, rowIndex) => {
 }
 ```
 
-```javascript [❌ 不推荐] {2,3}
+```javascript [❌ 不推荐] 
 // 缺少错误处理
 const handleSave = (rowData, rowIndex) => {
   console.log('保存数据:', rowData)
@@ -1403,7 +1405,7 @@ const columns = [
 
 ### 1. 数据结构设计
 
-```javascript {2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19}
+```javascript 
 // ✅ 推荐：统一的数据结构
 interface TableRecord {
   id: string | number // 必须有唯一标识
@@ -1423,7 +1425,7 @@ const tableData = ref<TableRecord[]>([
 
 ### 2. 列配置管理
 
-```javascript {2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29}
+```javascript 
 // ✅ 推荐：模块化的列配置
 const createUserColumns = () => [
   {
@@ -1453,7 +1455,7 @@ const userColumns = createUserColumns()
 
 ### 3. 性能优化
 
-```vue {10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42}
+```vue 
 <template>
   <C_Table
     :data="tableData"
@@ -1495,7 +1497,7 @@ const userColumns = createUserColumns()
 
 ### 4. 错误处理
 
-```javascript {2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59}
+```javascript 
 // ✅ 推荐：完整的错误处理策略
 const handleSave = async (rowData, rowIndex) => {
   const loadingKey = `save-${rowIndex}`
