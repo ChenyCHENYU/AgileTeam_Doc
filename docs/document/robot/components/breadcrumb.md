@@ -183,6 +183,7 @@ const routes = [
 
 ### 场景 2: 多级嵌套路由
 
+::: details 🔗 查看多级嵌套路由代码
 ```javascript
 // 三级嵌套路由配置
 const routes = [
@@ -210,9 +211,11 @@ const routes = [
 // 面包屑会自动显示：项目管理 / 项目列表 / 项目详情
 // 点击"项目列表"会显示下拉菜单包含"项目详情"
 ```
+:::
 
 ### 场景 3: 动态路由标题
 
+::: details 🔄 查看动态路由标题代码
 ```vue
 <template>
   <C_Breadcrumb />
@@ -236,11 +239,13 @@ onMounted(() => {
 })
 </script>
 ```
+:::
 
 ## 🎨 样式定制
 
 ### 自定义样式
 
+::: details 🎨 查看自定义样式代码
 ```vue
 <template>
   <C_Breadcrumb class="custom-breadcrumb" />
@@ -283,9 +288,11 @@ onMounted(() => {
 }
 </style>
 ```
+:::
 
 ### 主题适配
 
+::: details 🌙 查看主题适配代码
 ```vue
 <script setup>
 // 配合暗色主题
@@ -303,11 +310,13 @@ const themeVars = {
   </NConfigProvider>
 </template>
 ```
+:::
 
 ## ⚙️ 高级配置
 
 ### 路由 Meta 配置说明
 
+::: details 📋 查看路由 Meta 配置代码
 ```typescript
 interface RouteMeta {
   title: string // 面包屑显示文本（必需）
@@ -316,9 +325,11 @@ interface RouteMeta {
   breadcrumb?: boolean // 是否显示在面包屑中（默认 true）
 }
 ```
+:::
 
 ### 完整路由配置示例
 
+::: details 🗺️ 查看完整路由配置代码
 ```javascript
 const routes = [
   {
@@ -350,6 +361,7 @@ const routes = [
   },
 ]
 ```
+:::
 
 ## 🐛 常见问题
 
@@ -357,6 +369,7 @@ const routes = [
 
 **A1:** 检查路由配置是否包含 `meta.title`：
 
+::: details 查看解决方案代码
 ```javascript
 // ✅ 正确
 {
@@ -370,11 +383,13 @@ const routes = [
   // 缺少 meta.title
 }
 ```
+:::
 
 ### Q2: 图标不显示？
 
 **A2:** 确保 `C_Icon` 组件已正确配置，且图标名称正确：
 
+::: details 查看解决方案代码
 ```javascript
 {
   path: '/user',
@@ -384,11 +399,13 @@ const routes = [
   }
 }
 ```
+:::
 
 ### Q3: 下拉菜单不工作？
 
 **A3:** 确保子路由配置正确：
 
+::: details 查看解决方案代码
 ```javascript
 {
   path: '/parent',
@@ -401,6 +418,7 @@ const routes = [
   ]
 }
 ```
+:::
 
 ## 🎯 最佳实践
 
@@ -473,20 +491,6 @@ const filterBreadcrumbByPermission = (breadcrumb, permissions) => {
 - ✨ 集成图标显示
 - ✨ TypeScript 支持
 
-## 🤝 贡献指南
-
-组件位置：`src/components/global/C_Breadcrumb/index.vue`
-
-如需扩展功能，请考虑：
-1. 保持组件的简洁性
-2. 确保向后兼容
-3. 添加必要的类型定义
-4. 更新文档说明
-
-## 📄 许可证
-
-Copyright (c) 2025 by ChenYu, All Rights Reserved 😎
-
----
+<!--@include: ./snippets/contribute.md -->
 
 **💡 提示**: 面包屑组件设计为零配置使用，只需确保路由配置包含 `meta.title` 即可自动工作。组件会智能处理多级路由，并在存在子路由时自动生成下拉菜单，提供快速导航能力。

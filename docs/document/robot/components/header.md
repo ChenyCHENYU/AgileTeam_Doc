@@ -138,6 +138,7 @@ const handleMenuCollapse = (collapsed) => {
 
 ### 场景 2: 自定义操作按钮
 
+::: details 🔧 查看自定义操作按钮代码
 ```vue
 <script setup>
 // 自定义头部操作按钮
@@ -171,9 +172,11 @@ const customHeaderActions = [
 provide('headerActions', customHeaderActions)
 </script>
 ```
+:::
 
 ### 场景 3: 扩展用户菜单
 
+::: details 👤 查看扩展用户菜单代码
 ```vue
 <script setup>
 import { s_userStore } from '@/stores/user'
@@ -241,9 +244,11 @@ const handleUserMenuSelect = (key) => {
 }
 </script>
 ```
+:::
 
 ### 场景 4: 动态显示用户信息
 
+::: details 📋 查看动态用户信息代码
 ```vue
 <template>
   <C_Header :isLightTheme="!isDark">
@@ -293,11 +298,13 @@ const userInfo = computed(() => ({
 const defaultAvatar = '/default-avatar.png'
 </script>
 ```
+:::
 
 ## 🎨 样式定制
 
 ### 自定义头部样式
 
+::: details 🎨 查看自定义头部样式代码
 ```scss
 // 头部容器样式
 .layout-header {
@@ -362,9 +369,11 @@ const defaultAvatar = '/default-avatar.png'
   }
 }
 ```
+:::
 
 ### 响应式适配
 
+::: details 📱 查看响应式适配代码
 ```scss
 // 平板设备
 @media (max-width: 1024px) {
@@ -405,11 +414,13 @@ const defaultAvatar = '/default-avatar.png'
   }
 }
 ```
+:::
 
 ## ⚙️ 高级用法
 
 ### 动态操作按钮
 
+::: details 🔧 查看动态操作按钮代码
 ```vue
 <script setup>
 // 根据权限动态显示操作按钮
@@ -440,9 +451,11 @@ const hasPermission = (permission) => {
 }
 </script>
 ```
+:::
 
 ### 全屏功能增强
 
+::: details 🖥️ 查看全屏功能代码
 ```javascript
 // 全屏管理器
 class FullscreenManager {
@@ -486,9 +499,11 @@ class FullscreenManager {
 
 const fullscreen = new FullscreenManager()
 ```
+:::
 
 ### 消息通知集成
 
+::: details 🔔 查看消息通知集成代码
 ```vue
 <script setup>
 // 消息通知管理
@@ -514,6 +529,7 @@ onUnmounted(() => {
 })
 </script>
 ```
+:::
 
 ## 🐛 常见问题
 
@@ -521,6 +537,7 @@ onUnmounted(() => {
 
 **A1:** 确保正确注入了 menuCollapse：
 
+::: details 查看解决方案代码
 ```javascript
 // ✅ 正确：从 inject 获取
 const { isCollapsed, handleCollapsedChange } = inject('menuCollapse')
@@ -528,11 +545,13 @@ const { isCollapsed, handleCollapsedChange } = inject('menuCollapse')
 // ❌ 错误：自定义状态
 const isCollapsed = ref(false)
 ```
+:::
 
 ### Q2: 主题切换不同步？
 
 **A2:** 检查主题 prop 传递：
 
+::: details 查看解决方案代码
 ```vue
 <!-- ✅ 正确：使用计算属性 -->
 <C_Header :isLightTheme="!themeStore.isDark" />
@@ -540,11 +559,13 @@ const isCollapsed = ref(false)
 <!-- ❌ 错误：硬编码值 -->
 <C_Header :isLightTheme="true" />
 ```
+:::
 
 ### Q3: 用户信息不更新？
 
 **A3:** 确保使用响应式数据：
 
+::: details 查看解决方案代码
 ```javascript
 // ✅ 正确：使用 computed
 const userName = computed(() => userStore.userInfo?.name)
@@ -552,17 +573,20 @@ const userName = computed(() => userStore.userInfo?.name)
 // ❌ 错误：直接赋值
 const userName = userStore.userInfo?.name
 ```
+:::
 
 ### Q4: 操作按钮不显示？
 
 **A4:** 检查组件是否正确注册：
 
+::: details 查看解决方案代码
 ```javascript
 // 确保动态组件已全局注册
 app.component('C_Notice', CNotice)
 app.component('C_Theme', CTheme)
 app.component('C_Language', CLanguage)
 ```
+:::
 
 ## 🎯 最佳实践
 
@@ -635,20 +659,6 @@ const debouncedToggle = debounce(() => {
 - ✨ 动态操作按钮
 - ✨ 主题适配支持
 
-## 🤝 贡献指南
-
-组件位置：`src/components/global/C_Header/index.vue`
-
-如需扩展功能，请考虑：
-1. 保持头部布局的稳定性
-2. 确保响应式适配正常
-3. 维护组件间的通信
-4. 更新文档说明
-
-## 📄 许可证
-
-Copyright (c) 2025 by ChenYu, All Rights Reserved 😎
-
----
+<!--@include: ./snippets/contribute.md -->
 
 **💡 提示**: C_Header 组件是应用的顶部导航栏，采用双层结构设计，上层包含操作按钮和用户信息，下层展示标签页导航。通过灵活的配置方式，可以根据需求定制操作按钮和用户菜单。组件与布局系统深度集成，提供统一的交互体验。
