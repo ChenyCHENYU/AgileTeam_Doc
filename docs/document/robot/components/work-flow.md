@@ -30,7 +30,7 @@ bun add @vue-flow/core @vue-flow/controls @vue-flow/minimap @vue-flow/background
 
 ### 基础用法
 
-```vue
+```vue {3-9}
 <template>
   <!-- 最简单的工作流设计器 -->
   <C_WorkFlow
@@ -83,8 +83,7 @@ const handleWorkflowSave = (data) => {
 </script>
 ```
 
-### 完整功能示例
-
+::: details 🎛️ 完整功能示例 - 带控制面板的演示
 ```vue
 <template>
   <div class="workflow-designer">
@@ -226,54 +225,6 @@ const handleWorkflowSave = (data) => {
         </n-space>
       </n-card>
     </div>
-
-    <!-- 验证结果抽屉 -->
-    <n-drawer
-      v-model:show="showValidationDrawer"
-      :width="400"
-      placement="right"
-    >
-      <n-drawer-content title="验证结果" closable>
-        <div v-if="validationErrors.length === 0" class="validation-success">
-          <i class="i-mdi:check-circle text-success text-24px"></i>
-          <h3>验证通过</h3>
-          <p>工作流配置正确，所有节点都已正确设置！</p>
-        </div>
-
-        <div v-else class="validation-errors">
-          <div class="error-summary">
-            <i class="i-mdi:alert-circle text-error text-24px"></i>
-            <h3>发现 {{ validationErrors.length }} 个问题</h3>
-          </div>
-
-          <div class="error-list">
-            <div
-              v-for="(error, index) in validationErrors"
-              :key="error.nodeId"
-              class="error-item"
-            >
-              <div class="error-header">
-                <span class="error-number">{{ index + 1 }}</span>
-                <div class="error-info">
-                  <strong>{{ error.nodeName }}</strong>
-                  <span class="error-field">{{ error.field }}</span>
-                </div>
-              </div>
-              <div class="error-message">{{ error.message }}</div>
-              <div class="error-actions">
-                <n-button
-                  size="small"
-                  type="primary"
-                  @click="jumpToNode(error.nodeId)"
-                >
-                  定位节点
-                </n-button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </n-drawer-content>
-    </n-drawer>
   </div>
 </template>
 
@@ -318,13 +269,6 @@ const userList = ref([
     department: '产品部',
     role: '产品经理',
   },
-  {
-    id: '3',
-    name: '王五',
-    avatar: 'https://avatars.githubusercontent.com/u/3?v=4',
-    department: '设计部',
-    role: 'UI设计师',
-  },
 ])
 
 const roleList = ref([
@@ -361,10 +305,6 @@ const templateOptions = [
   { label: '合同审批流程', key: 'contract_approval' },
 ]
 
-// 验证相关
-const showValidationDrawer = ref(false)
-const validationErrors = ref([])
-
 // 计算属性
 const workflowStats = computed(() => {
   const nodes = workflowData.value.nodes || []
@@ -397,8 +337,7 @@ const handleNodeClick = (node) => {
 }
 
 const handleValidateError = (errors) => {
-  validationErrors.value = errors
-  showValidationDrawer.value = true
+  console.log('验证错误:', errors)
 }
 
 // 操作方法
@@ -415,12 +354,10 @@ const saveWorkflow = async () => {
 const validateWorkflow = () => {
   if (workflowRef.value) {
     const errors = workflowRef.value.validateWorkflow()
-    validationErrors.value = errors
-
     if (errors.length === 0) {
       message.success('验证通过')
     } else {
-      showValidationDrawer.value = true
+      message.error(`发现 ${errors.length} 个问题`)
     }
   }
 }
@@ -461,107 +398,12 @@ const loadTemplate = (templateKey) => {
             approvalMode: 'any',
           },
         },
-        {
-          id: 'copy-1',
-          type: 'copy',
-          position: { x: 150, y: 340 },
-          data: {
-            title: '人事部抄送',
-            status: 'pending',
-            copyUsers: [
-              userList.value.find((u) => u.department === '人事部'),
-            ].filter(Boolean),
-          },
-        },
       ],
       edges: [
         {
           id: 'edge-start-approval',
           source: 'start-1',
           target: 'approval-1',
-          animated: true,
-        },
-        {
-          id: 'edge-approval-copy',
-          source: 'approval-1',
-          target: 'copy-1',
-          animated: true,
-        },
-      ],
-    },
-    expense_approval: {
-      nodes: [
-        {
-          id: 'start-1',
-          type: 'start',
-          position: { x: 150, y: 100 },
-          data: { title: '员工申请', status: 'active', initiators: [] },
-        },
-        {
-          id: 'condition-1',
-          type: 'condition',
-          position: { x: 150, y: 220 },
-          data: {
-            title: '金额判断',
-            status: 'pending',
-            conditions: [
-              {
-                id: 'condition-1',
-                name: '小额报销',
-                field: 'amount',
-                operator: 'less_than',
-                value: '1000',
-              },
-              {
-                id: 'condition-2',
-                name: '大额报销',
-                field: 'amount',
-                operator: 'greater_than',
-                value: '1000',
-              },
-            ],
-          },
-        },
-        {
-          id: 'approval-1',
-          type: 'approval',
-          position: { x: 50, y: 340 },
-          data: {
-            title: '主管审批',
-            status: 'pending',
-            approvers: [],
-            approvalMode: 'any',
-          },
-        },
-        {
-          id: 'approval-2',
-          type: 'approval',
-          position: { x: 250, y: 340 },
-          data: {
-            title: '财务经理审批',
-            status: 'pending',
-            approvers: [],
-            approvalMode: 'any',
-          },
-        },
-      ],
-      edges: [
-        {
-          id: 'edge-start-condition',
-          source: 'start-1',
-          target: 'condition-1',
-          animated: true,
-        },
-        {
-          id: 'edge-condition-approval1',
-          source: 'condition-1',
-          target: 'approval-1',
-          animated: true,
-        },
-        {
-          id: 'edge-condition-approval2',
-          source: 'condition-1',
-          target: 'approval-2',
           animated: true,
         },
       ],
@@ -605,18 +447,11 @@ const clearWorkflow = () => {
     },
   }
 
-  validationErrors.value = []
-  showValidationDrawer.value = false
   message.success('画布已清空')
 }
 
 const selectNode = (node) => {
   console.log('选中节点:', node)
-}
-
-const jumpToNode = (nodeId) => {
-  showValidationDrawer.value = false
-  message.info(`定位到节点: ${nodeId}`)
 }
 
 const getNodeTypeClass = (type) => {
@@ -770,80 +605,6 @@ const getNodeDescription = (node) => {
   padding: 8px 0;
 }
 
-.validation-success {
-  text-align: center;
-  padding: 24px;
-}
-
-.validation-success h3 {
-  margin: 16px 0 8px;
-  color: #52c41a;
-}
-
-.validation-errors {
-  padding: 16px;
-}
-
-.error-summary {
-  text-align: center;
-  margin-bottom: 24px;
-}
-
-.error-summary h3 {
-  margin: 16px 0 8px;
-  color: #ff4d4f;
-}
-
-.error-list {
-  space-y: 16px;
-}
-
-.error-item {
-  padding: 12px;
-  border: 1px solid #ffccc7;
-  border-radius: 6px;
-  background: #fff2f0;
-}
-
-.error-header {
-  display: flex;
-  align-items: center;
-  margin-bottom: 8px;
-}
-
-.error-number {
-  width: 20px;
-  height: 20px;
-  background: #ff4d4f;
-  color: white;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 12px;
-  margin-right: 8px;
-}
-
-.error-info {
-  flex: 1;
-}
-
-.error-field {
-  color: #666;
-  font-size: 12px;
-  margin-left: 8px;
-}
-
-.error-message {
-  color: #666;
-  font-size: 14px;
-  margin-bottom: 8px;
-}
-
-.error-actions {
-  text-align: right;
-}
-
 /* 节点类型样式 */
 .node-start {
   border-left: 4px solid #52c41a;
@@ -859,6 +620,7 @@ const getNodeDescription = (node) => {
 }
 </style>
 ```
+:::
 
 ## 📖 API 文档
 
@@ -896,8 +658,7 @@ const getNodeDescription = (node) => {
 
 ### 类型定义
 
-#### 工作流数据接口
-
+::: details 📝 工作流数据接口
 ```typescript
 interface WorkflowData {
   nodes: WorkflowNode[]
@@ -926,9 +687,9 @@ interface WorkflowConfig {
   updatedAt?: string
 }
 ```
+:::
 
-#### 节点类型定义
-
+::: details 🎯 节点类型定义
 ```typescript
 type NodeType = 'start' | 'approval' | 'copy' | 'condition'
 
@@ -954,9 +715,9 @@ interface Condition {
   value: string
 }
 ```
+:::
 
-#### 用户相关接口
-
+::: details 👥 用户相关接口
 ```typescript
 interface User {
   id: string
@@ -978,9 +739,9 @@ interface Department {
   parentId?: string
 }
 ```
+:::
 
-#### 验证错误接口
-
+::: details ⚠️ 验证错误接口
 ```typescript
 interface ValidationError {
   nodeId: string
@@ -990,11 +751,13 @@ interface ValidationError {
   type: 'required' | 'incomplete' | 'warning' | 'error'
 }
 ```
+:::
 
 ## 🎨 使用示例
 
 ### 场景 1: 请假审批流程
 
+::: details 📝 请假审批流程设计器
 ```vue
 <template>
   <div class="leave-approval-workflow">
@@ -1173,13 +936,6 @@ const hrUsers = ref([
     department: '人事部',
     role: 'HR专员',
   },
-  {
-    id: 'ceo',
-    name: '王总',
-    avatar: '',
-    department: '管理层',
-    role: '总经理',
-  },
 ])
 
 const departments = ref([
@@ -1246,149 +1002,6 @@ const generateLeaveWorkflow = () => {
       target: 'approval-manager',
       animated: true,
     })
-
-    yPosition += 120
-  } else if (leaveConfig.days <= 7) {
-    // 3-7天：主管 + HR审批
-    nodes.push({
-      id: 'approval-manager',
-      type: 'approval',
-      position: { x: 150, y: yPosition },
-      data: {
-        title: '直属主管审批',
-        status: 'pending',
-        approvers: [hrUsers.value.find((u) => u.role === '部门经理')].filter(
-          Boolean
-        ),
-        approvalMode: 'any',
-      },
-    })
-
-    edges.push({
-      id: 'edge-start-manager',
-      source: 'start-1',
-      target: 'approval-manager',
-      animated: true,
-    })
-
-    yPosition += 120
-
-    nodes.push({
-      id: 'approval-hr',
-      type: 'approval',
-      position: { x: 150, y: yPosition },
-      data: {
-        title: 'HR审批',
-        status: 'pending',
-        approvers: [hrUsers.value.find((u) => u.role === 'HR专员')].filter(
-          Boolean
-        ),
-        approvalMode: 'any',
-      },
-    })
-
-    edges.push({
-      id: 'edge-manager-hr',
-      source: 'approval-manager',
-      target: 'approval-hr',
-      animated: true,
-    })
-
-    yPosition += 120
-  } else {
-    // 7天以上：主管 + HR + 总经理审批
-    nodes.push({
-      id: 'approval-manager',
-      type: 'approval',
-      position: { x: 150, y: yPosition },
-      data: {
-        title: '直属主管审批',
-        status: 'pending',
-        approvers: [hrUsers.value.find((u) => u.role === '部门经理')].filter(
-          Boolean
-        ),
-        approvalMode: 'any',
-      },
-    })
-
-    edges.push({
-      id: 'edge-start-manager',
-      source: 'start-1',
-      target: 'approval-manager',
-      animated: true,
-    })
-
-    yPosition += 120
-
-    nodes.push({
-      id: 'approval-hr',
-      type: 'approval',
-      position: { x: 150, y: yPosition },
-      data: {
-        title: 'HR审批',
-        status: 'pending',
-        approvers: [hrUsers.value.find((u) => u.role === 'HR专员')].filter(
-          Boolean
-        ),
-        approvalMode: 'any',
-      },
-    })
-
-    edges.push({
-      id: 'edge-manager-hr',
-      source: 'approval-manager',
-      target: 'approval-hr',
-      animated: true,
-    })
-
-    yPosition += 120
-
-    nodes.push({
-      id: 'approval-ceo',
-      type: 'approval',
-      position: { x: 150, y: yPosition },
-      data: {
-        title: '总经理审批',
-        status: 'pending',
-        approvers: [hrUsers.value.find((u) => u.role === '总经理')].filter(
-          Boolean
-        ),
-        approvalMode: 'any',
-      },
-    })
-
-    edges.push({
-      id: 'edge-hr-ceo',
-      source: 'approval-hr',
-      target: 'approval-ceo',
-      animated: true,
-    })
-
-    yPosition += 120
-  }
-
-  // 添加HR抄送节点
-  if (leaveConfig.needHRApproval || leaveConfig.days > 1) {
-    nodes.push({
-      id: 'copy-hr',
-      type: 'copy',
-      position: { x: 150, y: yPosition },
-      data: {
-        title: 'HR抄送',
-        status: 'pending',
-        copyUsers: [hrUsers.value.find((u) => u.role === 'HR专员')].filter(
-          Boolean
-        ),
-      },
-    })
-
-    const lastApprovalNode = nodes[nodes.length - 2]
-    edges.push({
-      id: `edge-${lastApprovalNode.id}-copy`,
-      source: lastApprovalNode.id,
-      target: 'copy-hr',
-      animated: true,
-    })
   }
 
   leaveWorkflowData.value = {
@@ -1432,13 +1045,6 @@ const simulateLeaveApplication = () => {
         description: `等待 ${node.data.approvers[0].name} 审批`,
         status: 'pending',
         assignee: node.data.approvers[0].name,
-      })
-    } else if (node.type === 'copy' && node.data.copyUsers?.length > 0) {
-      steps.push({
-        title: node.data.title,
-        description: `抄送给 ${node.data.copyUsers[0].name}`,
-        status: 'pending',
-        assignee: node.data.copyUsers[0].name,
       })
     }
   })
@@ -1554,11 +1160,6 @@ onMounted(() => {
   border-left: 4px solid #fa8c16;
 }
 
-.execution-step.rejected {
-  background: #fff2f0;
-  border-left: 4px solid #ff4d4f;
-}
-
 .step-icon {
   width: 24px;
   height: 24px;
@@ -1589,9 +1190,11 @@ onMounted(() => {
 }
 </style>
 ```
+:::
 
 ### 场景 2: 报销审批流程
 
+::: details 💰 报销审批流程设计器
 ```vue
 <template>
   <div class="expense-approval-workflow">
@@ -1904,7 +1507,7 @@ const generateExpenseWorkflow = () => {
     },
   ]
 
-  // 小额报销审批节点
+  // 添加审批节点
   const smallApprover = financeUsers.value.find(
     (u) => u.id === expenseRules.smallAmountApprover
   )
@@ -1927,116 +1530,6 @@ const generateExpenseWorkflow = () => {
       target: 'approval-small',
       animated: true,
     })
-  }
-
-  // 中额报销审批节点
-  const mediumApprover = financeUsers.value.find(
-    (u) => u.id === expenseRules.mediumAmountApprover
-  )
-  if (mediumApprover) {
-    nodes.push({
-      id: 'approval-medium',
-      type: 'approval',
-      position: { x: 150, y: 340 },
-      data: {
-        title: '中额审批',
-        status: 'pending',
-        approvers: [mediumApprover],
-        approvalMode: 'any',
-      },
-    })
-
-    edges.push({
-      id: 'edge-condition-medium',
-      source: 'condition-amount',
-      target: 'approval-medium',
-      animated: true,
-    })
-  }
-
-  // 大额报销审批节点
-  const largeApprover = financeUsers.value.find(
-    (u) => u.id === expenseRules.largeAmountApprover
-  )
-  if (largeApprover) {
-    nodes.push({
-      id: 'approval-large-1',
-      type: 'approval',
-      position: { x: 250, y: 340 },
-      data: {
-        title: '财务经理审批',
-        status: 'pending',
-        approvers: [financeUsers.value.find((u) => u.id === 'finance')].filter(
-          Boolean
-        ),
-        approvalMode: 'any',
-      },
-    })
-
-    nodes.push({
-      id: 'approval-large-2',
-      type: 'approval',
-      position: { x: 250, y: 460 },
-      data: {
-        title: '财务总监审批',
-        status: 'pending',
-        approvers: [largeApprover],
-        approvalMode: 'any',
-      },
-    })
-
-    edges.push({
-      id: 'edge-condition-large1',
-      source: 'condition-amount',
-      target: 'approval-large-1',
-      animated: true,
-    })
-
-    edges.push({
-      id: 'edge-large1-large2',
-      source: 'approval-large-1',
-      target: 'approval-large-2',
-      animated: true,
-    })
-  }
-
-  // 财务抄送节点
-  const financeUser = financeUsers.value.find((u) => u.role === '财务经理')
-  if (financeUser) {
-    nodes.push({
-      id: 'copy-finance',
-      type: 'copy',
-      position: { x: 150, y: 580 },
-      data: {
-        title: '财务抄送',
-        status: 'pending',
-        copyUsers: [financeUser],
-      },
-    })
-
-    // 连接所有审批节点到抄送节点
-    const approvalNodes = nodes.filter((n) => n.type === 'approval')
-    approvalNodes.forEach((node) => {
-      if (node.id !== 'approval-large-1') {
-        // 大额报销的第一个节点不直接连接抄送
-        edges.push({
-          id: `edge-${node.id}-copy`,
-          source: node.id,
-          target: 'copy-finance',
-          animated: true,
-        })
-      }
-    })
-
-    // 大额报销的第二个审批节点连接抄送
-    if (nodes.find((n) => n.id === 'approval-large-2')) {
-      edges.push({
-        id: 'edge-large2-copy',
-        source: 'approval-large-2',
-        target: 'copy-finance',
-        animated: true,
-      })
-    }
   }
 
   expenseWorkflowData.value = {
@@ -2191,874 +1684,11 @@ onMounted(() => {
 }
 </style>
 ```
-
-### 场景 3: 合同审批流程
-
-```vue
-<template>
-  <div class="contract-approval-workflow">
-    <n-card title="合同审批流程设计">
-      <!-- 合同分类配置 -->
-      <div class="contract-config mb-20px">
-        <h4>合同审批配置</h4>
-        <div class="config-grid">
-          <div class="config-section">
-            <h5>合同金额分级</h5>
-            <n-space vertical>
-              <n-input-group>
-                <n-input-group-label>一级合同</n-input-group-label>
-                <n-input-number
-                  v-model:value="contractConfig.level1Amount"
-                  :step="10000"
-                />
-                <n-input-group-label>元以下</n-input-group-label>
-              </n-input-group>
-              <n-input-group>
-                <n-input-group-label>二级合同</n-input-group-label>
-                <n-input-number
-                  v-model:value="contractConfig.level2Amount"
-                  :step="10000"
-                />
-                <n-input-group-label>元以下</n-input-group-label>
-              </n-input-group>
-              <n-input-group>
-                <n-input-group-label>三级合同</n-input-group-label>
-                <n-input-number
-                  v-model:value="contractConfig.level3Amount"
-                  :step="10000"
-                />
-                <n-input-group-label>元以上</n-input-group-label>
-              </n-input-group>
-            </n-space>
-          </div>
-
-          <div class="config-section">
-            <h5>审批权限设置</h5>
-            <n-space vertical>
-              <div class="permission-item">
-                <span>法务审核：</span>
-                <n-switch v-model:value="contractConfig.needLegalReview" />
-              </div>
-              <div class="permission-item">
-                <span>财务审核：</span>
-                <n-switch v-model:value="contractConfig.needFinanceReview" />
-              </div>
-              <div class="permission-item">
-                <span>总经理审批：</span>
-                <n-switch v-model:value="contractConfig.needCEOApproval" />
-              </div>
-            </n-space>
-          </div>
-
-          <div class="config-section">
-            <h5>特殊条件</h5>
-            <n-space vertical>
-              <div class="condition-item">
-                <n-checkbox v-model:checked="contractConfig.foreignContract">
-                  涉外合同需要额外审批
-                </n-checkbox>
-              </div>
-              <div class="condition-item">
-                <n-checkbox v-model:checked="contractConfig.longTermContract">
-                  长期合同（>1年）需要特殊审批
-                </n-checkbox>
-              </div>
-            </n-space>
-          </div>
-        </div>
-
-        <n-button
-          type="primary"
-          @click="generateContractWorkflow"
-          class="mt-16px"
-        >
-          生成合同审批流程
-        </n-button>
-      </div>
-
-      <!-- 工作流设计器 -->
-      <C_WorkFlow
-        ref="contractWorkflowRef"
-        v-model="contractWorkflowData"
-        :users="contractUsers"
-        :departments="contractDepartments"
-        @change="handleContractWorkflowChange"
-        @save="handleContractWorkflowSave"
-      />
-    </n-card>
-
-    <!-- 合同审批模拟 -->
-    <n-card class="mt-20px" title="合同审批模拟">
-      <div class="contract-simulation">
-        <div class="simulation-form">
-          <n-form
-            :model="contractForm"
-            label-placement="left"
-            label-width="120"
-          >
-            <n-form-item label="合同发起人">
-              <n-select
-                v-model:value="contractForm.initiator"
-                :options="initiatorOptions"
-                placeholder="选择发起人"
-              />
-            </n-form-item>
-            <n-form-item label="合同类型">
-              <n-select
-                v-model:value="contractForm.type"
-                :options="contractTypeOptions"
-                placeholder="选择合同类型"
-              />
-            </n-form-item>
-            <n-form-item label="合同金额">
-              <n-input-number
-                v-model:value="contractForm.amount"
-                :min="0"
-                :step="1000"
-                :precision="2"
-                placeholder="请输入合同金额"
-              >
-                <template #suffix>元</template>
-              </n-input-number>
-            </n-form-item>
-            <n-form-item label="合同期限">
-              <n-input-number
-                v-model:value="contractForm.duration"
-                :min="1"
-                :step="1"
-                placeholder="合同期限"
-              >
-                <template #suffix>年</template>
-              </n-input-number>
-            </n-form-item>
-            <n-form-item label="是否涉外">
-              <n-switch v-model:value="contractForm.isForeign" />
-            </n-form-item>
-            <n-form-item label="合同摘要">
-              <n-input
-                v-model:value="contractForm.summary"
-                type="textarea"
-                placeholder="请输入合同摘要"
-                :rows="3"
-              />
-            </n-form-item>
-          </n-form>
-
-          <n-button type="primary" @click="simulateContractApproval" block>
-            模拟合同审批
-          </n-button>
-        </div>
-
-        <!-- 审批路径预览 -->
-        <div v-if="approvalPath" class="approval-path">
-          <h4>审批路径预览</h4>
-          <div class="path-summary">
-            <n-alert
-              :type="approvalPath.complexity"
-              :title="approvalPath.title"
-            >
-              {{ approvalPath.description }}
-            </n-alert>
-          </div>
-
-          <div class="path-steps">
-            <div
-              v-for="(step, index) in approvalPath.steps"
-              :key="index"
-              class="path-step"
-              :class="step.type"
-            >
-              <div class="step-number">{{ index + 1 }}</div>
-              <div class="step-content">
-                <div class="step-title">{{ step.title }}</div>
-                <div class="step-description">{{ step.description }}</div>
-                <div v-if="step.approver" class="step-approver">
-                  <n-avatar size="small" :src="step.approver.avatar" />
-                  <span
-                    >{{ step.approver.name }} ({{ step.approver.role }})</span
-                  >
-                </div>
-                <div v-if="step.estimatedTime" class="step-time">
-                  预计用时: {{ step.estimatedTime }}
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="path-summary-stats">
-            <div class="stat">
-              <span class="stat-label">总审批层级：</span>
-              <span class="stat-value">{{ approvalPath.totalLevels }} 级</span>
-            </div>
-            <div class="stat">
-              <span class="stat-label">预计总用时：</span>
-              <span class="stat-value">{{ approvalPath.totalTime }}</span>
-            </div>
-            <div class="stat">
-              <span class="stat-label">风险等级：</span>
-              <n-tag :type="getRiskLevelType(approvalPath.riskLevel)">
-                {{ approvalPath.riskLevel }}
-              </n-tag>
-            </div>
-          </div>
-        </div>
-      </div>
-    </n-card>
-  </div>
-</template>
-
-<script setup>
-const contractWorkflowRef = ref()
-const message = useMessage()
-
-// 合同配置
-const contractConfig = reactive({
-  level1Amount: 100000,
-  level2Amount: 500000,
-  level3Amount: 500000,
-  needLegalReview: true,
-  needFinanceReview: true,
-  needCEOApproval: false,
-  foreignContract: true,
-  longTermContract: true,
-})
-
-// 用户数据
-const contractUsers = ref([
-  {
-    id: 'dept-manager',
-    name: '部门经理',
-    avatar: '',
-    department: '业务部',
-    role: '部门经理',
-  },
-  {
-    id: 'legal',
-    name: '法务专员',
-    avatar: '',
-    department: '法务部',
-    role: '法务专员',
-  },
-  {
-    id: 'finance-manager',
-    name: '财务经理',
-    avatar: '',
-    department: '财务部',
-    role: '财务经理',
-  },
-  {
-    id: 'vp',
-    name: '副总经理',
-    avatar: '',
-    department: '管理层',
-    role: '副总经理',
-  },
-  {
-    id: 'ceo',
-    name: '总经理',
-    avatar: '',
-    department: '管理层',
-    role: '总经理',
-  },
-])
-
-const contractDepartments = ref([
-  { id: 'business', name: '业务部' },
-  { id: 'legal', name: '法务部' },
-  { id: 'finance', name: '财务部' },
-  { id: 'management', name: '管理层' },
-])
-
-// 工作流数据
-const contractWorkflowData = ref({
-  nodes: [],
-  edges: [],
-  config: {
-    version: '1.0',
-    createdAt: new Date().toISOString(),
-  },
-})
-
-// 模拟表单
-const contractForm = reactive({
-  initiator: '',
-  type: 'sales',
-  amount: 0,
-  duration: 1,
-  isForeign: false,
-  summary: '',
-})
-
-const initiatorOptions = computed(() =>
-  contractUsers.value.map((user) => ({
-    label: user.name,
-    value: user.id,
-  }))
-)
-
-const contractTypeOptions = [
-  { label: '销售合同', value: 'sales' },
-  { label: '采购合同', value: 'purchase' },
-  { label: '服务合同', value: 'service' },
-  { label: '技术合同', value: 'technology' },
-  { label: '劳务合同', value: 'labor' },
-]
-
-const approvalPath = ref(null)
-
-// 生成合同审批流程
-const generateContractWorkflow = () => {
-  const nodes = [
-    {
-      id: 'start-1',
-      type: 'start',
-      position: { x: 150, y: 100 },
-      data: {
-        title: '合同发起',
-        status: 'active',
-        initiators: [],
-      },
-    },
-  ]
-
-  const edges = []
-  let yPosition = 220
-
-  // 部门经理审批
-  nodes.push({
-    id: 'approval-manager',
-    type: 'approval',
-    position: { x: 150, y: yPosition },
-    data: {
-      title: '部门经理审批',
-      status: 'pending',
-      approvers: [
-        contractUsers.value.find((u) => u.id === 'dept-manager'),
-      ].filter(Boolean),
-      approvalMode: 'any',
-    },
-  })
-
-  edges.push({
-    id: 'edge-start-manager',
-    source: 'start-1',
-    target: 'approval-manager',
-    animated: true,
-  })
-
-  yPosition += 120
-
-  // 金额条件判断
-  if (contractConfig.level1Amount !== contractConfig.level2Amount) {
-    nodes.push({
-      id: 'condition-amount',
-      type: 'condition',
-      position: { x: 150, y: yPosition },
-      data: {
-        title: '金额条件判断',
-        status: 'pending',
-        conditions: [
-          {
-            id: 'small-contract',
-            name: `小额合同(≤${contractConfig.level1Amount.toLocaleString()}元)`,
-            field: 'amount',
-            operator: 'less_than',
-            value: contractConfig.level1Amount.toString(),
-          },
-          {
-            id: 'medium-contract',
-            name: `中额合同(${contractConfig.level1Amount.toLocaleString()}-${contractConfig.level2Amount.toLocaleString()}元)`,
-            field: 'amount',
-            operator: 'between',
-            value: `${contractConfig.level1Amount}-${contractConfig.level2Amount}`,
-          },
-          {
-            id: 'large-contract',
-            name: `大额合同(>${contractConfig.level2Amount.toLocaleString()}元)`,
-            field: 'amount',
-            operator: 'greater_than',
-            value: contractConfig.level2Amount.toString(),
-          },
-        ],
-      },
-    })
-
-    edges.push({
-      id: 'edge-manager-condition',
-      source: 'approval-manager',
-      target: 'condition-amount',
-      animated: true,
-    })
-
-    yPosition += 120
-  }
-
-  // 法务审核
-  if (contractConfig.needLegalReview) {
-    nodes.push({
-      id: 'approval-legal',
-      type: 'approval',
-      position: { x: 50, y: yPosition },
-      data: {
-        title: '法务审核',
-        status: 'pending',
-        approvers: [contractUsers.value.find((u) => u.id === 'legal')].filter(
-          Boolean
-        ),
-        approvalMode: 'any',
-      },
-    })
-
-    if (nodes.find((n) => n.id === 'condition-amount')) {
-      edges.push({
-        id: 'edge-condition-legal',
-        source: 'condition-amount',
-        target: 'approval-legal',
-        animated: true,
-      })
-    } else {
-      edges.push({
-        id: 'edge-manager-legal',
-        source: 'approval-manager',
-        target: 'approval-legal',
-        animated: true,
-      })
-    }
-  }
-
-  // 财务审核
-  if (contractConfig.needFinanceReview) {
-    nodes.push({
-      id: 'approval-finance',
-      type: 'approval',
-      position: { x: 150, y: yPosition },
-      data: {
-        title: '财务审核',
-        status: 'pending',
-        approvers: [
-          contractUsers.value.find((u) => u.id === 'finance-manager'),
-        ].filter(Boolean),
-        approvalMode: 'any',
-      },
-    })
-
-    if (nodes.find((n) => n.id === 'condition-amount')) {
-      edges.push({
-        id: 'edge-condition-finance',
-        source: 'condition-amount',
-        target: 'approval-finance',
-        animated: true,
-      })
-    } else {
-      edges.push({
-        id: 'edge-manager-finance',
-        source: 'approval-manager',
-        target: 'approval-finance',
-        animated: true,
-      })
-    }
-  }
-
-  // 高级管理层审批
-  if (contractConfig.needCEOApproval) {
-    nodes.push({
-      id: 'approval-vp',
-      type: 'approval',
-      position: { x: 250, y: yPosition },
-      data: {
-        title: '副总审批',
-        status: 'pending',
-        approvers: [contractUsers.value.find((u) => u.id === 'vp')].filter(
-          Boolean
-        ),
-        approvalMode: 'any',
-      },
-    })
-
-    yPosition += 120
-
-    nodes.push({
-      id: 'approval-ceo',
-      type: 'approval',
-      position: { x: 250, y: yPosition },
-      data: {
-        title: '总经理审批',
-        status: 'pending',
-        approvers: [contractUsers.value.find((u) => u.id === 'ceo')].filter(
-          Boolean
-        ),
-        approvalMode: 'any',
-      },
-    })
-
-    if (nodes.find((n) => n.id === 'condition-amount')) {
-      edges.push({
-        id: 'edge-condition-vp',
-        source: 'condition-amount',
-        target: 'approval-vp',
-        animated: true,
-      })
-    } else {
-      edges.push({
-        id: 'edge-manager-vp',
-        source: 'approval-manager',
-        target: 'approval-vp',
-        animated: true,
-      })
-    }
-
-    edges.push({
-      id: 'edge-vp-ceo',
-      source: 'approval-vp',
-      target: 'approval-ceo',
-      animated: true,
-    })
-  }
-
-  contractWorkflowData.value = {
-    nodes,
-    edges,
-    config: {
-      version: '1.0',
-      createdAt: new Date().toISOString(),
-    },
-  }
-
-  message.success('合同审批流程已生成')
-}
-
-// 模拟合同审批
-const simulateContractApproval = () => {
-  if (!contractForm.initiator || !contractForm.amount) {
-    message.warning('请填写完整信息')
-    return
-  }
-
-  const steps = []
-  const amount = contractForm.amount
-  let complexity = 'info'
-  let totalTime = 0
-
-  // 确定合同等级
-  let contractLevel = ''
-  if (amount <= contractConfig.level1Amount) {
-    contractLevel = '一级合同'
-    complexity = 'success'
-  } else if (amount <= contractConfig.level2Amount) {
-    contractLevel = '二级合同'
-    complexity = 'info'
-  } else {
-    contractLevel = '三级合同'
-    complexity = 'warning'
-  }
-
-  // 部门经理审批
-  steps.push({
-    type: 'approval',
-    title: '部门经理审批',
-    description: '审核合同的业务合理性和必要性',
-    approver: contractUsers.value.find((u) => u.id === 'dept-manager'),
-    estimatedTime: '1-2 工作日',
-  })
-  totalTime += 1.5
-
-  // 法务审核
-  if (contractConfig.needLegalReview) {
-    steps.push({
-      type: 'review',
-      title: '法务审核',
-      description: '审核合同条款的合法性和风险性',
-      approver: contractUsers.value.find((u) => u.id === 'legal'),
-      estimatedTime: '2-3 工作日',
-    })
-    totalTime += 2.5
-  }
-
-  // 财务审核
-  if (contractConfig.needFinanceReview) {
-    steps.push({
-      type: 'review',
-      title: '财务审核',
-      description: '审核合同的财务影响和预算合理性',
-      approver: contractUsers.value.find((u) => u.id === 'finance-manager'),
-      estimatedTime: '1-2 工作日',
-    })
-    totalTime += 1.5
-  }
-
-  // 高管审批
-  if (contractConfig.needCEOApproval || amount > contractConfig.level2Amount) {
-    if (amount > contractConfig.level2Amount) {
-      steps.push({
-        type: 'approval',
-        title: '副总经理审批',
-        description: '高额合同需要副总经理审批',
-        approver: contractUsers.value.find((u) => u.id === 'vp'),
-        estimatedTime: '2-3 工作日',
-      })
-      totalTime += 2.5
-
-      steps.push({
-        type: 'approval',
-        title: '总经理审批',
-        description: '最终审批决策',
-        approver: contractUsers.value.find((u) => u.id === 'ceo'),
-        estimatedTime: '3-5 工作日',
-      })
-      totalTime += 4
-      complexity = 'error'
-    }
-  }
-
-  // 特殊条件处理
-  if (contractForm.isForeign && contractConfig.foreignContract) {
-    steps.splice(1, 0, {
-      type: 'special',
-      title: '涉外合同特殊审核',
-      description: '涉外合同需要额外的合规审核',
-      approver: contractUsers.value.find((u) => u.id === 'legal'),
-      estimatedTime: '3-5 工作日',
-    })
-    totalTime += 4
-  }
-
-  if (contractForm.duration > 1 && contractConfig.longTermContract) {
-    steps.push({
-      type: 'special',
-      title: '长期合同风险评估',
-      description: '长期合同需要进行风险评估',
-      approver: contractUsers.value.find((u) => u.id === 'finance-manager'),
-      estimatedTime: '2-3 工作日',
-    })
-    totalTime += 2.5
-  }
-
-  // 确定风险等级
-  let riskLevel = '低'
-  if (
-    amount > contractConfig.level2Amount ||
-    contractForm.isForeign ||
-    contractForm.duration > 2
-  ) {
-    riskLevel = '高'
-  } else if (
-    amount > contractConfig.level1Amount ||
-    contractForm.duration > 1
-  ) {
-    riskLevel = '中'
-  }
-
-  approvalPath.value = {
-    title: `${contractLevel} - ${riskLevel}风险`,
-    description: `合同金额 ${amount.toLocaleString()} 元，${
-      contractForm.duration
-    } 年期限${contractForm.isForeign ? '，涉外合同' : ''}`,
-    complexity,
-    steps,
-    totalLevels: steps.length,
-    totalTime: `${Math.ceil(totalTime)} 个工作日`,
-    riskLevel,
-  }
-
-  message.success('合同审批路径已生成')
-}
-
-const getRiskLevelType = (level) => {
-  const typeMap = {
-    低: 'success',
-    中: 'warning',
-    高: 'error',
-  }
-  return typeMap[level] || 'default'
-}
-
-const handleContractWorkflowChange = (data) => {
-  console.log('合同流程变更:', data)
-}
-
-const handleContractWorkflowSave = (data) => {
-  console.log('合同流程保存:', data)
-  message.success('合同审批流程保存成功')
-}
-
-// 监听配置变化
-watch(
-  contractConfig,
-  () => {
-    generateContractWorkflow()
-  },
-  { deep: true }
-)
-
-// 初始化
-onMounted(() => {
-  generateContractWorkflow()
-})
-</script>
-
-<style scoped>
-.contract-approval-workflow {
-  padding: 24px;
-}
-
-.contract-config {
-  background: #f5f5f5;
-  padding: 20px;
-  border-radius: 8px;
-}
-
-.config-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 20px;
-  margin-top: 16px;
-}
-
-.config-section {
-  background: white;
-  padding: 16px;
-  border-radius: 6px;
-  border: 1px solid #e0e0e0;
-}
-
-.config-section h5 {
-  margin: 0 0 12px 0;
-  color: #333;
-  font-weight: 600;
-}
-
-.permission-item,
-.condition-item {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 8px 0;
-}
-
-.contract-simulation {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 24px;
-}
-
-.simulation-form {
-  padding: 16px;
-  background: #fafafa;
-  border-radius: 8px;
-}
-
-.approval-path {
-  padding: 16px;
-  background: #f0f9ff;
-  border-radius: 8px;
-}
-
-.path-summary {
-  margin-bottom: 20px;
-}
-
-.path-steps {
-  margin-bottom: 20px;
-}
-
-.path-step {
-  display: flex;
-  align-items: flex-start;
-  margin-bottom: 16px;
-  padding: 16px;
-  background: white;
-  border-radius: 8px;
-  border-left: 4px solid #e0e0e0;
-}
-
-.path-step.approval {
-  border-left-color: #1890ff;
-}
-
-.path-step.review {
-  border-left-color: #fa8c16;
-}
-
-.path-step.special {
-  border-left-color: #722ed1;
-}
-
-.step-number {
-  width: 24px;
-  height: 24px;
-  background: #1890ff;
-  color: white;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 12px;
-  font-weight: 600;
-  margin-right: 12px;
-  flex-shrink: 0;
-}
-
-.step-content {
-  flex: 1;
-}
-
-.step-title {
-  font-weight: 600;
-  margin-bottom: 4px;
-  color: #333;
-}
-
-.step-description {
-  color: #666;
-  font-size: 14px;
-  margin-bottom: 8px;
-}
-
-.step-approver {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin-bottom: 4px;
-  font-size: 14px;
-}
-
-.step-time {
-  font-size: 12px;
-  color: #999;
-}
-
-.path-summary-stats {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
-  padding: 16px;
-  background: white;
-  border-radius: 6px;
-}
-
-.stat {
-  text-align: center;
-}
-
-.stat-label {
-  display: block;
-  font-size: 12px;
-  color: #666;
-  margin-bottom: 4px;
-}
-
-.stat-value {
-  font-size: 16px;
-  font-weight: 600;
-  color: #333;
-}
-</style>
-```
+:::
 
 ## 🛠️ 高级用法
 
-### 自定义节点类型
-
+::: details 🎨 自定义节点类型 - 扩展业务节点
 ```vue
 <template>
   <div class="custom-workflow">
@@ -3141,9 +1771,9 @@ const handleWorkflowChange = (data) => {
 }
 </script>
 ```
+:::
 
-### 工作流版本管理
-
+::: details 🔄 工作流版本管理 - 版本控制系统
 ```vue
 <template>
   <div class="workflow-version-manager">
@@ -3180,17 +1810,10 @@ const handleWorkflowChange = (data) => {
         <n-button type="primary" @click="createNewVersion">
           创建新版本
         </n-button>
-        <n-button
-          @click="compareVersions"
-          :disabled="selectedVersions.length !== 2"
-        >
+        <n-button @click="compareVersions">
           版本对比
         </n-button>
-        <n-button
-          type="warning"
-          @click="rollbackVersion"
-          :disabled="!canRollback"
-        >
+        <n-button type="warning" @click="rollbackVersion">
           回滚版本
         </n-button>
       </div>
@@ -3207,80 +1830,6 @@ const handleWorkflowChange = (data) => {
         @save="saveCurrentVersion"
       />
     </n-card>
-
-    <!-- 版本对比弹窗 -->
-    <n-modal
-      v-model:show="showVersionCompare"
-      title="版本对比"
-      style="width: 80%"
-    >
-      <div class="version-compare">
-        <div class="compare-side">
-          <h4>
-            {{ compareData.leftVersion.name }} (v{{
-              compareData.leftVersion.version
-            }})
-          </h4>
-          <div class="compare-content">
-            <div class="workflow-preview">
-              <!-- 左侧版本预览 -->
-            </div>
-            <div class="version-details">
-              <p>节点数: {{ compareData.leftVersion.nodeCount }}</p>
-              <p>
-                创建时间: {{ formatDate(compareData.leftVersion.createdAt) }}
-              </p>
-              <p>作者: {{ compareData.leftVersion.author }}</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="compare-divider">
-          <i class="i-mdi:arrow-left-right text-24px"></i>
-        </div>
-
-        <div class="compare-side">
-          <h4>
-            {{ compareData.rightVersion.name }} (v{{
-              compareData.rightVersion.version
-            }})
-          </h4>
-          <div class="compare-content">
-            <div class="workflow-preview">
-              <!-- 右侧版本预览 -->
-            </div>
-            <div class="version-details">
-              <p>节点数: {{ compareData.rightVersion.nodeCount }}</p>
-              <p>
-                创建时间: {{ formatDate(compareData.rightVersion.createdAt) }}
-              </p>
-              <p>作者: {{ compareData.rightVersion.author }}</p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- 差异详情 -->
-      <div class="version-diff">
-        <h4>变更详情</h4>
-        <div class="diff-list">
-          <div
-            v-for="diff in compareData.differences"
-            :key="diff.id"
-            class="diff-item"
-            :class="diff.type"
-          >
-            <div class="diff-icon">
-              <i :class="getDiffIcon(diff.type)"></i>
-            </div>
-            <div class="diff-content">
-              <div class="diff-title">{{ diff.title }}</div>
-              <div class="diff-description">{{ diff.description }}</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </n-modal>
   </div>
 </template>
 
@@ -3298,9 +1847,7 @@ const workflowVersions = ref([
     author: '张三',
     createdAt: new Date('2025-01-01'),
     nodeCount: 3,
-    data: {
-      /* 工作流数据 */
-    },
+    data: {},
   },
   {
     id: 'v2',
@@ -3310,30 +1857,18 @@ const workflowVersions = ref([
     author: '李四',
     createdAt: new Date('2025-01-15'),
     nodeCount: 5,
-    data: {
-      /* 工作流数据 */
-    },
+    data: {},
   },
 ])
 
 const currentVersionId = ref('v2')
 const currentWorkflowData = ref(null)
-const selectedVersions = ref([])
-const showVersionCompare = ref(false)
-const compareData = ref(null)
 
 const isReadonly = computed(() => {
   const currentVersion = workflowVersions.value.find(
     (v) => v.id === currentVersionId.value
   )
   return currentVersion?.status === 'published'
-})
-
-const canRollback = computed(() => {
-  const currentVersion = workflowVersions.value.find(
-    (v) => v.id === currentVersionId.value
-  )
-  return currentVersion && currentVersion.status !== 'published'
 })
 
 // 版本管理方法
@@ -3379,34 +1914,11 @@ const saveCurrentVersion = () => {
 }
 
 const compareVersions = () => {
-  if (selectedVersions.value.length === 2) {
-    const leftVersion = workflowVersions.value.find(
-      (v) => v.id === selectedVersions.value[0]
-    )
-    const rightVersion = workflowVersions.value.find(
-      (v) => v.id === selectedVersions.value[1]
-    )
-
-    compareData.value = {
-      leftVersion,
-      rightVersion,
-      differences: generateVersionDiff(leftVersion, rightVersion),
-    }
-
-    showVersionCompare.value = true
-  }
+  message.info('版本对比功能')
 }
 
 const rollbackVersion = () => {
-  // 回滚到上一个发布版本
-  const publishedVersions = workflowVersions.value.filter(
-    (v) => v.status === 'published'
-  )
-  if (publishedVersions.length > 0) {
-    const latestPublished = publishedVersions[publishedVersions.length - 1]
-    loadVersion(latestPublished.id)
-    message.success(`已回滚到版本: ${latestPublished.name}`)
-  }
+  message.info('版本回滚功能')
 }
 
 // 辅助方法
@@ -3423,32 +1935,6 @@ const incrementVersion = (version) => {
   const parts = version.split('.')
   parts[2] = (parseInt(parts[2]) + 1).toString()
   return parts.join('.')
-}
-
-const generateVersionDiff = (leftVersion, rightVersion) => {
-  const differences = []
-
-  // 简单的差异比较逻辑
-  if (leftVersion.nodeCount !== rightVersion.nodeCount) {
-    differences.push({
-      id: 'node-count',
-      type:
-        leftVersion.nodeCount < rightVersion.nodeCount ? 'added' : 'removed',
-      title: '节点数量变化',
-      description: `从 ${leftVersion.nodeCount} 个节点变为 ${rightVersion.nodeCount} 个节点`,
-    })
-  }
-
-  return differences
-}
-
-const getDiffIcon = (type) => {
-  const iconMap = {
-    added: 'i-mdi:plus-circle',
-    removed: 'i-mdi:minus-circle',
-    modified: 'i-mdi:pencil-circle',
-  }
-  return iconMap[type] || 'i-mdi:circle'
 }
 
 const formatDate = (date) => {
@@ -3524,99 +2010,9 @@ onMounted(() => {
   display: flex;
   gap: 12px;
 }
-
-.version-compare {
-  display: grid;
-  grid-template-columns: 1fr auto 1fr;
-  gap: 24px;
-  margin-bottom: 24px;
-}
-
-.compare-side {
-  padding: 16px;
-  border: 1px solid #e0e0e0;
-  border-radius: 8px;
-}
-
-.compare-divider {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #666;
-}
-
-.workflow-preview {
-  height: 200px;
-  background: #f5f5f5;
-  border-radius: 6px;
-  margin-bottom: 16px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #666;
-}
-
-.version-details p {
-  margin: 4px 0;
-  font-size: 14px;
-  color: #666;
-}
-
-.version-diff {
-  border-top: 1px solid #e0e0e0;
-  padding-top: 24px;
-}
-
-.diff-list {
-  space-y: 12px;
-}
-
-.diff-item {
-  display: flex;
-  align-items: flex-start;
-  padding: 12px;
-  border-radius: 6px;
-}
-
-.diff-item.added {
-  background: #f6ffed;
-  border-left: 4px solid #52c41a;
-}
-
-.diff-item.removed {
-  background: #fff2f0;
-  border-left: 4px solid #ff4d4f;
-}
-
-.diff-item.modified {
-  background: #fff7e6;
-  border-left: 4px solid #fa8c16;
-}
-
-.diff-icon {
-  margin-right: 12px;
-  width: 20px;
-  height: 20px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.diff-content {
-  flex: 1;
-}
-
-.diff-title {
-  font-weight: 600;
-  margin-bottom: 4px;
-}
-
-.diff-description {
-  color: #666;
-  font-size: 14px;
-}
 </style>
 ```
+:::
 
 ## ⚠️ 注意事项
 
@@ -3666,6 +2062,7 @@ const incompleteEdge = {
 
 ### 3. 数据验证
 
+::: details 📝 工作流数据验证示例
 ```javascript
 // ✅ 推荐：验证工作流数据
 const validateWorkflowData = (data) => {
@@ -3696,9 +2093,11 @@ if (errors.length > 0) {
   console.error('工作流数据验证失败:', errors)
 }
 ```
+:::
 
 ### 4. 性能优化
 
+::: details ⚡ 性能优化策略
 ```javascript
 // ✅ 推荐：大型工作流的性能优化
 const useWorkflowPerformance = () => {
@@ -3731,6 +2130,7 @@ const useWorkflowPerformance = () => {
   }
 }
 ```
+:::
 
 ## 🐛 故障排除
 
@@ -3836,6 +2236,7 @@ const customNodeTypes = {
 
 ### 1. 组件架构设计
 
+::: details 🏗️ 推荐的组件架构
 ```javascript
 // 推荐的组件架构
 const useWorkflowDesigner = () => {
@@ -3891,9 +2292,11 @@ const useWorkflowDesigner = () => {
   }
 }
 ```
+:::
 
 ### 2. 数据持久化策略
 
+::: details 💾 工作流数据持久化
 ```javascript
 // 工作流数据持久化
 class WorkflowPersistence {
@@ -3998,9 +2401,11 @@ onUnmounted(() => {
   persistence.destroy()
 })
 ```
+:::
 
 ### 3. 错误处理机制
 
+::: details 🚨 工作流错误处理
 ```javascript
 // 工作流错误处理类
 class WorkflowErrorHandler {
@@ -4044,7 +2449,6 @@ class WorkflowErrorHandler {
     switch (errorEntry.level) {
       case 'error':
         message.error(errorEntry.message)
-        // 发送到错误监控服务
         this.reportToMonitoring(errorEntry)
         break
       case 'warning':
@@ -4076,22 +2480,6 @@ class WorkflowErrorHandler {
       }
     }
 
-    return false
-  }
-
-  // 重试操作
-  async retryOperation(operation, maxRetries = 3) {
-    for (let i = 0; i < maxRetries; i++) {
-      try {
-        await operation()
-        return true
-      } catch (error) {
-        if (i === maxRetries - 1) throw error
-        await new Promise((resolve) =>
-          setTimeout(resolve, 1000 * Math.pow(2, i))
-        )
-      }
-    }
     return false
   }
 
@@ -4129,16 +2517,6 @@ class WorkflowErrorHandler {
     // 实际项目中集成错误监控服务
     console.error('Error reported to monitoring:', errorEntry)
   }
-
-  // 获取错误日志
-  getErrorLog() {
-    return this.errorLog
-  }
-
-  // 清除错误日志
-  clearErrorLog() {
-    this.errorLog = []
-  }
 }
 
 // 全局错误处理
@@ -4167,426 +2545,7 @@ const saveWorkflow = async (data) => {
   })
 }
 ```
-
-### 4. 国际化支持
-
-```javascript
-// 工作流国际化配置
-const workflowI18n = {
-  'zh-CN': {
-    nodes: {
-      start: '开始',
-      approval: '审批',
-      copy: '抄送',
-      condition: '条件分支',
-    },
-    actions: {
-      save: '保存',
-      preview: '预览',
-      validate: '验证',
-      clear: '清空',
-      export: '导出',
-    },
-    validation: {
-      required: '必填项不能为空',
-      invalidFormat: '格式不正确',
-      missingConnection: '节点未连接',
-    },
-    messages: {
-      saveSuccess: '保存成功',
-      saveFailed: '保存失败',
-      validationPassed: '验证通过',
-      validationFailed: '验证失败',
-    },
-  },
-  'en-US': {
-    nodes: {
-      start: 'Start',
-      approval: 'Approval',
-      copy: 'Copy',
-      condition: 'Condition',
-    },
-    actions: {
-      save: 'Save',
-      preview: 'Preview',
-      validate: 'Validate',
-      clear: 'Clear',
-      export: 'Export',
-    },
-    validation: {
-      required: 'Required field cannot be empty',
-      invalidFormat: 'Invalid format',
-      missingConnection: 'Node not connected',
-    },
-    messages: {
-      saveSuccess: 'Save successful',
-      saveFailed: 'Save failed',
-      validationPassed: 'Validation passed',
-      validationFailed: 'Validation failed',
-    },
-  },
-}
-
-// 国际化 Composable
-const useWorkflowI18n = (locale = 'zh-CN') => {
-  const currentLocale = ref(locale)
-
-  const t = (key) => {
-    const keys = key.split('.')
-    let value = workflowI18n[currentLocale.value]
-
-    for (const k of keys) {
-      value = value?.[k]
-    }
-
-    return value || key
-  }
-
-  const setLocale = (newLocale) => {
-    if (workflowI18n[newLocale]) {
-      currentLocale.value = newLocale
-    }
-  }
-
-  return {
-    t,
-    setLocale,
-    currentLocale: readonly(currentLocale),
-  }
-}
-
-// 在组件中使用
-const { t, setLocale } = useWorkflowI18n()
-
-// 示例：获取本地化文本
-const nodeTitle = computed(() => t(`nodes.${node.type}`))
-const saveButtonText = computed(() => t('actions.save'))
-```
-
-### 5. 工作流模板系统
-
-```javascript
-// 工作流模板管理器
-class WorkflowTemplateManager {
-  constructor() {
-    this.templates = new Map()
-    this.categories = new Map()
-    this.initializeBuiltinTemplates()
-  }
-
-  // 初始化内置模板
-  initializeBuiltinTemplates() {
-    // 请假模板
-    this.registerTemplate({
-      id: 'leave-approval',
-      name: '请假审批',
-      category: 'hr',
-      description: '标准的请假审批流程',
-      tags: ['人事', '审批', '请假'],
-      difficulty: 'easy',
-      estimatedTime: '5分钟',
-      template: {
-        nodes: [
-          {
-            id: 'start-1',
-            type: 'start',
-            position: { x: 150, y: 100 },
-            data: { title: '员工申请', status: 'active' },
-          },
-          {
-            id: 'approval-1',
-            type: 'approval',
-            position: { x: 150, y: 220 },
-            data: {
-              title: '直属主管审批',
-              status: 'pending',
-              approvers: [],
-              approvalMode: 'any',
-            },
-          },
-          {
-            id: 'copy-1',
-            type: 'copy',
-            position: { x: 150, y: 340 },
-            data: {
-              title: 'HR抄送',
-              status: 'pending',
-              copyUsers: [],
-            },
-          },
-        ],
-        edges: [
-          {
-            id: 'edge-1',
-            source: 'start-1',
-            target: 'approval-1',
-            animated: true,
-          },
-          {
-            id: 'edge-2',
-            source: 'approval-1',
-            target: 'copy-1',
-            animated: true,
-          },
-        ],
-      },
-    })
-
-    // 报销模板
-    this.registerTemplate({
-      id: 'expense-approval',
-      name: '报销审批',
-      category: 'finance',
-      description: '基于金额的智能报销审批流程',
-      tags: ['财务', '报销', '条件审批'],
-      difficulty: 'medium',
-      estimatedTime: '10分钟',
-      template: {
-        nodes: [
-          {
-            id: 'start-1',
-            type: 'start',
-            position: { x: 150, y: 100 },
-            data: { title: '员工申请', status: 'active' },
-          },
-          {
-            id: 'condition-1',
-            type: 'condition',
-            position: { x: 150, y: 220 },
-            data: {
-              title: '金额判断',
-              status: 'pending',
-              conditions: [
-                {
-                  id: 'small-amount',
-                  name: '小额报销(≤1000元)',
-                  field: 'amount',
-                  operator: 'less_than',
-                  value: '1000',
-                },
-                {
-                  id: 'large-amount',
-                  name: '大额报销(>1000元)',
-                  field: 'amount',
-                  operator: 'greater_than',
-                  value: '1000',
-                },
-              ],
-            },
-          },
-        ],
-        edges: [
-          {
-            id: 'edge-1',
-            source: 'start-1',
-            target: 'condition-1',
-            animated: true,
-          },
-        ],
-      },
-    })
-
-    // 注册分类
-    this.categories.set('hr', { name: '人事管理', icon: 'i-mdi:account-group' })
-    this.categories.set('finance', { name: '财务管理', icon: 'i-mdi:cash' })
-    this.categories.set('procurement', { name: '采购管理', icon: 'i-mdi:cart' })
-    this.categories.set('contract', {
-      name: '合同管理',
-      icon: 'i-mdi:file-document',
-    })
-  }
-
-  // 注册模板
-  registerTemplate(template) {
-    this.templates.set(template.id, {
-      ...template,
-      createdAt: new Date().toISOString(),
-      usageCount: 0,
-    })
-  }
-
-  // 获取模板
-  getTemplate(id) {
-    const template = this.templates.get(id)
-    if (template) {
-      // 增加使用次数
-      template.usageCount++
-    }
-    return template
-  }
-
-  // 获取所有模板
-  getAllTemplates() {
-    return Array.from(this.templates.values())
-  }
-
-  // 按分类获取模板
-  getTemplatesByCategory(category) {
-    return this.getAllTemplates().filter((t) => t.category === category)
-  }
-
-  // 搜索模板
-  searchTemplates(query) {
-    const lowerQuery = query.toLowerCase()
-    return this.getAllTemplates().filter(
-      (template) =>
-        template.name.toLowerCase().includes(lowerQuery) ||
-        template.description.toLowerCase().includes(lowerQuery) ||
-        template.tags.some((tag) => tag.toLowerCase().includes(lowerQuery))
-    )
-  }
-
-  // 获取推荐模板
-  getRecommendedTemplates(limit = 5) {
-    return this.getAllTemplates()
-      .sort((a, b) => b.usageCount - a.usageCount)
-      .slice(0, limit)
-  }
-
-  // 应用模板
-  applyTemplate(templateId, customization = {}) {
-    const template = this.getTemplate(templateId)
-    if (!template) {
-      throw new Error(`模板 ${templateId} 不存在`)
-    }
-
-    // 深拷贝模板数据
-    const workflowData = JSON.parse(JSON.stringify(template.template))
-
-    // 应用自定义配置
-    if (customization.users) {
-      this.applyUserCustomization(workflowData, customization.users)
-    }
-
-    if (customization.config) {
-      this.applyConfigCustomization(workflowData, customization.config)
-    }
-
-    return {
-      ...workflowData,
-      config: {
-        version: '1.0',
-        createdAt: new Date().toISOString(),
-        templateId: templateId,
-        templateName: template.name,
-      },
-    }
-  }
-
-  // 应用用户自定义
-  applyUserCustomization(workflowData, users) {
-    workflowData.nodes.forEach((node) => {
-      if (node.type === 'approval' && users.approvers) {
-        node.data.approvers = users.approvers
-      }
-      if (node.type === 'copy' && users.copyUsers) {
-        node.data.copyUsers = users.copyUsers
-      }
-    })
-  }
-
-  // 应用配置自定义
-  applyConfigCustomization(workflowData, config) {
-    if (config.conditions) {
-      workflowData.nodes.forEach((node) => {
-        if (node.type === 'condition') {
-          node.data.conditions = [...node.data.conditions, ...config.conditions]
-        }
-      })
-    }
-  }
-
-  // 保存为模板
-  saveAsTemplate(workflowData, templateInfo) {
-    const template = {
-      id: `custom-${Date.now()}`,
-      name: templateInfo.name,
-      category: templateInfo.category || 'custom',
-      description: templateInfo.description || '',
-      tags: templateInfo.tags || [],
-      difficulty: templateInfo.difficulty || 'medium',
-      estimatedTime: templateInfo.estimatedTime || '未知',
-      template: workflowData,
-      isCustom: true,
-    }
-
-    this.registerTemplate(template)
-    return template
-  }
-
-  // 删除自定义模板
-  deleteCustomTemplate(templateId) {
-    const template = this.templates.get(templateId)
-    if (template && template.isCustom) {
-      this.templates.delete(templateId)
-      return true
-    }
-    return false
-  }
-}
-
-// 全局模板管理器实例
-const templateManager = new WorkflowTemplateManager()
-
-// 模板选择组件
-const useTemplateSelector = () => {
-  const showTemplateSelector = ref(false)
-  const selectedCategory = ref('all')
-  const searchQuery = ref('')
-
-  const categories = computed(() => [
-    { id: 'all', name: '全部', icon: 'i-mdi:view-grid' },
-    ...Array.from(templateManager.categories.entries()).map(([id, info]) => ({
-      id,
-      ...info,
-    })),
-  ])
-
-  const filteredTemplates = computed(() => {
-    let templates = templateManager.getAllTemplates()
-
-    // 按分类过滤
-    if (selectedCategory.value !== 'all') {
-      templates = templates.filter((t) => t.category === selectedCategory.value)
-    }
-
-    // 按搜索关键词过滤
-    if (searchQuery.value) {
-      templates = templateManager.searchTemplates(searchQuery.value)
-    }
-
-    return templates
-  })
-
-  const recommendedTemplates = computed(() => {
-    return templateManager.getRecommendedTemplates()
-  })
-
-  const selectTemplate = (templateId, customization) => {
-    try {
-      const workflowData = templateManager.applyTemplate(
-        templateId,
-        customization
-      )
-      showTemplateSelector.value = false
-      return workflowData
-    } catch (error) {
-      console.error('应用模板失败:', error)
-      throw error
-    }
-  }
-
-  return {
-    showTemplateSelector,
-    selectedCategory,
-    searchQuery,
-    categories,
-    filteredTemplates,
-    recommendedTemplates,
-    selectTemplate,
-  }
-}
-```
+:::
 
 ## 📝 更新日志
 
@@ -4603,99 +2562,6 @@ const useTemplateSelector = () => {
 - ✨ 工作流预览和统计功能
 - ✨ 错误处理和自动恢复机制
 
-### v1.1.0 (计划中)
-
-- 🔄 版本管理和历史记录
-- 🔄 工作流导入导出功能
-- 🔄 自定义节点类型支持
-- 🔄 实时协作编辑
-- 🔄 工作流执行引擎
-- 🔄 更多预置模板
-- 🔄 国际化支持增强
-- 🔄 性能优化和大型流程支持
-
-## 🎯 路线图
-
-### 短期目标 (1-3 个月)
-
-- [ ] **版本管理系统**: 支持工作流版本控制、比较和回滚
-- [ ] **模板市场**: 提供更多行业标准模板
-- [ ] **导入导出**: 支持多种格式的工作流导入导出
-- [ ] **性能优化**: 大型工作流的渲染和操作优化
-
-### 中期目标 (3-6 个月)
-
-- [ ] **执行引擎**: 工作流运行时引擎和状态管理
-- [ ] **实时协作**: 多人同时编辑工作流
-- [ ] **高级节点**: 子流程、并行网关、定时器等
-- [ ] **可视化增强**: 更丰富的图形效果和动画
-
-### 长期目标 (6-12 个月)
-
-- [ ] **AI 助手**: 智能工作流设计和优化建议
-- [ ] **移动端**: 专门的移动端设计器
-- [ ] **插件系统**: 支持第三方插件和扩展
-- [ ] **云端同步**: 工作流云端存储和同步
-
-## 🤝 贡献指南
-
-我们欢迎社区贡献！请遵循以下指南：
-
-### 开发环境设置
-
-```bash
-# 克隆仓库
-git clone https://github.com/your-org/c-workflow.git
-cd c-workflow
-
-# 安装依赖
-bun install
-
-# 启动开发服务器
-bun dev
-
-# 运行测试
-bun test
-
-# 代码检查
-bun lint
-```
-
-### 贡献流程
-
-1. **Fork 项目** - 在 GitHub 上 Fork 项目
-2. **创建分支** - 创建功能分支 (`git checkout -b feature/amazing-feature`)
-3. **开发功能** - 编写代码并确保测试通过
-4. **提交更改** - 提交有意义的提交信息 (`git commit -m 'Add amazing feature'`)
-5. **推送分支** - 推送到你的 Fork (`git push origin feature/amazing-feature`)
-6. **创建 PR** - 创建 Pull Request 并描述你的更改
-
-### 编码规范
-
-- 使用 TypeScript 编写代码
-- 遵循 ESLint 和 Prettier 配置
-- 为新功能编写测试用例
-- 更新相关文档
-- 保持向后兼容性
-
-### 提交规范
-
-使用 [Conventional Commits](https://conventionalcommits.org/) 规范：
-
-```
-type(scope): description
-
-feat(workflow): add custom node support
-fix(validation): resolve edge connection issue
-docs(readme): update API documentation
-test(workflow): add workflow validation tests
-```
-
-## 📄 许可证
-
-Copyright (c) 2025 by ChenYu, All Rights Reserved.
-
-
----
+<!--@include: ./snippets/contribute.md -->
 
 **💡 提示**: 这个工作流设计器组件基于强大的 Vue Flow 库构建，提供了完整的可视化流程设计体验和丰富的业务场景支持。无论是简单的审批流程还是复杂的业务工作流，都能通过拖拽方式快速构建。支持多种节点类型、智能验证、模板系统等企业级功能，结合 TypeScript 支持和响应式设计，让工作流设计既专业又高效。如果遇到问题请先查看文档和故障排除部分，或者在团队群里讨论。让我们一起打造更智能的工作流管理体验！ 🔄

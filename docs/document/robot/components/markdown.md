@@ -2022,18 +2022,6 @@ const handleContentChange = async (text, html) => {
 - ✨ 完整的TypeScript类型定义
 - ✨ 丰富的事件系统和回调支持
 
-## 🤝 贡献指南
-
-1. Fork 项目
-2. 创建功能分支 (`git checkout -b feature/amazing-feature`)
-3. 提交更改 (`git commit -m 'Add amazing feature'`)
-4. 推送到分支 (`git push origin feature/amazing-feature`)
-5. 创建 Pull Request
-
-## 📄 许可证
-
-Copyright (c) 2025 by ChenYu, All Rights Reserved.
-
----
+<!--@include: ./snippets/contribute.md -->
 
 **💡 提示**: 这个 Markdown 编辑器组件基于强大的 `v-md-editor` 库构建，提供了完整的内容创作和编辑功能。支持多种编辑模式、实时预览、图片上传、自动保存等特性，适用于博客文章、技术文档、知识库等各种内容创作场景。无论是简单的文本编辑还是复杂的协作创作，都能提供专业级的编辑体验。结合 TypeScript 支持和高度可定制的配置，让内容创作既高效又愉悦。如果遇到问题请先查看文档，或者在团队群里讨论。让我们一起打造更优雅的内容创作体验！ ✍️

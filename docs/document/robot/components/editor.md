@@ -21,16 +21,35 @@ outline: 'deep'
 
 ## 📦 安装
 
-```bash
+::: code-group
+
+```bash [bun (推荐)]
 # 安装 WangEditor 相关依赖
 bun add @wangeditor/editor @wangeditor/editor-for-vue
 ```
+
+```bash [pnpm]
+# 安装 WangEditor 相关依赖
+pnpm install @wangeditor/editor @wangeditor/editor-for-vue
+```
+
+```bash [yarn]
+# 安装 WangEditor 相关依赖
+yarn add @wangeditor/editor @wangeditor/editor-for-vue
+```
+
+```bash [npm]
+# 安装 WangEditor 相关依赖
+npm install @wangeditor/editor @wangeditor/editor-for-vue
+```
+
+:::
 
 ## 🎯 快速开始
 
 ### 基础用法
 
-```vue
+```vue {3-8}
 <template>
   <!-- 最简单的富文本编辑器 -->
   <C_Editor
@@ -54,8 +73,7 @@ const handleContentChange = (html) => {
 </script>
 ```
 
-### 完整功能示例
-
+::: details 🎛️ 完整功能示例 - 带控制面板的演示
 ```vue
 <template>
   <div class="editor-demo">
@@ -84,8 +102,6 @@ const handleContentChange = (html) => {
       <n-button type="primary" @click="insertSampleContent">
         插入示例内容
       </n-button>
-
-      <n-button type="warning" @click="clearContent"> 清空内容 </n-button>
     </n-space>
 
     <!-- 富文本编辑器 -->
@@ -101,8 +117,6 @@ const handleContentChange = (html) => {
       :editor-config="customEditorConfig"
       @editor-mounted="handleEditorMounted"
       @editor-change="handleEditorChange"
-      @editor-focus="handleEditorFocus"
-      @editor-blur="handleEditorBlur"
       class="demo-editor"
     />
 
@@ -124,9 +138,7 @@ const handleContentChange = (html) => {
 <script setup>
 const editorRef = ref()
 const message = useMessage()
-const dialog = useDialog()
 
-// 编辑器配置
 const editorId = ref('demo-editor-' + Date.now())
 const editorContent = ref(`
   <h2>欢迎使用富文本编辑器</h2>
@@ -169,13 +181,6 @@ const customEditorConfig = {
         message.error('图片上传失败')
       },
     },
-    insertLink: {
-      checkLink: (text, link) => {
-        if (!link) return '链接不能为空'
-        if (!link.startsWith('http')) return '链接必须以 http 开头'
-        return true
-      },
-    },
   },
 }
 
@@ -189,25 +194,11 @@ const htmlLength = computed(() => {
   return editorContent.value?.length || 0
 })
 
-// 事件处理函数
 const handleEditorMounted = (editor) => {
   console.log('编辑器挂载完成:', editor)
   message.success('富文本编辑器初始化成功！')
 }
 
-const handleEditorChange = (html) => {
-  console.log('内容变化:', html.length + ' 字符')
-}
-
-const handleEditorFocus = () => {
-  console.log('编辑器获得焦点')
-}
-
-const handleEditorBlur = () => {
-  console.log('编辑器失去焦点')
-}
-
-// 操作方法
 const insertSampleContent = () => {
   const sampleContent = `
     <h3>示例内容 - ${new Date().toLocaleString()}</h3>
@@ -218,9 +209,6 @@ const insertSampleContent = () => {
       <li><u>下划线文本</u></li>
       <li><span style="color: #ff6b6b;">彩色文本</span></li>
     </ol>
-    <blockquote>
-      <p>这是一个引用块，用于突出重要信息。</p>
-    </blockquote>
   `
 
   if (editorRef.value) {
@@ -228,44 +216,6 @@ const insertSampleContent = () => {
     message.success('示例内容已插入')
   }
 }
-
-const clearContent = () => {
-  dialog.warning({
-    title: '确认清空',
-    content: '确定要清空编辑器中的所有内容吗？此操作不可撤销。',
-    positiveText: '确认',
-    negativeText: '取消',
-    onPositiveClick: () => {
-      if (editorRef.value) {
-        editorRef.value.setContent('')
-        message.success('内容已清空')
-      }
-    },
-  })
-}
-
-// 监听配置变化
-watch(
-  () => editorConfig.disabled,
-  (disabled) => {
-    if (disabled) {
-      message.warning('编辑器已禁用')
-    } else {
-      message.success('编辑器已启用')
-    }
-  }
-)
-
-watch(
-  () => editorConfig.readonly,
-  (readonly) => {
-    if (readonly) {
-      message.info('编辑器已切换到只读模式')
-    } else {
-      message.success('编辑器已切换到编辑模式')
-    }
-  }
-)
 </script>
 
 <style scoped>
@@ -280,6 +230,7 @@ watch(
 }
 </style>
 ```
+:::
 
 ## 📖 API 文档
 
@@ -318,10 +269,7 @@ watch(
 | **setContent**    | `(html: string)` | `void`       | 设置编辑器内容       |
 | **insertContent** | `(html: string)` | `void`       | 在光标位置插入内容   |
 | **focus**         | `-`              | `void`       | 聚焦编辑器           |
-| **blur**          | `-`              | `void`       | 失焦编辑器           |
 | **clear**         | `-`              | `void`       | 清空编辑器内容       |
-| **undo**          | `-`              | `void`       | 撤销操作             |
-| **redo**          | `-`              | `void`       | 重做操作             |
 
 ### 类型定义
 
@@ -356,27 +304,9 @@ interface IEditorConfig {
 }
 ```
 
-#### 上传图片配置
-
-```typescript
-interface UploadImageConfig {
-  server: string // 上传接口地址
-  fieldName?: string // 上传字段名
-  maxFileSize?: number // 最大文件大小（字节）
-  maxNumberOfFiles?: number // 最大文件数量
-  allowedFileTypes?: string[] // 允许的文件类型
-  onBeforeUpload?: (file: File) => boolean | Promise<boolean>
-  onProgress?: (progress: number) => void
-  onSuccess?: (file: File, res: any) => void
-  onFailed?: (file: File, res: any) => void
-  onError?: (file: File, err: any) => void
-}
-```
-
 ## 🎨 使用示例
 
-### 场景 1: 博客文章编辑器
-
+::: details 📝 博客文章编辑器 - 完整的内容管理系统
 ```vue
 <template>
   <div class="blog-editor">
@@ -418,15 +348,9 @@ interface UploadImageConfig {
       <!-- 操作按钮 -->
       <div class="mt-20px">
         <n-space>
-          <n-button type="primary" @click="saveArticle"> 保存文章 </n-button>
-          <n-button @click="previewArticle"> 预览 </n-button>
-          <n-button @click="saveDraft"> 保存草稿 </n-button>
-          <n-popconfirm @positive-click="clearArticle">
-            <template #trigger>
-              <n-button type="error"> 清空内容 </n-button>
-            </template>
-            确定要清空所有内容吗？
-          </n-popconfirm>
+          <n-button type="primary" @click="saveArticle">保存文章</n-button>
+          <n-button @click="previewArticle">预览</n-button>
+          <n-button @click="saveDraft">保存草稿</n-button>
         </n-space>
       </div>
     </n-card>
@@ -465,14 +389,12 @@ const articleData = reactive({
   tags: [],
   content: '',
   status: 'draft',
-  publishedAt: null,
 })
 
 const categoryOptions = [
   { label: '技术分享', value: 'tech' },
   { label: '生活随笔', value: 'life' },
-  { label: '产品思考', value: 'product' },
-  { label: '团队管理', value: 'management' },
+  { label: '产品思考', value: 'product' }
 ]
 
 // 博客编辑器专用配置
@@ -487,16 +409,6 @@ const blogEditorConfig = {
       allowedFileTypes: ['image/jpeg', 'image/png', 'image/gif'],
       onSuccess: (file, res) => {
         message.success('图片上传成功')
-      },
-      onFailed: (file, res) => {
-        message.error('图片上传失败')
-      },
-    },
-    insertLink: {
-      checkLink: (text, link) => {
-        if (!link) return '链接不能为空'
-        if (!link.match(/^https?:\/\//)) return '请输入有效的链接地址'
-        return true
       },
     },
   },
@@ -548,23 +460,10 @@ const saveArticle = async () => {
 
   try {
     articleData.status = 'published'
-    articleData.publishedAt = new Date()
-
-    // 调用保存接口
     await api.saveArticle(articleData)
-
     message.success('文章发布成功！')
   } catch (error) {
     message.error('发布失败，请重试')
-  }
-}
-
-const saveDraft = async () => {
-  try {
-    await api.saveDraft(articleData)
-    message.info('草稿已自动保存')
-  } catch (error) {
-    console.error('草稿保存失败:', error)
   }
 }
 
@@ -579,21 +478,6 @@ const previewArticle = () => {
       </body>
     </html>
   `)
-}
-
-const clearArticle = () => {
-  Object.assign(articleData, {
-    title: '',
-    category: '',
-    tags: [],
-    content: '',
-    status: 'draft',
-    publishedAt: null,
-  })
-
-  if (blogEditorRef.value) {
-    blogEditorRef.value.clear()
-  }
 }
 </script>
 
@@ -610,9 +494,9 @@ const clearArticle = () => {
 }
 </style>
 ```
+:::
 
-### 场景 2: 邮件编辑器
-
+::: details 📧 邮件编辑器 - 专业邮件撰写工具
 ```vue
 <template>
   <div class="email-editor">
@@ -626,14 +510,6 @@ const clearArticle = () => {
             clearable
           >
             <template #prefix>收件人:</template>
-          </n-input>
-
-          <n-input
-            v-model:value="emailData.cc"
-            placeholder="抄送邮箱，多个邮箱用逗号分隔"
-            clearable
-          >
-            <template #prefix>抄&nbsp;&nbsp;&nbsp;送:</template>
           </n-input>
 
           <n-input
@@ -657,23 +533,6 @@ const clearArticle = () => {
           placeholder="请输入邮件内容..."
           @editor-mounted="handleEmailEditorMounted"
         />
-      </div>
-
-      <!-- 附件上传 -->
-      <div class="email-attachments mt-20px">
-        <n-upload
-          v-model:file-list="emailData.attachments"
-          :max="10"
-          multiple
-          :show-preview-button="false"
-        >
-          <n-button>
-            <template #icon>
-              <i class="i-mdi:attachment"></i>
-            </template>
-            添加附件
-          </n-button>
-        </n-upload>
       </div>
 
       <!-- 操作按钮 -->
@@ -701,13 +560,6 @@ const clearArticle = () => {
               插入模板
             </n-button>
           </n-dropdown>
-
-          <n-button @click="previewEmail">
-            <template #icon>
-              <i class="i-mdi:eye"></i>
-            </template>
-            预览
-          </n-button>
         </n-space>
       </div>
     </n-card>
@@ -717,17 +569,13 @@ const clearArticle = () => {
 <script setup>
 const emailEditorRef = ref()
 const message = useMessage()
-const dialog = useDialog()
 
 const sending = ref(false)
 
 const emailData = reactive({
   to: '',
-  cc: '',
   subject: '',
   content: '',
-  attachments: [],
-  priority: 'normal',
 })
 
 // 邮件编辑器配置
@@ -742,12 +590,6 @@ const emailEditorConfig = {
         message.success('图片插入成功')
       },
     },
-    insertLink: {
-      checkLink: (text, link) => {
-        if (!link) return '链接不能为空'
-        return true
-      },
-    },
   },
 }
 
@@ -756,28 +598,14 @@ const emailToolbarConfig = {
     'group-video', // 邮件中通常不插入视频
     'fullScreen', // 移除全屏
     'code', // 移除代码块
-    'codeSelectLang', // 移除代码语言选择
   ],
 }
 
 // 邮件模板选项
 const templateOptions = [
-  {
-    label: '商务邮件模板',
-    key: 'business',
-  },
-  {
-    label: '感谢邮件模板',
-    key: 'thanks',
-  },
-  {
-    label: '邀请邮件模板',
-    key: 'invitation',
-  },
-  {
-    label: '通知邮件模板',
-    key: 'notification',
-  },
+  { label: '商务邮件模板', key: 'business' },
+  { label: '感谢邮件模板', key: 'thanks' },
+  { label: '邀请邮件模板', key: 'invitation' }
 ]
 
 const emailTemplates = {
@@ -786,13 +614,11 @@ const emailTemplates = {
     <p>您好！</p>
     <p>[邮件正文内容]</p>
     <p>如有任何问题，请随时与我联系。</p>
-    <p>此致</p>
-    <p>敬礼！</p>
+    <p>此致<br>敬礼！</p>
     <p><br></p>
     <p>[您的姓名]</p>
     <p>[您的职位]</p>
     <p>[公司名称]</p>
-    <p>[联系方式]</p>
   `,
   thanks: `
     <p>亲爱的 [收件人姓名]：</p>
@@ -813,45 +639,11 @@ const emailTemplates = {
       <li>主题：[活动主题]</li>
     </ul>
     <p>期待您的参与！</p>
-    <p>如需确认参加，请回复此邮件。</p>
-    <p><br></p>
-    <p>[您的姓名]</p>
-    <p>[组织名称]</p>
-  `,
-  notification: `
-    <p>各位同事：</p>
-    <p>现通知如下事项：</p>
-    <p><strong>[通知标题]</strong></p>
-    <p>[通知内容详情]</p>
-    <p><strong>注意事项：</strong></p>
-    <ul>
-      <li>[注意事项1]</li>
-      <li>[注意事项2]</li>
-    </ul>
-    <p>如有疑问，请及时联系。</p>
-    <p><br></p>
-    <p>[发布人]</p>
-    <p>[发布时间]</p>
-  `,
+  `
 }
 
 const handleEmailEditorMounted = (editor) => {
   console.log('邮件编辑器初始化完成')
-
-  // 设置邮件签名
-  const signature = `
-    <p><br></p>
-    <hr>
-    <p><small>
-      此邮件由系统自动发送，请勿直接回复。<br>
-      如有问题请联系：support@example.com
-    </small></p>
-  `
-
-  // 如果内容为空，添加默认签名
-  if (!emailData.content.trim()) {
-    editor.setHtml(signature)
-  }
 }
 
 const insertTemplate = (key) => {
@@ -874,47 +666,22 @@ const sendEmail = async () => {
     return
   }
 
-  if (!emailData.content.trim()) {
-    message.error('请输入邮件内容')
-    return
-  }
-
-  // 验证邮箱格式
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
-  const toEmails = emailData.to.split(',').map((email) => email.trim())
-  const invalidEmails = toEmails.filter((email) => !emailRegex.test(email))
-
-  if (invalidEmails.length > 0) {
-    message.error(`邮箱格式不正确: ${invalidEmails.join(', ')}`)
-    return
-  }
-
   try {
     sending.value = true
-
-    // 构建邮件数据
+    
     const mailData = {
       ...emailData,
       content: emailEditorRef.value.getContent(),
-      attachments: emailData.attachments.map((file) => ({
-        name: file.name,
-        size: file.file?.size,
-        url: file.url,
-      })),
     }
 
-    // 发送邮件
     await api.sendEmail(mailData)
-
     message.success('邮件发送成功！')
 
     // 清空表单
     Object.assign(emailData, {
       to: '',
-      cc: '',
       subject: '',
       content: '',
-      attachments: [],
     })
 
     if (emailEditorRef.value) {
@@ -925,41 +692,6 @@ const sendEmail = async () => {
   } finally {
     sending.value = false
   }
-}
-
-const saveDraft = async () => {
-  try {
-    await api.saveDraft({
-      ...emailData,
-      content: emailEditorRef.value?.getContent() || '',
-    })
-    message.success('草稿已保存')
-  } catch (error) {
-    message.error('草稿保存失败')
-  }
-}
-
-const previewEmail = () => {
-  if (!emailData.content.trim()) {
-    message.warning('邮件内容为空')
-    return
-  }
-
-  const previewContent = `
-    <div style="max-width: 600px; margin: 0 auto; font-family: Arial, sans-serif;">
-      <div style="border-bottom: 1px solid #eee; padding: 20px 0;">
-        <p><strong>收件人:</strong> ${emailData.to}</p>
-        ${emailData.cc ? `<p><strong>抄送:</strong> ${emailData.cc}</p>` : ''}
-        <p><strong>主题:</strong> ${emailData.subject}</p>
-      </div>
-      <div style="padding: 20px 0;">
-        ${emailData.content}
-      </div>
-    </div>
-  `
-
-  const previewWindow = window.open('', '_blank')
-  previewWindow.document.write(previewContent)
 }
 </script>
 
@@ -979,16 +711,11 @@ const previewEmail = () => {
   border-bottom: 1px solid #f0f0f0;
   padding-bottom: 20px;
 }
-
-.email-attachments {
-  border-bottom: 1px solid #f0f0f0;
-  padding-bottom: 20px;
-}
 </style>
 ```
+:::
 
-### 场景 3: 在线文档协作
-
+::: details 🤝 在线文档协作 - 实时多人编辑系统
 ```vue
 <template>
   <div class="collaborative-editor">
@@ -1035,16 +762,6 @@ const previewEmail = () => {
                   </template>
                   分享
                 </n-button>
-
-                <!-- 版本历史 -->
-                <n-dropdown :options="versionOptions" @select="loadVersion">
-                  <n-button>
-                    <template #icon>
-                      <i class="i-mdi:history"></i>
-                    </template>
-                    版本历史
-                  </n-button>
-                </n-dropdown>
               </n-space>
             </div>
           </n-space>
@@ -1058,12 +775,9 @@ const previewEmail = () => {
           v-model="documentData.content"
           :height="600"
           :editor-config="collaborativeEditorConfig"
-          :toolbar-config="collaborativeToolbarConfig"
           placeholder="开始协作编辑文档..."
           @editor-mounted="handleEditorMounted"
           @editor-change="handleContentChange"
-          @editor-focus="handleEditorFocus"
-          @editor-blur="handleEditorBlur"
         />
       </div>
 
@@ -1088,89 +802,20 @@ const previewEmail = () => {
             </div>
 
             <div>
-              <n-space align="center">
-                <span class="text-sm text-gray-500">
-                  最后编辑: {{ lastEditedBy }}
-                </span>
-
-                <!-- 评论按钮 -->
-                <n-badge :value="commentsCount" :max="99">
-                  <n-button size="small" @click="toggleComments">
-                    <template #icon>
-                      <i class="i-mdi:comment-outline"></i>
-                    </template>
-                    评论
-                  </n-button>
-                </n-badge>
-              </n-space>
+              <span class="text-sm text-gray-500">
+                最后编辑: {{ lastEditedBy }}
+              </span>
             </div>
           </n-space>
         </div>
       </template>
     </n-card>
-
-    <!-- 评论侧边栏 -->
-    <n-drawer
-      v-model:show="showComments"
-      :width="360"
-      placement="right"
-      title="评论"
-    >
-      <div class="comments-panel">
-        <div v-if="comments.length === 0" class="empty-comments">
-          <n-empty description="暂无评论" />
-        </div>
-
-        <div v-else class="comments-list">
-          <div
-            v-for="comment in comments"
-            :key="comment.id"
-            class="comment-item"
-          >
-            <n-space>
-              <n-avatar :src="comment.user.avatar" size="small" />
-              <div class="comment-content">
-                <div class="comment-header">
-                  <span class="comment-author">{{ comment.user.name }}</span>
-                  <span class="comment-time">{{
-                    formatTime(comment.createdAt)
-                  }}</span>
-                </div>
-                <div class="comment-text">{{ comment.content }}</div>
-              </div>
-            </n-space>
-          </div>
-        </div>
-
-        <!-- 添加评论 -->
-        <div class="add-comment">
-          <n-input
-            v-model:value="newComment"
-            type="textarea"
-            placeholder="添加评论..."
-            :autosize="{ minRows: 2, maxRows: 4 }"
-          />
-          <n-button
-            type="primary"
-            size="small"
-            class="mt-8px"
-            @click="addComment"
-            :disabled="!newComment.trim()"
-          >
-            添加评论
-          </n-button>
-        </div>
-      </div>
-    </n-drawer>
   </div>
 </template>
 
 <script setup>
 const collaborativeEditorRef = ref()
 const message = useMessage()
-
-// WebSocket连接（模拟协作）
-let ws = null
 
 const documentData = reactive({
   id: 'doc-' + Date.now(),
@@ -1183,11 +828,9 @@ const documentData = reactive({
       <li>实时协作编辑</li>
       <li>用户光标显示</li>
       <li>版本历史管理</li>
-      <li>评论系统</li>
       <li>自动保存</li>
     </ul>
   `,
-  version: 1,
   lastModified: new Date(),
 })
 
@@ -1214,23 +857,6 @@ const saveStatus = reactive({
   text: '已保存',
 })
 
-// 评论系统
-const showComments = ref(false)
-const newComment = ref('')
-const comments = ref([
-  {
-    id: '1',
-    content: '这个想法很不错！',
-    user: {
-      name: '王五',
-      avatar: '/avatars/user3.jpg',
-    },
-    createdAt: new Date(Date.now() - 2 * 3600000),
-  },
-])
-
-const commentsCount = computed(() => comments.value.length)
-
 // 文档统计
 const documentStats = computed(() => {
   const content = documentData.content.replace(/<[^>]*>/g, '')
@@ -1245,13 +871,6 @@ const lastEditedBy = computed(() => {
     documentData.lastModified
   )}`
 })
-
-// 版本历史
-const versionOptions = [
-  { label: '版本 3 - 2小时前', key: '3' },
-  { label: '版本 2 - 1天前', key: '2' },
-  { label: '版本 1 - 3天前', key: '1' },
-]
 
 // 协作编辑器配置
 const collaborativeEditorConfig = {
@@ -1269,19 +888,9 @@ const collaborativeEditorConfig = {
   },
 }
 
-const collaborativeToolbarConfig = {
-  insertKeys: {
-    index: 0,
-    keys: ['comment', 'version-history'],
-  },
-}
-
 const handleEditorMounted = (editor) => {
   console.log('协作编辑器初始化完成')
-
-  // 初始化WebSocket连接
-  initWebSocket()
-
+  
   // 设置自动保存
   setInterval(() => {
     if (documentData.content) {
@@ -1292,18 +901,12 @@ const handleEditorMounted = (editor) => {
 
 const handleContentChange = (html) => {
   documentData.lastModified = new Date()
-
+  
   // 更新保存状态
   saveStatus.type = 'warning'
   saveStatus.icon = 'i-mdi:pencil'
   saveStatus.text = '编辑中...'
-
-  // 广播变更给其他用户
-  broadcastChange('content_change', {
-    content: html,
-    cursor: getCurrentCursorPosition(),
-  })
-
+  
   // 防抖保存
   clearTimeout(saveTimeout)
   saveTimeout = setTimeout(() => {
@@ -1313,114 +916,17 @@ const handleContentChange = (html) => {
 
 let saveTimeout = null
 
-const handleEditorFocus = () => {
-  broadcastChange('user_focus', {
-    userId: getCurrentUserId(),
-    timestamp: Date.now(),
-  })
-}
-
-const handleEditorBlur = () => {
-  broadcastChange('user_blur', {
-    userId: getCurrentUserId(),
-    timestamp: Date.now(),
-  })
-}
-
-// WebSocket相关方法
-const initWebSocket = () => {
-  try {
-    ws = new WebSocket(`ws://localhost:8080/collaborate/${documentData.id}`)
-
-    ws.onopen = () => {
-      console.log('协作连接已建立')
-      message.success('已连接到协作服务器')
-    }
-
-    ws.onmessage = (event) => {
-      const data = JSON.parse(event.data)
-      handleCollaborativeMessage(data)
-    }
-
-    ws.onclose = () => {
-      console.log('协作连接已断开')
-      message.warning('协作连接已断开，尝试重连...')
-      // 重连逻辑
-      setTimeout(initWebSocket, 3000)
-    }
-
-    ws.onerror = (error) => {
-      console.error('协作连接错误:', error)
-      message.error('协作连接出错')
-    }
-  } catch (error) {
-    console.log('WebSocket连接失败，使用模拟协作模式')
-  }
-}
-
-const broadcastChange = (type, data) => {
-  if (ws && ws.readyState === WebSocket.OPEN) {
-    ws.send(
-      JSON.stringify({
-        type,
-        data,
-        userId: getCurrentUserId(),
-        timestamp: Date.now(),
-      })
-    )
-  }
-}
-
-const handleCollaborativeMessage = (message) => {
-  const { type, data, userId } = message
-
-  // 忽略自己的消息
-  if (userId === getCurrentUserId()) return
-
-  switch (type) {
-    case 'content_change':
-      // 处理其他用户的内容变更
-      handleRemoteContentChange(data)
-      break
-    case 'user_join':
-      // 用户加入
-      handleUserJoin(data)
-      break
-    case 'user_leave':
-      // 用户离开
-      handleUserLeave(data)
-      break
-    case 'cursor_change':
-      // 光标位置变更
-      handleCursorChange(data)
-      break
-  }
-}
-
-const getCurrentUserId = () => {
-  return 'current-user-id' // 实际应用中从认证信息获取
-}
-
-const getCurrentCursorPosition = () => {
-  // 获取当前光标位置的逻辑
-  return { line: 1, column: 1 }
-}
-
-// 保存相关方法
 const autoSave = async () => {
   try {
     await api.saveDocument({
       id: documentData.id,
       title: documentData.title,
       content: collaborativeEditorRef.value?.getContent() || '',
-      version: documentData.version + 1,
     })
 
     saveStatus.type = 'success'
     saveStatus.icon = 'i-mdi:check-circle'
     saveStatus.text = '已保存'
-
-    documentData.version++
   } catch (error) {
     saveStatus.type = 'error'
     saveStatus.icon = 'i-mdi:alert-circle'
@@ -1428,53 +934,22 @@ const autoSave = async () => {
   }
 }
 
-const saveDocument = () => {
-  autoSave()
-}
-
-// 分享相关方法
 const shareDocument = () => {
   const shareUrl = `${window.location.origin}/docs/${documentData.id}`
-
+  
   navigator.clipboard
     .writeText(shareUrl)
     .then(() => {
       message.success('分享链接已复制到剪贴板')
     })
     .catch(() => {
-      // 降级方案
       prompt('分享链接（请手动复制）:', shareUrl)
     })
 }
 
-// 版本历史
-const loadVersion = (versionKey) => {
-  message.info(`正在加载版本 ${versionKey}...`)
-  // 实际应用中从服务器加载对应版本
-}
-
-// 评论相关方法
-const toggleComments = () => {
-  showComments.value = !showComments.value
-}
-
-const addComment = () => {
-  if (!newComment.value.trim()) return
-
-  const comment = {
-    id: Date.now().toString(),
-    content: newComment.value,
-    user: {
-      name: '当前用户',
-      avatar: '/avatars/current-user.jpg',
-    },
-    createdAt: new Date(),
-  }
-
-  comments.value.push(comment)
-  newComment.value = ''
-
-  message.success('评论已添加')
+const broadcastChange = (type, data) => {
+  // WebSocket 广播变更
+  console.log('广播变更:', type, data)
 }
 
 const formatTime = (date) => {
@@ -1488,9 +963,6 @@ const formatTime = (date) => {
 
 // 清理资源
 onUnmounted(() => {
-  if (ws) {
-    ws.close()
-  }
   if (saveTimeout) {
     clearTimeout(saveTimeout)
   }
@@ -1512,69 +984,14 @@ onUnmounted(() => {
   padding: 8px 0;
   border-top: 1px solid #f0f0f0;
 }
-
-.comments-panel {
-  padding: 16px;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-}
-
-.comments-list {
-  flex: 1;
-  overflow-y: auto;
-}
-
-.comment-item {
-  padding: 12px 0;
-  border-bottom: 1px solid #f0f0f0;
-}
-
-.comment-content {
-  flex: 1;
-}
-
-.comment-header {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 4px;
-}
-
-.comment-author {
-  font-weight: 600;
-  font-size: 12px;
-}
-
-.comment-time {
-  font-size: 11px;
-  color: #666;
-}
-
-.comment-text {
-  font-size: 13px;
-  line-height: 1.4;
-}
-
-.add-comment {
-  margin-top: 16px;
-  padding-top: 16px;
-  border-top: 1px solid #f0f0f0;
-}
-
-.empty-comments {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 200px;
-}
 </style>
 ```
+:::
 
 ## 🛠️ 高级用法
 
-### 自定义工具栏
-
-```vue
+::: details 🎨 自定义工具栏 - 个性化编辑体验
+```vue 
 <template>
   <C_Editor
     ref="customEditorRef"
@@ -1607,24 +1024,12 @@ const handleEditorMounted = (editor) => {
   // 注册自定义按钮
   const { Boot } = window.wangEditor
 
-  // 自定义按钮1：插入当前时间
+  // 自定义按钮：插入当前时间
   class InsertTimeButton {
     constructor() {
       this.title = '插入时间'
       this.iconSvg = '<svg>...</svg>' // 自定义图标SVG
       this.tag = 'button'
-    }
-
-    getValue() {
-      return ''
-    }
-
-    isActive() {
-      return false
-    }
-
-    isDisabled() {
-      return false
     }
 
     exec() {
@@ -1643,10 +1048,10 @@ const handleEditorMounted = (editor) => {
 }
 </script>
 ```
+:::
 
-### 内容过滤和验证
-
-```vue
+::: details 🔒 内容过滤和验证 - 安全内容管理
+```vue 
 <template>
   <C_Editor
     ref="filterEditorRef"
@@ -1709,11 +1114,6 @@ const validateContent = (html) => {
       check: (content) => (content.match(/<img/g) || []).length <= 10,
       message: '图片数量不能超过10张',
     },
-    {
-      name: '链接数量',
-      check: (content) => (content.match(/<a/g) || []).length <= 20,
-      message: '链接数量不能超过20个',
-    },
   ]
 
   for (const rule of rules) {
@@ -1725,10 +1125,10 @@ const validateContent = (html) => {
 }
 </script>
 ```
+:::
 
-### 多编辑器实例管理
-
-```vue
+::: details 📚 多编辑器实例管理 - 标签页编辑器
+```vue 
 <template>
   <div class="multi-editor-manager">
     <n-tabs
@@ -1783,13 +1183,6 @@ const handleEditorMounted = (editorId, editorInstance) => {
   console.log(`编辑器 ${editorId} 已挂载:`, editorInstance)
 }
 
-const handleEditorChange = (editorId, html) => {
-  const editor = editors.value.find((e) => e.id === editorId)
-  if (editor) {
-    editor.content = html
-  }
-}
-
 const addEditor = () => {
   const newId = `editor-${Date.now()}`
   const newEditor = {
@@ -1827,29 +1220,21 @@ const getAllContents = () => {
   return contents
 }
 
-const saveAllEditors = async () => {
-  const contents = getAllContents()
-  try {
-    await api.saveMultipleDocuments(contents)
-    message.success('所有文档已保存')
-  } catch (error) {
-    message.error('保存失败')
-  }
-}
-
 defineExpose({
   getAllContents,
-  saveAllEditors,
 })
 </script>
 ```
+:::
 
 ## ⚠️ 注意事项
 
 ### 1. 编辑器初始化
 
-```vue
-<!-- ✅ 推荐：等待编辑器挂载后再进行操作 -->
+::: code-group
+
+```vue [✅ 推荐]
+<!-- 等待编辑器挂载后再进行操作 -->
 <script setup>
 const editorRef = ref()
 const isEditorReady = ref(false)
@@ -1866,8 +1251,10 @@ const setContent = () => {
   }
 }
 </script>
+```
 
-<!-- ❌ 不推荐：在编辑器未初始化时调用方法 -->
+```vue [❌ 不推荐]
+<!-- 在编辑器未初始化时调用方法 -->
 <script setup>
 const editorRef = ref()
 
@@ -1878,10 +1265,14 @@ const setContent = () => {
 </script>
 ```
 
+:::
+
 ### 2. 内容格式处理
 
-```javascript
-// ✅ 推荐：检查内容格式
+::: code-group
+
+```javascript [✅ 推荐]
+// 检查内容格式
 const setEditorContent = (content) => {
   // 确保内容是字符串
   if (typeof content !== 'string') {
@@ -1895,20 +1286,26 @@ const setEditorContent = (content) => {
 
   editorRef.value.setContent(content)
 }
+```
 
-// ❌ 不推荐：直接设置可能有问题的内容
+```javascript [❌ 不推荐]
+// 直接设置可能有问题的内容
 const setEditorContent = (content) => {
   editorRef.value.setContent(content) // 可能导致格式问题
 }
 ```
 
+:::
+
 ### 3. 内存管理
 
-```vue
+::: code-group
+
+```vue [✅ 推荐]
 <script setup>
 const editorRef = ref()
 
-// ✅ 推荐：组件销毁时清理资源
+// 组件销毁时清理资源
 onUnmounted(() => {
   if (editorRef.value) {
     const editor = editorRef.value.getEditor()
@@ -1921,12 +1318,6 @@ onUnmounted(() => {
 // 清理定时器
 let autoSaveTimer = null
 
-const startAutoSave = () => {
-  autoSaveTimer = setInterval(() => {
-    saveContent()
-  }, 30000)
-}
-
 onUnmounted(() => {
   if (autoSaveTimer) {
     clearInterval(autoSaveTimer)
@@ -1935,10 +1326,21 @@ onUnmounted(() => {
 </script>
 ```
 
+```vue [❌ 不推荐]
+<!-- 没有清理资源可能导致内存泄漏 -->
+<script setup>
+// 没有清理逻辑
+</script>
+```
+
+:::
+
 ### 4. 图片上传配置
 
-```javascript
-// ✅ 推荐：完整的图片上传配置
+::: code-group
+
+```javascript [✅ 推荐]
+// 完整的图片上传配置
 const editorConfig = {
   MENU_CONF: {
     uploadImage: {
@@ -1968,31 +1370,37 @@ const editorConfig = {
         return true
       },
 
-      // 成功回调
       onSuccess: (file, res) => {
         message.success('图片上传成功')
       },
 
-      // 失败回调
       onFailed: (file, res) => {
         message.error('图片上传失败')
-      },
-
-      // 错误回调
-      onError: (file, err) => {
-        message.error('图片上传出错')
       },
     },
   },
 }
 ```
 
+```javascript [❌ 不推荐]
+// 缺少验证和错误处理
+const editorConfig = {
+  MENU_CONF: {
+    uploadImage: {
+      server: '/api/upload-image',
+      // 缺少文件验证和错误处理
+    },
+  },
+}
+```
+
+:::
+
 ## 🐛 故障排除
 
 ### 常见问题
 
-#### Q1: 编辑器无法正常显示？
-
+::: details ❓ Q1: 编辑器无法正常显示？
 **A1:** 检查以下几点：
 
 ```javascript
@@ -2009,9 +1417,9 @@ const editorConfig = {
   min-height: 300px; /* 确保容器有足够高度 */
 }
 ```
+:::
 
-#### Q2: v-model 双向绑定不生效？
-
+::: details ❓ Q2: v-model 双向绑定不生效？
 **A2:** 检查数据绑定：
 
 ```vue
@@ -2027,9 +1435,9 @@ const handleChange = (html) => {
 }
 </script>
 ```
+:::
 
-#### Q3: 自定义配置不生效？
-
+::: details ❓ Q3: 自定义配置不生效？
 **A3:** 检查配置格式：
 
 ```javascript
@@ -2051,30 +1459,10 @@ const editorConfig = {
   },
 }
 ```
+:::
 
-#### Q4: 编辑器内容无法保存？
-
-**A4:** 检查内容获取方式：
-
-```javascript
-// ✅ 推荐的内容获取方式
-const saveContent = () => {
-  if (editorRef.value) {
-    const content = editorRef.value.getContent()
-    // 保存到服务器
-    api.saveContent(content)
-  }
-}
-
-// ✅ 或者使用v-model绑定的值
-const saveContent = () => {
-  api.saveContent(content.value)
-}
-```
-
-#### Q5: 禁用/只读模式不工作？
-
-**A5:** 检查模式设置：
+::: details ❓ Q4: 禁用/只读模式不工作？
+**A4:** 检查模式设置：
 
 ```vue
 <C_Editor
@@ -2093,14 +1481,13 @@ const toggleMode = () => {
 }
 </script>
 ```
+:::
 
 ## 🎯 最佳实践
 
 ### 1. 组件封装
 
-```javascript
-// 创建可复用的编辑器组件
-// components/ArticleEditor.vue
+```vue 
 <template>
   <div class="article-editor">
     <C_Editor
@@ -2160,7 +1547,6 @@ const articleEditorConfig = computed(() => ({
       server: '/api/article/upload-image',
       fieldName: 'image',
       maxFileSize: 10 * 1024 * 1024,
-      allowedFileTypes: ['image/jpeg', 'image/png', 'image/gif'],
     },
   },
 }))
@@ -2170,26 +1556,14 @@ const wordCount = computed(() => {
 })
 
 // 监听内容变化
-watch(
-  () => props.modelValue,
-  (newVal) => {
-    if (newVal !== localContent.value) {
-      localContent.value = newVal
-    }
-  }
-)
+watch(localContent, (newVal) => {
+  emit('update:modelValue', newVal)
+  emit('change', newVal)
 
-watch(
-  localContent,
-  (newVal) => {
-    emit('update:modelValue', newVal)
-    emit('change', newVal)
-
-    if (props.autoSave) {
-      debouncedSave()
-    }
+  if (props.autoSave) {
+    debouncedSave()
   }
-)
+})
 
 // 防抖保存
 const debouncedSave = debounce(() => {
@@ -2197,15 +1571,70 @@ const debouncedSave = debounce(() => {
   saveStatus.type = 'success'
   saveStatus.text = '已保存'
 }, 2000)
-
-const handleContentChange = (html: string) => {
-  saveStatus.type = 'warning'
-  saveStatus.text = '编辑中...'
-}
 </script>
 ```
 
-### 2. 错误处理和重试机制
+### 2. 性能优化策略
+
+```javascript 
+// 优化大文档编辑性能
+const useEditorPerformance = (editorRef) => {
+  const isLargeDocument = ref(false)
+  const performanceMode = ref(false)
+
+  // 监控文档大小
+  const checkDocumentSize = (content) => {
+    const size = content.length
+    const isLarge = size > 100000 // 100KB
+
+    if (isLarge !== isLargeDocument.value) {
+      isLargeDocument.value = isLarge
+
+      if (isLarge && !performanceMode.value) {
+        enablePerformanceMode()
+      } else if (!isLarge && performanceMode.value) {
+        disablePerformanceMode()
+      }
+    }
+  }
+
+  const enablePerformanceMode = () => {
+    performanceMode.value = true
+    message.info('已启用性能优化模式')
+  }
+
+  return {
+    isLargeDocument,
+    performanceMode,
+    checkDocumentSize,
+  }
+}
+
+// 防抖和节流优化
+const useOptimizedEditor = () => {
+  // 防抖的内容保存
+  const debouncedSave = debounce(async (content) => {
+    try {
+      await api.saveContent(content)
+    } catch (error) {
+      console.error('保存失败:', error)
+    }
+  }, 2000)
+
+  // 节流的字数统计
+  const throttledWordCount = throttle((content) => {
+    const words = content.replace(/<[^>]*>/g, '').length
+    updateWordCount(words)
+  }, 500)
+
+  return {
+    debouncedSave,
+    throttledWordCount,
+  }
+}
+```
+
+### 3. 错误处理和重试机制
 
 ```javascript
 // 带错误处理的编辑器操作
@@ -2231,7 +1660,7 @@ class EditorOperationManager {
 
       if (retryCount < this.maxRetries) {
         console.log(`重试设置内容 (${retryCount + 1}/${this.maxRetries})`)
-
+        
         // 等待一段时间后重试
         await new Promise((resolve) => setTimeout(resolve, 1000))
         return this.setContent(content, retryCount + 1)
@@ -2279,83 +1708,9 @@ const handleSetContent = async (content) => {
 }
 ```
 
-### 3. 性能优化
-
-```javascript
-// 优化大文档编辑性能
-const useEditorPerformance = (editorRef) => {
-  const isLargeDocument = ref(false)
-  const performanceMode = ref(false)
-
-  // 监控文档大小
-  const checkDocumentSize = (content) => {
-    const size = content.length
-    const isLarge = size > 100000 // 100KB
-
-    if (isLarge !== isLargeDocument.value) {
-      isLargeDocument.value = isLarge
-
-      if (isLarge && !performanceMode.value) {
-        enablePerformanceMode()
-      } else if (!isLarge && performanceMode.value) {
-        disablePerformanceMode()
-      }
-    }
-  }
-
-  const enablePerformanceMode = () => {
-    performanceMode.value = true
-
-    // 减少不必要的工具栏功能
-    if (editorRef.value) {
-      const editor = editorRef.value.getEditor()
-
-      // 禁用一些消耗性能的功能
-      editor.config.placeholder = '大文档模式 - 某些功能已优化'
-    }
-
-    message.info('已启用性能优化模式')
-  }
-
-  const disablePerformanceMode = () => {
-    performanceMode.value = false
-    message.info('已关闭性能优化模式')
-  }
-
-  return {
-    isLargeDocument,
-    performanceMode,
-    checkDocumentSize,
-  }
-}
-
-// 防抖和节流优化
-const useOptimizedEditor = () => {
-  // 防抖的内容保存
-  const debouncedSave = debounce(async (content) => {
-    try {
-      await api.saveContent(content)
-    } catch (error) {
-      console.error('保存失败:', error)
-    }
-  }, 2000)
-
-  // 节流的字数统计
-  const throttledWordCount = throttle((content) => {
-    const words = content.replace(/<[^>]*>/g, '').length
-    updateWordCount(words)
-  }, 500)
-
-  return {
-    debouncedSave,
-    throttledWordCount,
-  }
-}
-```
-
 ### 4. 内容验证和安全
 
-```javascript
+```javascript 
 // 内容安全验证
 const useContentSecurity = () => {
   const sanitizeContent = (html) => {
@@ -2430,18 +1785,6 @@ const useContentSecurity = () => {
 - ✨ 支持自定义主题和样式
 - ✨ 内置性能优化机制
 
-## 🤝 贡献指南
-
-1. Fork 项目
-2. 创建功能分支 (`git checkout -b feature/amazing-feature`)
-3. 提交更改 (`git commit -m 'Add amazing feature'`)
-4. 推送到分支 (`git push origin feature/amazing-feature`)
-5. 创建 Pull Request
-
-## 📄 许可证
-
-Copyright (c) 2025 by ChenYu, All Rights Reserved.
-
----
+<!--@include: ./snippets/contribute.md -->
 
 **💡 提示**: 这个富文本编辑器组件基于强大的 WangEditor 构建，提供了完整的所见即所得编辑体验和丰富的功能扩展。支持图片上传、链接插入、表格编辑等常用功能，同时具备良好的安全性和性能表现。无论是博客编辑、邮件撰写还是文档协作，都能提供专业级的编辑体验。结合 TypeScript 支持和响应式设计，让富文本编辑既强大又易用。如果遇到问题请先查看文档，或者在团队群里讨论。让我们一起打造更高效的内容创作体验！ 📝
