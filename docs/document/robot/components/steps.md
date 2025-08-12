@@ -30,7 +30,7 @@ outline: 'deep'
 
 ### 基础用法
 
-```vue {3,4}
+```vue {2-5}
 <template>
   <C_Steps 
     v-model:current="currentStep" 
@@ -60,7 +60,7 @@ const steps = [
 
 ### 可点击步骤
 
-```vue {3-6}
+```vue {2-7}
 <template>
   <C_Steps 
     v-model:current="currentStep"
@@ -79,7 +79,7 @@ const handleStepChange = (index) => {
 
 ### 垂直布局
 
-```vue {3-5}
+```vue {2-6}
 <template>
   <C_Steps 
     :steps="steps"
@@ -853,20 +853,6 @@ export const useStepsStore = defineStore('steps', {
 - ✨ 自定义图标支持
 - ✨ 时间和描述展示
 
-## 🤝 贡献指南
-
-组件位置：`src/components/global/C_Steps/index.vue`
-
-如需扩展功能，请考虑：
-1. 保持步骤状态的一致性
-2. 确保布局在不同方向下的正确性
-3. 维护良好的交互体验
-4. 更新相关类型定义
-
-## 📄 许可证
-
-Copyright (c) 2025 by ChenYu, All Rights Reserved 😎
-
----
+<!--@include: ./snippets/contribute.md -->
 
 **💡 提示**: 步骤条组件适用于引导用户完成多步骤流程，如表单填写、订单处理、审批流程等场景。组件支持自动状态计算和手动状态设置，可以根据业务需求灵活配置。建议在长流程中使用垂直布局以获得更好的可读性。
