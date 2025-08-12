@@ -147,6 +147,7 @@ const cachedViews = computed(() => {
 
 ### 场景 2: 固定常用标签
 
+::: details 📌 查看固定标签配置代码
 ```javascript
 // 路由配置
 const routes = [
@@ -179,9 +180,11 @@ const routes = [
   },
 ]
 ```
+:::
 
 ### 场景 3: 动态标签管理
 
+::: details 🔧 查看动态标签管理代码
 ```vue
 <template>
   <div class="workspace">
@@ -242,9 +245,11 @@ const refreshCurrentTag = () => {
 }
 </script>
 ```
+:::
 
 ### 场景 4: 标签限制和提示
 
+::: details ⚠️ 查看标签限制和提示代码
 ```vue
 <script setup>
 import { s_appStore } from '@/stores/app'
@@ -283,11 +288,13 @@ const beforeCloseTag = (tag) => {
 }
 </script>
 ```
+:::
 
 ## 🎨 样式定制
 
 ### 自定义标签样式
 
+::: details 🎨 查看自定义标签样式代码
 ```scss
 // index.scss
 .tags-view-container {
@@ -335,9 +342,11 @@ const beforeCloseTag = (tag) => {
   }
 }
 ```
+:::
 
 ### 自定义右键菜单
 
+::: details 🖱️ 查看自定义右键菜单代码
 ```vue
 <script setup>
 // 自定义右键菜单选项
@@ -370,11 +379,13 @@ const handleCustomMenuSelect = (key) => {
 }
 </script>
 ```
+:::
 
 ## ⚙️ 高级用法
 
 ### 标签状态持久化
 
+::: details 💾 查看标签状态持久化代码
 ```javascript
 // 已内置持久化功能，自动保存到 localStorage
 // 可以自定义持久化逻辑
@@ -391,9 +402,11 @@ const customPersist = {
   },
 }
 ```
+:::
 
 ### 标签拖拽排序
 
+::: details 🔄 查看标签拖拽排序代码
 ```vue
 <script setup>
 import { VueDraggableNext } from 'vue-draggable-next'
@@ -419,6 +432,7 @@ const handleDragEnd = (event) => {
   </VueDraggableNext>
 </template>
 ```
+:::
 
 ## 🐛 常见问题
 
@@ -426,6 +440,7 @@ const handleDragEnd = (event) => {
 
 **A1:** 确保路由 meta 中配置了 icon：
 
+::: details 查看解决方案代码
 ```javascript
 // ✅ 正确
 {
@@ -436,11 +451,13 @@ const handleDragEnd = (event) => {
   }
 }
 ```
+:::
 
 ### Q2: 固定标签无法关闭？
 
 **A2:** 这是设计特性，固定标签通过 `meta.affix` 标记：
 
+::: details 查看解决方案代码
 ```javascript
 {
   path: '/',
@@ -450,11 +467,13 @@ const handleDragEnd = (event) => {
   }
 }
 ```
+:::
 
 ### Q3: 标签状态丢失？
 
 **A3:** 检查 localStorage 是否正常工作：
 
+::: details 查看解决方案代码
 ```javascript
 // 手动检查存储
 console.log(localStorage.getItem('tagsViewList'))
@@ -464,17 +483,20 @@ console.log(localStorage.getItem('activeTag'))
 localStorage.removeItem('tagsViewList')
 localStorage.removeItem('activeTag')
 ```
+:::
 
 ### Q4: 滚轮滚动不工作？
 
 **A4:** 确保标签容器有正确的样式：
 
+::: details 查看解决方案代码
 ```scss
 .tags-track {
   overflow-x: auto;  // 必需
   overflow-y: hidden;  // 防止垂直滚动
 }
 ```
+:::
 
 ## 🎯 最佳实践
 
@@ -544,20 +566,6 @@ const autoCloseOldest = () => {
 - ✨ 滚轮横向滚动
 - ✨ 路由同步功能
 
-## 🤝 贡献指南
-
-组件位置：`src/components/global/C_TagsView/index.vue`
-
-如需扩展功能，请考虑：
-1. 保持标签操作的流畅性
-2. 确保持久化逻辑正确
-3. 维护与路由的同步
-4. 更新文档说明
-
-## 📄 许可证
-
-Copyright (c) 2025 by ChenYu, All Rights Reserved 😎
-
----
+<!--@include: ./snippets/contribute.md -->
 
 **💡 提示**: 标签页组件提供了类似浏览器的多标签导航体验，通过右键菜单可以快速管理标签。组件自动保存标签状态，刷新页面后仍能保持之前打开的标签。配合路由的 meta 配置，可以实现固定标签、自定义图标等功能。
