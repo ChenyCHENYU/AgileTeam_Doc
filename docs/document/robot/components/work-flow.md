@@ -21,10 +21,30 @@ outline: 'deep'
 
 ## 📦 安装
 
-```bash
+
+::: code-group
+
+```bash [bun (推荐)]
 # 安装 Vue Flow 相关依赖
 bun add @vue-flow/core @vue-flow/controls @vue-flow/minimap @vue-flow/background
 ```
+
+```bash [pnpm]
+# 安装 WangEditor 相关依赖
+pnpm install @vue-flow/core @vue-flow/controls @vue-flow/minimap @vue-flow/background
+```
+
+```bash [yarn]
+# 安装 WangEditor 相关依赖
+yarn add @vue-flow/core @vue-flow/controls @vue-flow/minimap @vue-flow/background
+```
+
+```bash [npm]
+# 安装 WangEditor 相关依赖
+npm install @vue-flow/core @vue-flow/controls @vue-flow/minimap @vue-flow/background
+```
+
+:::
 
 ## 🎯 快速开始
 

@@ -265,17 +265,17 @@
 @media (min-width: 2561px) and (max-width: 3840px) {
   .VPDoc.has-aside .content-container {
     max-width: min(70vw, 2400px) !important;
-    padding: 0 64px !important;
+    /* padding: 0 64px !important; */
   }
 
   .VPDoc.has-sidebar:not(.has-aside) .content {
     max-width: min(75vw, 2600px) !important;
-    padding: 0 64px !important;
+    /* padding: 0 64px !important; */
   }
 
   .VPDoc .content {
     max-width: min(70vw, 2400px) !important;
-    padding: 0 64px !important;
+    /* padding: 0 64px !important; */
   }
   
   /* 超宽屏也保持导航栏靠边 */
