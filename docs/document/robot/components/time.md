@@ -664,7 +664,7 @@ const handleTimeChange = (startTime, endTime) => {
 ```
 :::
 
-::: details 🎨 自定义分隔符样式
+::: details 🌈 自定义分隔符样式
 ```vue
 <template>
   <C_Time mode="range" class="custom-separator" />

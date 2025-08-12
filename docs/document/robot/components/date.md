@@ -75,7 +75,7 @@ const handleSmartRangeChange = (value) => {
 ```
 
 ::: details 🔄 五种选择模式 - 覆盖所有日期选择场景
-```vue {7,16,25,34,43}
+```vue {4-11,14-22,25-33,36-45,48-55}
 <template>
   <div class="date-modes-demo">
     <!-- 1. 单日期选择 -->
@@ -213,7 +213,8 @@ const handleSmartRange = (value) => {
 | **startDate**      | `Ref<number \| null>`           | 智能范围开始日期 |
 | **endDate**        | `Ref<number \| null>`           | 智能范围结束日期 |
 
-::: details 🔧 类型定义 - 完整的 TypeScript 接口
+### 类型定义
+
 #### 日期选择器模式
 
 ```typescript
@@ -231,12 +232,11 @@ type DatePickerMode =
 type DateValue = number | null
 type DateRangeValue = [number, number] | null
 ```
-:::
 
 ## 🎨 使用示例
 
 ::: details 🏖️ 假期申请系统 - 智能假期时间选择
-```vue {14,15,16,17,18}
+```vue 
 <template>
   <div class="vacation-application">
     <h3>假期申请</h3>
@@ -382,7 +382,7 @@ const formatDate = (timestamp) => {
 :::
 
 ::: details 🎉 活动报名时间管理 - 报名时间限制配置
-```vue {15,16,17,18,25,26,27,28,29,30}
+```vue 
 <template>
   <div class="event-registration">
     <h3>活动报名时间设置</h3>
@@ -555,7 +555,7 @@ const formatDate = (timestamp) => {
 :::
 
 ::: details 📊 财务报表查询 - 动态时间范围和快捷选择
-```vue {18,19,20,21,22}
+```vue 
 <template>
   <div class="financial-report">
     <h3>财务报表查询</h3>
@@ -872,7 +872,7 @@ const formatDate = (timestamp) => {
 ## 🛠️ 高级用法
 
 ::: details 🔒 动态禁用规则 - 智能日期限制
-```vue {9,10,14,15,16,17,18,19,20,21,25,26,27,28,29,30}
+```vue 
 <template>
   <div class="dynamic-disable">
     <n-switch v-model:value="weekendsOnly" @update:value="handleWeekendToggle">
@@ -925,7 +925,7 @@ const handleDateChange = (value) => {
 :::
 
 ::: details 🎨 自定义格式化 - 多种日期格式支持
-```vue {12,15}
+```vue 
 <template>
   <div class="custom-format">
     <n-radio-group
@@ -974,7 +974,7 @@ const formatTimestamp = (timestamp) => {
 :::
 
 ::: details 🔗 联动多个日期选择器 - 项目阶段时间级联
-```vue {13,14,15,16,24,25,26,27,28,35,36,37,38,39}
+```vue
 <template>
   <div class="cascading-dates">
     <h4>项目阶段时间设置</h4>
@@ -1261,7 +1261,7 @@ const formatDate = (timestamp) => {
 
 ::: code-group
 
-```vue [✅ 推荐] {2,4}
+```vue [✅ 推荐]
 <!-- 根据需求选择合适的模式 -->
 <C_Date mode="smart-range" />
 <!-- 需要联动限制时 -->
@@ -1281,7 +1281,7 @@ const formatDate = (timestamp) => {
 
 ::: code-group
 
-```vue [✅ 推荐] {4}
+```vue [✅ 推荐] 
 <!-- 合理设置禁用规则 -->
 <C_Date
   :disabled-before-today="true"  <!-- 预约类业务 -->
@@ -1289,7 +1289,7 @@ const formatDate = (timestamp) => {
 />
 ```
 
-```vue [❌ 不推荐] {4}
+```vue [❌ 不推荐]
 <!-- 过度限制 -->
 <C_Date
   :disabled-before-today="true"
@@ -1303,7 +1303,7 @@ const formatDate = (timestamp) => {
 
 ::: code-group
 
-```vue [✅ 推荐] {4}
+```vue [✅ 推荐]
 <!-- 监听具体事件 -->
 <C_Date
   mode="smart-range"
@@ -1311,7 +1311,7 @@ const formatDate = (timestamp) => {
 />
 ```
 
-```vue [❌ 不推荐] {4}
+```vue [❌ 不推荐] 
 <!-- 只监听通用事件 -->
 <C_Date
   mode="smart-range"
@@ -1332,7 +1332,7 @@ const formatDate = (timestamp) => {
 2. 检查禁用规则设置
 3. 确认事件监听正确
 
-```vue {2}
+```vue
 <!-- 确保正确配置 -->
 <C_Date mode="smart-range" @update:smartRange="handleSmartRange" />
 
@@ -1350,7 +1350,7 @@ const handleSmartRange = (value) => {
 
 ::: code-group
 
-```vue [✅ 正确] {4}
+```vue [✅ 正确] 
 <!-- 正确的格式设置 -->
 <C_Date
   mode="datetime"
@@ -1358,7 +1358,7 @@ const handleSmartRange = (value) => {
 />
 ```
 
-```vue [❌ 错误] {4}
+```vue [❌ 错误] 
 <!-- 格式字符串错误 -->
 <C_Date
   mode="datetime"
@@ -1371,7 +1371,7 @@ const handleSmartRange = (value) => {
 ::: details ❓ Q3: 禁用规则不生效？
 **A3:** 确保使用正确的属性：
 
-```vue {5,6}
+```vue 
 <template>
   <C_Date
     mode="smart-range"
@@ -1401,7 +1401,7 @@ const endProps = computed(() => ({
 ::: details ❓ Q4: 清空功能不工作？
 **A4:** 使用暴露的 clearAll 方法：
 
-```vue {2,7}
+```vue 
 <template>
   <C_Date ref="datePickerRef" />
   <n-button @click="handleClear">清空日期</n-button>
@@ -1421,7 +1421,7 @@ const handleClear = () => {
 
 ### 1. 根据业务场景选择模式
 
-```vue {3,6,9}
+```vue
 <!-- ✅ 推荐：根据业务特点选择 -->
 <!-- 预约业务：使用智能范围，禁用过去日期 -->
 <C_Date mode="smart-range" :disabled-before-today="true" />
@@ -1457,7 +1457,7 @@ const getIntelligentDefaults = () => {
 
 ### 3. 表单验证集成
 
-```vue {5,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27}
+```vue 
 <template>
   <n-form :model="formData" :rules="dateRules">
     <n-form-item label="活动时间" path="eventDate">
@@ -1503,7 +1503,7 @@ const handleEventDateChange = (value) => {
 
 ### 4. 性能优化
 
-```vue {3,6,7,8,9,10,11,12,13,14,17,18,19}
+```vue
 <script setup>
 // 使用计算属性优化禁用函数
 const disabledDateCache = new Map()
