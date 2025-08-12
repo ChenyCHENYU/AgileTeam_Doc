@@ -48,7 +48,7 @@ npm install naive-ui
 
 ### 基础用法
 
-```vue {4,5,6,7}
+```vue {3-8}
 <template>
   <!-- 最简单的搜索表单 -->
   <C_FormSearch
@@ -99,7 +99,7 @@ npm install naive-ui
 
 ### 多种搜索控件
 
-```vue {6,7,8,9,10}
+```vue {2-8}
 <template>
   <C_FormSearch
     :form-item-list="richSearchFields"
@@ -217,7 +217,7 @@ npm install naive-ui
 | **cleanFn** | `-` | `void` | 手动触发重置 |
 | **changeFoldState** | `-` | `void` | 切换展开收起状态 |
 
-::: details 🔧 类型定义 - 完整的 TypeScript 接口定义
+## 类型定义
 
 #### 搜索表单项接口
 
@@ -269,12 +269,11 @@ export interface BaseFormParams {
   pageSize: number
 }
 ```
-:::
 
 ## 🎨 使用示例
 
 ::: details 📝 用户管理搜索 - 完整的管理系统搜索示例
-```vue {6,7,8,9,10,11,12}
+```vue 
 <template>
   <div class="user-management">
     <n-card title="用户管理" style="margin-bottom: 16px;">
@@ -490,7 +489,7 @@ export interface BaseFormParams {
 :::
 
 ::: details 🎬 演示页面 - 多种字段配置和功能展示
-```vue {20,24,34}
+```vue 
 <template>
   <div class="search-demo">
     <NH1 class="main-title">表单搜索组件场景示例</NH1>
@@ -914,7 +913,7 @@ export function generateMockResults(
 ## 🛠️ 高级用法
 
 ::: details 🔄 自定义防抖处理 - 优化搜索性能
-```vue {10,11,12,13,14,15,16,17,18,19,20}
+```vue 
 <template>
   <C_FormSearch
     ref="searchRef"
@@ -958,7 +957,7 @@ export function generateMockResults(
 :::
 
 ::: details 🔗 搜索条件联动 - 智能字段关联
-```vue {5,15,16,17,26,27,28,38,39,40,50,51,52}
+```vue 
 <template>
   <C_FormSearch
     :form-item-list="linkedSearchFields"
@@ -1033,7 +1032,7 @@ export function generateMockResults(
 :::
 
 ::: details 💾 搜索结果缓存 - 提升用户体验
-```vue {3,4,5,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72}
+```vue 
 <template>
   <C_FormSearch
     :form-item-list="searchFields"
@@ -1103,7 +1102,7 @@ export function generateMockResults(
 :::
 
 ::: details ✅ 高级验证示例 - 集成验证工具
-```vue {14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162}
+```vue
 <template>
   <C_FormSearch
     :form-item-list="advancedSearchFields"
@@ -1389,7 +1388,7 @@ export function generateMockResults(
 
 ::: code-group
 
-```vue [✅ 推荐] {3,4}
+```vue [✅ 推荐]
 <!-- 使用响应式对象 -->
 <script setup>
   const searchParams = ref({
@@ -1399,7 +1398,7 @@ export function generateMockResults(
 </script>
 ```
 
-```vue [❌ 不推荐] {3,4}
+```vue [❌ 不推荐]
 <!-- 直接赋值对象 -->
 <script setup>
   const searchParams = {
@@ -1415,7 +1414,7 @@ export function generateMockResults(
 
 ::: code-group
 
-```vue [✅ 推荐] {3}
+```vue [✅ 推荐] 
 <!-- 为不同页面设置不同的历史记录键 -->
 <C_FormSearch
   form-search-input-history-string="user-management-search"
@@ -1424,7 +1423,7 @@ export function generateMockResults(
 />
 ```
 
-```vue [❌ 不推荐] {3}
+```vue [❌ 不推荐]
 <!-- 使用通用键名 -->
 <C_FormSearch
   form-search-input-history-string="search"
@@ -1439,7 +1438,7 @@ export function generateMockResults(
 
 ::: code-group
 
-```javascript [✅ 推荐] {2,3,4,5,6,7,8,9,10,11,12,13,14}
+```javascript [✅ 推荐]
 // 完整的搜索条件验证
 const validateSearchParams = (params) => {
   const validKeys = Object.keys(params).filter(
@@ -1537,7 +1536,7 @@ const list = [
 
 ### 1. 搜索字段设计
 
-```javascript {4,5,6,7,8,9,10,11,12,13,14,15,16,17,18}
+```javascript 
 // ✅ 推荐：语义化的字段配置
 const searchFields = [
   {
@@ -1560,7 +1559,7 @@ const searchFields = [
 
 ### 2. 历史记录管理
 
-```javascript {2,3,4,5,6,7,8,9}
+```javascript
 // 为不同模块设置不同的历史记录键
 const userManagementHistory = 'user-management-search'
 const articleManagementHistory = 'article-management-search'
@@ -1573,7 +1572,7 @@ const genericHistory = 'search-history'
 
 ### 3. 防抖优化
 
-```vue {8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69}
+```vue 
 <template>
   <!-- 使用防抖指令优化搜索交互 -->
   <C_FormSearch
@@ -1634,7 +1633,7 @@ const genericHistory = 'search-history'
 
 ### 4. 类型安全和代码规范
 
-```typescript {2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62}
+```typescript
 // 定义精确的搜索参数类型
 interface UserSearchParams {
   username: string
@@ -1700,7 +1699,7 @@ const handleSearch = (params: UserSearchParams) => {
 - ✨ 智能历史记录功能，自动缓存和管理搜索历史
 - ✨ 响应式展开收起功能，超过7个字段自动支持展开收起
 - ✨ 完整的事件系统（搜索、重置、参数变更）
-- ✨ 智能搜索条件验证，避免无效搜索
+- ✨ 智能搜索条件验证，避免无效搜索 
 - ✨ 完整的TypeScript支持
 - ✨ 基于Naive UI的统一视觉风格
 - ✨ 支持防抖指令优化搜索交互
