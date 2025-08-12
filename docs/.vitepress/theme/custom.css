@@ -211,7 +211,7 @@
   .VPDoc:not(.has-sidebar) .content {
     max-width: min(70vw, 1600px) !important;
     margin: 0 auto !important;
-    padding: 0 48px !important;
+    /* padding: 0 48px !important; */
   }
 
   /* 有右侧目录的文档页面 */
@@ -232,7 +232,7 @@
   .VPDoc .content {
     max-width: min(75vw, 1900px) !important;
     margin: 0 auto !important;
-    padding: 0 48px !important;
+    /* padding: 0 48px !important; */
   }
 
   /* 侧边栏和右侧目录保持合理宽度 */
@@ -288,7 +288,7 @@
   .VPFooter .container {
     max-width: 100% !important;
     margin: 0 !important;
-    padding: 0 48px !important;
+    /* padding: 0 48px !important; */
   }
 }
 

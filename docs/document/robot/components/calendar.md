@@ -21,16 +21,35 @@ outline: 'deep'
 
 ## 📦 安装
 
-```bash
+::: code-group
+
+```bash [bun (推荐)]
 # 安装 FullCalendar 相关依赖
 bun add @fullcalendar/core @fullcalendar/daygrid @fullcalendar/interaction @fullcalendar/vue3 @fullcalendar/list
 ```
+
+```bash [pnpm]
+# 安装 FullCalendar 相关依赖
+pnpm add @fullcalendar/core @fullcalendar/daygrid @fullcalendar/interaction @fullcalendar/vue3 @fullcalendar/list
+```
+
+```bash [yarn]
+# 安装 FullCalendar 相关依赖
+yarn add @fullcalendar/core @fullcalendar/daygrid @fullcalendar/interaction @fullcalendar/vue3 @fullcalendar/list
+```
+
+```bash [npm]
+# 安装 FullCalendar 相关依赖
+npm install @fullcalendar/core @fullcalendar/daygrid @fullcalendar/interaction @fullcalendar/vue3 @fullcalendar/list
+```
+
+:::
 
 ## 🎯 快速开始
 
 ### 基础用法
 
-```vue
+```vue {3-8}
 <template>
   <!-- 最简单的日历组件 -->
   <C_FullCalendar
@@ -74,7 +93,7 @@ const handleEventDeleted = (event) => {
 
 ### 完整功能示例
 
-```vue
+```vue {2-9}
 <template>
   <div class="calendar-demo">
     <!-- 控制面板 -->
@@ -269,7 +288,7 @@ const thisWeekEventsCount = computed(() => {
 | **deleteEvent** | `(eventId: string)`                   | `void`            | 删除事件                   |
 | **getEvents**   | `-`                                   | `CalendarEvent[]` | 获取所有事件               |
 
-### 类型定义
+## 类型定义
 
 #### 日历事件接口
 
@@ -297,9 +316,8 @@ type CalendarViewType =
 
 ## 🎨 使用示例
 
-### 场景 1: 会议室预订系统
-
-```vue
+::: details 📅 会议室预订系统 - 完整的预订管理示例
+```vue 
 <template>
   <div class="meeting-room-booking">
     <n-card title="会议室预订系统" style="margin-bottom: 16px;">
@@ -433,10 +451,10 @@ const filterEventsByRoom = () => {
 }
 </style>
 ```
+:::
 
-### 场景 2: 项目管理甘特图
-
-```vue
+::: details 📊 项目管理甘特图 - 完整的项目进度管理
+```vue 
 <template>
   <div class="project-calendar">
     <n-card title="项目进度管理" style="margin-bottom: 16px;">
@@ -614,10 +632,10 @@ const generateReport = () => {
 }
 </style>
 ```
+:::
 
-### 场景 3: 个人日程管理
-
-```vue
+::: details 📝 个人日程管理 - 智能提醒和同步功能
+```vue 
 <template>
   <div class="personal-schedule">
     <n-card title="个人日程管理" style="margin-bottom: 16px;">
@@ -810,11 +828,11 @@ onMounted(() => {
 }
 </style>
 ```
+:::
 
 ## 🛠️ 高级用法
 
-### 自定义事件渲染
-
+::: details 🎨 自定义事件渲染 - 个性化事件显示
 ```vue
 <template>
   <C_FullCalendar
@@ -900,9 +918,9 @@ const formatEventTime = (event) => {
 }
 </style>
 ```
+:::
 
-### 事件数据持久化
-
+::: details 💾 事件数据持久化 - 本地存储和API同步
 ```vue
 <template>
   <C_FullCalendar
@@ -992,9 +1010,9 @@ onMounted(() => {
 })
 </script>
 ```
+:::
 
-### 多日历支持
-
+::: details 🗂️ 多日历支持 - 分类管理和视图切换
 ```vue
 <template>
   <div class="multi-calendar">
@@ -1068,9 +1086,9 @@ const handleMultiCalendarEventAdded = (event) => {
 }
 </script>
 ```
+:::
 
-### 事件分类和筛选
-
+::: details 🔍 事件分类和筛选 - 智能过滤功能
 ```vue
 <template>
   <div class="calendar-with-filters">
@@ -1192,13 +1210,16 @@ const clearFilters = () => {
 }
 </script>
 ```
+:::
 
 ## ⚠️ 注意事项
 
 ### 1. 事件数据格式
 
-```vue
-<!-- ✅ 推荐：完整的事件对象 -->
+::: code-group
+
+```vue [✅ 推荐]
+<!-- 完整的事件对象 -->
 <script setup>
 const events = ref([
   {
@@ -1216,8 +1237,10 @@ const events = ref([
   },
 ])
 </script>
+```
 
-<!-- ❌ 不推荐：缺少必要字段 -->
+```vue [❌ 不推荐]
+<!-- 缺少必要字段 -->
 <script setup>
 const events = ref([
   {
@@ -1228,18 +1251,24 @@ const events = ref([
 </script>
 ```
 
+:::
+
 ### 2. 日期对象处理
 
-```javascript
-// ✅ 推荐：使用 Date 对象
+::: code-group
+
+```javascript [✅ 推荐]
+// 使用 Date 对象
 const event = {
   id: '1',
   title: '会议',
   start: new Date('2025-07-20T09:00:00'),
   end: new Date('2025-07-20T10:00:00'),
 }
+```
 
-// ❌ 不推荐：使用字符串可能导致时区问题
+```javascript [❌ 不推荐]
+// 使用字符串可能导致时区问题
 const event = {
   id: '1',
   title: '会议',
@@ -1248,24 +1277,34 @@ const event = {
 }
 ```
 
+:::
+
 ### 3. 事件 ID 的唯一性
 
-```javascript
-// ✅ 推荐：确保ID唯一
+::: code-group
+
+```javascript [✅ 推荐]
+// 确保ID唯一
 const generateEventId = () => {
   return `event_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`
 }
+```
 
-// ❌ 不推荐：使用可能重复的ID
+```javascript [❌ 不推荐]
+// 使用可能重复的ID
 const generateEventId = () => {
   return Math.floor(Math.random() * 1000) // 可能重复
 }
 ```
 
+:::
+
 ### 4. 性能优化
 
-```vue
-<!-- ✅ 推荐：使用 shallowRef 优化大量事件 -->
+::: code-group
+
+```vue [✅ 推荐]
+<!-- 使用 shallowRef 优化大量事件 -->
 <script setup>
 const events = shallowRef([]) // 大量事件时使用 shallowRef
 
@@ -1274,8 +1313,10 @@ const updateEvents = (newEvents) => {
   events.value = [...newEvents] // 创建新数组触发更新
 }
 </script>
+```
 
-<!-- ❌ 不推荐：频繁修改响应式数组 -->
+```vue [❌ 不推荐]
+<!-- 频繁修改响应式数组 -->
 <script setup>
 const events = ref([])
 
@@ -1285,12 +1326,11 @@ events.value.splice(0, 1) // 又触发响应式更新
 </script>
 ```
 
+:::
+
 ## 🐛 故障排除
 
-### 常见问题
-
-#### Q1: 事件不显示在日历上？
-
+::: details ❓ Q1: 事件不显示在日历上？
 **A1:** 检查事件数据格式：
 
 ```javascript
@@ -1302,9 +1342,9 @@ const event = {
   // end 可选，color 可选
 }
 ```
+:::
 
-#### Q2: 拖拽功能不工作？
-
+::: details ❓ Q2: 拖拽功能不工作？
 **A2:** 检查相关配置：
 
 ```vue
@@ -1314,9 +1354,9 @@ const event = {
   @event-dropped="handleDrop"  <!-- 监听拖拽事件 -->
 />
 ```
+:::
 
-#### Q3: 日期显示不正确？
-
+::: details ❓ Q3: 日期显示不正确？
 **A3:** 检查时区和日期格式：
 
 ```javascript
@@ -1326,9 +1366,9 @@ const localDate = new Date(2025, 6, 20, 9, 0) // 月份从0开始
 // 或确保字符串格式正确
 const isoDate = new Date('2025-07-20T09:00:00')
 ```
+:::
 
-#### Q4: 事件颜色不生效？
-
+::: details ❓ Q4: 事件颜色不生效？
 **A4:** 检查颜色格式：
 
 ```javascript
@@ -1340,9 +1380,9 @@ color: 'blue' // 颜色名称
 // ❌ 不支持的格式
 color: 'hsl(220, 100%, 62%)' // HSL 可能不支持
 ```
+:::
 
-#### Q5: 模态框不显示？
-
+::: details ❓ Q5: 模态框不显示？
 **A5:** 检查相关属性设置：
 
 ```vue
@@ -1352,12 +1392,13 @@ color: 'hsl(220, 100%, 62%)' // HSL 可能不支持
   :editable="true"           <!-- 确保允许编辑 -->
 />
 ```
+:::
 
 ## 🎯 最佳实践
 
 ### 1. 事件数据管理
 
-```javascript
+```typescript
 // ✅ 推荐：统一的事件数据结构
 interface StandardEvent {
   id: string
@@ -1589,18 +1630,6 @@ const calendarOptions = computed(() => ({
 - ✨ 事件数据双向绑定
 - ✨ 丰富的事件回调系统
 
-## 🤝 贡献指南
-
-1. Fork 项目
-2. 创建功能分支 (`git checkout -b feature/amazing-feature`)
-3. 提交更改 (`git commit -m 'Add amazing feature'`)
-4. 推送到分支 (`git push origin feature/amazing-feature`)
-5. 创建 Pull Request
-
-## 📄 许可证
-
-Copyright (c) 2025 by ChenYu, All Rights Reserved.
-
----
+<!--@include: ./snippets/contribute.md -->
 
 **💡 提示**: 这个日历组件基于强大的 FullCalendar 库构建，提供了完整的事件管理功能和丰富的交互体验。支持多种视图模式、拖拽操作、自定义样式等特性，适用于各种日程管理场景。无论是个人日程、项目管理还是会议室预订，都能提供专业级的日历解决方案。结合 TypeScript 支持和响应式设计，让日历功能既强大又易用。如果遇到问题请先查看文档，或者在团队群里讨论。让我们一起打造更高效的时间管理体验！ 📅
