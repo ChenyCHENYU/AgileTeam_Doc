@@ -48,7 +48,7 @@ npm install naive-ui
 
 ### 基础用法
 
-```vue {4,5}
+```vue {3-6,9-13}
 <template>
   <!-- 最简单的城市选择 -->
   <C_City
@@ -74,7 +74,7 @@ const handleCityChange = (city) => {
 ```
 
 ::: details 🎨 多种触发器样式 - 输入框、按钮、标签等自定义样式
-```vue {10-19}
+```vue
 <template>
   <div class="city-selector-demos">
     <!-- 输入框样式触发器 -->
@@ -192,7 +192,7 @@ const handleCityChange = (city) => {
 | **clear** | `-` | `void` | 清空选中值 |
 | **validate** | `-` | `Promise<boolean>` | 验证选中值 |
 
-::: details 🔧 类型定义 - 完整的 TypeScript 接口定义
+##  类型定义
 #### 城市数据项接口
 
 ```typescript
@@ -238,12 +238,11 @@ interface CityEmits {
   (e: 'focus', event: FocusEvent): void
 }
 ```
-:::
 
 ## 🎨 使用示例
 
 ::: details 📝 用户注册表单 - 城市选择与表单验证集成
-```vue {29,30}
+```vue
 <template>
   <div class="user-registration">
     <n-card title="用户注册" class="registration-card">
@@ -413,7 +412,7 @@ const fetchCityRelatedInfo = async (city) => {
 :::
 
 ::: details 🎬 演示页面 - 多种触发器样式和功能展示
-```vue {20,34,50}
+```vue 
 <template>
   <div class="city-demo">
     <NH1 class="main-title">城市选择器组件场景示例</NH1>
@@ -736,7 +735,7 @@ function handleResetValidation() {
 :::
 
 ::: details 🚚 物流配送管理 - 配送范围设置和订单管理系统
-```vue {20,24,40}
+```vue
 <template>
   <div class="logistics-management">
     <n-card title="物流配送管理系统" class="header-card">
@@ -1299,7 +1298,7 @@ const handleCreateOrder = () => {
 ## 🛠️ 高级用法
 
 ::: details 🔗 城市数据联动 - 路线规划与途经城市管理
-```vue {13,20,33}
+```vue
 <template>
   <div class="city-linkage">
     <h4>城市联动示例</h4>
@@ -1504,7 +1503,7 @@ const handleCalculateRoute = () => {
 :::
 
 ::: details ⚡ 性能优化配置 - 虚拟滚动和搜索防抖
-```vue {6,7,8,13,18,19}
+```vue 
 <template>
   <div class="performance-optimized">
     <h4>性能优化示例</h4>
@@ -1664,7 +1663,7 @@ const handleLazyLoadCityChange = (city) => {
 
 ::: code-group
 
-```vue [✅ 推荐] {6,7,8}
+```vue [✅ 推荐] 
 <!-- 使用完整的城市数据 -->
 <script setup>
 import { cityData, provinceData } from './cityData'
@@ -1678,7 +1677,7 @@ const validateCityData = (data) => {
 </script>
 ```
 
-```vue [❌ 不推荐] {4}
+```vue [❌ 不推荐] 
 <!-- 使用不完整的数据 -->
 <script setup>
 // 缺少必要字段
@@ -1694,7 +1693,7 @@ const incompleteCityData = [
 
 ::: code-group
 
-```vue [✅ 推荐] {4,5}
+```vue [✅ 推荐] 
 <!-- 大数据量时启用虚拟滚动 -->
 <C_City
   v-model="selectedCity"
@@ -1710,14 +1709,15 @@ const incompleteCityData = [
   <!-- 数据量大但不启用优化 -->
 />
 ```
-
 :::
+
+
 
 ### 3. 表单验证集成
 
 ::: code-group
 
-```javascript [✅ 推荐] {3,4,5,6,7,8,9,10,11,12}
+```javascript [✅ 推荐] 
 // 完整的验证规则
 const cityRules = {
   city: [
@@ -1734,7 +1734,7 @@ const cityRules = {
 }
 ```
 
-```javascript [❌ 不推荐] {3}
+```javascript [❌ 不推荐] 
 // 简单的验证
 const cityRules = {
   city: { required: true, message: '请选择城市' },
@@ -1764,7 +1764,7 @@ console.log('省份数据:', provinceData)
 ::: details ❓ Q2: 搜索功能不工作？
 **A2:** 检查搜索配置：
 
-```vue {4}
+```vue
 <!-- 确保启用搜索功能 -->
 <C_City
   v-model="selectedCity"
@@ -1776,7 +1776,7 @@ console.log('省份数据:', provinceData)
 ::: details ❓ Q3: 字母导航不显示？
 **A3:** 检查配置项：
 
-```vue {4}
+```vue 
 <!-- 确保显示字母导航 -->
 <C_City
   v-model="selectedCity"
@@ -1788,7 +1788,7 @@ console.log('省份数据:', provinceData)
 ::: details ❓ Q4: 自定义触发器不生效？
 **A4:** 检查插槽使用：
 
-```vue {3}
+```vue 
 <!-- 正确使用插槽 -->
 <C_City v-model="selectedCity">
   <template #trigger="{ value, visible }">
@@ -1803,7 +1803,7 @@ console.log('省份数据:', provinceData)
 
 ### 1. 合理的默认值
 
-```javascript {2,3,4,5,6,7,8,9,10}
+```javascript
 // ✅ 推荐：根据用户位置设置默认城市
 const getDefaultCity = async () => {
   try {
@@ -1819,7 +1819,7 @@ const selectedCity = ref(await getDefaultCity())
 
 ### 2. 搜索优化
 
-```javascript {4,5,6}
+```javascript 
 // ✅ 推荐：使用防抖优化搜索性能
 import { debounce } from 'lodash-es'
 
@@ -1830,7 +1830,7 @@ const searchCity = debounce((keyword) => {
 
 ### 3. 错误处理
 
-```javascript {2,3,4,5,6,7,8,9,10,11}
+```javascript
 // ✅ 推荐：完善的错误处理
 const handleCityChange = async (city) => {
   try {
@@ -1848,7 +1848,7 @@ const handleCityChange = async (city) => {
 
 ### 4. 数据缓存
 
-```javascript {2,4,5,6,7,8,9,10,11}
+```javascript
 // ✅ 推荐：缓存城市数据减少请求
 const cityDataCache = new Map()
 
