@@ -47,7 +47,7 @@ npm install naive-ui
 
 ### 基础使用
 
-```vue {4,10}
+```vue {3-6,9-12,16-18,20-22}
 <template>
   <!-- 最简单的时间段选择 -->
   <C_Time 
@@ -75,7 +75,7 @@ const handleSingleChange = (time) => {
 
 ### 双模式对比
 
-```vue {9,20}
+```vue {4-13,16-25}
 <template>
   <div class="time-demo">
     <!-- 时间段选择模式 -->
@@ -169,7 +169,7 @@ interface Props {
 ## 🎨 使用示例
 
 ::: details ⏰ 工作时间设置 - 上下班时间配置
-```vue {7,8,9,10,11}
+```vue 
 <template>
   <div class="work-time-setting">
     <h3>工作时间设置</h3>
@@ -228,7 +228,7 @@ const handleWorkTimeChange = (startTime, endTime) => {
 :::
 
 ::: details 📅 会议预约系统 - 完整的预约流程
-```vue {14,15,16,17,18,25,26,27,28,29}
+```vue 
 <template>
   <div class="meeting-booking">
     <h3>会议预约</h3>
@@ -360,7 +360,7 @@ const formatTime = (timestamp) => {
 :::
 
 ::: details 🏪 营业时间管理 - 一周时间设置
-```vue {23,24,25,26,27,28,29}
+```vue 
 <template>
   <div class="business-hours">
     <h3>营业时间管理</h3>
@@ -495,7 +495,7 @@ const getDayHoursText = (day) => {
 ## 🛠️ 高级用法
 
 ::: details 🌈 动态配置时间格式 - 自适应格式选择
-```vue {12,13,14,15}
+```vue
 <template>
   <div class="dynamic-format">
     <n-radio-group v-model:value="timeFormat" @update:value="handleFormatChange">
@@ -534,7 +534,7 @@ const handleTimeChange = (startTime, endTime) => {
 :::
 
 ::: details 🔒 条件性禁用控制 - 智能权限管理
-```vue {11,12,13}
+```vue
 <template>
   <div class="conditional-disable">
     <n-switch 
@@ -580,7 +580,7 @@ const handleTimeChange = (startTime, endTime) => {
 :::
 
 ::: details ⚡ 时间预设快捷选择 - 一键设置常用时间
-```vue {13,14,15}
+```vue
 <template>
   <div class="time-presets">
     <div class="preset-buttons">
@@ -651,8 +651,7 @@ const handleTimeChange = (startTime, endTime) => {
 
 ## 🔧 自定义样式
 
-### CSS 变量
-
+::: details 🎨 CSS 变量 - 主题色彩配置
 ```scss
 .c-time-wrapper {
   --time-primary-color: #1890ff;
@@ -663,9 +662,9 @@ const handleTimeChange = (startTime, endTime) => {
   --time-disabled-color: #f5f5f5;
 }
 ```
+:::
 
-### 自定义分隔符样式
-
+::: details 🎨 自定义分隔符样式
 ```vue
 <template>
   <C_Time mode="range" class="custom-separator" />
@@ -686,9 +685,9 @@ const handleTimeChange = (startTime, endTime) => {
 }
 </style>
 ```
+:::
 
-### 响应式布局
-
+::: details 📱 响应式布局
 ```vue
 <template>
   <C_Time mode="range" class="responsive-time" />
@@ -710,6 +709,7 @@ const handleTimeChange = (startTime, endTime) => {
 }
 </style>
 ```
+:::
 
 ## ⚠️ 注意事项
 
@@ -717,7 +717,7 @@ const handleTimeChange = (startTime, endTime) => {
 
 ::: code-group
 
-```vue [✅ 推荐] {4}
+```vue [✅ 推荐]
 <!-- 格式与配置一致 -->
 <C_Time 
   format="HH:mm:ss" 
@@ -725,7 +725,7 @@ const handleTimeChange = (startTime, endTime) => {
 />
 ```
 
-```vue [❌ 不推荐] {4}
+```vue [❌ 不推荐]
 <!-- 格式与配置不匹配 -->
 <C_Time 
   format="HH:mm:ss" 
@@ -739,7 +739,7 @@ const handleTimeChange = (startTime, endTime) => {
 
 ::: code-group
 
-```vue [✅ 推荐] {4}
+```vue [✅ 推荐]
 <!-- 在时间段选择中启用限制 -->
 <C_Time 
   mode="range" 
@@ -747,7 +747,7 @@ const handleTimeChange = (startTime, endTime) => {
 />
 ```
 
-```vue [❌ 不推荐] {4}
+```vue [❌ 不推荐]
 <!-- 在单个时间选择中启用限制（无效） -->
 <C_Time 
   mode="single" 
@@ -775,17 +775,14 @@ const handleTimeChange = (startTime, endTime) => {
 
 ## 🐛 故障排除
 
-### 常见问题
-
-#### Q1: 结束时间无法选择怎么办？
-
+::: details ❓ Q1: 结束时间无法选择怎么办？
 **A1:** 检查以下几点：
 
 1. 确认在 range 模式下已选择开始时间
 2. 检查是否启用了 `enableTimeRestriction`
 3. 确认时间选择器没有被禁用
 
-```vue {4}
+```vue
 <!-- 确保正确配置 -->
 <C_Time 
   mode="range"
@@ -800,14 +797,14 @@ const handleStartChange = (time) => {
 }
 </script>
 ```
+:::
 
-#### Q2: 时间格式显示不正确？
-
+::: details ❓ Q2: 时间格式显示不正确？
 **A2:** 检查格式配置：
 
 ::: code-group
 
-```vue [✅ 正确] {6}
+```vue [✅ 正确]
 <!-- 正确的格式配置 -->
 <C_Time 
   format="HH:mm:ss"
@@ -817,18 +814,17 @@ const handleStartChange = (time) => {
 />
 ```
 
-```vue [❌ 错误] {2}
+```vue [❌ 错误]
 <!-- 格式字符串错误 -->
 <C_Time format="hh:mm:ss" />  <!-- 应该使用 HH -->
 ```
 
 :::
 
-#### Q3: 事件不触发怎么办？
-
+::: details ❓ Q3: 事件不触发怎么办？
 **A3:** 确保正确监听事件：
 
-```vue {4,5,6}
+```vue
 <template>
   <C_Time 
     mode="range"
@@ -853,12 +849,12 @@ const handleEndChange = (time) => {
 }
 </script>
 ```
+:::
 
-#### Q4: 默认时间不生效？
-
+::: details ❓ Q4: 默认时间不生效？
 **A4:** 检查默认值设置：
 
-```vue {3,4}
+```vue
 <script setup>
 // ✅ 正确设置默认时间
 const defaultStart = new Date().setHours(9, 0, 0, 0)
@@ -873,12 +869,13 @@ const defaultEnd = new Date().setHours(17, 0, 0, 0)
   />
 </template>
 ```
+:::
 
 ## 🎯 最佳实践
 
 ### 1. 根据场景选择模式
 
-```vue {3,6,9}
+```vue
 <!-- ✅ 推荐：根据业务场景选择 -->
 <!-- 工作时间设置：使用 range 模式 -->
 <C_Time mode="range" />
@@ -892,7 +889,7 @@ const defaultEnd = new Date().setHours(17, 0, 0, 0)
 
 ### 2. 合理设置步进值
 
-```vue {4,5}
+```vue
 <template>
   <C_Time 
     :minute-step="businessMinuteStep"
@@ -915,7 +912,7 @@ const businessMinuteStep = computed(() => {
 
 ### 3. 智能默认值
 
-```vue {3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21}
+```vue
 <script setup>
 const intelligentDefaults = computed(() => {
   const now = new Date()
@@ -949,7 +946,7 @@ const intelligentDefaults = computed(() => {
 
 ### 4. 表单验证集成
 
-```vue {5,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27}
+```vue
 <template>
   <n-form :model="formData" :rules="timeRules">
     <n-form-item label="工作时间" path="workTime">

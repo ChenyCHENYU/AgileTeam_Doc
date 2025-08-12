@@ -7,7 +7,7 @@
 5. 创建 Pull Request
 
 
-:::tip 组件位置： `src/components/global/【组件名称】/index.vue`
+:::tip 组件位置： `src/components/global/C_【组件名称】/index.vue`
 :::
 
 
