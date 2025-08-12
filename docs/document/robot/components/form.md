@@ -48,7 +48,7 @@ npm install naive-ui
 
 ### 基础用法
 
-```vue {4,5}
+```vue {3-6}
 <template>
   <!-- 最简单的表单 -->
   <C_Form
@@ -85,7 +85,7 @@ npm install naive-ui
 
 ### 8种布局类型演示
 
-```vue {19,20,21,22}
+```vue {4-13,16-22}
 <template>
   <div class="form-demo">
     <!-- 布局选择器 -->
@@ -238,7 +238,7 @@ npm install naive-ui
 | **uploadClick** | `{}` | 自定义上传触发器 |
 | **uploadTip** | `{}` | 自定义上传提示信息 |
 
-::: details 🔧 类型定义 - 完整的 TypeScript 接口定义
+## 类型定义 
 
 #### 表单选项接口
 
@@ -281,12 +281,11 @@ type ComponentType =
   | 'cascader' | 'colorPicker' | 'switch'
   | 'slider' | 'rate' | 'upload' | 'editor'
 ```
-:::
 
 ## 🎨 使用示例
 
 ::: details 📝 用户注册表单 - 使用验证规则组合
-```vue {10,11,12,13,14,21,22,23,24,25}
+```vue 
 <template>
   <div class="user-registration">
     <n-card title="用户注册" style="max-width: 600px; margin: 0 auto;">
@@ -417,7 +416,7 @@ type ComponentType =
 :::
 
 ::: details 📋 多步骤表单 - 项目申请流程
-```vue {8,9,10,11,12,13}
+```vue 
 <template>
   <div class="multi-step-form">
     <n-card title="项目申请流程">
@@ -527,7 +526,7 @@ type ComponentType =
 :::
 
 ::: details 🎯 动态表单配置器 - 实时配置演示
-```vue {18,19,20,21,22,23,24,25,26}
+```vue 
 <template>
   <div class="form-demo">
     <h3>表单组件场景示例</h3>
@@ -679,7 +678,7 @@ type ComponentType =
 ## 🛠️ 高级用法
 
 ::: details 📋 使用封装的验证工具
-```vue {8,9,10,11,12,13,14,15,16,17,18,19,20,21,22}
+```vue
 <template>
   <C_Form
     :options="advancedOptions"
@@ -764,7 +763,7 @@ type ComponentType =
 :::
 
 ::: details 🔄 条件显示和字段联动
-```vue {5,15,16,17,26,27,28,38,39,40,50,51,52}
+```vue
 <template>
   <C_Form
     :options="conditionalOptions"
@@ -884,7 +883,7 @@ type ComponentType =
 :::
 
 ::: details 📱 响应式布局 - 移动端适配优化
-```vue {5,6}
+```vue 
 <template>
   <C_Form
     :options="responsiveOptions"
@@ -966,7 +965,7 @@ type ComponentType =
 
 ::: code-group
 
-```vue [✅ 推荐] {2,3}
+```vue [✅ 推荐]
 <!-- 使用双向绑定 -->
 <C_Form
   v-model="formData"
@@ -974,7 +973,7 @@ type ComponentType =
 />
 ```
 
-```vue [❌ 不推荐] {2,3}
+```vue [❌ 不推荐]
 <!-- 只监听事件 -->
 <C_Form
   :options="options"
@@ -988,7 +987,7 @@ type ComponentType =
 
 ::: code-group
 
-```vue [✅ 推荐] {6}
+```vue [✅ 推荐] 
 <!-- 使用封装的验证规则 -->
 <script setup>
   import { RULE_COMBOS, PRESET_RULES } from '@/utils/v_verify'
@@ -1001,7 +1000,7 @@ type ComponentType =
 </script>
 ```
 
-```vue [❌ 不推荐] {6}
+```vue [❌ 不推荐]
 <!-- 手写验证规则 -->
 <script setup>
   const options = [
@@ -1018,7 +1017,7 @@ type ComponentType =
 
 ::: code-group
 
-```vue [✅ 推荐] {2}
+```vue [✅ 推荐] 
 <!-- 使用计算属性 -->
 <script setup>
   const computedOptions = computed(() => {
@@ -1030,7 +1029,7 @@ type ComponentType =
 </script>
 ```
 
-```vue [❌ 不推荐] {2}
+```vue [❌ 不推荐] 
 <!-- 在模板中计算 -->
 <template>
   <C_Form :options="baseOptions.filter(shouldShowField)" />
@@ -1044,7 +1043,7 @@ type ComponentType =
 ::: details ❓ Q1: 表单验证不生效？
 **A1:** 检查验证规则配置：
 
-```javascript {4}
+```javascript
 // 确保使用正确的验证规则
 import { RULE_COMBOS, PRESET_RULES } from '@/utils/v_verify'
 
@@ -1057,7 +1056,7 @@ const rules = [{ required: true }] // ❌ 缺少完整验证
 ::: details ❓ Q2: 异步验证不工作？
 **A2:** 确保使用 customAsyncRule：
 
-```javascript {3,4,5,6,7,8,9,10}
+```javascript 
 import { customAsyncRule } from '@/utils/v_verify'
 
 const asyncRule = customAsyncRule(
@@ -1074,7 +1073,7 @@ const asyncRule = customAsyncRule(
 ::: details ❓ Q3: 动态字段不显示？
 **A3:** 检查字段配置：
 
-```javascript {6}
+```javascript 
 // 确保show属性设置正确
 const option = {
   type: 'input',
@@ -1088,7 +1087,7 @@ const option = {
 ::: details ❓ Q4: 布局配置不生效？
 **A4:** 检查布局配置：
 
-```javascript {3,4,5,6,7,8,9}
+```javascript 
 // 确保布局配置正确
 const layoutConfig = {
   type: 'grid',
@@ -1103,7 +1102,7 @@ const layoutConfig = {
 
 ### 1. 验证规则使用
 
-```javascript {4,5,6,7,8}
+```javascript 
 import { RULE_COMBOS, PRESET_RULES, customRule } from '@/utils/v_verify'
 
 // ✅ 推荐：使用预设规则组合
@@ -1124,7 +1123,7 @@ const customValidation = customRule(
 
 ### 2. 错误处理
 
-```javascript {2,3,4,5,6,7,8}
+```javascript 
 const handleValidateError = (errors) => {
   // 处理验证错误
   if (Array.isArray(errors) && errors.length > 0) {
@@ -1139,7 +1138,7 @@ const handleValidateError = (errors) => {
 
 ### 3. 表单结构设计
 
-```javascript {4,5,6,7,8,13,14,15,16,17}
+```javascript 
 // ✅ 推荐：清晰的表单结构
 const formOptions = [
   // 基础信息组
@@ -1163,7 +1162,7 @@ const formOptions = [
 
 ### 4. 类型安全
 
-```typescript {2,3,4,5,6,7,10,11,12,13,14,15}
+```typescript 
 // 定义表单数据类型
 interface UserForm {
   username: string
