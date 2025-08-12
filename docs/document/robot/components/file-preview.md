@@ -19,10 +19,29 @@ outline: 'deep'
 
 ## 📦 安装
 
-```bash
+::: code-group
+
+```bash [bun (推荐)]
 # 安装必要依赖
 bun add pdfjs-dist mammoth xlsx
 ```
+
+```bash [pnpm]
+# 安装必要依赖
+pnpm add pdfjs-dist mammoth xlsx
+```
+
+```bash [yarn]
+# 安装必要依赖
+yarn add pdfjs-dist mammoth xlsx
+```
+
+```bash [npm]
+# 安装必要依赖
+npm install pdfjs-dist mammoth xlsx
+```
+
+:::
 
 组件已全局注册，直接使用即可：
 
@@ -36,7 +55,7 @@ bun add pdfjs-dist mammoth xlsx
 
 ### 基础用法
 
-```vue
+```vue {3-6,9-12,21-27}
 <template>
   <!-- 通过文件对象预览 -->
   <C_FilePreview 
@@ -69,7 +88,7 @@ const handleFileSelect = (event) => {
 
 ### 自动预览模式
 
-```vue
+```vue {3-6}
 <template>
   <!-- 自动预览模式，直接显示预览内容 -->
   <C_FilePreview 
@@ -107,9 +126,8 @@ const handleFileSelect = (event) => {
 
 ## 🎨 使用示例
 
-### 场景 1: 文件上传预览
-
-```vue
+::: details 📤 文件上传预览 - 完整的上传和预览流程
+```vue 
 <template>
   <div class="upload-preview">
     <NUpload
@@ -171,10 +189,10 @@ const customRequest = ({ file, onFinish }) => {
 }
 </script>
 ```
+:::
 
-### 场景 2: 文档管理系统
-
-```vue
+::: details 📋 文档管理系统 - 企业级文档管理应用
+```vue 
 <template>
   <div class="document-manager">
     <NDataTable
@@ -244,10 +262,10 @@ const columns = [
 ]
 </script>
 ```
+:::
 
-### 场景 3: 合同审批流程
-
-```vue
+::: details 📄 合同审批流程 - 专业的合同预览和审批
+```vue 
 <template>
   <div class="contract-approval">
     <NCard title="合同审批">
@@ -340,10 +358,10 @@ const downloadContract = () => {
 }
 </script>
 ```
+:::
 
-### 场景 4: 报表中心
-
-```vue
+::: details 📊 报表中心 - 多类型报表预览切换
+```vue 
 <template>
   <div class="report-center">
     <NTabs type="card">
@@ -374,11 +392,11 @@ const downloadContract = () => {
   </div>
 </template>
 ```
+:::
 
 ## 🎨 样式定制
 
-### 自定义预览窗口样式
-
+::: details 🎨 自定义预览窗口样式 - 主题样式配置
 ```scss
 // index.scss
 .c-file-preview-wrapper {
@@ -455,9 +473,9 @@ const downloadContract = () => {
   }
 }
 ```
+:::
 
-### Excel 表格样式
-
+::: details 📊 Excel 表格样式 - 专业的表格显示效果
 ```scss
 .excel-table {
   width: 100%;
@@ -496,6 +514,7 @@ const downloadContract = () => {
   }
 }
 ```
+:::
 
 ## ⚙️ 高级配置
 
@@ -528,10 +547,9 @@ const checkFileSize = (file, type) => {
 }
 ```
 
-## 🐛 常见问题
+## 🐛 故障排除
 
-### Q1: PDF 文件无法预览？
-
+::: details ❓ Q1: PDF 文件无法预览？
 **A1:** 检查以下几点：
 
 ```javascript
@@ -549,9 +567,9 @@ const checkPdfUrl = async (url) => {
 // 需要服务器设置 CORS 头
 // Access-Control-Allow-Origin: *
 ```
+:::
 
-### Q2: Word 文档格式丢失？
-
+::: details ❓ Q2: Word 文档格式丢失？
 **A2:** mammoth.js 只支持部分格式：
 
 ```javascript
@@ -572,9 +590,9 @@ const UNSUPPORTED_FORMATS = [
   '复杂图表',
 ]
 ```
+:::
 
-### Q3: Excel 表格过大加载慢？
-
+::: details ❓ Q3: Excel 表格过大加载慢？
 **A3:** 使用分页加载：
 
 ```vue
@@ -587,9 +605,9 @@ const currentPage = ref(1)
 const PAGE_SIZE_OPTIONS = [20, 50, 100, 200]
 </script>
 ```
+:::
 
-### Q4: 文件下载失败？
-
+::: details ❓ Q4: 文件下载失败？
 **A4:** 检查下载实现：
 
 ```javascript
@@ -612,6 +630,7 @@ const downloadRemoteFile = (url, fileName) => {
   a.click()
 }
 ```
+:::
 
 ## 🎯 最佳实践
 
@@ -693,20 +712,6 @@ const handleFileError = (error, fileType) => {
 - ✨ 文件下载功能
 - ✨ 缩放控制功能
 
-## 🤝 贡献指南
+<!--@include: ./snippets/contribute.md -->
 
-组件位置：`src/components/global/C_FilePreview/index.vue`
-
-如需扩展功能，请考虑：
-1. 添加更多文件格式支持
-2. 优化大文件加载性能
-3. 增强预览交互功能
-4. 更新文档说明
-
-## 📄 许可证
-
-Copyright (c) 2025 by ChenYu, All Rights Reserved 😎
-
----
-
-**💡 提示**: 文件预览组件提供了专业的文档在线预览功能，支持 PDF、Word、Excel 等常见办公文档格式。通过内置的缩放、翻页、全屏等功能，提供接近原生应用的预览体验。组件自动识别文件类型并选择合适的渲染方式，让文档预览变得简单高效。
+**💡 提示**: 文件预览组件提供了专业的文档在线预览功能，支持 PDF、Word、Excel 等常见办公文档格式。通过内置的缩放、翻页、全屏等功能，提供接近原生应用的预览体验。组件自动识别文件类型并选择合适的渲染方式，让文档预览变得简单高效。如果遇到问题请先查看文档，或者在团队群里讨论。让我们一起打造更专业的文档预览体验！ 📄
