@@ -46,7 +46,7 @@ npm install naive-ui
 
 ### 基础使用
 
-```vue {5,14}
+```vue {3-7,13,15-30,32-34}
 <template>
   <!-- 最简单的使用方式 -->
   <C_Cascade
@@ -57,7 +57,7 @@ npm install naive-ui
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref } from 'vue'   // robot admin 已自动导入，可以省略，演示只为更清晰
 
 const selectedValue = ref({})
 
@@ -157,7 +157,7 @@ interface CascadeValue {
 ## 🎨 使用示例
 
 ::: details 🌍 地区选择器 - 省市区三级联动
-```vue {6,7,8,9,23}
+```vue 
 <template>
   <div class="region-selector">
     <h3>请选择地区</h3>
@@ -356,7 +356,7 @@ const loadProductsByCategory = (categoryId) => {
 ## 🛠️ 高级用法
 
 ::: details 🔄 动态数据加载 - 异步获取级联数据
-```vue {5,6,7,19}
+```vue 
 <template>
   <C_Cascade
     :data="dynamicData"
@@ -401,7 +401,7 @@ const handleDynamicChange = async (value) => {
 :::
 
 ::: details 📋 表单集成 - 与 Naive UI 表单组件结合
-```vue {5,6,7,8,17,18,19,20,21,22,23}
+```vue
 <template>
   <n-form :model="formData" :rules="rules" ref="formRef">
     <n-form-item label="所属地区" path="region">
@@ -453,7 +453,7 @@ const handleReset = () => {
 :::
 
 ::: details 🎨 自定义样式 - 响应式设计和主题定制
-```vue {5}
+```vue 
 <template>
   <C_Cascade
     :data="cascadeData"
@@ -498,7 +498,7 @@ const handleReset = () => {
 
 ::: code-group
 
-```javascript [✅ 推荐] {4,5}
+```javascript [✅ 推荐] 
 // 规范的数据结构
 const correctData = [
   {
@@ -514,7 +514,7 @@ const correctData = [
 ]
 ```
 
-```javascript [❌ 不推荐] {4,5}
+```javascript [❌ 不推荐] 
 // 缺少必要字段
 const incorrectData = [
   {
@@ -546,7 +546,7 @@ const incorrectData = [
 
 ::: code-group
 
-```vue [✅ 推荐] {5}
+```vue [✅ 推荐] 
 <!-- 完整的验证逻辑 -->
 <C_Cascade
   :data="cascadeData"
@@ -574,7 +574,7 @@ const incorrectData = [
 2. 检查 children 字段是否存在
 3. 确认 value 值唯一性
 
-```vue {3}
+```vue 
 <!-- 检查数据结构 -->
 <template>
   <div>
@@ -590,14 +590,14 @@ const incorrectData = [
 
 ::: code-group
 
-```vue [✅ 正确] {3}
+```vue [✅ 正确] 
 <script setup>
 // 正确的初始值
 const selectedValue = ref({})
 </script>
 ```
 
-```vue [❌ 错误] {3}
+```vue [❌ 错误]
 <script setup>
 // 错误的初始值
 const selectedValue = ref(null) // 应该是对象
@@ -610,7 +610,7 @@ const selectedValue = ref(null) // 应该是对象
 
 **A3:** 确保正确导入 Naive UI 样式：
 
-```javascript {3}
+```javascript
 // main.js
 import { createApp } from 'vue'
 import naive from 'naive-ui'
@@ -625,7 +625,7 @@ app.use(naive)
 
 **A4:** 添加错误处理：
 
-```vue {6}
+```vue 
 <script setup>
 const loadData = async () => {
   try {
@@ -644,7 +644,7 @@ const loadData = async () => {
 
 ### 1. 数据预处理
 
-```javascript {2}
+```javascript
 // ✅ 推荐：统一数据格式
 const preprocessData = (rawData) => {
   return rawData.map((item) => ({
@@ -657,7 +657,7 @@ const preprocessData = (rawData) => {
 
 ### 2. 异步加载优化
 
-```vue {3}
+```vue 
 <script setup>
 // ✅ 推荐：缓存机制
 const dataCache = new Map()
@@ -676,7 +676,7 @@ const loadLevelData = async (parentValue) => {
 
 ### 3. 用户体验优化
 
-```vue {3}
+```vue 
 <template>
   <!-- 加载状态 -->
   <n-spin :show="loading">
@@ -693,7 +693,7 @@ const loadLevelData = async (parentValue) => {
 
 ### 4. 响应式设计
 
-```scss {5,6,7,8,9,10,11,12,13,14,15,16}
+```scss 
 .cascade-container {
   .n-cascade-selector {
     display: flex;
