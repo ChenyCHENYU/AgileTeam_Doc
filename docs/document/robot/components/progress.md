@@ -47,7 +47,7 @@ npm install naive-ui
 
 ### 基础使用
 
-```vue {5,8}
+```vue {3,6,9}
 <template>
   <!-- 最简单的使用方式 -->
   <C_Progress :percentage="75" />
@@ -58,15 +58,11 @@ npm install naive-ui
   <!-- 圆形进度条 -->
   <C_Progress type="circle" :percentage="80" :stroke-width="10" />
 </template>
-
-<script setup>
-import { ref } from 'vue'
-</script>
 ```
 
 ### 四种进度条类型
 
-```vue {3,6,9,15}
+```vue {3,6,9-13,16}
 <template>
   <!-- 1. 线性进度条 (默认) -->
   <C_Progress type="line" :percentage="75" :height="10" />
@@ -142,7 +138,7 @@ interface Props {
 ## 🎨 使用示例
 
 ::: details 📁 文件上传进度 - 实时进度展示
-```vue {6,7,8,9,10}
+```vue {4-10,19-27,30}
 <template>
   <div class="upload-progress">
     <h3>文件上传</h3>
@@ -179,7 +175,7 @@ onMounted(() => {
 :::
 
 ::: details 🎯 技能评估圆环 - 多技能水平展示
-```vue {10,11,12,13,14,15,16,24}
+```vue {6-13}
 <template>
   <div class="skills-assessment">
     <h3>技能评估</h3>
@@ -227,7 +223,7 @@ const skills = ref([
 :::
 
 ::: details 🔄 多维度数据展示 - 项目进度总览
-```vue {7,8,9,10,11,12,13,17,20}
+```vue {4-11}
 <template>
   <div class="multi-dimension">
     <h3>项目进度总览</h3>
@@ -292,7 +288,7 @@ const progressLabels = ['前端开发', '后端开发', '测试进度']
 :::
 
 ::: details 📊 仪表盘监控 - 系统性能监控
-```vue {12,13,14,15,16,17,18,19,29,30,31,32,33}
+```vue {10-17}
 <template>
   <div class="dashboard-monitor">
     <h3>系统监控</h3>
@@ -377,7 +373,7 @@ const getStatus = (value) => {
 ## 🛠️ 高级用法
 
 ::: details 🌈 渐变色配置 - 自定义渐变效果
-```vue {6,7,8,9}
+```vue 
 <template>
   <div class="gradient-progress">
     <C_Progress
@@ -405,7 +401,7 @@ const multiGradientConfig = [
 :::
 
 ::: details 🔄 动态进度更新 - 实时进度控制
-```vue {5,6,7,8,15}
+```vue 
 <template>
   <div class="dynamic-progress">
     <C_Progress
@@ -447,7 +443,7 @@ const resetProgress = () => {
 :::
 
 ::: details 🎨 自定义指示器 - 个性化进度展示
-```vue {8,9,10,11,12,13,14,15,16,17,18,26}
+```vue 
 <template>
   <div class="custom-indicator-demo">
     <C_Progress
@@ -507,8 +503,9 @@ const getGrade = (value) => {
 
 ## 🔧 自定义样式
 
-### CSS 变量
 
+
+::: details 🎨 CSS 变量定制 - 主题色彩配置
 ```scss
 .c-progress {
   --progress-primary-color: #1890ff;
@@ -519,10 +516,12 @@ const getGrade = (value) => {
   --progress-text-color: #666;
 }
 ```
+:::
 
-### 响应式设计
 
-```vue {4,5}
+::: details 📱 响应式布局 - 移动端适配
+
+```vue 
 <template>
   <C_Progress
     :percentage="75"
@@ -541,6 +540,9 @@ const strokeWidth = computed(() => {
 })
 </script>
 ```
+:::
+
+
 
 ## ⚠️ 注意事项
 
@@ -580,7 +582,7 @@ const strokeWidth = computed(() => {
 
 ::: code-group
 
-```vue [✅ 推荐] {4}
+```vue [✅ 推荐] 
 <!-- 一致的颜色数量 -->
 <C_Progress
   type="multiple-circle"
@@ -589,7 +591,7 @@ const strokeWidth = computed(() => {
 />
 ```
 
-```vue [❌ 不推荐] {4}
+```vue [❌ 不推荐]
 <!-- 颜色数量不匹配 -->
 <C_Progress
   type="multiple-circle"
@@ -604,15 +606,16 @@ const strokeWidth = computed(() => {
 
 ### 常见问题
 
-#### Q1: 动画不播放怎么办？
 
+
+::: details ❓ Q1: 动画不播放怎么办？
 **A1:** 检查以下几点：
 
 1. 确认设置了 `isAnimation: true`
 2. 检查 `percentage` 初始值是否为 0
 3. 确认组件已正确挂载
 
-```vue {2}
+```vue 
 <!-- 正确的动画配置 -->
 <C_Progress :percentage="targetValue" :is-animation="true" :time="2000" />
 
@@ -627,14 +630,16 @@ onMounted(() => {
 })
 </script>
 ```
+:::
 
-#### Q2: 多圆环显示不正确？
+
+::: details ❓  Q2: 多圆环显示不正确？
 
 **A2:** 检查数据格式：
 
 ::: code-group
 
-```vue [✅ 正确] {4}
+```vue [✅ 正确]
 <!-- 正确的多圆环配置 -->
 <C_Progress
   type="multiple-circle"
@@ -643,18 +648,18 @@ onMounted(() => {
 />
 ```
 
-```vue [❌ 错误] {2}
+```vue [❌ 错误] 
 <!-- 错误：单个数值 -->
 <C_Progress type="multiple-circle" :percentage="75" />
 ```
-
 :::
 
-#### Q3: 自定义指示器不显示？
+
+::: details ❓   Q3: 自定义指示器不显示？
 
 **A3:** 确保设置了正确的插槽：
 
-```vue {1}
+```vue
 <C_Progress :show-indicator="true">
   <template #indicator>
     <!-- 自定义内容 -->
@@ -662,11 +667,20 @@ onMounted(() => {
 </C_Progress>
 ```
 
+:::
+
+
+
+
+
+
+
+
 ## 🎯 最佳实践
 
 ### 1. 合理选择类型
 
-```vue {3,6,9,12}
+```vue {
 <!-- ✅ 推荐：根据场景选择类型 -->
 <!-- 文件上传：线性进度条 -->
 <C_Progress type="line" :percentage="uploadProgress" />
@@ -683,7 +697,7 @@ onMounted(() => {
 
 ### 2. 动画优化
 
-```vue {4,5}
+```vue 
 <template>
   <C_Progress
     :percentage="progress"
@@ -706,7 +720,7 @@ const animationDuration = computed(() => {
 
 ### 3. 无障碍支持
 
-```vue {3,4,5,6,7}
+```vue
 <template>
   <div
     role="progressbar"
