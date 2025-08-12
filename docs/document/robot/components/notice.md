@@ -124,6 +124,7 @@ interface ActionItem {
 
 ### 场景 1: 标准管理后台
 
+::: details 🔗 查看标准管理后台代码
 ```vue
 <template>
   <NLayoutHeader bordered>
@@ -174,9 +175,11 @@ const handleActionClick = (action, index) => {
 }
 </script>
 ```
+:::
 
 ### 场景 2: 实时消息推送
 
+::: details 📡 查看实时消息推送代码
 ```vue
 <template>
   <C_Notification 
@@ -243,9 +246,11 @@ const handleMessageClick = (item) => {
 }
 </script>
 ```
+:::
 
 ### 场景 3: 自定义操作按钮
 
+::: details 🔧 查看自定义操作按钮代码
 ```vue
 <template>
   <C_Notification 
@@ -287,9 +292,11 @@ const markAllAsRead = async () => {
 }
 </script>
 ```
+:::
 
 ### 场景 4: 消息过滤和搜索
 
+::: details 🔍 查看消息过滤和搜索代码
 ```vue
 <template>
   <div class="notification-wrapper">
@@ -364,11 +371,13 @@ const filteredData = computed(() => {
 })
 </script>
 ```
+:::
 
 ## 🎨 样式定制
 
 ### 自定义主题样式
 
+::: details 🎨 查看自定义主题样式代码
 ```scss
 // 自定义通知容器样式
 .notification-container {
@@ -473,11 +482,13 @@ const filteredData = computed(() => {
   }
 }
 ```
+:::
 
 ## ⚙️ 高级用法
 
 ### 未读消息徽章
 
+::: details 🎯 查看未读消息徽章代码
 ```vue
 <template>
   <NBadge :value="unreadCount" :max="99">
@@ -496,9 +507,11 @@ const handleRead = (item) => {
 }
 </script>
 ```
+:::
 
 ### 消息声音提醒
 
+::: details 🔊 查看消息声音提醒代码
 ```vue
 <script setup>
 const playSound = () => {
@@ -516,6 +529,7 @@ watch(() => notificationStore.latest, (newMessage) => {
 })
 </script>
 ```
+:::
 
 ## 🐛 常见问题
 
@@ -523,6 +537,7 @@ watch(() => notificationStore.latest, (newMessage) => {
 
 **A1:** 确保数据是响应式的：
 
+::: details 查看解决方案代码
 ```javascript
 // ✅ 正确 - 使用响应式数据
 const notificationData = ref([...])
@@ -530,36 +545,43 @@ const notificationData = ref([...])
 // ❌ 错误 - 普通对象
 const notificationData = [...] 
 ```
+:::
 
 ### Q2: 弹出框位置不正确？
 
 **A2:** 检查触发元素的定位：
 
+::: details 查看解决方案代码
 ```scss
 .notification-container {
   position: relative; // 必需
   display: inline-block;
 }
 ```
+:::
 
 ### Q3: 滚动区域高度异常？
 
 **A3:** 确保滚动容器有正确的最大高度：
 
+::: details 查看解决方案代码
 ```vue
 <NScrollbar max-height="350px"> // 设置最大高度
   <!-- 内容 -->
 </NScrollbar>
 ```
+:::
 
 ### Q4: 图标不显示？
 
 **A4:** 检查图标类名和 CSS：
 
+::: details 查看解决方案代码
 ```vue
 <!-- 确保图标库已正确引入 -->
 <div class="i-mdi:bell-outline"></div>
 ```
+:::
 
 ## 🎯 最佳实践
 
@@ -630,20 +652,6 @@ const loadMore = () => {
 - ✨ 头像和标签支持
 - ✨ 滚动和操作功能
 
-## 🤝 贡献指南
-
-组件位置：`src/components/global/C_Notification/index.vue`
-
-如需扩展功能，请考虑：
-1. 保持弹出框交互的流畅性
-2. 确保消息数据结构的一致性
-3. 维护良好的视觉层次
-4. 更新相关类型定义
-
-## 📄 许可证
-
-Copyright (c) 2025 by ChenYu, All Rights Reserved 😎
-
----
+<!--@include: ./snippets/contribute.md -->
 
 **💡 提示**: 消息通知组件提供了类似移动端的通知中心体验，支持多种消息类型的统一展示。组件内置了完善的类型检查和事件处理，可以轻松集成到各种管理后台中。建议配合状态管理库使用，以便更好地管理消息的读取状态和实时更新。

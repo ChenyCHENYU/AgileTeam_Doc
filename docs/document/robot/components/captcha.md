@@ -118,6 +118,7 @@ const onVerified = ({ token }) => {
 
 ### 场景 1: 登录表单集成
 
+::: details 🔐 查看登录表单集成代码
 ```vue
 <template>
   <NForm ref="formRef" :model="formData">
@@ -195,9 +196,11 @@ const handleLogin = async () => {
 }
 </script>
 ```
+:::
 
 ### 场景 2: 注册表单二次验证
 
+::: details 📝 查看注册表单二次验证代码
 ```vue
 <template>
   <NForm>
@@ -256,9 +259,11 @@ const onVerifySuccess = async ({ token }) => {
 }
 </script>
 ```
+:::
 
 ### 场景 3: 重要操作保护
 
+::: details ⚠️ 查看重要操作保护代码
 ```vue
 <template>
   <div class="danger-zone">
@@ -338,9 +343,11 @@ const executeDangerAction = async ({ token }) => {
 }
 </script>
 ```
+:::
 
 ### 场景 4: 防刷保护
 
+::: details 🛡️ 查看防刷保护代码
 ```vue
 <template>
   <div class="api-tester">
@@ -410,11 +417,13 @@ const handleRateLimitVerify = () => {
 }
 </script>
 ```
+:::
 
 ## 🎨 样式定制
 
 ### 自定义触发按钮样式
 
+::: details 🎨 查看自定义触发按钮样式代码
 ```scss
 // index.scss
 .c-captcha-modern {
@@ -490,9 +499,11 @@ const handleRateLimitVerify = () => {
   }
 }
 ```
+:::
 
 ### 自定义验证弹窗
 
+::: details 🔧 查看自定义验证弹窗代码
 ```css
 /* 覆盖 vue3-puzzle-vcode 样式 */
 :deep(.vue-puzzle-vcode) {
@@ -513,6 +524,7 @@ const handleRateLimitVerify = () => {
   }
 }
 ```
+:::
 
 ## 🐛 常见问题
 
@@ -520,6 +532,7 @@ const handleRateLimitVerify = () => {
 
 **A1:** 检查图片路径和格式：
 
+::: details 查看解决方案代码
 ```javascript
 // ✅ 正确：使用绝对路径或 public 目录
 const images = [
@@ -533,11 +546,13 @@ const images = [
   '../assets/2.jpg',
 ]
 ```
+:::
 
 ### Q2: Token 如何使用？
 
 **A2:** Token 用于后端验证：
 
+::: details 查看解决方案代码
 ```javascript
 // 前端发送
 const { token } = captchaRef.value.getVerificationData()
@@ -548,11 +563,13 @@ if (!verifyPuzzleToken(token)) {
   throw new Error('验证失败')
 }
 ```
+:::
 
 ### Q3: 如何自定义验证逻辑？
 
 **A3:** 可以在成功回调中添加额外验证：
 
+::: details 查看解决方案代码
 ```javascript
 const handleSuccess = async ({ token }) => {
   // 二次验证
@@ -567,6 +584,7 @@ const handleSuccess = async ({ token }) => {
   // 继续后续操作
 }
 ```
+:::
 
 ## 🎯 最佳实践
 
@@ -642,20 +660,6 @@ const preloadImages = (images) => {
 - ✨ 完整的状态管理
 - ✨ 主题适配支持
 
-## 🤝 贡献指南
-
-组件位置：`src/components/global/C_Captcha/index.vue`
-
-如需扩展功能，请考虑：
-1. 保持验证流程的简单性
-2. 确保无障碍支持
-3. 维护 Token 安全性
-4. 更新文档说明
-
-## 📄 许可证
-
-Copyright (c) 2025 by ChenYu, All Rights Reserved 😎
-
----
+<!--@include: ./snippets/contribute.md -->
 
 **💡 提示**: 拼图验证码组件提供了友好的人机验证体验，通过滑动拼图完成验证。组件封装了完整的验证流程，包括成功、失败、重置等状态管理，并生成唯一 token 供后端验证。适用于登录、注册、敏感操作等需要人机验证的场景。

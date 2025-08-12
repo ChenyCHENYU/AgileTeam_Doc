@@ -89,6 +89,7 @@ const customSteps = [
 
 ### 场景 1: 首次登录引导
 
+::: details 🎯 查看首次登录引导代码
 ```vue
 <template>
   <div class="app-container">
@@ -117,9 +118,11 @@ onMounted(() => {
 });
 </script>
 ```
+:::
 
 ### 场景 2: 功能更新引导
 
+::: details 🆕 查看功能更新引导代码
 ```vue
 <template>
   <div class="update-notification">
@@ -170,9 +173,11 @@ const showNewFeatures = () => {
 };
 </script>
 ```
+:::
 
 ### 场景 3: 分模块引导
 
+::: details 📋 查看分模块引导代码
 ```vue
 <template>
   <div class="module-guide">
@@ -272,11 +277,13 @@ const startSettingsGuide = () => {
 };
 </script>
 ```
+:::
 
 ## 🎨 样式定制
 
 ### 自定义主题样式
 
+::: details 🎨 查看自定义主题样式代码
 ```css
 /* 自定义 Driver.js 主题 */
 .driverjs-theme {
@@ -322,9 +329,11 @@ const startSettingsGuide = () => {
   font-size: 12px;
 }
 ```
+:::
 
 ### 暗色主题适配
 
+::: details 🌙 查看暗色主题适配代码
 ```css
 /* 暗色模式下的引导样式 */
 .dark .driverjs-theme {
@@ -349,11 +358,13 @@ const startSettingsGuide = () => {
   color: #b1b1b1;
 }
 ```
+:::
 
 ## ⚙️ 高级用法
 
 ### 程序化控制
 
+::: details 🔧 查看程序化控制代码
 ```vue
 <template>
   <C_Guide ref="guideRef" />
@@ -389,9 +400,11 @@ const startWithOptions = () => {
 };
 </script>
 ```
+:::
 
 ### 动态步骤生成
 
+::: details 🔄 查看动态步骤生成代码
 ```vue
 <script setup>
 // 根据用户角色生成不同的引导步骤
@@ -434,6 +447,7 @@ const userRole = ref("admin");
 const dynamicSteps = computed(() => generateStepsByRole(userRole.value));
 </script>
 ```
+:::
 
 ## 🐛 常见问题
 
@@ -441,6 +455,7 @@ const dynamicSteps = computed(() => generateStepsByRole(userRole.value));
 
 **A1:** 确保目标元素已完全渲染：
 
+::: details 查看解决方案代码
 ```javascript
 // ✅ 正确：等待 DOM 更新
 nextTick(() => {
@@ -452,11 +467,13 @@ setTimeout(() => {
   guideRef.value?.startGuide();
 }, 500);
 ```
+:::
 
 ### Q2: 引导步骤中的元素不存在？
 
 **A2:** Driver.js 会自动跳过不存在的元素，但建议添加条件判断：
 
+::: details 查看解决方案代码
 ```javascript
 const steps = [
   // 只添加存在的元素
@@ -470,11 +487,13 @@ const steps = [
     : []),
 ];
 ```
+:::
 
 ### Q3: 引导遮罩层级问题？
 
 **A3:** 调整 z-index：
 
+::: details 查看解决方案代码
 ```css
 .driver-overlay {
   z-index: 10000 !important;
@@ -484,6 +503,7 @@ const steps = [
   z-index: 10001 !important;
 }
 ```
+:::
 
 ## 🎯 最佳实践
 
@@ -557,21 +577,6 @@ const lazyLoadGuide = async () => {
 - ✨ 包含默认系统引导
 - ✨ 支持程序化控制
 
-## 🤝 贡献指南
-
-组件位置：`src/components/global/C_Guide/index.vue`
-
-如需扩展功能，请考虑：
-
-1. 保持引导步骤的简洁性
-2. 确保元素 ID 的唯一性
-3. 添加合理的默认配置
-4. 更新文档说明
-
-## 📄 许可证
-
-Copyright (c) 2025 by ChenYu, All Rights Reserved
-
----
+<!--@include: ./snippets/contribute.md -->
 
 **💡 提示**: 功能引导组件基于 Driver.js 构建，提供了优雅的新手引导体验。通过高亮目标元素和显示说明文字，帮助用户快速了解系统功能。组件默认包含了常用的系统导航引导，也支持自定义步骤以适应不同场景需求。
