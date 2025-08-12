@@ -49,7 +49,7 @@ npm install @iconify/vue
 
 ### 基础使用
 
-```vue {5}
+```vue {3,6}
 <template>
   <!-- 最简单的使用方式 -->
   <C_Icon name="mdi:home" />
@@ -61,7 +61,7 @@ npm install @iconify/vue
 
 ### 五种图标类型
 
-```vue {3,6,9,13,18}
+```vue {3-4,7,10,14-15,19}
 <template>
   <!-- 1. Iconify 图标 (默认推荐) -->
   <C_Icon name="mdi:account" />
@@ -127,7 +127,7 @@ npm install @iconify/vue
 ## 🎨 使用示例
 
 ::: details 💡 导航菜单 - 可点击的导航图标
-```vue {6,7,8,9,10}
+```vue 
 <template>
   <nav class="nav-menu">
     <C_Icon
@@ -156,7 +156,7 @@ const handleNavClick = (route) => {
 :::
 
 ::: details ⏳ 加载状态 - 动态加载效果
-```vue {6,7,8,9,10}
+```vue
 <template>
   <div class="loading-demo">
     <C_Icon
@@ -182,7 +182,7 @@ setTimeout(() => {
 :::
 
 ::: details ⚠️ 错误处理 - 智能回退机制
-```vue {6,7}
+```vue 
 <template>
   <div class="error-demo">
     <C_Icon
@@ -203,7 +203,7 @@ const handleIconError = (type, error) => {
 :::
 
 ::: details 🎨 自定义组件图标 - 传入 Vue 组件
-```vue {6,7,8,9,10}
+```vue 
 <template>
   <div class="custom-icon-demo">
     <C_Icon
@@ -225,7 +225,7 @@ import MyCustomIcon from './MyCustomIcon.vue'
 ## 🛠️ 高级用法
 
 ::: details 🔄 动态图标切换 - 点击切换图标和颜色
-```vue {6,7,17}
+```vue 
 <template>
   <div class="dynamic-icon">
     <C_Icon
@@ -254,7 +254,7 @@ const toggleIcon = () => {
 :::
 
 ::: details 🎬 图标动画效果 - 旋转动画实现
-```vue {6,7,16}
+```vue
 <template>
   <div class="animated-icon">
     <C_Icon
@@ -300,7 +300,7 @@ const startRotation = () => {
 
 ### 自定义类
 
-```vue {2}
+```vue {2,6-13}
 <template>
   <C_Icon name="mdi:star" custom-class="my-star-icon" />
 </template>
@@ -323,13 +323,13 @@ const startRotation = () => {
 
 ::: code-group
 
-```vue [✅ 推荐] {2,3}
+```vue [✅ 推荐] 
 <!-- 使用标准前缀 -->
 <C_Icon name="mdi:home" />
 <C_Icon name="heroicons:user-solid" />
 ```
 
-```vue [❌ 不推荐] {2}
+```vue [❌ 不推荐]
 <!-- 缺少前缀 -->
 <C_Icon name="home" />
 ```
@@ -340,12 +340,12 @@ const startRotation = () => {
 
 ::: code-group
 
-```vue [✅ 推荐] {2}
+```vue [✅ 推荐] 
 <!-- 合理使用size -->
 <C_Icon name="mdi:home" :size="16" />
 ```
 
-```vue [❌ 不推荐] {2}
+```vue [❌ 不推荐] 
 <!-- 过大的图标 -->
 <C_Icon name="mdi:home" :size="200" />
 ```
@@ -356,7 +356,7 @@ const startRotation = () => {
 
 ::: code-group
 
-```vue [✅ 推荐] {5,6}
+```vue [✅ 推荐]
 <!-- 提供有意义的标签 -->
 <C_Icon 
   name="mdi:close" 
@@ -366,7 +366,7 @@ const startRotation = () => {
 />
 ```
 
-```vue [❌ 不推荐] {2}
+```vue [❌ 不推荐] 
 <!-- 缺少无障碍支持 -->
 <C_Icon name="mdi:close" clickable />
 ```
@@ -443,7 +443,7 @@ const handleError = (type, error) => {
 
 ### 2. 响应式设计
 
-```vue {2}
+```vue {2,6-8}
 <template>
   <C_Icon name="mdi:menu" :size="iconSize" />
 </template>
@@ -457,7 +457,7 @@ const iconSize = computed(() => {
 
 ### 3. 主题适配
 
-```vue {2}
+```vue {2,6-8}
 <template>
   <C_Icon name="mdi:sun" :color="themeColor" />
 </template>
@@ -479,6 +479,8 @@ const themeColor = computed(() => {
 - ✨ TypeScript 支持
 - ✨ 性能优化
 
+
 <!--@include: ./snippets/contribute.md -->
+
 
 **💡 提示**: 这个组件设计用于团队协作，如果遇到问题请先查看文档，或者在团队群里讨论。让我们一起打造更好的开发体验！ 🚀
