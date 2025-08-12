@@ -31,7 +31,7 @@ outline: 'deep'
 
 ### 基础用法
 
-```vue
+```vue {2-6}
 <template>
   <C_VTableGantt 
     :data="basicData"
@@ -74,7 +74,7 @@ const handleTaskClick = (task, event) => {
 
 ### 项目管理模式
 
-```vue
+```vue {2-6}
 <template>
   <C_VTableGantt 
     :data="projectData"
@@ -201,9 +201,8 @@ interface GanttOptions {
 
 ## 🎨 使用示例
 
-### 场景 1: 项目进度管理
-
-```vue
+::: details 📊 项目进度管理 - 完整的项目跟踪系统
+```vue 
 <template>
   <NCard title="项目进度跟踪">
     <C_VTableGantt 
@@ -419,10 +418,10 @@ const exportReport = () => {
 }
 </script>
 ```
+:::
 
-### 场景 2: 产品发布时间线
-
-```vue
+::: details 📅 产品发布时间线 - 产品开发生命周期展示
+```vue 
 <template>
   <C_VTableGantt 
     :data="timelineData"
@@ -492,10 +491,10 @@ const timelineOptions = {
 }
 </script>
 ```
+:::
 
-### 场景 3: 里程碑管理
-
-```vue
+::: details 🎯 里程碑管理 - 项目关键节点跟踪
+```vue 
 <template>
   <div class="milestone-management">
     <C_VTableGantt 
@@ -605,10 +604,10 @@ const getStatusType = (status) => {
 }
 </script>
 ```
+:::
 
-### 场景 4: 资源排期管理
-
-```vue
+::: details 👥 资源排期管理 - 团队资源分配优化
+```vue 
 <template>
   <div class="resource-scheduling">
     <div class="scheduling-header">
@@ -758,10 +757,10 @@ const checkResourceConflict = (task, changes) => {
 }
 </script>
 ```
+:::
 
-### 场景 5: 自定义配置示例
-
-```vue
+::: details ⚙️ 自定义配置示例 - 高度定制化甘特图
+```vue 
 <template>
   <C_VTableGantt 
     :data="customData"
@@ -923,11 +922,11 @@ const customOptions = {
 }
 </script>
 ```
+:::
 
 ## 🎨 样式定制
 
-### 自定义甘特图样式
-
+::: details 🎨 自定义甘特图样式 - 主题和布局配置
 ```scss
 // 甘特图容器样式
 .c-vtable-gantt-wrapper {
@@ -1012,9 +1011,9 @@ const customOptions = {
   }
 }
 ```
+:::
 
-### 自定义任务条样式
-
+::: details 🎯 自定义任务条样式 - 个性化视觉效果
 ```scss
 // 自定义任务条主题类
 .gantt-theme-custom {
@@ -1075,11 +1074,11 @@ const customOptions = {
   }
 }
 ```
+:::
 
 ## ⚙️ 高级用法
 
-### 数据格式转换
-
+::: details 🔄 数据格式转换 - 后端数据适配
 ```vue
 <script setup>
 // 从后端 API 获取数据并转换格式
@@ -1117,9 +1116,9 @@ const formatDate = (dateString) => {
 }
 </script>
 ```
+:::
 
-### 实时数据更新
-
+::: details 📡 实时数据更新 - WebSocket 数据同步
 ```vue
 <script setup>
 import { useWebSocket } from '@vueuse/core'
@@ -1179,9 +1178,9 @@ const batchUpdateTasks = (updates) => {
 }
 </script>
 ```
+:::
 
-### 数据导出功能
-
+::: details 📊 数据导出功能 - Excel 和 PDF 导出
 ```vue
 <script setup>
 // 导出甘特图数据为 Excel
@@ -1256,9 +1255,9 @@ const exportToPDF = async () => {
 }
 </script>
 ```
+:::
 
-### 任务依赖关系
-
+::: details 🔗 任务依赖关系 - 智能依赖管理
 ```vue
 <script setup>
 // 添加任务依赖关系
@@ -1335,9 +1334,9 @@ const autoAdjustTaskDates = (tasks, dependencies) => {
 }
 </script>
 ```
+:::
 
-### 甘特图打印功能
-
+::: details 🖨️ 甘特图打印功能 - 打印和预览
 ```vue
 <script setup>
 // 打印甘特图
@@ -1409,11 +1408,11 @@ const printPreview = () => {
 }
 </script>
 ```
+:::
 
-## 🐛 常见问题
+## 🐛 故障排除
 
-### Q1: 甘特图不显示或初始化失败？
-
+::: details ❓ Q1: 甘特图不显示或初始化失败？
 **A1:** 检查数据格式和容器元素：
 
 ```javascript
@@ -1431,9 +1430,9 @@ const ganttData = [
 // 确保容器有明确的高度
 const containerHeight = '600px' // 或使用数字 600
 ```
+:::
 
-### Q2: 任务拖拽不生效？
-
+::: details ❓ Q2: 任务拖拽不生效？
 **A2:** 检查配置和事件绑定：
 
 ```javascript
@@ -1449,9 +1448,9 @@ const options = {
   @task-change="handleTaskChange"  // 监听变更
 />
 ```
+:::
 
-### Q3: 全屏功能异常？
-
+::: details ❓ Q3: 全屏功能异常？
 **A3:** 检查浏览器兼容性和权限：
 
 ```javascript
@@ -1473,9 +1472,9 @@ const toggleFullscreen = async () => {
   }
 }
 ```
+:::
 
-### Q4: 时间轴显示异常？
-
+::: details ❓ Q4: 时间轴显示异常？
 **A4:** 检查时间格式和区域设置：
 
 ```javascript
@@ -1500,6 +1499,7 @@ const timelineOptions = {
   }
 }
 ```
+:::
 
 ## 🎯 最佳实践
 
@@ -1640,21 +1640,6 @@ const handleKeyboardNavigation = (event) => {
 - 🔄 更多导出格式支持
 - 🔄 实时协作功能
 
-## 🤝 贡献指南
+<!--@include: ./snippets/contribute.md -->
 
-组件位置：`src/components/global/C_VTableGantt/index.vue`
-
-如需扩展功能，请考虑：
-1. 保持预设配置的一致性和实用性
-2. 确保性能优化和错误处理
-3. 维护良好的数据格式兼容性
-4. 更新相关类型定义和文档
-5. 添加单元测试覆盖新功能
-
-## 📄 许可证
-
-Copyright (c) 2025 by ChenYu, All Rights Reserved 😎
-
----
-
-**💡 提示**: 甘特图组件基于 VTable-Gantt 构建，提供了高性能的任务调度和项目管理功能。组件内置了多种实用的预设模式，可以快速适配不同的业务场景。建议根据项目规模和复杂度选择合适的预设模式，并通过自定义配置满足特殊需求。对于大数据量场景，可以启用虚拟滚动和分页加载来优化性能。
+**💡 提示**: 甘特图组件基于 VTable-Gantt 构建，提供了高性能的任务调度和项目管理功能。组件内置了多种实用的预设模式，可以快速适配不同的业务场景。建议根据项目规模和复杂度选择合适的预设模式，并通过自定义配置满足特殊需求。对于大数据量场景，可以启用虚拟滚动和分页加载来优化性能。如果遇到问题请先查看文档，或者在团队群里讨论。让我们一起打造更高效的项目管理体验！ 📊
