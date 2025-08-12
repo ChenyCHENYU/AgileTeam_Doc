@@ -134,6 +134,7 @@ onMounted(async () => {
 
 ### 场景 2: 自定义布局内容
 
+::: details 🎛️ 自定义内容区示例
 ```vue
 <template>
   <C_Layout>
@@ -152,9 +153,11 @@ onMounted(async () => {
   </C_Layout>
 </template>
 ```
+:::
 
 ### 场景 3: 控制侧边栏状态
 
+::: details 🔧 侧边栏控制示例
 ```vue
 <template>
   <div class="workspace">
@@ -176,9 +179,11 @@ watch(isCollapsed, (collapsed) => {
 });
 </script>
 ```
+:::
 
 ### 场景 4: 主题切换集成
 
+::: details 🎨 主题切换示例
 ```vue
 <script setup>
 import { useThemeStore } from "@/stores/theme";
@@ -201,11 +206,13 @@ const followSystem = () => {
 };
 </script>
 ```
+:::
 
 ## 🎨 样式定制
 
 ### 自定义布局样式
 
+::: details 🎨 查看样式定制代码
 ```scss
 // index.scss
 .layout-container {
@@ -258,9 +265,11 @@ const followSystem = () => {
   overflow-y: auto;
 }
 ```
+:::
 
 ### 响应式适配
 
+::: details 📱 查看响应式适配代码
 ```scss
 // 移动端适配
 @media (max-width: 768px) {
@@ -286,11 +295,13 @@ const followSystem = () => {
   }
 }
 ```
+:::
 
 ## ⚙️ 高级用法
 
 ### 动态菜单权限
 
+::: details 🔐 查看权限管理代码
 ```javascript
 // stores/permission.js
 export const s_permissionStore = defineStore("permission", {
@@ -320,9 +331,11 @@ export const s_permissionStore = defineStore("permission", {
   },
 });
 ```
+:::
 
 ### 主题防闪烁处理
 
+::: details ⚡ 查看防闪烁处理代码
 ```vue
 <script setup>
 // 预渲染暗色主题样式，避免刷新闪烁
@@ -349,9 +362,11 @@ const _disposeThemeEffect = () => {
 };
 </script>
 ```
+:::
 
 ### 自定义布局组件
 
+::: details 🛠️ 查看自定义布局代码
 ```vue
 <!-- CustomLayout.vue -->
 <template>
@@ -373,6 +388,7 @@ const _disposeThemeEffect = () => {
   </C_Layout>
 </template>
 ```
+:::
 
 ## 🐛 常见问题
 
@@ -380,6 +396,7 @@ const _disposeThemeEffect = () => {
 
 **A1:** 确保使用了预渲染样式：
 
+::: details 查看解决方案代码
 ```javascript
 // ✅ 正确：使用预渲染避免闪烁
 onMounted(() => _disposeThemeEffect());
@@ -389,11 +406,13 @@ onMounted(() => {
   isReady.value = true;
 });
 ```
+:::
 
 ### Q2: 侧边栏菜单不显示？
 
 **A2:** 检查权限 Store 是否正确初始化：
 
+::: details 查看调试代码
 ```javascript
 // 确保获取了菜单数据
 await permissionStore.fetchMenuList();
@@ -401,11 +420,13 @@ await permissionStore.fetchMenuList();
 // 检查菜单数据
 console.log(permissionStore.showMenuListGet);
 ```
+:::
 
 ### Q3: 布局高度异常？
 
 **A3:** 检查容器高度设置：
 
+::: details 查看高度设置代码
 ```scss
 // 确保根容器占满视口
 .layout-container {
@@ -413,11 +434,13 @@ console.log(permissionStore.showMenuListGet);
   overflow: hidden; // 防止滚动条
 }
 ```
+:::
 
 ### Q4: 折叠状态不同步？
 
 **A4:** 使用 inject 获取统一的状态：
 
+::: details 查看状态同步代码
 ```javascript
 // ✅ 正确：使用 inject
 const { isCollapsed } = inject("menuCollapse");
@@ -425,6 +448,7 @@ const { isCollapsed } = inject("menuCollapse");
 // ❌ 错误：自定义状态
 const isCollapsed = ref(false);
 ```
+:::
 
 ## 🎯 最佳实践
 
@@ -479,21 +503,6 @@ const C_Menu = defineAsyncComponent(() =>
 - ✨ 权限菜单集成
 - ✨ 防闪烁优化
 
-## 🤝 贡献指南
-
-组件位置：`src/components/global/C_Layout/index.vue`
-
-如需扩展功能，请考虑：
-
-1. 保持布局的稳定性和响应性
-2. 确保主题切换流畅无闪烁
-3. 维护与权限系统的集成
-4. 更新文档说明
-
-## 📄 许可证
-
-Copyright (c) 2025 by ChenYu, All Rights Reserved 😎
-
----
+<!--@include: ./snippets/contribute.md -->
 
 **💡 提示**: C_Layout 是应用的核心布局组件，提供了标准的后台管理系统布局结构。通过集成权限和主题系统，实现了动态菜单渲染和流畅的主题切换。组件采用模块化设计，易于扩展和定制。
