@@ -117,6 +117,7 @@ interface MenuOptions {
 
 ### 场景 1: 后台管理系统侧边栏
 
+::: details 📋 查看后台管理系统侧边栏代码
 ```vue
 <template>
   <NLayout has-sider>
@@ -231,9 +232,11 @@ const menuData = [
 }
 </style>
 ```
+:::
 
 ### 场景 2: 顶部导航菜单
 
+::: details 📋 查看顶部导航菜单代码
 ```vue
 <template>
   <NLayout>
@@ -334,9 +337,11 @@ const topMenuData = [
 }
 </style>
 ```
+:::
 
 ### 场景 3: 动态权限菜单
 
+::: details 🔐 查看动态权限菜单代码
 ```vue
 <template>
   <C_Menu :data="permissionMenus" />
@@ -417,11 +422,13 @@ const permissionMenus = computed(() => {
 })
 </script>
 ```
+:::
 
 ## 🎨 样式定制
 
 ### 主题配置
 
+::: details 🎨 查看主题配置代码
 ```vue
 <template>
   <C_Menu
@@ -452,9 +459,11 @@ themeStore.setThemeOverrides({
 })
 </script>
 ```
+:::
 
 ### 自定义样式
 
+::: details 🎨 查看自定义样式代码
 ```vue
 <template>
   <C_Menu
@@ -487,11 +496,13 @@ themeStore.setThemeOverrides({
 }
 </style>
 ```
+:::
 
 ## ⚙️ 高级用法
 
 ### 程序化控制展开
 
+::: details 🔧 查看程序化控制展开代码
 ```vue
 <template>
   <C_Menu
@@ -529,9 +540,11 @@ const extractAllKeys = (menus) => {
 }
 </script>
 ```
+:::
 
 ### 菜单数据持久化
 
+::: details 💾 查看菜单数据持久化代码
 ```vue
 <script setup>
 // 保存展开状态到本地存储
@@ -554,6 +567,7 @@ watch(expandedKeys, (newKeys) => {
 })
 </script>
 ```
+:::
 
 ## 🐛 常见问题
 
@@ -561,6 +575,7 @@ watch(expandedKeys, (newKeys) => {
 
 **A1:** 确保菜单数据中的 `path` 与路由路径匹配：
 
+::: details 查看解决方案代码
 ```javascript
 // ✅ 正确
 {
@@ -574,11 +589,13 @@ watch(expandedKeys, (newKeys) => {
   label: '用户管理'
 }
 ```
+:::
 
 ### Q2: 点击菜单不跳转？
 
 **A2:** 检查菜单项是否配置了 `path` 属性：
 
+::: details 查看解决方案代码
 ```javascript
 // ✅ 正确
 {
@@ -594,11 +611,13 @@ watch(expandedKeys, (newKeys) => {
   // 缺少 path
 }
 ```
+:::
 
 ### Q3: 折叠模式下子菜单不显示？
 
 **A3:** 组件会自动处理折叠模式下的子菜单显示（通过 dropdown），确保：
 
+::: details 查看解决方案代码
 ```vue
 <!-- ✅ 正确使用 -->
 <C_Menu
@@ -616,6 +635,7 @@ watch(expandedKeys, (newKeys) => {
   <C_Menu ... />
 </NLayoutSider>
 ```
+:::
 
 ## 🎯 最佳实践
 
@@ -700,20 +720,6 @@ const debouncedExpandChange = debounce((keys) => {
 - ✨ 集成主题定制功能
 - ✨ TypeScript 支持
 
-## 🤝 贡献指南
-
-组件位置：`src/components/global/C_Menu/index.vue`
-
-如需扩展功能，请考虑：
-1. 保持与 NaiveUI 风格一致
-2. 确保路由集成正常工作
-3. 添加必要的类型定义
-4. 更新文档说明
-
-## 📄 许可证
-
-Copyright (c) 2025 by ChenYu, All Rights Reserved 😎
-
----
+<!--@include: ./snippets/contribute.md -->
 
 **💡 提示**: 菜单组件基于 NaiveUI 的 NMenu 组件封装，增强了路由集成和自动展开功能。组件会根据当前路由自动高亮和展开对应菜单项，支持无限层级嵌套和折叠模式。配合主题系统可以轻松实现深色/浅色主题切换。

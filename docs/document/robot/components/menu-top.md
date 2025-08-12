@@ -147,6 +147,7 @@ const menuData = [
 
 ### 场景 2: 自定义 Logo 视频
 
+::: details 🎬 查看自定义 Logo 视频代码
 ```vue
 <template>
   <C_MenuTop />
@@ -163,9 +164,11 @@ const menuData = [
 //    - 文件大小: < 500KB
 </script>
 ```
+:::
 
 ### 场景 3: 配合主题切换
 
+::: details 🌙 查看主题切换配合代码
 ```vue
 <template>
   <div class="app-layout">
@@ -193,11 +196,13 @@ const toggleTheme = () => {
 }
 </script>
 ```
+:::
 
 ## 🎨 样式定制
 
 ### 修改文字内容
 
+::: details ✏️ 查看文字内容修改代码
 ```scss
 // index.scss
 .text-title {
@@ -215,9 +220,11 @@ const toggleTheme = () => {
   letter-spacing: 2px;
 }
 ```
+:::
 
 ### 自定义动画效果
 
+::: details ✨ 查看自定义动画效果代码
 ```scss
 // 光晕脉冲动画
 @keyframes pulse-slow {
@@ -256,9 +263,11 @@ const toggleTheme = () => {
   animation: shimmer 3s ease-in-out infinite;
 }
 ```
+:::
 
 ### 主题颜色配置
 
+::: details 🎨 查看主题颜色配置代码
 ```javascript
 // 在组件中修改背景色逻辑
 const menuBgColor = computed(() => {
@@ -273,6 +282,7 @@ const menuBgColor = computed(() => {
   return colorScheme[themeStore.currentTheme] || colorScheme.dark
 })
 ```
+:::
 
 ## ⚙️ 高级配置
 
@@ -288,15 +298,18 @@ const menuBgColor = computed(() => {
 
 ### 视频优化建议
 
+::: details 🎞️ 查看视频优化建议代码
 ```bash
 # 使用 FFmpeg 优化视频
 ffmpeg -i input.mp4 -c:v libvpx-vp9 -crf 30 -b:v 0 \
   -vf "scale=80:80" -an -auto-alt-ref 0 \
   output.webm
 ```
+:::
 
 ### 降级方案
 
+::: details 🔄 查看降级方案代码
 ```vue
 <template>
   <!-- 为不支持视频的浏览器提供降级方案 -->
@@ -325,6 +338,7 @@ onMounted(() => {
 })
 </script>
 ```
+:::
 
 ## 🐛 常见问题
 
@@ -332,6 +346,7 @@ onMounted(() => {
 
 **A1:** 检查以下几点：
 
+::: details 查看解决方案代码
 ```javascript
 // 1. 确认文件路径正确
 // 文件应放在 public 目录下
@@ -346,11 +361,13 @@ const checkVideoSupport = () => {
 // 3. 检查控制台网络请求
 // 确保视频文件成功加载
 ```
+:::
 
 ### Q2: 折叠检测不准确？
 
 **A2:** 确保父容器有明确的宽度：
 
+::: details 查看解决方案代码
 ```vue
 <!-- ✅ 正确：父容器有明确宽度 -->
 <NLayoutSider
@@ -366,11 +383,13 @@ const checkVideoSupport = () => {
   <C_MenuTop />
 </div>
 ```
+:::
 
 ### Q3: 主题切换后颜色不变？
 
 **A3:** 确保正确使用主题 store：
 
+::: details 查看解决方案代码
 ```javascript
 // 确保 themeStore 正确初始化
 import { useThemeStore } from '@/stores/theme'
@@ -381,6 +400,7 @@ watch(() => themeStore.isDark, (isDark) => {
   console.log('主题切换:', isDark ? '深色' : '浅色')
 })
 ```
+:::
 
 ## 🎯 最佳实践
 
@@ -447,20 +467,6 @@ const updateCollapsedState = debounce(() => {
 - ✨ 动画效果
 - ✨ 响应式设计
 
-## 🤝 贡献指南
-
-组件位置：`src/components/global/C_MenuTop/index.vue`
-
-如需扩展功能，请考虑：
-1. 保持视觉效果的轻量级
-2. 确保视频资源优化
-3. 维护响应式特性
-4. 更新文档说明
-
-## 📄 许可证
-
-Copyright (c) 2025 by ChenYu, All Rights Reserved 😎
-
----
+<!--@include: ./snippets/contribute.md -->
 
 **💡 提示**: 菜单顶部组件专为侧边栏设计，通过视频 Logo 和动画效果提升视觉体验。组件会自动检测父容器宽度变化，在折叠时智能隐藏文字内容，只保留 Logo。配合渐变背景和光晕效果，为应用增添现代感和科技感。
