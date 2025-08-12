@@ -120,6 +120,7 @@ interface HistoryItem {
 
 ### 场景 1: 标准头部集成
 
+::: details 🔗 查看标准头部集成代码
 ```vue
 <template>
   <NLayoutHeader>
@@ -150,9 +151,11 @@ interface HistoryItem {
 }
 </style>
 ```
+:::
 
 ### 场景 2: 自定义触发器
 
+::: details 🔧 查看自定义触发器代码
 ```vue
 <template>
   <div class="custom-search-trigger">
@@ -200,9 +203,11 @@ onMounted(() => {
 })
 </script>
 ```
+:::
 
 ### 场景 3: 搜索历史管理
 
+::: details 📚 查看搜索历史管理代码
 ```vue
 <template>
   <div class="search-history-manager">
@@ -248,9 +253,11 @@ const importHistory = () => {
 }
 </script>
 ```
+:::
 
 ### 场景 4: 扩展搜索功能
 
+::: details 🔍 查看扩展搜索功能代码
 ```vue
 <template>
   <C_GlobalSearch ref="searchPaletteRef" />
@@ -294,11 +301,13 @@ watch(() => searchPaletteRef.value?.searchValue, (value) => {
 })
 </script>
 ```
+:::
 
 ## 🎨 样式定制
 
 ### 自定义主题样式
 
+::: details 🎨 查看自定义主题样式代码
 ```scss
 // index.scss
 .robot-search-palette {
@@ -389,9 +398,11 @@ watch(() => searchPaletteRef.value?.searchValue, (value) => {
   transform: scale(0.95);
 }
 ```
+:::
 
 ### 响应式适配
 
+::: details 📱 查看响应式适配代码
 ```scss
 // 移动端适配
 @media (max-width: 768px) {
@@ -415,11 +426,13 @@ watch(() => searchPaletteRef.value?.searchValue, (value) => {
   }
 }
 ```
+:::
 
 ## ⚙️ 高级用法
 
 ### 搜索算法优化
 
+::: details 🔍 查看搜索算法优化代码
 ```javascript
 // 自定义搜索评分算法
 const searchWithScore = (items, query) => {
@@ -444,9 +457,11 @@ const searchWithScore = (items, query) => {
     .sort((a, b) => b.score - a.score)
 }
 ```
+:::
 
 ### 搜索防抖优化
 
+::: details ⏱️ 查看搜索防抖优化代码
 ```vue
 <script setup>
 import { debounce } from 'lodash-es'
@@ -462,9 +477,11 @@ watch(searchValue, (value) => {
 })
 </script>
 ```
+:::
 
 ### 集成快捷命令
 
+::: details ⌨️ 查看集成快捷命令代码
 ```javascript
 // 命令模式
 const commandPatterns = [
@@ -493,6 +510,7 @@ const handleSpecialCommand = (input) => {
   return false
 }
 ```
+:::
 
 ## 🐛 常见问题
 
@@ -500,6 +518,7 @@ const handleSpecialCommand = (input) => {
 
 **A1:** 检查是否有其他组件监听了相同快捷键：
 
+::: details 查看解决方案代码
 ```javascript
 // ✅ 正确：阻止默认行为
 document.addEventListener('keydown', (e) => {
@@ -509,11 +528,13 @@ document.addEventListener('keydown', (e) => {
   }
 })
 ```
+:::
 
 ### Q2: 搜索历史丢失？
 
 **A2:** 检查 localStorage 是否正常：
 
+::: details 查看解决方案代码
 ```javascript
 // 检查存储空间
 if (!window.localStorage) {
@@ -526,11 +547,13 @@ navigator.storage.estimate().then(estimate => {
   console.log('存储配额:', estimate.quota)
 })
 ```
+:::
 
 ### Q3: 搜索结果不准确？
 
 **A3:** 确保菜单数据正确规范化：
 
+::: details 查看解决方案代码
 ```javascript
 // 使用 normalizeMenuOptions 处理菜单数据
 import { normalizeMenuOptions } from '@/utils/d_menu'
@@ -540,11 +563,13 @@ const menuData = computed(() => {
   return normalizeMenuOptions(raw)  // 规范化处理
 })
 ```
+:::
 
 ### Q4: 点击父菜单无响应？
 
 **A4:** 组件会智能处理父菜单，自动跳转到第一个子菜单：
 
+::: details 查看解决方案代码
 ```javascript
 // 组件内部逻辑
 if (item.children?.length) {
@@ -553,6 +578,7 @@ if (item.children?.length) {
   router.push(firstChild.key)
 }
 ```
+:::
 
 ## 🎯 最佳实践
 
@@ -629,20 +655,6 @@ const userPreferences = {
 - ✨ 主题适配
 - ✨ 高亮匹配文本
 
-## 🤝 贡献指南
-
-组件位置：`src/components/global/C_GlobalSearch/index.vue`
-
-如需扩展功能，请考虑：
-1. 保持搜索响应速度
-2. 确保键盘导航流畅
-3. 维护历史记录完整性
-4. 更新文档说明
-
-## 📄 许可证
-
-Copyright (c) 2025 by ChenYu, All Rights Reserved 😎
-
----
+<!--@include: ./snippets/contribute.md -->
 
 **💡 提示**: 搜索面板组件提供了类似 VS Code 的命令面板体验，通过 Ctrl+K 快速唤起，支持实时搜索菜单并记录搜索历史。组件完全支持键盘操作，无需鼠标即可完成导航。搜索历史自动保存，提供更快捷的访问体验。
