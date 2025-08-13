@@ -303,6 +303,10 @@ export const ROBOT_PLUGIN_DOC = [
         text: "robot-admin-env-manager",
         link: `${ROBOT}/plugin/robot-admin-env-manager`,
       },
+      {
+        text: "git-branch-check-diff",
+        link: `${ROBOT}/plugin/git-branch-check-diff-commits`,
+      },
     ],
   },
 ];

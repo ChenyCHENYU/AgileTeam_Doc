@@ -1,4 +1,4 @@
-# @robot-admin/env-manager
+# robot-admin/env-manager
 
 > 让环境变量管理不再是噩梦 ✨
 
