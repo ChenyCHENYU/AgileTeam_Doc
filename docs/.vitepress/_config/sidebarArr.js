@@ -286,6 +286,19 @@ export const ROBOT_COMPONENTS_DOC = [
   },
 ];
 
+
+export const ROBOT_PLUGIN_DOC = [
+  {
+    text: "插件集",
+    items: [
+      {
+        text: "vite-console-plugin",
+        link: `${ROBOT}/plugin/console`,
+      },
+    ],
+  },
+];
+
 const WEB = "/web";
 
 export const WEB_DOC = [

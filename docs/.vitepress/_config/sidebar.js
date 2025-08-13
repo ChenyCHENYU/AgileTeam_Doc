@@ -16,11 +16,13 @@ import {
   QC_DOC,
   UI_DOC,
   MANAGE_DOC,
+  ROBOT_PLUGIN_DOC
 } from "./sidebarArr";
 
 export default {
   "/robot/guide/": ROBOT_GUIDE_DOC,
   "/robot/components/": ROBOT_COMPONENTS_DOC,
+  "/robot/plugin/": ROBOT_PLUGIN_DOC,
   "/po/": PO_DOC,
   "/ui/": UI_DOC,
   "/web/": WEB_DOC,

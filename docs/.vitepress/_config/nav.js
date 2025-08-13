@@ -5,6 +5,8 @@ export default [
     items: [
       { text: "深度指南", link: "/robot/guide/overview" },
       { text: "组件文档", link: "/robot/components/preface" },
+      { text: "插件文档", link: "/robot/plugin/console" },
+      { text: "脚手架-cli", link: "/robot/cli/use" },
     ],
   },
   {
