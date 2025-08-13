@@ -299,6 +299,10 @@ export const ROBOT_PLUGIN_DOC = [
         text: "ts-type-cleaner",
         link: `${ROBOT}/plugin/ts-type-cleaner`,
       },
+      {
+        text: "robot-admin-env-manager",
+        link: `${ROBOT}/plugin/robot-admin-env-manager`,
+      },
     ],
   },
 ];
