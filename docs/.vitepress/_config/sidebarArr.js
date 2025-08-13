@@ -307,6 +307,10 @@ export const ROBOT_PLUGIN_DOC = [
         text: "git-branch-check-diff",
         link: `${ROBOT}/plugin/git-branch-check-diff-commits`,
       },
+      {
+        text: "vite-plugin-preloader",
+        link: `${ROBOT}/plugin/vite-plugin-preloader`,
+      },
     ],
   },
 ];
