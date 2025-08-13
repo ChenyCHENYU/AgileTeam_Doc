@@ -208,14 +208,6 @@ viteConsolePlugin({
 
 **Git 信息获取失败？** 会显示默认信息，不影响使用。
 
-## 📝 版本记录
-
-### v1.0.0
-- 🎉 初始版本
-- ✨ 支持精美启动界面
-- 🔧 自动获取项目和 Git 信息
-- 🚫 智能屏蔽原生输出
-- 🎨 完整的颜色图标系统
 
 ## 🎉 一起完善
 
@@ -229,6 +221,7 @@ viteConsolePlugin({
 
 ## 📎 相关链接
 
+[![npm version](https://img.shields.io/npm/v/vite-console-plugin.svg)](https://www.npmjs.com/package/vite-console-plugin)
 [![GitHub stars](https://img.shields.io/github/stars/ChenyCHENYU/vite-console-plugin?style=social)](https://github.com/ChenyCHENYU/vite-console-plugin)
 
 如果觉得这个小工具插件还不错，可以给它个 star 支持一下 ⭐

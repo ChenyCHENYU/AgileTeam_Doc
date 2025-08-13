@@ -295,6 +295,10 @@ export const ROBOT_PLUGIN_DOC = [
         text: "vite-console-plugin",
         link: `${ROBOT}/plugin/console`,
       },
+      {
+        text: "ts-type-cleaner",
+        link: `${ROBOT}/plugin/ts-type-cleaner`,
+      },
     ],
   },
 ];
