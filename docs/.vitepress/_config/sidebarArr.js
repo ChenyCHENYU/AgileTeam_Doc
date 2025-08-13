@@ -315,6 +315,12 @@ export const ROBOT_PLUGIN_DOC = [
   },
 ];
 
+
+export const ROBOT_CLI_DOC = [];
+
+
+
+
 const WEB = "/web";
 
 export const WEB_DOC = [
