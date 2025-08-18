@@ -431,6 +431,10 @@ export const WEB_DOC = [
         text: "常用文档",
         link: `${WEB}/links`,
       },
+      {
+        text: "工程化架构与实践",
+        link: `${WEB}/engineering-architecture`,
+      },
     ],
   },
 ];
