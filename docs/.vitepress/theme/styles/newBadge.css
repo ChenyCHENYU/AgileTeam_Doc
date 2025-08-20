@@ -1,0 +1,69 @@
+/* .vitepress/theme/styles/newBadge.css */
+/* ~new 标记样式模块 - 只支持英文标记 */
+
+.new-badge {
+  display: inline-block;
+  padding: 2px 6px;
+  margin-left: 8px;
+  font-size: 11px;
+  font-weight: 600;
+  border-radius: 10px;
+  vertical-align: middle;
+  line-height: 1.2;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+/* 尺寸变体 */
+.new-badge-small { 
+  font-size: 9px; 
+  padding: 1px 4px; 
+  margin-left: 6px; 
+}
+
+.new-badge-tiny { 
+  font-size: 8px; 
+  padding: 1px 3px; 
+  margin-left: 4px; 
+}
+
+/* 标记类型样式 */
+.new-badge-new {
+  background: linear-gradient(45deg, #42b883, #5fd3a5);
+  color: white;
+  animation: glow-new 2s ease-in-out infinite alternate;
+}
+
+.new-badge-beta { 
+  background: #f39c12; 
+  color: white; 
+}
+
+.new-badge-hot {
+  background: linear-gradient(45deg, #ff6b6b, #ff8e8e);
+  color: white;
+  animation: pulse-hot 1.5s ease-in-out infinite alternate;
+}
+
+/* 动画效果 */
+@keyframes glow-new {
+  from { box-shadow: 0 0 3px rgba(66, 184, 131, 0.5); }
+  to { box-shadow: 0 0 6px rgba(66, 184, 131, 0.8); }
+}
+
+@keyframes pulse-hot {
+  from { transform: scale(1); }
+  to { transform: scale(1.05); }
+}
+
+/* 暗色主题适配 */
+html.dark .new-badge-new { 
+  background: linear-gradient(45deg, #369870, #4ecdc4); 
+}
+
+html.dark .new-badge-beta { 
+  background: #e67e22; 
+}
+
+html.dark .new-badge-hot {
+  background: linear-gradient(45deg, #e74c3c, #ff6b6b);
+}

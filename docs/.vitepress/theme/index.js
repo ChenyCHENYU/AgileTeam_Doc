@@ -1,12 +1,3 @@
-/*
- * @Author: ChenYu ycyplus@gmail.com
- * @Date: 2025-08-02 15:09:20
- * @LastEditors: ChenYu ycyplus@gmail.com
- * @LastEditTime: 2025-08-04 09:17:38
- * @FilePath: \AgileTeam_Doc\docs\.vitepress\theme\index.js
- * @Description:
- * Copyright (c) 2025 by CHENY, All Rights Reserved 😎.
- */
 // .vitepress/theme/index.js
 import DefaultTheme from "vitepress/theme";
 import { h } from "vue";
@@ -19,6 +10,10 @@ import ImgWrap from "@components/ImgWrap.vue";
 import ImgPreview from "@components/ImgPreview.vue";
 import "./custom.css";
 import "./styles/home.css";
+import "./styles/newBadge.css";
+
+// 导入 ~new 标记处理模块
+import { initNewBadgeProcessor } from "./modules/newBadge.js";
 
 // 浏览器环境下初始化 Vercel Analytics
 if (typeof window !== "undefined") {
@@ -58,11 +53,14 @@ export default {
     });
   },
 
-  enhanceApp({ app }) {
-    // 注册全局组件（可选，如果你想在某些页面手动使用）
+  enhanceApp({ app, router }) {
+    // 注册全局组件
     app.component("GiscusComment", GiscusComment);
     app.component("GitHubBadges", GitHubBadges);
     app.component("ImgWrap", ImgWrap);
     app.component("ImgPreview", ImgPreview);
+
+    // 初始化 ~new 标记处理器
+    initNewBadgeProcessor(router);
   },
 };

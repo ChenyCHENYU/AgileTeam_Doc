@@ -75,7 +75,7 @@ export default defineConfig({
     darkModeSwitchTitle: "切换到深色模式",
   },
 
-  // Markdown配置
+  // Markdown配置 - 保持原版，不使用任何插件
   markdown: {
     theme: {
       light: "github-light",
