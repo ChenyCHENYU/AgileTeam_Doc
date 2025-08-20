@@ -1,69 +1,185 @@
 /* .vitepress/theme/styles/newBadge.css */
-/* ~new 标记样式模块 - 只支持英文标记 */
+/* 🎨 有质感的 NEW 标记样式 - 现代简约设计 */
 
+/* 基础标记样式 */
 .new-badge {
   display: inline-block;
-  padding: 2px 6px;
-  margin-left: 8px;
-  font-size: 11px;
-  font-weight: 600;
-  border-radius: 10px;
+  padding: 3px 8px;
+  margin-left: 10px;
+  font-size: 0.7em;
+  font-weight: 700;
+  border-radius: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  white-space: nowrap;
   vertical-align: middle;
-  line-height: 1.2;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  line-height: 1;
+  min-height: auto;
+  box-sizing: border-box;
+  position: relative;
+  /* 质感核心 */
+  background: linear-gradient(135deg, var(--badge-from) 0%, var(--badge-to) 100%);
+  box-shadow: 
+    0 2px 4px rgba(0, 0, 0, 0.1),
+    0 1px 2px rgba(0, 0, 0, 0.06),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
 
-/* 尺寸变体 */
-.new-badge-small { 
-  font-size: 9px; 
-  padding: 1px 4px; 
-  margin-left: 6px; 
-}
-
-.new-badge-tiny { 
-  font-size: 8px; 
-  padding: 1px 3px; 
-  margin-left: 4px; 
-}
-
-/* 标记类型样式 */
+/* NEW 标记 - 高质感绿色 */
 .new-badge-new {
-  background: linear-gradient(45deg, #42b883, #5fd3a5);
+  --badge-from: #059669;
+  --badge-to: #047857;
   color: white;
-  animation: glow-new 2s ease-in-out infinite alternate;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
 }
 
-.new-badge-beta { 
-  background: #f39c12; 
-  color: white; 
+html.dark .new-badge-new {
+  --badge-from: #10b981;
+  --badge-to: #059669;
+  box-shadow: 
+    0 2px 4px rgba(5, 150, 105, 0.25),
+    0 1px 2px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
 }
 
+/* UPDATED 标记 - 高质感蓝色 */
+.new-badge-updated {
+  --badge-from: #2563eb;
+  --badge-to: #1d4ed8;
+  color: white;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+html.dark .new-badge-updated {
+  --badge-from: #3b82f6;
+  --badge-to: #2563eb;
+  box-shadow: 
+    0 2px 4px rgba(37, 99, 235, 0.25),
+    0 1px 2px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+}
+
+/* HOT 标记 - 高质感红色 */
 .new-badge-hot {
-  background: linear-gradient(45deg, #ff6b6b, #ff8e8e);
+  --badge-from: #dc2626;
+  --badge-to: #b91c1c;
   color: white;
-  animation: pulse-hot 1.5s ease-in-out infinite alternate;
-}
-
-/* 动画效果 */
-@keyframes glow-new {
-  from { box-shadow: 0 0 3px rgba(66, 184, 131, 0.5); }
-  to { box-shadow: 0 0 6px rgba(66, 184, 131, 0.8); }
-}
-
-@keyframes pulse-hot {
-  from { transform: scale(1); }
-  to { transform: scale(1.05); }
-}
-
-/* 暗色主题适配 */
-html.dark .new-badge-new { 
-  background: linear-gradient(45deg, #369870, #4ecdc4); 
-}
-
-html.dark .new-badge-beta { 
-  background: #e67e22; 
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
 }
 
 html.dark .new-badge-hot {
-  background: linear-gradient(45deg, #e74c3c, #ff6b6b);
+  --badge-from: #ef4444;
+  --badge-to: #dc2626;
+  box-shadow: 
+    0 2px 4px rgba(220, 38, 38, 0.25),
+    0 1px 2px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+}
+
+/* BETA 标记 - 高质感紫色 */
+.new-badge-beta {
+  --badge-from: #7c3aed;
+  --badge-to: #6d28d9;
+  color: white;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+html.dark .new-badge-beta {
+  --badge-from: #8b5cf6;
+  --badge-to: #7c3aed;
+  box-shadow: 
+    0 2px 4px rgba(124, 58, 237, 0.25),
+    0 1px 2px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+}
+
+/* 悬停效果 - 精致的交互 */
+.new-badge:hover {
+  transform: translateY(-1px) scale(1.03);
+  box-shadow: 
+    0 4px 8px rgba(0, 0, 0, 0.15),
+    0 2px 4px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+/* 小尺寸标记（侧边栏） */
+.new-badge-small {
+  padding: 2px 6px;
+  font-size: 0.6em;
+  margin-left: 8px;
+  border-radius: 6px;
+  font-weight: 700;
+}
+
+/* 超小尺寸标记（大纲） */
+.new-badge-tiny {
+  padding: 1px 4px;
+  font-size: 0.55em;
+  margin-left: 6px;
+  border-radius: 4px;
+  font-weight: 700;
+}
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+  .new-badge {
+    font-size: 0.65em;
+    padding: 2px 6px;
+    margin-left: 8px;
+    border-radius: 6px;
+  }
+  
+  .new-badge-small {
+    font-size: 0.55em;
+    padding: 1px 4px;
+    margin-left: 6px;
+    border-radius: 4px;
+  }
+  
+  .new-badge-tiny {
+    font-size: 0.5em;
+    padding: 1px 3px;
+    margin-left: 4px;
+    border-radius: 3px;
+  }
+}
+
+/* 深色模式增强 */
+html.dark .new-badge {
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+/* 高对比度模式支持 */
+@media (prefers-contrast: high) {
+  .new-badge {
+    border: 2px solid currentColor;
+    font-weight: 800;
+    background: var(--badge-from) !important;
+    box-shadow: none;
+  }
+}
+
+/* 减少动效模式支持 */
+@media (prefers-reduced-motion: reduce) {
+  .new-badge {
+    transition: none;
+  }
+  
+  .new-badge:hover {
+    transform: none;
+  }
+}
+
+/* 打印样式 */
+@media print {
+  .new-badge {
+    background: none !important;
+    color: #000 !important;
+    border: 1px solid #000 !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
 }

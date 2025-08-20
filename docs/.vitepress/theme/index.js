@@ -12,8 +12,8 @@ import "./custom.css";
 import "./styles/home.css";
 import "./styles/newBadge.css";
 
-// 导入 ~new 标记处理模块
-import { initNewBadgeProcessor } from "./modules/newBadge.js";
+// 🤖 导入智能 NEW 标记处理模块
+import { initSmartNewBadgeProcessor } from "./modules/smartNewBadge.js";
 
 // 浏览器环境下初始化 Vercel Analytics
 if (typeof window !== "undefined") {
@@ -60,7 +60,22 @@ export default {
     app.component("ImgWrap", ImgWrap);
     app.component("ImgPreview", ImgPreview);
 
-    // 初始化 ~new 标记处理器
-    initNewBadgeProcessor(router);
+    // 🤖 初始化智能 NEW 标记处理器
+    // 方式1: 使用默认配置
+    initSmartNewBadgeProcessor(router);
+
+    // 方式2: 自定义配置（可选，注释掉上面一行，使用下面的配置）
+    /*
+    initSmartNewBadgeProcessor(router, {
+      defaultExpireDays: 45,  // 默认45天过期
+      badgeTypes: {
+        'new': 60,      // NEW 标记 60 天过期
+        'updated': 30,  // UPDATED 标记 30 天过期
+        'hot': 7,       // HOT 标记 7 天过期
+        'beta': 90      // BETA 标记 90 天过期
+      },
+      enableLogs: true  // 启用控制台日志
+    });
+    */
   },
 };
