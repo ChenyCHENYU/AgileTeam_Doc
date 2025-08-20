@@ -289,7 +289,7 @@ export const ROBOT_COMPONENTS_DOC = [
 
 export const ROBOT_PLUGIN_DOC = [
   {
-    text: "插件集",
+    text: "独立插件集",
     items: [
       {
         text: "vite-console-plugin",
@@ -310,6 +310,19 @@ export const ROBOT_PLUGIN_DOC = [
       {
         text: "vite-plugin-preloader",
         link: `${ROBOT}/plugin/vite-plugin-preloader`,
+      },
+    ],
+  },
+  {
+    text: "团队插件集",
+    items: [
+      {
+        text: "naive-ui-components",
+        link: `${ROBOT}/plugin/naive-ui-components`,
+      },
+      {
+        text: "vscode-config",
+        link: `${ROBOT}/plugin/vscode-config`,
       },
     ],
   },

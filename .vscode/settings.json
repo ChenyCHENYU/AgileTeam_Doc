@@ -20,5 +20,6 @@
     "unocss",
     "vitepress",
     "Vtable"
-  ]
+  ],
+  "cSpell.ignorePaths": ["**/*.md", "**/*.markdown"]
 }
