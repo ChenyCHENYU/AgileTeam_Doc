@@ -502,3 +502,9 @@ html {
 .vp-doc [class*='language-'] code .highlighted {
   background-color: rgba(0, 255, 149, 0.295) !important;
 }
+
+/* 个人英雄页高度 */
+
+.VPTeamPageTitle {
+  padding-top: 0 !important;
+}
