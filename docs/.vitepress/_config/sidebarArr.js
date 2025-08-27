@@ -656,6 +656,8 @@ const JOB_RESPONSIBILITY = "/manage/job-responsibility";
 
 const TEMPLATES = "/manage/templates";
 
+const VERIFY = "/manage/verify";
+
 export const MANAGE_DOC = [
   {
     text: "职责模型（心法）",
@@ -712,7 +714,7 @@ export const MANAGE_DOC = [
     items: [
       {
         text: "PM：Verify",
-        link: `${TEMPLATES}/pm-verify`,
+        link: `${VERIFY}/pm-verify`,
       },
     ],
   },

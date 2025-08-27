@@ -369,3 +369,16 @@ outline: 'deep'
 ### 项目估算
 
 > 参考 `CMMI` 估算模型，完成项目时间域内的多轮复核估算，细化对标功能点，人天，成本。
+
+
+
+## 见字如面 ~new
+
+如果你需要这个具体的模板，请你给项目点个星予以支持，在下方留言您的邮箱，我会尽快发送给您。   请点击：[星传送门](https://github.com/ChenyCHENYU/Robot_Admin)
+
+<ImgPreview src="manage/pm/44.png" title="项目经理职责表" :blur="true"/>
+
+
+
+
+
