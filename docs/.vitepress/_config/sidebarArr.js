@@ -724,6 +724,10 @@ export const MANAGE_DOC = [
         text: "PO：Verify",
         link: `${VERIFY}/po-verify`,
       },
+      {
+        text: "UX：Verify",
+        link: `${VERIFY}/ui-verify`,
+      },
     ],
   },
 ];
