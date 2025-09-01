@@ -736,6 +736,10 @@ export const MANAGE_DOC = [
         text: "BD：Verify",
         link: `${VERIFY}/bd-verify`,
       },
+      {
+        text: "QC：Verify",
+        link: `${VERIFY}/qc-verify`,
+      },
     ],
   },
 ];
