@@ -165,3 +165,12 @@ outline: 'deep'
 3、公司级、部门级 Logo、名片、工牌、桌签、及软媒推广相关的一些设计等。
 
 :::
+
+
+
+## 职责模板 ~new
+
+如果你需要这个具体的模板，请你给项目点个星予以支持，在下方留言您的邮箱，我会尽快发送给您。   请点击：[星传送门](https://github.com/ChenyCHENYU/Robot_Admin)
+
+
+<ImgPreview src="manage/ui/1.png" title="ui设计师职责表" :blur="true"/>

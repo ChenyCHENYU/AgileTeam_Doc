@@ -97,7 +97,7 @@ export default {
     title: { type: String, default: '' },
     width: { type: String, default: '' },
     blur: { type: Boolean, default: false }, // 是否启用安全防护
-    blurLevel: { type: Number, default: 8 }, // 模糊程度 0-20
+    blurLevel: { type: Number, default: 2 }, // 模糊程度 0-20
     watermarkOpacity: { type: Number, default: 0.2 } // 水印透明度 0-1
   },
   data() {
