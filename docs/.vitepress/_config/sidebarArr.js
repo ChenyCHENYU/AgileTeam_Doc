@@ -732,6 +732,10 @@ export const MANAGE_DOC = [
         text: "RD：Verify",
         link: `${VERIFY}/rd-verify`,
       },
+      {
+        text: "BD：Verify",
+        link: `${VERIFY}/bd-verify`,
+      },
     ],
   },
 ];
