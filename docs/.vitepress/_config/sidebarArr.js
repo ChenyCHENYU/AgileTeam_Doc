@@ -728,6 +728,10 @@ export const MANAGE_DOC = [
         text: "UX：Verify",
         link: `${VERIFY}/ui-verify`,
       },
+      {
+        text: "RD：Verify",
+        link: `${VERIFY}/rd-verify`,
+      },
     ],
   },
 ];
