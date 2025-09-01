@@ -707,6 +707,10 @@ export const MANAGE_DOC = [
         text: "UX：Manager",
         link: `${TEMPLATES}/ui-template`,
       },
+      {
+        text: "RD：Manager",
+        link: `${TEMPLATES}/rd-template`,
+      },
     ],
   },
   {
@@ -715,6 +719,10 @@ export const MANAGE_DOC = [
       {
         text: "PM：Verify",
         link: `${VERIFY}/pm-verify`,
+      },
+      {
+        text: "PO：Verify",
+        link: `${VERIFY}/po-verify`,
       },
     ],
   },
