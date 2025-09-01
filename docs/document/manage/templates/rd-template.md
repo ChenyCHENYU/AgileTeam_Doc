@@ -14,88 +14,80 @@ outline: "deep"
 
 ### 01. 前端技术需求建议书
 
-<ImgPreview src="manage/rd/01.png" title="01-前端技术需求建议书"/>
+<ImgPreview src="manage/rd/3.png" title="01-前端技术需求建议书"/>
 
 :eyes: 模板下载请到`语雀`研发部。 ➡️ [传送门](https://xc0mg8.yuque.com/xc0mg8/kotaew/frontend-templates#tech-requirement)
 
 ### 02. 前端技术架构选型说明书
 
-<ImgPreview src="manage/rd/02.png" title="02-前端技术架构选型说明书"/>
+<ImgPreview src="manage/rd/4.png" title="02-前端技术架构选型说明书"/>
 
 :eyes: 模板下载请到`语雀`研发部。 ➡️ [传送门](https://xc0mg8.yuque.com/xc0mg8/kotaew/frontend-templates#arch-selection)
 
 ### 03. 符合统一标准的组件化前端界面
 
-<ImgPreview src="manage/rd/03.png" title="03-符合统一标准的组件化前端界面"/>
-
-:eyes: 模板下载请到`语雀`研发部。 ➡️ [传送门](https://xc0mg8.yuque.com/xc0mg8/kotaew/frontend-templates#component-interface)
 
 ### 04. 带有清晰逻辑的交互注释
 
-<ImgPreview src="manage/rd/04.png" title="04-带有清晰逻辑的交互注释"/>
-
-:eyes: 模板下载请到`语雀`研发部。 ➡️ [传送门](https://xc0mg8.yuque.com/xc0mg8/kotaew/frontend-templates#interaction-comment)
 
 ### 05. 符合 restful 的接口处理
 
-<ImgPreview src="manage/rd/05.png" title="05-符合restful的接口处理"/>
 
-:eyes: 模板下载请到`语雀`研发部。 ➡️ [传送门](https://xc0mg8.yuque.com/xc0mg8/kotaew/frontend-templates#restful-interface)
 
 ### 06. 代码走查评审单
 
-<ImgPreview src="manage/rd/06.png" title="06-代码走查评审单"/>
+<ImgPreview src="manage/rd/8.png" title="06-代码走查评审单"/>
 
 :eyes: 模板下载请到`语雀`研发部。 ➡️ [传送门](https://xc0mg8.yuque.com/xc0mg8/kotaew/frontend-templates#code-review)
 
 ### 07. 标准的版本管理及代码提交记录
 
-<ImgPreview src="manage/rd/07.png" title="07-标准的版本管理及代码提交记录"/>
+<!-- <ImgPreview src="manage/rd/07.png" title="07-标准的版本管理及代码提交记录"/> -->
 
-:eyes: 模板下载请到`语雀`研发部。 ➡️ [传送门](https://xc0mg8.yuque.com/xc0mg8/kotaew/frontend-templates#version-control)
+<!-- :eyes: 模板下载请到`语雀`研发部。 ➡️ [传送门](https://xc0mg8.yuque.com/xc0mg8/kotaew/frontend-templates#version-control) -->
 
 ### 08. Showcase 申请单
 
-<ImgPreview src="manage/rd/08.png" title="08-Showcase申请单"/>
+<ImgPreview src="manage/rd/9.png" title="08-Showcase申请单"/>
 
 :eyes: 模板下载请到`语雀`研发部。 ➡️ [传送门](https://xc0mg8.yuque.com/xc0mg8/kotaew/frontend-templates#showcase-apply)
 
 ### 09. 提测申请单
 
-<ImgPreview src="manage/rd/09.png" title="09-提测申请单"/>
+<ImgPreview src="manage/rd/10.png" title="09-提测申请单"/>
 
 :eyes: 模板下载请到`语雀`研发部。 ➡️ [传送门](https://xc0mg8.yuque.com/xc0mg8/kotaew/frontend-templates#test-apply)
 
 ### 10. 禅道任务状态管理
-
+<!-- 
 <ImgPreview src="manage/rd/10.png" title="10-禅道任务状态管理"/>
 
-:eyes: `禅道操作规范`模板下载请到`语雀`研发部。 ➡️ [前端禅道任务管理（操作规范）](https://xc0mg8.yuque.com/xc0mg8/kotaew/frontend-templates#zentao-task)
+:eyes: `禅道操作规范`模板下载请到`语雀`研发部。 ➡️ [前端禅道任务管理（操作规范）](https://xc0mg8.yuque.com/xc0mg8/kotaew/frontend-templates#zentao-task) -->
 
 ### 11. 知识分享成果上传语雀
 
-<ImgPreview src="manage/rd/11.png" title="11-知识分享成果上传语雀"/>
+<!-- <ImgPreview src="manage/rd/11.png" title="11-知识分享成果上传语雀"/>
 
 :::warning :bell:
 知识分享资料统一前端组归档，上传小组语雀。
 :::
 
-:eyes: 模板下载请到`语雀`研发部。 ➡️ [传送门](https://xc0mg8.yuque.com/xc0mg8/kotaew/frontend-templates#knowledge-share)
+:eyes: 模板下载请到`语雀`研发部。 ➡️ [传送门](https://xc0mg8.yuque.com/xc0mg8/kotaew/frontend-templates#knowledge-share) -->
 
 ### 12. 前端代码交付清单及干系人确认签字
 
-<ImgPreview src="manage/rd/12.png" title="12-前端代码交付清单及干系人确认签字"/>
+<!-- <ImgPreview src="manage/rd/12.png" title="12-前端代码交付清单及干系人确认签字"/>
 
-:eyes: 模板下载请到`语雀`研发部。 ➡️ [传送门](https://xc0mg8.yuque.com/xc0mg8/kotaew/frontend-templates#code-delivery)
+:eyes: 模板下载请到`语雀`研发部。 ➡️ [传送门](https://xc0mg8.yuque.com/xc0mg8/kotaew/frontend-templates#code-delivery) -->
 
 ### 13. 运维交接资料清单
 
-<ImgPreview src="manage/rd/13.png" title="13-运维交接资料清单"/>
+<!-- <ImgPreview src="manage/rd/13.png" title="13-运维交接资料清单"/>
 
-:eyes: 模板下载请到`语雀`研发部。 ➡️ [传送门](https://xc0mg8.yuque.com/xc0mg8/kotaew/frontend-templates#ops-handover)
+:eyes: 模板下载请到`语雀`研发部。 ➡️ [传送门](https://xc0mg8.yuque.com/xc0mg8/kotaew/frontend-templates#ops-handover) -->
 
 ### 14. 前端技术升级方案书
 
-<ImgPreview src="manage/rd/14.png" title="14-前端技术升级方案书"/>
+<!-- <ImgPreview src="manage/rd/14.png" title="14-前端技术升级方案书"/>
 
-:eyes: 模板下载请到`语雀`研发部。 ➡️ [传送门](https://xc0mg8.yuque.com/xc0mg8/kotaew/frontend-templates#tech-upgrade)
+:eyes: 模板下载请到`语雀`研发部。 ➡️ [传送门](https://xc0mg8.yuque.com/xc0mg8/kotaew/frontend-templates#tech-upgrade) -->
