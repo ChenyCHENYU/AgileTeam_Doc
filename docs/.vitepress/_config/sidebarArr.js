@@ -324,6 +324,10 @@ export const ROBOT_PLUGIN_DOC = [
         text: "vscode-config",
         link: `${ROBOT}/plugin/vscode-config`,
       },
+      {
+        text: "mgit-push",
+        link: `${ROBOT}/plugin/mgit-push`,
+      },
     ],
   },
 ];
