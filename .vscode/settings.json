@@ -21,5 +21,7 @@
     "vitepress",
     "Vtable"
   ],
-  "cSpell.ignorePaths": ["**/*.md", "**/*.markdown"]
+  "cSpell.ignorePaths": ["**/*.md", "**/*.markdown"],
+  "trae.tab.enableRename": false,
+  "trae.tab.enableAutoImport": false
 }
