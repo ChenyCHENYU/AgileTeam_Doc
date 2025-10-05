@@ -450,3 +450,7 @@ body.home .VPSponsors {
 .vp-doc table::-webkit-scrollbar-thumb:hover {
   background: rgba(144, 147, 153, 0.5) !important;
 }
+
+.curtain {
+  display: none;
+}
