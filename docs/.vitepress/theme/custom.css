@@ -46,12 +46,7 @@
   margin: 0 !important;
 }
 
-/* ===== 头部导航栏布局 - 最小化修改 ===== */
-/* 只调整搜索框位置，让它和logo一起在左侧 */
-.VPNavBarSearch {
-  margin-left: 16px !important;
-  margin-right: auto !important;
-}
+/* ===== 头部导航栏布局 ===== */
 
 /* 确保右侧元素保持在右侧 */
 .VPNavBarMenu {
@@ -510,12 +505,6 @@ body:has(#VPContent.is-home) .VPSponsors {
   margin-right: 16px !important;
 }
 
-/* 搜索框 */
-.VPNavBarSearch {
-  flex-shrink: 0 !important;
-  margin-left: 0 !important;
-  margin-right: auto !important;
-}
 
 /* 右侧菜单 */
 .VPNavBarMenu {
@@ -528,13 +517,25 @@ body:has(#VPContent.is-home) .VPSponsors {
   padding-left:22px !important;
 }
 
+/* 搜索框 - 响应式定位 */
 #local-search {
-  margin-left: 80%;
+  position: absolute !important;
+  right: 980px !important; /* 距离右边固定距离，为右侧菜单留出空间 */
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+}
+
+@media (max-width: 767px) {
+  #local-search {
+    position: static !important;
+    transform: none !important;
+    margin: 0 auto !important;
+  }
 }
 
 /* 添加对于表格的处理 */
 
-/* ========== 表格强制样式修复 - 添加到 custom.css 末尾 ========== */
+/* ========== 表格样式修复 ========== */
 
 /* 超强选择器 - 移除所有宽度限制 */
 .vp-doc table,
@@ -619,4 +620,132 @@ div.vp-doc > div > table,
 
 .vp-doc table * {
   box-sizing: border-box !important;
+}
+/* 滚动条样式修饰 */
+
+/* ========== 侧边栏滚动条美化 ========== */
+
+/* Webkit 浏览器（Chrome、Safari、新版 Edge） */
+.VPSidebar ::-webkit-scrollbar {
+  width: 6px !important;
+  height: 6px !important;
+}
+
+.VPSidebar ::-webkit-scrollbar-track {
+  background: transparent !important;
+  border-radius: 3px !important;
+}
+
+.VPSidebar ::-webkit-scrollbar-thumb {
+  background: rgba(144, 147, 153, 0.3) !important;
+  border-radius: 3px !important;
+  transition: all 0.2s ease !important;
+}
+
+.VPSidebar ::-webkit-scrollbar-thumb:hover {
+  background: rgba(144, 147, 153, 0.5) !important;
+}
+
+.VPSidebar ::-webkit-scrollbar-thumb:active {
+  background: rgba(144, 147, 153, 0.7) !important;
+}
+
+/* 深色模式下的滚动条 */
+.dark .VPSidebar ::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2) !important;
+}
+
+.dark .VPSidebar ::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.3) !important;
+}
+
+.dark .VPSidebar ::-webkit-scrollbar-thumb:active {
+  background: rgba(255, 255, 255, 0.4) !important;
+}
+
+/* Firefox 浏览器 */
+.VPSidebar {
+  scrollbar-width: thin !important;
+  scrollbar-color: rgba(144, 147, 153, 0.3) transparent !important;
+}
+
+.dark .VPSidebar {
+  scrollbar-color: rgba(255, 255, 255, 0.2) transparent !important;
+}
+
+/* 全局滚动条优化（可选，应用到整个文档） */
+::-webkit-scrollbar {
+  width: 8px !important;
+  height: 8px !important;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--vp-c-bg-soft) !important;
+  border-radius: 4px !important;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(144, 147, 153, 0.3) !important;
+  border-radius: 4px !important;
+  transition: all 0.3s ease !important;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(144, 147, 153, 0.5) !important;
+}
+
+::-webkit-scrollbar-thumb:active {
+  background: rgba(144, 147, 153, 0.7) !important;
+}
+
+/* 深色模式全局滚动条 */
+.dark ::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2) !important;
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.3) !important;
+}
+
+.dark ::-webkit-scrollbar-thumb:active {
+  background: rgba(255, 255, 255, 0.4) !important;
+}
+
+/* 表格横向滚动条美化 */
+.vp-doc table::-webkit-scrollbar {
+  height: 6px !important;
+}
+
+.vp-doc table::-webkit-scrollbar-track {
+  background: var(--vp-c-bg-soft) !important;
+  border-radius: 3px !important;
+}
+
+.vp-doc table::-webkit-scrollbar-thumb {
+  background: rgba(144, 147, 153, 0.3) !important;
+  border-radius: 3px !important;
+}
+
+.vp-doc table::-webkit-scrollbar-thumb:hover {
+  background: rgba(144, 147, 153, 0.5) !important;
+}
+
+/* 代码块滚动条美化 */
+.vp-doc div[class*="language-"]::-webkit-scrollbar {
+  height: 6px !important;
+  width: 6px !important;
+}
+
+.vp-doc div[class*="language-"]::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.1) !important;
+  border-radius: 3px !important;
+}
+
+.vp-doc div[class*="language-"]::-webkit-scrollbar-thumb {
+  background: rgba(144, 147, 153, 0.4) !important;
+  border-radius: 3px !important;
+}
+
+.vp-doc div[class*="language-"]::-webkit-scrollbar-thumb:hover {
+  background: rgba(144, 147, 153, 0.6) !important;
 }
