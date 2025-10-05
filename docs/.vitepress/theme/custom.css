@@ -520,7 +520,7 @@ body:has(#VPContent.is-home) .VPSponsors {
 /* 搜索框 - 响应式定位 */
 #local-search {
   position: absolute !important;
-  right: 980px !important; /* 距离右边固定距离，为右侧菜单留出空间 */
+  right: 1060px !important; /* 距离右边固定距离，为右侧菜单留出空间 */
   top: 50% !important;
   transform: translateY(-50%) !important;
 }
