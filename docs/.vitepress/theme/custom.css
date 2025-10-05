@@ -2,9 +2,7 @@
 :root {
   --vp-nav-height: 64px;
   --vp-sidebar-width: 256px;
-  --page-gutter: 48px; /* 全站左右页边距，与顶部导航对齐 */
-
-  /* 搜索框尺寸与间距 */
+  --page-gutter: 48px;
   --search-w: 360px;
   --search-gap: -200px;
 }
@@ -17,7 +15,6 @@
   border-bottom: 1px solid var(--vp-c-divider) !important;
 }
 
-/* 导航容器左右与页面 gutter 对齐 */
 .VPNavBar .container,
 .VPNavBar .content {
   max-width: none !important;
@@ -26,11 +23,10 @@
   padding-inline: var(--page-gutter) !important;
 }
 
-/* 导航内部布局：用 flex，让搜索成为“右侧区域的最左边” */
 .VPNavBar .content-body {
   display: flex !important;
   align-items: center !important;
-  justify-content: flex-start !important; /* 左到右排布 */
+  justify-content: flex-start !important;
   width: 100% !important;
   gap: 12px;
 }
@@ -40,30 +36,26 @@
   margin-right: 16px !important;
 }
 
-/* 搜索：吃掉左侧剩余空间，把自己推到右侧区域最左；紧挨右侧菜单 */
 #local-search {
   position: static !important;
   transform: none !important;
-
-  margin-left: auto !important; /* 把自己推到右侧区域 */
-  margin-right: 0 !important; /* 紧贴右侧菜单（由菜单的 margin-left 控制间距） */
-
+  margin-left: auto !important;
+  margin-right: 0 !important;
   flex: 0 0 var(--search-w) !important;
   width: var(--search-w) !important;
   max-width: var(--search-w) !important;
 }
 
-/* 右侧菜单保持在最右，但不再用 auto 把搜索挤开，只留一个固定间距 */
 .VPNavBarMenu {
   flex-shrink: 0 !important;
-  margin-left: var(--search-gap) !important; /* 搜索与菜单间距 */
+  margin-left: var(--search-gap) !important;
 }
 
-/* ================= 侧边栏与内容区 ================= */
+/* ================= 侧边栏（仅用于文档页）================= */
 .VPSidebar {
   position: fixed !important;
   top: var(--vp-nav-height) !important;
-  left: var(--page-gutter) !important; /* 与 Logo 左对齐 */
+  left: var(--page-gutter) !important;
   width: var(--vp-sidebar-width) !important;
   height: calc(100vh - var(--vp-nav-height)) !important;
   background: var(--vp-c-bg) !important;
@@ -71,12 +63,10 @@
   z-index: 10 !important;
   padding: 0 !important;
   margin: 0 !important;
-
   scrollbar-width: thin !important;
   scrollbar-color: rgba(144, 147, 153, 0.3) transparent !important;
 }
 
-/* 保留边距清零 */
 .VPSidebar .content,
 .VPSidebar .curtain,
 .VPSidebar > div {
@@ -84,18 +74,16 @@
   margin: 0 !important;
 }
 
-.VPContent {
+/* ================= 文档内容区（仅用于文档页）================= */
+.VPContent:not(.is-home) {
   padding-top: var(--vp-nav-height) !important;
-  padding-left: calc(
-    var(--vp-sidebar-width) + var(--page-gutter) + var(--page-gutter)
-  ) !important; /* 侧栏宽 + 左右各一个 gutter */
+  padding-left: calc(var(--vp-sidebar-width) + var(--page-gutter) + var(--page-gutter)) !important;
   padding-right: var(--page-gutter) !important;
   min-height: calc(100vh - var(--vp-nav-height)) !important;
   width: auto !important;
   max-width: none !important;
 }
 
-/* 文档容器与主内容 */
 .VPDoc {
   max-width: none !important;
   width: 100% !important;
@@ -113,7 +101,6 @@
   box-sizing: border-box !important;
 }
 
-/* 主内容子元素占满宽度 */
 .vp-doc > div,
 .vp-doc > p,
 .vp-doc > h1,
@@ -142,6 +129,7 @@
   border-radius: 8px !important;
   overflow: hidden !important;
 }
+
 .vp-doc pre {
   margin: 0 !important;
   padding: 24px !important;
@@ -157,11 +145,13 @@
 .vp-doc p {
   margin: 20px 0 !important;
 }
+
 .vp-doc ul,
 .vp-doc ol {
   margin: 20px 0 !important;
   padding-left: 36px !important;
 }
+
 .vp-doc li {
   margin: 10px 0 !important;
 }
@@ -170,10 +160,12 @@
   margin-top: 0 !important;
   margin-bottom: 36px !important;
 }
+
 .vp-doc h2 {
   margin-top: 56px !important;
   margin-bottom: 28px !important;
 }
+
 .vp-doc h3 {
   margin-top: 40px !important;
   margin-bottom: 20px !important;
@@ -183,14 +175,14 @@
   background-color: rgba(0, 255, 149, 0.295) !important;
 }
 
-/* ================= 表格（稳定版） ================= */
+/* ================= 表格 ================= */
 .vp-doc table {
   display: table !important;
   width: 100% !important;
   max-width: 100% !important;
   margin: 28px 0 !important;
   border-collapse: collapse !important;
-  table-layout: fixed !important; /* 列宽稳定 */
+  table-layout: auto !important;
   overflow-x: auto !important;
   box-sizing: border-box !important;
 }
@@ -203,9 +195,14 @@
   overflow-wrap: break-word !important;
   word-break: break-word !important;
   white-space: normal !important;
+  min-width: 100px !important;
 }
 
-/* 小屏：保持横向滚动 */
+.vp-doc th:first-child,
+.vp-doc td:first-child {
+  min-width: 120px !important;
+}
+
 @media (max-width: 768px) {
   .vp-doc table {
     display: block !important;
@@ -215,6 +212,7 @@
   .vp-doc th,
   .vp-doc td {
     white-space: nowrap !important;
+    min-width: 80px !important;
   }
 }
 
@@ -222,6 +220,7 @@
 html {
   scroll-behavior: smooth !important;
 }
+
 .vp-doc h1,
 .vp-doc h2,
 .vp-doc h3,
@@ -231,76 +230,7 @@ html {
   scroll-margin-top: calc(var(--vp-nav-height) + 20px) !important;
 }
 
-/* ================= 首页定制（保持你原样） ================= */
-#VPContent.is-home {
-  padding: 0 !important;
-  width: 100% !important;
-}
-
-body:has(#VPContent.is-home) .VPSidebar,
-body.home .VPSidebar {
-  display: none !important;
-}
-body:has(#VPContent.is-home) .VPContent,
-body.home .VPContent {
-  padding-left: 0 !important;
-  padding-right: 0 !important;
-  width: 100% !important;
-}
-
-body:has(#VPContent.is-home) .VPHero,
-body.home .VPHero {
-  padding-bottom: 0 !important;
-  width: 100% !important;
-  height: calc(100vh - var(--vp-nav-height)) !important;
-  display: flex !important;
-  align-items: flex-start !important;
-  justify-content: center !important;
-  padding-top: 10vh !important;
-}
-
-body:has(#VPContent.is-home) .VPHero .container,
-body.home .VPHero .container {
-  gap: 380px !important;
-  width: auto !important;
-  max-width: none !important;
-  padding-inline: 32px !important;
-  margin-inline: auto !important;
-  text-align: center !important;
-}
-
-body:has(#VPContent.is-home) .VPHero .image,
-body.home .VPHero .image {
-  margin: 0 0 -10vh !important;
-  align-self: flex-end !important;
-}
-body:has(#VPContent.is-home) .VPHero .image-container,
-body.home .VPHero .image-container {
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-}
-body:has(#VPContent.is-home) .VPHero .image img,
-body.home .VPHero .image img {
-  width: auto !important;
-  object-fit: contain !important;
-}
-
-body:has(#VPContent.is-home) .VPHome,
-body:has(#VPContent.is-home) .VPFeature,
-body:has(#VPContent.is-home) .VPTeamMembers,
-body:has(#VPContent.is-home) .VPSponsors,
-body.home .VPHome,
-body.home .VPFeature,
-body.home .VPTeamMembers,
-body.home .VPSponsors {
-  width: auto !important;
-  max-width: none !important;
-  margin-inline: auto !important;
-  padding-inline: 32px !important;
-}
-
-/* ================= 移动端（≤767px） ================= */
+/* ================= 移动端 ================= */
 @media (max-width: 767px) {
   .VPSidebar {
     position: static !important;
@@ -309,10 +239,10 @@ body.home .VPSponsors {
     border-right: none !important;
     border-bottom: 1px solid var(--vp-c-divider) !important;
     left: 0 !important;
-
     transform: translateX(-100%) !important;
     transition: transform 0.3s ease !important;
   }
+  
   .VPSidebar.open {
     transform: translateX(0) !important;
   }
@@ -323,23 +253,25 @@ body.home .VPSponsors {
     display: none !important;
   }
 
-  .VPContent {
+  .VPContent:not(.is-home) {
     padding-inline: 16px !important;
   }
+  
   .VPDoc {
     padding-block: 16px !important;
   }
+  
   .vp-doc {
     padding-inline: 8px !important;
   }
 
-  /* 窄屏：搜索回到流式，菜单继续在右 */
   #local-search {
     flex: 1 1 100% !important;
     width: 100% !important;
     max-width: 100% !important;
     margin-left: 0 !important;
   }
+  
   .VPNavBarMenu {
     margin-left: 0 !important;
   }
@@ -349,108 +281,126 @@ body.home .VPSponsors {
 .VPTeamPageTitle {
   padding-top: 0 !important;
 }
+
 .VPFooter {
   padding: 8px !important;
   border-top: 0 !important;
 }
+
 .container .title {
   padding-left: 22px !important;
 }
 
+.curtain {
+  display: none;
+}
+
 /* ================= 滚动条美化 ================= */
-/* Sidebar（WebKit） */
 .VPSidebar ::-webkit-scrollbar {
   width: 6px !important;
   height: 6px !important;
 }
+
 .VPSidebar ::-webkit-scrollbar-track {
   background: transparent !important;
   border-radius: 3px !important;
 }
+
 .VPSidebar ::-webkit-scrollbar-thumb {
   background: rgba(144, 147, 153, 0.3) !important;
   border-radius: 3px !important;
   transition: all 0.2s ease !important;
 }
+
 .VPSidebar ::-webkit-scrollbar-thumb:hover {
   background: rgba(144, 147, 153, 0.5) !important;
 }
+
 .VPSidebar ::-webkit-scrollbar-thumb:active {
   background: rgba(144, 147, 153, 0.7) !important;
 }
+
 .dark .VPSidebar ::-webkit-scrollbar-thumb {
   background: rgba(255, 255, 255, 0.2) !important;
 }
+
 .dark .VPSidebar ::-webkit-scrollbar-thumb:hover {
   background: rgba(255, 255, 255, 0.3) !important;
 }
+
 .dark .VPSidebar ::-webkit-scrollbar-thumb:active {
   background: rgba(255, 255, 255, 0.4) !important;
 }
 
-/* 全局（WebKit） */
 ::-webkit-scrollbar {
   width: 8px !important;
   height: 8px !important;
 }
+
 ::-webkit-scrollbar-track {
   background: var(--vp-c-bg-soft) !important;
   border-radius: 4px !important;
 }
+
 ::-webkit-scrollbar-thumb {
   background: rgba(144, 147, 153, 0.3) !important;
   border-radius: 4px !important;
   transition: all 0.3s ease !important;
 }
+
 ::-webkit-scrollbar-thumb:hover {
   background: rgba(144, 147, 153, 0.5) !important;
 }
+
 ::-webkit-scrollbar-thumb:active {
   background: rgba(144, 147, 153, 0.7) !important;
 }
+
 .dark ::-webkit-scrollbar-thumb {
   background: rgba(255, 255, 255, 0.2) !important;
 }
+
 .dark ::-webkit-scrollbar-thumb:hover {
   background: rgba(255, 255, 255, 0.3) !important;
 }
+
 .dark ::-webkit-scrollbar-thumb:active {
   background: rgba(255, 255, 255, 0.4) !important;
 }
 
-/* 代码块滚动条 */
 .vp-doc div[class*="language-"]::-webkit-scrollbar {
   height: 6px !important;
   width: 6px !important;
 }
+
 .vp-doc div[class*="language-"]::-webkit-scrollbar-track {
   background: rgba(0, 0, 0, 0.1) !important;
   border-radius: 3px !important;
 }
+
 .vp-doc div[class*="language-"]::-webkit-scrollbar-thumb {
   background: rgba(144, 147, 153, 0.4) !important;
   border-radius: 3px !important;
 }
+
 .vp-doc div[class*="language-"]::-webkit-scrollbar-thumb:hover {
   background: rgba(144, 147, 153, 0.6) !important;
 }
 
-/* 表格横向滚动条 */
 .vp-doc table::-webkit-scrollbar {
   height: 6px !important;
 }
+
 .vp-doc table::-webkit-scrollbar-track {
   background: var(--vp-c-bg-soft) !important;
   border-radius: 3px !important;
 }
+
 .vp-doc table::-webkit-scrollbar-thumb {
   background: rgba(144, 147, 153, 0.3) !important;
   border-radius: 3px !important;
 }
+
 .vp-doc table::-webkit-scrollbar-thumb:hover {
   background: rgba(144, 147, 153, 0.5) !important;
-}
-
-.curtain {
-  display: none;
 }
