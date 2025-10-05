@@ -103,13 +103,6 @@ export default defineConfig({
         },
       ],
     },
-    css: {
-      preprocessorOptions: {
-        scss: {
-          additionalData: `@import ".vitepress/theme/custom.css";`,
-        },
-      },
-    },
     esbuild: {
       target: "esnext",
     },
