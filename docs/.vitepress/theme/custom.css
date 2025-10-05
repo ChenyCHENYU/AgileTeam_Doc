@@ -1,12 +1,15 @@
-/* VitePress 宽屏优化 - 最终版本 */
-
+/* ================= 基础变量 ================= */
 :root {
-  /* 导航栏高度变量 */
   --vp-nav-height: 64px;
   --vp-sidebar-width: 256px;
+  --page-gutter: 48px; /* 全站左右页边距，与顶部导航对齐 */
+
+  /* 搜索框尺寸与间距 */
+  --search-w: 360px;
+  --search-gap: -200px;
 }
 
-/* ===== 导航栏样式优化 ===== */
+/* ================= 顶部导航 ================= */
 .VPNav {
   background: var(--vp-c-bg) !important;
   backdrop-filter: blur(8px) !important;
@@ -14,11 +17,53 @@
   border-bottom: 1px solid var(--vp-c-divider) !important;
 }
 
-/* ===== 侧边栏样式 - 添加左边距，与右侧对称 ===== */
+/* 导航容器左右与页面 gutter 对齐 */
+.VPNavBar .container,
+.VPNavBar .content {
+  max-width: none !important;
+  width: 100% !important;
+  margin: 0 !important;
+  padding-inline: var(--page-gutter) !important;
+}
+
+/* 导航内部布局：用 flex，让搜索成为“右侧区域的最左边” */
+.VPNavBar .content-body {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: flex-start !important; /* 左到右排布 */
+  width: 100% !important;
+  gap: 12px;
+}
+
+.VPNavBarTitle {
+  flex-shrink: 0 !important;
+  margin-right: 16px !important;
+}
+
+/* 搜索：吃掉左侧剩余空间，把自己推到右侧区域最左；紧挨右侧菜单 */
+#local-search {
+  position: static !important;
+  transform: none !important;
+
+  margin-left: auto !important; /* 把自己推到右侧区域 */
+  margin-right: 0 !important; /* 紧贴右侧菜单（由菜单的 margin-left 控制间距） */
+
+  flex: 0 0 var(--search-w) !important;
+  width: var(--search-w) !important;
+  max-width: var(--search-w) !important;
+}
+
+/* 右侧菜单保持在最右，但不再用 auto 把搜索挤开，只留一个固定间距 */
+.VPNavBarMenu {
+  flex-shrink: 0 !important;
+  margin-left: var(--search-gap) !important; /* 搜索与菜单间距 */
+}
+
+/* ================= 侧边栏与内容区 ================= */
 .VPSidebar {
   position: fixed !important;
   top: var(--vp-nav-height) !important;
-  left: 48px !important; /* 添加左边距，与右侧对称 */
+  left: var(--page-gutter) !important; /* 与 Logo 左对齐 */
   width: var(--vp-sidebar-width) !important;
   height: calc(100vh - var(--vp-nav-height)) !important;
   background: var(--vp-c-bg) !important;
@@ -26,19 +71,12 @@
   z-index: 10 !important;
   padding: 0 !important;
   margin: 0 !important;
+
+  scrollbar-width: thin !important;
+  scrollbar-color: rgba(144, 147, 153, 0.3) transparent !important;
 }
 
-/* 调整内容区域，考虑侧边栏的左边距 */
-.VPContent {
-  padding-top: var(--vp-nav-height) !important;
-  padding-left: calc(var(--vp-sidebar-width) + 48px + 48px) !important; /* 侧边栏宽度 + 左边距 + 间距 */
-  padding-right: 48px !important;
-  min-height: calc(100vh - var(--vp-nav-height)) !important;
-  width: auto !important;
-  max-width: none !important;
-}
-
-/* 确保侧边栏内容也靠边 */
+/* 保留边距清零 */
 .VPSidebar .content,
 .VPSidebar .curtain,
 .VPSidebar > div {
@@ -46,39 +84,36 @@
   margin: 0 !important;
 }
 
-/* ===== 头部导航栏布局 ===== */
-
-/* 确保右侧元素保持在右侧 */
-.VPNavBarMenu {
-  margin-left: auto !important;
+.VPContent {
+  padding-top: var(--vp-nav-height) !important;
+  padding-left: calc(
+    var(--vp-sidebar-width) + var(--page-gutter) + var(--page-gutter)
+  ) !important; /* 侧栏宽 + 左右各一个 gutter */
+  padding-right: var(--page-gutter) !important;
+  min-height: calc(100vh - var(--vp-nav-height)) !important;
+  width: auto !important;
+  max-width: none !important;
 }
 
-/* 内容容器 - 关键修改，但不影响右侧导航 */
+/* 文档容器与主内容 */
 .VPDoc {
   max-width: none !important;
   width: 100% !important;
   margin: 0 !important;
-  padding: 32px 0 !important;
+  padding-block: 32px !important;
   display: block !important;
 }
 
-/* 只影响主内容区域，不影响右侧导航 */
-.VPDoc .content-container {
+.VPDoc .content-container,
+.vp-doc {
   max-width: none !important;
   width: 100% !important;
   margin: 0 !important;
-  padding: 0 !important;
-}
-
-/* 文档内容区域 - 关键修改，只影响主内容 */
-.vp-doc {
   padding: 0 16px !important;
-  max-width: none !important;
-  width: 100% !important;
   box-sizing: border-box !important;
 }
 
-/* 确保内容元素撑满宽度，但不影响右侧导航 */
+/* 主内容子元素占满宽度 */
 .vp-doc > div,
 .vp-doc > p,
 .vp-doc > h1,
@@ -96,216 +131,22 @@
   width: 100% !important;
 }
 
-/* 表格和代码块特殊处理 */
-.vp-doc table,
-.vp-doc div[class*="language-"] {
-  width: 100% !important;
-  max-width: 100% !important;
-  overflow-x: auto !important;
-  table-layout: fixed !important;
-}
-
-/* ===== 响应式布局 ===== */
-
-/* 小屏幕设备 - 手机 (< 768px) */
-@media (max-width: 767px) {
-  .VPSidebar {
-    position: static !important;
-    width: 100% !important;
-    height: auto !important;
-    border-right: none !important;
-    border-bottom: 1px solid var(--vp-c-divider) !important;
-    left: 0 !important; /* 小屏幕上恢复靠左 */
-  }
-  
-  .VPContent {
-    padding-left: 16px !important;
-    padding-right: 16px !important;
-  }
-  
-  .VPDoc {
-    padding: 16px 0 !important;
-  }
-  
-  .vp-doc {
-    padding: 0 8px !important;
-  }
-  
-  .vp-doc > * {
-    max-width: none !important;
-  }
-  
-  /* 小屏幕上头部导航保持默认布局 */
-}
-
-/* 平板设备 (768px - 1023px) */
-@media (min-width: 768px) and (max-width: 1023px) {
-  .VPSidebar {
-    left: 24px !important; /* 平板设备上减少左边距 */
-  }
-  
-  .VPContent {
-    padding-left: calc(var(--vp-sidebar-width) + 24px + 24px) !important;
-    padding-right: 24px !important;
-  }
-  
-  .VPDoc {
-    padding: 24px 0 !important;
-  }
-  
-  .vp-doc {
-    padding: 0 16px !important;
-  }
-  
-  .vp-doc > * {
-    max-width: none !important;
-  }
-  
-  /* 平板设备上头部导航保持默认布局 */
-}
-
-/* 小桌面设备 (1024px - 1279px) */
-@media (min-width: 1024px) and (max-width: 1279px) {
-  .VPSidebar {
-    left: 32px !important; /* 小桌面设备上适中的左边距 */
-  }
-  
-  .VPContent {
-    padding-left: calc(var(--vp-sidebar-width) + 32px + 32px) !important;
-    padding-right: 32px !important;
-  }
-  
-  .VPDoc {
-    padding: 28px 0 !important;
-  }
-  
-  .vp-doc {
-    padding: 0 20px !important;
-  }
-  
-  .vp-doc > * {
-    max-width: none !important;
-  }
-  
-  /* 小桌面设备上头部导航保持默认布局 */
-}
-
-/* 中等桌面设备 (1280px - 1439px) */
-@media (min-width: 1280px) and (max-width: 1439px) {
-  .VPSidebar {
-    left: 40px !important; /* 中等桌面设备上适中的左边距 */
-  }
-  
-  .VPContent {
-    padding-left: calc(var(--vp-sidebar-width) + 40px + 40px) !important;
-    padding-right: 40px !important;
-  }
-  
-  .VPDoc {
-    padding: 32px 0 !important;
-  }
-  
-  .vp-doc {
-    padding: 0 24px !important;
-  }
-  
-  .vp-doc > * {
-    max-width: none !important;
-  }
-  
-  /* 中等桌面设备上头部导航保持默认布局 */
-}
-
-/* 大桌面设备 (1440px - 1919px) */
-@media (min-width: 1440px) and (max-width: 1919px) {
-  .VPSidebar {
-    left: 56px !important; /* 大桌面设备上较大的左边距 */
-  }
-  
-  .VPContent {
-    padding-left: calc(var(--vp-sidebar-width) + 56px + 56px) !important;
-    padding-right: 56px !important;
-  }
-  
-  .VPDoc {
-    padding: 32px 0 !important;
-  }
-  
-  .vp-doc {
-    padding: 0 32px !important;
-  }
-  
-  .vp-doc > * {
-    max-width: none !important;
-  }
-  
-  /* 大桌面设备上头部导航保持默认布局 */
-}
-
-/* 超大屏幕设备 (1920px+) */
-@media (min-width: 1920px) {
-  /* .VPSidebar { */
-    /* 超大屏幕设备上最大的左边距 */
-    /* left: 80px !important;  */
-  /* } */
-  
-  .VPContent {
-    padding-left: calc(var(--vp-sidebar-width) + 80px + 80px) !important;
-    /* padding-right: 80px !important; */   
-  }
-  
-  .VPDoc {
-    padding: 32px 0 !important;
-  }
-  
-  .vp-doc {
-    padding: 0 0 !important;
-  }
-  
-  .vp-doc > * {
-    max-width: none !important;
-  }
-  
-  /* 超大屏幕设备上头部导航保持默认布局 */
-}
-
-/* ===== 内容区域样式优化 ===== */
-
-/* 文档内容基础样式 */
+/* ================= 文本/代码/图片/间距 ================= */
 .vp-doc {
   font-size: 16px !important;
   line-height: 1.7 !important;
 }
 
-/* 代码块优化 */
 .vp-doc div[class*="language-"] {
   margin: 20px 0 !important;
   border-radius: 8px !important;
   overflow: hidden !important;
 }
-
 .vp-doc pre {
   margin: 0 !important;
   padding: 24px !important;
 }
 
-/* 表格优化 */
-.vp-doc table {
-  display: table !important;
-  width: 100% !important;
-  margin: 28px 0 !important;
-  border-collapse: collapse !important;
-  overflow-x: auto !important;
-  min-width: 100% !important;
-}
-
-.vp-doc th, .vp-doc td {
-  padding: 12px 16px !important;
-  border: 1px solid var(--vp-c-divider) !important;
-  text-align: left !important;
-}
-
-/* 图片优化 */
 .vp-doc img {
   max-width: 100% !important;
   height: auto !important;
@@ -313,82 +154,103 @@
   margin: 20px 0 !important;
 }
 
-/* 段落和列表间距 */
 .vp-doc p {
   margin: 20px 0 !important;
 }
-
-.vp-doc ul, .vp-doc ol {
+.vp-doc ul,
+.vp-doc ol {
   margin: 20px 0 !important;
   padding-left: 36px !important;
 }
-
 .vp-doc li {
   margin: 10px 0 !important;
 }
 
-/* 标题间距 */
 .vp-doc h1 {
   margin-top: 0 !important;
   margin-bottom: 36px !important;
 }
-
 .vp-doc h2 {
   margin-top: 56px !important;
   margin-bottom: 28px !important;
 }
-
 .vp-doc h3 {
   margin-top: 40px !important;
   margin-bottom: 20px !important;
 }
 
-/* 响应式字体大小 */
-@media (max-width: 767px) {
-  .vp-doc {
-    font-size: 14px !important;
+.vp-doc [class*="language-"] code .highlighted {
+  background-color: rgba(0, 255, 149, 0.295) !important;
+}
+
+/* ================= 表格（稳定版） ================= */
+.vp-doc table {
+  display: table !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 28px 0 !important;
+  border-collapse: collapse !important;
+  table-layout: fixed !important; /* 列宽稳定 */
+  overflow-x: auto !important;
+  box-sizing: border-box !important;
+}
+
+.vp-doc th,
+.vp-doc td {
+  padding: 12px 16px !important;
+  border: 1px solid var(--vp-c-divider) !important;
+  text-align: left !important;
+  overflow-wrap: break-word !important;
+  word-break: break-word !important;
+  white-space: normal !important;
+}
+
+/* 小屏：保持横向滚动 */
+@media (max-width: 768px) {
+  .vp-doc table {
+    display: block !important;
+    overflow-x: auto !important;
+    white-space: nowrap !important;
+  }
+  .vp-doc th,
+  .vp-doc td {
+    white-space: nowrap !important;
   }
 }
 
-/* ===== 平滑滚动 ===== */
+/* ================= 锚点与滚动 ================= */
 html {
-  scroll-behavior: smooth !important;  
+  scroll-behavior: smooth !important;
 }
-
-/* 为锚点跳转设置合适的偏移量 */
-.vp-doc h1, 
-.vp-doc h2, 
-.vp-doc h3, 
-.vp-doc h4, 
-.vp-doc h5, 
+.vp-doc h1,
+.vp-doc h2,
+.vp-doc h3,
+.vp-doc h4,
+.vp-doc h5,
 .vp-doc h6 {
   scroll-margin-top: calc(var(--vp-nav-height) + 20px) !important;
 }
 
-/* ===== 首页特定样式 - 自动适应宽度，内容居中 ===== */
+/* ================= 首页定制（保持你原样） ================= */
 #VPContent.is-home {
-  padding-top: 0 !important;
-  padding-bottom: 0 !important;
-  padding-left: 0 !important;
-  padding-right: 0 !important;
+  padding: 0 !important;
   width: 100% !important;
 }
 
-/* 首页侧边栏隐藏 */
-body:has(#VPContent.is-home) .VPSidebar {
+body:has(#VPContent.is-home) .VPSidebar,
+body.home .VPSidebar {
   display: none !important;
 }
-
-/* 首页内容区域恢复默认 */
-body:has(#VPContent.is-home) .VPContent {
+body:has(#VPContent.is-home) .VPContent,
+body.home .VPContent {
   padding-left: 0 !important;
   padding-right: 0 !important;
   width: 100% !important;
 }
 
-/* 只对首页的英雄区域进行样式修改 */
-body:has(#VPContent.is-home) .VPHero {
-  padding-bottom: 0px !important;
+body:has(#VPContent.is-home) .VPHero,
+body.home .VPHero {
+  padding-bottom: 0 !important;
   width: 100% !important;
   height: calc(100vh - var(--vp-nav-height)) !important;
   display: flex !important;
@@ -397,355 +259,194 @@ body:has(#VPContent.is-home) .VPHero {
   padding-top: 10vh !important;
 }
 
-body:has(#VPContent.is-home) .VPHero .container {
+body:has(#VPContent.is-home) .VPHero .container,
+body.home .VPHero .container {
   gap: 380px !important;
   width: auto !important;
   max-width: none !important;
-  padding-left: 32px !important;
-  padding-right: 32px !important;
-  margin-left: auto !important;
-  margin-right: auto !important;
+  padding-inline: 32px !important;
+  margin-inline: auto !important;
   text-align: center !important;
 }
 
-/* 首页图片位置调整 - 与中间内容区域对称 */
-body:has(#VPContent.is-home) .VPHero .image {
-  margin-top: 0 !important;
-  margin-bottom: 0 !important;
+body:has(#VPContent.is-home) .VPHero .image,
+body.home .VPHero .image {
+  margin: 0 0 -10vh !important;
   align-self: flex-end !important;
-  margin-bottom: 10vh !important;
 }
-
-body:has(#VPContent.is-home) .VPHero .image-container {
+body:has(#VPContent.is-home) .VPHero .image-container,
+body.home .VPHero .image-container {
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
 }
-
-body:has(#VPContent.is-home) .VPHero .image img {
+body:has(#VPContent.is-home) .VPHero .image img,
+body.home .VPHero .image img {
   width: auto !important;
   object-fit: contain !important;
 }
 
-
-
-/* 只对首页的其他容器进行居中处理 */
 body:has(#VPContent.is-home) .VPHome,
 body:has(#VPContent.is-home) .VPFeature,
 body:has(#VPContent.is-home) .VPTeamMembers,
-body:has(#VPContent.is-home) .VPSponsors {
+body:has(#VPContent.is-home) .VPSponsors,
+body.home .VPHome,
+body.home .VPFeature,
+body.home .VPTeamMembers,
+body.home .VPSponsors {
   width: auto !important;
   max-width: none !important;
-  margin-left: auto !important;
-  margin-right: auto !important;
-  padding-left: 32px !important;
-  padding-right: 32px !important;
+  margin-inline: auto !important;
+  padding-inline: 32px !important;
 }
 
-/* 高亮显示关键代码 */
-.vp-doc [class*='language-'] code .highlighted {
-  background-color: rgba(0, 255, 149, 0.295) !important;
-}
-
-/* 个人英雄页高度 */
-.VPTeamPageTitle {
-  padding-top: 0 !important;
-}
-
-/* ===== 修复移动端侧边栏 ===== */
+/* ================= 移动端（≤767px） ================= */
 @media (max-width: 767px) {
   .VPSidebar {
+    position: static !important;
+    width: 100% !important;
+    height: auto !important;
+    border-right: none !important;
+    border-bottom: 1px solid var(--vp-c-divider) !important;
+    left: 0 !important;
+
     transform: translateX(-100%) !important;
     transition: transform 0.3s ease !important;
   }
-  
   .VPSidebar.open {
     transform: translateX(0) !important;
   }
+
+  .VPSidebar:not(.open) .content,
+  .VPSidebar:not(.open) .curtain,
+  .VPSidebar:not(.open) > div {
+    display: none !important;
+  }
+
+  .VPContent {
+    padding-inline: 16px !important;
+  }
+  .VPDoc {
+    padding-block: 16px !important;
+  }
+  .vp-doc {
+    padding-inline: 8px !important;
+  }
+
+  /* 窄屏：搜索回到流式，菜单继续在右 */
+  #local-search {
+    flex: 1 1 100% !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin-left: 0 !important;
+  }
+  .VPNavBarMenu {
+    margin-left: 0 !important;
+  }
 }
 
-
-.VPSidebar .content, .VPSidebar .curtain, .VPSidebar > div {
-  display: none;
+/* ================= 细节/杂项 ================= */
+.VPTeamPageTitle {
+  padding-top: 0 !important;
 }
-
-
-.image-container {
-  margin-top: 600px !important;
-}
-
-
 .VPFooter {
   padding: 8px !important;
   border-top: 0 !important;
 }
-
-
-/* 导航栏容器 - 取消居中，改为左右分布 */
-.VPNavBar .container,
-.VPNavBar .content {
-  max-width: none !important;
-  width: 100% !important;
-  margin: 0 !important;
-  padding-left: 24px !important;
-  padding-right: 24px !important;
-}
-
-/* 导航栏内部布局 - 确保flex布局生效 */
-.VPNavBar .content-body {
-  display: flex !important;
-  justify-content: space-between !important;
-  align-items: center !important;
-  width: 100% !important;
-}
-
-/* Logo区域 */
-.VPNavBarTitle {
-  flex-shrink: 0 !important;
-  margin-right: 16px !important;
-}
-
-
-/* 右侧菜单 */
-.VPNavBarMenu {
-  flex-shrink: 0 !important;
-  margin-left: auto !important;
-}
-
-
 .container .title {
-  padding-left:22px !important;
+  padding-left: 22px !important;
 }
 
-/* 搜索框 - 响应式定位 */
-#local-search {
-  position: absolute !important;
-  right: 1060px !important; /* 距离右边固定距离，为右侧菜单留出空间 */
-  top: 50% !important;
-  transform: translateY(-50%) !important;
-}
-
-@media (max-width: 767px) {
-  #local-search {
-    position: static !important;
-    transform: none !important;
-    margin: 0 auto !important;
-  }
-}
-
-/* 添加对于表格的处理 */
-
-/* ========== 表格样式修复 ========== */
-
-/* 超强选择器 - 移除所有宽度限制 */
-.vp-doc table,
-.VPDoc table,
-div.vp-doc > div > table,
-:where(.vp-doc) table,
-[class*="vp-doc"] table {
-  width: 100% !important;
-  max-width: none !important; /* 关键：移除 max-width 限制 */
-  min-width: 600px !important;
-  table-layout: fixed !important;
-  border-collapse: collapse !important;
-  margin: 28px 0 !important;
-  display: table !important;
-  overflow-x: auto !important;
-}
-
-/* 单元格基础样式 */
-.vp-doc table th,
-.vp-doc table td,
-.VPDoc table th,
-.VPDoc table td {
-  padding: 12px 16px !important;
-  border: 1px solid var(--vp-c-divider) !important;
-  overflow-wrap: break-word !important;
-  word-break: break-word !important;
-  white-space: normal !important;
-}
-
-/* 组件统计表格 - 4列精确控制 */
-.vp-doc table th:nth-child(1),
-.vp-doc table td:nth-child(1) {
-  width: 20% !important;
-  min-width: 120px !important;
-}
-
-.vp-doc table th:nth-child(2),
-.vp-doc table td:nth-child(2) {
-  width: 15% !important;
-  min-width: 80px !important;
-}
-
-.vp-doc table th:nth-child(3),
-.vp-doc table td:nth-child(3) {
-  width: 45% !important;
-  min-width: 200px !important;
-}
-
-.vp-doc table th:nth-child(4),
-.vp-doc table td:nth-child(4) {
-  width: 20% !important;
-  min-width: 100px !important;
-  text-align: center !important;
-}
-
-/* 表格容器样式 */
-.vp-doc > div:has(> table),
-.vp-doc .table-container {
-  width: 100% !important;
-  max-width: none !important;
-  overflow-x: auto !important;
-}
-
-/* 响应式 - 小屏幕滚动 */
-@media (max-width: 768px) {
-  .vp-doc table {
-    display: block !important;
-    overflow-x: auto !important;
-    white-space: nowrap !important;
-  }
-  
-  .vp-doc table th,
-  .vp-doc table td {
-    white-space: nowrap !important;
-  }
-}
-
-/* 针对你的旧版VitePress - 额外保险 */
-.vp-doc table {
-  box-sizing: border-box !important;
-}
-
-.vp-doc table * {
-  box-sizing: border-box !important;
-}
-/* 滚动条样式修饰 */
-
-/* ========== 侧边栏滚动条美化 ========== */
-
-/* Webkit 浏览器（Chrome、Safari、新版 Edge） */
+/* ================= 滚动条美化 ================= */
+/* Sidebar（WebKit） */
 .VPSidebar ::-webkit-scrollbar {
   width: 6px !important;
   height: 6px !important;
 }
-
 .VPSidebar ::-webkit-scrollbar-track {
   background: transparent !important;
   border-radius: 3px !important;
 }
-
 .VPSidebar ::-webkit-scrollbar-thumb {
   background: rgba(144, 147, 153, 0.3) !important;
   border-radius: 3px !important;
   transition: all 0.2s ease !important;
 }
-
 .VPSidebar ::-webkit-scrollbar-thumb:hover {
   background: rgba(144, 147, 153, 0.5) !important;
 }
-
 .VPSidebar ::-webkit-scrollbar-thumb:active {
   background: rgba(144, 147, 153, 0.7) !important;
 }
-
-/* 深色模式下的滚动条 */
 .dark .VPSidebar ::-webkit-scrollbar-thumb {
   background: rgba(255, 255, 255, 0.2) !important;
 }
-
 .dark .VPSidebar ::-webkit-scrollbar-thumb:hover {
   background: rgba(255, 255, 255, 0.3) !important;
 }
-
 .dark .VPSidebar ::-webkit-scrollbar-thumb:active {
   background: rgba(255, 255, 255, 0.4) !important;
 }
 
-/* Firefox 浏览器 */
-.VPSidebar {
-  scrollbar-width: thin !important;
-  scrollbar-color: rgba(144, 147, 153, 0.3) transparent !important;
-}
-
-.dark .VPSidebar {
-  scrollbar-color: rgba(255, 255, 255, 0.2) transparent !important;
-}
-
-/* 全局滚动条优化（可选，应用到整个文档） */
+/* 全局（WebKit） */
 ::-webkit-scrollbar {
   width: 8px !important;
   height: 8px !important;
 }
-
 ::-webkit-scrollbar-track {
   background: var(--vp-c-bg-soft) !important;
   border-radius: 4px !important;
 }
-
 ::-webkit-scrollbar-thumb {
   background: rgba(144, 147, 153, 0.3) !important;
   border-radius: 4px !important;
   transition: all 0.3s ease !important;
 }
-
 ::-webkit-scrollbar-thumb:hover {
   background: rgba(144, 147, 153, 0.5) !important;
 }
-
 ::-webkit-scrollbar-thumb:active {
   background: rgba(144, 147, 153, 0.7) !important;
 }
-
-/* 深色模式全局滚动条 */
 .dark ::-webkit-scrollbar-thumb {
   background: rgba(255, 255, 255, 0.2) !important;
 }
-
 .dark ::-webkit-scrollbar-thumb:hover {
   background: rgba(255, 255, 255, 0.3) !important;
 }
-
 .dark ::-webkit-scrollbar-thumb:active {
   background: rgba(255, 255, 255, 0.4) !important;
 }
 
-/* 表格横向滚动条美化 */
-.vp-doc table::-webkit-scrollbar {
-  height: 6px !important;
-}
-
-.vp-doc table::-webkit-scrollbar-track {
-  background: var(--vp-c-bg-soft) !important;
-  border-radius: 3px !important;
-}
-
-.vp-doc table::-webkit-scrollbar-thumb {
-  background: rgba(144, 147, 153, 0.3) !important;
-  border-radius: 3px !important;
-}
-
-.vp-doc table::-webkit-scrollbar-thumb:hover {
-  background: rgba(144, 147, 153, 0.5) !important;
-}
-
-/* 代码块滚动条美化 */
+/* 代码块滚动条 */
 .vp-doc div[class*="language-"]::-webkit-scrollbar {
   height: 6px !important;
   width: 6px !important;
 }
-
 .vp-doc div[class*="language-"]::-webkit-scrollbar-track {
   background: rgba(0, 0, 0, 0.1) !important;
   border-radius: 3px !important;
 }
-
 .vp-doc div[class*="language-"]::-webkit-scrollbar-thumb {
   background: rgba(144, 147, 153, 0.4) !important;
   border-radius: 3px !important;
 }
-
 .vp-doc div[class*="language-"]::-webkit-scrollbar-thumb:hover {
   background: rgba(144, 147, 153, 0.6) !important;
+}
+
+/* 表格横向滚动条 */
+.vp-doc table::-webkit-scrollbar {
+  height: 6px !important;
+}
+.vp-doc table::-webkit-scrollbar-track {
+  background: var(--vp-c-bg-soft) !important;
+  border-radius: 3px !important;
+}
+.vp-doc table::-webkit-scrollbar-thumb {
+  background: rgba(144, 147, 153, 0.3) !important;
+  border-radius: 3px !important;
+}
+.vp-doc table::-webkit-scrollbar-thumb:hover {
+  background: rgba(144, 147, 153, 0.5) !important;
 }
