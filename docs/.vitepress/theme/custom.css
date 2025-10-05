@@ -532,3 +532,91 @@ body:has(#VPContent.is-home) .VPSponsors {
   margin-left: 80%;
 }
 
+/* 添加对于表格的处理 */
+
+/* ========== 表格强制样式修复 - 添加到 custom.css 末尾 ========== */
+
+/* 超强选择器 - 移除所有宽度限制 */
+.vp-doc table,
+.VPDoc table,
+div.vp-doc > div > table,
+:where(.vp-doc) table,
+[class*="vp-doc"] table {
+  width: 100% !important;
+  max-width: none !important; /* 关键：移除 max-width 限制 */
+  min-width: 600px !important;
+  table-layout: fixed !important;
+  border-collapse: collapse !important;
+  margin: 28px 0 !important;
+  display: table !important;
+  overflow-x: auto !important;
+}
+
+/* 单元格基础样式 */
+.vp-doc table th,
+.vp-doc table td,
+.VPDoc table th,
+.VPDoc table td {
+  padding: 12px 16px !important;
+  border: 1px solid var(--vp-c-divider) !important;
+  overflow-wrap: break-word !important;
+  word-break: break-word !important;
+  white-space: normal !important;
+}
+
+/* 组件统计表格 - 4列精确控制 */
+.vp-doc table th:nth-child(1),
+.vp-doc table td:nth-child(1) {
+  width: 20% !important;
+  min-width: 120px !important;
+}
+
+.vp-doc table th:nth-child(2),
+.vp-doc table td:nth-child(2) {
+  width: 15% !important;
+  min-width: 80px !important;
+}
+
+.vp-doc table th:nth-child(3),
+.vp-doc table td:nth-child(3) {
+  width: 45% !important;
+  min-width: 200px !important;
+}
+
+.vp-doc table th:nth-child(4),
+.vp-doc table td:nth-child(4) {
+  width: 20% !important;
+  min-width: 100px !important;
+  text-align: center !important;
+}
+
+/* 表格容器样式 */
+.vp-doc > div:has(> table),
+.vp-doc .table-container {
+  width: 100% !important;
+  max-width: none !important;
+  overflow-x: auto !important;
+}
+
+/* 响应式 - 小屏幕滚动 */
+@media (max-width: 768px) {
+  .vp-doc table {
+    display: block !important;
+    overflow-x: auto !important;
+    white-space: nowrap !important;
+  }
+  
+  .vp-doc table th,
+  .vp-doc table td {
+    white-space: nowrap !important;
+  }
+}
+
+/* 针对你的旧版VitePress - 额外保险 */
+.vp-doc table {
+  box-sizing: border-box !important;
+}
+
+.vp-doc table * {
+  box-sizing: border-box !important;
+}
