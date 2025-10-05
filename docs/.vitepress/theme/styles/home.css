@@ -64,7 +64,7 @@ html, body {
   margin-bottom: 0 !important;
 }
 
-/* ===== 动态背景系统（保留所有动画）===== */
+/* ===== 动态背景系统 ===== */
 .VPHome {
   position: relative;
   overflow: hidden;
@@ -154,11 +154,11 @@ html, body {
   100% { transform: rotate(360deg); }
 }
 
-/* ===== Hero区域（响应式优化）===== */
+/* ===== Hero区域 - 流式布局 ===== */
 .VPHero {
   position: relative;
   z-index: 10;
-  padding: 60px 48px 40px;
+  padding: clamp(50px, 7vh, 80px) clamp(32px, 5vw, 64px) clamp(40px, 5vh, 60px);
   flex: 0 0 auto;
   display: flex;
   align-items: center;
@@ -166,25 +166,25 @@ html, body {
 }
 
 .VPHero .container {
-  max-width: 1280px;
   width: 100%;
+  max-width: min(92%, 1400px);
   margin: 0 auto;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 60px;
+  gap: clamp(36px, 5vw, 72px);
 }
 
 .VPHero .main {
-  flex: 1 1 55%;
+  flex: 1 1 58%;
   text-align: left;
-  max-width: 650px;
   min-width: 0;
 }
 
 .VPHero .image {
   flex: 0 0 auto;
-  width: 380px;
+  width: clamp(280px, 28vw, 420px);
+  max-width: 420px;
 }
 
 .VPHero .image-src {
@@ -226,9 +226,9 @@ html, body {
   }
 }
 
-/* ===== 标题样式（保留动画）===== */
+/* ===== 标题样式 ===== */
 .VPHero .name {
-  font-size: clamp(2.4rem, 4.5vw, 3.5rem);
+  font-size: clamp(2.2rem, 4.2vw, 3.5rem);
   line-height: 1.1;
   margin-bottom: 14px;
   background: var(--vp-home-hero-name-background);
@@ -262,7 +262,7 @@ html, body {
 }
 
 .VPHero .text {
-  font-size: clamp(1.15rem, 2.3vw, 1.5rem);
+  font-size: clamp(1.1rem, 2.2vw, 1.5rem);
   background: var(--gradient-accent);
   background-clip: text;
   -webkit-background-clip: text;
@@ -271,27 +271,26 @@ html, body {
   margin: 12px 0 14px;
   letter-spacing: -0.01em;
   filter: drop-shadow(0 2px 8px rgba(240, 147, 251, 0.2));
-  line-height: 1.3;
+  line-height: 1.35;
 }
 
 .VPHero .tagline {
-  font-size: clamp(0.95rem, 1.7vw, 1.08rem);
+  font-size: clamp(0.92rem, 1.6vw, 1.08rem);
   line-height: 1.7;
   color: var(--text-secondary);
   font-weight: 500;
   margin-top: 14px;
-  max-width: 600px;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
 }
 
 .VPHero .actions {
-  margin-top: 32px;
+  margin-top: 30px;
   gap: 14px;
   display: flex;
   flex-wrap: wrap;
 }
 
-/* ===== 按钮样式（保留动画）===== */
+/* ===== 按钮样式 ===== */
 .VPButton.brand {
   background: var(--glass-bg-secondary);
   backdrop-filter: blur(20px) saturate(180%);
@@ -384,11 +383,11 @@ html, body {
   border-color: rgba(244, 114, 182, 0.4);
 }
 
-/* ===== Features区域（响应式网格）===== */
+/* ===== Features区域 - 流式网格 ===== */
 .VPFeatures {
   position: relative;
   z-index: 10;
-  padding: 50px 48px 70px;
+  padding: clamp(40px, 6vh, 70px) clamp(32px, 5vw, 64px) clamp(50px, 7vh, 90px);
   flex: 1;
   display: flex;
   align-items: center;
@@ -396,15 +395,15 @@ html, body {
 }
 
 .VPFeatures .container {
-  max-width: 1280px;
   width: 100%;
+  max-width: min(92%, 1400px);
   margin: 0 auto;
 }
 
 .VPFeatures .grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 24px;
+  grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
+  gap: clamp(18px, 2.5vw, 28px);
   width: 100%;
 }
 
@@ -413,8 +412,8 @@ html, body {
   backdrop-filter: blur(24px) saturate(180%);
   border: 1px solid var(--glass-border);
   border-radius: 16px;
-  padding: 28px 24px;
-  min-height: 200px;
+  padding: clamp(24px, 3vw, 32px) clamp(20px, 2.5vw, 28px);
+  min-height: clamp(180px, 22vh, 220px);
   position: relative;
   overflow: hidden;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
@@ -475,8 +474,8 @@ html, body {
 .VPFeature:nth-child(4):hover { box-shadow: var(--shadow-glass-strong), var(--shadow-neon-green); }
 
 .VPFeature .icon {
-  font-size: 2.8rem;
-  margin-bottom: 16px;
+  font-size: clamp(2.4rem, 3.5vw, 2.8rem);
+  margin-bottom: clamp(12px, 2vh, 16px);
   transition: all 0.3s ease;
   position: relative;
   z-index: 2;
@@ -517,9 +516,9 @@ html, body {
 }
 
 .VPFeature .title {
-  font-size: 1.2rem;
+  font-size: clamp(1.05rem, 1.8vw, 1.2rem);
   font-weight: 700;
-  margin-bottom: 12px;
+  margin-bottom: clamp(10px, 1.5vh, 14px);
   position: relative;
   z-index: 2;
   color: var(--text-primary);
@@ -530,7 +529,7 @@ html, body {
 .VPFeature .details {
   color: var(--text-tertiary);
   line-height: 1.65;
-  font-size: 0.92rem;
+  font-size: clamp(0.88rem, 1.4vw, 0.95rem);
   font-weight: 400;
   position: relative;
   z-index: 2;
@@ -538,123 +537,26 @@ html, body {
   flex: 1;
 }
 
-/* ===== 笔记本屏幕优化（1200px - 1500px）===== */
-@media (max-width: 1500px) and (min-width: 1200px) {
-  .VPHero .container {
-    gap: 48px;
-  }
-  
-  .VPHero .main {
-    flex: 1 1 50%;
-  }
-  
-  .VPHero .image {
-    width: 340px;
-  }
-  
+/* ===== 响应式优化 ===== */
+@media (min-width: 1600px) {
   .VPFeatures .grid {
-    gap: 20px;
+    grid-template-columns: repeat(4, 1fr);
   }
 }
 
-@media (max-width: 1199px) and (min-width: 960px) {
-  .VPHero {
-    padding: 50px 40px 35px;
-  }
-  
-  .VPHero .container {
-    gap: 40px;
-  }
-  
-  .VPHero .main {
-    flex: 1 1 55%;
-  }
-  
-  .VPHero .image {
-    width: 300px;
-  }
-  
-  .VPFeatures {
-    padding: 40px 40px 60px;
-  }
-  
+@media (max-width: 1199px) and (min-width: 768px) {
   .VPFeatures .grid {
     grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
-  }
-  
-  .VPFeature {
-    min-height: 180px;
-    padding: 24px 20px;
   }
 }
 
-/* ===== 平板优化（768px - 959px）===== */
-@media (max-width: 959px) and (min-width: 768px) {
-  .VPHome {
-    min-height: auto;
-  }
-  
-  .VPHero {
-    padding: 45px 32px 32px;
-  }
-  
-  .VPHero .container {
-    flex-direction: column;
-    gap: 36px;
-    text-align: center;
-  }
-  
-  .VPHero .main {
-    text-align: center;
-    max-width: 100%;
-    flex: none;
-  }
-  
-  .VPHero .image {
-    width: 280px;
-    order: -1;
-  }
-  
-  .VPHero .actions {
-    justify-content: center;
-  }
-  
-  .VPFeatures {
-    padding: 36px 32px 50px;
-  }
-  
-  .VPFeatures .grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 18px;
-  }
-  
-  .VPFeature {
-    min-height: 170px;
-    padding: 22px 18px;
-  }
-  
-  .VPFeature .icon {
-    font-size: 2.4rem;
-  }
-  
-  .VPFeature .title {
-    font-size: 1.1rem;
-  }
-  
-  .VPFeature .details {
-    font-size: 0.88rem;
-  }
-}
-
-/* ===== 移动端优化（<768px）===== */
 @media (max-width: 767px) {
   .VPHome {
     min-height: auto;
   }
   
   .VPHero {
-    padding: 40px 24px 28px;
+    padding: 40px 24px 32px;
   }
   
   .VPHero .container {
@@ -665,25 +567,12 @@ html, body {
   
   .VPHero .main {
     text-align: center;
-    max-width: 100%;
     flex: none;
   }
   
   .VPHero .image {
-    width: 260px;
+    width: min(280px, 80vw);
     order: -1;
-  }
-  
-  .VPHero .name {
-    font-size: 2rem;
-  }
-  
-  .VPHero .text {
-    font-size: 1.2rem;
-  }
-  
-  .VPHero .tagline {
-    font-size: 0.95rem;
   }
   
   .VPHero .actions {
@@ -698,59 +587,6 @@ html, body {
   
   .VPFeatures .grid {
     grid-template-columns: 1fr;
-    gap: 16px;
-  }
-  
-  .VPFeature {
-    min-height: 160px;
-    padding: 22px 18px;
-  }
-  
-  .VPFeature .icon {
-    font-size: 2.4rem;
-    margin-bottom: 12px;
-  }
-  
-  .VPFeature .title {
-    font-size: 1.08rem;
-    margin-bottom: 10px;
-  }
-  
-  .VPFeature .details {
-    font-size: 0.88rem;
-  }
-}
-
-/* ===== 大屏优化（>1920px）===== */
-@media (min-width: 1920px) {
-  .VPHero .container,
-  .VPFeatures .container {
-    max-width: 1600px;
-  }
-  
-  .VPHero {
-    padding: 80px 60px 50px;
-  }
-  
-  .VPHero .container {
-    gap: 80px;
-  }
-  
-  .VPHero .image {
-    width: 440px;
-  }
-  
-  .VPFeatures {
-    padding: 60px 60px 90px;
-  }
-  
-  .VPFeatures .grid {
-    gap: 28px;
-  }
-  
-  .VPFeature {
-    min-height: 220px;
-    padding: 32px 28px;
   }
 }
 
