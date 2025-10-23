@@ -213,8 +213,9 @@ html, body {
   z-index: 10;
   padding: 40px 24px 20px;
   /* 🔧 修复：恢复原始固定高度，确保一屏展示 */
-  min-height: 50vh;
-  max-height: 55vh;
+  min-height: 48vh;
+    /* 稍微减小，给卡片更多空间 */
+    max-height: 52vh;
   flex: 0 0 auto;
   display: flex;
   align-items: center;
@@ -226,7 +227,8 @@ html, body {
   margin: 0 auto;
   display: flex;
   align-items: center;
-  gap: 48px;
+  gap: 60px;
+    /* 增加间距，让布局更舒适 */
   position: relative;
   height: 100%;
 }
@@ -235,7 +237,8 @@ html, body {
   flex: 1;
   text-align: left;
   position: relative;
-  max-width: 600px;
+  max-width: 520px;
+    /* 缩小标题区域宽度，给按钮留空间 */
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -245,8 +248,9 @@ html, body {
 
 /* 图片容器尺寸设置 */
 .VPHero .image {
-  width: clamp(300px, 30vw, 380px);
-  max-width: 380px;
+  width: clamp(280px, 28vw, 350px);
+    /* 缩小图片 */
+    max-width: 350px;
   flex-shrink: 0;
 }
 
@@ -297,9 +301,10 @@ html, body {
 
 /* ===== 标题样式 ===== */
 .VPHero .name {
-  font-size: clamp(2.5rem, 4vw, 3.2rem);
-  line-height: 1.1;
-  margin-bottom: 10px;
+  font-size: clamp(2.2rem, 3.5vw, 2.8rem);
+    /* 缩小标题字体 */
+    line-height: 1.15;
+    margin-bottom: 8px;
   background: var(--vp-home-hero-name-background);
   background-size: 400% 400%;
   -webkit-background-clip: text;
@@ -331,23 +336,25 @@ html, body {
 }
 
 .VPHero .text {
-  font-size: clamp(1.2rem, 2.5vw, 1.5rem);
+  font-size: clamp(1.1rem, 2.2vw, 1.3rem);
+    /* 缩小副标题 */
   background: var(--gradient-accent);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   font-weight: 700;
-  margin-top: 8px;
-  margin-bottom: 10px;
+  margin-top: 6px;
+    margin-bottom: 8px;
   letter-spacing: -0.01em;
   filter: drop-shadow(0 2px 8px rgba(240, 147, 251, 0.2));
 }
 
 .VPHero .tagline {
-  font-size: clamp(0.95rem, 1.8vw, 1.05rem);
+  font-size: clamp(0.88rem, 1.6vw, 0.95rem);
+    /* 缩小描述文字 */
   line-height: 1.6;
-  max-width: 580px;
-  margin: 10px 0 0 0;
+  max-width: 100%;
+    margin: 8px 0 0 0;
   color: var(--text-secondary);
   font-weight: 500;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
@@ -355,20 +362,23 @@ html, body {
 
 /* ===== 玻璃拟态按钮 ===== */
 .VPHero .actions {
-  margin-top: 24px;
-  gap: 14px;
+  margin-top: 20px;
+    gap: 12px;
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
+    /* 允许按钮换行 */
 }
 
 .VPButton.brand {
   background: var(--glass-bg-secondary);
   backdrop-filter: blur(20px) saturate(180%);
   border: 1px solid var(--glass-border-strong);
-  border-radius: 12px;
-  padding: 12px 24px;
+  border-radius: 10px;
+    padding: 10px 20px;
+    /* 缩小按钮 */
   font-weight: 600;
-  font-size: 0.9rem;
+  font-size: 0.88rem;
   position: relative;
   overflow: hidden;
   box-shadow: var(--shadow-glass-soft);
@@ -437,10 +447,11 @@ html, body {
   background: rgba(255, 255, 255, 0.8);
   backdrop-filter: blur(20px) saturate(180%);
   border: 1px solid rgba(255, 255, 255, 0.4);
-  border-radius: 12px;
-  padding: 12px 24px;
+  border-radius: 10px;
+    padding: 10px 20px;
+    /* 缩小按钮 */
   font-weight: 600;
-  font-size: 0.9rem;
+  font-size: 0.88rem;
   color: var(--text-primary);
   position: relative;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -492,61 +503,77 @@ html, body {
   gap: 20px;
   width: 100%;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  grid-template-columns: repeat(4, 1fr);
+    /* 固定4列布局，解决错乱问题 */
   align-items: stretch;
-  /* 🔧 修复：确保grid底部没有多余空间 */
   margin-bottom: 0;
 }
 
 .VPFeature {
-  background: var(--glass-bg-primary);
-  backdrop-filter: blur(24px) saturate(180%);
-  border: 1px solid var(--glass-border);
-  border-radius: 16px;
-  padding: 24px 20px;
-  min-height: 160px;
-  max-height: 200px;
+  /* 液态玻璃效果 - 多层次背景 */
+    background:
+      linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%),
+      var(--glass-bg-primary);
+    backdrop-filter: blur(40px) saturate(200%);
+    -webkit-backdrop-filter: blur(40px) saturate(200%);
+    border: 1.5px solid var(--glass-border);
+    border-radius: 18px;
+    /* 稍微减小圆角 */
+    padding: 22px 18px;
+    /* 缩小内边距，更精致 */
+    min-height: 190px;
+    /* 减小高度 */
   position: relative;
   overflow: hidden;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+    /* 更有弹性的动画 */
   text-align: center;
-  box-shadow: var(--shadow-glass-soft);
+  box-shadow:
+      var(--shadow-glass-soft),
+      inset 0 1px 0 rgba(255, 255, 255, 0.2),
+      inset 0 -1px 0 rgba(0, 0, 0, 0.05);
   cursor: pointer;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
+    transform-style: preserve-3d;
+    perspective: 1000px;
 }
 
+/* 液态流光效果层 */
 .VPFeature::before {
   content: '';
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, transparent 60%);
+  top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.3) 0%, transparent 70%);
   opacity: 0;
-  transition: opacity 0.3s ease;
+  transition: opacity 0.6s ease, transform 0.6s ease;
   pointer-events: none;
+  transform: scale(0.5);
 }
 
 /* 暗色主题卡片反射效果 */
 .dark .VPFeature::before {
-  background: linear-gradient(135deg, rgba(148, 163, 184, 0.2) 0%, transparent 60%);
+  background: radial-gradient(circle, rgba(148, 163, 184, 0.4) 0%, transparent 70%);
 }
 
-/* 合并重复的after伪元素 - 适度优化 */
+/* 渐变边框光晕层 */
 .VPFeature::after {
   content: '';
   position: absolute;
-  top: -2px;
-  left: -2px;
-  right: -2px;
-  bottom: -2px;
-  border-radius: 18px;
+  top: -3px;
+    left: -3px;
+    right: -3px;
+    bottom: -3px;
+    border-radius: 23px;
   z-index: -1;
   opacity: 0;
-  transition: opacity 0.3s ease;
+  transition: opacity 0.5s ease;
+    filter: blur(8px);
 }
 
 .VPFeature:nth-child(1)::after { background: var(--gradient-primary); }
@@ -555,17 +582,26 @@ html, body {
 .VPFeature:nth-child(4)::after { background: var(--gradient-success); }
 
 .VPFeature:hover {
-  transform: translateY(-8px) scale(1.02);
-  background: var(--glass-bg-secondary);
-  box-shadow: var(--shadow-glass-strong);
+  transform: translateY(-12px) scale(1.03) rotateX(2deg);
+    background:
+      linear-gradient(135deg, rgba(255, 255, 255, 0.18) 0%, rgba(255, 255, 255, 0.08) 100%),
+      var(--glass-bg-secondary);
+    backdrop-filter: blur(50px) saturate(220%);
+    -webkit-backdrop-filter: blur(50px) saturate(220%);
+    box-shadow:
+      var(--shadow-glass-strong),
+      inset 0 2px 0 rgba(255, 255, 255, 0.3),
+      inset 0 -2px 0 rgba(0, 0, 0, 0.1);
+    border-color: var(--glass-border-strong);
 }
 
 .VPFeature:hover::before {
   opacity: 1;
+  transform: scale(1);
 }
 
 .VPFeature:hover::after {
-  opacity: 0.8;
+  opacity: 1;
 }
 
 .VPFeature:nth-child(1):hover {
@@ -586,12 +622,14 @@ html, body {
 
 .VPFeature .icon {
   font-size: 2.8rem;
-  margin-bottom: 16px;
+    /* 缩小图标 */
+    margin-bottom: 14px;
   display: block;
-  transition: all 0.3s ease;
+  transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
   position: relative;
   z-index: 2;
-  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.1));
+  filter: drop-shadow(0 6px 16px rgba(0, 0, 0, 0.15));
+    transform-origin: center;
 }
 
 .VPFeature:nth-child(1) .icon {
@@ -623,32 +661,62 @@ html, body {
 }
 
 .VPFeature:hover .icon {
-  transform: scale(1.1) translateY(-4px);
-  filter: drop-shadow(0 8px 20px rgba(0, 0, 0, 0.15));
+  transform: scale(1.15) translateY(-6px) rotateZ(5deg);
+    filter: drop-shadow(0 10px 28px rgba(0, 0, 0, 0.2));
+    animation: iconPulse 1.5s ease-in-out infinite;
+  }
+  
+  @keyframes iconPulse {
+  
+    0%,
+    100% {
+      transform: scale(1.15) translateY(-6px) rotateZ(5deg);
+    }
+  
+    50% {
+      transform: scale(1.18) translateY(-8px) rotateZ(5deg);
+    }
 }
 
 .VPFeature .title {
-  font-size: 1.2rem;
+  font-size: 1.15rem;
+    /* 缩小标题 */
   font-weight: 700;
-  margin-bottom: 12px;
+  margin-bottom: 10px;
   position: relative;
   z-index: 2;
-  transition: all 0.3s ease;
+  transition: all 0.4s ease;
   color: var(--text-primary);
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+    letter-spacing: -0.01em;
+  }
+  
+  .VPFeature:hover .title {
+    transform: translateY(-2px);
+    text-shadow: 0 3px 8px rgba(0, 0, 0, 0.12);
 }
 
 .VPFeature .details {
   color: var(--text-tertiary);
-  line-height: 1.5;
-  font-size: 0.88rem;
+  line-height: 1.6;
+    font-size: 0.85rem;
+    /* 缩小描述文字 */
   font-weight: 400;
   position: relative;
   z-index: 2;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
   flex: 1;
   display: flex;
   align-items: center;
+  justify-content: center;
+    transition: all 0.4s ease;
+    padding: 0 4px;
+    /* 添加一点内边距 */
+  }
+  
+  .VPFeature:hover .details {
+    color: var(--text-secondary);
+    transform: translateY(-1px);
 }
 
 /* ===== 响应式优化 ===== */
@@ -673,19 +741,19 @@ html, body {
   }
   
   .VPFeatures .grid {
-    gap: 16px;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 20px;
+      grid-template-columns: repeat(2, 1fr);
+      /* 平板2列布局 */
   }
   
   .VPFeature {
-    min-height: 140px;
-    max-height: 180px;
-    padding: 20px 16px;
+    min-height: 200px;
+      padding: 24px 20px;
   }
   
   .VPFeature .icon {
-    font-size: 2.4rem;
-    margin-bottom: 12px;
+    font-size: 2.8rem;
+      margin-bottom: 14px;
   }
 }
 
@@ -748,28 +816,33 @@ html, body {
   
   .VPFeatures .grid {
     grid-template-columns: 1fr;
-    gap: 16px;
+      /* 移动端单列布局 */
+      gap: 18px;
   }
   
   .VPFeature {
-    min-height: 120px;
-    max-height: none;
-    padding: 20px 16px;
+    min-height: 180px;
+      padding: 24px 20px;
+      border-radius: 18px;
   }
   
   .VPFeature .icon {
-    font-size: 2.2rem;
-    margin-bottom: 10px;
+    font-size: 2.6rem;
+      margin-bottom: 12px;
   }
   
   .VPFeature .title {
-    font-size: 1.1rem;
-    margin-bottom: 8px;
+    font-size: 1.15rem;
+      margin-bottom: 10px;
   }
   
   .VPFeature .details {
     font-size: 0.9rem;
   }
+    /* 移动端优化hover效果 */
+    .VPFeature:hover {
+      transform: translateY(-6px) scale(1.02);
+    }
 }
 
 @media (min-width: 1920px) {
@@ -788,25 +861,131 @@ html, body {
   }
   
   .VPFeatures .grid {
-    gap: 24px;
-    grid-template-columns: repeat(4, 1fr);
+    gap: 28px;
+      grid-template-columns: repeat(4, 1fr);
+      /* 大屏保持4列 */
+    }
+    
+    .VPFeature {
+      min-height: 240px;
+      padding: 32px 28px;
+      border-radius: 22px;
+    }
+    
+    .VPFeature .icon {
+      font-size: 3.6rem;
+    }
+    
+    .VPFeature .title {
+      font-size: 1.4rem;
+    }
+    
+    .VPFeature .details {
+      font-size: 0.95rem;
+    }
+    }
+    
+    /* ===== 额外的液态玻璃装饰 ===== */
+    /* 为每个卡片添加独特的渐变反射效果 */
+    .VPFeature:nth-child(1) {
+      background:
+        linear-gradient(135deg, rgba(102, 126, 234, 0.08) 0%, rgba(102, 126, 234, 0.02) 100%),
+        linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%),
+        var(--glass-bg-primary);
+    }
+    
+    .VPFeature:nth-child(2) {
+      background:
+        linear-gradient(135deg, rgba(79, 172, 254, 0.08) 0%, rgba(79, 172, 254, 0.02) 100%),
+        linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%),
+        var(--glass-bg-primary);
+    }
+    
+    .VPFeature:nth-child(3) {
+      background:
+        linear-gradient(135deg, rgba(240, 147, 251, 0.08) 0%, rgba(240, 147, 251, 0.02) 100%),
+        linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%),
+        var(--glass-bg-primary);
+    }
+    
+    .VPFeature:nth-child(4) {
+      background:
+        linear-gradient(135deg, rgba(67, 233, 123, 0.08) 0%, rgba(67, 233, 123, 0.02) 100%),
+        linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%),
+        var(--glass-bg-primary);
+    }
+    
+    /* 暗色主题的卡片背景优化 */
+    .dark .VPFeature:nth-child(1) {
+      background:
+        linear-gradient(135deg, rgba(129, 140, 248, 0.12) 0%, rgba(129, 140, 248, 0.04) 100%),
+        var(--glass-bg-primary);
+    }
+    
+    .dark .VPFeature:nth-child(2) {
+      background:
+        linear-gradient(135deg, rgba(59, 130, 246, 0.12) 0%, rgba(59, 130, 246, 0.04) 100%),
+        var(--glass-bg-primary);
+    }
+    
+    .dark .VPFeature:nth-child(3) {
+      background:
+        linear-gradient(135deg, rgba(244, 114, 182, 0.12) 0%, rgba(244, 114, 182, 0.04) 100%),
+        var(--glass-bg-primary);
+    }
+    
+    .dark .VPFeature:nth-child(4) {
+      background:
+        linear-gradient(135deg, rgba(16, 185, 129, 0.12) 0%, rgba(16, 185, 129, 0.04) 100%),
+        var(--glass-bg-primary);
+    }
+/* 鼠标移动时的动态光影效果 */
+.VPFeature {
+  --mouse-x: 50%;
+    --mouse-y: 50%;
   }
-  
-  .VPFeature {
-    min-height: 180px;
-    max-height: 220px;
-    padding: 26px 22px;
+/* 为卡片添加微妙的入场动画 */
+@keyframes cardFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
+.VPFeature {
+  animation: cardFadeIn 0.6s ease-out backwards;
+}
+
+.VPFeature:nth-child(1) {
+  animation-delay: 0.1s;
+}
+
+.VPFeature:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.VPFeature:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+.VPFeature:nth-child(4) {
+  animation-delay: 0.4s;
+}
 /* ===== 性能优化 ===== */
 @media (prefers-reduced-motion: reduce) {
   .VPHome,
   .VPHome::before,
   .VPHome::after,
   .VPHero .name,
-  .VPHero .image img {
-    animation: none;
+  .VPHero .image img,
+    .VPFeature,
+    .VPFeature:hover .icon {
+      animation: none !important;
   }
   
   .VPFeature:hover,
