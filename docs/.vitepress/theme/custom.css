@@ -108,10 +108,10 @@
       padding-left: 0 !important;
     }
     
-                                /* 修复右侧边栏时的内容对齐 */
+      /* 修复右侧边栏时的内容对齐 */
     .VPDoc.has-sidebar .container {
       margin-left: 240px !important; /* 侧边栏宽度 */
-      padding-left: 32px !important;
+      /* padding-left: 32px !important; */
       padding-right: 32px !important;
       max-width: calc(100vw - 240px - 64px) !important;
     }
@@ -507,4 +507,126 @@ html {
 
 .VPTeamPageTitle {
   padding-top: 0 !important;
+}
+
+
+/* 补丁 */
+
+/* ===== 🎯 导航栏宽度精准修复 - 使用可靠的选择器区分页面 ===== */
+
+/* === 通用修复：适用于所有页面 === */
+
+/* 1. 导航栏容器宽度设置 */
+.VPNavBar .container {
+  max-width: 100% !important;
+  width: 100% !important;
+  margin: 0 auto !important;
+  padding-left: 32px !important;
+  padding-right: 32px !important;
+  display: flex !important;
+  align-items: center !important;
+}
+
+/* 2. Logo和标题区域 - 通用设置 */
+.VPNavBarTitle {
+  flex-shrink: 0 !important;
+  margin-right: 24px !important;
+}
+
+.VPNavBarTitle .title {
+  white-space: nowrap !important;
+}
+
+/* 3. 导航菜单 */
+.VPNavBarMenu {
+  margin-right: 16px !important;
+}
+
+/* 4. 搜索框 */
+.VPNavBarSearch {
+  flex-shrink: 0 !important;
+  margin-right: 16px !important;
+}
+
+/* 5. 右侧功能区 - 防止贴边（关键修复）*/
+.VPNavBarExtra {
+  flex-shrink: 0 !important;
+  margin-left: 0 !important;
+  padding-left: 0 !important;
+}
+
+/* 确保右侧图标按钮之间有间距 */
+.VPNavBarExtra > * {
+  margin-left: 8px !important;
+}
+
+.VPNavBarExtra > *:first-child {
+  margin-left: 0 !important;
+}
+
+/* === 文档页面特殊处理（通过检测侧边栏来判断）=== */
+.VPSidebar ~ * .VPNavBar .container,
+.has-sidebar .VPNavBar .container {
+  justify-content: flex-start !important;
+}
+
+.VPSidebar ~ * .VPNavBarTitle,
+.has-sidebar .VPNavBarTitle {
+  min-width: 220px !important;
+  margin-right: 32px !important;
+}
+
+.VPSidebar ~ * .VPNavBarSearch,
+.has-sidebar .VPNavBarSearch {
+  margin-left: auto !important;
+  margin-right: 16px !important;
+  max-width: 280px !important;
+}
+
+/* === 首页特殊处理（通过检测 VPHome 元素）=== */
+.VPHome ~ .VPNav .VPNavBar .container,
+.Layout:has(.VPHome) .VPNavBar .container {
+  justify-content: space-between !important;
+}
+
+/* === 响应式适配 === */
+
+@media (min-width: 960px) and (max-width: 1279px) {
+  .VPNavBar .container {
+    padding-left: 24px !important;
+    padding-right: 24px !important;
+  }
+}
+
+@media (min-width: 1280px) and (max-width: 1439px) {
+  .VPNavBar .container {
+    padding-left: 32px !important;
+    padding-right: 32px !important;
+  }
+}
+
+@media (min-width: 1440px) {
+  .VPNavBar .container {
+    padding-left: 32px !important;
+    padding-right: 32px !important;
+  }
+}
+
+@media (max-width: 959px) {
+  .VPNavBar .container {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+  
+  .VPNavBarTitle {
+    margin-right: 12px !important;
+  }
+  
+  .VPNavBarSearch {
+    margin-right: 12px !important;
+  }
+  
+  .VPNavBarExtra > * {
+    margin-left: 4px !important;
+  }
 }
