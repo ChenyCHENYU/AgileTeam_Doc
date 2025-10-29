@@ -64,6 +64,10 @@ export const ROBOT_GUIDE_DOC = [
             text: "API集成",
             link: `${ROBOT}/guide/api-integration`,
           },
+          {
+            text: "KeepAlive缓存",
+            link: `${ROBOT}/guide/keep-alive-cache`,
+          },
         ],
       },
       {
