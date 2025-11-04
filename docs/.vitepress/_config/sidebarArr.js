@@ -129,6 +129,10 @@ export const ROBOT_GUIDE_DOC = [
         text: "工程化实践",
         link: `${ROBOT}/guide/engineering-practice`,
       },
+      {
+        text: "接口管理实践",
+        link: `${ROBOT}/guide/api-practice`,
+      },
     ],
   },
 ];
