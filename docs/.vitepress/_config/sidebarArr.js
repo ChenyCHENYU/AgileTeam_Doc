@@ -133,6 +133,10 @@ export const ROBOT_GUIDE_DOC = [
         text: "接口管理实践",
         link: `${ROBOT}/guide/api-practice`,
       },
+      {
+        text: "国际化实践",
+        link: `${ROBOT}/guide/i18n-practice`,
+      },
     ],
   },
 ];
