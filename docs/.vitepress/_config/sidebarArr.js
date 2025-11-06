@@ -137,6 +137,10 @@ export const ROBOT_GUIDE_DOC = [
         text: "国际化实践",
         link: `${ROBOT}/guide/i18n-practice`,
       },
+      {
+        text: "主题实践",
+        link: `${ROBOT}/guide/theme-practice`,
+      },
     ],
   },
 ];
