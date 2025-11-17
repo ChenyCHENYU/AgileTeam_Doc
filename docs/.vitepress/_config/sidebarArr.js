@@ -143,7 +143,11 @@ export const ROBOT_GUIDE_DOC = [
       },
       {
         text: "全局错误实践",
-        link: `${ROBOT}/guide/global-error`,
+        link: `${ROBOT}/guide/global-error-practice`,
+      },
+      {
+        text: "Axios 插件化实践",
+        link: `${ROBOT}/guide/axios-plugin-practice`,
       },
     ],
   },
