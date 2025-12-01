@@ -149,6 +149,10 @@ export const ROBOT_GUIDE_DOC = [
         text: "Axios 插件化实践",
         link: `${ROBOT}/guide/axios-plugin-practice`,
       },
+      {
+        text: "规范化实践",
+        link: `${ROBOT}/guide/specification-practice`,
+      },
     ],
   },
 ];
