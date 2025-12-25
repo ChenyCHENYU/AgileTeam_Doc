@@ -154,6 +154,10 @@ export const ROBOT_GUIDE_DOC = [
         link: `${ROBOT}/guide/specification-practice`,
       },
       {
+        text: "monorepo",
+        link: `${ROBOT}/guide/monorepo`,
+      },
+      {
         text: "MicroApp",
         link: `${ROBOT}/guide/micro-app`,
       },
