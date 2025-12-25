@@ -153,6 +153,10 @@ export const ROBOT_GUIDE_DOC = [
         text: "规范化实践",
         link: `${ROBOT}/guide/specification-practice`,
       },
+      {
+        text: "MicroApp",
+        link: `${ROBOT}/guide/micro-app`,
+      },
     ],
   },
 ];
