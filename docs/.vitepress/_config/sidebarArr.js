@@ -154,7 +154,7 @@ export const ROBOT_GUIDE_DOC = [
         link: `${ROBOT}/guide/specification-practice`,
       },
       {
-        text: "monorepo",
+        text: "Monorepo",
         link: `${ROBOT}/guide/monorepo`,
       },
       {
