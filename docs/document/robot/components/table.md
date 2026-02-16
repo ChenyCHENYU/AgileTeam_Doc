@@ -4,22 +4,22 @@ outline: 'deep'
 
 # C_Table 超级表格组件
 
-> 🚀 基于 Naive UI 的全能表格组件，让数据管理变得简单而强大
+> 🚀 基于 Naive UI 的全能表格组件，「薄 UI 壳 + 厚 Composable 引擎」架构，让数据管理变得简单而强大
 
 ## ✨ 特性
 
-- **🎯 多种编辑模式**: 支持行编辑、单元格编辑、模态框编辑和混合编辑模式
-- **📱 智能分页**: 内置分页功能，支持自定义分页配置和响应式展示
-- **🔽 展开折叠**: 支持行展开和数据懒加载，完美处理层级数据
-- **✅ 行选择**: 支持单选、多选、父子关联选择，灵活的选择策略
-- **⚡ 动态行操作**: 内置添加、删除、复制、移动等常用操作
-- **🎨 内置操作栏**: 自带编辑、删除、详情按钮，支持自定义操作
-- **🛡️ 表单验证**: 集成表单验证，支持实时验证和错误提示
-- **📊 数据导出**: 支持表格打印和截图下载功能
-- **🎪 预设配置**: 提供多种预设模式，快速适配不同业务场景
-- **💪 TypeScript**: 完整的类型定义和类型安全
-- **⚡ 高性能**: 优化的虚拟滚动和按需渲染机制
-- **🔧 高度可定制**: 支持自定义渲染、操作和样式配置
+- **🎯 5种编辑模式**: 支持行编辑（row）、单元格编辑（cell）、模态框编辑（modal）、混合模式（both）和只读模式（none）
+- **📱 智能分页**: 内置分页功能，支持远程/本地分页、自定义分页配置和响应式展示
+- **🔽 展开折叠**: 支持行展开和异步数据懒加载，完美处理层级数据和嵌套子表格
+- **✅ 行选择**: 支持单选、多选、父子关联选择（strict/loose）、子表格选择
+- **⚡ 动态行操作**: 内置添加、插入、删除、复制、上移、下移，配套打印/截图/水印
+- **🎨 内置操作栏**: 自带详情、编辑、删除按钮（二元法则：`false` 禁用 / 函数即 API），支持自定义操作
+- **🛡️ 表单验证**: 列级验证规则集成，模态框编辑自动生成 `C_Form` 表单
+- **📊 打印导出**: 支持 Canvas/SVG 水印、打印预设（table/form/report）、截图下载
+- **🔧 列设置面板**: 列搜索、可见性、拖拽排序、固定列、列宽调整、一键重置
+- **🚀 CRUD 模式**: `useTableCrud` + `<C_Table :crud="table" />` 一行代码搞定 CRUD
+- **💪 TypeScript**: 完整的泛型类型定义和类型安全
+- **⚡ 高性能**: Composable 拆分的状态管理器，按需计算和渲染
 
 ## 📦 安装
 
@@ -27,10 +27,6 @@ outline: 'deep'
 
 ```bash [bun (推荐)]
 # 基于 Naive UI，确保已安装依赖
-
-
-
-
 bun install naive-ui
 ```
 
@@ -51,17 +47,115 @@ npm install naive-ui
 
 :::
 
+## 🏗️ 架构概览
+
+```
+C_Table/index.vue ──── 薄 UI 壳（模板 + 事件桥接）
+  │
+  ├── useTableConfig     ← 配置解析（resolveConfig）
+  ├── useTableManager    ← 统一状态管理器
+  │    ├── useRowEdit    ← 行编辑
+  │    ├── useCellEdit   ← 单元格编辑
+  │    ├── useModalEdit  ← 模态框编辑
+  │    ├── useTableExpand ← 展开 + 选择
+  │    └── useDynamicRow  ← 动态行操作
+  ├── useTableColumns    ← 列处理引擎
+  ├── useTableActions    ← 操作按钮渲染
+  ├── usePagination      ← 分页逻辑
+  └── ColumnSettings     ← 列设置面板
+```
+
 ## 🎯 快速开始
 
-### 基础用法
+### CRUD 模式（推荐）
 
-```vue {4,5,6,7,8}
+```vue {3-8}
 <template>
-  <!-- 最简单的表格 -->
+  <!-- 一行搞定 CRUD -->
+  <C_Table
+    :crud="table"
+    :config="{
+      edit: { mode: 'modal', modalTitle: '编辑员工信息' },
+    }"
+  />
+</template>
+
+<script setup lang="ts">
+  import { useTableCrud } from '@robot-admin/request-core'
+  import type { UseTableCrudConfig } from '@robot-admin/request-core'
+
+  interface Employee {
+    id: number
+    name: string
+    age: number
+    email: string
+    department: string
+  }
+
+  const employeeConfig: UseTableCrudConfig<Employee> = {
+    api: {
+      list: '/employees/list',
+      get: '/employees/:id',
+      update: '/employees/:id',
+      remove: '/employees/:id',
+      create: '/employees',
+    },
+    columns: [
+      {
+        key: 'name',
+        title: '姓名',
+        editable: true,
+        required: true,
+        editType: 'input',
+      },
+      {
+        key: 'age',
+        title: '年龄',
+        editable: true,
+        editType: 'number',
+        editProps: { min: 18, max: 65 },
+      },
+      { key: 'email', title: '邮箱', editable: true, editType: 'email' },
+      {
+        key: 'department',
+        title: '部门',
+        editable: true,
+        editType: 'select',
+        editProps: {
+          options: [
+            { label: '技术部', value: 'tech' },
+            { label: '人事部', value: 'hr' },
+          ],
+        },
+      },
+    ],
+    idKey: 'id',
+    createNewRow: () => ({
+      id: Date.now(),
+      name: '',
+      age: 25,
+      email: '',
+      department: 'tech',
+    }),
+  }
+
+  const table = useTableCrud(employeeConfig)
+</script>
+```
+
+### 手动模式
+
+```vue {4-12}
+<template>
   <C_Table
     :data="tableData"
     :columns="tableColumns"
     :loading="loading"
+    :config="{
+      edit: { mode: 'modal' },
+      actions: { edit: handleEdit, delete: handleDelete, detail: handleDetail },
+      pagination: { pageSize: 20 },
+    }"
     @save="handleSave"
     @cancel="handleCancel"
   />
@@ -83,1238 +177,866 @@ npm install naive-ui
   const handleSave = (rowData, rowIndex) => {
     console.log('保存数据:', rowData)
   }
-
-  const handleCancel = () => {
+  const handleCancel = (rowData, rowIndex) => {
     console.log('取消编辑')
+  }
+  const handleEdit = async row => {
+    /* API 调用 */
+  }
+  const handleDelete = async row => {
+    /* API 调用 */
+  }
+  const handleDetail = row => {
+    /* 查看详情 */
   }
 </script>
 ```
 
-### 多种编辑模式
+### 5种编辑模式
 
-```vue {6-9}
+```vue {6-8}
 <template>
-  <div class="edit-mode-demo">
-    <!-- 编辑模式切换 -->
-    <n-space class="mb-4">
-      <n-radio-group v-model:value="editMode">
-        <n-radio-button value="row">行编辑</n-radio-button>
-        <n-radio-button value="cell">单元格编辑</n-radio-button>
-        <n-radio-button value="modal">模态框编辑</n-radio-button>
-        <n-radio-button value="both">混合模式</n-radio-button>
-      </n-radio-group>
-    </n-space>
+  <div>
+    <!-- 模式切换 -->
+    <n-radio-group v-model:value="editMode">
+      <n-radio-button value="row">行编辑</n-radio-button>
+      <n-radio-button value="cell">单元格编辑</n-radio-button>
+      <n-radio-button value="modal">模态框编辑</n-radio-button>
+      <n-radio-button value="both">混合模式</n-radio-button>
+      <n-radio-button value="none">只读模式</n-radio-button>
+    </n-radio-group>
 
-    <!-- 表格组件 -->
+    <!-- 编辑模式实时切换 -->
     <C_Table
-      :data="tableData"
-      :columns="tableColumns"
-      :edit-mode="editMode"
-      modal-title="编辑员工信息"
-      :modal-width="600"
-      @save="handleSave"
+      :crud="table"
+      :config="{
+        edit: {
+          mode: editMode,
+          modalTitle: '编辑员工信息',
+          modalWidth: 700,
+        },
+      }"
     />
   </div>
 </template>
 
 <script setup>
   const editMode = ref('modal')
-  const tableData = ref([
-    {
-      id: 1,
-      name: '张三',
-      age: 28,
-      department: 'tech',
-      email: 'zhangsan@example.com',
-      status: 'active'
-    },
-    {
-      id: 2,
-      name: '李四',
-      age: 32,
-      department: 'hr',
-      email: 'lisi@example.com',
-      status: 'active'
-    },
-  ])
-
-  const tableColumns = [
-    {
-      key: 'name',
-      title: '姓名',
-      editable: true,
-      required: true,
-      editType: 'input'
-    },
-    {
-      key: 'age',
-      title: '年龄',
-      editable: true,
-      editType: 'number',
-      editProps: { min: 18, max: 65 }
-    },
-    {
-      key: 'department',
-      title: '部门',
-      editable: true,
-      editType: 'select',
-      editProps: {
-        options: [
-          { label: '技术部', value: 'tech' },
-          { label: '人事部', value: 'hr' },
-        ]
-      }
-    },
-    {
-      key: 'email',
-      title: '邮箱',
-      editable: true,
-      editType: 'email'
-    },
-    {
-      key: 'status',
-      title: '状态',
-      editable: true,
-      editType: 'select',
-      editProps: {
-        options: [
-          { label: '在职', value: 'active' },
-          { label: '离职', value: 'inactive' },
-        ]
-      }
-    }
-  ]
-
-  const handleSave = async (rowData, rowIndex) => {
-    console.log('保存数据:', rowData)
-    // 执行保存逻辑
-  }
+  const table = useTableCrud(employeeConfig)
 </script>
 ```
 
 ## 📖 API 文档
 
-### Props
+### Props（极简 API）
 
-| 参数 | 类型 | 默认值 | 说明 |
-|------|------|--------|------|
-| **data** | `DataRecord[]` | `[]` | 表格数据数组 |
-| **columns** | `TableColumn[]` | `[]` | 表格列配置数组 |
-| **loading** | `boolean` | `false` | 加载状态 |
-| **editMode** | `'row' \| 'cell' \| 'modal' \| 'both' \| 'none'` | `'modal'` | 编辑模式 |
-| **editable** | `boolean` | `true` | 是否可编辑 |
-| **showRowActions** | `boolean` | `true` | 是否显示操作列 |
-| **modalTitle** | `string` | `'编辑数据'` | 模态框标题 |
-| **modalWidth** | `number` | `600` | 模态框宽度 |
-| **actions** | `TableActions` | `{}` | 操作配置 |
-| **pagination** | `PaginationConfig \| boolean` | `true` | 分页配置 |
-| **expandable** | `boolean` | `false` | 是否支持展开 |
-| **enableSelection** | `boolean` | `false` | 是否启用选择 |
-| **rowKey** | `string \| Function` | `'id'` | 行数据的Key |
-| **striped** | `boolean` | `true` | 是否显示斑马纹 |
-| **bordered** | `boolean` | `true` | 是否显示边框 |
-| **size** | `'small' \| 'medium' \| 'large'` | `'medium'` | 表格尺寸 |
+| 参数        | 类型                                   | 默认值            | 说明                                                    |
+| ----------- | -------------------------------------- | ----------------- | ------------------------------------------------------- |
+| **columns** | `TableColumn[]`                        | —                 | 列配置数组（crud 模式下可省略）                         |
+| **data**    | `MaybeRefLike<DataRecord[]>`           | —                 | 数据源（支持跨 Vue 实例 Ref）                           |
+| **loading** | `MaybeRefLike<boolean>`                | `false`           | 加载状态                                                |
+| **rowKey**  | `(row: DataRecord) => DataTableRowKey` | `(row) => row.id` | 行唯一键函数                                            |
+| **config**  | `TableConfig`                          | `{}`              | 统一功能配置对象                                        |
+| **crud**    | `CrudBinding`                          | —                 | CRUD 绑定（传入 `useTableCrud()` 返回值，自动接管一切） |
+
+### `config` 配置详解
+
+```typescript
+interface TableConfig<T extends DataRecord = DataRecord> {
+  edit?: EditConfig | boolean // 编辑配置
+  actions?: SimpleTableActions<T> // 操作按钮
+  pagination?: PaginationConfig | boolean // 分页配置
+  expand?: ExpandConfig<T> | boolean // 展开配置
+  selection?: SelectionConfig<T> | boolean // 选择配置
+  dynamicRows?: DynamicRowsOptions<T> | boolean // 动态行配置
+  toolbar?: ToolbarConfig // 工具栏配置
+  display?: DisplayConfig // 显示配置
+}
+```
+
+#### EditConfig — 编辑配置
+
+| 字段             | 类型                                             | 默认值       | 说明               |
+| ---------------- | ------------------------------------------------ | ------------ | ------------------ |
+| `enabled`        | `boolean`                                        | `true`       | 是否启用编辑       |
+| `mode`           | `'row' \| 'cell' \| 'modal' \| 'both' \| 'none'` | `'modal'`    | 编辑模式           |
+| `showRowActions` | `boolean`                                        | `true`       | 是否显示行操作按钮 |
+| `modalTitle`     | `string`                                         | `'编辑数据'` | 模态框标题         |
+| `modalWidth`     | `number`                                         | `600`        | 模态框宽度         |
+
+#### SimpleTableActions — 操作配置（二元法则）
+
+```typescript
+interface SimpleTableActions<T> {
+  edit?: false | ApiFunction<T> // false = 禁用，函数 = API
+  delete?: false | ApiFunction<T> // false = 禁用，函数 = API
+  detail?: false | ApiFunction<T> // false = 禁用，函数 = 查看
+  custom?: CustomAction<T>[] // 自定义操作按钮
+  render?: RenderFunction<T> // 完全自定义渲染
+}
+```
+
+#### PaginationConfig — 分页配置
+
+| 字段              | 类型                             | 默认值              | 说明             |
+| ----------------- | -------------------------------- | ------------------- | ---------------- |
+| `enabled`         | `boolean`                        | `true`              | 是否启用分页     |
+| `page`            | `number`                         | `1`                 | 当前页码         |
+| `pageSize`        | `number`                         | `10`                | 每页条数         |
+| `showSizePicker`  | `boolean`                        | `true`              | 显示每页条数选择 |
+| `showQuickJumper` | `boolean`                        | `true`              | 显示快速跳转     |
+| `pageSizes`       | `number[]`                       | `[10, 20, 50, 100]` | 可选的每页条数   |
+| `simple`          | `boolean`                        | `false`             | 简洁模式         |
+| `size`            | `'small' \| 'medium' \| 'large'` | `'medium'`          | 分页器尺寸       |
+| `remote`          | `boolean`                        | —                   | 远程分页模式     |
+
+#### ExpandConfig — 展开配置
+
+| 字段                  | 类型                                                        | 说明             |
+| --------------------- | ----------------------------------------------------------- | ---------------- |
+| `enabled`             | `boolean`                                                   | 是否启用展开     |
+| `defaultExpandedKeys` | `DataTableRowKey[]`                                         | 默认展开的行     |
+| `onLoadData`          | `(row: T) => Promise<any[]> \| any[]`                       | 异步加载展开数据 |
+| `renderContent`       | `(row, expandData, loading, childSelection?) => VNodeChild` | 展开内容渲染     |
+| `rowExpandable`       | `(row: T) => boolean`                                       | 行是否可展开     |
+
+#### SelectionConfig — 选择配置
+
+| 字段                               | 类型                               | 说明                  |
+| ---------------------------------- | ---------------------------------- | --------------------- |
+| `enabled`                          | `boolean`                          | 是否启用选择          |
+| `defaultCheckedKeys`               | `DataTableRowKey[]`                | 默认选中的行          |
+| `rowCheckable`                     | `(row: T) => boolean`              | 行是否可选            |
+| `maxSelection`                     | `number`                           | 最大选择数量          |
+| `childSelection.enabled`           | `boolean`                          | 是否启用子表格选择    |
+| `childSelection.childRowCheckable` | `(childRow, parentRow) => boolean` | 子行是否可选          |
+| `parentChildLink.enabled`          | `boolean`                          | 是否启用父子联动      |
+| `parentChildLink.mode`             | `'strict' \| 'loose'`              | 联动模式（严格/宽松） |
+
+#### DynamicRowsOptions — 动态行配置
+
+| 字段                   | 类型                            | 默认值       | 说明             |
+| ---------------------- | ------------------------------- | ------------ | ---------------- |
+| `defaultRowData`       | `() => T`                       | `() => ({})` | 新行默认数据工厂 |
+| `enableRadioSelection` | `boolean`                       | `true`       | 启用单选         |
+| `enableAdd`            | `boolean`                       | `true`       | 启用添加行       |
+| `enableInsert`         | `boolean`                       | `true`       | 启用插入行       |
+| `enableDelete`         | `boolean`                       | `true`       | 启用删除行       |
+| `enableCopy`           | `boolean`                       | `true`       | 启用复制行       |
+| `enableMove`           | `boolean`                       | `true`       | 启用移动行       |
+| `enablePrint`          | `boolean`                       | `true`       | 启用打印         |
+| `confirmDelete`        | `boolean`                       | `true`       | 删除前确认       |
+| `printOptions`         | `PrintWatermarkOptions`         | —            | 打印水印配置     |
+| `printPreset`          | `'table' \| 'form' \| 'report'` | `'table'`    | 打印预设         |
+| `onRowChange`          | `(data: T[]) => void`           | —            | 行数据变化回调   |
+| `onSelectionChange`    | `(key, row) => void`            | —            | 选择变化回调     |
+| `onRowAdd`             | `(newRow: T) => void`           | —            | 添加行回调       |
+| `onRowDelete`          | `(row, index) => void`          | —            | 删除行回调       |
+| `onRowCopy`            | `(original, copy) => void`      | —            | 复制行回调       |
+| `onRowMove`            | `(row, from, to) => void`       | —            | 移动行回调       |
+
+#### ToolbarConfig — 工具栏配置
+
+| 字段             | 类型      | 默认值 | 说明               |
+| ---------------- | --------- | ------ | ------------------ |
+| `show`           | `boolean` | `true` | 是否显示工具栏     |
+| `columnSettings` | `boolean` | `true` | 是否启用列设置齿轮 |
+
+#### DisplayConfig — 显示配置
+
+| 字段          | 类型                             | 默认值     | 说明         |
+| ------------- | -------------------------------- | ---------- | ------------ |
+| `striped`     | `boolean`                        | `true`     | 斑马纹       |
+| `bordered`    | `boolean`                        | `true`     | 边框         |
+| `singleLine`  | `boolean`                        | `true`     | 单行显示     |
+| `size`        | `'small' \| 'medium' \| 'large'` | `'medium'` | 尺寸         |
+| `maxHeight`   | `number \| string`               | —          | 最大高度     |
+| `scrollX`     | `number \| string`               | —          | 横向滚动宽度 |
+| `columnWidth` | `number`                         | `180`      | 默认列宽     |
 
 ### Events
 
-| 事件名 | 参数 | 说明 |
-|--------|------|------|
-| **save** | `(rowData: DataRecord, rowIndex: number, columnKey?: string)` | 保存数据时触发 |
-| **cancel** | `-` | 取消编辑时触发 |
-| **row-add** | `(newRow: DataRecord)` | 添加行时触发 |
-| **row-delete** | `(deletedRow: DataRecord, index: number)` | 删除行时触发 |
-| **row-selection-change** | `(selectedKey: string, selectedRow: DataRecord)` | 行选择变化时触发 |
-| **pagination-change** | `(page: number, pageSize: number)` | 分页变化时触发 |
+| 事件名                       | 参数                                           | 说明           |
+| ---------------------------- | ---------------------------------------------- | -------------- |
+| **save**                     | `(rowData, rowIndex, columnKey?)`              | 保存编辑时触发 |
+| **cancel**                   | `(rowData, rowIndex)`                          | 取消编辑时触发 |
+| **update:data**              | `(data: T[])`                                  | 数据更新时触发 |
+| **row-add**                  | `(newRow)`                                     | 添加行时触发   |
+| **row-delete**               | `(deletedRow, index)`                          | 删除行时触发   |
+| **row-copy**                 | `(originalRow, newRow)`                        | 复制行时触发   |
+| **row-move**                 | `(row, fromIndex, toIndex)`                    | 移动行时触发   |
+| **row-selection-change**     | `(selectedKey, selectedRow)`                   | 动态行单选变化 |
+| **selection-change**         | `(checkedKeys, checkedRows, childSelections?)` | 多选变化       |
+| **child-selection-change**   | `(parentKey, childKeys, childRows)`            | 子选择变化     |
+| **parent-child-link-change** | `(parentKey, shouldSelect)`                    | 父子联动变化   |
+| **expand-change**            | `(expandedKeys, row?, expanded?)`              | 展开状态变化   |
+| **pagination-change**        | `(page, pageSize)`                             | 分页变化       |
+| **view-detail**              | `(data)`                                       | 查看详情       |
+| **column-change**            | `(columns)`                                    | 列设置变更     |
 
 ### 暴露方法
 
-| 方法名 | 参数 | 返回值 | 说明 |
-|--------|------|--------|------|
-| **startEdit** | `(rowKey: string)` | `void` | 开始编辑指定行 |
-| **cancelEdit** | `-` | `void` | 取消当前编辑 |
-| **saveEdit** | `-` | `Promise<void>` | 保存当前编辑 |
-| **addRow** | `-` | `void` | 添加新行 |
-| **deleteRow** | `-` | `void` | 删除选中行 |
-| **selectAll** | `-` | `void` | 全选 |
-| **clearSelection** | `-` | `void` | 清除选择 |
-| **expandAll** | `-` | `void` | 展开所有行 |
-| **collapseAll** | `-` | `void` | 折叠所有行 |
+| 方法名                 | 签名                              | 说明                     |
+| ---------------------- | --------------------------------- | ------------------------ |
+| **startEdit**          | `(rowKey, columnKey?) => void`    | 开始编辑指定行/单元格    |
+| **expandAll**          | `() => Promise<void>`             | 展开所有行               |
+| **collapseAll**        | `() => void`                      | 折叠所有行               |
+| **selectAll**          | `() => void`                      | 全选                     |
+| **clearSelection**     | `() => void`                      | 清除选择                 |
+| **clearAllSelections** | `() => void`                      | 清除所有选择（含子选择） |
+| **clearRowSelection**  | `() => void`                      | 清除动态行单选           |
+| **resetToFirstPage**   | `() => void`                      | 重置到第一页             |
+| **getSelectedRows**    | `() => T[]`                       | 获取选中行数据           |
+| **getEditingData**     | `() => any`                       | 获取编辑中的数据         |
+| **isEditing**          | `(rowKey, columnKey?) => boolean` | 判断是否正在编辑         |
+| **isExpanded**         | `(rowKey) => boolean`             | 判断行是否展开           |
+| **getManager**         | `() => StateManager`              | 获取底层状态管理器       |
 
-::: details 🔧 类型定义 - 完整的 TypeScript 接口定义
+### Slots
+
+| 插槽名            | 说明                                   |
+| ----------------- | -------------------------------------- |
+| **toolbar-left**  | 工具栏左侧自定义内容                   |
+| **toolbar-right** | 工具栏右侧自定义内容（列设置齿轮之前） |
+
+::: details 🔧 类型定义 — 完整的 TypeScript 接口定义
+
+#### 核心类型
+
+```typescript
+type DataRecord = Record<string, unknown>
+type EditMode = 'row' | 'cell' | 'both' | 'modal' | 'none'
+type EditType =
+  | 'input'
+  | 'textarea'
+  | 'select'
+  | 'date'
+  | 'number'
+  | 'switch'
+  | 'email'
+  | 'mobile'
+type MaybeRefLike<T> = { value: T } | T | MaybeRef<T>
+```
 
 #### 表格列配置
 
 ```typescript
-interface TableColumn {
-  key: string
+// 联合类型：普通列 | 内置列
+type TableColumn<T> = NormalTableColumn<T> | BuiltInTableColumn<T>
+
+// 普通数据列
+interface NormalTableColumn<T> extends BaseTableColumn<T> {
+  key: keyof T | string
   title: string
+}
+
+// 内置列（选择列 / 展开列 / 序号列）
+interface BuiltInTableColumn<T> extends BaseTableColumn<T> {
+  type: 'selection' | 'expand' | 'index'
+  renderExpand?: (rowData: T, rowIndex: number) => VNodeChild
+}
+
+// 列扩展属性
+interface BaseTableColumn<T> {
   width?: number
-  editable?: boolean
-  required?: boolean
-  editType?: 'input' | 'number' | 'select' | 'date' | 'email' | 'textarea'
-  editProps?: Record<string, any>
-  render?: (row: DataRecord, index: number) => VNodeChild
-  show?: boolean
+  editable?: boolean // 是否可编辑
+  required?: boolean // 是否必填
+  editType?: EditType // 编辑控件类型
+  editProps?: EditProps // 编辑控件属性
+  editRender?: (value, rowData, rowIndex) => VNodeChild // 自定义编辑渲染
+  render?: (rowData, rowIndex) => VNodeChild // 自定义显示渲染
+  fixed?: 'left' | 'right' // 固定列
+  resizable?: boolean // 列宽可拖拽
+  minWidth?: number
+  maxWidth?: number
+  visible?: boolean // 列设置可见性
 }
 ```
 
-#### 操作配置
+#### 编辑控件属性
 
 ```typescript
-interface TableActions {
-  edit?: false | {
-    api?: string
-    onEdit?: (row: DataRecord, index: number) => void | Promise<void>
-  }
-  delete?: false | {
-    api?: string
-    onDelete?: (row: DataRecord, index: number) => void | Promise<void>
-    confirmText?: string | ((row: DataRecord) => string)
-  }
-  detail?: false | {
-    onView?: (row: DataRecord, index: number) => void
-  }
-  custom?: Array<{
-    key: string
-    label: string
-    icon?: string
-    type?: 'default' | 'primary' | 'info' | 'success' | 'warning' | 'error'
-    onClick: (row: DataRecord, index: number) => void | Promise<void>
-    show?: (row: DataRecord, index: number) => boolean
-  }>
+interface EditProps {
+  min?: number
+  max?: number
+  step?: number
+  showButton?: boolean
+  type?: string
+  rows?: number
+  placeholder?: string
+  options?: SelectOption[]
+  rules?: FormItemRule[]
+  format?: string
+  valueFormat?: string
+  clearable?: boolean
+  disabled?: boolean
+  readonly?: boolean
 }
 ```
 
-#### 分页配置
+#### 自定义操作按钮
 
 ```typescript
-interface PaginationConfig {
-  enabled?: boolean
-  page?: number
-  pageSize?: number
-  showSizePicker?: boolean
-  showQuickJumper?: boolean
-  pageSizes?: number[]
-  simple?: boolean
-  size?: 'small' | 'medium' | 'large'
+interface CustomAction<T> {
+  key: string
+  label: string | ((row: T, index: number) => string)
+  icon: string | ((row: T, index: number) => string)
+  type?: ButtonType | ((row: T, index: number) => ButtonType)
+  onClick: (row: T, index: number) => void | Promise<void>
+  show?: (row: T, index: number) => boolean
+  disabled?: (row: T, index: number) => boolean
+  tooltip?: string
 }
 ```
+
+#### CRUD 绑定
+
+```typescript
+interface CrudBinding {
+  data: Ref<any[]>
+  loading: Ref<boolean>
+  columns: ComputedRef<any[]>
+  actions?: ComputedRef<any>
+  pagination?: ComputedRef<any>
+  tableRef?: Ref<any>
+  save?: (...args: any[]) => any
+  handleCancel?: () => any
+  handlePaginationChange?: (page: number, pageSize: number) => void
+  handleRowDelete?: (...args: any[]) => void
+  detail?: { show: (...args: any[]) => void }
+}
+```
+
 :::
 
 ## 🎨 使用示例
 
-::: details 👥 员工管理表格 - 完整的CRUD操作示例
-```vue {6,7,8,9,10,11,12,13,14,15,16}
-<template>
-  <div class="employee-management">
-    <n-card title="员工管理" style="margin-bottom: 16px;">
-      <!-- 工具栏 -->
-      <template #header-extra>
-        <n-space>
-          <n-button type="primary" @click="handleAddEmployee">
-            <template #icon>
-              <n-icon><Plus /></n-icon>
-            </template>
-            添加员工
-          </n-button>
-          <n-button @click="handleExport">导出数据</n-button>
-        </n-space>
-      </template>
+::: details 👥 员工管理表格 — CRUD + 5种编辑模式 + 自定义操作
 
-      <!-- 表格组件 -->
-      <C_Table
-        ref="employeeTableRef"
-        :data="employeeData"
-        :columns="employeeColumns"
-        :loading="loading"
-        edit-mode="modal"
-        modal-title="编辑员工信息"
-        :modal-width="700"
-        :actions="employeeActions"
-        :pagination="paginationConfig"
-        @save="handleSave"
-        @cancel="handleCancel"
-        @row-delete="handleDelete"
-        @pagination-change="handlePaginationChange"
-      />
-    </n-card>
+```vue {8-14}
+<template>
+  <div class="table-demo-page">
+    <!-- 编辑模式切换 -->
+    <n-radio-group v-model:value="editMode">
+      <n-radio-button
+        v-for="mode in EDIT_MODES"
+        :key="mode.value"
+        :value="mode.value"
+      >
+        {{ mode.label }}
+      </n-radio-button>
+    </n-radio-group>
+
+    <!-- 表格组件 -->
+    <C_Table
+      :crud="table"
+      :config="{
+        edit: {
+          mode: editMode,
+          modalTitle: '编辑员工信息',
+          modalWidth: 700,
+        },
+      }"
+    />
   </div>
 </template>
 
-<script setup>
-  import { Plus, Download } from '@vicons/ionicons5'
-  
-  const employeeTableRef = ref()
-  const loading = ref(false)
-  
-  const employeeData = ref([
-    {
-      id: 1,
-      name: '张三',
-      age: 28,
-      gender: 'male',
-      email: 'zhangsan@example.com',
-      department: 'tech',
-      joinDate: new Date('2022-01-15').getTime(),
-      status: 'active',
-      description: '优秀的前端开发工程师'
-    },
-    {
-      id: 2,
-      name: '李四',
-      age: 32,
-      gender: 'female',
-      email: 'lisi@example.com',
-      department: 'hr',
-      joinDate: new Date('2021-06-20').getTime(),
-      status: 'active',
-      description: '资深人力资源专员'
-    },
-  ])
+<script setup lang="ts">
+  import type { EditMode, DataRecord } from '@/types/modules/table'
+  import { useTableCrud } from '@robot-admin/request-core'
+  import type {
+    UseTableCrudConfig,
+    TableColumn,
+  } from '@robot-admin/request-core'
+  import { PRESET_RULES } from '@robot-admin/form-validate'
 
-  const employeeColumns = [
-    {
-      key: 'name',
-      title: '姓名',
-      width: 120,
-      editable: true,
-      required: true,
-      editType: 'input'
-    },
-    {
-      key: 'age',
-      title: '年龄',
-      width: 100,
-      editable: true,
-      editType: 'number',
-      editProps: { min: 18, max: 65 }
-    },
-    {
-      key: 'gender',
-      title: '性别',
-      width: 100,
-      editable: true,
-      editType: 'select',
-      editProps: {
-        options: [
-          { label: '男', value: 'male' },
-          { label: '女', value: 'female' }
-        ]
-      },
-      render: (row) => row.gender === 'male' ? '男' : '女'
-    },
-    {
-      key: 'email',
-      title: '邮箱',
-      width: 200,
-      editable: true,
-      editType: 'email'
-    },
-    {
-      key: 'department',
-      title: '部门',
-      width: 120,
-      editable: true,
-      editType: 'select',
-      editProps: {
-        options: [
-          { label: '技术部', value: 'tech' },
-          { label: '人事部', value: 'hr' },
-          { label: '市场部', value: 'market' },
-          { label: '财务部', value: 'finance' }
-        ]
-      },
-      render: (row) => {
-        const departmentMap = {
-          tech: '技术部',
-          hr: '人事部',
-          market: '市场部',
-          finance: '财务部'
-        }
-        return departmentMap[row.department] || row.department
-      }
-    },
-    {
-      key: 'joinDate',
-      title: '入职日期',
-      width: 140,
-      editable: true,
-      editType: 'date',
-      render: (row) => {
-        return row.joinDate 
-          ? new Date(row.joinDate).toLocaleDateString()
-          : '-'
-      }
-    },
-    {
-      key: 'status',
-      title: '状态',
-      width: 100,
-      editable: true,
-      editType: 'select',
-      editProps: {
-        options: [
-          { label: '在职', value: 'active' },
-          { label: '离职', value: 'inactive' },
-          { label: '试用期', value: 'probation' }
-        ]
-      },
-      render: (row) => {
-        const statusMap = {
-          active: '在职',
-          inactive: '离职',
-          probation: '试用期'
-        }
-        return statusMap[row.status] || row.status
-      }
-    },
-    {
-      key: 'description',
-      title: '描述',
-      width: 200,
-      editable: true,
-      editType: 'textarea',
-      render: (row) => {
-        const desc = row.description || ''
-        return desc.length > 30 ? desc.substring(0, 30) + '...' : desc
-      }
-    }
+  interface Employee extends DataRecord {
+    id: number
+    name: string
+    age: number
+    gender: 'male' | 'female'
+    email: string
+    department: string
+    status: string
+  }
+
+  const editMode = ref<EditMode>('modal')
+
+  const EDIT_MODES = [
+    { value: 'row', label: '行编辑' },
+    { value: 'cell', label: '单元格编辑' },
+    { value: 'both', label: '混合模式' },
+    { value: 'modal', label: '模态框编辑' },
+    { value: 'none', label: '只读模式' },
   ]
 
-  const employeeActions = {
-    // 使用默认的编辑、删除、详情功能
-    edit: {},
-    delete: {
-      confirmText: (row) => `确定要删除员工"${row.name}"吗？`
+  const employeeConfig: UseTableCrudConfig<Employee> = {
+    api: {
+      list: '/employees/list',
+      update: '/employees/:id',
+      remove: '/employees/:id',
+      create: '/employees',
     },
-    detail: {},
-    
-    // 自定义操作
-    custom: [
+    columns: [
+      {
+        key: 'name',
+        title: '姓名',
+        width: 120,
+        editable: true,
+        required: true,
+        editType: 'input',
+        editProps: { rules: [PRESET_RULES.length('姓名', 2, 20)] },
+      },
+      {
+        key: 'age',
+        title: '年龄',
+        width: 100,
+        editable: true,
+        editType: 'number',
+        editProps: { min: 18, max: 65 },
+      },
+      {
+        key: 'gender',
+        title: '性别',
+        width: 100,
+        editable: true,
+        editType: 'select',
+        editProps: {
+          options: [
+            { label: '男', value: 'male' },
+            { label: '女', value: 'female' },
+          ],
+        },
+        render: row => (row.gender === 'male' ? '男' : '女'),
+      },
+      {
+        key: 'email',
+        title: '邮箱',
+        width: 200,
+        editable: true,
+        editType: 'email',
+        editProps: { rules: [PRESET_RULES.email('邮箱')] },
+      },
+      {
+        key: 'department',
+        title: '部门',
+        width: 120,
+        editable: true,
+        editType: 'select',
+        editProps: {
+          options: [
+            { label: '技术部', value: 'tech' },
+            { label: '人事部', value: 'hr' },
+            { label: '市场部', value: 'market' },
+          ],
+        },
+      },
+    ],
+    // 自定义操作按钮
+    customActions: [
       {
         key: 'copy',
         label: '复制',
         icon: 'mdi:content-copy',
         type: 'default',
-        onClick: handleCopy
+        handler: (row, ctx) => {
+          const newRow = { ...row, id: Date.now(), name: `${row.name}_副本` }
+          ctx.data.splice(ctx.index + 1, 0, newRow)
+          ctx.message.success('复制成功')
+        },
       },
       {
         key: 'authorize',
         label: '授权',
         icon: 'mdi:shield-key',
         type: 'warning',
-        onClick: handleAuthorize,
-        show: (row) => row.status === 'active'
-      }
-    ]
-  }
-
-  const paginationConfig = {
-    enabled: true,
-    page: 1,
-    pageSize: 10,
-    showSizePicker: true,
-    showQuickJumper: true,
-    pageSizes: [10, 20, 50, 100]
-  }
-
-  const handleAddEmployee = () => {
-    const newEmployee = {
+        handler: (row, ctx) => {
+          ctx.dialog.info({
+            title: '员工授权',
+            content: `正在为员工 "${row.name}" 配置系统权限...`,
+            positiveText: '确定',
+          })
+        },
+      },
+    ],
+    idKey: 'id',
+    createNewRow: () => ({
       id: Date.now(),
-      name: `新员工_${Math.floor(Math.random() * 1000)}`,
+      name: '',
       age: 25,
       gender: 'male',
-      email: `user${Date.now()}@example.com`,
+      email: '',
       department: 'tech',
-      joinDate: Date.now(),
       status: 'probation',
-      description: '新入职员工，待完善信息'
-    }
-    
-    employeeData.value.unshift(newEmployee)
-    
-    setTimeout(() => {
-      employeeTableRef.value?.startEdit(newEmployee.id)
-    }, 100)
+    }),
   }
 
-  const handleSave = async (rowData, rowIndex) => {
-    loading.value = true
-    try {
-      await new Promise(resolve => setTimeout(resolve, 1000))
-      employeeData.value[rowIndex] = { ...rowData }
-      message.success('员工信息保存成功')
-    } catch (error) {
-      message.error('保存失败，请重试')
-      throw error
-    } finally {
-      loading.value = false
-    }
-  }
-
-  const handleCancel = () => {
-    message.info('已取消编辑')
-  }
-
-  const handleDelete = (deletedRow, index) => {
-    employeeData.value.splice(index, 1)
-    message.success(`已删除员工"${deletedRow.name}"`)
-  }
-
-  const handleCopy = (row, index) => {
-    const newRow = {
-      ...row,
-      id: Date.now(),
-      name: `${row.name}_副本`
-    }
-    employeeData.value.splice(index + 1, 0, newRow)
-    message.success('复制成功')
-  }
-
-  const handleAuthorize = (row) => {
-    dialog.info({
-      title: '员工授权',
-      content: `正在为员工 "${row.name}" 配置系统权限...`,
-      positiveText: '确定',
-      onPositiveClick: () => {
-        message.success('授权配置完成')
-      }
-    })
-  }
-
-  const handleExport = () => {
-    console.log('导出员工数据')
-  }
-
-  const handlePaginationChange = (page, pageSize) => {
-    console.log('分页变化:', { page, pageSize })
-  }
+  const table = useTableCrud(employeeConfig)
 </script>
 ```
+
 :::
 
-::: details 📦 产品管理表格 - 展开功能和选择功能
-```vue {4,5,6,7,8,9,10,11}
+::: details 🔽 嵌套展开表格 — 父子选择联动 + 异步加载
+
+```vue {4-15}
 <template>
-  <div class="product-management">
+  <div>
+    <!-- 工具栏 -->
+    <C_ActionBar :actions="toolbarActions" />
+
+    <!-- 展开表格 -->
     <C_Table
-      :data="productData"
-      :columns="productColumns"
+      ref="tableRef"
+      :data="data"
+      :columns="columns"
       :loading="loading"
-      expandable
-      enable-selection
-      :actions="productActions"
-      :on-load-expand-data="loadProductDetails"
-      :render-expand-content="renderExpandContent"
-      @save="handleSave"
+      :config="tableConfig"
+      @expand-change="handleExpandChange"
+      @selection-change="handleSelectionChange"
     />
   </div>
 </template>
 
 <script setup>
-  const productData = ref([
-    {
-      id: 1,
-      name: 'iPhone 15',
-      category: 'electronics',
-      price: 5999,
-      stock: 100,
-      status: 'active'
-    },
-    {
-      id: 2,
-      name: 'MacBook Pro',
-      category: 'electronics',
-      price: 14999,
-      stock: 50,
-      status: 'active'
-    }
-  ])
+  const tableRef = ref()
+  const linkMode = ref('strict') // 'strict' | 'loose'
 
-  const productColumns = [
-    {
-      key: 'name',
-      title: '产品名称',
-      editable: true,
-      editType: 'input'
-    },
-    {
-      key: 'category',
-      title: '分类',
-      editable: true,
-      editType: 'select',
-      editProps: {
-        options: [
-          { label: '电子产品', value: 'electronics' },
-          { label: '服装', value: 'clothing' },
-          { label: '家具', value: 'furniture' }
-        ]
-      }
-    },
-    {
-      key: 'price',
-      title: '价格',
-      editable: true,
-      editType: 'number',
-      render: (row) => `¥${row.price}`
-    },
-    {
-      key: 'stock',
-      title: '库存',
-      editable: true,
-      editType: 'number'
-    },
-    {
-      key: 'status',
-      title: '状态',
-      editable: true,
-      editType: 'select',
-      editProps: {
-        options: [
-          { label: '上架', value: 'active' },
-          { label: '下架', value: 'inactive' }
-        ]
-      }
-    }
-  ]
-
-  const productActions = {
-    custom: [
-      {
-        key: 'inventory',
-        label: '库存管理',
-        icon: 'mdi:package-variant',
-        type: 'info',
-        onClick: handleInventoryManagement
+  const tableConfig = computed(() => ({
+    expand: {
+      enabled: true,
+      onLoadData: async row => {
+        // 异步加载子数据
+        const res = await fetch(`/api/children/${row.id}`)
+        return await res.json()
       },
-      {
-        key: 'pricing',
-        label: '价格调整',
-        icon: 'mdi:currency-usd',
-        type: 'warning',
-        onClick: handlePricing
-      }
-    ]
-  }
+      renderContent: (row, expandData, loading, childSelection) => {
+        if (loading) return h('div', '加载中...')
+        return h(CTable, {
+          data: expandData,
+          columns: childColumns,
+          config: { selection: childSelection },
+        })
+      },
+      rowExpandable: row => row.hasChildren,
+    },
+    selection: {
+      enabled: true,
+      childSelection: { enabled: true },
+      parentChildLink: {
+        enabled: true,
+        mode: linkMode.value, // 'strict': 父子完全联动 / 'loose': 独立选择
+      },
+    },
+  }))
 
-  // 加载产品详情（展开行内容）
-  const loadProductDetails = async (row) => {
-    await new Promise(resolve => setTimeout(resolve, 500))
-    
-    return {
-      specifications: [
-        { name: '颜色', value: '深空灰' },
-        { name: '存储', value: '256GB' },
-        { name: '屏幕', value: '6.1英寸' }
-      ],
-      reviews: [
-        { user: '用户A', rating: 5, comment: '非常好用' },
-        { user: '用户B', rating: 4, comment: '性价比不错' }
-      ]
-    }
-  }
-
-  // 渲染展开内容
-  const renderExpandContent = (row, expandData, loading) => {
-    if (loading) {
-      return h('div', { style: 'padding: 16px' }, '加载中...')
-    }
-
-    return h('div', { style: 'padding: 16px' }, [
-      h('h4', '产品规格'),
-      h('n-table', {
-        size: 'small',
-        columns: [
-          { title: '属性', key: 'name' },
-          { title: '值', key: 'value' }
-        ],
-        data: expandData.specifications
-      }),
-      h('h4', { style: 'margin-top: 16px' }, '用户评价'),
-      h('n-table', {
-        size: 'small',
-        columns: [
-          { title: '用户', key: 'user' },
-          { title: '评分', key: 'rating' },
-          { title: '评论', key: 'comment' }
-        ],
-        data: expandData.reviews
-      })
-    ])
-  }
-
-  const handleSave = (rowData, rowIndex) => {
-    console.log('保存产品:', rowData)
-  }
-
-  const handleInventoryManagement = (row) => {
-    console.log('库存管理:', row)
-  }
-
-  const handlePricing = (row) => {
-    console.log('价格调整:', row)
-  }
+  const toolbarActions = [
+    {
+      key: 'expandAll',
+      label: '展开全部',
+      onClick: () => tableRef.value?.expandAll(),
+    },
+    {
+      key: 'collapseAll',
+      label: '折叠全部',
+      onClick: () => tableRef.value?.collapseAll(),
+    },
+    {
+      key: 'selectAll',
+      label: '全选',
+      onClick: () => tableRef.value?.selectAll(),
+    },
+    {
+      key: 'clearAll',
+      label: '清空',
+      onClick: () => tableRef.value?.clearAllSelections(),
+    },
+  ]
 </script>
 ```
+
 :::
 
-::: details 📋 订单管理表格 - 自定义操作和状态管理
-```vue {4,5,6,7,8,9}
+::: details ⚡ 动态行操作 — 增删复制移动 + 打印水印
+
+```vue {5-27}
 <template>
   <C_Table
-    :data="orderData"
-    :columns="orderColumns"
-    :loading="loading"
-    edit-mode="none"
-    :actions="orderActions"
+    :crud="table"
+    :config="{
+      dynamicRows: {
+        enableRadioSelection: true,
+        enableAdd: true,
+        enableInsert: true,
+        enableDelete: true,
+        enableCopy: true,
+        enableMove: true,
+        enablePrint: true,
+        confirmDelete: true,
+        defaultRowData: createDefaultEmployee,
+        printOptions: {
+          text: '内部机密',
+          color: 'rgba(0,0,0,0.1)',
+          fontSize: 20,
+          angle: -30,
+          type: 'canvas',
+        },
+        printPreset: 'table',
+        onRowAdd: row => addLog('新增', row.name),
+        onRowDelete: row => addLog('删除', row.name),
+        onRowCopy: (orig, copy) => addLog('复制', orig.name),
+        onRowMove: (row, from, to) => addLog('移动', `${from} → ${to}`),
+      },
+    }"
+    @row-add="handleRowAdd"
+    @row-delete="handleRowDelete"
     @save="handleSave"
   />
 </template>
 
 <script setup>
-  const orderData = ref([
-    {
-      id: 'ORD001',
-      customer: '张三',
-      amount: 299.99,
-      status: 'pending',
-      createTime: new Date().getTime()
-    },
-    {
-      id: 'ORD002',
-      customer: '李四',
-      amount: 599.99,
-      status: 'shipped',
-      createTime: new Date().getTime()
-    }
-  ])
+  import { useTableCrud } from '@robot-admin/request-core'
 
-  const orderColumns = [
-    {
-      key: 'id',
-      title: '订单号',
-      width: 120
-    },
-    {
-      key: 'customer',
-      title: '客户',
-      width: 100
-    },
-    {
-      key: 'amount',
-      title: '金额',
-      width: 100,
-      render: (row) => `¥${row.amount}`
-    },
-    {
-      key: 'status',
-      title: '状态',
-      width: 100,
-      render: (row) => {
-        const statusMap = {
-          pending: '待处理',
-          shipped: '已发货',
-          delivered: '已送达',
-          cancelled: '已取消'
-        }
-        return statusMap[row.status] || row.status
-      }
-    },
-    {
-      key: 'createTime',
-      title: '创建时间',
-      width: 180,
-      render: (row) => new Date(row.createTime).toLocaleString()
-    }
-  ]
+  const createDefaultEmployee = () => ({
+    id: Date.now(),
+    name: '新员工',
+    age: 25,
+    email: '',
+    department: 'tech',
+    salary: 8000,
+    status: 'probation',
+  })
 
-  const orderActions = {
-    // 禁用默认的编辑和删除
-    edit: false,
-    delete: false,
-    
-    // 自定义操作
-    custom: [
-      {
-        key: 'process',
-        label: '处理订单',
-        icon: 'mdi:check-circle',
-        type: 'success',
-        onClick: handleProcessOrder,
-        show: (row) => row.status === 'pending'
-      },
-      {
-        key: 'ship',
-        label: '发货',
-        icon: 'mdi:truck',
-        type: 'primary',
-        onClick: handleShipOrder,
-        show: (row) => row.status === 'processed'
-      },
-      {
-        key: 'cancel',
-        label: '取消订单',
-        icon: 'mdi:cancel',
-        type: 'error',
-        onClick: handleCancelOrder,
-        show: (row) => ['pending', 'processed'].includes(row.status)
-      },
-      {
-        key: 'track',
-        label: '物流跟踪',
-        icon: 'mdi:map-marker',
-        type: 'info',
-        onClick: handleTrackOrder,
-        show: (row) => ['shipped', 'delivered'].includes(row.status)
-      }
-    ]
-  }
-
-  const handleProcessOrder = async (row) => {
-    loading.value = true
-    try {
-      await new Promise(resolve => setTimeout(resolve, 1000))
-      
-      const index = orderData.value.findIndex(item => item.id === row.id)
-      if (index !== -1) {
-        orderData.value[index].status = 'processed'
-      }
-      
-      message.success('订单处理成功')
-    } catch (error) {
-      message.error('处理失败')
-    } finally {
-      loading.value = false
-    }
-  }
-
-  const handleShipOrder = async (row) => {
-    dialog.info({
-      title: '确认发货',
-      content: `确定要发货订单 ${row.id} 吗？`,
-      positiveText: '确定',
-      onPositiveClick: async () => {
-        loading.value = true
-        try {
-          await new Promise(resolve => setTimeout(resolve, 1000))
-          
-          const index = orderData.value.findIndex(item => item.id === row.id)
-          if (index !== -1) {
-            orderData.value[index].status = 'shipped'
-          }
-          
-          message.success('发货成功')
-        } catch (error) {
-          message.error('发货失败')
-        } finally {
-          loading.value = false
-        }
-      }
-    })
-  }
-
-  const handleCancelOrder = (row) => {
-    dialog.warning({
-      title: '取消订单',
-      content: `确定要取消订单 ${row.id} 吗？此操作不可撤销。`,
-      positiveText: '确定',
-      onPositiveClick: () => {
-        const index = orderData.value.findIndex(item => item.id === row.id)
-        if (index !== -1) {
-          orderData.value[index].status = 'cancelled'
-        }
-        message.success('订单已取消')
-      }
-    })
-  }
-
-  const handleTrackOrder = (row) => {
-    dialog.info({
-      title: '物流跟踪',
-      content: `订单 ${row.id} 的物流信息：\n- 已发货\n- 运输中\n- 预计明天送达`,
-      positiveText: '确定'
-    })
-  }
+  const table = useTableCrud(dynamicConfig)
 </script>
 ```
+
+:::
+
+::: details 🔧 操作按钮二元法则 — 零配置 vs 完全定制
+
+```vue
+<template>
+  <!-- 场景1: 零配置 — 默认启用编辑/删除/详情 -->
+  <C_Table :crud="table" />
+
+  <!-- 场景2: 禁用部分操作 -->
+  <C_Table
+    :data="data"
+    :columns="columns"
+    :config="{
+      actions: {
+        edit: false, // 禁用编辑
+        delete: handleDelete, // 函数 = API
+        detail: false, // 禁用详情
+        custom: [
+          // 自定义操作
+          {
+            key: 'process',
+            label: '处理',
+            icon: 'mdi:check-circle',
+            type: 'success',
+            onClick: handleProcess,
+            show: row => row.status === 'pending',
+          },
+          {
+            key: 'cancel',
+            label: '取消',
+            icon: 'mdi:cancel',
+            type: 'error',
+            onClick: handleCancel,
+            show: row => ['pending', 'processed'].includes(row.status),
+          },
+        ],
+      },
+    }"
+  />
+</template>
+```
+
 :::
 
 ## 🛠️ 高级用法
 
-::: details ⚡ 预设配置模式 - 快速搭建CRUD表格
-```vue {5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20}
+::: details ⚙️ 列设置面板 — 搜索、排序、固定、可见性
+
+```vue {6-9}
 <template>
   <C_Table
-    :data="tableData"
-    :columns="tableColumns"
-    :preset="presetConfig"
-    @save="handleSave"
-  />
-</template>
-
-<script setup>
-  // 使用预设配置快速搭建表格
-  const presetConfig = {
-    mode: 'crud', // CRUD模式
-    features: {
-      pagination: true,
-      selection: true,
-      export: true,
-      print: true
-    },
-    actions: {
-      create: true,
-      edit: true,
-      delete: true,
-      view: true
-    }
-  }
-
-  const tableData = ref([
-    // 数据...
-  ])
-
-  const tableColumns = [
-    // 列配置...
-  ]
-
-  const handleSave = (rowData, rowIndex) => {
-    console.log('保存数据:', rowData)
-  }
-</script>
-```
-:::
-
-::: details 🔄 动态行操作 - 添加、删除、复制和移动
-```vue {5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20}
-<template>
-  <C_Table
-    ref="tableRef"
-    :data="tableData"
-    :columns="tableColumns"
-    :dynamic-rows-options="dynamicRowsOptions"
-    @row-add="handleRowAdd"
-    @row-delete="handleRowDelete"
-    @row-move="handleRowMove"
-  />
-</template>
-
-<script setup>
-  const tableRef = ref()
-  
-  const dynamicRowsOptions = {
-    showToolbar: true,
-    showRowIndex: true,
-    enableAdd: true,
-    enableDelete: true,
-    enableCopy: true,
-    enableMove: true,
-    maxRows: 100,
-    minRows: 1
-  }
-
-  const handleRowAdd = (newRow) => {
-    console.log('新增行:', newRow)
-  }
-
-  const handleRowDelete = (deletedRow, index) => {
-    console.log('删除行:', deletedRow, index)
-  }
-
-  const handleRowMove = (row, fromIndex, toIndex) => {
-    console.log('移动行:', row, fromIndex, toIndex)
-  }
-
-  // 编程式操作
-  const addNewRow = () => {
-    tableRef.value.addRow()
-  }
-
-  const deleteSelectedRow = () => {
-    tableRef.value.deleteRow()
-  }
-</script>
-```
-:::
-
-::: details 🎨 自定义渲染和验证 - 复杂字段处理
-```vue {4,5,6,7}
-<template>
-  <C_Table
-    :data="tableData"
-    :columns="advancedColumns"
-    edit-mode="modal"
-    @save="handleSave"
-  />
-</template>
-
-<script setup>
-  import { PRESET_RULES } from '@/utils/v_verify'
-
-  const advancedColumns = [
-    {
-      key: 'avatar',
-      title: '头像',
-      width: 80,
-      render: (row) => {
-        return h('img', {
-          src: row.avatar || '/default-avatar.png',
-          style: 'width: 40px; height: 40px; border-radius: 50%;'
-        })
-      }
-    },
-    {
-      key: 'name',
-      title: '姓名',
-      editable: true,
-      required: true,
-      editType: 'input',
-      editProps: {
-        rules: [PRESET_RULES.length('姓名', 2, 20)]
-      }
-    },
-    {
-      key: 'email',
-      title: '邮箱',
-      editable: true,
-      required: true,
-      editType: 'email',
-      editProps: {
-        rules: [PRESET_RULES.email('邮箱')]
-      }
-    },
-    {
-      key: 'phone',
-      title: '手机号',
-      editable: true,
-      editType: 'input',
-      editProps: {
-        rules: [PRESET_RULES.mobile('手机号')]
-      }
-    },
-    {
-      key: 'score',
-      title: '评分',
-      editable: true,
-      editType: 'number',
-      editProps: {
-        min: 0,
-        max: 100,
-        step: 1
+    :data="data"
+    :columns="columns"
+    :config="{
+      toolbar: {
+        show: true,
+        columnSettings: true, // 启用列设置齿轮图标
       },
-      render: (row) => {
-        const score = row.score || 0
-        const color = score >= 80 ? 'success' : score >= 60 ? 'warning' : 'error'
-        return h('n-tag', { type: color }, () => `${score}分`)
-      }
-    },
-    {
-      key: 'tags',
-      title: '标签',
-      editable: true,
-      editType: 'select',
-      editProps: {
-        multiple: true,
-        options: [
-          { label: '优秀', value: 'excellent' },
-          { label: '活跃', value: 'active' },
-          { label: '新手', value: 'newbie' }
-        ]
+      display: {
+        columnWidth: 180, // 默认列宽
       },
-      render: (row) => {
-        const tags = row.tags || []
-        return h('n-space', {}, () => 
-          tags.map(tag => h('n-tag', { size: 'small' }, () => tag))
-        )
-      }
-    }
-  ]
-
-  const handleSave = async (rowData, rowIndex) => {
-    // 自定义验证逻辑
-    if (rowData.email && rowData.phone) {
-      const emailExists = await checkEmailExists(rowData.email)
-      if (emailExists) {
-        throw new Error('邮箱已存在')
-      }
-    }
-
-    // 保存数据
-    console.log('保存数据:', rowData)
-  }
-
-  const checkEmailExists = async (email) => {
-    // 模拟API检查
-    await new Promise(resolve => setTimeout(resolve, 500))
-    return ['admin@example.com', 'test@example.com'].includes(email)
-  }
-</script>
+    }"
+    @column-change="handleColumnChange"
+  >
+    <!-- 工具栏自定义内容 -->
+    <template #toolbar-left>
+      <n-button
+        type="primary"
+        @click="handleAdd"
+        >新增</n-button
+      >
+    </template>
+    <template #toolbar-right>
+      <n-button @click="handleExport">导出</n-button>
+    </template>
+  </C_Table>
+</template>
 ```
-:::
 
+**列设置面板功能：**
 
-## 🎨 自定义样式
+- 🔍 搜索列名过滤
+- 👁️ 列可见性切换（checkbox）
+- 📌 列固定（左固定 / 右固定 / 取消固定）
+- 🔄 拖拽排序 + 上移下移按钮
+- ↔️ 列宽调整全局开关
+- 🔄 全选 / 全不选 / 重置
+- 📊 统计信息（已选 N / 总共 M 列）
+  :::
 
-::: details 🎨 CSS 变量
-```scss
-.c-table-wrapper {
-  --table-border-color: #e5e7eb;
-  --table-header-bg: #f9fafb;
-  --table-row-hover-bg: #f3f4f6;
-  --table-action-color: #6b7280;
-  --table-action-hover-color: #374151;
-  --table-edit-border-color: #3b82f6;
-  --table-edit-bg: #eff6ff;
-  --table-border-radius: 8px;
+::: details 🖨️ 打印和导出 — 水印配置
+
+```typescript
+// Canvas 水印
+const printOptions = {
+  text: '内部机密文件',
+  color: 'rgba(0, 0, 0, 0.08)',
+  fontSize: 20,
+  angle: -30,
+  type: 'canvas', // 'canvas' | 'svg'
+  density: 3,
 }
+
+// SVG 水印
+const svgPrintOptions = {
+  text: 'CONFIDENTIAL',
+  color: 'rgba(255, 0, 0, 0.05)',
+  fontSize: 24,
+  angle: -45,
+  type: 'svg',
+}
+
+// 三种打印预设
+// 'table'  — 表格样式打印
+// 'form'   — 表单样式打印
+// 'report' — 报告样式打印
 ```
-:::
 
-::: details 📱 响应式设计
-```vue {6,7,8,9,10,11,12,13,14,15}
-<template>
-  <C_Table
-    :data="tableData"
-    :columns="responsiveColumns"
-    :class="tableClass"
-    :size="tableSize"
-  />
-</template>
-
-<script setup>
-  const breakpoint = useBreakpoint()
-  
-  const tableClass = computed(() => ({
-    'table-mobile': breakpoint.value.xs,
-    'table-tablet': breakpoint.value.md,
-    'table-desktop': breakpoint.value.lg
-  }))
-
-  const tableSize = computed(() => {
-    if (breakpoint.value.xs) return 'small'
-    if (breakpoint.value.md) return 'medium'
-    return 'large'
-  })
-
-  const responsiveColumns = computed(() => {
-    const baseColumns = [
-      { key: 'name', title: '姓名', width: 120 },
-      { key: 'email', title: '邮箱', width: 200 },
-      { key: 'phone', title: '手机', width: 150 },
-      { key: 'department', title: '部门', width: 120 },
-      { key: 'status', title: '状态', width: 100 }
-    ]
-
-    // 移动端隐藏部分列
-    if (breakpoint.value.xs) {
-      return baseColumns.filter(col => ['name', 'status'].includes(col.key))
-    }
-
-    // 平板端隐藏部分列
-    if (breakpoint.value.md) {
-      return baseColumns.filter(col => !['phone', 'department'].includes(col.key))
-    }
-
-    return baseColumns
-  })
-</script>
-
-<style scoped>
-  .table-mobile :deep(.n-data-table) {
-    font-size: 14px;
-  }
-
-  .table-mobile :deep(.n-data-table-th) {
-    padding: 8px 4px;
-  }
-
-  .table-mobile :deep(.n-data-table-td) {
-    padding: 8px 4px;
-  }
-</style>
-```
 :::
 
 ## ⚠️ 注意事项
 
-### 1. 数据绑定
+### 1. CRUD 模式 vs 手动模式
 
 ::: code-group
 
-```vue [✅ 推荐] 
-<!-- 使用响应式数据 -->
+```vue [✅ CRUD 模式（推荐）]
+<!-- useTableCrud 自动接管数据、加载、分页、操作 -->
+<C_Table :crud="table" :config="{ edit: { mode: 'modal' } }" />
+
 <script setup>
-  const tableData = ref([
-    { id: 1, name: '张三' }
-  ])
+  const table = useTableCrud(config)
+  // table 自动提供: data, loading, columns, actions, pagination, refresh(), create(), etc.
 </script>
 ```
 
-```vue [❌ 不推荐] 
-<!-- 直接赋值 -->
-<script setup>
-  const tableData = [
-    { id: 1, name: '张三' }
-  ]
-</script>
+```vue [✅ 手动模式]
+<!-- 手动管理所有状态和事件 -->
+<C_Table
+  :data="data"
+  :columns="columns"
+  :loading="loading"
+  :config="config"
+  @save="handleSave"
+  @cancel="handleCancel"
+  @row-delete="handleDelete"
+  @pagination-change="handlePageChange"
+/>
 ```
 
 :::
 
-### 2. 列配置
+### 2. 操作按钮的二元法则
 
 ::: code-group
 
-```javascript [✅ 推荐] 
-// 完整的列配置
-const columns = [
+```typescript [✅ 推荐]
+// 函数 = 启用并指定 API
+actions: {
+  edit: async (row) => await api.update(row),
+  delete: async (row) => await api.remove(row.id),
+  detail: (row) => showDetail(row),
+}
+```
+
+```typescript [✅ 禁用操作]
+// false = 明确禁用
+actions: {
+  edit: false,
+  delete: false,
+}
+```
+
+:::
+
+### 3. 列配置最佳实践
+
+::: code-group
+
+```typescript [✅ 推荐]
+// 完整的列配置 + 验证规则
+const columns: TableColumn[] = [
   {
-    key: 'name',
-    title: '姓名',
-    width: 120,
+    key: 'email',
+    title: '邮箱',
+    width: 200,
     editable: true,
     required: true,
-    editType: 'input'
-  }
+    editType: 'email',
+    editProps: {
+      rules: [PRESET_RULES.email('邮箱')],
+      placeholder: '请输入邮箱',
+    },
+  },
 ]
 ```
 
-```javascript [❌ 不推荐] 
-// 缺少必要配置
-const columns = [
-  {
-    key: 'name',
-    title: '姓名'
-  }
-]
+```typescript [❌ 不推荐]
+// 缺少编辑类型和验证
+const columns = [{ key: 'email', title: '邮箱' }]
 ```
 
 :::
 
-### 3. 事件处理
+### 4. 事件处理
 
 ::: code-group
 
-```javascript [✅ 推荐]
-// 完整的错误处理
+```typescript [✅ 推荐]
+// 完整的错误处理 + 状态管理
 const handleSave = async (rowData, rowIndex) => {
   try {
-    loading.value = true
-    await saveData(rowData)
+    await api.update(rowData.id, rowData)
     message.success('保存成功')
   } catch (error) {
     message.error('保存失败')
-    throw error // 重要：抛出错误以阻止表格状态更新
-  } finally {
-    loading.value = false
+    throw error // 重要：抛出错误阻止表格状态更新
   }
 }
 ```
 
-```javascript [❌ 不推荐] 
+```typescript [❌ 不推荐]
 // 缺少错误处理
-const handleSave = (rowData, rowIndex) => {
-  console.log('保存数据:', rowData)
+const handleSave = rowData => {
+  console.log('保存:', rowData)
 }
 ```
 
@@ -1323,246 +1045,207 @@ const handleSave = (rowData, rowIndex) => {
 ## 🐛 故障排除
 
 ::: details ❓ Q1: 编辑模式无效？
-**A1:** 检查编辑配置：
+**A1:** 检查列配置和全局配置：
 
-```javascript
-// 确保列配置正确
+```typescript
+// 1. 列必须设置 editable + editType
 const columns = [
   {
     key: 'name',
     title: '姓名',
-    editable: true, // 必须设置为true
-    editType: 'input' // 必须指定编辑类型
-  }
+    editable: true, // ✅ 必须
+    editType: 'input', // ✅ 必须指定编辑控件类型
+  },
 ]
 
-// 确保表格配置正确
+// 2. config.edit 不能为 false/none
+const config = {
+  edit: {
+    mode: 'modal', // ✅ 不能是 'none'
+    enabled: true, // ✅ 不能是 false
+  },
+}
+```
+
+:::
+
+::: details ❓ Q2: CRUD 模式下事件没触发？
+**A2:** CRUD 模式会自动桥接事件，不需要手动监听：
+
+```vue
+<!-- ❌ CRUD 模式下不需要手动绑定这些事件 -->
+<C_Table :crud="table" @save="..." @cancel="..." @row-delete="..." />
+
+<!-- ✅ CRUD 模式：事件由 useTableCrud 内部处理 -->
+<C_Table :crud="table" :config="{ edit: { mode: 'modal' } }" />
+
+<!-- ✅ 手动模式：需要手动绑定事件 -->
 <C_Table
-  :data="tableData"
-  :columns="columns"
-  :editable="true" // 全局编辑开关
-  edit-mode="modal" // 指定编辑模式
+  :data="data"
+  :columns="cols"
+  @save="handleSave"
+  @cancel="handleCancel"
 />
 ```
+
 :::
 
-::: details ❓ Q2: 分页不显示？
-**A2:** 检查分页配置：
+::: details ❓ Q3: 自定义操作按钮超过3个时如何展示？
+**A3:** 超过的按钮会自动收纳到「更多操作」下拉菜单中（`NDropdown`）：
 
-```javascript
-// 确保数据量超过页面大小
-const tableData = ref([
-  // 至少需要超过pageSize的数据量
-])
-
-// 确保分页配置正确
-const paginationConfig = {
-  enabled: true, // 必须开启
-  pageSize: 10
+```typescript
+const config = {
+  actions: {
+    // 内置操作 + 自定义操作，超过阈值自动收纳
+    edit: handleEdit,
+    delete: handleDelete,
+    custom: [
+      { key: 'a', label: '操作A', onClick: handleA },
+      { key: 'b', label: '操作B', onClick: handleB },
+      { key: 'c', label: '操作C', onClick: handleC }, // 会进入下拉菜单
+    ],
+  },
 }
 ```
+
 :::
 
-::: details ❓ Q3: 自定义操作不显示？
-**A3:** 检查操作配置：
+::: details ❓ Q4: 父子选择联动不生效？
+**A4:** 确保同时启用了展开、选择和父子联动：
 
-```javascript
-// 确保操作配置格式正确
-const actions = {
-  custom: [
-    {
-      key: 'copy', // 必须有唯一key
-      label: '复制', // 必须有label
-      onClick: handleCopy, // 必须有点击事件
-      show: (row) => true // 可选的显示条件
-    }
-  ]
+```typescript
+const config = {
+  expand: {
+    enabled: true,              // ✅ 必须启用展开
+    renderContent: ...,         // ✅ 展开内容中包含子表格
+  },
+  selection: {
+    enabled: true,              // ✅ 必须启用选择
+    childSelection: {
+      enabled: true,            // ✅ 必须启用子选择
+    },
+    parentChildLink: {
+      enabled: true,            // ✅ 必须启用联动
+      mode: 'strict',           // 'strict' = 父子完全同步 / 'loose' = 独立
+    },
+  },
 }
 ```
-:::
 
-::: details ❓ Q4: 表单验证不生效？
-**A4:** 检查验证配置：
-
-```javascript
-// 确保验证规则正确
-const columns = [
-  {
-    key: 'email',
-    title: '邮箱',
-    editable: true,
-    required: true, // 必填验证
-    editType: 'email', // 类型验证
-    editProps: {
-      rules: [PRESET_RULES.email('邮箱')] // 自定义验证规则
-    }
-  }
-]
-```
 :::
 
 ## 🎯 最佳实践
 
 ### 1. 数据结构设计
 
-```javascript 
-// ✅ 推荐：统一的数据结构
-interface TableRecord {
-  id: string | number // 必须有唯一标识
-  [key: string]: any
+```typescript
+// ✅ 推荐：继承 DataRecord，必须有唯一标识
+interface Employee extends DataRecord {
+  id: number // 必须有唯一标识
+  name: string
+  email: string
+  department: string
+  status: 'active' | 'inactive'
 }
 
-const tableData = ref<TableRecord[]>([
-  {
-    id: 1,
-    name: '张三',
-    email: 'zhangsan@example.com',
-    status: 'active',
-    createTime: new Date().getTime()
-  }
-])
+// ✅ 使用 ref 包裹响应式数据
+const tableData = ref<Employee[]>([])
 ```
 
-### 2. 列配置管理
+### 2. 配置对象提取
 
-```javascript 
-// ✅ 推荐：模块化的列配置
-const createUserColumns = () => [
+```typescript
+// ✅ 推荐：将配置提取到独立 data.ts 文件
+// data.ts
+export const employeeConfig: UseTableCrudConfig<Employee> = {
+  api: { list: '/api/list', update: '/api/:id' },
+  columns: getTableColumns(),
+  customActions: getCustomActions(),
+  detail: getDetailConfig(),
+  createNewRow: createDefaultEmployee,
+}
+
+// index.vue
+import { employeeConfig } from './data'
+const table = useTableCrud(employeeConfig)
+```
+
+### 3. 编辑控件映射
+
+```typescript
+// 内置的编辑控件映射
+const EDIT_TYPE_MAP = {
+  input: NInput, // 文本输入
+  textarea: NInput, // 多行文本（type='textarea'）
+  number: NInputNumber, // 数字输入
+  select: NSelect, // 下拉选择
+  date: NDatePicker, // 日期选择
+  switch: NSwitch, // 开关
+  email: NInput, // 邮箱（附加邮箱验证）
+  mobile: NInput, // 手机号（附加手机号验证）
+}
+
+// 自定义编辑渲染
+const columns = [
   {
-    key: 'name',
-    title: '姓名',
-    width: 120,
+    key: 'custom',
+    title: '自定义',
     editable: true,
-    required: true,
-    editType: 'input',
-    editProps: {
-      rules: [PRESET_RULES.length('姓名', 2, 20)]
-    }
+    editRender: (value, rowData, rowIndex) => {
+      return h(MyCustomComponent, {
+        value,
+        onChange: newVal => {
+          /* 更新逻辑 */
+        },
+      })
+    },
   },
-  {
-    key: 'email',
-    title: '邮箱',
-    width: 200,
-    editable: true,
-    required: true,
-    editType: 'email'
-  }
 ]
-
-// 使用时
-const userColumns = createUserColumns()
 ```
 
-### 3. 性能优化
+### 4. 性能优化
 
-```vue 
+```vue
 <template>
   <C_Table
-    :data="tableData"
-    :columns="columns"
-    :loading="loading"
-    :pagination="paginationConfig"
-    @save="handleSave"
+    :crud="table"
+    :config="{
+      pagination: { pageSize: 50 }, // 适中的页面大小
+      display: { maxHeight: '600px' }, // 固定最大高度
+    }"
   />
 </template>
 
 <script setup>
-  // 大数据量时使用分页
-  const paginationConfig = {
-    enabled: true,
-    pageSize: 50, // 适中的页面大小
-    showSizePicker: true
-  }
-
-  // 防抖处理保存操作
-  const handleSave = useDebounceFn(async (rowData, rowIndex) => {
-    loading.value = true
-    try {
-      await saveData(rowData)
-      message.success('保存成功')
-    } catch (error) {
-      message.error('保存失败')
-      throw error
-    } finally {
-      loading.value = false
-    }
-  }, 300)
-
-  // 使用 shallowRef 优化大数据
-  const tableData = shallowRef([
-    // 大量数据...
-  ])
+  // 配置对象用 computed 避免不必要的重建
+  const tableConfig = computed(() => ({
+    edit: { mode: editMode.value },
+    display: { size: tableSize.value },
+  }))
 </script>
-```
-
-### 4. 错误处理
-
-```javascript 
-// ✅ 推荐：完整的错误处理策略
-const handleSave = async (rowData, rowIndex) => {
-  const loadingKey = `save-${rowIndex}`
-  
-  try {
-    loading.value = true
-    
-    // 前端验证
-    if (!rowData.name) {
-      throw new Error('姓名不能为空')
-    }
-    
-    // API调用
-    const response = await api.updateUser(rowData.id, rowData)
-    
-    // 成功处理
-    tableData.value[rowIndex] = response.data
-    message.success('保存成功')
-    
-  } catch (error) {
-    // 错误分类处理
-    if (error.response?.status === 400) {
-      message.error('数据格式错误')
-    } else if (error.response?.status === 409) {
-      message.error('数据冲突，请刷新后重试')
-    } else if (error.message) {
-      message.error(error.message)
-    } else {
-      message.error('保存失败，请稍后重试')
-    }
-    
-    // 记录错误日志
-    console.error('保存失败:', error)
-    
-    // 重新抛出错误，阻止表格状态更新
-    throw error
-    
-  } finally {
-    loading.value = false
-  }
-}
 ```
 
 ## 📝 更新日志
 
-### v2.0.0 (2025-07-18)
+### v2.0.0 (2026-02)
 
-- ✨ 全新的表格架构，支持多种编辑模式
-- ✨ 内置分页功能，支持自定义分页配置
-- ✨ 智能操作系统，内置编辑、删除、详情操作
-- ✨ 强大的展开功能，支持数据懒加载
-- ✨ 完整的选择系统，支持父子关联选择
-- ✨ 动态行操作，支持添加、删除、复制、移动
-- ✨ 表单验证集成，支持实时验证和错误提示
-- ✨ 完整的TypeScript支持和类型安全
-- ✨ 响应式设计，适配移动端和桌面端
-- ✨ 丰富的自定义选项和扩展能力
+- ✨ 全新「薄 UI 壳 + 厚 Composable 引擎」架构重构
+- ✨ 统一 `config` 对象替代分散的 Props
+- ✨ `useTableManager` 统一状态管理器
+- ✨ 列处理引擎 `useTableColumns` 自动序号列、操作列
+- ✨ 操作按钮「二元法则」：`false` 禁用 / 函数即 API
+- ✨ `ColumnSettings` 列设置面板（搜索、拖拽、固定、可见性）
+- ✨ 动态行操作 `useDynamicRow`（增删复制移动 + 打印水印）
+- ✨ 嵌套展开 + 父子选择联动（strict/loose）
+- ✨ CRUD 绑定模式 `useTableCrud`
+- ✨ 完整的 TypeScript 泛型类型安全
 
-### v1.0.0 (2025-06-13)
+### v1.0.0 (2025-06)
 
 - 🎉 初始版本发布
 - ✨ 基础表格功能
 - ✨ 简单的编辑支持
-- ✨ 基本的操作按钮
 
 <!--@include: ./snippets/contribute.md -->
 
-**💡 提示**: 这个表格组件是为了提升数据管理效率而设计的全功能解决方案。从简单的数据展示到复杂的CRUD操作，从单个字段编辑到完整的表单验证，都能轻松应对。支持分页、选择、展开、导出等企业级功能，让数据管理变得简单而高效。结合强大的自定义能力和完善的类型系统，能够满足各种复杂的业务需求。如果遇到问题请先查看文档，或者在团队群里讨论。让我们一起打造更强大的数据管理体验！ 🚀
+**💡 提示**: C_Table 组件采用「薄 UI 壳 + 厚 Composable 引擎」架构设计——UI 层只负责模板和事件桥接，核心逻辑全部在 Composable 中。支持 CRUD 一行搞定和手动精细控制两种模式，适配从简单数据展示到复杂嵌套表格的全场景需求。列设置面板、动态行操作、打印水印、父子选择联动等企业级功能开箱即用。如果遇到问题请先查看文档，或者在团队群里讨论。🚀
