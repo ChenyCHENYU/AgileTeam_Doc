@@ -4,714 +4,519 @@ outline: 'deep'
 
 # C_FilePreview 文件预览组件
 
-> 📄 强大的文件预览组件，支持 PDF、Word、Excel 等多种格式的在线预览
+> 📄 基于 Naive UI 的多格式文件预览组件，支持 PDF / Word / Excel 在线预览
 
 ## ✨ 特性
 
-- **📑 多格式支持**: PDF、Word（docx）、Excel（xlsx）文件预览
-- **🔍 缩放控制**: 支持放大、缩小、适应屏幕等缩放操作
-- **📖 分页导航**: PDF 文件支持页码跳转和翻页
-- **📊 Excel 功能**: 多工作表切换、分页显示、格式保留
-- **📝 Word 功能**: 文档目录导航、内容格式保留
-- **🖥️ 全屏预览**: 支持全屏模式查看文件
-- **💾 文件下载**: 一键下载预览文件
-- **🎨 优雅界面**: 现代化的预览界面设计
+- **📝 多格式支持**: PDF（iframe）、Word（mammoth → HTML）、Excel（xlsx 解析 → 表格渲染）
+- **🔍 智能检测**: 根据文件扩展名自动识别类型，展示对应图标与标签
+- **📂 双输入模式**: 支持 `File` 对象直传 & URL 远程加载
+- **🖥️ 全屏预览**: 跨浏览器全屏切换（Fullscreen API + vendor prefix 回退）
+- **📊 Excel 增强**: 多 Sheet 切换、合并单元格、分页浏览、格式化数字/日期、紧凑/完整视图
+- **📑 Word 增强**: 自动提取文档目录（h1 ~ h6）、点击跳转、缩放控制
+- **💾 文件下载**: 本地 File 直接 Blob 下载，远程 URL 新窗口打开
+- **🏗️ 薄 UI 壳架构**: 逻辑由 `useFilePreview` + `useFullscreen` composable 驱动
+- **🧩 子组件分离**: PdfViewer / WordViewer / ExcelViewer 独立子组件，职责清晰
+- **💪 TypeScript**: 完整类型定义，统一从 `types/modules/file-preview.d.ts` 导入
 
-## 📦 安装
+## 🏗️ 架构
+
+```
+C_FilePreview/
+├── index.vue                   ← 薄 UI 壳 (~230 行，模板 + 胶水层)
+├── index.scss                  ← 主样式（文件卡片 + 模态框容器）
+├── data.ts                     ← 常量配置 + 工具函数 + 文件加载器
+├── components/
+│   ├── PdfViewer/
+│   │   ├── index.vue           ← PDF 预览（翻页 + 缩放 + iframe）
+│   │   └── index.scss
+│   ├── WordViewer/
+│   │   ├── index.vue           ← Word 预览（目录 + 缩放 + HTML 渲染）
+│   │   └── index.scss
+│   └── ExcelViewer/
+│       ├── index.vue           ← Excel 预览（Sheet 切换 + 分页 + 合并单元格）
+│       └── index.scss
+composables/FilePreview/
+├── index.ts                    ← barrel export
+├── useFilePreview.ts           ← 核心引擎：加载 / 类型检测 / 下载 / 状态管理
+├── useFullscreen.ts            ← 全屏切换：事件监听 + 跨浏览器兼容
+types/modules/
+├── file-preview.d.ts           ← FilePreviewType / ExcelSheet / DocHeading / ...
+```
+
+## 📦 依赖
 
 ::: code-group
 
 ```bash [bun (推荐)]
-# 安装必要依赖
-bun add pdfjs-dist mammoth xlsx
+bun install naive-ui mammoth xlsx
 ```
 
 ```bash [pnpm]
-# 安装必要依赖
-pnpm add pdfjs-dist mammoth xlsx
-```
-
-```bash [yarn]
-# 安装必要依赖
-yarn add pdfjs-dist mammoth xlsx
-```
-
-```bash [npm]
-# 安装必要依赖
-npm install pdfjs-dist mammoth xlsx
+pnpm install naive-ui mammoth xlsx
 ```
 
 :::
 
-组件已全局注册，直接使用即可：
-
-```vue
-<template>
-  <C_FilePreview :file="file" />
-</template>
-```
+| 依赖       | 用途                                                  |
+| ---------- | ----------------------------------------------------- |
+| `naive-ui` | UI 组件库（NModal / NButton / NTag / NPagination 等） |
+| `mammoth`  | Word 文档（.doc / .docx）转 HTML                      |
+| `xlsx`     | Excel 文件（.xls / .xlsx）解析                        |
 
 ## 🎯 快速开始
 
-### 基础用法
+### 通过 File 对象预览
 
-```vue {3-6,9-12,21-27}
+```vue
 <template>
-  <!-- 通过文件对象预览 -->
-  <C_FilePreview 
-    :file="fileObject"
-    :file-name="fileName"
+  <input
+    type="file"
+    @change="handleFileChange"
   />
-  
-  <!-- 通过 URL 预览 -->
-  <C_FilePreview 
-    :url="fileUrl"
-    :file-name="fileName"
+  <C_FilePreview
+    v-if="currentFile"
+    :file="currentFile"
   />
 </template>
 
-<script setup>
-const fileObject = ref(null)
-const fileUrl = ref('https://example.com/document.pdf')
-const fileName = ref('示例文档.pdf')
-
-// 处理文件选择
-const handleFileSelect = (event) => {
-  const file = event.target.files[0]
-  if (file) {
-    fileObject.value = file
-    fileName.value = file.name
+<script setup lang="ts">
+  const currentFile = ref<File>()
+  const handleFileChange = (e: Event) => {
+    const target = e.target as HTMLInputElement
+    currentFile.value = target.files?.[0]
   }
-}
 </script>
+```
+
+### 通过 URL 预览
+
+```vue
+<template>
+  <C_FilePreview
+    url="https://example.com/report.pdf"
+    file-name="年度报告.pdf"
+  />
+</template>
 ```
 
 ### 自动预览模式
 
-```vue {3-6}
+```vue
 <template>
-  <!-- 自动预览模式，直接显示预览内容 -->
-  <C_FilePreview 
-    :file="file"
-    :auto-preview="true"
+  <!-- autoPreview 跳过文件信息卡片，直接打开预览模态框 -->
+  <C_FilePreview
+    :file="someFile"
+    auto-preview
+    @preview="onPreview"
+    @download="onDownload"
   />
 </template>
 ```
 
-## 📖 API 文档
+## 📋 API
 
 ### Props
 
-| 参数 | 类型 | 默认值 | 说明 |
-| --- | --- | --- | --- |
-| **file** | `File` | - | 文件对象 |
-| **url** | `string` | - | 文件 URL 地址 |
-| **fileName** | `string` | `'未知文件'` | 文件名称 |
-| **autoPreview** | `boolean` | `false` | 是否自动预览 |
+| 属性          | 类型      | 默认值       | 说明                               |
+| ------------- | --------- | ------------ | ---------------------------------- |
+| `file`        | `File`    | —            | 直接传入的 File 对象               |
+| `url`         | `string`  | —            | 远程文件 URL（与 `file` 二选一）   |
+| `fileName`    | `string`  | `'未知文件'` | 显示的文件名（用于类型检测和展示） |
+| `autoPreview` | `boolean` | `false`      | 是否跳过文件卡片直接打开预览       |
+
+> `file` 和 `url` 至少传入一个。当同时提供时，优先使用 `file`。
 
 ### Events
 
-| 事件名 | 参数 | 说明 |
-| --- | --- | --- |
-| **preview** | `file: File \| string` | 打开预览时触发 |
-| **download** | `file: File \| string` | 下载文件时触发 |
+| 事件       | 参数                     | 说明                               |
+| ---------- | ------------------------ | ---------------------------------- |
+| `preview`  | `(file: File \| string)` | 预览打开时触发，参数为 File 或 URL |
+| `download` | `(file: File \| string)` | 下载触发，参数为 File 或 URL       |
 
-### 暴露方法
+### 支持的文件格式
 
-| 方法名 | 参数 | 返回值 | 说明 |
-| --- | --- | --- | --- |
-| **openPreview** | - | `Promise<void>` | 打开预览窗口 |
-| **downloadFile** | - | `void` | 下载文件 |
-| **loadFile** | - | `Promise<void>` | 重新加载文件 |
+| 扩展名           | 类型  | 预览方式                   |
+| ---------------- | ----- | -------------------------- |
+| `.pdf`           | PDF   | iframe 嵌入浏览器原生渲染  |
+| `.doc` / `.docx` | Word  | mammoth 转 HTML + 目录提取 |
+| `.xls` / `.xlsx` | Excel | xlsx 解析 → 自定义表格渲染 |
 
-## 🎨 使用示例
+## 🧩 子组件
 
-::: details 📤 文件上传预览 - 完整的上传和预览流程
-```vue 
+### PdfViewer
+
+| Props        | 类型     | 说明                          |
+| ------------ | -------- | ----------------------------- |
+| `pdfUrl`     | `string` | PDF 文件的 Blob URL（带参数） |
+| `totalPages` | `number` | 总页数                        |
+
+**功能特性**:
+
+- 上一页 / 下一页导航，支持手动输入页码
+- 缩放控制：放大 / 缩小 / 重置（步进 25%，范围 50% ~ 300%）
+- 使用 `<iframe>` 利用浏览器原生 PDF 渲染
+
+### WordViewer
+
+| Props      | 类型           | 说明                         |
+| ---------- | -------------- | ---------------------------- |
+| `content`  | `string`       | mammoth 转换后的 HTML 字符串 |
+| `headings` | `DocHeading[]` | 提取的文档标题列表           |
+
+**功能特性**:
+
+- 文档目录侧边栏（支持展开/收起），点击标题平滑滚动
+- 缩放控制：放大 / 缩小 / 重置（步进 10%，范围 50% ~ 200%）
+- 通过 `v-html` 渲染 Word 转换后的 HTML 内容
+
+### ExcelViewer
+
+| Props    | 类型           | 说明                 |
+| -------- | -------------- | -------------------- |
+| `sheets` | `ExcelSheet[]` | Excel 工作表数据列表 |
+
+| Events   | 参数 | 说明                     |
+| -------- | ---- | ------------------------ |
+| `reload` | —    | 用户点击"重新解析"时触发 |
+
+**功能特性**:
+
+- 多工作表切换（NTabs 卡片模式）
+- 合并单元格（rowspan / colspan）正确渲染
+- 分页浏览（可选 20 / 50 / 100 / 200 条每页）
+- 完整格式 / 紧凑视图切换
+- 列字母标识（A, B, C, …）+ 行号显示
+- 单元格智能分类：数字（千分位格式化）、日期、布尔值、甘特图字符、长文本
+
+## 🔧 Composables
+
+### useFilePreview
+
+文件预览核心引擎，管理加载状态、文件类型检测、数据解析和下载。
+
+```typescript
+import { useFilePreview } from '@/composables/FilePreview/useFilePreview'
+
+const {
+  // 状态
+  loading, // Ref<boolean>  — 是否加载中
+  error, // Ref<string>   — 错误信息
+  fileSize, // Ref<number>   — 文件大小（字节）
+  showModal, // Ref<boolean>  — 模态框显示状态
+
+  // 解析后的数据
+  pdfUrl, // Ref<string>         — PDF Blob URL
+  pdfTotalPages, // Ref<number>         — PDF 总页数
+  wordContent, // Ref<string>         — Word HTML 内容
+  wordHeadings, // Ref<DocHeading[]>   — Word 文档标题
+  excelSheets, // Ref<ExcelSheet[]>   — Excel 工作表
+
+  // 计算属性
+  displayFileName, // ComputedRef<string>          — 展示文件名
+  fileType, // ComputedRef<FilePreviewType>  — 文件类型
+  fileConfig, // ComputedRef<FileConfig>       — 类型配置（图标/颜色/标签）
+
+  // 方法
+  loadFile, // () => Promise<void>  — 加载/重新加载文件
+  openPreview, // () => Promise<void>  — 打开预览（showModal + loadFile + emit）
+  downloadFile, // () => void           — 下载文件
+} = useFilePreview(
+  {
+    file: Ref<File | undefined>,
+    url: Ref<string | undefined>,
+    fileName: Ref<string>,
+  },
+  emit
+)
+```
+
+**内部行为**:
+
+- `loadFile` 根据 `fileType` 自动调用对应的 `loadPdf` / `loadWord` / `loadExcel`
+- 远程 URL 先 `fetch` 转 `Blob` → `File`，再交给对应加载器
+- `onUnmounted` 时自动回收 PDF 的 Blob URL（`URL.revokeObjectURL`）
+- `watch(file.size)` 实时同步文件大小
+
+### useFullscreen
+
+全屏状态管理 composable，支持跨浏览器兼容。
+
+```typescript
+import { useFullscreen } from '@/composables/FilePreview/useFullscreen'
+
+const containerRef = ref<HTMLElement>()
+const {
+  isFullscreen, // Ref<boolean>          — 当前是否全屏
+  toggleFullscreen, // () => Promise<void>   — 切换全屏
+  exitFullscreen, // () => Promise<void>   — 退出全屏
+} = useFullscreen(containerRef)
+```
+
+**内部行为**:
+
+- `onMounted` 注册 `fullscreenchange` 事件（含 webkit / moz / MS 前缀）
+- `onUnmounted` 自动清理事件监听
+- `toggleFullscreen` 依次尝试标准 API → webkit → moz → ms
+- `exitFullscreen` 额外处理 `document.fullscreenElement` 为空的情况
+
+## 📐 类型定义
+
+所有类型定义在 `types/modules/file-preview.d.ts`，全局可用无需导入：
+
+```typescript
+/** 支持的文件类型 */
+type FilePreviewType = 'pdf' | 'word' | 'excel' | 'unknown'
+
+/** 文件类型配置（图标、颜色、标签类型） */
+interface FileConfig {
+  tagType: string
+  icon: string
+  color: string
+}
+
+/** 缩放配置 */
+interface ZoomConfig {
+  min: number
+  max: number
+  step: number
+  default: number
+}
+
+/** Excel 单元格 */
+interface ExcelCell {
+  value: any
+  rowspan?: number
+  colspan?: number
+  merged?: boolean
+  hidden?: boolean
+  style?: any
+}
+
+/** Excel 行数据 — 列键 → 单元格 */
+interface ExcelRow {
+  [key: string]: ExcelCell
+}
+
+/** Excel 列配置 */
+interface ExcelColumn {
+  title: string
+  key: string
+  width: number
+}
+
+/** Excel 工作表 */
+interface ExcelSheet {
+  name: string
+  data: ExcelRow[]
+  merges: any[]
+  columns: ExcelColumn[]
+}
+
+/** Word 文档标题 */
+interface DocHeading {
+  id: string
+  text: string
+  level: number
+}
+
+/** 文件预览组件 Props */
+interface FilePreviewProps {
+  file?: File
+  url?: string
+  fileName?: string
+  autoPreview?: boolean
+}
+
+/** 加载结果 — PDF */
+interface PdfLoadResult {
+  url: string
+  totalPages: number
+}
+
+/** 加载结果 — Word */
+interface WordLoadResult {
+  content: string
+  headings: DocHeading[]
+}
+
+/** 加载结果 — Excel */
+interface ExcelLoadResult {
+  sheets: ExcelSheet[]
+}
+```
+
+## 🛠️ 工具函数 (data.ts)
+
+### 常量
+
+| 常量                | 类型                              | 说明                                |
+| ------------------- | --------------------------------- | ----------------------------------- |
+| `FILE_TYPE_MAP`     | `Record<string, FilePreviewType>` | 扩展名 → 文件类型映射               |
+| `FILE_CONFIGS`      | `Record<string, FileConfig>`      | 文件类型 → 图标/颜色/标签配置       |
+| `ZOOM_CONFIGS`      | `Record<string, ZoomConfig>`      | PDF / Word 缩放参数                 |
+| `PAGE_SIZE_OPTIONS` | `number[]`                        | Excel 分页选项 `[20, 50, 100, 200]` |
+| `FULLSCREEN_EVENTS` | `string[]`                        | 全屏事件名列表（含 vendor prefix）  |
+
+### 函数
+
+| 函数                     | 签名                                       | 说明                                  |
+| ------------------------ | ------------------------------------------ | ------------------------------------- |
+| `extractFileNameFromUrl` | `(url: string) => string`                  | 从 URL 提取文件名                     |
+| `formatFileSize`         | `(bytes: number) => string`                | 字节 → 可读大小（如 `2.5 MB`）        |
+| `getFileType`            | `(fileName: string) => FilePreviewType`    | 根据文件名判断类型                    |
+| `getFileConfig`          | `(fileType: string) => FileConfig`         | 获取类型对应的图标/颜色配置           |
+| `createZoomHandler`      | `(valueRef, config) => (action) => void`   | 创建缩放操作处理器                    |
+| `getColumnLetter`        | `(index: number) => string`                | 列索引 → 字母标识（0→A, 25→Z, 26→AA） |
+| `formatCellValue`        | `(value: any) => string`                   | 单元格值格式化（数字千分位等）        |
+| `getCellClass`           | `(value: any) => string`                   | 根据值类型返回 CSS 类名               |
+| `processExcelSheet`      | `(worksheet, merges) => { data, columns }` | 解析工作表数据 + 合并单元格映射       |
+| `loadPdf`                | `(file: File) => Promise<PdfLoadResult>`   | 创建 PDF Blob URL                     |
+| `loadWord`               | `(file: File) => Promise<WordLoadResult>`  | mammoth 转 HTML + 标题提取            |
+| `loadExcel`              | `(file: File) => Promise<ExcelLoadResult>` | xlsx 解析所有工作表                   |
+
+## 🎨 样式说明
+
+### 主样式 (index.scss)
+
+- `.file-info-card` — 文件信息卡片模式（hover 动画 + 阴影）
+- `.modal-container` — 预览模态框容器（header + content 弹性布局）
+- `.preview-header` — 文件信息栏（类型标签 + 文件名 + 大小 + 操作按钮）
+- `.status-container` — 加载/错误状态居中容器
+
+### 子组件样式
+
+| 文件                     | 说明                                                                        |
+| ------------------------ | --------------------------------------------------------------------------- |
+| `PdfViewer/index.scss`   | PDF 工具栏 + iframe 容器                                                    |
+| `WordViewer/index.scss`  | Word 布局（侧边栏目录 + 文档区域）、`:deep()` 覆盖 mammoth 生成的 HTML 样式 |
+| `ExcelViewer/index.scss` | Excel 表格样式（合并单元格、单元格类型颜色、紧凑模式、分页 z-index 覆盖）   |
+
+## 💡 使用场景
+
+### 场景一：文件上传后预览
+
+```vue
 <template>
-  <div class="upload-preview">
-    <NUpload
-      :custom-request="customRequest"
-      @change="handleUploadChange"
-    >
-      <NButton>选择文件</NButton>
-    </NUpload>
-    
-    <!-- 文件列表 -->
-    <div class="file-list">
-      <div 
-        v-for="item in fileList" 
-        :key="item.id"
-        class="file-item"
-      >
-        <C_FilePreview
-          :file="item.file"
-          :file-name="item.name"
-          @preview="handlePreview(item)"
-          @download="handleDownload(item)"
-        />
-      </div>
-    </div>
-  </div>
+  <NUpload @change="handleUpload">
+    <NButton>上传文件</NButton>
+  </NUpload>
+
+  <C_FilePreview
+    v-if="uploadedFile"
+    :file="uploadedFile"
+    @preview="handlePreview"
+    @download="handleDownload"
+  />
 </template>
 
-<script setup>
-const fileList = ref([])
+<script setup lang="ts">
+  const uploadedFile = ref<File>()
 
-const handleUploadChange = ({ file }) => {
-  if (file.status === 'finished') {
-    fileList.value.push({
-      id: file.id,
-      name: file.name,
-      file: file.file,
-      url: file.url,
-    })
+  const handleUpload = ({ file }: { file: { file: File } }) => {
+    uploadedFile.value = file.file
   }
-}
 
-const handlePreview = (item) => {
-  console.log('预览文件:', item.name)
-  // 记录预览行为
-  trackEvent('file_preview', { fileName: item.name })
-}
+  const handlePreview = (file: File | string) => {
+    console.log('预览文件:', file)
+  }
 
-const handleDownload = (item) => {
-  console.log('下载文件:', item.name)
-  // 记录下载行为
-  trackEvent('file_download', { fileName: item.name })
-}
-
-const customRequest = ({ file, onFinish }) => {
-  // 模拟上传
-  setTimeout(() => {
-    onFinish()
-  }, 1000)
-}
+  const handleDownload = (file: File | string) => {
+    console.log('下载文件:', file)
+  }
 </script>
 ```
-:::
 
-::: details 📋 文档管理系统 - 企业级文档管理应用
-```vue 
+### 场景二：远程文件列表
+
+```vue
 <template>
-  <div class="document-manager">
-    <NDataTable
-      :columns="columns"
-      :data="documents"
+  <div
+    v-for="item in fileList"
+    :key="item.url"
+  >
+    <C_FilePreview
+      :url="item.url"
+      :file-name="item.name"
     />
   </div>
 </template>
 
-<script setup>
-const documents = ref([
-  {
-    id: 1,
-    name: '2024年度报告.pdf',
-    type: 'pdf',
-    size: 2048000,
-    url: '/api/documents/1/download',
-    uploadTime: '2024-01-15',
-  },
-  {
-    id: 2,
-    name: '项目计划.docx',
-    type: 'word',
-    size: 512000,
-    url: '/api/documents/2/download',
-    uploadTime: '2024-01-16',
-  },
-])
-
-const columns = [
-  {
-    title: '文件名',
-    key: 'name',
-    render: (row) => h('span', row.name),
-  },
-  {
-    title: '类型',
-    key: 'type',
-    render: (row) => h(NTag, { type: 'info' }, () => row.type.toUpperCase()),
-  },
-  {
-    title: '大小',
-    key: 'size',
-    render: (row) => formatFileSize(row.size),
-  },
-  {
-    title: '上传时间',
-    key: 'uploadTime',
-  },
-  {
-    title: '操作',
-    key: 'actions',
-    render: (row) => h(
-      C_FilePreview,
-      {
-        url: row.url,
-        fileName: row.name,
-        onPreview: () => {
-          message.info(`正在预览: ${row.name}`)
-        },
-        onDownload: () => {
-          message.success(`开始下载: ${row.name}`)
-        },
-      }
-    ),
-  },
-]
+<script setup lang="ts">
+  const fileList = ref([
+    { url: '/api/files/report.pdf', name: '月度报告.pdf' },
+    { url: '/api/files/data.xlsx', name: '数据汇总.xlsx' },
+    { url: '/api/files/doc.docx', name: '技术文档.docx' },
+  ])
 </script>
 ```
-:::
 
-::: details 📄 合同审批流程 - 专业的合同预览和审批
-```vue 
-<template>
-  <div class="contract-approval">
-    <NCard title="合同审批">
-      <div class="contract-info">
-        <NDescriptions :column="2">
-          <NDescriptionsItem label="合同编号">
-            {{ contract.id }}
-          </NDescriptionsItem>
-          <NDescriptionsItem label="合同类型">
-            {{ contract.type }}
-          </NDescriptionsItem>
-          <NDescriptionsItem label="签约方">
-            {{ contract.party }}
-          </NDescriptionsItem>
-          <NDescriptionsItem label="合同金额">
-            ¥{{ contract.amount }}
-          </NDescriptionsItem>
-        </NDescriptions>
-      </div>
-      
-      <!-- 合同文件预览 -->
-      <div class="contract-preview">
-        <h3>合同文件</h3>
-        <C_FilePreview
-          ref="contractPreviewRef"
-          :url="contract.fileUrl"
-          :file-name="contract.fileName"
-          auto-preview
-        />
-      </div>
-      
-      <!-- 审批操作 -->
-      <div class="approval-actions">
-        <NSpace>
-          <NButton 
-            type="success"
-            @click="handleApprove"
-          >
-            批准
-          </NButton>
-          <NButton 
-            type="error"
-            @click="handleReject"
-          >
-            驳回
-          </NButton>
-          <NButton
-            @click="downloadContract"
-          >
-            下载合同
-          </NButton>
-        </NSpace>
-      </div>
-    </NCard>
-  </div>
-</template>
-
-<script setup>
-const contractPreviewRef = ref()
-
-const contract = ref({
-  id: 'HT-2024-001',
-  type: '采购合同',
-  party: 'XX科技有限公司',
-  amount: '100,000',
-  fileUrl: '/api/contracts/HT-2024-001.pdf',
-  fileName: '采购合同-HT-2024-001.pdf',
-})
-
-const handleApprove = async () => {
-  const result = await dialog.create({
-    title: '确认批准',
-    content: '确定要批准这份合同吗？',
-    positiveText: '确认',
-    negativeText: '取消',
-  })
-  
-  if (result) {
-    await api.approveContract(contract.value.id)
-    message.success('合同已批准')
-  }
-}
-
-const handleReject = async () => {
-  // 驳回逻辑
-}
-
-const downloadContract = () => {
-  contractPreviewRef.value?.downloadFile()
-}
-</script>
-```
-:::
-
-::: details 📊 报表中心 - 多类型报表预览切换
-```vue 
-<template>
-  <div class="report-center">
-    <NTabs type="card">
-      <NTabPane name="sales" tab="销售报表">
-        <C_FilePreview
-          :url="'/api/reports/sales-2024.xlsx'"
-          file-name="2024年销售报表.xlsx"
-          auto-preview
-        />
-      </NTabPane>
-      
-      <NTabPane name="finance" tab="财务报表">
-        <C_FilePreview
-          :url="'/api/reports/finance-2024.xlsx'"
-          file-name="2024年财务报表.xlsx"
-          auto-preview
-        />
-      </NTabPane>
-      
-      <NTabPane name="analysis" tab="分析报告">
-        <C_FilePreview
-          :url="'/api/reports/analysis-2024.pdf'"
-          file-name="2024年度分析报告.pdf"
-          auto-preview
-        />
-      </NTabPane>
-    </NTabs>
-  </div>
-</template>
-```
-:::
-
-## 🎨 样式定制
-
-::: details 🎨 自定义预览窗口样式 - 主题样式配置
-```scss
-// index.scss
-.c-file-preview-wrapper {
-  // 文件信息卡片
-  .file-info-card {
-    background: #f5f5f5;
-    border-radius: 8px;
-    padding: 16px;
-    
-    .file-icon {
-      font-size: 40px;
-    }
-    
-    .file-name {
-      font-weight: 600;
-      color: #333;
-    }
-  }
-  
-  // 模态框样式
-  .modal-container {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    
-    .modal-header {
-      padding: 12px 16px;
-      border-bottom: 1px solid #e8e8e8;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    
-    .modal-content {
-      flex: 1;
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-    }
-  }
-  
-  // PDF 预览样式
-  .file-container {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    
-    .file-toolbar {
-      padding: 8px 16px;
-      background: #fafafa;
-      border-bottom: 1px solid #e8e8e8;
-    }
-    
-    .file-viewer {
-      flex: 1;
-      overflow: auto;
-    }
-  }
-}
-
-// 暗色主题
-.dark {
-  .file-info-card {
-    background: #1f1f1f;
-    
-    .file-name {
-      color: #e5e5e5;
-    }
-  }
-  
-  .modal-header {
-    background: #1a1a1a;
-    border-color: #333;
-  }
-}
-```
-:::
-
-::: details 📊 Excel 表格样式 - 专业的表格显示效果
-```scss
-.excel-table {
-  width: 100%;
-  border-collapse: collapse;
-  
-  th {
-    background: #f5f5f5;
-    font-weight: 600;
-    border: 1px solid #d9d9d9;
-    padding: 8px;
-    
-    &.row-number {
-      width: 60px;
-      text-align: center;
-    }
-  }
-  
-  td {
-    border: 1px solid #e8e8e8;
-    padding: 6px 8px;
-    
-    &.excel-cell {
-      max-width: 200px;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-    }
-  }
-  
-  // 紧凑模式
-  &.compact-mode {
-    td {
-      padding: 4px 6px;
-      font-size: 12px;
-    }
-  }
-}
-```
-:::
-
-## ⚙️ 高级配置
-
-### 支持的文件格式
-
-| 格式 | 扩展名 | 说明 |
-| --- | --- | --- |
-| **PDF** | `.pdf` | 使用 iframe 或 PDF.js 渲染 |
-| **Word** | `.docx` | 使用 mammoth.js 转换为 HTML |
-| **Excel** | `.xlsx`, `.xls` | 使用 xlsx 库解析 |
-
-### 文件大小限制
-
-```javascript
-// 建议的文件大小限制
-const FILE_SIZE_LIMITS = {
-  pdf: 50 * 1024 * 1024,    // 50MB
-  word: 20 * 1024 * 1024,   // 20MB
-  excel: 30 * 1024 * 1024,  // 30MB
-}
-
-// 使用前检查文件大小
-const checkFileSize = (file, type) => {
-  const limit = FILE_SIZE_LIMITS[type]
-  if (file.size > limit) {
-    message.warning(`文件过大，建议不超过 ${formatFileSize(limit)}`)
-    return false
-  }
-  return true
-}
-```
-
-## 🐛 故障排除
-
-::: details ❓ Q1: PDF 文件无法预览？
-**A1:** 检查以下几点：
-
-```javascript
-// 1. 确保 PDF 文件可访问
-const checkPdfUrl = async (url) => {
-  try {
-    const response = await fetch(url, { method: 'HEAD' })
-    return response.ok
-  } catch {
-    return false
-  }
-}
-
-// 2. 处理跨域问题
-// 需要服务器设置 CORS 头
-// Access-Control-Allow-Origin: *
-```
-:::
-
-::: details ❓ Q2: Word 文档格式丢失？
-**A2:** mammoth.js 只支持部分格式：
-
-```javascript
-// 支持的格式
-const SUPPORTED_FORMATS = [
-  '段落样式',
-  '标题',
-  '列表',
-  '表格',
-  '图片（转为 base64）',
-]
-
-// 不支持的格式
-const UNSUPPORTED_FORMATS = [
-  '页眉页脚',
-  '批注',
-  '修订记录',
-  '复杂图表',
-]
-```
-:::
-
-::: details ❓ Q3: Excel 表格过大加载慢？
-**A3:** 使用分页加载：
+### 场景三：拖拽上传 + 多文件预览
 
 ```vue
-<script setup>
-// 已内置分页功能
-const pageSize = ref(50) // 每页显示50行
-const currentPage = ref(1)
+<template>
+  <NUploadDragger
+    multiple
+    @change="handleFiles"
+  >
+    拖拽文件到此处
+  </NUploadDragger>
 
-// 可以调整每页大小
-const PAGE_SIZE_OPTIONS = [20, 50, 100, 200]
+  <C_FilePreview
+    v-for="f in files"
+    :key="f.name"
+    :file="f"
+  />
+</template>
+
+<script setup lang="ts">
+  const files = ref<File[]>([])
+
+  const handleFiles = ({ fileList }: any) => {
+    files.value = fileList.map((item: any) => item.file)
+  }
 </script>
 ```
-:::
 
-::: details ❓ Q4: 文件下载失败？
-**A4:** 检查下载实现：
+## ⚠️ 注意事项
 
-```javascript
-// 本地文件下载
-const downloadLocalFile = (file) => {
-  const url = URL.createObjectURL(file)
-  const a = document.createElement('a')
-  a.href = url
-  a.download = file.name
-  a.click()
-  URL.revokeObjectURL(url)
-}
-
-// 远程文件下载
-const downloadRemoteFile = (url, fileName) => {
-  const a = document.createElement('a')
-  a.href = url
-  a.download = fileName
-  a.target = '_blank'
-  a.click()
-}
-```
-:::
-
-## 🎯 最佳实践
-
-### 1. 文件类型检测
-
-```javascript
-// 准确的文件类型检测
-const detectFileType = (file) => {
-  // 优先使用 MIME 类型
-  const mimeType = file.type
-  
-  // 其次使用文件扩展名
-  const extension = file.name.split('.').pop()?.toLowerCase()
-  
-  // 类型映射
-  const typeMap = {
-    'application/pdf': 'pdf',
-    'application/vnd.openxmlformats-officedocument.wordprocessingml.document': 'word',
-    'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet': 'excel',
-  }
-  
-  return typeMap[mimeType] || getTypeByExtension(extension)
-}
-```
-
-### 2. 性能优化
-
-```javascript
-// 大文件分片加载
-const loadLargeFile = async (file) => {
-  const CHUNK_SIZE = 1024 * 1024 // 1MB
-  const chunks = Math.ceil(file.size / CHUNK_SIZE)
-  
-  for (let i = 0; i < chunks; i++) {
-    const start = i * CHUNK_SIZE
-    const end = Math.min(start + CHUNK_SIZE, file.size)
-    const chunk = file.slice(start, end)
-    
-    // 处理分片
-    await processChunk(chunk)
-    
-    // 更新进度
-    updateProgress((i + 1) / chunks * 100)
-  }
-}
-```
-
-### 3. 错误处理
-
-```javascript
-// 统一的错误处理
-const handleFileError = (error, fileType) => {
-  const errorMessages = {
-    pdf: 'PDF 文件可能已损坏或格式不正确',
-    word: 'Word 文档解析失败，请确保是 .docx 格式',
-    excel: 'Excel 文件读取失败，请检查文件完整性',
-  }
-  
-  message.error(errorMessages[fileType] || '文件预览失败')
-  
-  // 上报错误
-  reportError({
-    type: 'file_preview_error',
-    fileType,
-    error: error.message,
-  })
-}
-```
+1. **PDF 渲染依赖浏览器**: 使用 `<iframe>` 嵌入，依赖浏览器原生 PDF 插件。Chrome / Edge / Firefox 均内置支持。
+2. **Word 转换有损**: mammoth 专注于语义转换，复杂排版（表格嵌套、高级样式）可能丢失。适合文本为主的文档。
+3. **Excel 大文件**: 超大 Excel 文件（> 10MB）可能导致浏览器卡顿。建议后端做分页或文件大小限制。
+4. **跨域 URL**: 远程 URL 需支持 CORS，否则 `fetch` 会失败。
+5. **内存回收**: 组件卸载时自动回收 PDF Blob URL（`URL.revokeObjectURL`），无需手动处理。
+6. **全屏兼容**: 旧版 Safari 使用 `webkitRequestFullscreen`，IE 使用 `msRequestFullscreen`，组件已做降级处理。
 
 ## 📝 更新日志
 
-### v1.0.0 (2025-07-27)
+### v2.0.0 — Composable 架构重构
 
-- ✨ 初始版本发布
-- ✨ 支持 PDF 预览和翻页
-- ✨ 支持 Word 文档预览
-- ✨ 支持 Excel 表格预览
-- ✨ 全屏预览功能
-- ✨ 文件下载功能
-- ✨ 缩放控制功能
+**架构改进**:
 
-<!--@include: ./snippets/contribute.md -->
+- 主组件从 **817 行** 精简至 **~230 行**（薄 UI 壳模式）
+- 提取 **useFilePreview** composable — 核心逻辑引擎（~190 行）
+- 提取 **useFullscreen** composable — 全屏状态管理（~75 行）
+- 类型定义统一迁移至 `types/modules/file-preview.d.ts`
 
-**💡 提示**: 文件预览组件提供了专业的文档在线预览功能，支持 PDF、Word、Excel 等常见办公文档格式。通过内置的缩放、翻页、全屏等功能，提供接近原生应用的预览体验。组件自动识别文件类型并选择合适的渲染方式，让文档预览变得简单高效。如果遇到问题请先查看文档，或者在团队群里讨论。让我们一起打造更专业的文档预览体验！ 📄
+**子组件拆分**:
+
+- **PdfViewer** — 翻页 + 缩放 + iframe 渲染
+- **WordViewer** — 目录导航 + 缩放 + HTML 渲染
+- **ExcelViewer** — Sheet 切换 + 分页 + 合并单元格 + 格式切换
+
+**data.ts 重构**:
+
+- 移除工厂函数模式（`createFileLoaders` / `createFullscreenToggler`）
+- 改为纯异步函数（`loadPdf` / `loadWord` / `loadExcel`），返回类型化结果对象
+- 类型定义移出，仅保留常量 + 工具函数 + 加载器
+
+**Demo 页面清理**:
+
+- 移除无效配置变量：`showHeader`、`showToolbar`、`allowDownload`
+- 移除对应的 UI 控件和样式
+
+### v1.0.0 — 初始版本
+
+- 支持 PDF / Word / Excel 三种格式预览
+- 文件信息卡片 + 模态框预览
+- 基础全屏支持
