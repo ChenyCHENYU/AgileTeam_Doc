@@ -2807,13 +2807,6 @@ console.log('hasSharedHeader:', hasSharedHeader.value)
 - [Naive UI 文档](https://www.naiveui.com/) - UI 组件库
 - [TypeScript 文档](https://www.typescriptlang.org/) - 类型系统
 
-### 项目文档
-
-- [部署文档](./DEPLOYMENT.md) - 生产环境部署指南
-- [API 文档](./API.md) - 接口文档
-- [代码规范](./CODE_STANDARDS.md) - 开发规范
-- [变更日志](../CHANGELOG.md) - 版本更新记录
-
 ### 技术文章
 
 - [微前端架构：为什么以及如何使用](https://martinfowler.com/articles/micro-frontends.html)
@@ -2824,7 +2817,6 @@ console.log('hasSharedHeader:', hasSharedHeader.value)
 
 - [GitHub Issues](https://github.com/ChenyCHENYU/Robot_Admin/issues) - 问题反馈
 - [GitHub Discussions](https://github.com/ChenyCHENYU/Robot_Admin/discussions) - 讨论区
-- [贡献指南](./CONTRIBUTING.md) - 如何贡献代码
 
 ---
 
