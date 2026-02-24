@@ -247,6 +247,10 @@ export const ROBOT_COMPONENTS_DOC = [
         text: "[C_Qrcode] 二维码",
         link: `${ROBOT}/components/qrcode`,
       },
+      {
+        text: "[C_VideoPlayer] 视频播放器",
+        link: `${ROBOT}/components/video-player`,
+      },
     ],
   },
   {
