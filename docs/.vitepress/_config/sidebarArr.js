@@ -243,6 +243,10 @@ export const ROBOT_COMPONENTS_DOC = [
         text: "[C_VtableGantt] 甘特图",
         link: `${ROBOT}/components/vtable-gantt`,
       },
+      {
+        text: "[C_Qrcode] 二维码",
+        link: `${ROBOT}/components/qrcode`,
+      },
     ],
   },
   {
