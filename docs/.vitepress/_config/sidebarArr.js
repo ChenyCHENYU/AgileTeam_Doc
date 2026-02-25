@@ -296,6 +296,10 @@ export const ROBOT_COMPONENTS_DOC = [
         text: "[C_AntV] 图形引擎",
         link: `${ROBOT}/components/antv`,
       },
+      {
+        text: "[C_Cron] 表达式编辑器",
+        link: `${ROBOT}/components/cron`,
+      },
     ],
   },
   {
