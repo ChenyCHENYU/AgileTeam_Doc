@@ -222,6 +222,14 @@ export const ROBOT_COMPONENTS_DOC = [
         text: "[C_Tree] 树",
         link: `${ROBOT}/components/tree`,
       },
+      {
+        text: "[C_SplitPane] 分割面板",
+        link: `${ROBOT}/components/split-pane`,
+      },
+      {
+        text: "[C_CollapsePanel] 折叠面板",
+        link: `${ROBOT}/components/collapse-panel`,
+      },
     ],
   },
   {
