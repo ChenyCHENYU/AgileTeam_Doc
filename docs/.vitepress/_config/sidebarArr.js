@@ -230,6 +230,10 @@ export const ROBOT_COMPONENTS_DOC = [
         text: "[C_CollapsePanel] 折叠面板",
         link: `${ROBOT}/components/collapse-panel`,
       },
+      {
+        text: "[C_ImageCropper] 图片裁剪",
+        link: `${ROBOT}/components/image-cropper`,
+      },
     ],
   },
   {
