@@ -271,6 +271,10 @@ export const ROBOT_COMPONENTS_DOC = [
         text: "[C_Signature] 电子签名",
         link: `${ROBOT}/components/signature`,
       },
+      {
+        text: "[C_WaterFall] 瀑布流",
+        link: `${ROBOT}/components/waterfall`,
+      },
     ],
   },
   {
