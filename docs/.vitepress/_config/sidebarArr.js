@@ -300,6 +300,10 @@ export const ROBOT_COMPONENTS_DOC = [
         text: "[C_Cron] 表达式编辑器",
         link: `${ROBOT}/components/cron`,
       },
+      {
+        text: "[C_FormulaEditor] 公式编辑器",
+        link: `${ROBOT}/components/formula-editor`,
+      },
     ],
   },
   {
