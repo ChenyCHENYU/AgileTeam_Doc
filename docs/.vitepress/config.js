@@ -13,6 +13,9 @@ export default defineConfig({
   cleanUrls: true,
   head,
 
+  // 忽略死链接检查（views/demo 目录不存在）
+  ignoreDeadLinks: true,
+
   // 开启最后更新时间
   lastUpdated: true,
 
