@@ -275,6 +275,10 @@ export const ROBOT_COMPONENTS_DOC = [
         text: "[C_WaterFall] 瀑布流",
         link: `${ROBOT}/components/waterfall`,
       },
+      {
+        text: "[C_Upload] 增强型上传组件",
+        link: `${ROBOT}/components/upload`,
+      },
     ],
   },
   {
