@@ -70,6 +70,15 @@ graph LR
 </tr>
 </table>
 
+### 🖥️ 组件在线演示
+
+文档站集成了 **DemoIframe** 组件，通过 iframe 嵌入 Robot Admin 生产环境的真实演示页面，提供 **32+ 组件** 的在线交互体验：
+
+- 📦 **真实环境**：嵌入 `https://robotadmin.cn` 的 Preview 路由，展示的是生产级组件效果
+- 🎨 **浏览器风格**：带有地址栏、操作按钮的仿浏览器 Chrome UI，体验直观
+- 🔗 **一键跳转**：支持在新标签页中打开完整演示，方便深入体验
+- 🛡️ **零侵入**：Preview 路由无需登录鉴权，不影响主系统功能
+
 ### 🎯 文档化管理优势
 
 | 维度         | 特性                    | 价值               |
@@ -200,6 +209,7 @@ AgileTeam_Doc/
 ├── 📖 docs/                    # 文档源码目录
 │   ├── .vitepress/             # VitePress 配置
 │   │   ├── components/         # 自定义 Vue 组件
+│   │   │   └── DemoIframe.vue  # 组件在线演示嵌入（iframe）
 │   │   ├── theme/              # 主题定制文件
 │   │   └── config.js           # 站点配置文件
 │   └── document/               # 核心文档内容
@@ -208,6 +218,7 @@ AgileTeam_Doc/
 │       │   ├── templates/      # 标准化模板库
 │       │   └── verify/         # 交付物验收标准
 │       ├── po/                 # 🎯 产品管理文档
+│       ├── robot/              # 🤖 组件文档（32+ 组件在线演示）
 │       ├── team/               # 👥 团队协作文档
 │       └── web/                # 💻 前端技术文档
 ├── 📦 package.json             # 项目依赖配置
