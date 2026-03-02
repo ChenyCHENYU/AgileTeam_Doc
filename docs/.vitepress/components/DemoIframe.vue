@@ -10,19 +10,11 @@ const props = defineProps({
   height: { type: [String, Number], default: 700 },
 });
 
-// 根据环境自动选择 Robot Admin 地址
-const baseUrl = computed(() => {
-  if (typeof window === "undefined") return "https://robotadmin.cn";
-  const host = window.location.hostname;
-  // 本地开发时连接本地 Robot Admin（默认端口 1988）
-  if (host === "localhost" || host === "127.0.0.1") {
-    return "http://localhost:1988";
-  }
-  return "https://robotadmin.cn";
-});
+// Robot Admin 线上地址（始终使用线上部署版本）
+const baseUrl = "https://robotadmin.cn";
 
 // Hash 模式完整 URL：https://robotadmin.cn/#/preview/table
-const fullUrl = computed(() => `${baseUrl.value}/#${props.src}`);
+const fullUrl = computed(() => `${baseUrl}/#${props.src}`);
 
 const iframeHeight = computed(() => {
   const h =
