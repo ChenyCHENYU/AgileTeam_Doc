@@ -6,6 +6,11 @@ outline: 'deep'
 
 > ✍️ 基于原生 Canvas 的高性能电子签名组件，让签名更流畅、更专业
 
+## 🚀 在线演示
+
+<DemoIframe src="/preview/signature" title="电子签名" height="700" />
+
+
 ## 🚀 特性
 
 - **✍️ 双输入模式**: 支持鼠标和触摸屏输入，完美适配移动端

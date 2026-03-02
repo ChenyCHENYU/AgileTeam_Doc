@@ -6,6 +6,11 @@ outline: 'deep'
 
 > 🏙️ 基于 Naive UI 的智能城市选择器，让城市选择变得简单而优雅
 
+## 🚀 在线演示
+
+<DemoIframe src="/preview/city" title="城市选择器" height="700" />
+
+
 ## ✨ 特性
 
 - **🎯 双重选择模式**: 按城市分组、按省份分组两种显示方式

@@ -6,6 +6,12 @@ outline: "deep"
 
 > 🎯 基于 Driver.js 的新手引导组件，帮助用户快速了解系统功能
 
+## 🚀 在线演示
+
+::: tip 💻 在线体验
+该组件已集成在 Robot Admin 中，首次登录时自动触发引导 → [Robot Admin](https://robotadmin.cn)
+:::
+
 ## ✨ 特性
 
 - **🚀 一键启动**: 点击按钮即可开始引导流程
@@ -17,18 +23,21 @@ outline: "deep"
 
 ## 📦 安装
 
-```bash
-# 安装 Driver.js 依赖
-bun add driver.js
+::: code-group
+
+```bash [bun (推荐)]
+bun add @robot-admin/naive-ui-components
 ```
 
-组件已全局注册，直接使用即可：
-
-```vue
-<template>
-  <C_Guide />
-</template>
+```bash [pnpm]
+pnpm add @robot-admin/naive-ui-components
 ```
+
+```bash [npm]
+npm install @robot-admin/naive-ui-components
+```
+
+:::
 
 ## 🎯 快速开始
 

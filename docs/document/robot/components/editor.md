@@ -6,6 +6,11 @@ outline: 'deep'
 
 > 📝 基于 WangEditor 的强大富文本编辑器，让内容创作变得简单而高效
 
+## 🚀 在线演示
+
+<DemoIframe src="/preview/editor" title="富文本编辑器" height="700" />
+
+
 ## ✨ 特性
 
 - **📝 所见即所得**: 基于 WangEditor 的强大编辑能力，支持丰富的文本格式

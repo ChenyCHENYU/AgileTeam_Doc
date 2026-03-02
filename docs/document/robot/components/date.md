@@ -6,6 +6,11 @@ outline: 'deep'
 
 > 📅 基于 Naive UI 的智能日期选择器，让日期选择更智能、更便捷
 
+## 🚀 在线演示
+
+<DemoIframe src="/preview/date" title="日期选择" height="700" />
+
+
 ## 🚀 特性
 
 - **🔄 五种选择模式**: 单日期、日期时间、日期范围、日期时间范围、智能范围

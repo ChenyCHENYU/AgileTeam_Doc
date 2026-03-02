@@ -6,6 +6,11 @@ outline: 'deep'
 
 > 📊 基于 Naive UI 的多样化进度条组件，让进度展示更生动、更直观
 
+## 🚀 在线演示
+
+<DemoIframe src="/preview/progress" title="进度条" height="700" />
+
+
 ## 🚀 特性
 
 - **📏 多种类型支持**: 线性、圆形、多圆环、仪表盘四种进度条类型

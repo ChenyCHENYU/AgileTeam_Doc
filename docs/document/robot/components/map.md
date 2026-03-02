@@ -6,6 +6,11 @@ outline: 'deep'
 
 > 🗺️ 基于 [Leaflet](https://leafletjs.com/) 封装的通用地图组件，开箱即用，同时支持免费的 OpenStreetMap 和国内商业高德地图
 
+## 🚀 在线演示
+
+<DemoIframe src="/preview/map" title="地图" height="700" />
+
+
 ## 🚀 特性
 
 - **🌍 双地图引擎**: OpenStreetMap（免费，无需 Key）和高德地图（需申请 API Key）

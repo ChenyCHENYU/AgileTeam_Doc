@@ -6,6 +6,11 @@ outline: 'deep'
 
 > 🎯 基于 vue-draggable-plus 的强大拖拽组件，让排序和重组变得简单而优雅
 
+## 🚀 在线演示
+
+<DemoIframe src="/preview/draggable" title="列表拖拽" height="700" />
+
+
 ## ✨ 特性
 
 - **🎯 多种布局模式**: 支持垂直、水平、网格、弹性布局等多种排列方式

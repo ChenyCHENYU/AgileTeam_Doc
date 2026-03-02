@@ -6,6 +6,11 @@ outline: 'deep'
 
 > 📊 基于 VTable-Gantt 的高性能甘特图组件，支持多种预设模式和丰富的自定义配置
 
+## 🚀 在线演示
+
+<DemoIframe src="/preview/vtable-gantt" title="甘特图" height="800" />
+
+
 ## ✨ 特性
 
 - **🎯 五种预设模式**: 基础、项目、时间线、里程碑、官方演示模式
@@ -19,13 +24,21 @@ outline: 'deep'
 
 ## 📦 安装
 
-组件已全局注册，直接使用即可：
+::: code-group
 
-```vue
-<template>
-  <C_VTableGantt :data="ganttData" />
-</template>
+```bash [bun (推荐)]
+bun add @robot-admin/naive-ui-components
 ```
+
+```bash [pnpm]
+pnpm add @robot-admin/naive-ui-components
+```
+
+```bash [npm]
+npm install @robot-admin/naive-ui-components
+```
+
+:::
 
 ## 🎯 快速开始
 

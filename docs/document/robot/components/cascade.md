@@ -6,6 +6,11 @@ outline: 'deep'
 
 > 🔗 基于 Naive UI 的三级联动选择器，让数据层级选择更简单、更直观
 
+## 🚀 在线演示
+
+<DemoIframe src="/preview/cascade" title="级联选择" height="700" />
+
+
 ## 🚀 特性
 
 - **🔗 三级联动**: 支持最多三级数据联动选择

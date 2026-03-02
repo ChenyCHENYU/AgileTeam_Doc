@@ -6,6 +6,11 @@ outline: 'deep'
 
 > 🚀 基于 Naive UI 的全能表格组件，「薄 UI 壳 + 厚 Composable 引擎」架构，让数据管理变得简单而强大
 
+## 🚀 在线演示
+
+<DemoIframe src="/preview/table" title="超级表格" height="800" />
+
+
 ## ✨ 特性
 
 - **🎯 5种编辑模式**: 支持行编辑（row）、单元格编辑（cell）、模态框编辑（modal）、混合模式（both）和只读模式（none）

@@ -6,6 +6,11 @@ outline: 'deep'
 
 > 🧮 自研的可视化公式编辑器，让业务人员也能自主配置计算规则。支持变量点选、虚拟键盘联动、自由键盘输入、实时语法校验与样例数据计算预览，广泛适用于绩效核算、成本规则、销售提成等场景。
 
+## 🚀 在线演示
+
+<DemoIframe src="/preview/formula-editor" title="公式编辑器" height="700" />
+
+
 ## ✨ 特性
 
 - **🎯 变量点选插入** — 左侧面板分组展示可用变量，点击即插入彩色 Chip 到光标位置，支持搜索过滤
@@ -22,26 +27,19 @@ outline: 'deep'
 
 ::: code-group
 
-```bash [bun（推荐）]
-# 安装公式求值引擎
-bun add expr-eval
+```bash [bun (推荐)]
+bun add @robot-admin/naive-ui-components
 ```
 
 ```bash [pnpm]
-pnpm add expr-eval
-```
-
-```bash [yarn]
-yarn add expr-eval
+pnpm add @robot-admin/naive-ui-components
 ```
 
 ```bash [npm]
-npm install expr-eval
+npm install @robot-admin/naive-ui-components
 ```
 
 :::
-
-组件已全局注册，无需手动 import，直接在模板中使用 `<C_FormulaEditor />` 即可。
 
 ## 🎯 快速开始
 

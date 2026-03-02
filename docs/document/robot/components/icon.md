@@ -6,6 +6,11 @@ outline: 'deep'
 
 > 🎨 支持多种图标使用方式的通用图标组件，让图标使用更简单、更统一
 
+## 🚀 在线演示
+
+<DemoIframe src="/preview/icon" title="图标展示" height="700" />
+
+
 ## 🚀 特性
 
 - **🔥 多种图标类型支持**: Iconify、UnoCSS、组件、SVG、图片

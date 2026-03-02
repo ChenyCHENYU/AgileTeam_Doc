@@ -6,6 +6,11 @@ outline: 'deep'
 
 > 🖼️ 基于 [vue-cropper](https://github.com/xyxiao001/vue-cropper) 封装的 Vue 3 图片裁剪组件，支持自由/固定比例裁剪、旋转缩放翻转、多格式输出、弹窗模式，适配头像上传和 Banner 裁剪等场景。
 
+## 🚀 在线演示
+
+<DemoIframe src="/preview/image-cropper" title="图片裁剪" height="700" />
+
+
 ## 🚀 特性
 
 - **🎯 灵活比例** — 自由裁剪 / 1:1 / 16:9 / 4:3 / 3:2 / 自定义比例一键切换

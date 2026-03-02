@@ -6,6 +6,11 @@ outline: 'deep'
 
 > ⏰ 纯逻辑实现的 Cron 表达式可视化编辑器，零外部依赖。支持「秒 分 时 日 月 周」六字段可视化编辑，双向绑定，实时校验，未来执行时间预测，中文描述自动生成。
 
+## 🚀 在线演示
+
+<DemoIframe src="/preview/cron" title="Cron 表达式" height="700" />
+
+
 ## 🚀 特性
 
 - **🎯 可视化编辑** — 秒/分/时/日/月/周 Tabs 切换，每字段支持「每」「范围」「步进」「指定」四种模式
@@ -20,7 +25,21 @@ outline: 'deep'
 
 ## 📦 安装
 
-无需安装任何额外依赖，组件已全局注册。
+::: code-group
+
+```bash [bun (推荐)]
+bun add @robot-admin/naive-ui-components
+```
+
+```bash [pnpm]
+pnpm add @robot-admin/naive-ui-components
+```
+
+```bash [npm]
+npm install @robot-admin/naive-ui-components
+```
+
+:::
 
 ## 🎯 快速开始
 

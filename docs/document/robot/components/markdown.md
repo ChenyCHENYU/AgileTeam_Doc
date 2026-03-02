@@ -6,6 +6,11 @@ outline: 'deep'
 
 > ✍️ 基于 v-md-editor 的强大 Markdown 编辑器组件，让内容创作变得简单而优雅
 
+## 🚀 在线演示
+
+<DemoIframe src="/preview/markdown" title="Markdown 编辑器" height="700" />
+
+
 ## ✨ 特性
 
 - **📝 多种编辑模式**: 支持编辑、可编辑、预览三种模式自由切换

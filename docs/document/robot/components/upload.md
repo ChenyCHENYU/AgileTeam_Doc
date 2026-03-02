@@ -6,6 +6,11 @@ outline: 'deep'
 
 > 📤 分片上传 · 断点续传 · 秒传校验 · 并发控制 — 让大文件上传不再焦虑
 
+## 🚀 在线演示
+
+<DemoIframe src="/preview/upload" title="文件上传" height="700" />
+
+
 ## 🚀 特性
 
 - **📦 多模式上传**: 单文件 / 多文件 / 目录上传

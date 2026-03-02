@@ -234,6 +234,10 @@ export const ROBOT_COMPONENTS_DOC = [
         text: "[C_ImageCropper] 图片裁剪",
         link: `${ROBOT}/components/image-cropper`,
       },
+      {
+        text: "[C_ActionBar] 操作按钮组",
+        link: `${ROBOT}/components/action-bar`,
+      },
     ],
   },
   {
@@ -244,7 +248,7 @@ export const ROBOT_COMPONENTS_DOC = [
         link: `${ROBOT}/components/calendar`,
       },
       {
-        text: "[C_Cascade] 拖拽",
+        text: "[C_Draggable] 拖拽",
         link: `${ROBOT}/components/dragable`,
       },
       {
@@ -278,6 +282,10 @@ export const ROBOT_COMPONENTS_DOC = [
       {
         text: "[C_Upload] 增强型上传组件",
         link: `${ROBOT}/components/upload`,
+      },
+      {
+        text: "[C_Barcode] 条形码",
+        link: `${ROBOT}/components/barcode`,
       },
     ],
   },
@@ -340,6 +348,14 @@ export const ROBOT_COMPONENTS_DOC = [
       {
         text: "[C_Menu] 菜单",
         link: `${ROBOT}/components/menu`,
+      },
+      {
+        text: "[C_Language] 语言切换",
+        link: `${ROBOT}/components/language`,
+      },
+      {
+        text: "[C_Theme] 主题切换",
+        link: `${ROBOT}/components/theme`,
       },
     ],
   },

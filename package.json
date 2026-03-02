@@ -26,8 +26,10 @@
   ],
   "dependencies": {
     "@giscus/vue": "^3.1.1",
+    "@robot-admin/naive-ui-components": "^0.6.3",
     "@vercel/analytics": "^1.5.0",
-    "fabric": "^6.7.1"
+    "fabric": "^6.7.1",
+    "naive-ui": "^2.43.2"
   },
   "devDependencies": {
     "vitepress": "2.0.0-alpha.9"

@@ -6,6 +6,11 @@ outline: 'deep'
 
 > 🔄 基于 Vue Flow 的可视化工作流设计器，让审批流程设计变得简单而直观
 
+## 🚀 在线演示
+
+<DemoIframe src="/preview/workflow" title="工作流设计" height="800" />
+
+
 ## ✨ 特性
 
 - **🎨 可视化设计**: 基于 Vue Flow 的拖拽式流程设计，所见即所得

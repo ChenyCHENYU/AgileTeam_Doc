@@ -6,6 +6,11 @@ outline: 'deep'
 
 > 📋 引导用户按照流程完成任务的步骤条组件，支持横向和纵向布局
 
+## 🚀 在线演示
+
+<DemoIframe src="/preview/steps" title="步骤条" height="700" />
+
+
 ## ✨ 特性
 
 - **📐 双向布局**: 支持水平和垂直两种布局方向
@@ -18,13 +23,21 @@ outline: 'deep'
 
 ## 📦 安装
 
-组件已全局注册，直接使用即可：
+::: code-group
 
-```vue 
-<template>
-  <C_Steps :steps="steps" />
-</template>
+```bash [bun (推荐)]
+bun add @robot-admin/naive-ui-components
 ```
+
+```bash [pnpm]
+pnpm add @robot-admin/naive-ui-components
+```
+
+```bash [npm]
+npm install @robot-admin/naive-ui-components
+```
+
+:::
 
 ## 🎯 快速开始
 

@@ -6,6 +6,11 @@ outline: 'deep'
 
 > 🚀 基于 Naive UI 的超强动态表单生成器，「薄 UI 壳 + 厚 Composable 引擎」架构，让表单开发变得前所未有的简单
 
+## 🚀 在线演示
+
+<DemoIframe src="/preview/form" title="智能表单" height="800" />
+
+
 ## ✨ 特性
 
 - **🎯 8种布局模式** — 默认（default）、行内（inline）、网格（grid）、卡片（card）、标签页（tabs）、步骤（steps）、动态（dynamic）、自定义（custom）

@@ -6,6 +6,11 @@ outline: 'deep'
 
 > 📂 零依赖的增强型折叠面板组件，支持三种样式变体、手风琴模式、懒渲染、状态持久化和编程控制
 
+## 🚀 在线演示
+
+<DemoIframe src="/preview/collapse-panel" title="折叠面板" height="700" />
+
+
 ## 🚀 特性
 
 - **🎨 三种变体**: `default`（分割线）/ `card`（卡片）/ `ghost`（无边框极简）覆盖不同 UI 场景
@@ -22,7 +27,21 @@ outline: 'deep'
 
 ## 📦 安装
 
-无需安装额外依赖，组件已全局注册。
+::: code-group
+
+```bash [bun (推荐)]
+bun add @robot-admin/naive-ui-components
+```
+
+```bash [pnpm]
+pnpm add @robot-admin/naive-ui-components
+```
+
+```bash [npm]
+npm install @robot-admin/naive-ui-components
+```
+
+:::
 
 ## 🎯 快速开始
 

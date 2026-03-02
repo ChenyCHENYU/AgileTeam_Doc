@@ -6,6 +6,11 @@ outline: 'deep'
 
 > 🪟 零依赖的可调整分割面板组件，支持水平/垂直分割、拖拽调整、折叠展开、嵌套布局和键盘微调
 
+## 🚀 在线演示
+
+<DemoIframe src="/preview/split-pane" title="分割面板" height="700" />
+
+
 ## 🚀 特性
 
 - **↔️ 双向分割**: 水平（左右）和垂直（上下）两种分割模式
@@ -21,7 +26,21 @@ outline: 'deep'
 
 ## 📦 安装
 
-无需安装额外依赖，组件已全局注册。
+::: code-group
+
+```bash [bun (推荐)]
+bun add @robot-admin/naive-ui-components
+```
+
+```bash [pnpm]
+pnpm add @robot-admin/naive-ui-components
+```
+
+```bash [npm]
+npm install @robot-admin/naive-ui-components
+```
+
+:::
 
 ## 🎯 快速开始
 

@@ -6,6 +6,12 @@ outline: 'deep'
 
 > 🔍 全局搜索面板，提供快速导航菜单搜索和历史记录功能
 
+## 🚀 在线演示
+
+::: tip 💻 在线体验
+登录 Robot Admin 后按 `Ctrl + K` 即可唤起全局搜索 → [Robot Admin](https://robotadmin.cn)
+:::
+
 ## ✨ 特性
 
 - **⌨️ 快捷键支持**: Ctrl+K 快速唤起搜索
@@ -29,13 +35,21 @@ outline: 'deep'
 
 ## 📦 安装
 
-组件已全局注册，直接使用即可：
+::: code-group
 
-```vue
-<template>
-  <C_GlobalSearch />
-</template>
+```bash [bun (推荐)]
+bun add @robot-admin/naive-ui-components
 ```
+
+```bash [pnpm]
+pnpm add @robot-admin/naive-ui-components
+```
+
+```bash [npm]
+npm install @robot-admin/naive-ui-components
+```
+
+:::
 
 ## 🎯 快速开始
 

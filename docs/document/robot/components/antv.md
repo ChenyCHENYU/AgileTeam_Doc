@@ -6,6 +6,11 @@ outline: 'deep'
 
 > 📊 基于 AntV X6 的统一图编辑容器，支持 ER 图、BPMN 流程图、UML 类图三种专业图表类型
 
+## 🚀 在线演示
+
+<DemoIframe src="/preview/antv" title="AntV 图编辑" height="800" />
+
+
 ## ✨ 特性
 
 - **🎯 多图表支持**: 统一容器按 `type` 自动切换 ER / BPMN / UML 三种专业布局

@@ -6,6 +6,11 @@ outline: 'deep'
 
 > 🎨 基于 Naive UI 的高效代码高亮组件，让代码展示变得专业而优雅
 
+## 🚀 在线演示
+
+<DemoIframe src="/preview/code" title="代码编辑器" height="700" />
+
+
 ## ✨ 特性
 
 - **🌈 多语言支持**: 支持 JavaScript、TypeScript、Python、Java 等 30+ 种编程语言

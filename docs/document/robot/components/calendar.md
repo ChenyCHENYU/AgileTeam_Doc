@@ -6,6 +6,11 @@ outline: 'deep'
 
 > 📅 基于 FullCalendar 的高效日历组件，让事件管理变得简单而优雅
 
+## 🚀 在线演示
+
+<DemoIframe src="/preview/calendar" title="日程管理" height="800" />
+
+
 ## ✨ 特性
 
 - **📅 多种视图模式**: 支持月视图、周视图、日视图和列表视图

@@ -6,6 +6,12 @@ outline: 'deep'
 
 > 🧩 基于 vue3-puzzle-vcode 的现代化拼图验证组件，提供优雅的人机验证体验
 
+## 🚀 在线演示
+
+::: tip 💻 在线体验
+该组件已集成在 Robot Admin 登录页中，访问即可体验人机验证 → [Robot Admin](https://robotadmin.cn)
+:::
+
 ## ✨ 特性
 
 - **🧩 拼图验证**: 滑动拼图完成人机验证
@@ -18,18 +24,21 @@ outline: 'deep'
 
 ## 📦 安装
 
-```bash
-# 安装依赖
-bun add vue3-puzzle-vcode
+::: code-group
+
+```bash [bun (推荐)]
+bun add @robot-admin/naive-ui-components
 ```
 
-组件已全局注册，直接使用即可：
-
-```vue
-<template>
-  <C_Captcha @success="handleVerifySuccess" />
-</template>
+```bash [pnpm]
+pnpm add @robot-admin/naive-ui-components
 ```
+
+```bash [npm]
+npm install @robot-admin/naive-ui-components
+```
+
+:::
 
 ## 🎯 快速开始
 

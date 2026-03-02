@@ -4,61 +4,105 @@ outline: 'deep'
 
 # C_Menu 菜单组件
 
-> 🗂️ 基于 NaiveUI 的智能菜单组件，支持多级菜单、自动展开和主题定制
+> 🗂️ 基于 NMenu 的智能树形导航菜单，支持 **路由适配** / **原生直传** 双模式
+
+## 🚀 在线演示
+
+::: tip 💻 在线体验
+该组件已集成在 Robot Admin 侧边栏中，登录后即可体验多级菜单导航 → [Robot Admin](https://robotadmin.cn)
+:::
 
 ## ✨ 特性
 
-- **🔄 自动展开**: 根据当前路由自动展开对应菜单项
-- **📱 折叠模式**: 支持菜单折叠，节省侧边栏空间
-- **🎨 主题定制**: 支持深色/浅色主题，可自定义样式
-- **🚀 路由集成**: 与 Vue Router 深度集成，点击自动跳转
-- **📋 多级菜单**: 支持无限层级的菜单嵌套
-- **💪 TypeScript**: 完整的类型支持
+- **🔄 双数据模式**: `routes`（路由自动适配） / `options`（NMenu 原生 MenuOption[]）
+- **🌍 i18n 解耦**: `labelFormatter` 回调注入翻译函数，无需绑定任何 i18n 方案
+- **📱 折叠模式**: 支持菜单折叠，含折叠宽度 / 图标大小 / 下拉方向控制
+- **🎨 主题定制**: `inverted` 反色 + `themeOverrides` 自定义样式覆盖
+- **🚀 路由跟踪**: 自动展开当前路由对应的菜单项 & 子路径推导
+- **📋 适配器配置**: 通过 `adapterConfig` 自定义 key / label / icon 取值、过滤逻辑
+- **💪 TypeScript**: 完整的类型导出（`RouteItem`、`MenuAdapterConfig`）
 
 ## 📦 安装
 
-组件已全局注册，直接使用即可：
+::: code-group
 
-```vue
-<template>
-  <C_Menu :data="menuData" />
-</template>
+```bash [bun (推荐)]
+bun add @robot-admin/naive-ui-components
 ```
+
+```bash [pnpm]
+pnpm add @robot-admin/naive-ui-components
+```
+
+```bash [npm]
+npm install @robot-admin/naive-ui-components
+```
+
+:::
 
 ## 🎯 快速开始
 
-### 基础用法
+### 路由模式（推荐）
+
+传入 `routes`，组件内置适配器自动转换为 NMenu 的 `MenuOption[]`：
 
 ```vue
 <template>
-  <C_Menu :data="menuList" />
+  <C_Menu
+    :routes="menuRoutes"
+    :value="route.path"
+    :label-formatter="$t"
+    @select="router.push"
+  />
 </template>
 
 <script setup>
-const menuList = [
+import { useRoute, useRouter } from 'vue-router'
+
+const route = useRoute()
+const router = useRouter()
+
+// 兼容 Vue Router RouteRecordRaw & 后端返回的 JSON 路由表
+const menuRoutes = [
   {
-    label: '仪表盘',
-    key: 'dashboard',
-    icon: 'DashboardOutlined',
     path: '/dashboard',
+    meta: { title: '仪表盘', icon: 'mdi:monitor-dashboard' },
   },
   {
-    label: '系统管理',
-    key: 'system',
-    icon: 'SettingOutlined',
     path: '/system',
+    meta: { title: '系统管理', icon: 'mdi:cog' },
     children: [
-      {
-        label: '用户管理',
-        key: 'user',
-        path: '/system/user',
-      },
-      {
-        label: '角色管理',
-        key: 'role',
-        path: '/system/role',
-      },
+      { path: '/system/user', meta: { title: '用户管理', icon: 'mdi:account' } },
+      { path: '/system/role', meta: { title: '角色管理', icon: 'mdi:shield-account' } },
     ],
+  },
+]
+</script>
+```
+
+### 原生模式
+
+直传 NMenu 的 `MenuOption[]`，零转换：
+
+```vue
+<template>
+  <C_Menu
+    :options="nativeMenuOptions"
+    :value="route.path"
+    @select="router.push"
+  />
+</template>
+
+<script setup>
+import { h } from 'vue'
+import { NIcon } from 'naive-ui'
+import { HomeOutline } from '@vicons/ionicons5'
+
+const nativeMenuOptions = [
+  {
+    key: '/home',
+    label: '首页',
+    icon: () => h(NIcon, null, { default: () => h(HomeOutline) }),
   },
 ]
 </script>
@@ -68,21 +112,19 @@ const menuList = [
 
 ```vue
 <template>
-  <div class="layout-sider">
-    <C_Menu
-      :data="menuList"
-      :collapsed="isCollapsed"
-      :collapsed-width="64"
-      :collapsed-icon-size="22"
-    />
-    
-    <NButton @click="isCollapsed = !isCollapsed">
-      {{ isCollapsed ? '展开' : '折叠' }}
-    </NButton>
-  </div>
+  <C_Menu
+    :routes="menuRoutes"
+    :value="route.path"
+    :collapsed="isCollapsed"
+    :collapsed-width="64"
+    :collapsed-icon-size="22"
+    :inverted="true"
+    @select="router.push"
+  />
 </template>
 
 <script setup>
+import { ref } from 'vue'
 const isCollapsed = ref(false)
 </script>
 ```
@@ -91,33 +133,77 @@ const isCollapsed = ref(false)
 
 ### Props
 
-| 参数                | 类型                          | 默认值       | 说明                             |
-| ------------------- | ----------------------------- | ------------ | -------------------------------- |
-| **data**            | `MenuOptions[]`               | `[]`         | 菜单数据数组（必需）             |
-| **mode**            | `'vertical' \| 'horizontal'` | `'vertical'` | 菜单模式                         |
-| **collapsed**       | `boolean`                     | `false`      | 是否折叠菜单                     |
-| **collapsedWidth**  | `number`                      | `64`         | 折叠时的宽度                     |
-| **collapsedIconSize** | `number`                    | `22`         | 折叠时图标大小                   |
-| **inverted**        | `boolean`                     | `false`      | 是否使用反色主题（深色背景）     |
+| 参数                  | 类型                          | 默认值        | 说明                                                                     |
+| --------------------- | ----------------------------- | ------------- | ------------------------------------------------------------------------ |
+| **routes**            | `RouteItem[]`                 | —             | 路由数据，内置适配器自动转 MenuOption[]                                  |
+| **options**           | `MenuOption[]`                | —             | NMenu 原生选项（优先级 > routes）                                        |
+| **adapterConfig**     | `MenuAdapterConfig`           | —             | 适配器配置（仅 routes 模式），自定义 key/label/icon/filter               |
+| **labelFormatter**    | `(label: string) => string`   | —             | 标签文本格式化（快捷方式，优先级 > adapterConfig.labelFormatter）        |
+| **value**             | `string`                      | `''`          | 当前激活菜单项的 key（通常传 `route.path`）                              |
+| **mode**              | `'vertical' \| 'horizontal'`  | `'vertical'`  | 菜单布局方向                                                             |
+| **collapsed**         | `boolean`                     | `false`       | 是否折叠                                                                 |
+| **collapsedWidth**    | `number`                      | `64`          | 折叠时宽度                                                               |
+| **collapsedIconSize** | `number`                      | `22`          | 折叠时图标大小                                                           |
+| **inverted**          | `boolean`                     | `false`       | 是否使用反色主题（深色背景）                                             |
+| **themeOverrides**    | `Record<string, any>`         | —             | NMenu 主题样式覆盖                                                       |
+| **indent**            | `number`                      | `24`          | 子菜单缩进像素                                                           |
+| **rootIndent**        | `number`                      | `16`          | 根级缩进像素                                                             |
+| **dropdownProps**     | `DropdownProps`               | `{ placement: 'right-start', trigger: 'hover' }` | 折叠模式下拉属性 |
 
-### 数据结构
+### Events
+
+| 事件名                  | 参数                      | 说明             |
+| ----------------------- | ------------------------- | ---------------- |
+| **select**              | `(key: string)`           | 菜单项被选中     |
+| **update:expandedKeys** | `(keys: string[])`        | 展开项变化       |
+
+### Expose
+
+| 方法/属性      | 类型                      | 说明                   |
+| -------------- | ------------------------- | ---------------------- |
+| **showOption** | `(key: string) => void`   | 展开并滚动到指定菜单项 |
+| **menuRef**    | `Ref<MenuInst \| null>`   | NMenu 实例引用         |
+
+### RouteItem 类型
 
 ```typescript
-interface MenuOptions {
-  label: string        // 菜单显示文本
-  key: string          // 唯一标识
-  icon?: string        // 图标名称
-  path?: string        // 路由路径
-  disabled?: boolean   // 是否禁用
-  children?: MenuOptions[]  // 子菜单
+interface RouteItem {
+  path: string                              // 路由路径（必须）
+  name?: string                             // 路由名称
+  redirect?: string                         // 重定向路径
+  component?: string | (() => Promise<any>) // 组件
+  meta?: {
+    title?: string       // 页面/菜单标题
+    icon?: string | (() => VNode) // 图标（Iconify 格式或渲染函数）
+    hidden?: boolean     // 是否在菜单中隐藏
+    affix?: boolean      // 是否固定标签栏
+    keepAlive?: boolean  // 是否缓存
+    orderNo?: number     // 排序权重
+    [key: string]: any
+  }
+  children?: RouteItem[]
+  type?: 'group' | 'divider'               // NMenu 特殊类型
+  disabled?: boolean
+}
+```
+
+### MenuAdapterConfig 类型
+
+```typescript
+interface MenuAdapterConfig {
+  labelFormatter?: (title: string) => string       // i18n 格式化
+  getKey?: (route: RouteItem) => string            // 自定义 key 取值（默认 route.path）
+  getLabel?: (route: RouteItem) => string          // 自定义 label 取值（默认 meta.title）
+  filter?: (route: RouteItem) => boolean           // 过滤器（默认排除 hidden）
+  renderIcon?: (icon) => (() => VNode) | undefined // 自定义图标渲染
+  recursive?: boolean                              // 是否递归处理子路由（默认 true）
 }
 ```
 
 ## 🎨 使用示例
 
-### 场景 1: 后台管理系统侧边栏
+::: details 📋 后台管理系统侧边栏 — routes 模式 + 折叠
 
-::: details 📋 查看后台管理系统侧边栏代码
 ```vue
 <template>
   <NLayout has-sider>
@@ -128,27 +214,22 @@ interface MenuOptions {
       :native-scrollbar="false"
       bordered
     >
-      <!-- Logo 区域 -->
-      <div class="logo-container">
+      <div class="logo">
         <img src="/logo.svg" alt="Logo" />
-        <span v-show="!collapsed">管理系统</span>
+        <span v-show="!collapsed">Robot Admin</span>
       </div>
 
-      <!-- 菜单组件 -->
       <C_Menu
-        :data="menuData"
+        :routes="appStore.menuRoutes"
+        :value="route.path"
         :collapsed="collapsed"
         :inverted="true"
+        :label-formatter="$t"
+        @select="router.push"
       />
     </NLayoutSider>
 
     <NLayout>
-      <NLayoutHeader bordered>
-        <NButton @click="collapsed = !collapsed">
-          <C_Icon :name="collapsed ? 'MenuUnfoldOutlined' : 'MenuFoldOutlined'" />
-        </NButton>
-      </NLayoutHeader>
-      
       <NLayoutContent>
         <RouterView />
       </NLayoutContent>
@@ -157,569 +238,163 @@ interface MenuOptions {
 </template>
 
 <script setup>
+import { ref } from 'vue'
+import { useRoute, useRouter } from 'vue-router'
+import { useI18n } from 'vue-i18n'
+import { useAppStore } from '@/stores'
+
+const { t: $t } = useI18n()
+const route = useRoute()
+const router = useRouter()
+const appStore = useAppStore()
 const collapsed = ref(false)
-
-const menuData = [
-  {
-    label: '仪表盘',
-    key: 'dashboard',
-    icon: 'DashboardOutlined',
-    path: '/dashboard',
-  },
-  {
-    label: '用户中心',
-    key: 'user-center',
-    icon: 'UserOutlined',
-    path: '/user',
-    children: [
-      {
-        label: '个人信息',
-        key: 'profile',
-        path: '/user/profile',
-      },
-      {
-        label: '账号设置',
-        key: 'settings',
-        path: '/user/settings',
-      },
-    ],
-  },
-  {
-    label: '系统管理',
-    key: 'system',
-    icon: 'SettingOutlined',
-    path: '/system',
-    children: [
-      {
-        label: '用户管理',
-        key: 'user-manage',
-        path: '/system/user',
-      },
-      {
-        label: '角色管理',
-        key: 'role-manage',
-        path: '/system/role',
-      },
-      {
-        label: '菜单管理',
-        key: 'menu-manage',
-        path: '/system/menu',
-      },
-    ],
-  },
-]
 </script>
-
-<style scoped>
-.logo-container {
-  height: 64px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.09);
-}
-
-.logo-container img {
-  width: 32px;
-  height: 32px;
-}
-
-.logo-container span {
-  margin-left: 12px;
-  font-size: 18px;
-  font-weight: 600;
-  color: #fff;
-}
-</style>
 ```
+
 :::
 
-### 场景 2: 顶部导航菜单
+::: details 🌐 顶部导航 — 水平模式
 
-::: details 📋 查看顶部导航菜单代码
 ```vue
 <template>
-  <NLayout>
-    <NLayoutHeader bordered>
-      <div class="header-container">
-        <div class="logo">
-          <img src="/logo.svg" alt="Logo" />
-          <span>企业门户</span>
-        </div>
-
-        <!-- 水平菜单 -->
-        <C_Menu
-          :data="topMenuData"
-          mode="horizontal"
-          class="flex-1"
-        />
-
-        <div class="user-actions">
-          <NButton>登录</NButton>
-        </div>
-      </div>
-    </NLayoutHeader>
-
-    <NLayoutContent>
-      <RouterView />
-    </NLayoutContent>
-  </NLayout>
+  <NLayoutHeader bordered>
+    <div class="header-nav">
+      <C_Menu
+        :routes="topRoutes"
+        :value="route.path"
+        mode="horizontal"
+        @select="router.push"
+      />
+    </div>
+  </NLayoutHeader>
 </template>
-
-<script setup>
-const topMenuData = [
-  {
-    label: '首页',
-    key: 'home',
-    icon: 'HomeOutlined',
-    path: '/',
-  },
-  {
-    label: '产品',
-    key: 'products',
-    icon: 'AppstoreOutlined',
-    path: '/products',
-    children: [
-      {
-        label: '产品列表',
-        key: 'product-list',
-        path: '/products/list',
-      },
-      {
-        label: '产品分类',
-        key: 'product-category',
-        path: '/products/category',
-      },
-    ],
-  },
-  {
-    label: '解决方案',
-    key: 'solutions',
-    icon: 'BulbOutlined',
-    path: '/solutions',
-  },
-  {
-    label: '关于我们',
-    key: 'about',
-    icon: 'TeamOutlined',
-    path: '/about',
-  },
-]
-</script>
-
-<style scoped>
-.header-container {
-  display: flex;
-  align-items: center;
-  height: 64px;
-  padding: 0 24px;
-}
-
-.logo {
-  display: flex;
-  align-items: center;
-  margin-right: 48px;
-}
-
-.logo img {
-  width: 32px;
-  height: 32px;
-  margin-right: 12px;
-}
-
-.logo span {
-  font-size: 18px;
-  font-weight: 600;
-}
-
-.user-actions {
-  margin-left: auto;
-}
-</style>
 ```
+
 :::
 
-### 场景 3: 动态权限菜单
+::: details 🔧 自定义适配器 — 后端 JSON + 自定义 key
 
-::: details 🔐 查看动态权限菜单代码
-```vue
-<template>
-  <C_Menu :data="permissionMenus" />
-</template>
-
-<script setup>
-import { useUserStore } from '@/stores/user'
-
-const userStore = useUserStore()
-
-// 所有菜单配置
-const allMenus = [
-  {
-    label: '仪表盘',
-    key: 'dashboard',
-    icon: 'DashboardOutlined',
-    path: '/dashboard',
-    permission: 'dashboard:view',
-  },
-  {
-    label: '用户管理',
-    key: 'user',
-    icon: 'UserOutlined',
-    path: '/user',
-    permission: 'user:view',
-    children: [
-      {
-        label: '用户列表',
-        key: 'user-list',
-        path: '/user/list',
-        permission: 'user:list',
-      },
-      {
-        label: '添加用户',
-        key: 'user-add',
-        path: '/user/add',
-        permission: 'user:add',
-      },
-    ],
-  },
-  {
-    label: '系统设置',
-    key: 'settings',
-    icon: 'SettingOutlined',
-    path: '/settings',
-    permission: 'settings:view',
-  },
-]
-
-// 根据用户权限过滤菜单
-const filterMenusByPermission = (menus, permissions) => {
-  return menus
-    .filter(menu => {
-      // 没有权限要求或用户有该权限
-      return !menu.permission || permissions.includes(menu.permission)
-    })
-    .map(menu => {
-      if (menu.children) {
-        return {
-          ...menu,
-          children: filterMenusByPermission(menu.children, permissions),
-        }
-      }
-      return menu
-    })
-    .filter(menu => {
-      // 移除没有子菜单的空父菜单
-      if (menu.children) {
-        return menu.children.length > 0
-      }
-      return true
-    })
-}
-
-// 计算有权限的菜单
-const permissionMenus = computed(() => {
-  return filterMenusByPermission(allMenus, userStore.permissions)
-})
-</script>
-```
-:::
-
-## 🎨 样式定制
-
-### 主题配置
-
-::: details 🎨 查看主题配置代码
 ```vue
 <template>
   <C_Menu
-    :data="menuData"
-    :inverted="isDark"
+    :routes="apiRoutes"
+    :value="route.path"
+    :adapter-config="adapterConfig"
+    @select="router.push"
   />
 </template>
 
 <script setup>
-import { useThemeStore } from '@/stores/theme'
+const adapterConfig = {
+  getKey: (route) => route.name || route.path,       // 用 name 作为 key
+  getLabel: (route) => route.meta?.title || '未命名', // 自定义 label
+  filter: (route) => !route.meta?.hidden && route.meta?.title, // 排除无标题的
+  labelFormatter: (title) => `📋 ${title}`,          // 前缀装饰（或注入 i18n）
+}
+</script>
+```
 
-const themeStore = useThemeStore()
-const isDark = computed(() => themeStore.isDark)
+:::
 
-// 自定义主题变量
-themeStore.setThemeOverrides({
-  Menu: {
-    itemTextColor: '#666',
-    itemTextColorHover: '#1890ff',
-    itemTextColorActive: '#1890ff',
-    itemTextColorChildActive: '#1890ff',
-    itemIconColor: '#666',
-    itemIconColorHover: '#1890ff',
-    itemIconColorActive: '#1890ff',
-    itemColorActive: 'rgba(24, 144, 255, 0.1)',
-    borderRadius: '4px',
-  },
+::: details ⚡ createMenuOptions 独立使用
+
+```typescript
+// 适配器也可以脱离组件独立使用
+import { createMenuOptions, flattenRoutes } from '@robot-admin/naive-ui-components'
+
+// 基础转换
+const menuOptions = createMenuOptions(routes)
+
+// 带 i18n + 过滤
+const i18nMenuOptions = createMenuOptions(routes, {
+  labelFormatter: t,
+  filter: route => !route.meta?.hidden,
 })
-</script>
+
+// 路由扁平化（用于全局搜索）
+const flatRoutes = flattenRoutes(routes)
 ```
+
 :::
 
-### 自定义样式
+## ⚠️ 注意事项
 
-::: details 🎨 查看自定义样式代码
-```vue
-<template>
-  <C_Menu
-    :data="menuData"
-    class="custom-menu"
-  />
-</template>
+::: code-group
 
-<style>
-/* 自定义菜单项样式 */
-.custom-menu :deep(.n-menu-item) {
-  margin: 4px 8px;
-  border-radius: 8px;
-}
-
-/* 自定义激活状态 */
-.custom-menu :deep(.n-menu-item-content--selected) {
-  background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
-  color: #fff !important;
-}
-
-/* 自定义图标 */
-.custom-menu :deep(.n-menu-item-content__icon) {
-  font-size: 18px;
-}
-
-/* 折叠状态样式 */
-.custom-menu :deep(.n-menu--collapsed .n-menu-item) {
-  justify-content: center;
-}
-</style>
-```
-:::
-
-## ⚙️ 高级用法
-
-### 程序化控制展开
-
-::: details 🔧 查看程序化控制展开代码
-```vue
-<template>
-  <C_Menu
-    ref="menuRef"
-    :data="menuData"
-  />
-  
-  <NButton @click="expandAll">展开所有</NButton>
-  <NButton @click="collapseAll">折叠所有</NButton>
-</template>
-
-<script setup>
-const menuRef = ref()
-
-// 展开所有菜单
-const expandAll = () => {
-  const allKeys = extractAllKeys(menuData)
-  menuRef.value?.onExpandedKeysChange(allKeys)
-}
-
-// 折叠所有菜单
-const collapseAll = () => {
-  menuRef.value?.onExpandedKeysChange([])
-}
-
-// 提取所有菜单key
-const extractAllKeys = (menus) => {
-  return menus.reduce((keys, menu) => {
-    if (menu.children) {
-      keys.push(menu.path)
-      keys.push(...extractAllKeys(menu.children))
-    }
-    return keys
-  }, [])
-}
-</script>
-```
-:::
-
-### 菜单数据持久化
-
-::: details 💾 查看菜单数据持久化代码
-```vue
-<script setup>
-// 保存展开状态到本地存储
-const saveExpandedState = (keys) => {
-  localStorage.setItem('menu-expanded-keys', JSON.stringify(keys))
-}
-
-// 恢复展开状态
-const restoreExpandedState = () => {
-  const saved = localStorage.getItem('menu-expanded-keys')
-  return saved ? JSON.parse(saved) : []
-}
-
-// 在菜单组件中使用
-const menuData = ref([...])
-const expandedKeys = ref(restoreExpandedState())
-
-watch(expandedKeys, (newKeys) => {
-  saveExpandedState(newKeys)
-})
-</script>
-```
-:::
-
-## 🐛 常见问题
-
-### Q1: 菜单不自动展开？
-
-**A1:** 确保菜单数据中的 `path` 与路由路径匹配：
-
-::: details 查看解决方案代码
-```javascript
-// ✅ 正确
-{
-  path: '/system/user',  // 与路由路径一致
-  label: '用户管理'
-}
-
-// ❌ 错误
-{
-  path: 'system/user',  // 缺少前导斜杠
-  label: '用户管理'
-}
-```
-:::
-
-### Q2: 点击菜单不跳转？
-
-**A2:** 检查菜单项是否配置了 `path` 属性：
-
-::: details 查看解决方案代码
-```javascript
-// ✅ 正确
-{
-  label: '用户管理',
-  key: 'user',
-  path: '/user'  // 必须有 path
-}
-
-// ❌ 错误
-{
-  label: '用户管理',
-  key: 'user'
-  // 缺少 path
-}
-```
-:::
-
-### Q3: 折叠模式下子菜单不显示？
-
-**A3:** 组件会自动处理折叠模式下的子菜单显示（通过 dropdown），确保：
-
-::: details 查看解决方案代码
-```vue
-<!-- ✅ 正确使用 -->
+```vue [✅ 推荐 — routes 模式]
+<!-- 传 routes + labelFormatter，组件自动处理转换 -->
 <C_Menu
-  :data="menuData"
-  :collapsed="true"
-  :collapsed-width="64"
+  :routes="menuRoutes"
+  :value="route.path"
+  :label-formatter="$t"
+  @select="router.push"
 />
-
-<!-- 确保父容器宽度正确 -->
-<NLayoutSider
-  :collapsed="collapsed"
-  :collapsed-width="64"
-  :width="240"
->
-  <C_Menu ... />
-</NLayoutSider>
 ```
+
+```vue [❌ 避免 — 旧版 data prop]
+<!-- ⚠️ 已废弃 data prop，请迁移到 routes 或 options -->
+<C_Menu :data="menuData" />
+```
+
 :::
 
-## 🎯 最佳实践
+### 迁移指南（从旧版迁移）
 
-### 1. 菜单数据规范化
+旧版使用 `data: MenuOptions[]`，新版有两种迁移方式：
 
-```javascript
-// 统一的菜单数据生成函数
-const createMenuItem = (label, key, path, icon = null, children = null) => ({
-  label,
-  key,
-  path,
-  ...(icon && { icon }),
-  ...(children && { children }),
-})
+| 旧版                                   | 新版路由模式                                     | 新版原生模式                  |
+| -------------------------------------- | ------------------------------------------------ | ----------------------------- |
+| `:data="menuData"`                     | `:routes="menuRoutes"`                           | `:options="menuOptions"`      |
+| `label / key / icon / path / children` | `path + meta.title + meta.icon + children`       | NMenu 原生 `MenuOption[]` 格式 |
+| 无 i18n 支持                           | `:label-formatter="$t"`                          | 自行在 label 中处理           |
+| 无 select 事件                         | `@select="router.push"`                          | `@select="router.push"`      |
 
-// 使用示例
-const menuData = [
-  createMenuItem('仪表盘', 'dashboard', '/dashboard', 'DashboardOutlined'),
-  createMenuItem('系统管理', 'system', '/system', 'SettingOutlined', [
-    createMenuItem('用户管理', 'user', '/system/user'),
-    createMenuItem('角色管理', 'role', '/system/role'),
-  ]),
-]
-```
+## 🔧 高级用法
 
-### 2. 路由与菜单同步
+### 配合权限过滤
 
-```javascript
-// router/index.js
-const routes = [
-  {
-    path: '/dashboard',
-    component: Dashboard,
-    meta: {
-      title: '仪表盘',
-      icon: 'DashboardOutlined',
-    },
+```typescript
+import { createMenuOptions } from '@robot-admin/naive-ui-components'
+import type { RouteItem, MenuAdapterConfig } from '@robot-admin/naive-ui-components'
+
+const config: MenuAdapterConfig = {
+  labelFormatter: (title) => t(`menu.${title}`),
+  filter: (route) => {
+    // 仅显示有权限的菜单
+    return !route.meta?.hidden && hasPermission(route.meta?.permissions)
   },
-]
-
-// 从路由生成菜单
-const generateMenuFromRoutes = (routes) => {
-  return routes
-    .filter(route => !route.meta?.hidden)
-    .map(route => ({
-      label: route.meta?.title || route.name,
-      key: route.name || route.path,
-      path: route.path,
-      icon: route.meta?.icon,
-      children: route.children ? generateMenuFromRoutes(route.children) : undefined,
-    }))
 }
+
+const menuOptions = createMenuOptions(apiRoutes, config)
 ```
 
-### 3. 性能优化
+### 路由跟踪原理
 
-```vue
-<script setup>
-// 使用 shallowRef 优化大型菜单数据
-const menuData = shallowRef([...])
+组件内部通过以下逻辑自动管理展开状态：
 
-// 使用计算属性缓存处理结果
-const processedMenus = computed(() => {
-  return processMenuData(menuData.value)
-})
-
-// 防抖处理菜单展开
-const debouncedExpandChange = debounce((keys) => {
-  // 处理展开逻辑
-}, 300)
-</script>
-```
+1. **路径段推导** — 将 `value`（当前路径）按 `/` 分割，依次作为展开 key
+2. **祖先查找** — 在 `mergedOptions` 中递归查找目标 key 的所有父级
+3. **合并展开** — 新旧 expandedKeys 取并集，确保手动展开的不会被覆盖
+4. **滚动聚焦** — `nextTick` 后调用 `menuRef.showOption()` 滚动到激活项
 
 ## 📝 更新日志
 
-### v1.0.0 (2025-05-11)
+### v0.5.0 (2025-06)
 
-- ✨ 初始版本发布
-- ✨ 支持垂直和水平菜单模式
-- ✨ 自动展开当前路由菜单
-- ✨ 支持菜单折叠模式
-- ✨ 集成主题定制功能
-- ✨ TypeScript 支持
+- ♻️ **破坏性变更**: 移除旧版 `data` prop，改为 `routes` / `options` 双模式
+- ✨ 新增 `adapterConfig` 适配器配置
+- ✨ 新增 `labelFormatter` i18n 支持
+- ✨ 新增 `value` prop 精确控制激活项
+- ✨ 新增 `themeOverrides` / `indent` / `rootIndent` / `dropdownProps`
+- ✨ 新增 `update:expandedKeys` 事件
+- ✨ Expose `showOption()` & `menuRef`
+
+### v0.3.0 (2025-03)
+
+- ✨ 初始版本（`data` prop 模式）
+
 
 <!--@include: ./snippets/contribute.md -->
 
-**💡 提示**: 菜单组件基于 NaiveUI 的 NMenu 组件封装，增强了路由集成和自动展开功能。组件会根据当前路由自动高亮和展开对应菜单项，支持无限层级嵌套和折叠模式。配合主题系统可以轻松实现深色/浅色主题切换。
+
+**💡 提示**: 这个组件设计用于团队协作，如果遇到问题请先查看文档，或者在团队群里讨论。让我们一起打造更好的开发体验！ 🚀

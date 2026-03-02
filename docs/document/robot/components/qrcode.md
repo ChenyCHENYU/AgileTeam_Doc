@@ -6,6 +6,11 @@ outline: 'deep'
 
 > 📱 基于 [qrcode](https://github.com/soldair/node-qrcode) 封装的高性能二维码生成组件，支持 Canvas / SVG 双模式渲染、Logo 叠加与多格式导出
 
+## 🚀 在线演示
+
+<DemoIframe src="/preview/qrcode" title="二维码" height="700" />
+
+
 ## 🚀 特性
 
 - **🖼️ 双渲染模式**: Canvas（默认）和 SVG 两种渲染引擎，适合不同使用场景

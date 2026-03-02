@@ -7,7 +7,9 @@
 5. 创建 Pull Request
 
 
-:::tip 组件位置： `src/components/global/C_【组件名称】/index.vue`
+:::tip 组件位置
+npm 包源码: `naive-ui-components/src/components/C_【组件名称】/index.vue`
+npm 包地址: [@robot-admin/naive-ui-components](https://www.npmjs.com/package/@robot-admin/naive-ui-components)
 :::
 
 

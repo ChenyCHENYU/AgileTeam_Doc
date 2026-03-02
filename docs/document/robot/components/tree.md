@@ -6,6 +6,12 @@ outline: 'deep'
 
 > 🌳 功能强大的树形组件，支持多种预设模式和自定义配置
 
+## 🚀 在线演示
+
+::: tip 💻 在线体验
+该组件已集成在 Robot Admin 权限管理等页面中，登录后即可体验 → [Robot Admin](https://robotadmin.cn)
+:::
+
 ## ✨ 特性
 
 - **🎯 多种模式**: 内置菜单、文件、组织架构三种预设模式
@@ -31,13 +37,21 @@ outline: 'deep'
 
 ## 📦 安装
 
-组件已全局注册，直接使用即可：
+::: code-group
 
-```vue
-<template>
-  <C_Tree :data="treeData" />
-</template>
+```bash [bun (推荐)]
+bun add @robot-admin/naive-ui-components
 ```
+
+```bash [pnpm]
+pnpm add @robot-admin/naive-ui-components
+```
+
+```bash [npm]
+npm install @robot-admin/naive-ui-components
+```
+
+:::
 
 ## 🎯 快速开始
 

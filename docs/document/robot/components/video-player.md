@@ -6,6 +6,11 @@ outline: 'deep'
 
 > 🎬 基于 [xgplayer（西瓜播放器）](https://h5player.bytedance.com/) 封装的教育场景视频播放器，专为在线课程、企业培训、知识库等场景设计
 
+## 🚀 在线演示
+
+<DemoIframe src="/preview/video-player" title="视频播放" height="700" />
+
+
 ## 🚀 特性
 
 - **🎥 多格式支持**: MP4 / HLS (.m3u8) / DASH（预留），自动检测源类型

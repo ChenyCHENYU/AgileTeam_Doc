@@ -2,29 +2,38 @@
 outline: 'deep'
 ---
 
-# C_TagsView 标签页组件
+# C_TagsView 标签页导航组件
 
-> 🏷️ 多标签页导航组件，提供快速切换和标签管理功能
+> 🏷️ 路由感知的多标签页导航，内置 **useTagsView** 状态管理、持久化、右键菜单、i18n
 
 ## ✨ 特性
 
-- **📌 标签管理**: 添加、关闭、固定标签页
-- **🖱️ 右键菜单**: 丰富的标签操作选项
-- **💾 持久化存储**: 自动保存标签状态到本地
-- **🎯 路由同步**: 与 Vue Router 深度集成
-- **📜 滚动支持**: 标签过多时支持横向滚动
-- **🎨 视觉反馈**: 当前激活标签高亮显示
-- **⚡ 快捷操作**: 支持滚轮横向滚动
+- **📌 标签管理**: 路由变化自动添加标签，支持固定（affix）、右键操作
+- **🖱️ 右键菜单**: 关闭 / 关闭其他 / 关闭左侧 / 关闭右侧 / 关闭所有
+- **💾 持久化**: 自动保存到 localStorage，可自定义 key 或关闭
+- **🌍 i18n 支持**: `labelFormatter` 翻译标签文本，`contextMenuLabels` 翻译右键菜单
+- **🔄 自治架构**: 内置 `useTagsView` composable，**不依赖外部 Store**
+- **📜 横向滚轮**: 标签过多时支持鼠标滚轮横向滚动
+- **🎨 视觉反馈**: 当前标签 primary 高亮，滚动到可视区域
+- **💪 TypeScript**: 完整的类型导出（`TagItem`、`UseTagsViewOptions`、`ContextMenuLabels`）
 
 ## 📦 安装
 
-组件已全局注册，直接使用即可：
+::: code-group
 
-```vue
-<template>
-  <C_TagsView />
-</template>
+```bash [bun (推荐)]
+bun add @robot-admin/naive-ui-components
 ```
+
+```bash [pnpm]
+pnpm add @robot-admin/naive-ui-components
+```
+
+```bash [npm]
+npm install @robot-admin/naive-ui-components
+```
+
+:::
 
 ## 🎯 快速开始
 
@@ -32,98 +41,166 @@ outline: 'deep'
 
 ```vue
 <template>
-  <!-- 在布局头部使用 -->
-  <NLayoutHeader>
-    <div class="header-container">
-      <C_Breadcrumb />
-      <C_TagsView />
-    </div>
-  </NLayoutHeader>
+  <C_TagsView
+    :label-formatter="$t"
+    @close="router.push"
+  />
+</template>
+
+<script setup>
+import { useRouter } from 'vue-router'
+import { useI18n } from 'vue-i18n'
+
+const router = useRouter()
+const { t: $t } = useI18n()
+</script>
+```
+
+### 自定义首页 & 持久化
+
+```vue
+<template>
+  <C_TagsView
+    home-path="/dashboard"
+    home-title="Dashboard"
+    home-icon="mdi:view-dashboard"
+    persist-key="my-tags"
+    :label-formatter="$t"
+    :context-menu-labels="{
+      close: t('tags.close'),
+      closeOthers: t('tags.closeOthers'),
+      closeLeft: t('tags.closeLeft'),
+      closeRight: t('tags.closeRight'),
+      closeAll: t('tags.closeAll'),
+    }"
+    @close="router.push"
+    @close-all="router.push('/dashboard')"
+  />
 </template>
 ```
 
-### 配合路由使用
+### 禁用持久化
 
-```javascript
-// router/index.js
-const routes = [
-  {
-    path: '/',
-    component: Home,
-    meta: {
-      title: '首页',
-      icon: 'mdi:home',
-      affix: true,  // 固定标签，不可关闭
-    },
-  },
-  {
-    path: '/user',
-    component: User,
-    meta: {
-      title: '用户管理',
-      icon: 'mdi:account',
-    },
-  },
-]
+```vue
+<template>
+  <!-- persist-key 传空字符串即可关闭 -->
+  <C_TagsView persist-key="" />
+</template>
 ```
 
 ## 📖 API 文档
 
-### Store 方法
+### Props
 
-组件使用 `appStore` 管理标签状态：
+| 参数                  | 类型                        | 默认值                    | 说明                                                 |
+| --------------------- | --------------------------- | ------------------------- | ---------------------------------------------------- |
+| **labelFormatter**    | `(label: string) => string` | —                         | 标签文本格式化函数（用于 i18n）                      |
+| **homePath**          | `string`                    | `'/home'`                 | 首页路径，关闭所有标签后的回退地址                   |
+| **homeTitle**         | `string`                    | `'首页'`                  | 首页标签的原始标题                                   |
+| **homeIcon**          | `string`                    | `'mdi:home'`              | 首页标签的图标                                       |
+| **persistKey**        | `string`                    | `'__tags_view_list__'`    | localStorage 持久化 key，传空字符串禁用持久化        |
+| **contextMenuLabels** | `ContextMenuLabels`         | 中文默认值                | 右键菜单文案（国际化适配）                           |
+| **tagsViewOptions**   | `UseTagsViewOptions`        | —                         | useTagsView 配置项（优先级最高，覆盖上面的 homePath & persistKey） |
 
-| 方法 | 参数 | 说明 |
-| --- | --- | --- |
-| **addTag** | `tag: Tag` | 添加新标签 |
-| **removeTag** | `index: number` | 移除指定标签 |
-| **removeOtherTags** | `index: number` | 关闭其他标签 |
-| **removeLeftTags** | `index: number` | 关闭左侧标签 |
-| **removeRightTags** | `index: number` | 关闭右侧标签 |
-| **removeAllTags** | - | 关闭所有标签 |
-| **setActiveTag** | `path: string` | 设置激活标签 |
+### Events
 
-### 标签数据结构
+| 事件名       | 参数                        | 说明                   |
+| ------------ | --------------------------- | ---------------------- |
+| **close**    | `(fallbackPath: string)`    | 标签被关闭后，返回应跳转的路径 |
+| **closeAll** | —                           | 关闭所有标签后触发     |
+
+### Expose
+
+| 方法/属性       | 类型                            | 说明                        |
+| --------------- | ------------------------------- | --------------------------- |
+| **tags**        | `ReturnType<typeof useTagsView>` | useTagsView composable 实例 |
+| **scrollToTag** | `(path: string) => void`       | 滚动到指定路径的标签        |
+
+### TagItem 类型
 
 ```typescript
-interface Tag {
-  path: string      // 路由路径
-  title: string     // 标签标题
-  icon?: string     // 图标名称
+interface TagItem {
+  path: string           // 路由路径
+  title: string          // 显示标题（已翻译）
+  originalTitle?: string // 原始标题（未翻译，用于语言切换后重新翻译）
+  icon?: string          // 图标名称
   meta?: {
-    affix?: boolean // 是否固定（不可关闭）
+    affix?: boolean      // 是否固定（不可关闭）
+    [key: string]: any
   }
 }
 ```
 
-### 右键菜单选项
+### ContextMenuLabels 类型
 
-| 选项 | 功能 | 快捷键 |
-| --- | --- | --- |
-| 关闭 | 关闭当前标签 | - |
-| 关闭其他 | 关闭除当前外的所有标签 | - |
-| 关闭左侧 | 关闭左侧所有标签 | - |
-| 关闭右侧 | 关闭右侧所有标签 | - |
-| 关闭所有 | 关闭所有可关闭标签 | - |
+```typescript
+interface ContextMenuLabels {
+  close?: string       // 默认 '关闭'
+  closeOthers?: string // 默认 '关闭其他'
+  closeLeft?: string   // 默认 '关闭左侧'
+  closeRight?: string  // 默认 '关闭右侧'
+  closeAll?: string    // 默认 '关闭所有'
+}
+```
+
+### UseTagsViewOptions 类型
+
+```typescript
+interface UseTagsViewOptions {
+  persistKey?: string  // localStorage key，传空字符串不持久化
+  homePath?: string    // 首页路径
+}
+```
+
+## 🔧 useTagsView Composable
+
+组件内部使用 `useTagsView` 管理标签状态，此 composable **也可独立使用**：
+
+```typescript
+import { useTagsView } from '@robot-admin/naive-ui-components'
+
+const tags = useTagsView({ persistKey: 'my-tags', homePath: '/home' })
+
+// 返回值
+tags.tagsViewList  // Ref<TagItem[]>  — 标签列表
+tags.activeTag     // Ref<string>     — 当前激活路径
+tags.homePath      // string          — 首页路径
+
+// 方法
+tags.initTags(tagItems?)      // 初始化（传数组则替换，不传则去重）
+tags.setActiveTag(path)       // 设置激活标签
+tags.addTag(tagItem)          // 添加或更新标签
+tags.removeTag(index)         // 移除指定位置标签（返回被移除路径）
+tags.removeOtherTags(index)   // 保留首项 + 指定项，关闭其余
+tags.removeLeftTags(index)    // 保留首项 + 指定项及其右侧
+tags.removeRightTags(index)   // 保留指定项及其左侧
+tags.removeAllTags()          // 关闭所有非 affix 标签
+```
 
 ## 🎨 使用示例
 
-### 场景 1: 标准后台管理系统
+::: details 📋 后台管理系统 — 完整布局配合
 
 ```vue
 <template>
   <NLayout>
     <NLayoutHeader bordered>
-      <!-- 面包屑导航 -->
-      <C_Breadcrumb />
-      
-      <!-- 标签页导航 -->
-      <C_TagsView />
+      <C_Breadcrumb :label-formatter="$t" @select="router.push" />
     </NLayoutHeader>
+
+    <!-- 标签栏 -->
+    <C_TagsView
+      ref="tagsViewRef"
+      home-path="/home"
+      :label-formatter="$t"
+      :context-menu-labels="contextMenuLabels"
+      @close="router.push"
+      @close-all="router.push('/home')"
+    />
 
     <NLayoutContent>
       <RouterView v-slot="{ Component }">
-        <KeepAlive :include="cachedViews">
+        <KeepAlive>
           <component :is="Component" />
         </KeepAlive>
       </RouterView>
@@ -132,46 +209,48 @@ interface Tag {
 </template>
 
 <script setup>
-import { s_appStore } from '@/stores/app'
+import { ref, computed } from 'vue'
+import { useRouter } from 'vue-router'
+import { useI18n } from 'vue-i18n'
 
-const appStore = s_appStore()
+const router = useRouter()
+const { t: $t } = useI18n()
+const tagsViewRef = ref()
 
-// 缓存的页面组件名称
-const cachedViews = computed(() => {
-  return appStore.tagsViewList
-    .filter(tag => tag.meta?.cache !== false)
-    .map(tag => tag.name)
-})
+const contextMenuLabels = computed(() => ({
+  close: $t('tags.close'),
+  closeOthers: $t('tags.closeOthers'),
+  closeLeft: $t('tags.closeLeft'),
+  closeRight: $t('tags.closeRight'),
+  closeAll: $t('tags.closeAll'),
+}))
 </script>
 ```
 
-### 场景 2: 固定常用标签
+:::
 
-::: details 📌 查看固定标签配置代码
+::: details 📌 固定常用标签 — 路由 meta.affix
+
 ```javascript
-// 路由配置
 const routes = [
   {
-    path: '/',
-    component: Dashboard,
+    path: '/home',
     meta: {
-      title: '工作台',
-      icon: 'mdi:view-dashboard',
-      affix: true,  // 固定标签
+      title: '首页',
+      icon: 'mdi:home',
+      affix: true,  // ✅ 固定标签，不可关闭
     },
   },
   {
     path: '/todo',
-    component: TodoList,
     meta: {
       title: '待办事项',
       icon: 'mdi:format-list-checks',
-      affix: true,  // 固定标签
+      affix: true,  // ✅ 固定标签
     },
   },
   {
     path: '/report',
-    component: Report,
     meta: {
       title: '数据报表',
       icon: 'mdi:chart-line',
@@ -180,392 +259,120 @@ const routes = [
   },
 ]
 ```
+
 :::
 
-### 场景 3: 动态标签管理
+::: details 🔧 通过 Expose 外部控制标签
 
-::: details 🔧 查看动态标签管理代码
 ```vue
 <template>
-  <div class="workspace">
-    <!-- 工具栏 -->
-    <div class="toolbar">
-      <NButton @click="openInNewTag">在新标签中打开</NButton>
-      <NButton @click="closeCurrentTag">关闭当前标签</NButton>
-      <NButton @click="refreshCurrentTag">刷新当前页面</NButton>
-    </div>
-
-    <C_TagsView ref="tagsViewRef" />
-  </div>
+  <NButton @click="addCustomTag">添加临时标签</NButton>
+  <NButton @click="scrollToHome">滚动到首页</NButton>
+  <C_TagsView ref="tagsViewRef" @close="router.push" />
 </template>
 
 <script setup>
-import { s_appStore } from '@/stores/app'
+import { ref } from 'vue'
 
-const route = useRoute()
-const router = useRouter()
-const appStore = s_appStore()
+const tagsViewRef = ref()
 
-// 在新标签中打开
-const openInNewTag = () => {
-  const newPath = `/detail/${Date.now()}`
-  
-  appStore.addTag({
-    path: newPath,
-    title: `详情-${Date.now()}`,
+const addCustomTag = () => {
+  tagsViewRef.value?.tags.addTag({
+    path: `/temp/${Date.now()}`,
+    title: '临时标签',
     icon: 'mdi:file-document',
   })
-  
-  router.push(newPath)
 }
 
-// 关闭当前标签
-const closeCurrentTag = () => {
-  const currentIndex = appStore.tagsViewList.findIndex(
-    tag => tag.path === route.path
-  )
-  
-  if (currentIndex !== -1) {
-    appStore.removeTag(currentIndex)
-    
-    // 跳转到上一个标签
-    if (appStore.tagsViewList.length > 0) {
-      const prevTag = appStore.tagsViewList[Math.max(0, currentIndex - 1)]
-      router.push(prevTag.path)
-    } else {
-      router.push('/')
-    }
-  }
-}
-
-// 刷新当前页面
-const refreshCurrentTag = () => {
-  // 先跳转到重定向页面
-  router.push(`/redirect${route.path}`)
+const scrollToHome = () => {
+  tagsViewRef.value?.scrollToTag('/home')
 }
 </script>
 ```
+
 :::
 
-### 场景 4: 标签限制和提示
+::: details ⚡ useTagsView 独立使用（脱离 C_TagsView 组件）
 
-::: details ⚠️ 查看标签限制和提示代码
-```vue
-<script setup>
-import { s_appStore } from '@/stores/app'
+```typescript
+// 在其他地方管理标签状态
+import { useTagsView } from '@robot-admin/naive-ui-components'
 
-const appStore = s_appStore()
-const message = useMessage()
+const tags = useTagsView({ persistKey: 'custom-tags' })
 
-// 限制最大标签数
-const MAX_TAGS = 10
-
-// 监听标签添加
-watch(
-  () => appStore.tagsViewList.length,
-  (newLength, oldLength) => {
-    if (newLength > MAX_TAGS && newLength > oldLength) {
-      message.warning(`最多只能打开 ${MAX_TAGS} 个标签页`)
-      
-      // 移除最早的非固定标签
-      const firstNonAffixIndex = appStore.tagsViewList.findIndex(
-        tag => !tag.meta?.affix
-      )
-      
-      if (firstNonAffixIndex !== -1) {
-        appStore.removeTag(firstNonAffixIndex)
-      }
-    }
-  }
-)
-
-// 标签关闭前确认
-const beforeCloseTag = (tag) => {
-  if (tag.meta?.unsaved) {
-    return confirm('该页面有未保存的更改，确定要关闭吗？')
-  }
-  return true
-}
-</script>
-```
-:::
-
-## 🎨 样式定制
-
-### 自定义标签样式
-
-::: details 🎨 查看自定义标签样式代码
-```scss
-// index.scss
-.tags-view-container {
-  height: 34px;
-  background: #fff;
-  border-bottom: 1px solid #e8e8e8;
-  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.12);
-}
-
-.tags-track {
-  height: 100%;
-  overflow-x: auto;
-  overflow-y: hidden;
-  
-  // 隐藏滚动条
-  &::-webkit-scrollbar {
-    height: 0;
-  }
-}
-
-.tags-container {
-  display: flex;
-  align-items: center;
-  height: 100%;
-  padding: 0 10px;
-  gap: 5px;
-  
-  // 标签样式
-  .n-tag {
-    cursor: pointer;
-    transition: all 0.3s;
-    
-    &:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    }
-  }
-}
-
-// 暗色主题
-.dark {
-  .tags-view-container {
-    background: #1f1f1f;
-    border-bottom-color: #333;
-  }
-}
-```
-:::
-
-### 自定义右键菜单
-
-::: details 🖱️ 查看自定义右键菜单代码
-```vue
-<script setup>
-// 自定义右键菜单选项
-const customContextMenuOptions = computed(() => [
-  {
-    label: '刷新',
-    key: 'refresh',
-    icon: () => h('span', { class: 'i-mdi:refresh' }),
-  },
-  {
-    label: '复制路径',
-    key: 'copy',
-    icon: () => h('span', { class: 'i-mdi:content-copy' }),
-  },
-  { type: 'divider' },
-  // ... 原有选项
-])
-
-// 处理自定义菜单操作
-const handleCustomMenuSelect = (key) => {
-  switch (key) {
-    case 'refresh':
-      router.push(`/redirect${selectedTag.value.path}`)
-      break
-    case 'copy':
-      navigator.clipboard.writeText(selectedTag.value.path)
-      message.success('路径已复制')
-      break
-  }
-}
-</script>
-```
-:::
-
-## ⚙️ 高级用法
-
-### 标签状态持久化
-
-::: details 💾 查看标签状态持久化代码
-```javascript
-// 已内置持久化功能，自动保存到 localStorage
-// 可以自定义持久化逻辑
-
-const customPersist = {
-  save(tags) {
-    // 自定义保存逻辑，如保存到服务器
-    api.saveUserTags(tags)
-  },
-  
-  load() {
-    // 自定义加载逻辑
-    return api.getUserTags()
-  },
-}
-```
-:::
-
-### 标签拖拽排序
-
-::: details 🔄 查看标签拖拽排序代码
-```vue
-<script setup>
-import { VueDraggableNext } from 'vue-draggable-next'
-
-// 启用拖拽排序
-const enableDragSort = ref(true)
-
-const handleDragEnd = (event) => {
-  const { oldIndex, newIndex } = event
-  appStore.moveTag(oldIndex, newIndex)
-}
-</script>
-
-<template>
-  <VueDraggableNext
-    v-model="appStore.tagsViewList"
-    :animation="200"
-    @end="handleDragEnd"
-  >
-    <NTag v-for="tag in appStore.tagsViewList" ...>
-      {{ tag.title }}
-    </NTag>
-  </VueDraggableNext>
-</template>
-```
-:::
-
-## 🐛 常见问题
-
-### Q1: 标签不显示图标？
-
-**A1:** 确保路由 meta 中配置了 icon：
-
-::: details 查看解决方案代码
-```javascript
-// ✅ 正确
-{
-  path: '/user',
-  meta: {
-    title: '用户管理',
-    icon: 'mdi:account'  // 需要配置图标
-  }
-}
-```
-:::
-
-### Q2: 固定标签无法关闭？
-
-**A2:** 这是设计特性，固定标签通过 `meta.affix` 标记：
-
-::: details 查看解决方案代码
-```javascript
-{
-  path: '/',
-  meta: {
-    title: '首页',
-    affix: true  // 设置为固定标签
-  }
-}
-```
-:::
-
-### Q3: 标签状态丢失？
-
-**A3:** 检查 localStorage 是否正常工作：
-
-::: details 查看解决方案代码
-```javascript
-// 手动检查存储
-console.log(localStorage.getItem('tagsViewList'))
-console.log(localStorage.getItem('activeTag'))
-
-// 清除缓存重试
-localStorage.removeItem('tagsViewList')
-localStorage.removeItem('activeTag')
-```
-:::
-
-### Q4: 滚轮滚动不工作？
-
-**A4:** 确保标签容器有正确的样式：
-
-::: details 查看解决方案代码
-```scss
-.tags-track {
-  overflow-x: auto;  // 必需
-  overflow-y: hidden;  // 防止垂直滚动
-}
-```
-:::
-
-## 🎯 最佳实践
-
-### 1. 路由配置规范
-
-```javascript
-// 统一的路由 meta 配置
-const createRoute = (path, component, meta) => ({
-  path,
-  component,
-  meta: {
-    title: meta.title || '未命名页面',
-    icon: meta.icon || 'mdi:file',
-    affix: meta.affix || false,
-    cache: meta.cache !== false,  // 默认缓存
-    ...meta,
-  },
+// 编程式添加标签
+tags.addTag({
+  path: '/user/123',
+  title: '用户详情',
+  originalTitle: 'user.detail',
+  icon: 'mdi:account',
 })
+
+// 清理标签
+tags.removeAllTags()
 ```
 
-### 2. 性能优化
+:::
 
-```vue
-<script setup>
-// 使用 shallowRef 优化大量标签
-import { shallowRef } from 'vue'
+## ⚠️ 注意事项
 
-// 防抖滚动
-import { debounce } from 'lodash-es'
+::: code-group
 
-const debouncedScroll = debounce((scrollLeft) => {
-  tagsContainer.value.scrollTo({
-    left: scrollLeft,
-    behavior: 'smooth',
-  })
-}, 100)
-</script>
+```vue [✅ 推荐 — 监听 close 事件]
+<!-- 组件关闭标签后不自动跳转，需监听事件 -->
+<C_TagsView
+  @close="router.push"
+  @close-all="router.push('/home')"
+/>
 ```
 
-### 3. 标签数量控制
-
-```javascript
-// 限制标签数量
-const TAG_LIMIT = 15
-
-// 自动关闭最旧的标签
-const autoCloseOldest = () => {
-  if (appStore.tagsViewList.length > TAG_LIMIT) {
-    const oldestIndex = appStore.tagsViewList.findIndex(
-      tag => !tag.meta?.affix
-    )
-    if (oldestIndex !== -1) {
-      appStore.removeTag(oldestIndex)
-    }
-  }
-}
+```vue [❌ 避免 — 忘记处理跳转]
+<!-- 不传 @close，关闭活跃标签后页面不会跳转 -->
+<C_TagsView />
 ```
+
+:::
+
+### 迁移指南（从旧版迁移）
+
+旧版依赖外部 `s_appStore` / `appStore` 管理标签状态，新版改为内置 `useTagsView` composable：
+
+| 旧版                                 | 新版                                                    |
+| ------------------------------------ | ------------------------------------------------------- |
+| `appStore.addTag(tag)`               | 自动完成（路由变化时内部调用 `tags.addTag`）             |
+| `appStore.removeTag(index)`          | 监听 `@close` 获取回退路径                               |
+| `appStore.removeAllTags()`           | 监听 `@closeAll`                                         |
+| `appStore.tagsViewList`              | `tagsViewRef.value?.tags.tagsViewList`（Expose 访问）    |
+| `appStore.setActiveTag(path)`        | 内部自动管理                                              |
+| localStorage key: `tagsViewList`     | `:persist-key="'__tags_view_list__'"` 或自定义           |
+| 无 i18n 支持                         | `:label-formatter="$t"` + `:context-menu-labels="{...}"` |
+
+### 持久化注意事项
+
+- 默认 key 为 `__tags_view_list__`，避免与旧版的 `tagsViewList` 冲突
+- 语言切换后组件会自动重新翻译持久化标签（通过 `originalTitle` 字段）
+- 传 `persist-key=""` 可完全关闭持久化
 
 ## 📝 更新日志
 
-### v1.0.0 (2025-05-26)
+### v0.5.0 (2025-06)
 
-- ✨ 初始版本发布
-- ✨ 基础标签管理功能
-- ✨ 右键菜单支持
-- ✨ 本地持久化存储
-- ✨ 滚轮横向滚动
-- ✨ 路由同步功能
+- ♻️ **破坏性变更**: 移除外部 Store 依赖，改为内置 `useTagsView` composable
+- ♻️ **破坏性变更**: 不再自动跳转路由，改为 `@close` / `@closeAll` 事件
+- ✨ 新增 `homePath` / `homeTitle` / `homeIcon` props
+- ✨ 新增 `persistKey` 持久化控制
+- ✨ 新增 `labelFormatter` i18n 支持
+- ✨ 新增 `contextMenuLabels` 国际化右键菜单
+- ✨ 新增 `tagsViewOptions` 高级配置
+- ✨ Expose `tags` composable 实例 + `scrollToTag`
+- ✨ 语言切换后自动重新翻译持久化标签
+
+### v0.3.0 (2025-03)
+
+- ✨ 初始版本（依赖外部 appStore）
+
 
 <!--@include: ./snippets/contribute.md -->
 
-**💡 提示**: 标签页组件提供了类似浏览器的多标签导航体验，通过右键菜单可以快速管理标签。组件自动保存标签状态，刷新页面后仍能保持之前打开的标签。配合路由的 meta 配置，可以实现固定标签、自定义图标等功能。
+
+**💡 提示**: 这个组件设计用于团队协作，如果遇到问题请先查看文档，或者在团队群里讨论。让我们一起打造更好的开发体验！ 🚀

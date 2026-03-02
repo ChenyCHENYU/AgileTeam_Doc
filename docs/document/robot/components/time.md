@@ -6,6 +6,11 @@ outline: 'deep'
 
 > ⏰ 基于 Naive UI 的智能时间选择器，让时间选择更精确、更便捷
 
+## 🚀 在线演示
+
+<DemoIframe src="/preview/time" title="时间选择" height="700" />
+
+
 ## 🚀 特性
 
 - **🔄 双模式支持**: 时间段选择（range）和单个时间选择（single）
@@ -30,16 +35,21 @@ outline: 'deep'
 
 ## 📦 安装
 
-组件已全局注册，基于 Naive UI TimePicker 实现：
+::: code-group
 
-```vue
-<template>
-  <C_Time
-    mode="range"
-    @change-range="handleChange"
-  />
-</template>
+```bash [bun (推荐)]
+bun add @robot-admin/naive-ui-components
 ```
+
+```bash [pnpm]
+pnpm add @robot-admin/naive-ui-components
+```
+
+```bash [npm]
+npm install @robot-admin/naive-ui-components
+```
+
+:::
 
 ## 🎯 快速开始
 

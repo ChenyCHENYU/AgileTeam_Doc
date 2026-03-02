@@ -6,6 +6,11 @@ outline: 'deep'
 
 > 📄 基于 Naive UI 的多格式文件预览组件，支持 PDF / Word / Excel 在线预览
 
+## 🚀 在线演示
+
+<DemoIframe src="/preview/file-preview" title="文件预览" height="700" />
+
+
 ## ✨ 特性
 
 - **📝 多格式支持**: PDF（iframe）、Word（mammoth → HTML）、Excel（xlsx 解析 → 表格渲染）

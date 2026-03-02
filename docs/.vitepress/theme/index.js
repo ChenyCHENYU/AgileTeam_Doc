@@ -8,6 +8,7 @@ import GiscusComment from "@components/GiscusComment.vue";
 import GitHubBadges from "@components/GitHubBadges.vue";
 import ImgWrap from "@components/ImgWrap.vue";
 import ImgPreview from "@components/ImgPreview.vue";
+import DemoIframe from "@components/DemoIframe.vue";
 import "./custom.css";
 import "./styles/home.css";
 import "./styles/newBadge.css";
@@ -59,6 +60,7 @@ export default {
     app.component("GitHubBadges", GitHubBadges);
     app.component("ImgWrap", ImgWrap);
     app.component("ImgPreview", ImgPreview);
+    app.component("DemoIframe", DemoIframe);
 
     // 🤖 初始化智能 NEW 标记处理器
     // 方式1: 使用默认配置

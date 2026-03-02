@@ -6,6 +6,11 @@ outline: 'deep'
 
 > 🏞️ 零依赖的瀑布流布局组件，适用于图片库、素材管理、商品展示等场景。贪心算法实现高效布局，支持响应式列数、图片懒加载、无限滚动、骨架屏占位动画、自定义卡片渲染及窗口 resize 自动重排。
 
+## 🚀 在线演示
+
+<DemoIframe src="/preview/waterfall" title="瀑布流" height="700" />
+
+
 ## ✨ 特性
 
 - **📐 贪心布局算法** — 每张新卡片放入当前最短列，自动均衡高度差
@@ -21,7 +26,21 @@ outline: 'deep'
 
 ## 📦 安装
 
-无需安装任何额外依赖。组件已全局注册，直接在模板中使用 `<C_WaterFall />` 即可。
+::: code-group
+
+```bash [bun (推荐)]
+bun add @robot-admin/naive-ui-components
+```
+
+```bash [pnpm]
+pnpm add @robot-admin/naive-ui-components
+```
+
+```bash [npm]
+npm install @robot-admin/naive-ui-components
+```
+
+:::
 
 ## 🎯 快速开始
 

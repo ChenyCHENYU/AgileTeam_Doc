@@ -6,6 +6,11 @@ outline: 'deep'
 
 > 🔍 基于 Naive UI 的高效搜索表单组件，让数据检索变得简单而优雅
 
+## 🚀 在线演示
+
+<DemoIframe src="/preview/form-search" title="搜索表单" height="700" />
+
+
 ## ✨ 特性
 
 - **🔍 多种搜索控件**: 支持输入框、选择器、日期范围等多种搜索方式
