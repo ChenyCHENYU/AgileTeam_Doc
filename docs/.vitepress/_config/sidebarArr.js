@@ -238,6 +238,26 @@ export const ROBOT_COMPONENTS_DOC = [
         text: "[C_ActionBar] 操作按钮组",
         link: `${ROBOT}/components/action-bar`,
       },
+      {
+        text: "[C_Chat] 聊天",
+        link: `${ROBOT}/components/chat`,
+      },
+      {
+        text: "[C_Timeline] 时间线",
+        link: `${ROBOT}/components/timeline`,
+      },
+      {
+        text: "[C_ContextMenu] 右键菜单",
+        link: `${ROBOT}/components/context-menu`,
+      },
+      {
+        text: "[C_Transfer] 穿梭框",
+        link: `${ROBOT}/components/transfer`,
+      },
+      {
+        text: "[C_AvatarGroup] 头像组",
+        link: `${ROBOT}/components/avatar-group`,
+      },
     ],
   },
   {
@@ -270,6 +290,10 @@ export const ROBOT_COMPONENTS_DOC = [
       {
         text: "[C_VideoPlayer] 视频播放器",
         link: `${ROBOT}/components/video-player`,
+      },
+      {
+        text: "[C_AudioPlayer] 音频播放器",
+        link: `${ROBOT}/components/audio-player`,
       },
       {
         text: "[C_Signature] 电子签名",
