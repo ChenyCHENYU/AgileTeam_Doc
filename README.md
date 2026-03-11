@@ -72,7 +72,7 @@ graph LR
 
 ### 🖥️ 组件在线演示
 
-文档站集成了 **DemoIframe** 组件，通过 iframe 嵌入 Robot Admin 生产环境的真实演示页面，提供 **32+ 组件** 的在线交互体验：
+文档站集成了 **DemoIframe** 组件，通过 iframe 嵌入 Robot Admin 生产环境的真实演示页面，提供 **51+ 组件** 的在线交互体验：
 
 - 📦 **真实环境**：嵌入 `https://robotadmin.cn` 的 Preview 路由，展示的是生产级组件效果
 - 🎨 **浏览器风格**：带有地址栏、操作按钮的仿浏览器 Chrome UI，体验直观
@@ -210,7 +210,7 @@ AgileTeam_Doc/
 │   ├── .vitepress/             # VitePress 配置
 │   │   ├── components/         # 自定义 Vue 组件
 │   │   │   └── DemoIframe.vue  # 组件在线演示嵌入（iframe）
-│   │   ├── theme/              # 主题定制文件
+│   │   ├── theme/              # 主题定制文件（Mobile-First 响应式）
 │   │   └── config.js           # 站点配置文件
 │   └── document/               # 核心文档内容
 │       ├── manage/             # 📋 项目管理文档
@@ -218,7 +218,7 @@ AgileTeam_Doc/
 │       │   ├── templates/      # 标准化模板库
 │       │   └── verify/         # 交付物验收标准
 │       ├── po/                 # 🎯 产品管理文档
-│       ├── robot/              # 🤖 组件文档（32+ 组件在线演示）
+│       ├── robot/              # 🤖 组件文档（51+ 组件在线演示）
 │       ├── team/               # 👥 团队协作文档
 │       └── web/                # 💻 前端技术文档
 ├── 📦 package.json             # 项目依赖配置
@@ -339,6 +339,8 @@ git push origin feature/amazing-feature
 - [ ] 📖 优化文档导航和搜索体验
 - [ ] 🎨 丰富自定义组件库
 - [ ] 📚 增加多语言支持
+- [x] 📱 修复移动端自适应问题（CSS Mobile-First 重构）
+- [x] 📦 补全组件库文档（C_OrgChart / C_Skeleton）
 
 </details>
 
@@ -348,7 +350,8 @@ git push origin feature/amazing-feature
 - [ ] 💬 集成更多评论和反馈系统
 - [ ] 📊 添加访问统计和分析
 - [ ] 🔗 支持更多第三方工具集成
-- [ ] 📱 持续优化移动端体验
+- [x] 📱 移动端及小屏自适应恢复（VitePress 原生响应式不再被覆盖）
+- [ ] 🏗 CSS 架构拆分（参见 `全面优化.md`）
 
 </details>
 

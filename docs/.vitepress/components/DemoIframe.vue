@@ -177,4 +177,25 @@ const onLoad = () => {
     transform: rotate(360deg);
   }
 }
+
+/* 移动端适配 */
+@media (max-width: 768px) {
+  .demo-iframe-body {
+    min-height: 300px;
+  }
+
+  .demo-iframe-toolbar {
+    padding: 6px 10px;
+    font-size: 12px;
+  }
+
+  .demo-iframe-open {
+    font-size: 11px;
+  }
+
+  .dot {
+    width: 10px;
+    height: 10px;
+  }
+}
 </style>

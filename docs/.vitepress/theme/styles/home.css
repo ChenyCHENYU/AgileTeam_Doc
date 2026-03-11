@@ -722,8 +722,8 @@ html, body {
 /* ===== 响应式优化 ===== */
 @media (max-width: 1024px) {
   .VPHome {
-    /* 平板端保持一屏显示 */
-    max-height: calc(100vh - var(--vp-nav-height, 64px));
+    /* 平板端取消高度限制，允许滚动 */
+      max-height: none;
   }
   
   .VPHero {

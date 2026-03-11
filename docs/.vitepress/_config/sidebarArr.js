@@ -402,6 +402,14 @@ export const ROBOT_COMPONENTS_DOC = [
         text: "[C_Captcha] 拼图验证码",
         link: `${ROBOT}/components/captcha`,
       },
+      {
+        text: "[C_OrgChart] 组织架构图",
+        link: `${ROBOT}/components/org-chart`,
+      },
+      {
+        text: "[C_Skeleton] 骨架屏",
+        link: `${ROBOT}/components/skeleton`,
+      },
     ],
   },
 ];
