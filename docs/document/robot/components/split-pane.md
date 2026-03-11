@@ -145,31 +145,31 @@ npm install @robot-admin/naive-ui-components
 
 :::
 
-## 📋 API
+## � API 文档
 
 ### Props
 
-| 属性 | 类型 | 默认值 | 说明 |
+| 参数 | 类型 | 默认值 | 说明 |
 | --- | --- | --- | --- |
-| `direction` | `'horizontal' \| 'vertical'` | `'horizontal'` | 分割方向 |
-| `defaultSize` | `number` | `50` | 首面板默认大小（百分比 0-100） |
-| `minSize` | `number` | `0` | 首面板最小大小（百分比） |
-| `maxSize` | `number` | `100` | 首面板最大大小（百分比） |
-| `disabled` | `boolean` | `false` | 是否禁用拖拽调整 |
-| `collapsible` | `boolean` | `true` | 是否可折叠 |
-| `showCollapseButton` | `boolean` | `true` | 是否显示折叠按钮 |
-| `gutterSize` | `number` | `6` | 分割线宽度（px） |
-| `step` | `number` | `2` | 键盘微调步长（百分比） |
+| **direction** | `'horizontal' \| 'vertical'` | `'horizontal'` | 分割方向 |
+| **defaultSize** | `number` | `50` | 首面板默认大小（百分比 0-100） |
+| **minSize** | `number` | `0` | 首面板最小大小（百分比） |
+| **maxSize** | `number` | `100` | 首面板最大大小（百分比） |
+| **disabled** | `boolean` | `false` | 是否禁用拖拽调整 |
+| **collapsible** | `boolean` | `true` | 是否可折叠 |
+| **showCollapseButton** | `boolean` | `true` | 是否显示折叠按钮 |
+| **gutterSize** | `number` | `6` | 分割线宽度（px） |
+| **step** | `number` | `2` | 键盘微调步长（百分比） |
 
 ### Events
 
 | 事件 | 参数 | 说明 |
 | --- | --- | --- |
-| `resize` | `(firstSize: number, secondSize: number)` | 面板大小变化时触发 |
-| `collapse` | `(target: CollapseTarget)` | 面板折叠时触发 |
-| `expand` | `(target: CollapseTarget)` | 面板展开时触发 |
-| `drag-start` | `(size: number)` | 拖拽开始时触发 |
-| `drag-end` | `(size: number)` | 拖拽结束时触发 |
+| **resize** | `(firstSize: number, secondSize: number)` | 面板大小变化时触发 |
+| **collapse** | `(target: CollapseTarget)` | 面板折叠时触发 |
+| **expand** | `(target: CollapseTarget)` | 面板展开时触发 |
+| **drag-start** | `(size: number)` | 拖拽开始时触发 |
+| **drag-end** | `(size: number)` | 拖拽结束时触发 |
 
 ### Slots
 
@@ -267,13 +267,13 @@ interface PanelInfo {
 
 :::
 
-## 🔄 未来规划
+## � 更新日志
 
-- [ ] 多分割（三面板、四面板模式）
-- [ ] 面板内容懒渲染（折叠时销毁 DOM）
-- [ ] 拖拽吸附功能（靠近 50% 时自动吸附）
-- [ ] 保存/恢复布局状态（localStorage 持久化）
-- [ ] 面板最小像素约束（结合百分比）
+### v1.0.0
+
+- ✨ 新增 `C_SplitPane` 分割面板组件
+- ✨ 支持水平/垂直分割与拖拽调整
+- ✨ 支持最小/最大比例约束
 
 ## 📚 相关资源
 
@@ -282,3 +282,5 @@ interface PanelInfo {
 - [演示页面源码](../../views/demo/43-split-pane/index.vue)
 
 <!--@include: ./snippets/contribute.md -->
+
+**💡 提示**: 分割面板组件适用于编辑器布局、对比视图、可调整侧边栏等场景。支持水平和垂直两种分割方向。如果遇到问题请先查看文档，或者在团队群里讨论。📐

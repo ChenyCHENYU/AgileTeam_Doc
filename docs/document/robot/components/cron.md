@@ -229,23 +229,23 @@ npm install @robot-admin/naive-ui-components
 
 ### Props
 
-| 属性             | 类型               | 默认值          | 说明                                     |
+| 参数             | 类型               | 默认值          | 说明                                     |
 | ---------------- | ------------------ | --------------- | ---------------------------------------- |
-| `v-model`        | `string`           | `'0 0 0 * * ?'` | Cron 表达式（6 字段：秒 分 时 日 月 周） |
-| `disabled`       | `boolean`          | `false`         | 禁用编辑                                 |
-| `preview-count`  | `number`           | `10`            | 预览未来执行次数（1~50）                 |
-| `show-templates` | `boolean`          | `true`          | 显示右侧常用模板面板                     |
-| `show-preview`   | `boolean`          | `true`          | 显示右侧执行时间预览面板                 |
-| `show-second`    | `boolean`          | `true`          | 显示秒字段 Tab（关闭后为 5 字段模式）    |
-| `height`         | `string \| number` | `'auto'`        | 容器高度，支持数字(px)或 CSS 字符串      |
+| **v-model**        | `string`           | `'0 0 0 * * ?'` | Cron 表达式（6 字段：秒 分 时 日 月 周） |
+| **disabled**       | `boolean`          | `false`         | 禁用编辑                                 |
+| **preview-count**  | `number`           | `10`            | 预览未来执行次数（1~50）                 |
+| **show-templates** | `boolean`          | `true`          | 显示右侧常用模板面板                     |
+| **show-preview**   | `boolean`          | `true`          | 显示右侧执行时间预览面板                 |
+| **show-second**    | `boolean`          | `true`          | 显示秒字段 Tab（关闭后为 5 字段模式）    |
+| **height**         | `string \| number` | `'auto'`        | 容器高度，支持数字(px)或 CSS 字符串      |
 
 ### Events
 
 | 事件                | 参数                       | 说明                               |
 | ------------------- | -------------------------- | ---------------------------------- |
-| `update:modelValue` | `(value: string)`          | 表达式变更（v-model 双向绑定）     |
-| `change`            | `(value: string)`          | 表达式变更回调                     |
-| `validation-change` | `(result: CronValidation)` | 校验状态变更（合法/非法/错误字段） |
+| **update:modelValue** | `(value: string)`          | 表达式变更（v-model 双向绑定）     |
+| **change**            | `(value: string)`          | 表达式变更回调                     |
+| **validation-change** | `(result: CronValidation)` | 校验状态变更（合法/非法/错误字段） |
 
 ### Expose
 
@@ -467,3 +467,7 @@ composables/Cron/
 - 中文描述自动生成
 - 日/周互斥自动处理
 - 亮色/暗色主题适配
+
+<!--@include: ./snippets/contribute.md -->
+
+**💡 提示**: Cron 表达式编辑器适用于定时任务配置、调度管理等场景。内置常用模板和执行时间预览功能。如果遇到问题请先查看文档，或者在团队群里讨论。⏰

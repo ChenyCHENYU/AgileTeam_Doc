@@ -111,19 +111,19 @@ npm install @robot-admin/naive-ui-components
 
 :::
 
-## 📋 API
+## � API 文档
 
 ### Props
 
-| 属性           | 类型                                          | 默认值      | 说明             |
+| 参数           | 类型                                          | 默认值      | 说明             |
 | -------------- | --------------------------------------------- | ----------- | ---------------- |
-| `tracks`       | `AudioTrack[]`                                | —           | **必填**，播放列表 |
-| `initialIndex` | `number`                                      | `0`         | 初始播放索引     |
-| `showPlaylist` | `boolean`                                     | `true`      | 是否显示播放列表 |
-| `showCover`    | `boolean`                                     | `true`      | 是否显示封面     |
-| `autoplay`     | `boolean`                                     | `false`     | 是否自动播放     |
-| `mode`         | `'list' \| 'loop' \| 'single' \| 'shuffle'`  | `'list'`    | 循环模式         |
-| `theme`        | `'default' \| 'minimal'`                      | `'default'` | 主题外观         |
+| **tracks**       | `AudioTrack[]`                                | —           | **必填**，播放列表 |
+| **initialIndex** | `number`                                      | `0`         | 初始播放索引     |
+| **showPlaylist** | `boolean`                                     | `true`      | 是否显示播放列表 |
+| **showCover**    | `boolean`                                     | `true`      | 是否显示封面     |
+| **autoplay**     | `boolean`                                     | `false`     | 是否自动播放     |
+| **mode**         | `'list' \| 'loop' \| 'single' \| 'shuffle'`  | `'list'`    | 循环模式         |
+| **theme**        | `'default' \| 'minimal'`                      | `'default'` | 主题外观         |
 
 ### AudioTrack
 
@@ -140,10 +140,10 @@ npm install @robot-admin/naive-ui-components
 
 | 事件         | 参数             | 说明         |
 | ------------ | ---------------- | ------------ |
-| `play`       | `(index: number)` | 开始播放     |
-| `pause`      | —                | 暂停         |
-| `ended`      | `(index: number)` | 播放结束     |
-| `modeChange` | `(mode: string)` | 播放模式切换 |
+| **play**       | `(index: number)` | 开始播放     |
+| **pause**      | —                | 暂停         |
+| **ended**      | `(index: number)` | 播放结束     |
+| **modeChange** | `(mode: string)` | 播放模式切换 |
 
 ### CSS 变量
 
@@ -202,16 +202,18 @@ interface AudioPlayerProps {
 
 :::
 
-## 🔄 未来规划
+## � 更新日志
 
-- [ ] 歌词显示（LRC 格式解析）
-- [ ] 均衡器可视化
-- [ ] 播放队列拖拽排序
-- [ ] 外部 `play()` / `pause()` / `seek()` expose 方法
-- [ ] `v-model:activeIndex` 双向绑定
+### v1.0.0
+
+- ✨ 新增 `C_AudioPlayer` 音频播放器组件
+- ✨ 支持播放列表、封面展示、多循环模式
+- ✨ 支持进度条拖拽与音量控制
 
 ## 📚 相关资源
 
 - [演示页面源码](../../views/demo/54-audio-player/index.vue)
 
 <!--@include: ./snippets/contribute.md -->
+
+**💡 提示**: 音频播放器组件适用于音乐播放、有声读物、播客等场景。支持多种循环模式和播放列表管理。如果遇到问题请先查看文档，或者在团队群里讨论。🎵

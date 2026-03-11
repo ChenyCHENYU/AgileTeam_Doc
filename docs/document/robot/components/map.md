@@ -203,14 +203,14 @@ npm install -D @types/leaflet
 
 ### Props
 
-| 属性      | 类型               | 默认值                | 说明                                      |
+| 参数      | 类型               | 默认值                | 说明                                      |
 | --------- | ------------------ | --------------------- | ----------------------------------------- |
-| `height`  | `string`           | `'400px'`             | 地图高度，支持任意 CSS 高度字符串         |
-| `center`  | `[number, number]` | `[39.9042, 116.4074]` | 地图中心点 `[纬度, 经度]`，默认北京天安门 |
-| `zoom`    | `number`           | `10`                  | 初始缩放级别，范围 1（全球）~ 19（街道）  |
-| `markers` | `MapMarker[]`      | `[]`                  | 标记点列表，支持响应式数组                |
-| `mapType` | `'osm' \| 'amap'`  | `'osm'`               | 地图引擎，`osm` 免费，`amap` 需要 API Key |
-| `amapKey` | `string`           | `''`                  | 高德地图 API Key，`mapType='amap'` 时必填 |
+| **height**  | `string`           | `'400px'`             | 地图高度，支持任意 CSS 高度字符串         |
+| **center**  | `[number, number]` | `[39.9042, 116.4074]` | 地图中心点 `[纬度, 经度]`，默认北京天安门 |
+| **zoom**    | `number`           | `10`                  | 初始缩放级别，范围 1（全球）~ 19（街道）  |
+| **markers** | `MapMarker[]`      | `[]`                  | 标记点列表，支持响应式数组                |
+| **mapType** | `'osm' \| 'amap'`  | `'osm'`               | 地图引擎，`osm` 免费，`amap` 需要 API Key |
+| **amapKey** | `string`           | `''`                  | 高德地图 API Key，`mapType='amap'` 时必填 |
 
 ### MapMarker 标记点
 
@@ -224,8 +224,8 @@ npm install -D @types/leaflet
 
 | 事件名        | 参数                              | 说明                                                          |
 | ------------- | --------------------------------- | ------------------------------------------------------------- |
-| `ready`       | `(map: any)`                      | 地图初始化完成，OSM 返回 Leaflet 实例，高德返回 AMap.Map 实例 |
-| `markerClick` | `(marker: MapMarker, event: any)` | 点击标记点时触发，返回标记数据和原生事件对象                  |
+| **ready**       | `(map: any)`                      | 地图初始化完成，OSM 返回 Leaflet 实例，高德返回 AMap.Map 实例 |
+| **markerClick** | `(marker: MapMarker, event: any)` | 点击标记点时触发，返回标记数据和原生事件对象                  |
 
 ## 🗺️ 地图引擎对比
 
@@ -331,15 +331,13 @@ function wgs84ToGcj02(lat: number, lng: number) {
 
 :::
 
-## 🔄 未来规划
+## � 更新日志
 
-- [ ] 支持 Mapbox 地图引擎
-- [ ] 聚合标记（大量 Marker 自动聚合）
-- [ ] 自定义标记图标（Icon / DivIcon）
-- [ ] 绘制多边形 / 折线
-- [ ] 热力图层支持
-- [ ] 地理围栏
-- [ ] 路线规划（依赖高德路线 API）
+### v1.0.0
+
+- ✨ 新增 `C_Map` 地图组件
+- ✨ 支持 Leaflet + 高德瓦片集成
+- ✨ 支持标记点、地理编码、定位
 
 ## 📚 相关资源
 
@@ -349,3 +347,5 @@ function wgs84ToGcj02(lat: number, lng: number) {
 - [高德开放平台](https://lbs.amap.com/api/javascript-api/guide/create/)
 
 <!--@include: ./snippets/contribute.md -->
+
+**💡 提示**: 地图组件基于 Leaflet 构建，支持 OSM 和高德两种地图引擎。适用于位置展示、地址选择、标记管理等场景。如果遇到问题请先查看文档，或者在团队群里讨论。🗺️

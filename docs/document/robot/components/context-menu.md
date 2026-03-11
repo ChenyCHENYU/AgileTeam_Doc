@@ -108,19 +108,19 @@ const items = [
 
 :::
 
-## 📋 API
+## � API 文档
 
 ### Props
 
-| 属性               | 类型                 | 默认值    | 说明               |
+| 参数               | 类型                 | 默认值    | 说明               |
 | ------------------ | -------------------- | --------- | ------------------ |
-| `items`            | `ContextMenuItem[]`  | `[]`      | 菜单项列表         |
-| `minWidth`         | `number`             | `180`     | 菜单最小宽度（px） |
-| `maxWidth`         | `number`             | `280`     | 菜单最大宽度（px） |
-| `subMenuPlacement` | `'right' \| 'left'`  | `'right'` | 子菜单展开方向     |
-| `autoClose`        | `boolean`            | `true`    | 点击项后自动关闭   |
-| `disabled`         | `boolean`            | `false`   | 禁用整个菜单       |
-| `zIndex`           | `number`             | `9999`    | 层级               |
+| **items**            | `ContextMenuItem[]`  | `[]`      | 菜单项列表         |
+| **minWidth**         | `number`             | `180`     | 菜单最小宽度（px） |
+| **maxWidth**         | `number`             | `280`     | 菜单最大宽度（px） |
+| **subMenuPlacement** | `'right' \| 'left'`  | `'right'` | 子菜单展开方向     |
+| **autoClose**        | `boolean`            | `true`    | 点击项后自动关闭   |
+| **disabled**         | `boolean`            | `false`   | 禁用整个菜单       |
+| **zIndex**           | `number`             | `9999`    | 层级               |
 
 ### ContextMenuItem
 
@@ -140,9 +140,9 @@ const items = [
 
 | 事件     | 参数                        | 说明       |
 | -------- | --------------------------- | ---------- |
-| `select` | `(item: ContextMenuItem)`   | 选中菜单项 |
-| `open`   | `({ x: number, y: number })` | 菜单打开   |
-| `close`  | —                           | 菜单关闭   |
+| **select** | `(item: ContextMenuItem)`   | 选中菜单项 |
+| **open**   | `({ x: number, y: number })` | 菜单打开   |
+| **close**  | —                           | 菜单关闭   |
 
 ### Expose 方法
 
@@ -213,15 +213,18 @@ interface ContextMenuProps {
 
 :::
 
-## 🔄 未来规划
+## � 更新日志
 
-- [ ] 键盘导航（上下方向键 + Enter 选择）
-- [ ] 菜单项搜索
-- [ ] 动态菜单项（函数式 items）
-- [ ] 右键自动绑定指令 `v-contextmenu`
+### v1.0.0
+
+- ✨ 新增 `C_ContextMenu` 右键菜单组件
+- ✨ 支持多级子菜单、分隔线、图标
+- ✨ 支持自动边界检测定位
 
 ## 📚 相关资源
 
 - [演示页面源码](../../views/demo/51-context-menu/index.vue)
 
 <!--@include: ./snippets/contribute.md -->
+
+**💡 提示**: 右键菜单组件适用于文件操作、表格行操作等需要上下文菜单的场景。组件自动处理边界检测和子菜单定位。如果遇到问题请先查看文档，或者在团队群里讨论。📋

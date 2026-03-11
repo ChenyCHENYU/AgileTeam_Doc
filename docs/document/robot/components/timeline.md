@@ -119,21 +119,21 @@ npm install @robot-admin/naive-ui-components
 
 :::
 
-## 📋 API
+## � API 文档
 
 ### Props
 
-| 属性             | 类型                                 | 默认值       | 说明                 |
+| 参数             | 类型                                 | 默认值       | 说明                 |
 | ---------------- | ------------------------------------ | ------------ | -------------------- |
-| `items`          | `TimelineItem[]`                     | `[]`         | 时间线数据           |
-| `mode`           | `'vertical' \| 'horizontal'`        | `'vertical'` | 布局方向             |
-| `labelPlacement` | `'left' \| 'right' \| 'alternate'`  | `'right'`    | 垂直模式时间标签位置 |
-| `pending`        | `boolean`                            | `false`      | 是否显示尾部加载指示 |
-| `pendingText`    | `string`                             | `'加载中...'`| 加载文案             |
-| `reverse`        | `boolean`                            | `false`      | 反转排列             |
-| `size`           | `'small' \| 'medium' \| 'large'`    | `'medium'`   | 节点大小             |
-| `lineType`       | `'solid' \| 'dashed' \| 'dotted'`   | `'solid'`    | 连接线样式           |
-| `showTime`       | `boolean`                            | `true`       | 是否显示时间标签     |
+| **items**          | `TimelineItem[]`                     | `[]`         | 时间线数据           |
+| **mode**           | `'vertical' \| 'horizontal'`        | `'vertical'` | 布局方向             |
+| **labelPlacement** | `'left' \| 'right' \| 'alternate'`  | `'right'`    | 垂直模式时间标签位置 |
+| **pending**        | `boolean`                            | `false`      | 是否显示尾部加载指示 |
+| **pendingText**    | `string`                             | `'加载中...'`| 加载文案             |
+| **reverse**        | `boolean`                            | `false`      | 反转排列             |
+| **size**           | `'small' \| 'medium' \| 'large'`    | `'medium'`   | 节点大小             |
+| **lineType**       | `'solid' \| 'dashed' \| 'dotted'`   | `'solid'`    | 连接线样式           |
+| **showTime**       | `boolean`                            | `true`       | 是否显示时间标签     |
 
 ### TimelineItem
 
@@ -154,8 +154,8 @@ npm install @robot-admin/naive-ui-components
 
 | 事件         | 参数                       | 说明         |
 | ------------ | -------------------------- | ------------ |
-| `item-click` | `(item, index)`            | 节点被点击   |
-| `expand`     | `(item, expanded: boolean)` | 折叠状态变化 |
+| **item-click** | `(item, index)`            | 节点被点击   |
+| **expand**     | `(item, expanded: boolean)` | 折叠状态变化 |
 
 ### Slots
 
@@ -233,15 +233,18 @@ interface TimelineProps {
 
 :::
 
-## 🔄 未来规划
+## � 更新日志
 
-- [ ] 虚拟滚动（超长时间线）
-- [ ] 分组 / 年份分隔
-- [ ] 动画入场效果
-- [ ] 连接时间线（多条时间线合并展示）
+### v1.0.0
+
+- ✨ 新增 `C_Timeline` 时间线组件
+- ✨ 支持自定义图标、颜色、内容
+- ✨ 支持横向/纵向、左/右/交替布局
 
 ## 📚 相关资源
 
 - [演示页面源码](../../views/demo/50-timeline/index.vue)
 
 <!--@include: ./snippets/contribute.md -->
+
+**💡 提示**: 时间线组件适用于操作日志、更新记录、流程追踪等场景。支持横向和纵向两种布局。如果遇到问题请先查看文档，或者在团队群里讨论。📅

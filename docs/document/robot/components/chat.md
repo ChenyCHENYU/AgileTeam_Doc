@@ -100,23 +100,23 @@ npm install @robot-admin/naive-ui-components
 
 :::
 
-## 📋 API
+## � API 文档
 
 ### Props
 
-| 属性               | 类型            | 默认值        | 说明                       |
+| 参数               | 类型            | 默认值        | 说明                       |
 | ------------------ | --------------- | ------------- | -------------------------- |
-| `contacts`         | `ChatContact[]` | `[]`          | 联系人列表                 |
-| `messages`         | `ChatMessage[]` | `[]`          | 消息列表                   |
-| `currentContactId` | `string`        | `''`          | 当前选中联系人 ID          |
-| `placeholder`      | `string`        | `'输入消息...'` | 输入框占位符             |
-| `showContacts`     | `boolean`       | `true`        | 是否显示联系人侧栏         |
-| `showTimestamp`    | `boolean`       | `true`        | 是否显示消息时间戳         |
-| `selfAvatar`       | `string`        | `''`          | 当前用户头像 URL           |
-| `selfName`         | `string`        | `''`          | 当前用户名                 |
-| `showSendBtn`      | `boolean`       | `true`        | 是否显示发送按钮           |
-| `loadingHistory`   | `boolean`       | `false`       | 是否正在加载历史消息       |
-| `title`            | `string`        | `'聊天'`      | 标题（无联系人模式时显示） |
+| **contacts**         | `ChatContact[]` | `[]`          | 联系人列表                 |
+| **messages**         | `ChatMessage[]` | `[]`          | 消息列表                   |
+| **currentContactId** | `string`        | `''`          | 当前选中联系人 ID          |
+| **placeholder**      | `string`        | `'输入消息...'` | 输入框占位符             |
+| **showContacts**     | `boolean`       | `true`        | 是否显示联系人侧栏         |
+| **showTimestamp**    | `boolean`       | `true`        | 是否显示消息时间戳         |
+| **selfAvatar**       | `string`        | `''`          | 当前用户头像 URL           |
+| **selfName**         | `string`        | `''`          | 当前用户名                 |
+| **showSendBtn**      | `boolean`       | `true`        | 是否显示发送按钮           |
+| **loadingHistory**   | `boolean`       | `false`       | 是否正在加载历史消息       |
+| **title**            | `string`        | `'聊天'`      | 标题（无联系人模式时显示） |
 
 ### ChatMessage
 
@@ -149,14 +149,14 @@ npm install @robot-admin/naive-ui-components
 
 | 事件名           | 参数                 | 说明             |
 | ---------------- | -------------------- | ---------------- |
-| `send`           | `(content: string)`  | 发送消息         |
-| `select-contact` | `(id: string)`       | 选中联系人       |
-| `load-more`      | —                    | 加载更多历史消息 |
-| `image-preview`  | `(url: string)`      | 点击图片预览     |
-| `file-click`     | `(msg: ChatMessage)` | 点击文件消息     |
-| `file-upload`    | —                    | 点击上传文件     |
-| `emoji-click`    | —                    | 点击表情按钮     |
-| `resend`         | `(msg: ChatMessage)` | 重发失败消息     |
+| **send**           | `(content: string)`  | 发送消息         |
+| **select-contact** | `(id: string)`       | 选中联系人       |
+| **load-more**      | —                    | 加载更多历史消息 |
+| **image-preview**  | `(url: string)`      | 点击图片预览     |
+| **file-click**     | `(msg: ChatMessage)` | 点击文件消息     |
+| **file-upload**    | —                    | 点击上传文件     |
+| **emoji-click**    | —                    | 点击表情按钮     |
+| **resend**         | `(msg: ChatMessage)` | 重发失败消息     |
 
 ### Slots
 
@@ -245,16 +245,18 @@ interface ChatContact {
 
 :::
 
-## 🔄 未来规划
+## � 更新日志
 
-- [ ] 语音消息支持
-- [ ] 消息引用 / 回复
-- [ ] 表情面板（Emoji Picker）
-- [ ] 消息撤回
-- [ ] 虚拟滚动（万级消息列表）
+### v1.0.0
+
+- ✨ 新增 `C_Chat` 聊天面板组件
+- ✨ 支持多消息类型（文本、图片、文件、系统）
+- ✨ 支持时间分组与无限滚动加载
 
 ## 📚 相关资源
 
 - [演示页面源码](../../views/demo/49-chat/index.vue)
 
 <!--@include: ./snippets/contribute.md -->
+
+**💡 提示**: 聊天面板组件适用于即时通讯、客服对话、团队协作等场景。支持多种消息类型和时间分组展示。如果遇到问题请先查看文档，或者在团队群里讨论。💬

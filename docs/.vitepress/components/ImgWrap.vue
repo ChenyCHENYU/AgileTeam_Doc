@@ -5,6 +5,7 @@
       :style="{ maxWidth: `${maxWidth}px` || '100%' }"
       :src="imgUrl"
       :alt="alt || 'Vue3'"
+      loading="lazy"
     />
      
     <p class="desc" v-if="alt">

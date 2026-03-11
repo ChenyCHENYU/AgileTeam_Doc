@@ -209,7 +209,7 @@ const handleSmartRange = (value) => {
 
 ### 暴露属性
 
-| 属性名             | 类型                            | 说明             |
+| 字段               | 类型                            | 说明             |
 | ------------------ | ------------------------------- | ---------------- |
 | **singleDate**     | `Ref<number \| null>`           | 单日期值         |
 | **singleDateTime** | `Ref<number \| null>`           | 单日期时间值     |

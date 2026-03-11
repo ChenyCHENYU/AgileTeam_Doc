@@ -151,7 +151,7 @@ npm install @robot-admin/naive-ui-components
 
 通过 ref 调用：
 
-| 属性/方法      | 类型                  | 说明                  |
+| 字段/方法      | 类型                  | 说明                  |
 | -------------- | --------------------- | --------------------- |
 | **reset**      | `() => void`          | 重置所有时间值为 null |
 | **startTime**  | `Ref<number \| null>` | 开始时间（可读写）    |

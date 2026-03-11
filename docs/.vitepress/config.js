@@ -13,8 +13,12 @@ export default defineConfig({
   cleanUrls: true,
   head,
 
-  // 忽略死链接检查（views/demo 目录不存在）
-  ignoreDeadLinks: true,
+  // 死链检测：仅忽略已知的外部链接和 demo 源码引用
+  ignoreDeadLinks: [
+    /^https:\/\/robotadmin\.cn/,
+    /\.\/snippets\//,
+    /\.\.\/\.\.\/views\/demo\//,
+  ],
 
   // 开启最后更新时间
   lastUpdated: true,

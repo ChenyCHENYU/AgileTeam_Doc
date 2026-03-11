@@ -68,26 +68,26 @@ const handleSocialLogin = (provider: string) => {
 />
 ```
 
-## API
+## 📖 API 文档
 
 ### Props
 
-| 属性              | 类型               | 默认值               | 说明               |
+| 参数              | 类型               | 默认值               | 说明               |
 | ----------------- | ------------------ | -------------------- | ------------------ |
-| `title`           | `string`           | `'欢迎回来'`         | 面板标题           |
-| `subtitle`        | `string`           | —                    | 副标题             |
-| `logoIcon`        | `string`           | —                    | Iconify 图标名     |
-| `features`        | `LoginFeatures`    | 全部 `true`          | 功能开关           |
-| `socialProviders` | `SocialProvider[]` | GitHub/微信/QQ       | 社交登录配置       |
-| `qrcodeUrl`       | `string`           | —                    | 扫码登录二维码地址 |
-| `storageKey`      | `string`           | `'c_login_remember'` | 记住密码的存储键名 |
-| `loading`         | `boolean`          | `false`              | 提交按钮加载状态   |
-| `defaultUsername` | `string`           | `''`                 | 默认用户名         |
-| `defaultPassword` | `string`           | `''`                 | 默认密码           |
+| **title**           | `string`           | `'欢迎回来'`         | 面板标题           |
+| **subtitle**        | `string`           | —                    | 副标题             |
+| **logoIcon**        | `string`           | —                    | Iconify 图标名     |
+| **features**        | `LoginFeatures`    | 全部 `true`          | 功能开关           |
+| **socialProviders** | `SocialProvider[]` | GitHub/微信/QQ       | 社交登录配置       |
+| **qrcodeUrl**       | `string`           | —                    | 扫码登录二维码地址 |
+| **storageKey**      | `string`           | `'c_login_remember'` | 记住密码的存储键名 |
+| **loading**         | `boolean`          | `false`              | 提交按钮加载状态   |
+| **defaultUsername** | `string`           | `''`                 | 默认用户名         |
+| **defaultPassword** | `string`           | `''`                 | 默认密码           |
 
 ### LoginFeatures
 
-| 属性             | 类型      | 默认值 | 说明       |
+| 字段             | 类型      | 默认值 | 说明       |
 | ---------------- | --------- | ------ | ---------- |
 | `passwordLogin`  | `boolean` | `true` | 密码登录   |
 | `captchaLogin`   | `boolean` | `true` | 验证码登录 |
@@ -102,14 +102,14 @@ const handleSocialLogin = (provider: string) => {
 
 | 事件                 | 参数                                                      | 说明           |
 | -------------------- | --------------------------------------------------------- | -------------- |
-| `submit`             | `PasswordFormData & { captchaToken?, captchaTimestamp? }` | 密码登录提交   |
-| `captcha-submit`     | `CaptchaFormData`                                         | 验证码登录提交 |
-| `send-code`          | `account: string`                                         | 请求发送验证码 |
-| `social-login`       | `provider: string`                                        | 社交登录点击   |
-| `forgot-password`    | —                                                         | 忘记密码点击   |
-| `qrcode-refresh`     | —                                                         | 刷新二维码     |
-| `register-submit`    | `RegisterFormData`                                        | 注册提交       |
-| `register-send-code` | `phone: string`                                           | 注册发送验证码 |
+| **submit**             | `PasswordFormData & { captchaToken?, captchaTimestamp? }` | 密码登录提交   |
+| **captcha-submit**     | `CaptchaFormData`                                         | 验证码登录提交 |
+| **send-code**          | `account: string`                                         | 请求发送验证码 |
+| **social-login**       | `provider: string`                                        | 社交登录点击   |
+| **forgot-password**    | —                                                         | 忘记密码点击   |
+| **qrcode-refresh**     | —                                                         | 刷新二维码     |
+| **register-submit**    | `RegisterFormData`                                        | 注册提交       |
+| **register-send-code** | `phone: string`                                           | 注册发送验证码 |
 
 ### Slots
 
@@ -156,3 +156,5 @@ interface SocialProvider {
 | `--c-login-title-size` | `24px`             | 标题字号   |
 
 <!--@include: ./snippets/contribute.md -->
+
+**💡 提示**: 登录组件提供完整的认证体验，支持密码登录、验证码登录、扫码登录和社交登录。如果遇到问题请先查看文档，或者在团队群里讨论。🔐

@@ -112,22 +112,22 @@ npm install @robot-admin/naive-ui-components
 
 :::
 
-## 📋 API
+## � API 文档
 
 ### Props
 
-| 属性                | 类型                   | 默认值    | 说明                     |
+| 参数                | 类型                   | 默认值    | 说明                     |
 | ------------------- | ---------------------- | --------- | ------------------------ |
-| `items`             | `AvatarItem[]`         | —         | **必填**，头像数据       |
-| `max`               | `number`               | `5`       | 最多显示数量             |
-| `size`              | `number`               | `40`      | 头像尺寸（px）           |
-| `overlap`           | `number`               | `-10`     | 堆叠偏移（负值表示重叠） |
-| `shape`             | `'circle' \| 'square'` | `'circle'`| 头像形状                 |
-| `showStatus`        | `boolean`              | `true`    | 是否显示状态指示点       |
-| `showTooltip`       | `boolean`              | `true`    | 是否显示悬浮提示         |
-| `clickable`         | `boolean`              | `false`   | 头像是否可点击           |
-| `overflowClickable` | `boolean`              | `true`    | +N 按钮是否可点击        |
-| `direction`         | `'ltr' \| 'rtl'`      | `'ltr'`   | 排列方向                 |
+| **items**             | `AvatarItem[]`         | —         | **必填**，头像数据       |
+| **max**               | `number`               | `5`       | 最多显示数量             |
+| **size**              | `number`               | `40`      | 头像尺寸（px）           |
+| **overlap**           | `number`               | `-10`     | 堆叠偏移（负值表示重叠） |
+| **shape**             | `'circle' \| 'square'` | `'circle'`| 头像形状                 |
+| **showStatus**        | `boolean`              | `true`    | 是否显示状态指示点       |
+| **showTooltip**       | `boolean`              | `true`    | 是否显示悬浮提示         |
+| **clickable**         | `boolean`              | `false`   | 头像是否可点击           |
+| **overflowClickable** | `boolean`              | `true`    | +N 按钮是否可点击        |
+| **direction**         | `'ltr' \| 'rtl'`      | `'ltr'`   | 排列方向                 |
 
 ### AvatarItem
 
@@ -143,8 +143,8 @@ npm install @robot-admin/naive-ui-components
 
 | 事件            | 参数             | 说明             |
 | --------------- | ---------------- | ---------------- |
-| `itemClick`     | `(item: AvatarItem)` | 点击某个头像     |
-| `overflowClick` | `(items: AvatarItem[])` | 点击 +N 溢出按钮 |
+| **itemClick**     | `(item: AvatarItem)` | 点击某个头像     |
+| **overflowClick** | `(items: AvatarItem[])` | 点击 +N 溢出按钮 |
 
 ### 类型定义
 
@@ -204,16 +204,18 @@ interface AvatarGroupProps {
 
 :::
 
-## 🔄 未来规划
+## � 更新日志
 
-- [ ] 自定义状态颜色 prop
-- [ ] 头像 `#avatar` 作用域插槽
-- [ ] +N `#overflow` 自定义插槽
-- [ ] 动画入场效果
-- [ ] 响应式 `max`（根据容器宽度自动计算）
+### v1.0.0
+
+- ✨ 新增 `C_AvatarGroup` 头像组组件
+- ✨ 支持堆叠布局、状态指示点
+- ✨ 支持首字母回退与随机背景色
 
 ## 📚 相关资源
 
 - [演示页面源码](../../views/demo/53-avatar-group/index.vue)
 
 <!--@include: ./snippets/contribute.md -->
+
+**💡 提示**: 头像组组件适用于成员展示、团队列表、评论头像等场景。组件内置首字母回退和随机背景色，无需额外处理头像缺失。如果遇到问题请先查看文档，或者在团队群里讨论。👥

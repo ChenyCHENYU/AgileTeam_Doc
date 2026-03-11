@@ -233,31 +233,31 @@ npm install vue-cropper@next
 
 ### Props
 
-| 属性                | 类型                          | 默认值       | 说明                               |
+| 参数                | 类型                          | 默认值       | 说明                               |
 | ------------------- | ----------------------------- | ------------ | ---------------------------------- |
-| `src`               | `string`                      | `''`         | 图片源（URL / base64）             |
-| `aspect-ratio`      | `number`                      | `0`          | 裁剪比例，0 = 自由裁剪            |
-| `output-format`     | `'png' \| 'jpeg' \| 'webp'`  | `'png'`      | 输出图片格式                       |
-| `output-quality`    | `number`                      | `0.92`       | JPEG/WebP 输出质量（0~1）          |
-| `max-output-width`  | `number`                      | `0`          | 输出最大宽度 px，0 = 不限          |
-| `max-output-height` | `number`                      | `0`          | 输出最大高度 px，0 = 不限          |
-| `show-preview`      | `boolean`                     | `true`       | 显示右侧预览面板                   |
-| `show-toolbar`      | `boolean`                     | `true`       | 显示工具栏（比例/旋转/翻转/缩放） |
-| `circular`          | `boolean`                     | `false`      | 圆形裁剪遮罩                       |
-| `disabled`          | `boolean`                     | `false`      | 禁用编辑                           |
-| `height`            | `string \| number`            | `'400px'`    | 容器高度                           |
-| `modal`             | `boolean`                     | `false`      | 弹窗模式                           |
-| `modal-title`       | `string`                      | `'图片裁剪'` | 弹窗标题                           |
+| **src**               | `string`                      | `''`         | 图片源（URL / base64）             |
+| **aspect-ratio**      | `number`                      | `0`          | 裁剪比例，0 = 自由裁剪            |
+| **output-format**     | `'png' \| 'jpeg' \| 'webp'`  | `'png'`      | 输出图片格式                       |
+| **output-quality**    | `number`                      | `0.92`       | JPEG/WebP 输出质量（0~1）          |
+| **max-output-width**  | `number`                      | `0`          | 输出最大宽度 px，0 = 不限          |
+| **max-output-height** | `number`                      | `0`          | 输出最大高度 px，0 = 不限          |
+| **show-preview**      | `boolean`                     | `true`       | 显示右侧预览面板                   |
+| **show-toolbar**      | `boolean`                     | `true`       | 显示工具栏（比例/旋转/翻转/缩放） |
+| **circular**          | `boolean`                     | `false`      | 圆形裁剪遮罩                       |
+| **disabled**          | `boolean`                     | `false`      | 禁用编辑                           |
+| **height**            | `string \| number`            | `'400px'`    | 容器高度                           |
+| **modal**             | `boolean`                     | `false`      | 弹窗模式                           |
+| **modal-title**       | `string`                      | `'图片裁剪'` | 弹窗标题                           |
 
 ### Events
 
 | 事件      | 参数                      | 说明                     |
 | --------- | ------------------------- | ------------------------ |
-| `crop`    | `(result: CropResult)`    | 裁剪完成（内联 & 弹窗） |
-| `ready`   | `()`                      | 图片加载完成             |
-| `error`   | `(error: Event)`          | 图片加载失败             |
-| `confirm` | `(result: CropResult)`    | 弹窗「确认裁剪」点击    |
-| `cancel`  | `()`                      | 弹窗「取消」点击         |
+| **crop**    | `(result: CropResult)`    | 裁剪完成（内联 & 弹窗） |
+| **ready**   | `()`                      | 图片加载完成             |
+| **error**   | `(error: Event)`          | 图片加载失败             |
+| **confirm** | `(result: CropResult)`    | 弹窗「确认裁剪」点击    |
+| **cancel**  | `()`                      | 弹窗「取消」点击         |
 
 ### Expose
 
@@ -488,3 +488,7 @@ composables/ImageCropper/
 - 圆形裁剪遮罩
 - 亮色/暗色主题适配
 - File / URL / base64 多种图片加载方式
+
+<!--@include: ./snippets/contribute.md -->
+
+**💡 提示**: 图片裁剪组件适用于头像上传、证件照处理、图片编辑等场景。支持多种输出格式和质量控制。如果遇到问题请先查看文档，或者在团队群里讨论。🖼️

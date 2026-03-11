@@ -119,16 +119,16 @@ pnpm install naive-ui mammoth xlsx
 </template>
 ```
 
-## 📋 API
+## � API 文档
 
 ### Props
 
-| 属性          | 类型      | 默认值       | 说明                               |
+| 参数          | 类型      | 默认值       | 说明                               |
 | ------------- | --------- | ------------ | ---------------------------------- |
-| `file`        | `File`    | —            | 直接传入的 File 对象               |
-| `url`         | `string`  | —            | 远程文件 URL（与 `file` 二选一）   |
-| `fileName`    | `string`  | `'未知文件'` | 显示的文件名（用于类型检测和展示） |
-| `autoPreview` | `boolean` | `false`      | 是否跳过文件卡片直接打开预览       |
+| **file**        | `File`    | —            | 直接传入的 File 对象               |
+| **url**         | `string`  | —            | 远程文件 URL（与 `file` 二选一）   |
+| **fileName**    | `string`  | `'未知文件'` | 显示的文件名（用于类型检测和展示） |
+| **autoPreview** | `boolean` | `false`      | 是否跳过文件卡片直接打开预览       |
 
 > `file` 和 `url` 至少传入一个。当同时提供时，优先使用 `file`。
 
@@ -136,8 +136,8 @@ pnpm install naive-ui mammoth xlsx
 
 | 事件       | 参数                     | 说明                               |
 | ---------- | ------------------------ | ---------------------------------- |
-| `preview`  | `(file: File \| string)` | 预览打开时触发，参数为 File 或 URL |
-| `download` | `(file: File \| string)` | 下载触发，参数为 File 或 URL       |
+| **preview**  | `(file: File \| string)` | 预览打开时触发，参数为 File 或 URL |
+| **download** | `(file: File \| string)` | 下载触发，参数为 File 或 URL       |
 
 ### 支持的文件格式
 
@@ -525,3 +525,7 @@ interface ExcelLoadResult {
 - 支持 PDF / Word / Excel 三种格式预览
 - 文件信息卡片 + 模态框预览
 - 基础全屏支持
+
+<!--@include: ./snippets/contribute.md -->
+
+**💡 提示**: 文件预览组件支持 PDF、Word、Excel 等常见格式的在线预览。适用于文档管理、审批流程等场景。如果遇到问题请先查看文档，或者在团队群里讨论。📄

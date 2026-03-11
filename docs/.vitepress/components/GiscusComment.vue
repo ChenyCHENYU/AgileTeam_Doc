@@ -1,6 +1,6 @@
 <template>
-  <div class="giscus-comment">
-    <div class="giscus-wrapper">
+  <div ref="commentRef" class="giscus-comment">
+    <div v-if="visible" class="giscus-wrapper">
       <div class="giscus-header">
         <div class="giscus-title">
           <span class="title-icon">💬</span>
@@ -31,7 +31,7 @@
 </template>
 
 <script setup>
-import { computed, watch } from "vue";
+import { computed, watch, ref, onMounted, onUnmounted } from "vue";
 import { useData } from "vitepress";
 import Giscus from "@giscus/vue";
 
@@ -90,6 +90,30 @@ const config = {
   lang: "zh-CN",
   loading: "lazy",
 };
+
+// 懒加载：进入视口后才渲染 Giscus iframe
+const commentRef = ref();
+const visible = ref(false);
+let observer = null;
+
+onMounted(() => {
+  if (!commentRef.value) return;
+  observer = new IntersectionObserver(
+    ([entry]) => {
+      if (entry.isIntersecting) {
+        visible.value = true;
+        observer.disconnect();
+        observer = null;
+      }
+    },
+    { rootMargin: "200px" },
+  );
+  observer.observe(commentRef.value);
+});
+
+onUnmounted(() => {
+  observer?.disconnect();
+});
 
 // 监听主题变化，强制重新渲染Giscus组件
 watch(currentTheme, (newTheme) => {

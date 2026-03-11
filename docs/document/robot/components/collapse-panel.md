@@ -215,24 +215,24 @@ npm install @robot-admin/naive-ui-components
 
 :::
 
-## 📋 API
+## � API 文档
 
 ### Props
 
-| 属性                 | 类型                             | 默认值      | 说明                        |
+| 参数                 | 类型                             | 默认值      | 说明                        |
 | -------------------- | -------------------------------- | ----------- | --------------------------- |
-| `items`              | `CollapsePanelItem[]`            | —           | **必填**，面板项配置数组    |
-| `activeKeys`         | `string[]`                       | —           | 当前展开面板 key（v-model） |
-| `defaultActiveKeys`  | `string[]`                       | `[]`        | 默认展开的面板 key          |
-| `accordion`          | `boolean`                        | `false`     | 手风琴模式                  |
-| `variant`            | `'default' \| 'card' \| 'ghost'` | `'default'` | 样式变体                    |
-| `expandIconPosition` | `'left' \| 'right'`              | `'left'`    | 展开图标位置                |
-| `bordered`           | `boolean`                        | `true`      | 是否显示边框                |
-| `persistKey`         | `string`                         | —           | localStorage 持久化 key     |
+| **items**              | `CollapsePanelItem[]`            | —           | **必填**，面板项配置数组    |
+| **activeKeys**         | `string[]`                       | —           | 当前展开面板 key（v-model） |
+| **defaultActiveKeys**  | `string[]`                       | `[]`        | 默认展开的面板 key          |
+| **accordion**          | `boolean`                        | `false`     | 手风琴模式                  |
+| **variant**            | `'default' \| 'card' \| 'ghost'` | `'default'` | 样式变体                    |
+| **expandIconPosition** | `'left' \| 'right'`              | `'left'`    | 展开图标位置                |
+| **bordered**           | `boolean`                        | `true`      | 是否显示边框                |
+| **persistKey**         | `string`                         | —           | localStorage 持久化 key     |
 
 ### CollapsePanelItem
 
-| 属性                | 类型      | 默认值  | 说明                         |
+| 字段                | 类型      | 默认值  | 说明                         |
 | ------------------- | --------- | ------- | ---------------------------- |
 | `key`               | `string`  | —       | **必填**，面板唯一标识       |
 | `title`             | `string`  | —       | **必填**，面板标题           |
@@ -246,10 +246,10 @@ npm install @robot-admin/naive-ui-components
 
 | 事件                | 参数                     | 说明                         |
 | ------------------- | ------------------------ | ---------------------------- |
-| `update:activeKeys` | `(keys: string[])`       | 展开面板变化（支持 v-model） |
-| `expand`            | `(key: string)`          | 单个面板展开                 |
-| `collapse`          | `(key: string)`          | 单个面板折叠                 |
-| `change`            | `(activeKeys: string[])` | 任意变化                     |
+| **update:activeKeys** | `(keys: string[])`       | 展开面板变化（支持 v-model） |
+| **expand**            | `(key: string)`          | 单个面板展开                 |
+| **collapse**          | `(key: string)`          | 单个面板折叠                 |
+| **change**            | `(activeKeys: string[])` | 任意变化                     |
 
 ### Slots
 
@@ -319,13 +319,13 @@ interface CollapsePanelItem {
 
 :::
 
-## 🔄 未来规划
+## � 更新日志
 
-- [ ] 面板拖拽排序
-- [ ] 嵌套折叠（缩进层级）
-- [ ] 动画方向选项（slide / fade / none）
-- [ ] 面板分组功能
-- [ ] 虚拟滚动（超大量面板场景）
+### v1.0.0
+
+- ✨ 新增 `C_CollapsePanel` 折叠面板组件
+- ✨ 支持手风琴模式与自定义面板内容
+- ✨ 支持动态增删面板与独立折叠控制
 
 ## 📚 相关资源
 
@@ -334,3 +334,5 @@ interface CollapsePanelItem {
 - [演示页面源码](../../views/demo/44-collapse-panel/index.vue)
 
 <!--@include: ./snippets/contribute.md -->
+
+**💡 提示**: 折叠面板组件适用于 FAQ、配置面板、内容分组等场景。支持手风琴模式和持久化展开状态。如果遇到问题请先查看文档，或者在团队群里讨论。📂

@@ -98,23 +98,23 @@ const dataSource = [
 
 :::
 
-## 📋 API
+## � API 文档
 
 ### Props
 
-| 属性                | 类型                                           | 默认值                    | 说明               |
+| 参数                | 类型                                           | 默认值                    | 说明               |
 | ------------------- | ---------------------------------------------- | ------------------------- | ------------------ |
-| `data`              | `TransferItem[]`                               | —                         | **必填**，数据源   |
-| `modelValue`        | `(string \| number)[]`                         | —                         | 右侧已选 key 列表 |
-| `titles`            | `[string, string]`                             | `['可选列表', '已选列表']` | 左右栏标题        |
-| `filterable`        | `boolean`                                      | `false`                   | 是否可搜索         |
-| `filterPlaceholder` | `string`                                       | `'搜索...'`               | 搜索占位           |
-| `filterMethod`      | `(query: string, item: TransferItem) => boolean` | 按 label 匹配           | 自定义筛选         |
-| `showSelectAll`     | `boolean`                                      | `true`                    | 是否显示全选       |
-| `sortable`          | `boolean`                                      | `false`                   | 右侧可拖拽排序     |
-| `sourceEmptyText`   | `string`                                       | `'暂无数据'`              | 左侧空状态描述     |
-| `targetEmptyText`   | `string`                                       | `'未选择任何项'`          | 右侧空状态描述     |
-| `size`              | `'small' \| 'medium' \| 'large'`               | `'medium'`                | 尺寸               |
+| **data**              | `TransferItem[]`                               | —                         | **必填**，数据源   |
+| **modelValue**        | `(string \| number)[]`                         | —                         | 右侧已选 key 列表 |
+| **titles**            | `[string, string]`                             | `['可选列表', '已选列表']` | 左右栏标题        |
+| **filterable**        | `boolean`                                      | `false`                   | 是否可搜索         |
+| **filterPlaceholder** | `string`                                       | `'搜索...'`               | 搜索占位           |
+| **filterMethod**      | `(query: string, item: TransferItem) => boolean` | 按 label 匹配           | 自定义筛选         |
+| **showSelectAll**     | `boolean`                                      | `true`                    | 是否显示全选       |
+| **sortable**          | `boolean`                                      | `false`                   | 右侧可拖拽排序     |
+| **sourceEmptyText**   | `string`                                       | `'暂无数据'`              | 左侧空状态描述     |
+| **targetEmptyText**   | `string`                                       | `'未选择任何项'`          | 右侧空状态描述     |
+| **size**              | `'small' \| 'medium' \| 'large'`               | `'medium'`                | 尺寸               |
 
 ### TransferItem
 
@@ -131,8 +131,8 @@ const dataSource = [
 
 | 事件                | 参数                                 | 说明          |
 | ------------------- | ------------------------------------ | ------------- |
-| `update:modelValue` | `(keys: (string \| number)[])`       | 已选 key 变化 |
-| `change`            | `(targetKeys, direction, moveKeys)`  | 穿梭操作回调  |
+| **update:modelValue** | `(keys: (string \| number)[])`       | 已选 key 变化 |
+| **change**            | `(targetKeys, direction, moveKeys)`  | 穿梭操作回调  |
 
 ### 类型定义
 
@@ -182,15 +182,18 @@ interface TransferProps {
 
 :::
 
-## 🔄 未来规划
+## � 更新日志
 
-- [ ] 右侧拖拽排序
-- [ ] 树形数据源
-- [ ] 虚拟滚动（万级数据）
-- [ ] 分页模式
+### v1.0.0
+
+- ✨ 新增 `C_Transfer` 穿梭框组件
+- ✨ 支持搜索过滤、全选、批量移动
+- ✨ 支持自定义渲染与禁用项
 
 ## 📚 相关资源
 
 - [演示页面源码](../../views/demo/52-transfer/index.vue)
 
 <!--@include: ./snippets/contribute.md -->
+
+**💡 提示**: 穿梭框组件适用于权限分配、标签选择、数据迁移等需要双列表操作的场景。如果遇到问题请先查看文档，或者在团队群里讨论。🔄

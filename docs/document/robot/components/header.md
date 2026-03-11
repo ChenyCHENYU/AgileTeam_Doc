@@ -62,7 +62,7 @@ const themeStore = useThemeStore()
 
 ### Props
 
-| 属性 | 类型 | 默认值 | 说明 |
+| 参数 | 类型 | 默认值 | 说明 |
 | --- | --- | --- | --- |
 | **isLightTheme** | `boolean` | `true` | 是否为亮色主题 |
 

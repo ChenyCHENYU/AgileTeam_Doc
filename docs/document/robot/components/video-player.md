@@ -306,39 +306,39 @@ function extendPlayer() {
 
 ### Props
 
-| 属性                  | 类型                                    | 默认值                                    | 说明                    |
+| 参数                  | 类型                                    | 默认值                                    | 说明                    |
 | --------------------- | --------------------------------------- | ----------------------------------------- | ----------------------- |
-| `url`                 | `string`                                | —                                         | **必填**，视频源地址    |
-| `sourceType`          | `'mp4' \| 'hls' \| 'dash' \| 'flv'`    | 自动检测                                  | 视频源类型              |
-| `width`               | `number \| string`                      | `'100%'`                                  | 播放器宽度              |
-| `height`              | `number \| string`                      | `'100%'`                                  | 播放器高度              |
-| `poster`              | `string`                                | —                                         | 封面图地址              |
-| `fluid`               | `boolean`                               | `false`                                   | 是否自适应容器宽度      |
-| `autoplay`            | `boolean`                               | `false`                                   | 是否自动播放            |
-| `autoplayMuted`       | `boolean`                               | `false`                                   | 是否自动静音播放        |
-| `loop`                | `boolean`                               | `false`                                   | 是否循环播放            |
-| `volume`              | `number`                                | `0.75`                                    | 初始音量 0-1            |
-| `startTime`           | `number`                                | `0`                                       | 起始播放时间（秒）      |
-| `playbackRates`       | `PlaybackRate[]`                        | `[0.5, 0.75, 1.0, 1.25, 1.5, 2.0, 3.0]` | 倍速列表                |
-| `defaultPlaybackRate` | `PlaybackRate`                          | `1.0`                                     | 默认倍速                |
-| `pip`                 | `boolean`                               | `true`                                    | 是否开启画中画          |
-| `fullscreen`          | `boolean`                               | `true`                                    | 是否开启全屏            |
-| `cssFullscreen`       | `boolean`                               | `true`                                    | 是否开启网页全屏        |
-| `miniPlayer`          | `boolean`                               | `false`                                   | 是否开启小窗播放        |
-| `screenshot`          | `boolean`                               | `false`                                   | 是否显示截图按钮        |
-| `keyboard`            | `boolean`                               | `true`                                    | 是否开启快捷键          |
-| `lang`                | `string`                                | `'zh-cn'`                                 | 语言                    |
-| `qualityList`         | `QualityDefinition[]`                   | —                                         | 清晰度列表              |
-| `defaultQuality`      | `QualityLevel`                          | —                                         | 默认清晰度              |
-| `chapters`            | `Chapter[]`                             | —                                         | 章节列表                |
-| `subtitles`           | `SubtitleTrack[]`                       | —                                         | 字幕轨道列表            |
-| `quizzes`             | `VideoQuiz[]`                           | —                                         | 视频内测验列表          |
-| `bookmarks`           | `Bookmark[]`                            | —                                         | 初始书签列表            |
-| `thumbnail`           | `ThumbnailConfig`                       | —                                         | 缩略图预览配置          |
-| `onProgress`          | `ProgressReporter`                      | —                                         | 进度上报回调            |
-| `antiCheat`           | `AntiCheatConfig`                       | —                                         | 防作弊配置              |
-| `onAnalytics`         | `AnalyticsReporter`                     | —                                         | 数据分析上报回调        |
-| `playerOptions`       | `Partial<IPlayerOptions>`               | —                                         | xgplayer 原生配置透传   |
+| **url**                 | `string`                                | —                                         | **必填**，视频源地址    |
+| **sourceType**          | `'mp4' \| 'hls' \| 'dash' \| 'flv'`    | 自动检测                                  | 视频源类型              |
+| **width**               | `number \| string`                      | `'100%'`                                  | 播放器宽度              |
+| **height**              | `number \| string`                      | `'100%'`                                  | 播放器高度              |
+| **poster**              | `string`                                | —                                         | 封面图地址              |
+| **fluid**               | `boolean`                               | `false`                                   | 是否自适应容器宽度      |
+| **autoplay**            | `boolean`                               | `false`                                   | 是否自动播放            |
+| **autoplayMuted**       | `boolean`                               | `false`                                   | 是否自动静音播放        |
+| **loop**                | `boolean`                               | `false`                                   | 是否循环播放            |
+| **volume**              | `number`                                | `0.75`                                    | 初始音量 0-1            |
+| **startTime**           | `number`                                | `0`                                       | 起始播放时间（秒）      |
+| **playbackRates**       | `PlaybackRate[]`                        | `[0.5, 0.75, 1.0, 1.25, 1.5, 2.0, 3.0]` | 倍速列表                |
+| **defaultPlaybackRate** | `PlaybackRate`                          | `1.0`                                     | 默认倍速                |
+| **pip**                 | `boolean`                               | `true`                                    | 是否开启画中画          |
+| **fullscreen**          | `boolean`                               | `true`                                    | 是否开启全屏            |
+| **cssFullscreen**       | `boolean`                               | `true`                                    | 是否开启网页全屏        |
+| **miniPlayer**          | `boolean`                               | `false`                                   | 是否开启小窗播放        |
+| **screenshot**          | `boolean`                               | `false`                                   | 是否显示截图按钮        |
+| **keyboard**            | `boolean`                               | `true`                                    | 是否开启快捷键          |
+| **lang**                | `string`                                | `'zh-cn'`                                 | 语言                    |
+| **qualityList**         | `QualityDefinition[]`                   | —                                         | 清晰度列表              |
+| **defaultQuality**      | `QualityLevel`                          | —                                         | 默认清晰度              |
+| **chapters**            | `Chapter[]`                             | —                                         | 章节列表                |
+| **subtitles**           | `SubtitleTrack[]`                       | —                                         | 字幕轨道列表            |
+| **quizzes**             | `VideoQuiz[]`                           | —                                         | 视频内测验列表          |
+| **bookmarks**           | `Bookmark[]`                            | —                                         | 初始书签列表            |
+| **thumbnail**           | `ThumbnailConfig`                       | —                                         | 缩略图预览配置          |
+| **onProgress**          | `ProgressReporter`                      | —                                         | 进度上报回调            |
+| **antiCheat**           | `AntiCheatConfig`                       | —                                         | 防作弊配置              |
+| **onAnalytics**         | `AnalyticsReporter`                     | —                                         | 数据分析上报回调        |
+| **playerOptions**       | `Partial<IPlayerOptions>`               | —                                         | xgplayer 原生配置透传   |
 
 ### AntiCheatConfig 配置项
 
@@ -355,18 +355,18 @@ function extendPlayer() {
 
 | 事件名             | 参数                                                                 | 说明             |
 | ------------------ | -------------------------------------------------------------------- | ---------------- |
-| `ready`            | —                                                                    | 播放器就绪       |
-| `stateChange`      | `(state: PlayerState)`                                               | 播放状态变化     |
-| `timeUpdate`       | `(currentTime: number, duration: number)`                            | 播放时间更新     |
-| `ended`            | —                                                                    | 播放结束         |
-| `error`            | `(error: Error)`                                                     | 播放错误         |
-| `qualityChange`    | `(quality: QualityLevel)`                                            | 清晰度切换       |
-| `rateChange`       | `(rate: number)`                                                     | 倍速切换         |
-| `fullscreenChange` | `(isFullscreen: boolean)`                                            | 全屏状态变化     |
-| `bookmarkChange`   | `(bookmarks: Bookmark[])`                                            | 书签变化         |
-| `quizAnswer`       | `(quizId: string, answer: string \| string[], isCorrect: boolean)`   | 测验作答         |
-| `chapterChange`    | `(chapter: Chapter)`                                                 | 章节切换         |
-| `progressUpdate`   | `(data: ProgressData)`                                               | 进度更新         |
+| **ready**            | —                                                                    | 播放器就绪       |
+| **stateChange**      | `(state: PlayerState)`                                               | 播放状态变化     |
+| **timeUpdate**       | `(currentTime: number, duration: number)`                            | 播放时间更新     |
+| **ended**            | —                                                                    | 播放结束         |
+| **error**            | `(error: Error)`                                                     | 播放错误         |
+| **qualityChange**    | `(quality: QualityLevel)`                                            | 清晰度切换       |
+| **rateChange**       | `(rate: number)`                                                     | 倍速切换         |
+| **fullscreenChange** | `(isFullscreen: boolean)`                                            | 全屏状态变化     |
+| **bookmarkChange**   | `(bookmarks: Bookmark[])`                                            | 书签变化         |
+| **quizAnswer**       | `(quizId: string, answer: string \| string[], isCorrect: boolean)`   | 测验作答         |
+| **chapterChange**    | `(chapter: Chapter)`                                                 | 章节切换         |
+| **progressUpdate**   | `(data: ProgressData)`                                               | 进度更新         |
 
 ### Expose（ref 调用）
 
@@ -537,15 +537,13 @@ function extendPlayer() {
 
 :::
 
-## 🔄 未来规划
+## � 更新日志
 
-- [ ] DASH 协议完整支持
-- [ ] FLV 直播流支持
-- [ ] 弹幕互动功能
-- [ ] AI 字幕自动生成
-- [ ] DRM 加密播放
-- [ ] 移动端手势操作（左右滑快进、上下滑音量/亮度）
-- [ ] 独立 NPM 包发布 `@robot-admin/video-player`
+### v1.0.0
+
+- ✨ 新增 `C_VideoPlayer` 视频播放器组件
+- ✨ 支持 HLS 流媒体协议
+- ✨ 支持字幕、画中画、快捷键操作
 
 ## 📚 相关资源
 
@@ -554,3 +552,5 @@ function extendPlayer() {
 - [xgplayer 官方文档](https://h5player.bytedance.com/)
 
 <!--@include: ./snippets/contribute.md -->
+
+**💡 提示**: 视频播放器组件基于 xgplayer 构建，支持 HLS 流媒体协议。适用于视频教程、直播回放、媒体展示等场景。如果遇到问题请先查看文档，或者在团队群里讨论。🎬
