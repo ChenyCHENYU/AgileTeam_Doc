@@ -19,10 +19,17 @@ outline: 'deep'
 - **✅ 行选择**: 支持单选、多选、父子关联选择（strict/loose）、子表格选择
 - **⚡ 动态行操作**: 内置添加、插入、删除、复制、上移、下移，配套打印/截图/水印
 - **🎨 内置操作栏**: 自带详情、编辑、删除按钮（二元法则：`false` 禁用 / 函数即 API），支持自定义操作
-- **🛡️ 表单验证**: 列级验证规则集成，模态框编辑自动生成 `C_Form` 表单
-- **📊 打印导出**: 支持 Canvas/SVG 水印、打印预设（table/form/report）、截图下载
-- **🔧 列设置面板**: 列搜索、可见性、拖拽排序、固定列、列宽调整、一键重置
+- **🛡️ 表单验证**: 列级验证规则集成，行编辑/单元格编辑均支持 `editProps.rules` 校验
+- **📊 打印导出**: 支持 Canvas/SVG 水印、打印预设（table/form/report）、截图下载、CSV/XLSX 数据导出
+- **🔧 列设置面板**: 列搜索、可见性、拖拽排序、固定列、列宽调整、一键重置、localStorage 持久化
 - **🚀 CRUD 模式**: `useTableCrud` + `<C_Table :crud="table" />` 一行代码搞定 CRUD
+- **🌲 树形表格**: 原生 NDataTable 树形集成，配置 `tree` 即可展示层级数据
+- **🔀 行拖拽排序**: sortablejs 驱动的行级拖拽排序
+- **📋 跨页多选**: 分页切换时保留选中状态，Set 驱动高性能
+- **🏷️ 全局格式化器**: 内置 date/datetime/currency/percent/number/enum 格式化引擎，列级 `formatter` 配置
+- **🌐 全局配置**: provide/inject 机制，统一默认 display/分页/格式化配置
+- **⚠️ 错误状态**: 内置错误态 UI + 重试回调 + 自定义 slot
+- **🗂️ 批量操作**: 选中行后弹出批量操作栏，支持自定义批量操作按钮
 - **💪 TypeScript**: 完整的泛型类型定义和类型安全
 - **⚡ 高性能**: Composable 拆分的状态管理器，按需计算和渲染
 
@@ -59,15 +66,19 @@ C_Table/index.vue ──── 薄 UI 壳（模板 + 事件桥接）
   │
   ├── useTableConfig     ← 配置解析（resolveConfig）
   ├── useTableManager    ← 统一状态管理器
-  │    ├── useRowEdit    ← 行编辑
-  │    ├── useCellEdit   ← 单元格编辑
+  │    ├── useRowEdit    ← 行编辑（含校验）
+  │    ├── useCellEdit   ← 单元格编辑（含校验）
   │    ├── useModalEdit  ← 模态框编辑
   │    ├── useTableExpand ← 展开 + 选择
   │    └── useDynamicRow  ← 动态行操作
-  ├── useTableColumns    ← 列处理引擎
+  ├── useTableColumns    ← 列处理引擎（含 formatter 渲染）
   ├── useTableActions    ← 操作按钮渲染
   ├── usePagination      ← 分页逻辑
-  └── ColumnSettings     ← 列设置面板
+  ├── useTableGlobalConfig ← 全局配置 provide/inject + 格式化引擎
+  ├── useRowDrag         ← 行拖拽排序（sortablejs）
+  ├── useCrossPageSelection ← 跨页多选
+  ├── useTableExport     ← CSV/XLSX 导出
+  └── ColumnSettings     ← 列设置面板（含持久化）
 ```
 
 ## 🎯 快速开始
@@ -1230,7 +1241,236 @@ const columns = [
 </script>
 ```
 
+## 🆕 v0.7.0 新增功能
+
+### 全局配置
+
+通过 `provide` 注入全局默认配置，所有 `C_Table` 实例自动继承：
+
+```vue
+<!-- App.vue 或 Layout 组件 -->
+<script setup>
+  import { provide } from 'vue'
+  import { TABLE_GLOBAL_CONFIG_KEY } from '@robot-admin/naive-ui-components'
+
+  provide(TABLE_GLOBAL_CONFIG_KEY, {
+    display: { striped: true, bordered: true, size: 'small' },
+    pageSize: 20,
+    formatter: {
+      currency: { prefix: '$', precision: 2 },
+      date: { format: 'YYYY/MM/DD' },
+    },
+    persistPrefix: 'myApp',
+  })
+</script>
+```
+
+### 列级格式化器
+
+在列配置中使用 `formatter` 自动格式化显示值：
+
+```ts
+const columns = [
+  { key: 'createdAt', title: '创建时间', formatter: { type: 'date' } },
+  { key: 'updatedAt', title: '更新时间', formatter: { type: 'datetime' } },
+  { key: 'amount', title: '金额', formatter: { type: 'currency' } },
+  { key: 'rate', title: '增长率', formatter: { type: 'percent' } },
+  { key: 'count', title: '数量', formatter: { type: 'number', config: { precision: 0 } } },
+  {
+    key: 'status',
+    title: '状态',
+    formatter: { type: 'enum', mapping: { active: '启用', disabled: '禁用' } },
+  },
+  {
+    key: 'custom',
+    title: '自定义',
+    formatter: { type: 'number', fn: (value, row) => `${value}/${row.total}` },
+  },
+]
+```
+
+### 树形表格
+
+```vue
+<C_Table
+  :columns="columns"
+  :data="treeData"
+  :config="{
+    tree: {
+      enabled: true,
+      childrenKey: 'children', // 默认
+      indent: 20,
+      defaultExpandAll: false,
+    },
+  }"
+/>
+```
+
+### 行拖拽排序
+
+```vue
+<C_Table
+  :columns="columns"
+  :data="data"
+  :config="{
+    rowDrag: {
+      enabled: true,
+      handleSelector: '.drag-handle', // 可选，不传则整行可拖
+      animationDuration: 150,
+    },
+  }"
+  @row-move="(row, from, to) => console.log('moved', row, from, to)"
+/>
+```
+
+### 跨页多选
+
+```vue
+<template>
+  <C_Table
+    ref="tableRef"
+    :columns="columns"
+    :data="data"
+    :config="{
+      selection: true,
+      crossPageSelection: { enabled: true, maxSelection: 100 },
+      pagination: { pageSize: 10 },
+    }"
+  />
+  <p>已选: {{ tableRef?.crossPageSelection?.selectedCount }}</p>
+</template>
+```
+
+### CSV/XLSX 导出
+
+工具栏自动出现导出按钮，也可通过 API 手动调用：
+
+```vue
+<template>
+  <C_Table
+    ref="tableRef"
+    :columns="columns"
+    :data="data"
+    :config="{
+      export: {
+        filename: '员工列表',
+        format: 'xlsx',       // 'csv' | 'xlsx'
+        includeHeader: true,
+      },
+    }"
+  />
+  <NButton @click="tableRef?.exportData()">手动导出</NButton>
+</template>
+```
+
+> 💡 XLSX 格式需安装 `xlsx` 依赖，未安装时自动降级为 CSV
+
+### 列配置持久化
+
+传入 `persistKey` 即可自动保存/恢复列的顺序、可见性、固定位置到 localStorage：
+
+```vue
+<C_Table
+  :columns="columns"
+  :data="data"
+  :config="{ persistKey: 'employee-table' }"
+/>
+```
+
+### 编辑校验
+
+行编辑和单元格编辑支持 `editProps.rules` 校验规则：
+
+```ts
+const columns = [
+  {
+    key: 'name',
+    title: '姓名',
+    editable: true,
+    editType: 'input',
+    editProps: {
+      rules: [
+        { required: true, message: '姓名不能为空' },
+        { validator: (rule, value, callback) => {
+            if (value.length < 2) throw new Error('至少2个字符')
+            callback()
+          }
+        },
+      ],
+    },
+  },
+]
+```
+
+### 错误状态
+
+```vue
+<C_Table
+  :columns="columns"
+  :data="data"
+  :config="{
+    error: {
+      show: hasError,
+      message: '数据加载失败，请检查网络',
+      onRetry: () => fetchData(),
+    },
+  }"
+>
+  <!-- 自定义错误 slot（可选） -->
+  <template #error="{ error }">
+    <MyCustomError :message="error.message" @retry="error.onRetry" />
+  </template>
+</C_Table>
+```
+
+### 批量操作
+
+选中行后自动显示批量操作栏：
+
+```vue
+<C_Table
+  :columns="columns"
+  :data="data"
+  :config="{
+    selection: true,
+    batchActions: {
+      enabled: true,
+      actions: [
+        {
+          key: 'delete',
+          label: '批量删除',
+          icon: 'mdi:delete',
+          type: 'error',
+          onClick: async (keys, rows) => {
+            await batchDelete(keys)
+          },
+        },
+        {
+          key: 'export',
+          label: '导出选中',
+          icon: 'mdi:download',
+          onClick: (keys, rows) => exportSelected(rows),
+        },
+      ],
+    },
+  }"
+/>
+```
+
 ## 📝 更新日志
+
+### v0.7.0 (2025-07)
+
+- ✨ 全局配置 `provide/inject` — `TABLE_GLOBAL_CONFIG_KEY` 统一默认 display/分页/格式化
+- ✨ 列级 `formatter` 引擎（date/datetime/currency/percent/number/enum + 自定义函数）
+- ✨ 树形表格 `config.tree` — 原生 NDataTable 树形集成
+- ✨ 行拖拽排序 `config.rowDrag` — sortablejs 驱动
+- ✨ 跨页多选 `config.crossPageSelection` — Set 驱动，分页切换保留选中
+- ✨ CSV/XLSX 导出 `config.export` — 工具栏一键导出 + `exportData()` API
+- ✨ 列配置持久化 `config.persistKey` — localStorage 自动保存/恢复列顺序和可见性
+- ✨ 行编辑/单元格编辑校验 — `editProps.rules` 支持 required + 自定义 validator
+- ✨ 错误状态 `config.error` — 内置错误态 UI + 重试回调 + `#error` slot
+- ✨ 批量操作 `config.batchActions` — 选中行后弹出操作栏
 
 ### v2.0.0 (2026-02)
 
