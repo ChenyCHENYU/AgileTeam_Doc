@@ -17,6 +17,14 @@ outline: 'deep'
 - **🧩 16种表单控件** — input、textarea、inputNumber、select、checkbox、radio、switch、slider、rate、datePicker、daterange、timePicker、cascader、colorPicker、upload、editor
 - **⚡ 统一 config 对象** — 单一 `config` prop 收拢原先 13 个分散 Props，配置清晰、维护简单
 - **🛡️ 多层级验证** — 全量 / 字段级 / 步骤级 / 标签页级 / 动态字段 / 分组级验证
+- **🔗 跨字段校验** — `crossFieldValidator` 声明式跨字段验证（如密码确认、日期范围对比）
+- **📐 动态校验规则** — `rulesWhen` 根据表单状态动态返回验证规则
+- **🔄 联动赋值引擎** — `valueWhen` 自动根据其他字段值计算并回填当前字段
+- **🌐 异步选项加载** — `asyncOptions` 支持 select/cascader/radio/checkbox 远程数据源 + loading 状态
+- **🔒 字段级 disabled/readonly** — 支持函数式动态判断，粒度到单个字段
+- **💡 Help 提示** — 字段标签旁显示 ℹ️ 图标 + Tooltip 帮助信息
+- **✏️ 编辑模式** — `mode: "edit"` 配合 `initialValues` 自动回填 + 脏检查
+- **🧹 脏检查系统** — `isDirty` / `isFieldDirty` / `getChangedFields` / `markAsClean` 完整追踪
 - **🎨 灵活的插槽系统** — `action` 插槽暴露 validate/reset/model 等全量 API
 - **📱 响应式设计** — Grid 栅格自适应、Inline 自动换行
 - **🔄 动态字段管理** — 运行时增删、切换可见性、配置导出
@@ -247,6 +255,8 @@ interface FormConfig extends LayoutCallbacks {
   readonly?: boolean // 默认 false
   showActions?: boolean // 默认 true
   validateOnChange?: boolean // 默认 false
+  mode?: 'create' | 'edit' // 默认 'create'（编辑模式配合 initialValues）
+  initialValues?: Record<string, any> // 编辑模式回填初始值
 
   // 布局级子配置（仅对应布局生效）
   grid?: GridLayoutConfig
@@ -390,6 +400,11 @@ interface LayoutCallbacks {
 | **getFieldValue**            | `(field: string) => any`                           | 获取单个字段值      |
 | **setFieldsValue**           | `(fields, shouldValidate?) => Promise<void>`       | 批量设置 + 可选验证 |
 | **initialize**               | `() => void`                                       | 手动重新初始化      |
+| **isDirty**                  | `Ref<boolean>`                                     | 表单是否已修改      |
+| **getChangedFields**         | `() => string[]`                                   | 获取变化字段列表    |
+| **isFieldDirty**             | `(field: string) => boolean`                       | 指定字段是否脏      |
+| **markAsClean**              | `() => void`                                       | 重置脏状态快照      |
+| **asyncLoadingMap**          | `Ref<Record<string, boolean>>`                     | 异步选项加载状态    |
 | **formRef**                  | `Ref<FormInst \| null>`                            | 原生 NForm 实例引用 |
 | **formModel**                | `reactive<FormModel>`                              | 响应式表单数据      |
 | **layoutType**               | `ComputedRef<LayoutType>`                          | 当前布局类型        |
@@ -489,10 +504,18 @@ interface FormOption {
   children?: OptionItem[] // select/checkbox/radio 的选项
   show?: boolean // false 时隐藏字段
   layout?: ItemLayoutConfig // 布局定位
-  help?: string // 帮助文本
+  help?: string // ℹ️ 标签旁 Tooltip 帮助文本
   required?: boolean // 是否必填
   dependsOn?: string | string[] // 依赖字段
-  showWhen?: (formModel: Record<string, any>) => boolean // 条件显示
+  showWhen?: (model: FormModel) => boolean // 条件显示
+
+  /* v0.8.0 新增 */
+  disabled?: boolean | ((model: FormModel) => boolean) // 字段级禁用
+  readonly?: boolean | ((model: FormModel) => boolean) // 字段级只读
+  valueWhen?: (model: FormModel) => any // 联动赋值（依赖其他字段计算）
+  asyncOptions?: (model: FormModel) => Promise<OptionItem[]> // 异步选项
+  rulesWhen?: (model: FormModel) => FieldRule[] // 动态校验规则
+  crossFieldValidator?: (model: FormModel) => string | undefined // 跨字段校验
 }
 ```
 
@@ -1341,6 +1364,108 @@ interface StepConfig {
 
 :::
 
+::: details ✏️ v0.8.0 新能力示例 — 编辑模式 + 脏检查 + 联动 + 异步选项 + 跨字段校验
+
+```vue
+<template>
+  <C_Form
+    ref="formRef"
+    :options="formOptions"
+    :config="formConfig"
+    @submit="handleSubmit"
+  >
+    <template #action="{ validate, reset }">
+      <n-space>
+        <n-button type="primary" :disabled="!formRef?.isDirty" @click="validate">
+          保存修改 ({{ formRef?.getChangedFields().length ?? 0 }} 项变更)
+        </n-button>
+        <n-button @click="reset">重置</n-button>
+      </n-space>
+    </template>
+  </C_Form>
+</template>
+
+<script setup lang="ts">
+import { ref } from 'vue'
+import type { FormOption, FormConfig } from '@robot-admin/naive-ui-components'
+import { fetchCityList, fetchDetail } from '@/api/example'
+
+const formRef = ref()
+
+// 编辑模式配置 — initialValues 自动回填 + 脏检查
+const formConfig: FormConfig = {
+  mode: 'edit',
+  initialValues: { name: '张三', province: 'zj', city: 'hz' },
+  validateOnChange: true,
+}
+
+const formOptions: FormOption[] = [
+  {
+    type: 'input',
+    prop: 'name',
+    label: '姓名',
+    help: '请输入真实姓名，用于合同签署', // ℹ️ tooltip
+  },
+  {
+    type: 'input',
+    prop: 'password',
+    label: '密码',
+    attrs: { type: 'password' },
+  },
+  {
+    type: 'input',
+    prop: 'confirmPassword',
+    label: '确认密码',
+    attrs: { type: 'password' },
+    // 跨字段校验
+    crossFieldValidator: model =>
+      model.password !== model.confirmPassword ? '两次密码不一致' : undefined,
+  },
+  {
+    type: 'select',
+    prop: 'province',
+    label: '省份',
+    children: [
+      { label: '浙江', value: 'zj' },
+      { label: '江苏', value: 'js' },
+    ],
+  },
+  {
+    type: 'select',
+    prop: 'city',
+    label: '城市',
+    // 异步选项 — dependsOn 省份变化时自动重载
+    asyncOptions: model => fetchCityList(model.province),
+    dependsOn: 'province',
+  },
+  {
+    type: 'input',
+    prop: 'regionCode',
+    label: '区号',
+    // 联动赋值 — 根据其他字段自动计算
+    valueWhen: model => (model.province === 'zj' ? '0571' : '025'),
+    disabled: true, // 自动计算字段禁用手动输入
+  },
+  {
+    type: 'input',
+    prop: 'taxId',
+    label: '税号',
+    // 动态规则 — 仅企业用户才校验
+    rulesWhen: model =>
+      model.userType === 'business'
+        ? [{ required: true, message: '企业用户必须填写税号' }]
+        : [],
+  },
+]
+
+const handleSubmit = ({ model }) => {
+  console.log('提交:', model, '变更字段:', formRef.value.getChangedFields())
+}
+</script>
+```
+
+:::
+
 ## 🛠️ 高级用法
 
 ::: details ⚙️ Composable 引擎 — useFormState 核心 API
@@ -1352,7 +1477,7 @@ const {
   formRules, // reactive — 验证规则映射
   visibleOptions, // computed — 过滤 show !== false 的字段
   initialize, // 初始化/重新初始化
-  handleFieldChange, // 字段变化处理（配合 validateOnChange）
+  handleFieldChange, // 字段变化处理（触发 valueWhen + 动态规则 + 异步选项）
 
   // 多层级验证
   validate, // 全量验证
@@ -1370,6 +1495,16 @@ const {
   setFieldValue, // 单个设置 + 可选验证
   getFieldValue, // 单个获取
   setFieldsValue, // 批量设置 + 可选验证
+
+  // 脏检查系统
+  isDirty, // Ref<boolean> — 表单是否有任何修改
+  getChangedFields, // () => string[] — 获取修改过的字段名
+  isFieldDirty, // (field) => boolean — 指定字段是否修改
+  markAsClean, // () => void — 当前值标记为干净快照
+
+  // 异步选项
+  asyncOptionsCache, // ref — 已加载的异步选项缓存
+  asyncLoadingMap, // ref — 各字段异步加载状态
 
   // 提交和重置
   handleSubmit, // 验证 → emit submit
@@ -1766,6 +1901,20 @@ const handleValidateError = errors => {
 ```
 
 ## 📝 更新日志
+
+### v0.8.0 (2026-03)
+
+- ✨ **脏检查系统** — `isDirty` / `getChangedFields` / `isFieldDirty` / `markAsClean`，独立 `useFormDirty` Composable
+- ✨ **编辑模式** — `config.mode: "edit"` + `config.initialValues` 自动回填 + 脏状态重置
+- ✨ **字段级 disabled / readonly** — 支持 `boolean | ((model) => boolean)` 动态判断
+- ✨ **联动赋值引擎** — `valueWhen(model)` 根据其他字段值自动计算回填
+- ✨ **异步选项加载** — `asyncOptions(model)` 异步远程数据源 + `asyncLoadingMap` loading 状态
+- ✨ **动态校验规则** — `rulesWhen(model)` 根据表单状态动态切换校验规则
+- ✨ **跨字段校验** — `crossFieldValidator(model)` 声明式跨字段验证（密码确认、范围校验等）
+- ✨ **Help Tooltip** — `help` 字段标签旁显示 ℹ️ 图标 + NTooltip 帮助信息
+- 🏗️ `useFormRenderer` 重构为 Options 对象参数模式，提升可读性
+- 🏗️ `useFormState` 扩展：`syncRulesForField` / `refreshDynamicRules` / `applyValueWhen` / `loadAsyncOptions`
+- 📦 新增导出：`FormMode` 类型、`useFormDirty` Composable、`UseFormRendererOptions` 类型
 
 ### v2.0.0 (2026-02)
 
