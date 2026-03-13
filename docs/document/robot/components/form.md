@@ -1916,7 +1916,7 @@ const handleValidateError = errors => {
 - 🏗️ `useFormState` 扩展：`syncRulesForField` / `refreshDynamicRules` / `applyValueWhen` / `loadAsyncOptions`
 - 📦 新增导出：`FormMode` 类型、`useFormDirty` Composable、`UseFormRendererOptions` 类型
 
-### v2.0.0 (2026-02)
+### v0.3.0 (2026-02)
 
 - ✨ 全新「薄 UI 壳 + 厚 Composable 引擎」架构重构
 - ✨ 统一 `config` 对象替代原先 13 个分散 Props
@@ -1929,12 +1929,12 @@ const handleValidateError = errors => {
 - ✨ 集成 `@robot-admin/form-validate` 验证工具
 - ✨ 完整的 TypeScript 类型定义
 
-### v1.5.0 (2025-06)
+### v0.2.0 (2025-06)
 
 - 🆕 新增动态布局和自定义渲染
 - 🔧 优化验证机制和错误处理
 
-### v1.0.0 (2025-06)
+### v0.1.0 (2025-06)
 
 - 🎉 首次发布
 - 🎨 支持 8 种布局类型

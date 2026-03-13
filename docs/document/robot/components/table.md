@@ -1459,6 +1459,19 @@ const columns = [
 
 ## 📝 更新日志
 
+### v0.8.0 (2026-02)
+
+- ✨ 全新「薄 UI 壳 + 厚 Composable 引擎」架构重构
+- ✨ 统一 `config` 对象替代分散的 Props
+- ✨ `useTableManager` 统一状态管理器
+- ✨ 列处理引擎 `useTableColumns` 自动序号列、操作列
+- ✨ 操作按钮「二元法则」：`false` 禁用 / 函数即 API
+- ✨ `ColumnSettings` 列设置面板（搜索、拖拽、固定、可见性）
+- ✨ 动态行操作 `useDynamicRow`（增删复制移动 + 打印水印）
+- ✨ 嵌套展开 + 父子选择联动（strict/loose）
+- ✨ CRUD 绑定模式 `useTableCrud`
+- ✨ 完整的 TypeScript 泛型类型安全
+
 ### v0.7.0 (2025-07)
 
 - ✨ 全局配置 `provide/inject` — `TABLE_GLOBAL_CONFIG_KEY` 统一默认 display/分页/格式化
@@ -1472,20 +1485,7 @@ const columns = [
 - ✨ 错误状态 `config.error` — 内置错误态 UI + 重试回调 + `#error` slot
 - ✨ 批量操作 `config.batchActions` — 选中行后弹出操作栏
 
-### v2.0.0 (2026-02)
-
-- ✨ 全新「薄 UI 壳 + 厚 Composable 引擎」架构重构
-- ✨ 统一 `config` 对象替代分散的 Props
-- ✨ `useTableManager` 统一状态管理器
-- ✨ 列处理引擎 `useTableColumns` 自动序号列、操作列
-- ✨ 操作按钮「二元法则」：`false` 禁用 / 函数即 API
-- ✨ `ColumnSettings` 列设置面板（搜索、拖拽、固定、可见性）
-- ✨ 动态行操作 `useDynamicRow`（增删复制移动 + 打印水印）
-- ✨ 嵌套展开 + 父子选择联动（strict/loose）
-- ✨ CRUD 绑定模式 `useTableCrud`
-- ✨ 完整的 TypeScript 泛型类型安全
-
-### v1.0.0 (2025-06)
+### v0.1.0 (2025-06)
 
 - 🎉 初始版本发布
 - ✨ 基础表格功能
