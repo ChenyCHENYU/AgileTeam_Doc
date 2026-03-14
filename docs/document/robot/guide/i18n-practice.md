@@ -128,7 +128,7 @@ export function translateRouteTitle(title: string): string {
 | **vite-auto-i18n-plugin** | ^1.1.12 | Vite 自动国际化插件 | [文档](https://github.com/gcxfd/vite-auto-i18n) |
 | **有道翻译 API**          | -       | 自动翻译中文到英文  | [文档](https://ai.youdao.com/)                  |
 | **Bun**                   | ^1.2.19 | 运行时和包管理器    | [文档](https://bun.sh/)                         |
-| **TypeScript**            | ~5.8.0  | 类型系统            | [文档](https://www.typescriptlang.org/)         |
+| **TypeScript**            | ~5.8.3  | 类型系统            | [文档](https://www.typescriptlang.org/)         |
 
 ### 架构设计
 

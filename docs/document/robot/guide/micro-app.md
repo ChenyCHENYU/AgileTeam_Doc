@@ -132,7 +132,7 @@ graph TB
 
 | 层级 | 技术选型 | 版本 | 用途 | 优势 |
 |------|---------|------|------|------|
-| **主应用** | Vue 3 + TS + Vite | 3.5.13 / 5.8 / 7.0 | 容器框架 | 现代化、高性能 |
+| **主应用** | Vue 3 + TS + Vite | 3.5.30 / 5.8.3 / 7.3.1 | 容器框架 | 现代化、高性能 |
 | **微前端** | @micro-zoe/micro-app | 1.0.0-rc.8 | iframe 隔离 | 强隔离、零侵入 |
 | **通信** | postMessage | 浏览器原生 | 零依赖通信 | 原生支持、稳定可靠 |
 | **路由** | Vue Router | 4.5.0 | 动态路由 | 独立路由系统 |
@@ -253,7 +253,7 @@ bun install
 bun run dev
 
 # 输出信息
-  VITE v7.0.6  ready in 523 ms
+  VITE v7.3.1  ready in 523 ms
 
   ➜  Local:   http://localhost:1988/
   ➜  Network: http://192.168.1.100:1988/
@@ -267,7 +267,7 @@ bun install
 bun run dev
 
 # 输出信息
-  VITE v7.0.6  ready in 412 ms
+  VITE v7.3.1  ready in 412 ms
 
   ➜  Local:   http://localhost:3003/
   ➜  Network: http://192.168.1.100:3003/

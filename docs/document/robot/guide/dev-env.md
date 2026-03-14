@@ -18,8 +18,8 @@ outline: "deep"
 | 工具        | 版本要求     | 说明                                       |
 | ----------- | ------------ | ------------------------------------------ |
 | **Git**     | 最新版本     | 用于克隆和版本控制                         |
-| **Bun**     | ≥ 1.x        | 本项目首选的 JavaScript 运行时（强烈推荐） |
-| **Node.js** | 备选方案     | 如果您因某些原因无法使用 Bun               |
+| **Bun**     | ≥ 1.x        | 本项目强制使用的 JavaScript 运行时     |
+| **Node.js** | ≥ 22.x       | 强制要求 v22+                           |
 | **IDE**     | VS Code 推荐 | 建议安装 Vue 和 TypeScript 扩展            |
 
 ::: tip 💡 为什么选择 Bun？
@@ -81,11 +81,11 @@ envs/
 └── .env               # 各环境共享的通用变量
 ```
 
-这些文件在构建和开发过程中会自动合并。
+项目通过 `robot-admin-env-manager` 包管理环境变量，根据不同的运行模式自动切换环境配置。
 
 ### 环境文件工作原理
 
-项目使用自定义脚本（`scripts/copy-env.mjs`）进行以下操作：
+项目使用 `robot-admin-env-manager`（已发布为独立 npm 包）进行以下操作：
 
 1. **合并配置** - 将通用 `.env` 文件与环境特定文件（如 `.env.development`）合并
 2. **文件生成** - 将合并结果放置在项目根目录下作为 `.env`
@@ -162,9 +162,9 @@ bun run format
 
 **工具栈：**
 
-- **ESLint 9.x** - 包含 Vue 和 TypeScript 插件
-- **Prettier 3.5.x** - 用于一致的代码格式化
-- **Oxlint** - 由 Rust 驱动的检查器，实现超快代码检查
+- **ESLint 10.x** - 包含 Vue 和 TypeScript 插件
+- **Prettier 3.8.x** - 用于一致的代码格式化
+- **Oxlint** - 由 Rust 驱动的检查器，实现超快代码检查，与 ESLint 双重检查
 
 ### 测试
 

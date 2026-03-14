@@ -157,8 +157,8 @@ const dynamicRoutes = {
 
 ```typescript [permission.ts]
 router.beforeEach(async (to, from, next) => {
-  const userStore = useUserStore();
-  const permissionStore = usePermissionStore();
+  const userStore = s_userStore();
+  const permissionStore = s_permissionStore();
 
   // 🔍 路由守卫：防止未授权访问
   if (to.meta.requiresAuth && !userStore.isLoggedIn) {
@@ -207,7 +207,7 @@ router.beforeEach(async (to, from, next) => {
 ::: code-group
 
 ```typescript [user/index.ts]
-export const useUserStore = defineStore("user", () => {
+export const s_userStore = defineStore("user", () => {
   // 🔐 认证：管理用户令牌和登录状态
   const token = ref<string>("");
   const userInfo = ref<UserInfo | null>(null);
@@ -338,7 +338,7 @@ const request = axios.create({
 // 请求拦截器：添加认证头，处理常见参数
 request.interceptors.request.use(
   (config) => {
-    const userStore = useUserStore();
+    const userStore = s_userStore();
     if (userStore.token) {
       config.headers.Authorization = `Bearer ${userStore.token}`;
     }
@@ -353,7 +353,7 @@ request.interceptors.response.use(
   (error) => {
     if (error.response?.status === 401) {
       // 处理未授权访问
-      const userStore = useUserStore();
+      const userStore = s_userStore();
       userStore.logout();
     }
     return Promise.reject(error);

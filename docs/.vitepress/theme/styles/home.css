@@ -799,6 +799,7 @@ html, body {
   .VPHero .image {
     width: 280px;
     max-width: 280px;
+    margin-top: 12px;
   }
 
   .VPFeatures {

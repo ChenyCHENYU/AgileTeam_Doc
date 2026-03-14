@@ -125,8 +125,8 @@ router.push('/other')
 | 工具 | 版本 | 作用 | 官方文档 |
 |-----|------|------|---------|
 | **Axios** | ^1.7.9 | HTTP 客户端 | [文档](https://axios-http.com/) |
-| **TypeScript** | ~5.8.0 | 类型系统 | [文档](https://www.typescriptlang.org/) |
-| **Naive UI** | ^2.41.0 | 消息提示组件 | [文档](https://www.naiveui.com/) |
+| **TypeScript** | ~5.8.3 | 类型系统 | [文档](https://www.typescriptlang.org/) |
+| **Naive UI** | ^2.44.1 | 消息提示组件 | [文档](https://www.naiveui.com/) |
 | **AbortController** | - | 请求取消 | [MDN](https://developer.mozilla.org/en-US/docs/Web/API/AbortController) |
 
 ### 架构设计

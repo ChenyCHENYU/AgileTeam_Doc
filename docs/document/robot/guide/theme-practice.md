@@ -39,7 +39,7 @@
 </template>
 
 <script setup lang="ts">
-  const themeStore = useThemeStore()
+  const themeStore = s_themeStore()
   const isDarkMode = computed(() => themeStore.isDark)
 
   // 问题：
@@ -119,11 +119,11 @@
 
 | 工具              | 版本    | 作用                   | 官方文档                                 |
 | ----------------- | ------- | ---------------------- | ---------------------------------------- |
-| **Naive UI**      | ^2.41.0 | 企业级 Vue 3 组件库    | [文档](https://www.naiveui.com/)         |
+| **Naive UI**      | ^2.44.1 | 企业级 Vue 3 组件库    | [文档](https://www.naiveui.com/)         |
 | **CSS Variables** | -       | 浏览器原生主题切换     | [MDN](https://developer.mozilla.org/CSS) |
-| **Pinia**         | ^3.0.1  | 状态管理（主题持久化） | [文档](https://pinia.vuejs.org/)         |
+| **Pinia**         | ^3.0.4  | 状态管理（主题持久化） | [文档](https://pinia.vuejs.org/)         |
 | **SCSS**          | -       | CSS 预处理器           | [文档](https://sass-lang.com/)           |
-| **TypeScript**    | ~5.8.0  | 类型系统               | [文档](https://www.typescriptlang.org/)  |
+| **TypeScript**    | ~5.8.3  | 类型系统               | [文档](https://www.typescriptlang.org/)  |
 
 ### 架构设计
 
@@ -374,7 +374,7 @@ import { defineStore } from 'pinia'
 import { ref, computed, watch } from 'vue'
 import { THEME_TOKENS, type BackgroundKey } from '@/config/theme'
 
-export const useThemeStore = defineStore(
+export const s_themeStore = defineStore(
   'theme',
   () => {
     const isDark = ref(false)
@@ -445,7 +445,7 @@ export const useThemeStore = defineStore(
   import { NGlobalStyle } from 'naive-ui'
   import { lightThemeOverrides, darkThemeOverrides } from '@/config/theme'
 
-  const themeStore = useThemeStore()
+  const themeStore = s_themeStore()
   const themeOverrides = computed(() =>
     themeStore.isDark ? darkThemeOverrides : lightThemeOverrides
   )
@@ -471,7 +471,7 @@ export const useThemeStore = defineStore(
 
 ```vue [src/components/global/C_MenuTop/index.vue - 使用 getBgColor]
 <script setup lang="ts">
-  const themeStore = useThemeStore()
+  const themeStore = s_themeStore()
 
   // ❌ 旧方式：硬编码判断
   // const menuBgColor = computed(() =>
@@ -716,7 +716,7 @@ body {
 ```typescript [stores/theme/index.ts]
 import { THEME_TOKENS } from '@/config/theme'
 
-export const useThemeStore = defineStore('theme', () => {
+export const s_themeStore = defineStore('theme', () => {
   const isDark = ref(false)
 
   // 🎯 同步 HTML 属性
@@ -760,7 +760,7 @@ export const useThemeStore = defineStore('theme', () => {
 </template>
 
 <script setup lang="ts">
-  const themeStore = useThemeStore()
+  const themeStore = s_themeStore()
   const isDarkMode = computed(() => themeStore.isDark)
 </script>
 ```
@@ -803,7 +803,7 @@ export const useThemeStore = defineStore('theme', () => {
   import { NGlobalStyle } from 'naive-ui'
   import { lightThemeOverrides, darkThemeOverrides } from '@/config/theme'
 
-  const themeStore = useThemeStore()
+  const themeStore = s_themeStore()
   const themeOverrides = computed(() =>
     themeStore.isDark ? darkThemeOverrides : lightThemeOverrides
   )
@@ -889,7 +889,7 @@ export const COLORS = {
 
 <!-- ✅ 推荐：动态场景使用 getBgColor -->
 <script setup lang="ts">
-  const themeStore = useThemeStore()
+  const themeStore = s_themeStore()
   const menuBg = themeStore.getBgColor('menu')
 </script>
 
@@ -1009,7 +1009,7 @@ console.log(styles.getPropertyValue('--app-bg-body'))
   import { darkTheme, NGlobalStyle } from 'naive-ui'
   import { lightThemeOverrides, darkThemeOverrides } from '@/config/theme'
 
-  const themeStore = useThemeStore()
+  const themeStore = s_themeStore()
   const themeOverrides = computed(() =>
     themeStore.isDark ? darkThemeOverrides : lightThemeOverrides
   )

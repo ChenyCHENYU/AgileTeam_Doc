@@ -15,7 +15,7 @@ outline: "deep"
 
 ## 🎯 可用指令概览
 
-框架提供了以下内置指令：
+项目指令由 `@robot-admin/directives`（v1.1.0）提供，包含 11 个生产级 Vue 3 指令：
 
 | 指令              | 目的                   | 关键特性                         |
 | ----------------- | ---------------------- | -------------------------------- |
@@ -26,6 +26,10 @@ outline: "deep"
 | **v-permission**  | 控制元素访问           | 权限检查，后备行为               |
 | **v-throttle**    | 限制函数执行频率       | 可配置时间，事件选项             |
 | **v-watermark**   | 为元素添加水印         | 自定义文本，定位，样式           |
+| **v-lazy**        | 图片懒加载             | 视口内按需加载，支持占位图       |
+| **v-loading**     | 局部 Loading 效果      | 覆盖层加载状态指示               |
+| **v-tooltip**     | 文本溢出提示           | 自动检测溢出，悬浮显示完整文本   |
+| **v-click-outside** | 点击外部事件         | 检测元素外部点击，关闭弹出层     |
 
 ::: tip 💡 自动注册系统
 Robot Admin 使用自动指令注册系统，在 `src/directives/modules/` 目录下的所有 `.ts` 文件都会在应用程序初始化时自动发现并注册。
@@ -419,9 +423,91 @@ src/
 │   │   ├── longpress.ts
 │   │   ├── throttle.ts
 │   │   ├── watermark.ts
+│   │   ├── lazy.ts
+│   │   ├── loading.ts
+│   │   ├── tooltip.ts
+│   │   ├── clickOutside.ts
 │   │   └── myDirective.ts  // 你的自定义指令
 │   ├── index.ts
 │   └── install.ts
+```
+
+### v-lazy - 图片懒加载指令
+
+`v-lazy` 指令实现图片进入视口时才加载，减少首屏请求数量。
+
+```vue
+<template>
+  <!-- 基本使用 -->
+  <img v-lazy="'/images/photo.jpg'" alt="延迟加载" />
+
+  <!-- 带占位图 -->
+  <img v-lazy="{ src: '/images/photo.jpg', loading: '/images/placeholder.png' }" alt="带占位图" />
+</template>
+```
+
+### v-loading - 局部 Loading 指令
+
+`v-loading` 指令在指定元素上添加覆盖层加载效果，适合数据加载场景。
+
+```vue
+<template>
+  <!-- 基本使用 -->
+  <div v-loading="isLoading" class="data-panel">
+    数据内容区域
+  </div>
+</template>
+
+<script setup>
+const isLoading = ref(true)
+
+onMounted(async () => {
+  await fetchData()
+  isLoading.value = false
+})
+</script>
+```
+
+### v-tooltip - 文本溢出提示指令
+
+`v-tooltip` 指令自动检测文本是否溢出，溢出时悬浮显示完整内容。
+
+```vue
+<template>
+  <!-- 自动检测溢出 -->
+  <span v-tooltip class="ellipsis-text">这是一段可能超出容器宽度的长文本内容</span>
+</template>
+
+<style scoped>
+.ellipsis-text {
+  max-width: 200px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+</style>
+```
+
+### v-click-outside - 点击外部事件指令
+
+`v-click-outside` 指令检测元素外部的点击事件，常用于关闭下拉菜单、弹出层等。
+
+```vue
+<template>
+  <div v-click-outside="handleClose" class="dropdown">
+    <button @click="isOpen = !isOpen">打开菜单</button>
+    <div v-show="isOpen" class="dropdown-menu">
+      菜单内容
+    </div>
+  </div>
+</template>
+
+<script setup>
+const isOpen = ref(false)
+const handleClose = () => {
+  isOpen.value = false
+}
+</script>
 ```
 
 ::: tip 🎯 开发建议

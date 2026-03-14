@@ -20,7 +20,7 @@ outline: "deep"
 该项目的核心理念围绕**开发者体验**和**性能**展开，使团队能够在创纪录的时间内构建复杂的管理面板，同时保持代码质量和可扩展性。
 :::
 
-**Robot Admin** 是一个基于 Vue 3.5、TypeScript 5.8 和 Naive UI 构建的开源企业级管理后台。它旨在通过提供健壮的架构、全面的组件和开箱即用的性能优化，简化业务管理系统的开发。
+**Robot Admin** 是一个基于 Vue 3.5、TypeScript 5.8、Naive UI 和 Vite 7 构建的开源企业级管理后台。它旨在通过提供健壮的架构、全面的组件和开箱即用的性能优化，简化业务管理系统的开发。
 
 ## 🎯 主要功能
 
@@ -57,35 +57,42 @@ Robot Admin 利用 **Bun** 和 **Vite 7** 提供非凡的开发速度：
 
 ### 🧩 全面组件系统
 
-该框架包含**30+ 精心打造的组件**，专为业务应用设计：
+该框架包含 **51 个精心打造的业务组件**（已独立发布为 `@robot-admin/naive-ui-components`），专为企业应用设计：
 
 ::: details 🏗️ 核心 UI 组件
 
-- **C_Form** - 动态表单引擎，支持复杂验证和条件渲染
-- **C_Table** - 虚拟化表格，轻松处理万级数据
+- **C_Form** - 动态表单引擎，支持 8 种布局、脏检查、联动赋值、异步选项等
+- **C_Table** - 超级表格，支持虚拟滚动、树形结构、行拖拽、CSV/XLSX 导出
+- **C_FormSearch** - 高级搜索表单组件
 - **C_Menu** - 智能导航，支持权限控制和动态菜单
+- **C_ActionBar** - 操作按钮组组件，统一按钮布局
   :::
 
 ::: details 📊 数据可视化
 
-- **ECharts 5.6** - 丰富的图表组件库
-- **仪表盘** - 企业级数据展示面板
-- **AntV X6** - 强大的流程图引擎
+- **ECharts 6.0** - 丰富的图表组件库
+- **C_AntV** - AntV X6 流程图引擎（BPMN/ER/UML）
+- **C_WorkFlow** - Vue Flow 工作流编辑器
+- **C_VtableGantt** - 甘特图组件
+- **C_FullCalendar** - 完整日程管理
   :::
 
 ::: details ✏️ 内容编辑器
 
-- **富文本编辑器** - 基于 WangEditor，支持图片、表格等
-- **Markdown 编辑器** - 实时预览，开发者友好
-- **代码编辑器** - 多语言语法高亮
-- **JSON 编辑器** - 结构化数据编辑
+- **C_Editor** - 基于 WangEditor 的富文本编辑器
+- **C_Markdown** - Markdown 编辑器，实时预览
+- **C_Code** - 代码编辑器，多语言语法高亮
+- **C_FormulaEditor** - 公式编辑器
   :::
 
-::: details 🛠️ 文件处理工具
+::: details 🛠️ 文件与媒体处理
 
-- **Excel 导入/导出** - 支持复杂表格数据处理
-- **ZIP 压缩** - 文件批量处理
-- **图像捕捉** - 截图和图片处理功能
+- **C_FilePreview** - 文件预览（PDF/Excel/Word/图片）
+- **C_VideoPlayer** - XGPlayer 视频播放器（HLS/防作弊）
+- **C_AudioPlayer** - 音频播放器，播放列表、多循环模式
+- **C_ImageCropper** - 图片裁剪
+- **C_Signature** - 电子签名
+- **C_QRCode / C_Barcode** - 二维码与条形码生成
   :::
 
 每个组件遵循最佳实践，并附有详尽的文档和实际应用示例。
@@ -132,13 +139,13 @@ Robot Admin 优先考虑开发者生产力：
 
 <div class="dev-stats">
   <div class="stat-item">
-    <div class="stat-number">7</div>
+    <div class="stat-number">11</div>
     <div class="stat-label">自定义Vue指令</div>
-    <div class="stat-detail">v-copy、v-watermark、v-draggable等</div>
+    <div class="stat-detail">v-copy、v-watermark、v-drag、v-lazy、v-loading 等</div>
   </div>
   
   <div class="stat-item">
-    <div class="stat-number">30+</div>
+    <div class="stat-number">54+</div>
     <div class="stat-label">演示页面</div>
     <div class="stat-detail">展示最佳实践和实现模式</div>
   </div>
@@ -162,33 +169,33 @@ Robot Admin 建立在现代化的技术栈之上：
 
 ```json [前端核心]
 {
-  "vue": "3.5.13",
-  "typescript": "5.8",
-  "naive-ui": "2.41",
-  "unocss": "0.66.0"
+  "vue": "3.5.30",
+  "typescript": "5.8.3",
+  "naive-ui": "2.44.1",
+  "unocss": "66.6.6"
 }
 ```
 
 ```json [构建工具]
 {
   "bun": "1.x",
-  "vite": "7.0.6",
-  "sass": "1.87"
+  "vite": "7.3.1",
+  "sass": "1.97"
 }
 ```
 
 ```json [开发工具]
 {
-  "eslint": "9.21",
-  "prettier": "3.5",
-  "vitest": "3.0"
+  "eslint": "10.0.3",
+  "oxlint": "1.52.0",
+  "prettier": "3.8.1"
 }
 ```
 
 ```json [状态管理]
 {
-  "pinia": "latest",
-  "vue-router": "4.x"
+  "pinia": "3.0.4",
+  "vue-router": "4.6.4"
 }
 ```
 
@@ -204,18 +211,18 @@ Robot Admin 遵循清晰、模块化的组织模式：
 Robot_Admin/
 ├── src/                          # 源代码目录
 │   ├── api/                      # API 管理层
-│   ├── components/               # 组件库
-│   │   ├── global/               # 全局组件（30+ 核心组件）
-│   │   └── local/                # 局部组件
-│   ├── views/                    # 页面视图
+│   ├── components/               # 组件（桥接层 + 局部组件）
+│   │   ├── global/               # 全局桥接组件（按需引用组件库）
+│   │   └── local/                # 局部业务组件
+│   ├── views/                    # 页面视图（54+ 演示页面）
 │   ├── stores/                   # Pinia 状态管理
-│   ├── composables/              # Composition API 模块
+│   ├── composables/              # 组合式函数（业务逻辑解耦）
 │   ├── hooks/                    # 自定义钩子
-│   ├── router/                   # 路由配置
-│   ├── utils/                    # 实用函数
+│   ├── router/                   # 路由系统
+│   ├── utils/                    # 工具函数
 │   ├── types/                    # TypeScript 类型定义
-│   ├── directives/               # 自定义指令（7 个实用指令）
-│   └── plugins/                  # 插件配置
+│   ├── config/                   # 配置汇总（主题/Vite/缓存）
+│   └── plugins/                  # 插件系统（初始化引导）
 ```
 
 ::: info 🏗️ 架构优势
@@ -236,21 +243,21 @@ Robot Admin 有清晰的架构演进路线图：
     </div>
   </div>
   
-  <div class="roadmap-item active">
+  <div class="roadmap-item current">
     <div class="roadmap-step">2</div>
     <div class="roadmap-content">
       <h4>Monorepo</h4>
-      <p>进行中 - 单一仓库，多个包</p>
-      <span class="roadmap-status active">🚧 进行中</span>
+      <p>已完成 - Bun Workspaces 多应用管理</p>
+      <span class="roadmap-status current">✅ 已完成</span>
     </div>
   </div>
   
-  <div class="roadmap-item">
+  <div class="roadmap-item current">
     <div class="roadmap-step">3</div>
     <div class="roadmap-content">
-      <h4>微前端</h4>
-      <p>计划中 - 模块化前端架构</p>
-      <span class="roadmap-status">📋 计划中</span>
+      <h4>微前端 / 模块联邦</h4>
+      <p>初版完成 - MicroApp iframe 模式 + Module Federation</p>
+      <span class="roadmap-status current">✅ 初版完成</span>
     </div>
   </div>
   
@@ -310,8 +317,8 @@ Robot Admin 采用 MIT 许可证，适用于个人和商业项目，限制极小
   <div class="req-item">
     <div class="req-icon">📦</div>
     <div class="req-title">Node.js</div>
-    <div class="req-version">&gt;= 20.0.0</div>
-    <div class="req-note">推荐 22+</div>
+    <div class="req-version">&gt;= 22.x</div>
+    <div class="req-note">强制要求 22+</div>
   </div>
   
   <div class="req-item">

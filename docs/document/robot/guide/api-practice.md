@@ -114,7 +114,7 @@ const { data, error } = await getEmployeesList({
 | **@hey-api/openapi-ts** | ^0.81.1 | OpenAPI → TypeScript SDK 生成器 | [文档](https://heyapi.vercel.app/)        |
 | **OpenAPI 3.0**         | 3.0+    | 接口规范标准                    | [规范](https://swagger.io/specification/) |
 | **Axios**               | ^1.9.0  | HTTP 请求库                     | [文档](https://axios-http.com/)           |
-| **TypeScript**          | ~5.8.0  | 类型系统                        | [文档](https://www.typescriptlang.org/)   |
+| **TypeScript**          | ~5.8.3  | 类型系统                        | [文档](https://www.typescriptlang.org/)   |
 
 ### 架构设计
 

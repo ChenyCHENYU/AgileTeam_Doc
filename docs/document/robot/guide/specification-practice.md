@@ -111,14 +111,14 @@ export default defineConfig({
 
 | 工具                    | 版本    | 作用                            | 官方文档                                  |
 | ----------------------- | ------- | ------------------------------- | ----------------------------------------- |
-| **Vue 3**               | 3.5.13  | 渐进式 JavaScript 框架         | [文档](https://vuejs.org/)                |
-| **TypeScript**          | 5.8.0   | JavaScript 的超集，提供类型系统 | [文档](https://www.typescriptlang.org/)   |
-| **Vite**                | 7.0     | 下一代前端构建工具              | [文档](https://vitejs.dev/)              |
-| **Naive UI**            | 2.41.0  | Vue 3 组件库                    | [文档](https://www.naiveui.com/)          |
-| **UnoCSS**              | 66.3.3  | 原子化 CSS 引擎                 | [文档](https://uno.antfu.me/)            |
-| **Pinia**               | 3.0.1   | Vue 状态管理库                  | [文档](https://pinia.vuejs.org/)          |
-| **ESLint**              | 9.21.0  | JavaScript 代码检查工具        | [文档](https://eslint.org/)              |
-| **Oxlint**              | 0.15.13 | 高性能 JavaScript/TypeScript 检查 | [文档](https://oxc.rs/)                  |
+| **Vue 3**               | 3.5.30  | 渐进式 JavaScript 框架         | [文档](https://vuejs.org/)                |
+| **TypeScript**          | 5.8.3   | JavaScript 的超集，提供类型系统 | [文档](https://www.typescriptlang.org/)   |
+| **Vite**                | 7.3.1   | 下一代前端构建工具              | [文档](https://vitejs.dev/)              |
+| **Naive UI**            | 2.44.1  | Vue 3 组件库                    | [文档](https://www.naiveui.com/)          |
+| **UnoCSS**              | 66.6.6  | 原子化 CSS 引擎                 | [文档](https://uno.antfu.me/)            |
+| **Pinia**               | 3.0.4   | Vue 状态管理库                  | [文档](https://pinia.vuejs.org/)          |
+| **ESLint**              | 10.0.3  | JavaScript 代码检查工具        | [文档](https://eslint.org/)              |
+| **Oxlint**              | 1.52.0  | 高性能 JavaScript/TypeScript 检查 | [文档](https://oxc.rs/)                  |
 
 ### 架构设计
 

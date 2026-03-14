@@ -123,9 +123,9 @@ for (let i = 0; i < 100; i++) {
 
 | 工具            | 版本    | 作用         | 官方文档                                |
 | --------------- | ------- | ------------ | --------------------------------------- |
-| **Vue 3**       | ^3.5.13 | 框架核心     | [文档](https://vuejs.org/)              |
-| **TypeScript**  | ~5.8.0  | 类型系统     | [文档](https://www.typescriptlang.org/) |
-| **Naive UI**    | ^2.41.0 | 消息提示组件 | [文档](https://www.naiveui.com/)        |
+| **Vue 3**       | ^3.5.30 | 框架核心     | [文档](https://vuejs.org/)              |
+| **TypeScript**  | ~5.8.3  | 类型系统     | [文档](https://www.typescriptlang.org/) |
+| **Naive UI**    | ^2.44.1 | 消息提示组件 | [文档](https://www.naiveui.com/)        |
 | **Browser API** | -       | 原生错误监听 | [MDN](https://developer.mozilla.org/)   |
 
 ### 架构设计

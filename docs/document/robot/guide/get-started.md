@@ -30,7 +30,7 @@ outline: "deep"
   <div class="req-card">
     <div class="req-icon">📦</div>
     <div class="req-title">Node.js</div>
-    <div class="req-desc">v20+ 运行时环境</div>
+    <div class="req-desc">v22+ 运行时环境</div>
   </div>
 </div>
 
@@ -111,11 +111,10 @@ npm run dev
 
 | 命令             | 描述                   | 推荐频率   |
 | ---------------- | ---------------------- | ---------- |
-| `bun lint`       | ✨ ESLint 检查和修复   | 提交前必做 |
+| `bun lint`       | ✨ ESLint + Oxlint 双重检查 | 提交前必做 |
 | `bun format`     | 🎨 Prettier 代码格式化 | 保存时自动 |
 | `bun test:unit`  | 🧪 运行单元测试        | 开发完成后 |
-| `bun type:check` | 🛡️ TypeScript 类型检查 | 构建前验证 |
-| `bun type-watch` | 👀 类型检查监视模式    | 开发过程中 |
+| `bun type-watch` | 👁️ 实时 TS 类型检查    | 开发过程中 |
 
 ## 📁 项目结构
 
@@ -127,20 +126,19 @@ Robot Admin 采用清晰的模块化架构，便于维护和扩展：
 src/
 ├── 📂 api/          # 按领域组织的API请求
 ├── 📂 assets/       # 静态资源（图片、全局CSS）
-├── 📂 axios/        # Axios配置和请求处理
 ├── 📂 components/   # 可复用的Vue组件
-│   ├── global/      # 全局组件（30+ 核心组件）
-│   └── local/       # 局部组件
-├── 📂 composables/  # Vue组合函数
-├── 📂 config/       # 应用配置
+│   ├── global/      # 全局桥接组件（按需引用组件库）
+│   └── local/       # 局部业务组件
+├── 📂 composables/  # Vue组合函数（业务逻辑解耦）
+├── 📂 config/       # 配置汇总（主题/Vite/缓存）
 ├── 📂 hooks/        # 常用功能的自定义钩子
-├── 📂 plugins/      # 插件设置和配置
+├── 📂 plugins/      # 插件系统（初始化引导）
 ├── 📂 router/       # Vue Router配置
 ├── 📂 stores/       # Pinia状态管理
 ├── 📂 styles/       # 全局样式和主题配置
 ├── 📂 types/        # TypeScript类型定义
-├── 📂 utils/        # 实用函数
-├── 📂 views/        # 页面组件
+├── 📂 utils/        # 工具函数
+├── 📂 views/        # 页面组件（54+ 演示页面）
 └── 📄 main.ts       # 应用程序入口
 ```
 
@@ -231,10 +229,10 @@ bootstrap().catch((error) => console.error("应用启动失败:", error));
 
 <script setup lang="ts">
 import { zhCN, dateZhCN } from "naive-ui/es"; // 中文语言包
-import { useThemeStore } from "@/stores/theme";
+import { s_themeStore } from "@/stores/theme";
 import { onMounted } from "vue";
 
-const themeStore = useThemeStore();
+const themeStore = s_themeStore();
 
 // 初始化主题
 onMounted(() => {

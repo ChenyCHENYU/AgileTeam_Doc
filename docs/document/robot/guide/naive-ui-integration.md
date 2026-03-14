@@ -9,7 +9,7 @@ outline: "deep"
   <p>高质量、高性能的用户界面组件框架，提供全面的主题定制能力</p>
 </div>
 
-NaiveUI 是 Robot Admin 中使用的主要 UI 组件框架，用于提供高质量、高性能的用户界面，并具备全面的主题定制能力。本指南将详细介绍 NaiveUI 如何集成到项目中，如何使用其组件，以及如何利用其强大的主题系统。
+Naive UI（当前版本 **2.44.1**）是 Robot Admin 中使用的主要 UI 组件框架，用于提供高质量、高性能的用户界面，并具备全面的主题定制能力。此外，项目还通过 **@robot-admin/naive-ui-components**（v0.8.1）提供了 **51 个**业务增强组件，并通过 `RobotNaiveUiResolver` 实现按需自动导入。本指南将详细介绍 NaiveUI 如何集成到项目中，如何使用其组件，以及如何利用其强大的主题系统。
 
 ## 🎯 集成架构概述
 
@@ -63,10 +63,10 @@ NaiveUI 集成的核心在 `App.vue` 中，将整个应用程序包裹在 NaiveU
 </template>
 
 <script setup lang="ts">
-import { useThemeStore } from "@/stores/theme";
+import { s_themeStore } from "@/stores/theme";
 import { zhCN, dateZhCN } from "naive-ui";
 
-const themeStore = useThemeStore();
+const themeStore = s_themeStore();
 </script>
 ```
 
@@ -369,7 +369,7 @@ import type { GlobalTheme, GlobalThemeOverrides } from "naive-ui";
 
 export type ThemeMode = "light" | "dark" | "system";
 
-export const useThemeStore = defineStore("theme", () => {
+export const s_themeStore = defineStore("theme", () => {
   // 获取保存的主题模式
   const savedMode = localStorage.getItem("theme-mode") as ThemeMode;
   const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
@@ -485,9 +485,9 @@ export const useThemeStore = defineStore("theme", () => {
 
 <script setup lang="ts">
 import { ref } from "vue";
-import { useThemeStore } from "@/stores/theme";
+import { s_themeStore } from "@/stores/theme";
 
-const themeStore = useThemeStore();
+const themeStore = s_themeStore();
 
 const themeOptions = [
   { label: "浅色", value: "light" },
