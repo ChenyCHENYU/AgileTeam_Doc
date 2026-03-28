@@ -10,6 +10,14 @@ export default [
     ],
   },
   {
+    text: "Robot uniApp",
+    activeMatch: "^/uniapp/",
+    items: [
+      { text: "深度指南", link: "/uniapp/guide/overview" },
+      { text: "组件文档", link: "/uniapp/components/preface" },
+    ],
+  },
+  {
     text: "产品",
     activeMatch: "/po/",
     items: [{ text: "产品文档", link: "/po/standard/introduction" }],

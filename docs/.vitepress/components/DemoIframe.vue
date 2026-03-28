@@ -1,5 +1,6 @@
 <script setup>
 import { computed, ref } from "vue";
+import { useData } from "vitepress";
 
 const props = defineProps({
   /** 预览路径，如 /preview/table */
@@ -10,10 +11,12 @@ const props = defineProps({
   height: { type: [String, Number], default: 700 },
 });
 
+const { isDark } = useData();
+
 // Robot Admin 线上地址（始终使用线上部署版本）
 const baseUrl = "https://robotadmin.cn";
 
-// Hash 模式完整 URL：https://robotadmin.cn/#/preview/table
+// Hash 模式完整 URL，跟随 VitePress 当前主题
 const fullUrl = computed(() => `${baseUrl}/#${props.src}`);
 
 const iframeHeight = computed(() => {
@@ -66,7 +69,7 @@ const onLoad = () => {
           frameborder="0"
           allow="fullscreen"
           loading="lazy"
-          style="border: none; display: block"
+          :style="{ border: 'none', display: 'block', colorScheme: isDark ? 'dark' : 'light' }"
           @load="onLoad"
         />
       </div>

@@ -238,26 +238,6 @@ export const ROBOT_COMPONENTS_DOC = [
         text: "[C_ActionBar] 操作按钮组",
         link: `${ROBOT}/components/action-bar`,
       },
-      {
-        text: "[C_Chat] 聊天",
-        link: `${ROBOT}/components/chat`,
-      },
-      {
-        text: "[C_Timeline] 时间线",
-        link: `${ROBOT}/components/timeline`,
-      },
-      {
-        text: "[C_ContextMenu] 右键菜单",
-        link: `${ROBOT}/components/context-menu`,
-      },
-      {
-        text: "[C_Transfer] 穿梭框",
-        link: `${ROBOT}/components/transfer`,
-      },
-      {
-        text: "[C_AvatarGroup] 头像组",
-        link: `${ROBOT}/components/avatar-group`,
-      },
     ],
   },
   {
@@ -290,10 +270,6 @@ export const ROBOT_COMPONENTS_DOC = [
       {
         text: "[C_VideoPlayer] 视频播放器",
         link: `${ROBOT}/components/video-player`,
-      },
-      {
-        text: "[C_AudioPlayer] 音频播放器",
-        link: `${ROBOT}/components/audio-player`,
       },
       {
         text: "[C_Signature] 电子签名",
@@ -463,7 +439,152 @@ export const ROBOT_PLUGIN_DOC = [
 
 export const ROBOT_CLI_DOC = [];
 
+const UNIAPP = "/uniapp";
 
+export const UNIAPP_GUIDE_DOC = [
+  {
+    text: "开始入门",
+    items: [
+      { text: "概述", link: `${UNIAPP}/guide/overview` },
+      { text: "快速上手", link: `${UNIAPP}/guide/get-started` },
+      { text: "项目结构", link: `${UNIAPP}/guide/project-structure` },
+      { text: "开发环境搭建", link: `${UNIAPP}/guide/dev-env` },
+    ],
+  },
+  {
+    text: "深度探索",
+    collapsed: false,
+    items: [
+      {
+        text: "应用架构",
+        link: `${UNIAPP}/guide/architecture`,
+      },
+      {
+        text: "状态管理",
+        link: `${UNIAPP}/guide/state-manager`,
+      },
+      {
+        text: "API 集成",
+        link: `${UNIAPP}/guide/api-integration`,
+      },
+      {
+        text: "认证与权限",
+        link: `${UNIAPP}/guide/auth`,
+      },
+      {
+        text: "路由与导航",
+        link: `${UNIAPP}/guide/route-nav`,
+      },
+      {
+        text: "UnoCSS 使用",
+        link: `${UNIAPP}/guide/unocss-use`,
+      },
+      {
+        text: "可用 Hooks",
+        link: `${UNIAPP}/guide/use-hooks`,
+      },
+      {
+        text: "多端适配",
+        link: `${UNIAPP}/guide/multi-platform`,
+      },
+      {
+        text: "Vite 配置",
+        link: `${UNIAPP}/guide/vite-config`,
+      },
+    ],
+  },
+];
+
+export const UNIAPP_COMPONENTS_DOC = [
+  {
+    text: "写在前面的话",
+    items: [{ text: "前言", link: `${UNIAPP}/components/preface` }],
+  },
+  {
+    text: "布局组件",
+    items: [
+      { text: "[C_Layout] 页面布局", link: `${UNIAPP}/components/layout` },
+      { text: "[C_Header] 导航头部", link: `${UNIAPP}/components/header` },
+      { text: "[C_Tabbar] 底部导航", link: `${UNIAPP}/components/tabbar` },
+      { text: "[C_TabNav] 标签导航", link: `${UNIAPP}/components/tab-nav` },
+    ],
+  },
+  {
+    text: "数据展示",
+    items: [
+      { text: "[C_Card] 卡片", link: `${UNIAPP}/components/card` },
+      { text: "[C_Tag] 标签", link: `${UNIAPP}/components/tag` },
+      { text: "[C_Badge] 徽标", link: `${UNIAPP}/components/badge` },
+      { text: "[C_Title] 标题", link: `${UNIAPP}/components/title` },
+      { text: "[C_List] 列表", link: `${UNIAPP}/components/list` },
+      { text: "[C_Empty] 空状态", link: `${UNIAPP}/components/empty` },
+      { text: "[C_Skeleton] 骨架屏", link: `${UNIAPP}/components/skeleton` },
+      { text: "[C_Steps] 步骤条", link: `${UNIAPP}/components/steps` },
+      { text: "[C_Progress] 进度条", link: `${UNIAPP}/components/progress` },
+      { text: "[C_Timeline] 时间轴", link: `${UNIAPP}/components/timeline` },
+      { text: "[C_Rate] 评分", link: `${UNIAPP}/components/rate` },
+      {
+        text: "[C_IndexList] 索引列表",
+        link: `${UNIAPP}/components/index-list`,
+      },
+      { text: "[C_CountDown] 倒计时", link: `${UNIAPP}/components/countdown` },
+    ],
+  },
+  {
+    text: "表单组件",
+    items: [
+      { text: "[C_Form] 表单", link: `${UNIAPP}/components/form` },
+      { text: "[C_Search] 搜索框", link: `${UNIAPP}/components/search` },
+      { text: "[C_Cascader] 级联选择", link: `${UNIAPP}/components/cascader` },
+      { text: "[C_Calendar] 日历选择", link: `${UNIAPP}/components/calendar` },
+      {
+        text: "[C_NumberKeyboard] 数字键盘",
+        link: `${UNIAPP}/components/number-keyboard`,
+      },
+    ],
+  },
+  {
+    text: "反馈组件",
+    items: [
+      {
+        text: "[C_ActionSheet] 动作面板",
+        link: `${UNIAPP}/components/action-sheet`,
+      },
+      { text: "[C_Modal] 弹窗", link: `${UNIAPP}/components/modal` },
+      {
+        text: "[C_SwipeAction] 滑动操作",
+        link: `${UNIAPP}/components/swipe-action`,
+      },
+      {
+        text: "[C_FloatButton] 浮动按钮",
+        link: `${UNIAPP}/components/float-button`,
+      },
+      { text: "[C_Notify] 消息通知", link: `${UNIAPP}/components/notify` },
+    ],
+  },
+  {
+    text: "媒体组件",
+    items: [
+      { text: "[C_Upload] 文件上传", link: `${UNIAPP}/components/upload` },
+      {
+        text: "[C_ImagePreview] 图片预览",
+        link: `${UNIAPP}/components/image-preview`,
+      },
+      {
+        text: "[C_Signature] 电子签名",
+        link: `${UNIAPP}/components/signature`,
+      },
+      { text: "[C_Watermark] 水印", link: `${UNIAPP}/components/watermark` },
+    ],
+  },
+  {
+    text: "通用组件",
+    items: [
+      { text: "[C_Icon] 通用图标", link: `${UNIAPP}/components/icon` },
+      { text: "[C_Divider] 分割线", link: `${UNIAPP}/components/divider` },
+    ],
+  },
+];
 
 
 const WEB = "/web";
