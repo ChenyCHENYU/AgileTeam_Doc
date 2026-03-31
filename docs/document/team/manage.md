@@ -25,7 +25,7 @@ const coreMembers = [
     links: [
       { icon: 'github', link: 'https://github.com/ChenyCHENYU'},
       { icon: gitee, link: 'https://gitee.com/ycyplus163'},
-      { icon: blog, link: 'https://www.yangchenyu.top/'}, 
+      { icon: blog, link: 'https://www.yangchenyu.com/'}, 
       { icon: robot, link: 'https://www.robotadmin.cn/'},
     ],
     desc: '不忘初心，方得始终',

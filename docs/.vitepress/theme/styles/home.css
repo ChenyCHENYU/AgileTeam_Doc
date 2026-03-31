@@ -214,9 +214,9 @@ html, body {
 .VPHero {
   position: relative;
   z-index: 10;
-  padding: 40px 24px 20px;
+  padding: 88px 24px 20px;
   min-height: 48vh;
-  max-height: 52vh;
+  max-height: none;
   flex: 0 0 auto;
   display: flex;
   align-items: center;
@@ -730,8 +730,8 @@ html, body {
 
   .VPHero {
     min-height: 45vh;
-    max-height: 50vh;
-    padding: 32px 20px 16px;
+    max-height: none;
+      padding: 72px 20px 16px;
   }
 
   .VPHero .container { gap: 36px; }
@@ -762,7 +762,7 @@ html, body {
   }
 
   .VPHero {
-    padding: 40px 20px 24px;
+    padding: 72px 20px 24px;
     min-height: auto;
     max-height: none;
     flex: 0 0 auto;

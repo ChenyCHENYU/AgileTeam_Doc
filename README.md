@@ -1,388 +1,138 @@
 <div align="center">
 
-# 🚀 Agile Team
+# 🤖 Robot Admin
 
-### Development Teams Based Agile Thinking
+### 现代化企业级中后台框架 & 敏捷团队文档站
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Build Status](https://img.shields.io/badge/build-passing-brightgreen.svg)](https://github.com/ChenyCHENYU/AgileTeam_Doc)
-[![Version](https://img.shields.io/badge/version-3.0.0-blue.svg)](https://github.com/ChenyCHENYU/AgileTeam_Doc)
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](http://makeapullrequest.com)
+[![Vue](https://img.shields.io/badge/Vue-3.5-4FC08D.svg?logo=vue.js)](https://vuejs.org/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.8-3178C6.svg?logo=typescript)](https://www.typescriptlang.org/)
+[![Naive UI](https://img.shields.io/badge/Naive_UI-2.43-18A058.svg)](https://www.naiveui.com/)
+[![Vite](https://img.shields.io/badge/Vite-7-646CFF.svg?logo=vite)](https://vitejs.dev/)
+[![Components](https://img.shields.io/badge/Components-51+-blue.svg)](https://www.tzagileteam.com/robot/components/preface)
 
-**拥抱开放，拥抱变化 — 构建新一代团队协作生态**
+**重新定义中后台开发体验 — 热更新 <100ms · 首屏 <2s · 产物 <2MB**
 
-[🌐 在线体验](https://www.tzagileteam.com/) • [📚 完整文档](https://www.tzagileteam.com/document/) • [🎯 快速开始](#-快速开始) • [🤝 参与贡献](#-参与贡献)
+[🌐 文档站](https://www.tzagileteam.com/) • [🎯 在线演示](https://www.robotadmin.cn/) • [📦 组件库](https://www.tzagileteam.com/robot/components/preface) • [⚡ 脚手架](https://www.tzagileteam.com/robot/cli/)
 
 </div>
 
 ---
-
-## ✨ 项目愿景
-
-> **"以不同的角色，不同的视野，借助社区和伙伴的力量，持续集成优化完善，基于项目实践沉淀技术栈和管理思想，同步拓展 π 型综合能力"**
-
-Agile Team 不仅仅是一个项目管理工具，更是一个**综合化交付管理解决方案**，专注于为现代开发团队提供：
-
-- 🎯 **端到端产品生命周期管理** - 从需求调研到用户交付的全链路覆盖
-- 💻 **现代化技术栈实践** - Vue3 + TypeScript + 微服务架构的完整方案
-- 🧪 **精益质量控制体系** - Case 卡控 + 自动化 CI/CD + 质量保障
-- 👥 **高效团队协作模式** - 多角色协同 + 标准化模板 + 敏捷实践
-
-## 🌟 核心亮点
-
-### 💡 基于敏捷思想的文档化协作平台
-
-```mermaid
-graph LR
-    A[调研分析] --> B[方案设计] --> C[详细设计] --> D[原型制作]
-    D --> E[评审流程] --> F[设计建模] --> G[用户交付] --> H[研发支持]
-```
-
-- **📊 标准化流程**: 27+ 种专业项目管理模板覆盖全生命周期
-- **👥 多角色协作**: PM、PO、RD、QC、OP、UI 六大角色明确分工
-- **📖 文档驱动**: 基于 VitePress 的现代化文档系统
-- **🔄 敏捷实践**: 融合敏捷开发理念的团队协作框架
-
-### 🛠 技术栈架构
-
-<table>
-<tr>
-<td width="50%">
-
-**核心技术**
-
-- 📖 **VitePress** - 静态站点生成器
-- 🔥 **Vue 3** - 组合式 API + 响应式系统
-- 📘 **TypeScript** - 类型安全保障
-- ⚡ **Vite** - 极速构建工具
-
-</td>
-<td width="50%">
-
-**工程化工具**
-
-- 📦 **包管理**: 支持 Bun/npm/yarn
-- 🚀 **部署平台**: Vercel 边缘计算
-- 🔧 **自动化**: Git Actions CI/CD
-- 🎨 **组件库**: 自定义 Vue 组件
-
-</td>
-</tr>
-</table>
-
-### 🖥️ 组件在线演示
-
-文档站集成了 **DemoIframe** 组件，通过 iframe 嵌入 Robot Admin 生产环境的真实演示页面，提供 **51+ 组件** 的在线交互体验：
-
-- 📦 **真实环境**：嵌入 `https://robotadmin.cn` 的 Preview 路由，展示的是生产级组件效果
-- 🎨 **浏览器风格**：带有地址栏、操作按钮的仿浏览器 Chrome UI，体验直观
-- 🔗 **一键跳转**：支持在新标签页中打开完整演示，方便深入体验
-- 🛡️ **零侵入**：Preview 路由无需登录鉴权，不影响主系统功能
-
-### 🎯 文档化管理优势
-
-| 维度         | 特性                    | 价值               |
-| ------------ | ----------------------- | ------------------ |
-| **标准化**   | 27+ 种模板库           | 统一协作标准       |
-| **可视化**   | Markdown + 自定义组件  | 高效内容呈现       |
-| **响应式**   | 移动端友好设计         | 随时随地访问       |
-| **开放性**   | 开源协作 + 社区驱动    | 持续演进优化       |
-
-### 👥 多角色协作体系
-
-```
-🏢 Agile Team 组织架构
-├── 👨‍💼 项目经理 (PM) - 项目推进 + 团队协调
-├── 🎯 产品负责人 (PO) - 需求分析 + 产品设计
-├── 👨‍💻 开发工程师 (RD) - 技术实现 + 代码质量
-├── 🧪 质量控制 (QC) - 测试验证 + 质量保障
-├── ⚙️ 运维工程师 (OP) - 部署运维 + 系统稳定
-└── 🎨 UI设计师 (UI) - 用户体验 + 界面设计
-```
-
-## 📋 标准化管理体系
-
-### 🗂 模板库矩阵 (27+ 种专业模板)
-
-<details>
-<summary><b>📊 项目管理模板</b></summary>
-
-- 📋 立项申请单 - 项目启动标准化
-- 📅 计划拆解表 - WBS 工作分解
-- 🎯 项目启动会 - 团队对齐
-- 📝 评审纪要 - 决策记录
-- 💰 奖金分配 - 激励机制
-
-</details>
-
-<details>
-<summary><b>📐 技术管理模板</b></summary>
-
-- 📋 技术协议 - 技术标准约定
-- 🏗 架构方案 - 系统设计文档
-- 📖 需求设计方案 - PRD 模板
-- 🐛 Bug 管理 - 缺陷跟踪流程
-- ⚠️ 风险管理 - 风险识别与应对
-
-</details>
-
-<details>
-<summary><b>🤝 商务合作模板</b></summary>
-
-- 📄 商务合同 - 合同模板库
-- 👥 干系人管理 - 沟通矩阵
-- 📊 商务评估 - ROI 分析
-- ⏰ 里程碑管理 - 关键节点控制
-
-</details>
-
-## 🚀 快速开始
-
-### 📋 环境要求
-
-| 工具        | 版本要求 | 推荐理由                 |
-| ----------- | -------- | ------------------------ |
-| **Node.js** | ≥18.0.0  | 现代 JavaScript 运行时   |
-| **Bun**     | ≥1.0.0   | 🔥 **推荐** - 极速包管理 |
-| **Git**     | 最新版   | 版本控制                 |
-
-### ⚡ 30 秒快速启动
-
-```bash
-# 1️⃣ 克隆项目
-git clone https://github.com/ChenyCHENYU/AgileTeam_Doc.git
-cd AgileTeam_Doc
-
-# 2️⃣ 安装依赖（推荐使用 Bun，也支持 npm/yarn）
-bun install    # 或 npm install
-
-# 3️⃣ 启动开发服务器
-bun run dev    # 或 npm run dev
-
-# 🎉 访问 http://localhost:5173 开始体验！
-```
-
-### 🔧 开发命令
-
-```bash
-# 📖 启动文档服务
-npm run dev          # 或 bun run dev
-
-# 🏗 构建生产版本
-npm run build        # 或 bun run build
-
-# 👀 预览构建结果
-npm run preview      # 或 bun run preview
-
-# 📤 推送到远程仓库
-npm run push         # 同时推送到 GitHub 和 Gitee
-```
 
 ## 🏗 技术架构
 
-### 🔧 核心技术栈
-
 ```
-🏗 Agile Team 技术架构
-├── 📱 文档生成层
-│   ├── VitePress + 静态站点生成
-│   ├── Vue 3 + Composition API
-│   └── TypeScript + 类型安全
-├── 📖 内容管理层
-│   ├── Markdown + 丰富扩展语法
-│   ├── 自定义组件 + 交互体验
-│   └── 模板库 + 标准化流程
-├── 🚀 部署层
-│   ├── Vercel + 边缘计算
-│   ├── 自动化CI/CD
-│   └── Git双仓库备份
-└── 🛠 工具链
-    ├── 多包管理器支持（Bun/npm/yarn）
-    ├── Giscus 评论系统
-    └── Vercel Analytics 分析
+Vue 3.5 + TypeScript 5.8 + Naive UI 2.43 + Vite 7 + UnoCSS
+├── 🧩 51 个生产级组件（@robot-admin/naive-ui-components）
+├── 📱 Robot uniApp（33 个跨端组件，覆盖 H5/小程序/App）
+├── ⚡ Robot CLI（60s 一键创建项目）
+├── 🔌 8 个工程化插件
+└── 📖 VitePress 文档站（六大角色全覆盖）
 ```
 
-### 📊 项目结构
+## 🧩 组件体系（51+）
 
-```
-AgileTeam_Doc/
-├── 📖 docs/                    # 文档源码目录
-│   ├── .vitepress/             # VitePress 配置
-│   │   ├── components/         # 自定义 Vue 组件
-│   │   │   └── DemoIframe.vue  # 组件在线演示嵌入（iframe）
-│   │   ├── theme/              # 主题定制文件（Mobile-First 响应式）
-│   │   └── config.js           # 站点配置文件
-│   └── document/               # 核心文档内容
-│       ├── manage/             # 📋 项目管理文档
-│       │   ├── job-responsibility/  # 角色职责定义
-│       │   ├── templates/      # 标准化模板库
-│       │   └── verify/         # 交付物验收标准
-│       ├── po/                 # 🎯 产品管理文档
-│       ├── robot/              # 🤖 组件文档（51+ 组件在线演示）
-│       ├── team/               # 👥 团队协作文档
-│       └── web/                # 💻 前端技术文档
-├── 📦 package.json             # 项目依赖配置
-├── 🔧 vercel.json              # Vercel 部署配置
-└── 📄 README.md                # 项目说明文档
-```
+| 分类           | 组件                                                          | 亮点                        |
+| -------------- | ------------------------------------------------------------- | --------------------------- |
+| **表单**       | C_Form（8种布局）· C_FormSearch · C_Cascade · C_Date · C_Time | 动态表单 + JSON Schema 驱动 |
+| **表格**       | C_Table（虚拟滚动）· C_VTableGantt · C_DragSortTable          | 万级数据流畅渲染            |
+| **数据可视化** | ECharts 6 · AntV X6 · OrgChart · Workflow                     | BPMN/ER/UML 流程引擎        |
+| **编辑器**     | WangEditor · Markdown · Code · FormulaEditor                  | 富文本 + 公式 + 代码高亮    |
+| **文件媒体**   | FilePreview · AudioPlayer · ImageCropper · Signature          | 在线预览 + 裁剪 + 电子签名  |
+| **交互**       | ContextMenu · DragSort · Guide · GlobalSearch · Captcha       | 右键菜单 + 拖拽 + 新手引导  |
+| **布局**       | Layout · Menu · Header · Breadcrumb · TagsView · SplitPane    | 多种布局模式 + 标签页       |
+| **指令**       | v-copy · v-watermark · v-drag · v-permission · v-debounce     | 7+ 自定义指令               |
 
-## 🌟 团队生态
+所有组件均提供 **在线演示**（嵌入 robotadmin.cn 真实环境）、TypeScript 类型定义和完整 API 文档。
 
-### 👥 核心团队
+## 📱 Robot uniApp
 
-<table>
-<tr>
-<td align="center" width="150px">
-<img src="https://github.com/ChenyCHENYU.png" width="100px;" alt="Cheny"/>
-<br /><b>Cheny</b><br />
-<sub>项目发起人 & 架构师</sub>
-</td>
-<td align="center" width="150px">
-<img src="https://cheny-chenyu.oss-cn-chengdu.aliyuncs.com/my-agile-team-document/team/张东.png" width="100px;" alt="张东"/>
-<br /><b>张东</b><br />
-<sub>前端技术专家</sub>
-</td>
-<td align="center" width="150px">
-<img src="https://cheny-chenyu.oss-cn-chengdu.aliyuncs.com/my-agile-team-document/team/潘超越.png" width="100px;" alt="潘超越"/>
-<br /><b>潘超越</b><br />
-<sub>后端架构师</sub>
-</td>
-<td align="center" width="150px">
-<img src="https://cheny-chenyu.oss-cn-chengdu.aliyuncs.com/my-agile-team-document/team/薛旭杰.png" width="100px;" alt="薛旭杰"/>
-<br /><b>薛旭杰</b><br />
-<sub>DevOps工程师</sub>
-</td>
-</tr>
-</table>
+基于 **Vue 3 + UniApp + wot-design-uni** 的跨端移动框架：
 
-### 🤝 社区伙伴
+- **33 个业务组件**：布局（4）· 数据展示（13）· 表单（5）· 反馈交互（5）· 导航（6）
+- **多端覆盖**：H5 / 微信小程序 / Android / iOS
+- **开箱即用**：与 Robot Admin 共享设计规范和开发范式
 
-- 🏢 **西安前端社群** - 技术交流与分享
-- 🏗 **广联达** - 企业级实践经验
-- 🚀 **一线大厂** - 先进技术理念
-- 👥 **开源社区** - 持续贡献与支持
-
-## 📈 成果展示
-
-### 📊 项目成果
-
-<div align="center">
-
-| 🎯 维度         | 📝 描述                                  |
-| --------------- | ---------------------------------------- |
-| **🔧 管理模板** | 27+ 种标准化项目管理模板                 |
-| **👥 角色体系** | PM/PO/RD/QC/OP/UI 六大角色协作框架      |
-| **📖 知识体系** | 涵盖项目管理到技术实践的完整文档库       |
-| **🚀 技术架构** | VitePress + Vue3 + TypeScript 静态站点  |
-| **🎯 应用场景** | 敏捷团队协作、项目标准化、知识沉淀       |
-
-</div>
-
-### 🏆 核心价值
-
-> **💡 不仅仅是工具，更是方法论的实践**
-
-- ✅ **标准化** 团队协作流程和项目管理模板
-- ✅ **系统化** 技术栈沉淀和最佳实践总结
-- ✅ **体系化** 从需求到交付的全生命周期管理
-- ✅ **实用化** 基于真实项目经验的管理方法论
-- ✅ **开放化** 拥抱社区力量的协作生态建设
-
-## 🤝 参与贡献
-
-我们相信开源的力量，欢迎所有形式的贡献！
-
-### 🌟 贡献方式
-
-<div align="center">
-
-| 💻 代码贡献 | 📝 文档完善 | 🐛 问题反馈 | 💡 需求建议 |
-| ----------- | ----------- | ----------- | ----------- |
-| 提交 PR     | 改进文档    | 提交 Issue  | 功能建议    |
-| 修复 Bug    | 翻译文档    | 测试反馈    | 用例分享    |
-
-</div>
-
-### 📝 贡献流程
+## ⚡ Robot CLI
 
 ```bash
-# 1️⃣ Fork 本项目
-# 2️⃣ 创建特性分支
-git checkout -b feature/amazing-feature
-
-# 3️⃣ 提交更改
-git commit -m 'feat: 添加某个很棒的功能'
-
-# 4️⃣ 推送分支
-git push origin feature/amazing-feature
-
-# 5️⃣ 提交 Pull Request
+npx @agile-team/robot-cli create my-project
 ```
 
-## 📄 许可证
+60 秒完成项目创建：智能模板分类 · 搜索筛选 · 始终拉取最新版本 · 自动检测 bun/pnpm。
 
-本项目基于 [MIT 许可证](LICENSE) 开源，意味着：
+## 🔌 工程化插件（8 个）
 
-- ✅ **自由使用** - 个人和商业项目均可使用
-- ✅ **自由修改** - 可根据需求自定义开发
-- ✅ **自由分发** - 可重新分发和销售
-- ⚠️ **保留版权** - 需保留原始版权声明
+| 插件                               | 用途                 |
+| ---------------------------------- | -------------------- |
+| `@robot-admin/naive-ui-components` | 组件库独立包         |
+| `robot-admin-env-manager`          | 多环境配置管理       |
+| `vite-plugin-preloader`            | 首屏加载优化         |
+| `ts-type-cleaner`                  | TS 类型文件清理      |
+| `mgit-push`                        | 多仓库同步推送       |
+| `git-branch-check-diff-commits`    | 分支差异检查         |
+| `vscode-config`                    | 团队 VSCode 统一配置 |
+| `console`                          | 开发调试增强         |
 
-## 🎯 未来规划
+## 📖 文档站
 
-### 🗓 发展规划
+本仓库是 Robot Admin 的 **VitePress 文档站**，除组件/插件文档外，还包含敏捷团队的多角色协作文档：
 
-<details>
-<summary><b>📋 内容完善</b></summary>
+- **产品** — 需求调研 · 分析 · 方案 · 规范 · 工具表单
+- **设计** — 设计规范 · 视觉风格 · 工作流程
+- **前端/后端** — 编码规范 · 工程架构 · 快速上手
+- **测试** — 测试策略 · 用例设计 · 质量标准
+- **运维** — 部署规范 · 版本管理
+- **管理** — 6 大角色职责 · 27+ 项目管理模板 · 交付验收标准
 
-- [ ] 🔧 补充更多行业最佳实践案例
-- [ ] 📖 优化文档导航和搜索体验
-- [ ] 🎨 丰富自定义组件库
-- [ ] 📚 增加多语言支持
-- [x] 📱 修复移动端自适应问题（CSS Mobile-First 重构）
-- [x] 📦 补全组件库文档（C_OrgChart / C_Skeleton）
+## 🚀 快速开始
 
-</details>
+```bash
+# 克隆
+git clone https://github.com/ChenyCHENYU/AgileTeam_Doc.git
+cd AgileTeam_Doc
 
-<details>
-<summary><b>🚀 功能扩展</b></summary>
+# 安装（推荐 Bun）
+bun install
 
-- [ ] 💬 集成更多评论和反馈系统
-- [ ] 📊 添加访问统计和分析
-- [ ] 🔗 支持更多第三方工具集成
-- [x] 📱 移动端及小屏自适应恢复（VitePress 原生响应式不再被覆盖）
-- [ ] 🏗 CSS 架构拆分（参见 `全面优化.md`）
+# 启动文档站
+bun run dev
 
-</details>
+# 构建
+bun run build
+```
 
----
+## 📊 项目结构
 
-<div align="center">
+```
+docs/
+├── .vitepress/            # VitePress 配置 + 主题定制
+│   ├── _config/           # 模块化配置（nav/sidebar/search）
+│   ├── components/        # Vue 组件（DemoIframe/评论/徽章）
+│   └── theme/             # 主题（布局优化/首页样式/功能模块）
+└── document/
+    ├── robot/             # 🤖 Robot Admin（指南/组件/插件/CLI）
+    ├── uniapp/            # 📱 Robot uniApp（指南/组件）
+    ├── po/                # 📋 产品文档
+    ├── ui/                # 🎨 设计文档
+    ├── web/               # 💻 前端文档
+    ├── rear-end/          # ⚙️ 后端文档
+    ├── qc/                # 🧪 测试文档
+    ├── op/                # 🔧 运维文档
+    ├── manage/            # 👔 管理（职责/模板/验收）
+    └── team/              # 🏆 团队英雄墙
+```
 
-## 💫 立即体验
+## 🔗 链接
 
-<p>
-<a href="https://www.tzagileteam.com/" target="_blank">
-<img src="https://img.shields.io/badge/🌐_在线体验-立即访问-4285f4?style=for-the-badge&logo=googlechrome&logoColor=white" alt="在线体验"/>
-</a>
-&nbsp;&nbsp;
-<a href="https://github.com/ChenyCHENYU/AgileTeam_Doc" target="_blank">
-<img src="https://img.shields.io/badge/⭐_GitHub-给个Star-24292e?style=for-the-badge&logo=github&logoColor=white" alt="GitHub"/>
-</a>
-</p>
+|                     |                                              |
+| ------------------- | -------------------------------------------- |
+| 📖 文档站           | https://www.tzagileteam.com/                 |
+| 🎯 Robot Admin 演示 | https://www.robotadmin.cn/                   |
+| 💻 GitHub           | https://github.com/ChenyCHENYU/AgileTeam_Doc |
+| 🔄 Gitee 镜像       | https://gitee.com/ChenyCHENYU/AgileTeam_Doc  |
+| 📝 博客             | https://yangchenyu.com                       |
 
-### 🔗 相关链接
+## 📄 License
 
-**📈 项目预览**: https://www.tzagileteam.com/  
-**📚 完整文档**: https://www.tzagileteam.com/document/  
-**💻 源码仓库**: https://github.com/ChenyCHENYU/AgileTeam_Doc  
-**🔄 镜像仓库**: https://gitee.com/ChenyCHENYU/AgileTeam_Doc
-
----
-
-<h3>🎉 感谢所有贡献者的支持！</h3>
-
-<p><i>"不忘初心，方得始终"</i></p>
-<p><b>— Agile Team 核心理念</b></p>
-
-</div>
+[MIT](LICENSE) © 2025 CHENY - 金恒西安

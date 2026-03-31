@@ -1,335 +1,127 @@
-/* VitePress 宽屏优化 - Mobile-First + 最小侵入 */
-/* 移动端 / 平板端完全信任 VitePress 默认行为，仅在 >= 1440px 开始宽屏增强 */
+/*
+ * VitePress 宽屏布局优化（参考 Element Plus 文档站方案）
+ * ======================================================
+ * 核心原则：
+ *   绝不触碰 --vp-layout-max-width（除非视口真的 >= 该值）
+ *   VitePress 用此变量计算导航栏、侧边栏、内容区的居中偏移
+ *   只精准覆盖文档内容区域的 max-width 来扩展可用宽度
+ *   首页、导航栏、侧边栏的定位完全交给 VitePress 原生处理
+ */
 
-:root {
-  /* 扩展整体最大宽度 */
-  --vp-layout-max-width: 1920px;
-  /* 导航栏高度变量 */
-  --vp-nav-height: 64px;
+/* =====================================================
+   1. 扩展文档内容区域宽度
+   移除 VitePress 默认的 688px 内容宽度限制
+   仅影响 .VPDoc 文档页面，不影响首页/导航/侧边栏
+   ===================================================== */
+
+.vp-doc {
+  max-width: none;
+  width: 100%;
 }
 
-/* ===== < 1440px — 完全使用 VitePress 默认布局，不做任何覆盖 ===== */
-
-/* ===== >= 1440px — 桌面端宽屏增强 ===== */
-@media (min-width: 1440px) {
-
-  /* 导航栏固定 + z-index 管理 */
-  .VPNav {
-    position: fixed !important;
-    top: 0;
-      left: 0;
-      right: 0;
-      z-index: 1001;
-      background: var(--vp-c-bg);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
-      border-bottom: 1px solid var(--vp-c-divider);
-    }
-
-    .VPNavBar {
-    position: relative;
-      z-index: 1001;
-      background: var(--vp-c-bg);
-    }
-
-    .VPNavBarTitle {
-    position: relative;
-      z-index: 1002;
-    }
-
-    .logo {
-    position: relative;
-      z-index: 1002;
-    }
-
-    /* 内容区域给导航栏留空间 */
-    .VPContent {
-    position: relative;
-      z-index: 1;
-      padding-top: var(--vp-nav-height);
-    }
-
-    /* 侧边栏固定定位 */
-    .VPSidebar {
-    position: fixed;
-      top: var(--vp-nav-height);
-      left: 0;
-      bottom: 0;
-      width: 260px;
-      z-index: 10;
-      padding-top: 0;
-      height: calc(100vh - var(--vp-nav-height));
-      overflow-y: auto;
-    }
-
-    /* 桌面端不需要遮罩 */
-    .VPSidebar .curtain,
-    .VPSidebar>div:first-child {
-    display: none;
-    }
-
-    .VPSidebarGroup {
-    padding-top: 0;
-    }
-
-    /* 修复 VPDoc 左侧 padding */
-    .VPDoc {
-    padding-left: 0;
-      padding-right: 32px;
-    }
-
-    .VPDoc.has-sidebar {
-    padding-left: 0;
-      padding-right: 32px;
-    }
-
-    /* Layout padding-top（仅桌面端需要） */
-    .Layout {
-      padding-top: var(--vp-nav-height);
-      position: relative;
-      z-index: 0;
-    }
-
-    main {
-      position: relative;
-      z-index: 1;
-    }
-    .VPDoc {
-      padding-top: 0;
-      margin-top: 0;
-    }
-    }
-  
-    /* ===== 1440px–1600px — 中等桌面 ===== */
-    @media (min-width: 1440px) and (max-width: 1600px) {
-  .VPDoc {
-    margin-left: 0;
-      padding-left: 0;
-    }
-    .VPDoc.has-sidebar .container {
-    margin-left: 240px;
-      padding-right: 32px;
-      max-width: calc(100vw - 240px - 64px);
-    }
-    .VPDoc.has-sidebar .content-container {
-    margin-left: 0;
-      padding-left: 0;
-    }
-    .VPDoc.has-aside .content-container {
-    max-width: calc(100vw - 240px - 224px - 128px);
-    }
-    .VPNavBarSearch {
-    margin-left: auto;
-      margin-right: 16px;
-      max-width: 300px;
-    }
-    .VPNavBarMenu {
-    margin-left: 24px;
-      margin-right: auto;
-    }
-    .VPNavBar>.container {
-    display: flex;
-      align-items: center;
-      gap: 16px;
-    }
-    .VPNavBarExtra {
-    margin-left: 16px;
-      flex-shrink: 0;
-    }
-    }
-/* ===== 1601px–1920px — 大桌面 ===== */
-@media (min-width: 1601px) and (max-width: 1920px) {
-  .VPDoc:not(.has-sidebar) .container {
-    max-width: min(calc(100vw - 64px), 1584px);
-    }
-
-    .VPDoc:not(.has-sidebar) .content {
-    max-width: min(calc(100vw - 200px), 1264px);
-    }
-
-    .VPDoc.has-aside .content-container {
-    max-width: min(calc(100vw - 600px), 1400px);
-    }
-
-    .VPDoc.has-sidebar:not(.has-aside) .content {
-    max-width: min(calc(100vw - 350px), 1400px);
-    }
-
-    .VPDoc .content {
-    max-width: min(calc(100vw - 600px), 1400px);
-    }
-    }
-
-/* ===== >= 1440px 右侧目录定位 ===== */
-@media (min-width: 1440px) {
-  .VPDocAside {
-    width: 224px;
-      flex-shrink: 0;
-      position: sticky;
-      top: calc(var(--vp-nav-height) + 20px);
-      z-index: 5;
+@media (min-width: 1280px) {
+  .VPDoc.has-aside .content-container {
+    max-width: none !important;
   }
 }
 
-/* ===== 第三段：> 1920px - 超宽屏优化 ===== */
+@media (min-width: 1440px) {
+  .VPDoc:not(.has-sidebar) .container {
+    max-width: 1280px !important;
+  }
+
+    .VPDoc:not(.has-sidebar) .content {
+      max-width: 960px !important;
+    }
+}
+
+/* =====================================================
+   2. 文档内层 padding 紧凑化（参考 Element Plus）
+   VitePress 默认: VPDoc 32px + .content 32px = 每侧 64px
+   优化后: VPDoc 16px + .content 16px = 每侧 32px
+   ===================================================== */
+
+@media (min-width: 960px) {
+  .VPDoc.has-sidebar {
+    padding: 32px 16px 0 !important;
+    }
+
+    .VPDoc.has-sidebar .content {
+      padding: 0 16px 128px !important;
+    }
+    }
+@media (min-width: 1280px) {
+  .VPDoc.has-sidebar .aside {
+    padding-left: 16px !important;
+  }
+}
+
+/* =====================================================
+   3. >= 1920px — 大桌面
+   ===================================================== */
+
+@media (min-width: 1920px) {
+  :root {
+    --vp-layout-max-width: 1920px;
+  }
+
+    .VPDoc:not(.has-sidebar) .container {
+      max-width: 1584px;
+    }
+
+    .VPDoc:not(.has-sidebar) .content {
+      max-width: 1264px;
+    }
+    }
+
+/* =====================================================
+   4. > 1920px — 超宽屏
+   ===================================================== */
+
 @media (min-width: 1921px) {
   :root {
     --vp-layout-max-width: 100vw;
   }
 
-  /* 无侧边栏页面 - 超宽屏居中设计 */
   .VPDoc:not(.has-sidebar) .container {
-    max-width: min(85vw, 2000px) !important;
-    margin: 0 auto !important;
+    max-width: min(85vw, 2000px);
+      margin: 0 auto;
   }
 
   .VPDoc:not(.has-sidebar) .content {
-    max-width: min(70vw, 1600px) !important;
-    margin: 0 auto !important;
-    /* padding: 0 48px !important; */
+    max-width: min(70vw, 1600px);
+      margin: 0 auto;
   }
 
-  /* 有右侧目录的文档页面 */
   .VPDoc.has-aside .content-container {
-    max-width: min(75vw, 1900px) !important;
-    margin: 0 auto !important;
-    padding: 0 48px !important;
-  }
-
-  /* 有侧边栏无右侧目录的页面 */
-  .VPDoc.has-sidebar:not(.has-aside) .content {
-    max-width: min(80vw, 2000px) !important;
-    margin: 0 auto !important;
-    padding: 0 48px !important;
-  }
-
-  /* 直接扩展文档内容区域 */
-  .VPDoc .content {
-    max-width: min(75vw, 1900px) !important;
-    margin: 0 auto !important;
-    /* padding: 0 48px !important; */
-  }
-
-  /* 侧边栏和右侧目录保持合理宽度 */
-  .VPSidebar {
-    width: clamp(260px, 10vw, 300px) !important;
-  }
-
-  .VPDocAside {
-    width: clamp(224px, 8vw, 280px) !important;
-  }
-
-  /* 头部导航栏统一布局 - 让logo与侧边栏对齐 */
-  .VPNavBar .container {
-    max-width: 100% !important;  /* 使用全宽 */
-    margin: 0 !important;         /* 移除auto margin */
-    padding: 0 32px !important;   /* 保持左右边距，与<1920px一致 */
-  }
-
-  /* 页脚同样处理 - 保持与导航栏一致 */
-  .VPFooter .container {
-    max-width: 100% !important;  /* 使用全宽 */
-    margin: 0 !important;         /* 移除auto margin */
-    padding: 0 32px !important;   /* 保持左右边距 */
+    max-width: min(75vw, 1900px);
   }
 }
 
-/* ===== 超高分辨率细分优化 ===== */
-
-/* 2561px-3840px: 高分辨率过渡区间 */
 @media (min-width: 2561px) and (max-width: 3840px) {
   .VPDoc.has-aside .content-container {
-    max-width: min(70vw, 2400px) !important;
-    /* padding: 0 64px !important; */
-  }
-
-  .VPDoc.has-sidebar:not(.has-aside) .content {
-    max-width: min(75vw, 2600px) !important;
-    /* padding: 0 64px !important; */
-  }
-
-  .VPDoc .content {
-    max-width: min(70vw, 2400px) !important;
-    /* padding: 0 64px !important; */
-  }
+    max-width: min(70vw, 2400px);
   
-  /* 超宽屏也保持导航栏靠边 */
-  .VPNavBar .container {
-    max-width: 100% !important;
-    margin: 0 !important;
-    padding: 0 48px !important;  /* 稍微增加边距 */
-  }
-  
-  .VPFooter .container {
-    max-width: 100% !important;
-    margin: 0 !important;
-    /* padding: 0 48px !important; */
-  }
 }
-
-/* 3841px+: 4K及以上超高分辨率 */
 @media (min-width: 3841px) {
   .VPDoc.has-aside .content-container {
-    max-width: min(65vw, 2800px) !important;
-    padding: 0 80px !important;
-  }
-
-  .VPDoc.has-sidebar:not(.has-aside) .content {
-    max-width: min(70vw, 3000px) !important;
-    padding: 0 80px !important;
-  }
-
-  .VPDoc .content {
-    max-width: min(65vw, 2800px) !important;
-    padding: 0 80px !important;
-  }
+    max-width: min(65vw, 2800px);
+      padding: 0 80px;
   
-  /* 4K屏幕导航栏边距 */
-  .VPNavBar .container {
-    max-width: 100% !important;
-    margin: 0 !important;
-    padding: 0 64px !important;  /* 4K屏幕适当增加边距 */
-  }
-  
-  .VPFooter .container {
-    max-width: 100% !important;
-    margin: 0 !important;
-    padding: 0 64px !important;
-  }
 }
 
-/* ===== 导航和页脚宽度适配 ===== */
-
-/* 导航栏宽度适配 - 保持原生布局 */
-.VPNavBar .container {
-  position: relative;
-  z-index: 1002;
-}
-
-/* 防止导航内容被遮挡 */
-.VPNavBar .content {
-  position: relative;
-  z-index: 1003;
-}
-
-/* ===== 内容区域样式优化 ===== */
-
-/* 文档内容基础样式 */
+/* =====================================================
+   5. 内容区域样式优化
+   ===================================================== */
 .vp-doc {
   font-size: 16px;
   line-height: 1.6;
-  /* 防止内容穿透到导航栏 */
-  position: relative;
-  z-index: 1;
 }
 
-/* 代码块优化 - 充分利用宽度 */
 .vp-doc div[class*="language-"] {
   margin: 16px 0;
   border-radius: 8px;
   overflow: hidden;
-  position: relative;
-  z-index: 1;
 }
 
 .vp-doc pre {
@@ -337,7 +129,6 @@
   padding: 24px;
 }
 
-/* 表格优化 - 关键！让表格能够利用全部宽度 */
 .vp-doc table {
   display: table;
   width: 100%;
@@ -347,20 +138,19 @@
   min-width: 100%;
 }
 
-.vp-doc th, .vp-doc td {
+.vp-doc th,
+.vp-doc td {
   padding: 8px 16px;
   border: 1px solid var(--vp-c-divider);
   text-align: left;
 }
 
-/* 确保表格容器能够撑满宽度 */
 .vp-doc .table-container,
 .vp-doc > div:has(table) {
   width: 100%;
   overflow-x: auto;
 }
 
-/* 图片优化 */
 .vp-doc img {
   max-width: 100%;
   height: auto;
@@ -368,12 +158,12 @@
   margin: 16px 0;
 }
 
-/* 段落和列表间距 */
 .vp-doc p {
   margin: 16px 0;
 }
 
-.vp-doc ul, .vp-doc ol {
+.vp-doc ul,
+.vp-doc ol {
   margin: 16px 0;
   padding-left: 32px;
 }
@@ -382,7 +172,6 @@
   margin: 8px 0;
 }
 
-/* 标题间距 */
 .vp-doc h1 {
   margin-top: 0;
   margin-bottom: 32px;
@@ -391,202 +180,50 @@
 .vp-doc h2 {
   margin-top: 48px;
   margin-bottom: 24px;
-  /* 防止被导航栏遮挡 */
-  position: relative;
-  z-index: 1;
 }
 
 .vp-doc h3 {
   margin-top: 32px;
   margin-bottom: 16px;
-  /* 防止被导航栏遮挡 */
-  position: relative;
-  z-index: 1;
 }
 
-/* 响应式字体大小 */
 @media (max-width: 767px) {
   .vp-doc {
     font-size: 14px;
   }
 }
 
-/* ===== 防止滚动条跳动 + 平滑滚动 ===== */
+/* =====================================================
+   6. 滚动 & 锚点偏移
+   ===================================================== */
 html {
   overflow-y: scroll;
-  scroll-behavior: smooth;  
 }
 
-/* 确保所有滚动都是平滑的 */
-* {
-  scroll-behavior: smooth;
-}
-
-/* 为锚点跳转设置合适的偏移量，避免被固定导航栏遮挡 */
-.vp-doc h1, 
-.vp-doc h2, 
-.vp-doc h3, 
-.vp-doc h4, 
-.vp-doc h5, 
+.vp-doc h1,
+.vp-doc h2,
+.vp-doc h3,
+.vp-doc h4,
+.vp-doc h5,
 .vp-doc h6 {
-  scroll-margin-top: calc(var(--vp-nav-height) + 20px);  /* 为固定导航栏预留空间 */
+  scroll-margin-top: 80px;
 }
 
-/* ===== 额外的布局修复 ===== */
+/* =====================================================
+   7. 其他样式修正（不影响布局）
+   ===================================================== */
 
-/* 高亮显示关键代码 */
-
+/* 代码高亮 */
 .vp-doc [class*='language-'] code .highlighted {
   background-color: rgba(0, 255, 149, 0.295) !important;
 }
-/* 个人英雄页高度 */
 
+/* 团队英雄页 */
 .VPTeamPageTitle {
   padding-top: 0 !important;
 }
 
-/* 首页特殊处理 */
-#VPContent.is-home {
-  padding-top: 0 !important;
-  padding-bottom: 0 !important;
-}
-
+/* 首页 Hero 底部间距微调 */
 .VPHero {
-  padding-bottom: 0px !important;
-}
-
-/* Hero gap — 响应式控制 */
-.VPHero .container {
-  gap: 32px;
-}
-@media (min-width: 768px) {
-  .VPHero .container {
-    gap: 60px;
-  }
-}
-
-@media (min-width: 1440px) {
-  .VPHero .container {
-    gap: 200px;
-  }
-}
-
-@media (min-width: 1920px) {
-  .VPHero .container {
-    gap: 380px;
-  }
-}
-
-
-/* ===== 导航栏宽度修复（仅桌面端） ===== */
-
-@media (min-width: 960px) {
-
-  /* 导航栏容器宽度设置 */
-  .VPNavBar .container {
-    max-width: 100%;
-      width: 100%;
-      margin: 0 auto;
-      display: flex;
-      align-items: center;
-    }
-
-    /* Logo和标题区域 */
-    .VPNavBarTitle {
-    flex-shrink: 0;
-      margin-right: 24px;
-    }
-
-    .VPNavBarTitle .title {
-    white-space: nowrap;
-    }
-
-    /* 导航菜单 */
-    .VPNavBarMenu {
-    margin-right: 16px;
-    }
-
-    /* 搜索框 */
-    .VPNavBarSearch {
-    flex-shrink: 0;
-      margin-right: 16px;
-    }
-
-    /* 右侧功能区 */
-    .VPNavBarExtra {
-    flex-shrink: 0;
-    }
-
-    .VPNavBarExtra>* {
-    margin-left: 8px;
-    }
-
-    .VPNavBarExtra>*:first-child {
-    margin-left: 0;
-    }
-}
-
-/* 文档页面特殊处理（通过侧边栏检测） */
-@media (min-width: 1440px) {
-
-  .VPSidebar~* .VPNavBar .container,
-  .has-sidebar .VPNavBar .container {
-    justify-content: flex-start;
-    }
-
-    .VPSidebar~* .VPNavBarTitle,
-    .has-sidebar .VPNavBarTitle {
-    min-width: 220px;
-      margin-right: 32px;
-    }
-
-    .VPSidebar~* .VPNavBarSearch,
-    .has-sidebar .VPNavBarSearch {
-    margin-left: auto;
-      margin-right: 16px;
-      max-width: 280px;
-    }
-}
-
-/* 首页特殊处理 */
-@media (min-width: 960px) {
-
-  .VPHome~.VPNav .VPNavBar .container,
-  .Layout:has(.VPHome) .VPNavBar .container {
-    justify-content: space-between;
-    }
-}
-
-/* 响应式导航栏 padding */
-@media (min-width: 960px) and (max-width: 1279px) {
-  .VPNavBar .container {
-    padding-left: 24px;
-      padding-right: 24px;
-  }
-}
-
-@media (min-width: 1280px) {
-  .VPNavBar .container {
-    padding-left: 32px;
-      padding-right: 32px;
-  }
-}
-
-@media (max-width: 959px) {
-  .VPNavBar .container {
-    padding-left: 16px;
-      padding-right: 16px;
-  }
-  
-  .VPNavBarTitle {
-    margin-right: 12px;
-  }
-  
-  .VPNavBarSearch {
-    margin-right: 12px;
-  }
-  
-  .VPNavBarExtra > * {
-    margin-left: 4px;
-  }
+  padding-bottom: 0 !important;
 }

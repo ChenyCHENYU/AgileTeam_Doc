@@ -68,7 +68,7 @@ const handleSocialLogin = (provider: string) => {
 />
 ```
 
-## 📖 API 文档
+## API
 
 ### Props
 
