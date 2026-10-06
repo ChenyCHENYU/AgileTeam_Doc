@@ -32,7 +32,7 @@ export default [
           },
           { text: "⚙️ 后端文档", link: "/rear-end/standard/norm" },
           { text: "🧪 测试文档", link: "/qc/standard/norm" },
-          { text: "🔧 运维文档", link: "/op/standard/norm" },
+          { text: "🔧 运维文档", link: "/manage/job-responsibility/op" },
         ],
       },
       {

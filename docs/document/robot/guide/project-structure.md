@@ -223,7 +223,7 @@ export const getAuthMenuListApi = () =>
 
 **Local 组件** - 特定功能模块的业务组件（c_ 小写前缀）
 
-**组件库** - 51 个业务组件已独立发布为 `@robot-admin/naive-ui-components`，支持按需自动导入
+**组件库** - 54 个业务组件已独立发布为 `@robot-admin/naive-ui-components`，支持按需自动导入
 
 ## 📊 状态管理系统
 

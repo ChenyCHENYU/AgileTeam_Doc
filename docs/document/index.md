@@ -7,7 +7,7 @@ hero:
   text: 拥抱开放，拥抱变化
   tagline: 🚀 多角色实践 | 🤝 社区共建 | 💡 技术沉淀 | 📈 π型进化 | 通过实战驱动，逐步构建技术与管理并进的复合型成长。
   image:
-    src: /assets/img/robot.png
+    src: /assets/img/robot.webp
     alt: robot
   actions:
     - theme: brand
@@ -15,7 +15,7 @@ hero:
       link: /robot/guide/overview
     - theme: alt
       text: 查看组件
-      link: /robot/components/preface.html
+      link: /robot/components/preface
 
 features:
   - icon: ⚡️

@@ -12,7 +12,7 @@ const DEFAULT_CONFIG = {
     hot: 14, // HOT 标记 14 天过期
     beta: 60, // BETA 标记 60 天过期
   },
-  enableLogs: true, // 是否启用控制台日志
+  enableLogs: false, // 生产环境默认关闭控制台日志
 };
 
 let config = { ...DEFAULT_CONFIG };
@@ -151,7 +151,9 @@ function isBadgeExpired(badgeType, frontmatter, fileModifiedDate) {
  * 处理智能 NEW 标记的核心函数
  */
 function processSmartNewBadges() {
-  setTimeout(() => {
+  // 立即执行一次（内容通常已就绪），再于 rAF 和短延迟各兜底一次，
+  // 避免路由切换后 DOM 未完全渲染导致标记丢失；重复处理有 .new-badge 守卫，无副作用
+  const run = () => {
     const frontmatter = getPageFrontmatter();
     const fileModifiedDate = getFileLastModified();
 
@@ -254,7 +256,11 @@ function processSmartNewBadges() {
         link.appendChild(badgeEl);
       }
     });
-  }, 500);
+  };
+
+  run();
+  requestAnimationFrame(run);
+  setTimeout(run, 120);
 }
 
 /**
@@ -291,10 +297,12 @@ export function initSmartNewBadgeProcessor(router, userConfig = {}) {
     processSmartNewBadges();
   }
 
-  // 内容变化监听
+  // 内容变化监听（防抖，避免 giscus/iframe 等 DOM 变动引发高频重扫）
   setTimeout(() => {
+    let mutationTimer = null;
     const observer = new MutationObserver(() => {
-      processSmartNewBadges();
+      clearTimeout(mutationTimer);
+      mutationTimer = setTimeout(processSmartNewBadges, 200);
     });
 
     const targetNode = document.querySelector(".vp-doc") || document.body;

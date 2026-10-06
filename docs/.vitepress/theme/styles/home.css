@@ -117,7 +117,6 @@ html, body {
     radial-gradient(ellipse 1000px 1200px at 50% 85%, rgba(79, 172, 254, 0.10) 0%, transparent 55%),
     radial-gradient(ellipse 900px 700px at 20% 80%, rgba(67, 233, 123, 0.08) 0%, transparent 65%),
     linear-gradient(135deg, var(--bg-light-1) 0%, var(--bg-light-2) 50%, var(--bg-light-3) 100%);
-  animation: atmosphericShift 22s ease-in-out infinite alternate;
 }
 
 .dark .VPHome {
@@ -127,6 +126,7 @@ html, body {
     radial-gradient(ellipse 1000px 1200px at 50% 85%, rgba(59, 130, 246, 0.15) 0%, transparent 55%),
     radial-gradient(ellipse 900px 700px at 20% 80%, rgba(16, 185, 129, 0.12) 0%, transparent 65%),
     linear-gradient(135deg, var(--bg-light-1) 0%, var(--bg-light-2) 50%, var(--bg-light-3) 100%);
+  animation: atmosphericShift 22s ease-in-out infinite alternate;
 }
 
 @keyframes atmosphericShift {
@@ -191,6 +191,7 @@ html, body {
   pointer-events: none;
   opacity: 0.8;
   z-index: 1;
+  transform: translateZ(0);
 }
 
 .dark .VPHome::after {
@@ -206,8 +207,8 @@ html, body {
 }
 
 @keyframes spiralRotate {
-  from { transform: rotate(0deg); }
-  to   { transform: rotate(360deg); }
+  from { transform: translateZ(0) rotate(0deg); }
+  to   { transform: translateZ(0) rotate(360deg); }
 }
 
 /* ===== Hero 区域 ===== */
@@ -509,10 +510,10 @@ html, body {
   z-index: 3;
 }
 
-.VPFeature:nth-child(1)::before { background: var(--gradient-primary); }
-.VPFeature:nth-child(2)::before { background: var(--gradient-tech); }
-.VPFeature:nth-child(3)::before { background: var(--gradient-accent); }
-.VPFeature:nth-child(4)::before { background: var(--gradient-success); }
+.VPFeature:nth-child(4n+1)::before { background: var(--gradient-primary); }
+.VPFeature:nth-child(4n+2)::before { background: var(--gradient-tech); }
+.VPFeature:nth-child(4n+3)::before { background: var(--gradient-accent); }
+.VPFeature:nth-child(4n+4)::before { background: var(--gradient-success); }
 
 /* ★ 底部渐变光晕层 — hover 时显现 */
 .VPFeature::after {
@@ -529,34 +530,34 @@ html, body {
   filter: blur(10px);
 }
 
-.VPFeature:nth-child(1)::after { background: var(--gradient-primary); }
-.VPFeature:nth-child(2)::after { background: var(--gradient-tech); }
-.VPFeature:nth-child(3)::after { background: var(--gradient-accent); }
-.VPFeature:nth-child(4)::after { background: var(--gradient-success); }
+.VPFeature:nth-child(4n+1)::after { background: var(--gradient-primary); }
+.VPFeature:nth-child(4n+2)::after { background: var(--gradient-tech); }
+.VPFeature:nth-child(4n+3)::after { background: var(--gradient-accent); }
+.VPFeature:nth-child(4n+4)::after { background: var(--gradient-success); }
 
 /* ★ 卡片独特底色 — 微妙色调区分 */
-.VPFeature:nth-child(1) {
+.VPFeature:nth-child(4n+1) {
   background:
     linear-gradient(160deg, rgba(102, 126, 234, 0.08) 0%, rgba(102, 126, 234, 0.01) 50%, transparent 100%),
     linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.06) 100%),
     var(--glass-bg-primary);
 }
 
-.VPFeature:nth-child(2) {
+.VPFeature:nth-child(4n+2) {
   background:
     linear-gradient(160deg, rgba(79, 172, 254, 0.08) 0%, rgba(79, 172, 254, 0.01) 50%, transparent 100%),
     linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.06) 100%),
     var(--glass-bg-primary);
 }
 
-.VPFeature:nth-child(3) {
+.VPFeature:nth-child(4n+3) {
   background:
     linear-gradient(160deg, rgba(240, 147, 251, 0.08) 0%, rgba(240, 147, 251, 0.01) 50%, transparent 100%),
     linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.06) 100%),
     var(--glass-bg-primary);
 }
 
-.VPFeature:nth-child(4) {
+.VPFeature:nth-child(4n+4) {
   background:
     linear-gradient(160deg, rgba(67, 233, 123, 0.08) 0%, rgba(67, 233, 123, 0.01) 50%, transparent 100%),
     linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.06) 100%),
@@ -564,22 +565,22 @@ html, body {
 }
 
 /* 暗色主题卡片底色增强 */
-.dark .VPFeature:nth-child(1) {
+.dark .VPFeature:nth-child(4n+1) {
   background:
     linear-gradient(160deg, rgba(129, 140, 248, 0.14) 0%, rgba(129, 140, 248, 0.04) 50%, transparent 100%),
     var(--glass-bg-primary);
 }
-.dark .VPFeature:nth-child(2) {
+.dark .VPFeature:nth-child(4n+2) {
   background:
     linear-gradient(160deg, rgba(59, 130, 246, 0.14) 0%, rgba(59, 130, 246, 0.04) 50%, transparent 100%),
     var(--glass-bg-primary);
 }
-.dark .VPFeature:nth-child(3) {
+.dark .VPFeature:nth-child(4n+3) {
   background:
     linear-gradient(160deg, rgba(244, 114, 182, 0.14) 0%, rgba(244, 114, 182, 0.04) 50%, transparent 100%),
     var(--glass-bg-primary);
 }
-.dark .VPFeature:nth-child(4) {
+.dark .VPFeature:nth-child(4n+4) {
   background:
     linear-gradient(160deg, rgba(16, 185, 129, 0.14) 0%, rgba(16, 185, 129, 0.04) 50%, transparent 100%),
     var(--glass-bg-primary);
@@ -611,16 +612,16 @@ html, body {
 }
 
 /* 各卡片独特 hover 光晕 */
-.VPFeature:nth-child(1):hover {
+.VPFeature:nth-child(4n+1):hover {
   box-shadow: var(--shadow-glass-strong), var(--shadow-neon-cyan);
 }
-.VPFeature:nth-child(2):hover {
+.VPFeature:nth-child(4n+2):hover {
   box-shadow: var(--shadow-glass-strong), var(--shadow-neon-blue);
 }
-.VPFeature:nth-child(3):hover {
+.VPFeature:nth-child(4n+3):hover {
   box-shadow: var(--shadow-glass-strong), var(--shadow-neon-pink);
 }
-.VPFeature:nth-child(4):hover {
+.VPFeature:nth-child(4n+4):hover {
   box-shadow: var(--shadow-glass-strong), var(--shadow-neon-green);
 }
 
@@ -636,19 +637,19 @@ html, body {
   transform-origin: center;
 }
 
-.VPFeature:nth-child(1) .icon {
+.VPFeature:nth-child(4n+1) .icon {
   background: var(--gradient-primary);
   background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent;
 }
-.VPFeature:nth-child(2) .icon {
+.VPFeature:nth-child(4n+2) .icon {
   background: var(--gradient-tech);
   background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent;
 }
-.VPFeature:nth-child(3) .icon {
+.VPFeature:nth-child(4n+3) .icon {
   background: var(--gradient-accent);
   background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent;
 }
-.VPFeature:nth-child(4) .icon {
+.VPFeature:nth-child(4n+4) .icon {
   background: var(--gradient-success);
   background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent;
 }
@@ -719,10 +720,10 @@ html, body {
   animation: cardFadeIn 0.6s ease-out backwards;
 }
 
-.VPFeature:nth-child(1) { animation-delay: 0.1s; }
-.VPFeature:nth-child(2) { animation-delay: 0.2s; }
-.VPFeature:nth-child(3) { animation-delay: 0.3s; }
-.VPFeature:nth-child(4) { animation-delay: 0.4s; }
+.VPFeature:nth-child(4n+1) { animation-delay: 0.1s; }
+.VPFeature:nth-child(4n+2) { animation-delay: 0.2s; }
+.VPFeature:nth-child(4n+3) { animation-delay: 0.3s; }
+.VPFeature:nth-child(4n+4) { animation-delay: 0.4s; }
 
 /* ===== 响应式 — 平板 ===== */
 @media (max-width: 1024px) {

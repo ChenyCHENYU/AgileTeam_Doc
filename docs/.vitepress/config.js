@@ -1,6 +1,50 @@
 import { defineConfig } from "vitepress";
 import { fileURLToPath, URL } from "node:url";
+import { readFileSync } from "node:fs";
+import { join } from "node:path";
 import { head, nav, sidebar, socialLinks, search } from "./_config/index";
+
+const SITE_URL = "https://www.tzagileteam.com";
+const SRC_DIR = fileURLToPath(new URL("../document", import.meta.url));
+
+// 从正文自动提取页面描述（跳过标题/代码块/表格，取首段有效文本）
+function autoDescription(pageData) {
+  const fallback = "敏捷开发团队 - 拥抱开放,拥抱变化";
+  if (pageData.description && pageData.description !== fallback) {
+    return pageData.description;
+  }
+  let raw = "";
+  try {
+    raw = readFileSync(join(SRC_DIR, pageData.relativePath), "utf8");
+  } catch {
+    return fallback;
+  }
+  const lines = raw
+    .replace(/^---[\s\S]*?---\s*/, "")
+    .replace(/```[\s\S]*?```/g, "\n")
+    .replace(/<script[\s\S]*?<\/script>/g, "\n")
+    .replace(/<style[\s\S]*?<\/style>/g, "\n")
+    .replace(/<!--[\s\S]*?-->/g, "\n")
+    .split("\n")
+    .map((l) => l.trim());
+  const first = lines.find(
+    (l) =>
+      l.length > 20 &&
+      !l.startsWith("#") &&
+      !l.startsWith("|") &&
+      !l.startsWith(":::") &&
+      !l.startsWith("<") &&
+      !l.startsWith("!")
+  );
+  if (!first) return fallback;
+  return (
+    first
+      .replace(/[*`>\[\]()#!-]/g, "")
+      .replace(/\s+/g, " ")
+      .trim()
+      .slice(0, 100) || fallback
+  );
+}
 
 export default defineConfig({
   srcDir: "document",
@@ -8,6 +52,11 @@ export default defineConfig({
   base: "/",
   title: "AGILE TEAM",
   description: "敏捷开发团队 - 拥抱开放,拥抱变化",
+
+  // SEO 站点地图
+  sitemap: {
+    hostname: SITE_URL,
+  },
 
   // 基础配置
   cleanUrls: true,
@@ -63,7 +112,7 @@ export default defineConfig({
     // 编辑链接
     editLink: {
       pattern:
-        "https://github.com/ChenyCHENYU/agile_team_doc/edit/main/docs/document/:path",
+        "https://github.com/ChenyCHENYU/AgileTeam_Doc/edit/main/docs/document/:path",
       text: "您可以协助完善此页面，点击在 github 上编辑",
     },
 
@@ -80,6 +129,29 @@ export default defineConfig({
     darkModeSwitchLabel: "外观",
     lightModeSwitchTitle: "切换到浅色模式",
     darkModeSwitchTitle: "切换到深色模式",
+  },
+
+  // 每页 SEO：自动描述 + og 标签 + canonical
+  transformPageData(pageData) {
+    const description = autoDescription(pageData);
+    pageData.description = description;
+
+    const url =
+      SITE_URL +
+      "/" +
+      pageData.relativePath
+        .replace(/(^|\/)index\.md$/, "$1")
+        .replace(/\.md$/, "");
+
+    pageData.frontmatter.head = pageData.frontmatter.head || [];
+    pageData.frontmatter.head.push(
+      ["meta", { property: "og:title", content: pageData.title || "AGILE TEAM" }],
+      ["meta", { property: "og:description", content: description }],
+      ["meta", { property: "og:url", content: url }],
+      ["meta", { property: "og:image", content: `${SITE_URL}/assets/img/robot.webp` }],
+      ["meta", { name: "twitter:card", content: "summary" }],
+      ["link", { rel: "canonical", href: url }]
+    );
   },
 
   // Markdown配置

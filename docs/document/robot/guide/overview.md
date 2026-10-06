@@ -57,7 +57,7 @@ Robot Admin 利用 **Bun** 和 **Vite 7** 提供非凡的开发速度：
 
 ### 🧩 全面组件系统
 
-该框架包含 **51 个精心打造的业务组件**（已独立发布为 `@robot-admin/naive-ui-components`），专为企业应用设计：
+该框架包含 **54 个精心打造的业务组件**（已独立发布为 `@robot-admin/naive-ui-components`），专为企业应用设计：
 
 ::: details 🏗️ 核心 UI 组件
 

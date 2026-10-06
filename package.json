@@ -9,6 +9,7 @@
     "dev": "vitepress dev docs",
     "build": "vitepress build docs --outDir dist",
     "preview": "vitepress preview docs",
+    "optimize:images": "bun scripts/optimize-images.mjs",
     "push": "git push origin main && git push gitee main"
   },
   "repository": {
@@ -26,11 +27,12 @@
   ],
   "dependencies": {
     "@giscus/vue": "^3.1.1",
-    "@robot-admin/naive-ui-components": "^0.6.3",
+    "@robot-admin/naive-ui-components": "^0.13.6",
     "@vercel/analytics": "^1.5.0",
-    "naive-ui": "^2.43.2"
+    "naive-ui": "^2.44.1"
   },
   "devDependencies": {
+    "sharp": "^0.35.5",
     "vitepress": "2.0.0-alpha.9"
   }
 }

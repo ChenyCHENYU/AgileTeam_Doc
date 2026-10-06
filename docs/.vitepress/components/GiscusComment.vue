@@ -31,7 +31,7 @@
 </template>
 
 <script setup>
-import { computed, watch, ref, onMounted, onUnmounted } from "vue";
+import { computed, ref, onMounted, onUnmounted } from "vue";
 import { useData } from "vitepress";
 import Giscus from "@giscus/vue";
 
@@ -113,11 +113,6 @@ onMounted(() => {
 
 onUnmounted(() => {
   observer?.disconnect();
-});
-
-// 监听主题变化，强制重新渲染Giscus组件
-watch(currentTheme, (newTheme) => {
-  console.log("Giscus theme changed to:", newTheme);
 });
 </script>
 
