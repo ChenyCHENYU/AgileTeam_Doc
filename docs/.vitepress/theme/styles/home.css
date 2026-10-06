@@ -510,10 +510,10 @@ html, body {
   z-index: 3;
 }
 
-.VPFeature:nth-child(4n+1)::before { background: var(--gradient-primary); }
-.VPFeature:nth-child(4n+2)::before { background: var(--gradient-tech); }
-.VPFeature:nth-child(4n+3)::before { background: var(--gradient-accent); }
-.VPFeature:nth-child(4n+4)::before { background: var(--gradient-success); }
+.VPFeatures .item:nth-child(4n+1) .VPFeature::before { background: var(--gradient-primary); }
+.VPFeatures .item:nth-child(4n+2) .VPFeature::before { background: var(--gradient-tech); }
+.VPFeatures .item:nth-child(4n+3) .VPFeature::before { background: var(--gradient-accent); }
+.VPFeatures .item:nth-child(4n+4) .VPFeature::before { background: var(--gradient-success); }
 
 /* ★ 底部渐变光晕层 — hover 时显现 */
 .VPFeature::after {
@@ -530,34 +530,34 @@ html, body {
   filter: blur(10px);
 }
 
-.VPFeature:nth-child(4n+1)::after { background: var(--gradient-primary); }
-.VPFeature:nth-child(4n+2)::after { background: var(--gradient-tech); }
-.VPFeature:nth-child(4n+3)::after { background: var(--gradient-accent); }
-.VPFeature:nth-child(4n+4)::after { background: var(--gradient-success); }
+.VPFeatures .item:nth-child(4n+1) .VPFeature::after { background: var(--gradient-primary); }
+.VPFeatures .item:nth-child(4n+2) .VPFeature::after { background: var(--gradient-tech); }
+.VPFeatures .item:nth-child(4n+3) .VPFeature::after { background: var(--gradient-accent); }
+.VPFeatures .item:nth-child(4n+4) .VPFeature::after { background: var(--gradient-success); }
 
 /* ★ 卡片独特底色 — 微妙色调区分 */
-.VPFeature:nth-child(4n+1) {
+.VPFeatures .item:nth-child(4n+1) .VPFeature {
   background:
     linear-gradient(160deg, rgba(102, 126, 234, 0.08) 0%, rgba(102, 126, 234, 0.01) 50%, transparent 100%),
     linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.06) 100%),
     var(--glass-bg-primary);
 }
 
-.VPFeature:nth-child(4n+2) {
+.VPFeatures .item:nth-child(4n+2) .VPFeature {
   background:
     linear-gradient(160deg, rgba(79, 172, 254, 0.08) 0%, rgba(79, 172, 254, 0.01) 50%, transparent 100%),
     linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.06) 100%),
     var(--glass-bg-primary);
 }
 
-.VPFeature:nth-child(4n+3) {
+.VPFeatures .item:nth-child(4n+3) .VPFeature {
   background:
     linear-gradient(160deg, rgba(240, 147, 251, 0.08) 0%, rgba(240, 147, 251, 0.01) 50%, transparent 100%),
     linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.06) 100%),
     var(--glass-bg-primary);
 }
 
-.VPFeature:nth-child(4n+4) {
+.VPFeatures .item:nth-child(4n+4) .VPFeature {
   background:
     linear-gradient(160deg, rgba(67, 233, 123, 0.08) 0%, rgba(67, 233, 123, 0.01) 50%, transparent 100%),
     linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.06) 100%),
@@ -565,22 +565,22 @@ html, body {
 }
 
 /* 暗色主题卡片底色增强 */
-.dark .VPFeature:nth-child(4n+1) {
+.dark .VPFeatures .item:nth-child(4n+1) .VPFeature {
   background:
     linear-gradient(160deg, rgba(129, 140, 248, 0.14) 0%, rgba(129, 140, 248, 0.04) 50%, transparent 100%),
     var(--glass-bg-primary);
 }
-.dark .VPFeature:nth-child(4n+2) {
+.dark .VPFeatures .item:nth-child(4n+2) .VPFeature {
   background:
     linear-gradient(160deg, rgba(59, 130, 246, 0.14) 0%, rgba(59, 130, 246, 0.04) 50%, transparent 100%),
     var(--glass-bg-primary);
 }
-.dark .VPFeature:nth-child(4n+3) {
+.dark .VPFeatures .item:nth-child(4n+3) .VPFeature {
   background:
     linear-gradient(160deg, rgba(244, 114, 182, 0.14) 0%, rgba(244, 114, 182, 0.04) 50%, transparent 100%),
     var(--glass-bg-primary);
 }
-.dark .VPFeature:nth-child(4n+4) {
+.dark .VPFeatures .item:nth-child(4n+4) .VPFeature {
   background:
     linear-gradient(160deg, rgba(16, 185, 129, 0.14) 0%, rgba(16, 185, 129, 0.04) 50%, transparent 100%),
     var(--glass-bg-primary);
@@ -612,16 +612,16 @@ html, body {
 }
 
 /* 各卡片独特 hover 光晕 */
-.VPFeature:nth-child(4n+1):hover {
+.VPFeatures .item:nth-child(4n+1) .VPFeature:hover {
   box-shadow: var(--shadow-glass-strong), var(--shadow-neon-cyan);
 }
-.VPFeature:nth-child(4n+2):hover {
+.VPFeatures .item:nth-child(4n+2) .VPFeature:hover {
   box-shadow: var(--shadow-glass-strong), var(--shadow-neon-blue);
 }
-.VPFeature:nth-child(4n+3):hover {
+.VPFeatures .item:nth-child(4n+3) .VPFeature:hover {
   box-shadow: var(--shadow-glass-strong), var(--shadow-neon-pink);
 }
-.VPFeature:nth-child(4n+4):hover {
+.VPFeatures .item:nth-child(4n+4) .VPFeature:hover {
   box-shadow: var(--shadow-glass-strong), var(--shadow-neon-green);
 }
 
@@ -637,19 +637,19 @@ html, body {
   transform-origin: center;
 }
 
-.VPFeature:nth-child(4n+1) .icon {
+.VPFeatures .item:nth-child(4n+1) .VPFeature .icon {
   background: var(--gradient-primary);
   background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent;
 }
-.VPFeature:nth-child(4n+2) .icon {
+.VPFeatures .item:nth-child(4n+2) .VPFeature .icon {
   background: var(--gradient-tech);
   background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent;
 }
-.VPFeature:nth-child(4n+3) .icon {
+.VPFeatures .item:nth-child(4n+3) .VPFeature .icon {
   background: var(--gradient-accent);
   background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent;
 }
-.VPFeature:nth-child(4n+4) .icon {
+.VPFeatures .item:nth-child(4n+4) .VPFeature .icon {
   background: var(--gradient-success);
   background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent;
 }
@@ -720,10 +720,10 @@ html, body {
   animation: cardFadeIn 0.6s ease-out backwards;
 }
 
-.VPFeature:nth-child(4n+1) { animation-delay: 0.1s; }
-.VPFeature:nth-child(4n+2) { animation-delay: 0.2s; }
-.VPFeature:nth-child(4n+3) { animation-delay: 0.3s; }
-.VPFeature:nth-child(4n+4) { animation-delay: 0.4s; }
+.VPFeatures .item:nth-child(4n+1) .VPFeature { animation-delay: 0.1s; }
+.VPFeatures .item:nth-child(4n+2) .VPFeature { animation-delay: 0.2s; }
+.VPFeatures .item:nth-child(4n+3) .VPFeature { animation-delay: 0.3s; }
+.VPFeatures .item:nth-child(4n+4) .VPFeature { animation-delay: 0.4s; }
 
 /* ===== 响应式 — 平板 ===== */
 @media (max-width: 1024px) {
