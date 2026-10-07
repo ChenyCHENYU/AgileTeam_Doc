@@ -287,6 +287,22 @@ export const ROBOT_COMPONENTS_DOC = [
         text: "[C_Barcode] 条形码",
         link: `${ROBOT}/components/barcode`,
       },
+      {
+        text: "[C_AvatarGroup] 头像组",
+        link: `${ROBOT}/components/avatar-group`,
+      },
+      {
+        text: "[C_Timeline] 时间线",
+        link: `${ROBOT}/components/timeline`,
+      },
+      {
+        text: "[C_Transfer] 穿梭框",
+        link: `${ROBOT}/components/transfer`,
+      },
+      {
+        text: "[C_AudioPlayer] 音频播放器",
+        link: `${ROBOT}/components/audio-player`,
+      },
     ],
   },
   {
@@ -377,6 +393,18 @@ export const ROBOT_COMPONENTS_DOC = [
       {
         text: "[C_Captcha] 拼图验证码",
         link: `${ROBOT}/components/captcha`,
+      },
+      {
+        text: "[C_Login] 登录",
+        link: `${ROBOT}/components/login`,
+      },
+      {
+        text: "[C_Chat] 聊天",
+        link: `${ROBOT}/components/chat`,
+      },
+      {
+        text: "[C_ContextMenu] 右键菜单",
+        link: `${ROBOT}/components/context-menu`,
       },
       {
         text: "[C_OrgChart] 组织架构图",
