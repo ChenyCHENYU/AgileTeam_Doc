@@ -1,0 +1,22 @@
+name: 🐛 文档纠错
+description: 页面内容有错误或过时
+body:
+  - type: input
+    id: page
+    attributes:
+      label: 页面链接
+      placeholder: https://www.tzagileteam.com/robot/components/xxx
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: 问题描述
+      description: 哪里错了 / 过时了，正确内容应该是什么
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: 依据（可选）
+      description: 源码位置 / 官方文档链接 / 截图

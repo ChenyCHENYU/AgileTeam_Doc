@@ -1,0 +1,24 @@
+name: 📝 新组件文档
+description: 为尚未编写文档的组件补充页面
+body:
+  - type: input
+    id: component
+    attributes:
+      label: 组件名
+      placeholder: C_Xxx
+    validations:
+      required: true
+  - type: textarea
+    id: outline
+    attributes:
+      label: 计划覆盖的内容
+      description: 特性 / 安装 / 基础用法 / API… 可先列提纲
+    validations:
+      required: true
+  - type: checkboxes
+    id: agreement
+    attributes:
+      label: 约定
+      options:
+        - label: 我已阅读 CONTRIBUTING.md 的页面结构规范，API 将对照 types.ts 编写
+          required: true

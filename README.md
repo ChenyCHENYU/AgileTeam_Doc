@@ -23,7 +23,9 @@
 [![npm][cli-badge]][cli-url]
 [![Docs][docs-badge]][docs-url]
 
-**[📖 文档站][docs-url]** &nbsp;·&nbsp; **[🎯 在线演示][demo-url]** &nbsp;·&nbsp; **[📦 组件文档][components-doc-url]** &nbsp;·&nbsp; **[⚡ 脚手架][cli-doc-url]** &nbsp;·&nbsp; **[🔄 Gitee 镜像][gitee-url]**
+**[📖 文档站][docs-url]** &nbsp;·&nbsp; **[🎯 在线演示][demo-url]** &nbsp;·&nbsp; **[📦 组件文档][components-doc-url]** &nbsp;·&nbsp; **[⚡ 脚手架][cli-doc-url]** &nbsp;·&nbsp; **[🔄 Gitee 镜像][gitee-url]** &nbsp;·&nbsp; **[English](./README_EN.md)**
+
+[![homepage](https://raw.githubusercontent.com/ChenyCHENYU/AgileTeam_Doc/main/docs/document/public/assets/img/homepage-banner.png)](https://www.tzagileteam.com)
 
 </div>
 
@@ -58,11 +60,11 @@
         └──────────┬─────────────────┘
                    │
      ┌─────────────▼──────────────┐
-     │ @robot-admin/naive-ui-     │
-     │ components  v0.13.6        │
-     │ 54 组件 · 按需自动导入        │
-     │ + @robot-h5/core  v1.2.0   │
-     └────────────────────────────┘
+     │ @robot-admin/naive-ui-     │      ┌─────────────────────┐
+     │ components  v0.13.6        │      │ @agile-team/        │
+     │ 54 组件 · 按需自动导入        │──────│ mach-table-vue      │
+     │ + @robot-h5/core  v1.2.0   │      │ v0.30.0 表格引擎      │
+     └────────────────────────────┘      └─────────────────────┘
 ```
 
 ## ✨ 核心特性
