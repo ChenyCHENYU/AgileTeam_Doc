@@ -1,5 +1,6 @@
 export default [
-  ["link", { rel: "icon", href: "/favicon.ico" }],
+  ["link", { rel: "icon", href: "/favicon.ico", sizes: "any" }],
+  ["link", { rel: "icon", type: "image/svg+xml", href: "/logo.svg" }],
   ["meta", { name: "theme-color", content: "#667eea" }],
   [
     "meta",
