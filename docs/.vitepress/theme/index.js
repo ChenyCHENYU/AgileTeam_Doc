@@ -9,6 +9,7 @@ import GitHubBadges from "@components/GitHubBadges.vue";
 import ImgWrap from "@components/ImgWrap.vue";
 import ImgPreview from "@components/ImgPreview.vue";
 import DemoIframe from "@components/DemoIframe.vue";
+import HomePage from "@components/HomePage.vue";
 import "./custom.css";
 import "./styles/home.css";
 import "./styles/newBadge.css";
@@ -61,6 +62,7 @@ export default {
     app.component("ImgWrap", ImgWrap);
     app.component("ImgPreview", ImgPreview);
     app.component("DemoIframe", DemoIframe);
+    app.component("HomePage", HomePage);
 
     // 🤖 初始化智能 NEW 标记处理器
     // 方式1: 使用默认配置
