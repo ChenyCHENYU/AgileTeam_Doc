@@ -1,99 +1,62 @@
-/* ===== 设计系统变量 - 高级质感增强版 ===== */
+/*
+ * AGILE TEAM 首页 — Premium 极简风（Linear / Vercel 设计语言）
+ * ============================================================
+ * 设计原则：
+ *   深色基底 + 单一极光渐变（合成器动画，零重绘）
+ *   发丝级边框卡片，克制悬停（位移 + 边框提亮，无霓虹/旋转）
+ *   排版质感：大标题紧字距、层级靠字号与留白
+ *   所有动画可通过 prefers-reduced-motion 关闭
+ */
+
+/* ===== 设计令牌 ===== */
 :root {
   --vp-home-hero-name-color: transparent;
-  --vp-home-hero-name-background: linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #f5576c 75%, #feca57 100%);
+  --vp-home-hero-name-background: linear-gradient(120deg, #667eea 0%, #a78bfa 50%, #60a5fa 100%);
 
-  /* 高级渐变色系 — 保留原版鲜活配色 */
-  --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  --gradient-accent: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-  --gradient-tech: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-  --gradient-success: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+  /* 品牌渐变（唯一强调色系） */
+  --gradient-brand: linear-gradient(120deg, #667eea 0%, #764ba2 100%);
 
-  /* 玻璃拟态材质系统 — 增强通透感 */
-  --glass-bg-primary: rgba(255, 255, 255, 0.42);
-  --glass-bg-secondary: rgba(255, 255, 255, 0.58);
-  --glass-bg-hover: rgba(255, 255, 255, 0.72);
-  --glass-border: rgba(255, 255, 255, 0.55);
-  --glass-border-strong: rgba(255, 255, 255, 0.78);
+  /* 画布 */
+  --page-bg: #fafbfc;
+  --aurora-a: rgba(102, 126, 234, 0.14);
+  --aurora-b: rgba(96, 165, 250, 0.10);
 
-  /* 多层阴影系统 — 更有层次的深度感 */
-  --shadow-glass-soft:
-    0 4px 16px rgba(102, 126, 234, 0.06),
-    0 8px 32px rgba(0, 0, 0, 0.04),
-    inset 0 1px 0 rgba(255, 255, 255, 0.85),
-    inset 0 -1px 0 rgba(0, 0, 0, 0.03);
-  --shadow-glass-medium:
-    0 8px 28px rgba(102, 126, 234, 0.10),
-    0 16px 44px rgba(0, 0, 0, 0.06),
-    inset 0 1.5px 0 rgba(255, 255, 255, 0.90),
-    inset 0 -1px 0 rgba(0, 0, 0, 0.04);
-  --shadow-glass-strong:
-    0 12px 40px rgba(102, 126, 234, 0.14),
-    0 20px 56px rgba(0, 0, 0, 0.08),
-    inset 0 2px 0 rgba(255, 255, 255, 1),
-    inset 0 -2px 0 rgba(0, 0, 0, 0.06);
+  /* 文字 */
+  --text-primary: #101828;
+  --text-secondary: #475467;
+  --text-tertiary: #667085;
 
-  /* 悬浮光晕 */
-  --shadow-neon-cyan: 0 0 20px rgba(102, 126, 234, 0.35), 0 0 44px rgba(102, 126, 234, 0.15);
-  --shadow-neon-pink: 0 0 20px rgba(240, 147, 251, 0.35), 0 0 44px rgba(240, 147, 251, 0.15);
-  --shadow-neon-blue: 0 0 20px rgba(79, 172, 254, 0.35), 0 0 44px rgba(79, 172, 254, 0.15);
-  --shadow-neon-green: 0 0 20px rgba(67, 233, 123, 0.35), 0 0 44px rgba(67, 233, 123, 0.15);
+  /* 卡片（发丝边框） */
+  --card-border: rgba(16, 24, 40, 0.08);
+  --card-border-hover: rgba(102, 126, 234, 0.45);
+  --card-bg: rgba(255, 255, 255, 0.72);
+  --card-bg-hover: rgba(255, 255, 255, 0.92);
 
-  /* 文字颜色 */
-  --text-primary: #1f2937;
-  --text-secondary: rgba(71, 85, 105, 0.88);
-  --text-tertiary: rgba(55, 65, 81, 0.85);
-
-  /* 背景 */
-  --bg-light-1: #f8fafc;
-  --bg-light-2: #e2e8f0;
-  --bg-light-3: #f1f5f9;
+  --hero-image-glow: rgba(102, 126, 234, 0.16);
 }
 
-/* ===== 暗色主题变量 ===== */
 .dark {
-  --gradient-primary: linear-gradient(135deg, #818cf8 0%, #a855f7 100%);
-  --gradient-accent: linear-gradient(135deg, #f472b6 0%, #ef4444 100%);
-  --gradient-tech: linear-gradient(135deg, #06b6d4 0%, #3b82f6 100%);
-  --gradient-success: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  --vp-home-hero-name-background: linear-gradient(120deg, #818cf8 0%, #c4b5fd 50%, #7dd3fc 100%);
 
-  --glass-bg-primary: rgba(15, 23, 42, 0.72);
-  --glass-bg-secondary: rgba(30, 41, 59, 0.82);
-  --glass-bg-hover: rgba(51, 65, 85, 0.92);
-  --glass-border: rgba(148, 163, 184, 0.22);
-  --glass-border-strong: rgba(148, 163, 184, 0.35);
+  --gradient-brand: linear-gradient(120deg, #818cf8 0%, #a855f7 100%);
 
-  --shadow-glass-soft:
-    0 4px 16px rgba(0, 0, 0, 0.30),
-    0 8px 32px rgba(0, 0, 0, 0.20),
-    inset 0 1px 0 rgba(255, 255, 255, 0.08),
-    inset 0 -1px 0 rgba(0, 0, 0, 0.10);
-  --shadow-glass-medium:
-    0 8px 28px rgba(0, 0, 0, 0.40),
-    0 16px 44px rgba(0, 0, 0, 0.25),
-    inset 0 1.5px 0 rgba(255, 255, 255, 0.10),
-    inset 0 -1px 0 rgba(0, 0, 0, 0.12);
-  --shadow-glass-strong:
-    0 12px 40px rgba(0, 0, 0, 0.50),
-    0 20px 56px rgba(0, 0, 0, 0.30),
-    inset 0 2px 0 rgba(255, 255, 255, 0.12),
-    inset 0 -2px 0 rgba(0, 0, 0, 0.15);
+  --page-bg: #0a0c12;
+  --aurora-a: rgba(129, 140, 248, 0.13);
+  --aurora-b: rgba(125, 211, 252, 0.08);
 
-  --shadow-neon-cyan: 0 0 24px rgba(129, 140, 248, 0.55), 0 0 48px rgba(129, 140, 248, 0.25);
-  --shadow-neon-pink: 0 0 24px rgba(244, 114, 182, 0.55), 0 0 48px rgba(244, 114, 182, 0.25);
-  --shadow-neon-blue: 0 0 24px rgba(59, 130, 246, 0.55), 0 0 48px rgba(59, 130, 246, 0.25);
-  --shadow-neon-green: 0 0 24px rgba(16, 185, 129, 0.55), 0 0 48px rgba(16, 185, 129, 0.25);
+  --text-primary: #f2f4f7;
+  --text-secondary: #98a2b3;
+  --text-tertiary: #7d8698;
 
-  --text-primary: #f1f5f9;
-  --text-secondary: rgba(241, 245, 249, 0.9);
-  --text-tertiary: rgba(203, 213, 225, 0.8);
+  --card-border: rgba(255, 255, 255, 0.08);
+  --card-border-hover: rgba(129, 140, 248, 0.50);
+  --card-bg: rgba(255, 255, 255, 0.03);
+  --card-bg-hover: rgba(255, 255, 255, 0.055);
 
-  --bg-light-1: #0f172a;
-  --bg-light-2: #1e293b;
-  --bg-light-3: #334155;
+  --hero-image-glow: rgba(129, 140, 248, 0.20);
 }
 
-/* ===== 布局基础 ===== */
+/* ===== 画布与极光 ===== */
 html, body {
   margin: 0;
   padding: 0;
@@ -103,152 +66,68 @@ html, body {
 .VPDoc, .VPHome, .Layout { margin: 0 !important; }
 .VPNav { margin-bottom: 0 !important; }
 
-/* ===== 高质感动态背景 ===== */
 .VPHome {
   position: relative;
   overflow: hidden;
   min-height: calc(100vh - var(--vp-nav-height, 64px));
-  max-height: calc(100vh - var(--vp-nav-height, 64px));
-  display: flex;
-  flex-direction: column;
-  background:
-    radial-gradient(ellipse 1400px 900px at 10% 20%, rgba(102, 126, 234, 0.15) 0%, transparent 60%),
-    radial-gradient(ellipse 1200px 800px at 90% 10%, rgba(240, 147, 251, 0.12) 0%, transparent 60%),
-    radial-gradient(ellipse 1000px 1200px at 50% 85%, rgba(79, 172, 254, 0.10) 0%, transparent 55%),
-    radial-gradient(ellipse 900px 700px at 20% 80%, rgba(67, 233, 123, 0.08) 0%, transparent 65%),
-    linear-gradient(135deg, var(--bg-light-1) 0%, var(--bg-light-2) 50%, var(--bg-light-3) 100%);
+  background: var(--page-bg);
 }
 
-.dark .VPHome {
-  background:
-    radial-gradient(ellipse 1400px 900px at 10% 20%, rgba(129, 140, 248, 0.25) 0%, transparent 60%),
-    radial-gradient(ellipse 1200px 800px at 90% 10%, rgba(244, 114, 182, 0.2) 0%, transparent 60%),
-    radial-gradient(ellipse 1000px 1200px at 50% 85%, rgba(59, 130, 246, 0.15) 0%, transparent 55%),
-    radial-gradient(ellipse 900px 700px at 20% 80%, rgba(16, 185, 129, 0.12) 0%, transparent 65%),
-    linear-gradient(135deg, var(--bg-light-1) 0%, var(--bg-light-2) 50%, var(--bg-light-3) 100%);
-  animation: atmosphericShift 22s ease-in-out infinite alternate;
-}
-
-@keyframes atmosphericShift {
-  0%   { filter: brightness(1.02) saturate(1.2) hue-rotate(0deg); }
-  25%  { filter: brightness(1.08) saturate(1.4) hue-rotate(5deg); }
-  50%  { filter: brightness(1.05) saturate(1.6) hue-rotate(-3deg); }
-  75%  { filter: brightness(1.10) saturate(1.3) hue-rotate(8deg); }
-  100% { filter: brightness(1.06) saturate(1.5) hue-rotate(3deg); }
-}
-
-/* 动态粒子层 */
+/* 单一极光层：两团柔和径向光 + 极慢漂移（transform-only，合成器执行） */
 .VPHome::before {
   content: '';
   position: absolute;
-  inset: 0;
-  background-image:
-    radial-gradient(circle at 25% 30%, rgba(102, 126, 234, 0.3) 2px, transparent 3px),
-    radial-gradient(circle at 75% 20%, rgba(240, 147, 251, 0.2) 1px, transparent 2px),
-    radial-gradient(circle at 80% 80%, rgba(79, 172, 254, 0.25) 1.5px, transparent 2.5px),
-    radial-gradient(circle at 20% 70%, rgba(67, 233, 123, 0.2) 2px, transparent 3px);
-  background-size: 180px 180px, 130px 130px, 160px 160px, 200px 200px;
-  animation: particleFloat 28s linear infinite;
-  opacity: 0.7;
+  inset: -20%;
+  background:
+    radial-gradient(ellipse 46% 38% at 18% 8%, var(--aurora-a) 0%, transparent 100%),
+    radial-gradient(ellipse 42% 36% at 85% 18%, var(--aurora-b) 0%, transparent 100%);
+  animation: auroraDrift 26s ease-in-out infinite alternate;
   pointer-events: none;
-  z-index: 1;
+  z-index: 0;
+  will-change: transform;
 }
 
-.dark .VPHome::before {
-  background-image:
-    radial-gradient(circle at 25% 30%, rgba(129, 140, 248, 0.5) 2px, transparent 3px),
-    radial-gradient(circle at 75% 20%, rgba(244, 114, 182, 0.4) 1px, transparent 2px),
-    radial-gradient(circle at 80% 80%, rgba(59, 130, 246, 0.45) 1.5px, transparent 2.5px),
-    radial-gradient(circle at 20% 70%, rgba(16, 185, 129, 0.4) 2px, transparent 3px);
-  opacity: 0.8;
+@keyframes auroraDrift {
+  from { transform: translate3d(-1.5%, -1%, 0) scale(1); }
+  to   { transform: translate3d(1.5%, 1.5%, 0) scale(1.04); }
 }
 
-@keyframes particleFloat {
-  0%   { transform: translate(0, 0) rotate(0deg); }
-  25%  { transform: translate(20px, -15px) rotate(90deg); }
-  50%  { transform: translate(-15px, 20px) rotate(180deg); }
-  75%  { transform: translate(-20px, -10px) rotate(270deg); }
-  100% { transform: translate(0, 0) rotate(360deg); }
-}
-
-/* 旋转光晕层 */
-.VPHome::after {
-  content: '';
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: conic-gradient(
-    from 0deg at 50% 50%,
-    transparent 0deg,
-    rgba(102, 126, 234, 0.04) 90deg,
-    transparent 180deg,
-    rgba(240, 147, 251, 0.03) 270deg,
-    transparent 360deg
-  );
-  animation: spiralRotate 45s linear infinite;
-  pointer-events: none;
-  opacity: 0.8;
-  z-index: 1;
-  transform: translateZ(0);
-}
-
-.dark .VPHome::after {
-  background: conic-gradient(
-    from 0deg at 50% 50%,
-    transparent 0deg,
-    rgba(129, 140, 248, 0.08) 90deg,
-    transparent 180deg,
-    rgba(244, 114, 182, 0.06) 270deg,
-    transparent 360deg
-  );
-  opacity: 0.9;
-}
-
-@keyframes spiralRotate {
-  from { transform: translateZ(0) rotate(0deg); }
-  to   { transform: translateZ(0) rotate(360deg); }
-}
-
-/* ===== Hero 区域 ===== */
+/* ===== Hero ===== */
 .VPHero {
   position: relative;
-  z-index: 10;
-  padding: 88px 24px 20px;
-  min-height: 48vh;
-  max-height: none;
-  flex: 0 0 auto;
+  z-index: 1;
+  padding: 96px 32px 48px;
+  min-height: 62vh;
   display: flex;
   align-items: center;
-  justify-content: center;
 }
 
 .VPHero .container {
-  max-width: 1200px;
+  max-width: 1120px;
   margin: 0 auto;
   display: flex;
   align-items: center;
-  gap: 60px;
-  position: relative;
-  height: 100%;
+  gap: 64px;
 }
 
 .VPHero .main {
   flex: 1;
-  text-align: left;
-  position: relative;
-  max-width: 520px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  max-width: 560px;
 }
 
-/* 图片 */
+/* 图片：静态柔光背景 + 轻盈悬浮 */
 .VPHero .image {
-  width: clamp(280px, 28vw, 350px);
-  max-width: 350px;
+  width: clamp(260px, 26vw, 340px);
   flex-shrink: 0;
+  position: relative;
+}
+
+.VPHero .image::before {
+  content: '';
+  position: absolute;
+  inset: -12%;
+  background: radial-gradient(circle, var(--hero-image-glow) 0%, transparent 68%);
+  z-index: -1;
 }
 
 .VPHero .image-src {
@@ -262,633 +141,262 @@ html, body {
 }
 
 .VPHero .image img {
-  filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.1));
-  animation: imageFloat 8s ease-in-out infinite alternate;
-}
-
-.dark .VPHero .image img {
-  filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.6));
-  animation: imageFloatDark 8s ease-in-out infinite alternate;
+  animation: imageFloat 9s ease-in-out infinite alternate;
 }
 
 @keyframes imageFloat {
-  0%   { transform: translateY(0) rotate(0deg);    filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.1)); }
-  100% { transform: translateY(-12px) rotate(2deg); filter: drop-shadow(0 24px 48px rgba(0, 0, 0, 0.15)); }
+  from { transform: translateY(0); }
+  to   { transform: translateY(-8px); }
 }
 
-@keyframes imageFloatDark {
-  0%   { transform: translateY(0) rotate(0deg);    filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.6)); }
-  100% { transform: translateY(-12px) rotate(2deg); filter: drop-shadow(0 24px 48px rgba(0, 0, 0, 0.8)); }
-}
-
-/* ===== 标题样式 ===== */
+/* 排版：紧字距大标题 */
 .VPHero .name {
-  font-size: clamp(2.2rem, 3.5vw, 2.8rem);
-  line-height: 1.15;
-  margin-bottom: 8px;
+  font-size: clamp(2.4rem, 4vw, 3.4rem);
+  line-height: 1.12;
+  letter-spacing: -0.03em;
+  font-weight: 800;
+  margin-bottom: 10px;
   background: var(--vp-home-hero-name-background);
-  background-size: 400% 400%;
   -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
   background-clip: text;
-  animation: premiumGradientFlow 12s ease-in-out infinite;
-  font-weight: 900;
-  letter-spacing: -0.025em;
-  filter: drop-shadow(0 4px 16px rgba(102, 126, 234, 0.3));
-}
-
-@keyframes premiumGradientFlow {
-  0%, 100% { background-position: 0% 50%;   filter: drop-shadow(0 4px 16px rgba(102, 126, 234, 0.3)); }
-  25%      { background-position: 100% 0%;  filter: drop-shadow(0 6px 20px rgba(240, 147, 251, 0.4)); }
-  50%      { background-position: 100% 100%; filter: drop-shadow(0 8px 24px rgba(79, 172, 254, 0.35)); }
-  75%      { background-position: 0% 100%;  filter: drop-shadow(0 6px 18px rgba(67, 233, 123, 0.3)); }
+  -webkit-text-fill-color: transparent;
 }
 
 .VPHero .text {
-  font-size: clamp(1.1rem, 2.2vw, 1.3rem);
-  background: var(--gradient-accent);
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  font-weight: 700;
-  margin-top: 6px;
-  margin-bottom: 8px;
+  font-size: clamp(1.05rem, 1.8vw, 1.25rem);
+  font-weight: 650;
+  color: var(--text-primary);
+  margin: 0 0 6px;
   letter-spacing: -0.01em;
-  filter: drop-shadow(0 2px 8px rgba(240, 147, 251, 0.2));
 }
 
 .VPHero .tagline {
-  font-size: clamp(0.88rem, 1.6vw, 0.95rem);
-  line-height: 1.6;
-  max-width: 100%;
-  margin: 8px 0 0 0;
+  font-size: clamp(0.9rem, 1.4vw, 0.98rem);
+  line-height: 1.75;
   color: var(--text-secondary);
-  font-weight: 500;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
+  margin: 8px 0 0;
+  max-width: 52ch;
 }
 
-/* ===== 玻璃拟态按钮 ===== */
+/* ===== 按钮：主 = 品牌渐变实底；次 = 发丝描边 ===== */
 .VPHero .actions {
-  margin-top: 20px;
-  gap: 14px;
+  margin-top: 28px;
   display: flex;
-  align-items: center;
   flex-wrap: wrap;
+  gap: 12px;
 }
 
 .VPButton.brand {
-  background: var(--glass-bg-secondary);
-  backdrop-filter: blur(24px) saturate(180%);
-  -webkit-backdrop-filter: blur(24px) saturate(180%);
-  border: 1px solid var(--glass-border-strong);
-  border-radius: 12px;
-  padding: 10px 22px;
+  background: var(--gradient-brand);
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 11px 24px;
   font-weight: 600;
-  font-size: 0.88rem;
-  position: relative;
-  overflow: hidden;
-  box-shadow: var(--shadow-glass-soft);
-  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-  color: var(--text-primary);
-  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.5);
-}
-
-.dark .VPButton.brand { text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5); }
-.dark .VPButton.alt   { text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5); }
-
-.VPButton.brand::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: var(--gradient-primary);
-  opacity: 0.12;
-  transition: opacity 0.35s ease;
-}
-
-.VPButton.brand::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.55), transparent);
-  transition: left 0.55s ease;
-}
-
-.dark .VPButton.brand::after {
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.18), transparent);
-}
-
-.dark .VPButton.alt::after {
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.12), transparent);
+  font-size: 0.9rem;
+  box-shadow: 0 1px 2px rgba(16, 24, 40, 0.12), 0 4px 16px rgba(102, 126, 234, 0.22);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
 }
 
 .VPButton.brand:hover {
-  transform: translateY(-3px) scale(1.02);
-  box-shadow: var(--shadow-glass-strong), var(--shadow-neon-cyan);
-  border-color: rgba(102, 126, 234, 0.45);
-  background: var(--glass-bg-hover);
+  transform: translateY(-1px);
+  filter: brightness(1.06);
+  box-shadow: 0 2px 4px rgba(16, 24, 40, 0.14), 0 8px 28px rgba(102, 126, 234, 0.30);
 }
-
-.VPButton.brand:hover::before { opacity: 0.22; }
-.VPButton.brand:hover::after  { left: 100%; }
 
 .VPButton.alt {
-  background: rgba(255, 255, 255, 0.78);
-  backdrop-filter: blur(24px) saturate(180%);
-  -webkit-backdrop-filter: blur(24px) saturate(180%);
-  border: 1px solid rgba(255, 255, 255, 0.45);
-  border-radius: 12px;
-  padding: 10px 22px;
-  font-weight: 600;
-  font-size: 0.88rem;
+  background: transparent;
   color: var(--text-primary);
-  position: relative;
-  overflow: hidden;
-  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: var(--shadow-glass-soft);
-  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.5);
-}
-
-.VPButton.alt::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
-  transition: left 0.55s ease;
-}
-
-.dark .VPButton.alt {
-  background: rgba(51, 65, 85, 0.82);
-  border: 1px solid rgba(148, 163, 184, 0.3);
+  border: 1px solid var(--card-border);
+  border-radius: 10px;
+  padding: 11px 24px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: border-color 0.2s ease, background-color 0.2s ease, transform 0.2s ease;
 }
 
 .VPButton.alt:hover {
-  transform: translateY(-3px) scale(1.02);
-  background: rgba(255, 255, 255, 0.92);
-  border-color: rgba(240, 147, 251, 0.45);
-  box-shadow: var(--shadow-glass-strong), var(--shadow-neon-pink);
+  transform: translateY(-1px);
+  border-color: var(--card-border-hover);
+  background: var(--card-bg);
 }
 
-.VPButton.alt:hover::after { left: 100%; }
-
-.dark .VPButton.alt:hover {
-  background: rgba(71, 85, 105, 0.92);
-  border-color: rgba(244, 114, 182, 0.45);
-}
-
-/* ===== Features 卡片区域 ===== */
+/* ===== Features ===== */
 .VPFeatures {
   position: relative;
-  z-index: 10;
-  padding: 20px 24px 30px;
-  flex: 1;
-  min-height: 0;
-  display: flex;
-  align-items: center;
-  background: transparent;
+  z-index: 1;
+  padding: 24px 32px 96px;
 }
 
 .VPFeatures .container {
-  width: 100%;
-  max-width: 1200px;
+  max-width: 1120px;
   margin: 0 auto;
-  display: flex;
-  align-items: center;
-  height: 100%;
 }
 
-.VPFeatures .grid {
-  gap: 22px;
-  width: 100%;
+.VPFeatures .items {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  align-items: stretch;
-  margin-bottom: 0;
+  gap: 18px;
+  margin: 0;
 }
 
-/* ===== 卡片 — 精致玻璃拟态 ===== */
-.VPFeature {
-  background:
-    linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.06) 100%),
-    var(--glass-bg-primary);
-  backdrop-filter: blur(48px) saturate(200%);
-  -webkit-backdrop-filter: blur(48px) saturate(200%);
-  border: 1px solid var(--glass-border);
-  border-radius: 20px;
-  padding: 24px 18px 22px;
-  min-height: 195px;
-  position: relative;
-  overflow: hidden;
-  transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
-  text-align: center;
-  box-shadow: var(--shadow-glass-soft);
-  cursor: pointer;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  transform-style: preserve-3d;
-  perspective: 1000px;
+.VPFeatures .item {
+  width: auto;
+  padding: 0;
 }
 
-/* ★ 顶部彩色装饰条 — 精致色带 */
-.VPFeature::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 15%;
-  right: 15%;
-  height: 3px;
-  border-radius: 0 0 8px 8px;
-  opacity: 0.75;
-  transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
-  z-index: 3;
+/* 卡片：发丝边框 + 极简悬停 */
+.VPFeatures .VPFeature {
+  height: 100%;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 14px;
+  padding: 26px 22px;
+  text-align: left;
+  transition: transform 0.25s ease, border-color 0.25s ease, background-color 0.25s ease, box-shadow 0.25s ease;
 }
 
-.VPFeatures .item:nth-child(4n+1) .VPFeature::before { background: var(--gradient-primary); }
-.VPFeatures .item:nth-child(4n+2) .VPFeature::before { background: var(--gradient-tech); }
-.VPFeatures .item:nth-child(4n+3) .VPFeature::before { background: var(--gradient-accent); }
-.VPFeatures .item:nth-child(4n+4) .VPFeature::before { background: var(--gradient-success); }
+.VPFeatures .item:nth-child(4n+1) .VPFeature { --accent: #667eea; }
+.VPFeatures .item:nth-child(4n+2) .VPFeature { --accent: #0ea5e9; }
+.VPFeatures .item:nth-child(4n+3) .VPFeature { --accent: #c084fc; }
+.VPFeatures .item:nth-child(4n+4) .VPFeature { --accent: #34d399; }
 
-/* ★ 底部渐变光晕层 — hover 时显现 */
-.VPFeature::after {
-  content: '';
-  position: absolute;
-  bottom: -3px;
-  left: -3px;
-  right: -3px;
-  top: -3px;
-  border-radius: 23px;
-  z-index: -1;
-  opacity: 0;
-  transition: opacity 0.5s ease;
-  filter: blur(10px);
+.VPFeatures .VPFeature:hover {
+  transform: translateY(-3px);
+  border-color: var(--card-border-hover);
+  background: var(--card-bg-hover);
+  box-shadow: 0 12px 32px -16px rgba(16, 24, 40, 0.18);
 }
 
-.VPFeatures .item:nth-child(4n+1) .VPFeature::after { background: var(--gradient-primary); }
-.VPFeatures .item:nth-child(4n+2) .VPFeature::after { background: var(--gradient-tech); }
-.VPFeatures .item:nth-child(4n+3) .VPFeature::after { background: var(--gradient-accent); }
-.VPFeatures .item:nth-child(4n+4) .VPFeature::after { background: var(--gradient-success); }
-
-/* ★ 卡片独特底色 — 微妙色调区分 */
-.VPFeatures .item:nth-child(4n+1) .VPFeature {
-  background:
-    linear-gradient(160deg, rgba(102, 126, 234, 0.08) 0%, rgba(102, 126, 234, 0.01) 50%, transparent 100%),
-    linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.06) 100%),
-    var(--glass-bg-primary);
+.dark .VPFeatures .VPFeature:hover {
+  box-shadow: 0 12px 36px -18px rgba(0, 0, 0, 0.6);
 }
 
-.VPFeatures .item:nth-child(4n+2) .VPFeature {
-  background:
-    linear-gradient(160deg, rgba(79, 172, 254, 0.08) 0%, rgba(79, 172, 254, 0.01) 50%, transparent 100%),
-    linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.06) 100%),
-    var(--glass-bg-primary);
-}
-
-.VPFeatures .item:nth-child(4n+3) .VPFeature {
-  background:
-    linear-gradient(160deg, rgba(240, 147, 251, 0.08) 0%, rgba(240, 147, 251, 0.01) 50%, transparent 100%),
-    linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.06) 100%),
-    var(--glass-bg-primary);
-}
-
-.VPFeatures .item:nth-child(4n+4) .VPFeature {
-  background:
-    linear-gradient(160deg, rgba(67, 233, 123, 0.08) 0%, rgba(67, 233, 123, 0.01) 50%, transparent 100%),
-    linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.06) 100%),
-    var(--glass-bg-primary);
-}
-
-/* 暗色主题卡片底色增强 */
-.dark .VPFeatures .item:nth-child(4n+1) .VPFeature {
-  background:
-    linear-gradient(160deg, rgba(129, 140, 248, 0.14) 0%, rgba(129, 140, 248, 0.04) 50%, transparent 100%),
-    var(--glass-bg-primary);
-}
-.dark .VPFeatures .item:nth-child(4n+2) .VPFeature {
-  background:
-    linear-gradient(160deg, rgba(59, 130, 246, 0.14) 0%, rgba(59, 130, 246, 0.04) 50%, transparent 100%),
-    var(--glass-bg-primary);
-}
-.dark .VPFeatures .item:nth-child(4n+3) .VPFeature {
-  background:
-    linear-gradient(160deg, rgba(244, 114, 182, 0.14) 0%, rgba(244, 114, 182, 0.04) 50%, transparent 100%),
-    var(--glass-bg-primary);
-}
-.dark .VPFeatures .item:nth-child(4n+4) .VPFeature {
-  background:
-    linear-gradient(160deg, rgba(16, 185, 129, 0.14) 0%, rgba(16, 185, 129, 0.04) 50%, transparent 100%),
-    var(--glass-bg-primary);
-}
-
-/* ===== 卡片 Hover ===== */
-.VPFeature:hover {
-  transform: translateY(-12px) scale(1.03) rotateX(2deg);
-  background:
-    linear-gradient(135deg, rgba(255, 255, 255, 0.22) 0%, rgba(255, 255, 255, 0.10) 100%),
-    var(--glass-bg-secondary);
-  backdrop-filter: blur(52px) saturate(220%);
-  -webkit-backdrop-filter: blur(52px) saturate(220%);
-  box-shadow: var(--shadow-glass-strong);
-  border-color: var(--glass-border-strong);
-}
-
-/* 顶部色带 hover 展开 */
-.VPFeature:hover::before {
-  left: 8%;
-  right: 8%;
-  height: 3.5px;
-  opacity: 1;
-}
-
-/* 底部光晕 hover 显现 */
-.VPFeature:hover::after {
-  opacity: 0.5;
-}
-
-/* 各卡片独特 hover 光晕 */
-.VPFeatures .item:nth-child(4n+1) .VPFeature:hover {
-  box-shadow: var(--shadow-glass-strong), var(--shadow-neon-cyan);
-}
-.VPFeatures .item:nth-child(4n+2) .VPFeature:hover {
-  box-shadow: var(--shadow-glass-strong), var(--shadow-neon-blue);
-}
-.VPFeatures .item:nth-child(4n+3) .VPFeature:hover {
-  box-shadow: var(--shadow-glass-strong), var(--shadow-neon-pink);
-}
-.VPFeatures .item:nth-child(4n+4) .VPFeature:hover {
-  box-shadow: var(--shadow-glass-strong), var(--shadow-neon-green);
-}
-
-/* ===== 图标 ===== */
+/* 图标：品牌色字形芯片，去装饰光效 */
 .VPFeature .icon {
-  font-size: 2.8rem;
-  margin-bottom: 14px;
-  display: block;
-  transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
-  position: relative;
-  z-index: 2;
-  filter: drop-shadow(0 6px 16px rgba(0, 0, 0, 0.15));
-  transform-origin: center;
+  font-size: 1.5rem;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  margin-bottom: 16px;
+  border-radius: 10px;
+  color: var(--accent, #667eea);
+  background: color-mix(in srgb, var(--accent, #667eea) 10%, transparent);
+  border: 1px solid color-mix(in srgb, var(--accent, #667eea) 22%, transparent);
 }
 
-.VPFeatures .item:nth-child(4n+1) .VPFeature .icon {
-  background: var(--gradient-primary);
-  background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-}
-.VPFeatures .item:nth-child(4n+2) .VPFeature .icon {
-  background: var(--gradient-tech);
-  background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-}
-.VPFeatures .item:nth-child(4n+3) .VPFeature .icon {
-  background: var(--gradient-accent);
-  background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-}
-.VPFeatures .item:nth-child(4n+4) .VPFeature .icon {
-  background: var(--gradient-success);
-  background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-}
-
-.VPFeature:hover .icon {
-  transform: scale(1.15) translateY(-6px) rotateZ(5deg);
-  filter: drop-shadow(0 10px 28px rgba(0, 0, 0, 0.2));
-  animation: iconPulse 1.5s ease-in-out infinite;
-}
-
-@keyframes iconPulse {
-  0%, 100% { transform: scale(1.15) translateY(-6px) rotateZ(5deg); }
-  50%      { transform: scale(1.18) translateY(-8px) rotateZ(5deg); }
-}
-
-/* ===== 标题与描述 ===== */
 .VPFeature .title {
-  font-size: 1.15rem;
-  font-weight: 700;
-  margin-bottom: 10px;
-  position: relative;
-  z-index: 2;
-  transition: all 0.4s ease;
+  font-size: 1.02rem;
+  font-weight: 650;
   color: var(--text-primary);
-  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
   letter-spacing: -0.01em;
-}
-
-.VPFeature:hover .title {
-  transform: translateY(-2px);
-  text-shadow: 0 3px 8px rgba(0, 0, 0, 0.12);
+  margin: 0 0 8px;
 }
 
 .VPFeature .details {
+  font-size: 0.86rem;
+  line-height: 1.7;
   color: var(--text-tertiary);
-  line-height: 1.6;
-  font-size: 0.85rem;
-  font-weight: 400;
-  position: relative;
-  z-index: 2;
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
-  flex: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.4s ease;
-  padding: 0 4px;
 }
 
-.VPFeature:hover .details {
-  color: var(--text-secondary);
-  transform: translateY(-1px);
+/* ===== 入场：错峰淡入（一次性） ===== */
+@keyframes riseIn {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
-/* ===== 入场动画 ===== */
-@keyframes cardFadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(24px) scale(0.97);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
+.VPFeatures .VPFeature {
+  animation: riseIn 0.5s ease-out backwards;
 }
 
-.VPFeature {
-  animation: cardFadeIn 0.6s ease-out backwards;
-}
-
-.VPFeatures .item:nth-child(4n+1) .VPFeature { animation-delay: 0.1s; }
-.VPFeatures .item:nth-child(4n+2) .VPFeature { animation-delay: 0.2s; }
-.VPFeatures .item:nth-child(4n+3) .VPFeature { animation-delay: 0.3s; }
-.VPFeatures .item:nth-child(4n+4) .VPFeature { animation-delay: 0.4s; }
+.VPFeatures .item:nth-child(4n+1) .VPFeature { animation-delay: 0.05s; }
+.VPFeatures .item:nth-child(4n+2) .VPFeature { animation-delay: 0.13s; }
+.VPFeatures .item:nth-child(4n+3) .VPFeature { animation-delay: 0.21s; }
+.VPFeatures .item:nth-child(4n+4) .VPFeature { animation-delay: 0.29s; }
 
 /* ===== 响应式 — 平板 ===== */
 @media (max-width: 1024px) {
-  .VPHome { max-height: none; }
-
   .VPHero {
-    min-height: 45vh;
-    max-height: none;
-      padding: 72px 20px 16px;
+    padding: 72px 24px 32px;
+    min-height: 52vh;
   }
 
-  .VPHero .container { gap: 36px; }
+  .VPHero .container { gap: 40px; }
 
-  .VPFeatures { padding: 16px 20px 24px; }
+  .VPFeatures { padding: 16px 24px 72px; }
 
-  .VPFeatures .grid {
-    gap: 20px;
+  .VPFeatures .items {
     grid-template-columns: repeat(2, 1fr);
-  }
-
-  .VPFeature {
-    min-height: 200px;
-    padding: 24px 20px;
-  }
-
-  .VPFeature .icon {
-    font-size: 2.8rem;
-    margin-bottom: 14px;
+    gap: 16px;
   }
 }
 
 /* ===== 响应式 — 手机 ===== */
-@media (max-width: 768px) {
-  .VPHome {
-    max-height: none;
-    overflow: visible;
-  }
-
+@media (max-width: 767px) {
   .VPHero {
-    padding: 72px 20px 24px;
+    padding: 64px 20px 28px;
     min-height: auto;
-    max-height: none;
-    flex: 0 0 auto;
   }
 
   .VPHero .container {
     flex-direction: column;
-    gap: 32px;
+    gap: 36px;
     text-align: center;
-    height: auto;
   }
 
   .VPHero .main {
-    text-align: center;
     max-width: 100%;
   }
 
-  .VPHero .name  { font-size: 2.2rem; }
-  .VPHero .text  { font-size: 1.3rem; }
-
   .VPHero .tagline {
-    font-size: 1rem;
     max-width: 100%;
-    text-align: center;
+    margin-inline: auto;
   }
 
   .VPHero .actions {
     justify-content: center;
-    flex-direction: column;
-    gap: 12px;
-    margin-top: 20px;
   }
 
   .VPHero .image {
-    width: 280px;
-    max-width: 280px;
-    margin-top: 12px;
+    width: min(64vw, 280px);
   }
 
-  .VPFeatures {
-    flex: none;
-    padding: 24px 20px 40px;
-  }
+  .VPFeatures { padding: 20px 20px 64px; }
 
-  .VPFeatures .grid {
+  .VPFeatures .items {
     grid-template-columns: 1fr;
-    gap: 18px;
+    gap: 14px;
   }
 
-  .VPFeature {
-    min-height: 180px;
-    padding: 24px 20px;
-    border-radius: 20px;
-  }
-
-  .VPFeature .icon {
-    font-size: 2.6rem;
-    margin-bottom: 12px;
-  }
-
-  .VPFeature .title {
-    font-size: 1.15rem;
-    margin-bottom: 10px;
-  }
-
-  .VPFeature .details { font-size: 0.9rem; }
-
-  .VPFeature:hover {
-    transform: translateY(-6px) scale(1.02);
-  }
+  .VPFeature { padding: 22px 20px; }
 }
 
 /* ===== 响应式 — 大屏 ===== */
 @media (min-width: 1920px) {
-  .VPHero .container {
-    max-width: 1400px;
-    gap: 60px;
-  }
+  .VPHero .container,
+  .VPFeatures .container { max-width: 1280px; }
 
-  .VPHero .image {
-    width: 420px;
-    max-width: 420px;
-  }
+  .VPHero .image { width: 400px; }
 
-  .VPFeatures .container { max-width: 1400px; }
+  .VPFeatures .items { gap: 22px; }
 
-  .VPFeatures .grid {
-    gap: 28px;
-    grid-template-columns: repeat(4, 1fr);
-  }
-
-  .VPFeature {
-    min-height: 240px;
-    padding: 32px 28px;
-    border-radius: 22px;
-  }
-
-  .VPFeature .icon  { font-size: 3.6rem; }
-  .VPFeature .title { font-size: 1.4rem; }
-  .VPFeature .details { font-size: 0.95rem; }
+  .VPFeature { padding: 30px 26px; }
 }
 
-/* ===== 性能与无障碍 ===== */
+/* ===== 无障碍：减少动态 ===== */
 @media (prefers-reduced-motion: reduce) {
-  .VPHome,
   .VPHome::before,
-  .VPHome::after,
-  .VPHero .name,
   .VPHero .image img,
-  .VPFeature,
-  .VPFeature:hover .icon {
+  .VPFeature {
     animation: none !important;
   }
 
   .VPFeature:hover,
-  .VPButton:hover {
-    transform: translateY(-4px);
+  .VPButton.brand:hover,
+  .VPButton.alt:hover {
+    transform: none;
   }
-}
-
-.VPFeature,
-.VPButton,
-.VPFeature .icon,
-.VPHero .image img {
-  will-change: transform;
-  backface-visibility: hidden;
-  transform: translateZ(0);
 }
