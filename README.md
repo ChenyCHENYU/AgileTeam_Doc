@@ -1,7 +1,7 @@
 <div align="center">
 
 <a href="https://www.tzagileteam.com">
-  <img src="https://www.tzagileteam.com/assets/img/robot.webp" width="150" alt="AGILE TEAM">
+  <img src="https://raw.githubusercontent.com/ChenyCHENYU/AgileTeam_Doc/main/docs/document/public/logo.svg" width="150" alt="AGILE TEAM">
 </a>
 
 <br>

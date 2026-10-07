@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="240" height="240" viewBox="0 0 240 240" fill="none">
+  <defs>
+    <linearGradient id="agile" x1="40" y1="20" x2="200" y2="220" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#667eea"/>
+      <stop offset="1" stop-color="#764ba2"/>
+    </linearGradient>
+  </defs>
+  <circle cx="120" cy="26" r="11" fill="url(#agile)"/>
+  <line x1="120" y1="40" x2="120" y2="56" stroke="url(#agile)" stroke-width="9" stroke-linecap="round"/>
+  <rect x="42" y="56" width="156" height="126" rx="30" stroke="url(#agile)" stroke-width="11"/>
+  <rect x="22" y="102" width="20" height="38" rx="10" fill="url(#agile)"/>
+  <rect x="198" y="102" width="20" height="38" rx="10" fill="url(#agile)"/>
+  <circle cx="95" cy="112" r="13" fill="url(#agile)"/>
+  <circle cx="145" cy="112" r="13" fill="url(#agile)"/>
+  <path d="M96 148 Q120 164 144 148" stroke="url(#agile)" stroke-width="9" stroke-linecap="round"/>
+</svg>
