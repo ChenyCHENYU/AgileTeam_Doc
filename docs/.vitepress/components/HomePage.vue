@@ -124,7 +124,7 @@ const roles = [
         </div>
       </div>
       <div class="hero-fig">
-        <img src="/assets/img/robot.webp" alt="AGILE TEAM" />
+        <img src="/assets/img/robot.webp" alt="AGILE TEAM" width="840" height="840" fetchpriority="high" decoding="async" />
       </div>
     </section>
 
@@ -351,7 +351,13 @@ const roles = [
   inset: -14%;
   background: radial-gradient(circle, color-mix(in srgb, var(--brand-a) 18%, transparent) 0%, transparent 68%);
 }
-.hero-fig img { position: relative; width: 100%; height: auto; animation: floaty 9s ease-in-out infinite alternate; }
+.hero-fig img {
+  position: relative;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1 / 1;
+  animation: floaty 9s ease-in-out infinite alternate;
+}
 @keyframes floaty { from { transform: translateY(0); } to { transform: translateY(-8px); } }
 
 /* ═══════════ 数据条 ═══════════ */
