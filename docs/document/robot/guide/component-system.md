@@ -48,7 +48,7 @@ src/components/
     └── ...
 ```
 
-此外，54 个业务组件已独立发布为 `@robot-admin/naive-ui-components` npm 包，通过 `RobotNaiveUiResolver` 实现自动导入，无需手动注册。
+此外，55 个业务组件已独立发布为 `@robot-admin/naive-ui-components` npm 包，通过 `RobotNaiveUiResolver` 实现自动导入，无需手动注册。
 
 ### 命名约定规范
 
@@ -56,7 +56,7 @@ src/components/
 | ------------ | ------ | -------------------------- | -------------------------- |
 | **全局桥接组件** | `C_`   | `C_Header`, `C_Settings`   | 主项目中桥接组件库的组件 |
 | **局部组件** | `c_`   | `c_role`, `c_detail`       | 特定模块或功能的专用组件   |
-| **组件库组件** | `C_` | `C_Form`, `C_Table`, `C_Upload` | 54 个业务组件（自动导入） |
+| **组件库组件** | `C_` | `C_Form`, `C_Table`, `C_Upload` | 55 个业务组件（自动导入） |
 
 ::: warning ⚠️ 命名重要性
 严格遵循命名约定不仅有助于代码组织，更重要的是确保动态组件系统能够正确识别和加载组件。
@@ -147,7 +147,7 @@ C_ComponentName/
 
 ### 核心组件库
 
-Robot Admin 的组件体系基于 `@robot-admin/naive-ui-components`（v0.13.6），包含 54 个业务组件：
+Robot Admin 的组件体系基于 `@robot-admin/naive-ui-components`（v0.14.2），包含 55 个业务组件：
 
 <details>
 <summary><b>📊 数据展示组件</b></summary>

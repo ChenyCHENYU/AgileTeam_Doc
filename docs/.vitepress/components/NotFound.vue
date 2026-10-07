@@ -6,7 +6,7 @@ const { isDark } = useData();
 const links = [
   { text: "回到首页", to: "/" },
   { text: "阅读指南", to: "/robot/guide/overview" },
-  { text: "浏览 54 个组件", to: "/robot/components/preface" },
+  { text: "浏览 55 个组件", to: "/robot/components/preface" },
   { text: "六大角色文档", to: "/po/standard/introduction" },
 ];
 </script>

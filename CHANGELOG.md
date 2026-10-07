@@ -3,6 +3,21 @@
 本项目的所有重要变更都记录在此文件中。
 格式遵循 [Keep a Changelog](https://keepachangelog.com/zh-CN/1.1.0/)，版本管理遵循 [语义化版本](https://semver.org/lang/zh-CN/)。
 
+## [Unreleased]
+
+### 新增
+
+- 组件文档补全 6 页：`C_Tabs` / `C_FormModal` / `C_Loading` / `C_PageLoading`（组件库）
+  与 `C_EnvironmentBadge` / `C_LogoutTransition`（uniApp），均依据源码 types 编写
+
+### 修正
+
+- 生态项目归因：Robot_Uniapp（v1.0.0）与 Robot_H5（v1.8.0）严格区分，
+  `@robot-h5/core` 归属 H5 项目；组件库版本对齐 v0.14.2（55 个组件）
+- Robot_Cloud 版本标注为 `v1.0.0-SNAPSHOT`（与 pom.xml 一致）
+- 首页角色区补全「运维」「团队」；组件分类计数改为实测分区（合计精确 55）
+- 跨端组件数 33 → 35（Robot_Uniapp `src/components/global` 实测）
+
 ## [3.1.0] - 2026-10-07
 
 ### 新增

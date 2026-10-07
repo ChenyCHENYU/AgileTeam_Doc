@@ -33,7 +33,7 @@
 
 | &nbsp; | &nbsp; | &nbsp; | &nbsp; |
 | :---: | :---: | :---: | :---: |
-| **54** | **33** | **8** | **225+** |
+| **55** | **35** | **8** | **225+** |
 | Production components | Cross-platform components | Engineering plugins | Doc pages |
 | Form engine · virtual table · flow charts | H5 / WeChat Mini Program / App | Build · env · collaboration | Six role tracks |
 
@@ -41,7 +41,7 @@
 
 ## ✨ Highlights
 
-- 🧩 **54 production-grade components** — form engine, virtual-scrolling table, flow charts, e-signature, fully typed
+- 🧩 **55 production-grade components** — form engine, virtual-scrolling table, flow charts, e-signature, fully typed
 - 📱 **One design system, every platform** — admin web and uniApp cross-platform (H5 / Mini Programs / iOS / Android)
 - ⚡ **60-second project bootstrap** — smart templates via CLI, bun / pnpm auto-detected
 - 🔌 **8 engineering plugins** — multi-env management, first-paint optimization, type cleaning, multi-repo push
@@ -53,13 +53,13 @@
 | Project | Version | Description |
 | --- | :---: | --- |
 | [Robot_Admin][demo-url] | `v2.7.0` | Admin framework (Vue 3.5 · TS 5.8 · Vite 8 · UnoCSS) |
-| [@robot-admin/naive-ui-components][components-url] | `v0.13.6` | 54 components as standalone package with auto-import |
+| [@robot-admin/naive-ui-components][components-url] | `v0.14.2` | 55 components as standalone package with auto-import |
 | [@agile-team/mach-table-vue][machtable-url] | [![npm][machtable-ver-badge]][machtable-url] [![npm][machtable-dt-badge]][machtable-url] | Framework-agnostic enterprise data grid |
 | [@agile-team/robot-cli][cli-url] | `v3.2.0` | Scaffolding CLI |
 | Robot_Uniapp | `v1.0.0` | Cross-platform mobile framework (35 components · wot-design-uni) |
 | [Robot_H5][roboth5-url] | `v1.8.0` | Mobile H5 app framework (Vue 3 · Vite 7 · Liquid Glass) |
 | [@robot-h5/core][h5core-url] | `v1.2.0` | H5 core package (Bridge · 20+ hooks · offline storage) |
-| Robot_Cloud | `v1.0.0` | Backend microservices (Spring Cloud Alibaba) |
+| Robot_Cloud | `v1.0.0-SNAPSHOT` | Backend microservices (Spring Cloud Alibaba) |
 
 ## 🚀 Quick Start
 

@@ -4,7 +4,7 @@ import { useData } from "vitepress";
 const { isDark } = useData();
 
 const stats = [
-  { num: "54", label: "生产级组件", sub: "表单引擎 · 虚拟表格 · 流程图" },
+  { num: "55", label: "生产级组件", sub: "表单引擎 · 虚拟表格 · 流程图" },
   { num: "35", label: "跨端组件", sub: "H5 · 小程序 · App" },
   { num: "8", label: "工程化插件", sub: "构建 · 环境 · 协作" },
   { num: "225+", label: "文档页面", sub: "本地全文搜索覆盖" },
@@ -24,8 +24,8 @@ const ecosystem = [
   {
     icon: "🧩",
     name: "naive-ui-components",
-    version: "v0.13.6",
-    desc: "54 个业务组件独立包 · 按需自动导入",
+    version: "v0.14.2",
+    desc: "55 个业务组件独立包 · 按需自动导入",
     link: "https://www.npmjs.com/package/@robot-admin/naive-ui-components",
     tag: "npm ↗",
     span: 3,
@@ -69,7 +69,7 @@ const ecosystem = [
   {
     icon: "☁️",
     name: "Robot_Cloud",
-    version: "v1.0.0",
+    version: "v1.0.0-SNAPSHOT",
     desc: "后端微服务框架 · Spring Cloud Alibaba — 认证 / 系统管理 / 权限治理，为 Robot_Admin 提供服务端支撑",
     link: "",
     tag: "暂未开源",
@@ -78,14 +78,14 @@ const ecosystem = [
 ];
 
 const categories = [
-  { title: "表单输入", count: "12", desc: "动态表单引擎与高级输入控件", to: "/robot/components/form" },
-  { title: "表格数据", count: "10", desc: "虚拟滚动 · 树形 · 导出 · 甘特图", to: "/robot/components/table" },
-  { title: "可视化", count: "9", desc: "流程图 · 工作流 · 组织架构", to: "/robot/components/antv" },
-  { title: "编辑器", count: "9", desc: "富文本 · Markdown · 代码 · 公式", to: "/robot/components/editor" },
-  { title: "媒体文件", count: "12", desc: "预览 · 裁剪 · 电子签名 · 播放", to: "/robot/components/file-preview" },
-  { title: "交互业务", count: "12", desc: "聊天 · 登录 · 全局搜索 · 引导", to: "/robot/components/chat" },
-  { title: "布局导航", count: "11", desc: "布局 · 菜单 · 标签页 · 面包屑", to: "/robot/components/layout" },
-  { title: "跨端组件", count: "35", desc: "H5 · 小程序 · App 一码多端", to: "/uniapp/components/preface" },
+  { title: "表单输入", count: "12", desc: "表单引擎 · 级联 · 日期时间 · 上传 · 穿梭框", to: "/robot/components/form" },
+  { title: "表格数据", count: "6", desc: "超级表格 · 甘特图 · 拖拽排序 · 时间线", to: "/robot/components/table" },
+  { title: "可视化", count: "5", desc: "流程图 · 工作流 · 组织架构 · 地图 · 日程", to: "/robot/components/antv" },
+  { title: "编辑器", count: "4", desc: "富文本 · Markdown · 代码 · 公式", to: "/robot/components/editor" },
+  { title: "媒体文件", count: "7", desc: "预览 · 播放 · 裁剪 · 电子签名 · 二维码", to: "/robot/components/file-preview" },
+  { title: "交互业务", count: "7", desc: "聊天 · 登录 · 全局搜索 · 验证码 · 通知中心", to: "/robot/components/chat" },
+  { title: "布局导航", count: "7", desc: "菜单 · 面包屑 · 标签 · 折叠/分割面板 · 瀑布流", to: "/robot/components/layout" },
+  { title: "基础与反馈", count: "7", desc: "图标 · 加载指示 · 骨架屏 · 主题 · 国际化", to: "/robot/components/loading" },
 ];
 
 const roles = [
@@ -94,7 +94,9 @@ const roles = [
   { icon: "💻", title: "前端", desc: "编码规范 · 工程架构 · Vue3 实战 · TypeScript", to: "/web/get-familiar-quickly/engineering" },
   { icon: "⚙️", title: "后端", desc: "编码规范 · 工程架构 · 快速上手", to: "/rear-end/standard/norm" },
   { icon: "🧪", title: "测试", desc: "测试策略 · 用例设计 · 质量标准", to: "/qc/standard/norm" },
-  { icon: "👔", title: "管理", desc: "岗位职责 · 27+ 模板 · 交付验收 · 团队英雄墙", to: "/manage/job-responsibility/pm" },
+  { icon: "🔧", title: "运维", desc: "部署规范 · 版本管理 · 岗位职责", to: "/manage/job-responsibility/op" },
+  { icon: "👔", title: "管理", desc: "岗位职责 · 27+ 模板 · 交付验收", to: "/manage/job-responsibility/pm" },
+  { icon: "🏆", title: "团队", desc: "英雄墙 · 虚拟小组 · 开放共建", to: "/team/manage" },
 ];
 </script>
 
@@ -109,12 +111,12 @@ const roles = [
           <span class="grad">文档与生态中心</span>
         </h1>
         <p class="tagline">
-          沉淀 54 个生产级组件、8 个工程化插件与六大角色协作文档 ——
+          沉淀 55 个生产级组件、8 个工程化插件与六大角色协作文档 ——
           从脚手架到交付验收，一套设计规范贯穿中后台与跨端移动。
         </p>
         <div class="actions">
           <a class="btn primary" href="/robot/guide/overview">开始阅读指南</a>
-          <a class="btn ghost" href="/robot/components/preface">浏览 54 个组件</a>
+          <a class="btn ghost" href="/robot/components/preface">浏览 55 个组件</a>
           <a class="btn ghost ext" href="https://www.robotadmin.cn" target="_blank" rel="noopener">在线演示 ↗</a>
         </div>
         <div class="stack">
@@ -168,7 +170,7 @@ const roles = [
       <header class="sec-head">
         <span class="kicker">COMPONENTS</span>
         <h2>组件体系</h2>
-        <p>87 个组件 · 每个都有在线演示、TypeScript 类型与完整 API 文档</p>
+        <p>中后台 55 + 跨端 35 = 90 个组件，配套 TypeScript 类型与 API 文档，中后台组件支持在线演示</p>
       </header>
       <div class="cat-grid">
         <a v-for="c in categories" :key="c.title" class="cat-card" :href="c.to">

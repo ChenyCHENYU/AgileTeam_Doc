@@ -59,7 +59,7 @@ Robot Admin 利用 **Bun** 和 **Vite 7** 提供非凡的开发速度：
 
 ### 🧩 全面组件系统
 
-该框架包含 **54 个精心打造的业务组件**（已独立发布为 `@robot-admin/naive-ui-components`），专为企业应用设计：
+该框架包含 **55 个精心打造的业务组件**（已独立发布为 `@robot-admin/naive-ui-components`），专为企业应用设计：
 
 ::: details 🏗️ 核心 UI 组件
 
@@ -147,7 +147,7 @@ Robot Admin 优先考虑开发者生产力：
   </div>
   
   <div class="stat-item">
-    <div class="stat-number">54+</div>
+    <div class="stat-number">55+</div>
     <div class="stat-label">演示页面</div>
     <div class="stat-detail">展示最佳实践和实现模式</div>
   </div>
@@ -216,7 +216,7 @@ Robot_Admin/
 │   ├── components/               # 组件（桥接层 + 局部组件）
 │   │   ├── global/               # 全局桥接组件（按需引用组件库）
 │   │   └── local/                # 局部业务组件
-│   ├── views/                    # 页面视图（54+ 演示页面）
+│   ├── views/                    # 页面视图（55+ 演示页面）
 │   ├── stores/                   # Pinia 状态管理
 │   ├── composables/              # 组合式函数（业务逻辑解耦）
 │   ├── hooks/                    # 自定义钩子

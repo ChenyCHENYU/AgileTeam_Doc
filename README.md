@@ -23,7 +23,7 @@
 [![npm][cli-badge]][cli-url]
 [![Docs][docs-badge]][docs-url]
 
-**[📖 文档站][docs-url]** &nbsp;·&nbsp; **[🎯 在线演示][demo-url]** &nbsp;·&nbsp; **[📦 组件文档][components-doc-url]** &nbsp;·&nbsp; **[⚡ 脚手架][cli-doc-url]** &nbsp;·&nbsp; **[🔄 Gitee 镜像][gitee-url]** &nbsp;·&nbsp; **[English](./README_EN.md)**
+**[📖 文档站][docs-url]** &nbsp;·&nbsp; **[🎯 在线演示][demo-url]** &nbsp;·&nbsp; **[📦 组件文档][components-doc-url]** &nbsp;·&nbsp; **[⚡ 脚手架][cli-doc-url]** &nbsp;·&nbsp; **[English](./README_EN.md)**
 
 [![homepage](https://raw.githubusercontent.com/ChenyCHENYU/AgileTeam_Doc/main/docs/document/public/assets/img/homepage-banner.png)](https://www.tzagileteam.com)
 
@@ -35,7 +35,7 @@
 
 | &nbsp; | &nbsp; | &nbsp; | &nbsp; |
 | :---: | :---: | :---: | :---: |
-| **54** | **33** | **8** | **225+** |
+| **55** | **35** | **8** | **225+** |
 | 生产级组件 | 跨端组件 | 工程化插件 | 文档页面 |
 | 表单引擎/虚拟表格/流程图 | H5/小程序/App | 构建·环境·协作 | 六大角色全覆盖 |
 
@@ -61,8 +61,8 @@
                    │
      ┌─────────────▼──────────────┐
      │ @robot-admin/naive-ui-     │      ┌─────────────────────┐      ┌──────────────────┐
-     │ components  v0.13.6        │      │ @agile-team/        │      │ Robot_H5  v1.8    │
-     │ 54 组件 · 按需自动导入        │──────│ mach-table-vue      │      │ @robot-h5/core    │
+     │ components  v0.14.2        │      │ @agile-team/        │      │ Robot_H5  v1.8    │
+     │ 55 组件 · 按需自动导入        │──────│ mach-table-vue      │      │ @robot-h5/core    │
      └────────────────────────────┘      │ v0.30.0 表格引擎      │      │ Robot_Cloud v1.0  │
                                          └─────────────────────┘      └──────────────────┘
 ```
@@ -71,7 +71,7 @@
 
 | | |
 | :--- | :--- |
-| **🧩 组件工程化** | 54 个业务组件独立成包，`RobotNaiveUiResolver` 按需自动导入，TypeScript 类型完备，全量在线演示 | 
+| **🧩 组件工程化** | 55 个业务组件独立包，`RobotNaiveUiResolver` 按需自动导入，TypeScript 类型完备，在线演示 | 
 | **📱 跨端同构** | 一套设计规范贯穿中后台与移动端，uniApp 覆盖 H5 / 微信小程序 / Android / iOS |
 | **⚡ 极速起步** | `npx` 一行命令 60 秒创建项目，智能模板分类、搜索筛选、自动检测 bun / pnpm |
 | **🔌 插件矩阵** | 多环境管理、首屏加载优化、TS 类型清理、多仓库同步推送等 8 个自研插件 |
@@ -122,13 +122,13 @@
 | 项目 | 版本 | 定位 | 说明 |
 | --- | :---: | --- | --- |
 | [Robot_Admin][demo-url] | `v2.7.0` | 中后台主框架 | Vue 3.5 · TS 5.8 · Vite 8 · UnoCSS · Pinia |
-| [@robot-admin/naive-ui-components][components-url] | `v0.13.6` | 组件库独立包 | 54 组件 · 自动导入 · 独立发版 |
+| [@robot-admin/naive-ui-components][components-url] | `v0.14.2` | 组件库独立包 | 55 组件 · 自动导入 · 独立发版 |
 | [@agile-team/robot-cli][cli-url] | `v3.2.0` | 脚手架 | 60s 建项 · 智能模板 · 多包管理器 |
 | Robot_Uniapp | `v1.0.0` | 跨端移动框架 | 35 组件 · wot-design-uni · H5/小程序/App |
 | [@agile-team/mach-table-vue][machtable-url] | [![npm][machtable-ver-badge]][machtable-url] [![npm][machtable-dt-badge]][machtable-url] | 企业数据表格引擎 | 框架无关 · 虚拟化 · 编辑分组 — [平台文档][table-doc-url] |
 | [Robot_H5][roboth5-url] | `v1.8.0` | 移动端 H5 应用框架 | Vue 3 · Vite 7 · Liquid Glass · PDA 兼容 |
 | [@robot-h5/core][h5core-url] | `v1.2.0` | H5 核心能力包 | Bridge 通信 · 20+ Hooks · 离线存储 |
-| Robot_Cloud | `v1.0.0` | 后端微服务框架 | Spring Cloud Alibaba · 认证 / 系统管理 / 权限治理 |
+| Robot_Cloud | `v1.0.0-SNAPSHOT` | 后端微服务框架 | Spring Cloud Alibaba · 认证 / 系统管理 / 权限治理 |
 
 <details>
 <summary><b>🔌 8 个工程化插件</b></summary>
@@ -200,7 +200,7 @@ docs/
 - **CI**：GitHub Actions 全量构建校验（bun install → vitepress build → 死链检测）
 - **SEO**：sitemap + robots.txt + 页面级 og 标签与 canonical
 - **性能**：静态资源 immutable 缓存 · 图片 WebP 化 · 关键动画合成层优化
-- **双源**：GitHub 主仓库 + Gitee 国内镜像同步
+- **CI**：全量构建校验（bun install → vitepress build → 死链检测 → 内容保鲜检查）
 
 ## 🤝 参与共建
 
@@ -210,7 +210,7 @@ docs/
 
 [MIT](./LICENSE) © 2025 CHENY · 金恒西安
 
-**相关链接**：[博客][blog-url] · [GitHub 主页][github-url] · [Gitee][gitee-url]
+**相关链接**：[博客][blog-url] · [GitHub 主页][github-url] · [更新日志](./CHANGELOG.md) · [参与共建](./CONTRIBUTING.md)
 
 <!-- 链接引用定义 -->
 
@@ -226,7 +226,6 @@ docs/
 [docs-badge]: https://img.shields.io/badge/docs-tzagileteam.com-6366f1?style=flat-square
 [docs-url]: https://www.tzagileteam.com
 [demo-url]: https://www.robotadmin.cn
-[gitee-url]: https://gitee.com/ChenyCHENYU/AgileTeam_Doc
 [components-doc-url]: https://www.tzagileteam.com/robot/components/preface
 [cli-doc-url]: https://www.tzagileteam.com/robot/cli/
 [guide-url]: https://www.tzagileteam.com/robot/guide/overview

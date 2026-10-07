@@ -237,6 +237,10 @@ export const ROBOT_COMPONENTS_DOC = [
         link: `${ROBOT}/components/form-search`,
       },
       {
+        text: "[C_FormModal] 弹窗表单",
+        link: `${ROBOT}/components/form-modal`,
+      },
+      {
         text: "[C_Table] 表格",
         link: `${ROBOT}/components/table`,
       },
@@ -255,6 +259,10 @@ export const ROBOT_COMPONENTS_DOC = [
       {
         text: "[C_CollapsePanel] 折叠面板",
         link: `${ROBOT}/components/collapse-panel`,
+      },
+      {
+        text: "[C_Tabs] 标签栏",
+        link: `${ROBOT}/components/tabs`,
       },
       {
         text: "[C_ImageCropper] 图片裁剪",
@@ -440,6 +448,14 @@ export const ROBOT_COMPONENTS_DOC = [
         text: "[C_Skeleton] 骨架屏",
         link: `${ROBOT}/components/skeleton`,
       },
+      {
+        text: "[C_Loading] 加载指示",
+        link: `${ROBOT}/components/loading`,
+      },
+      {
+        text: "[C_PageLoading] 页面加载遮罩",
+        link: `${ROBOT}/components/page-loading`,
+      },
     ],
   },
 ];
@@ -614,6 +630,14 @@ export const UNIAPP_COMPONENTS_DOC = [
         link: `${UNIAPP}/components/float-button`,
       },
       { text: "[C_Notify] 消息通知", link: `${UNIAPP}/components/notify` },
+      {
+        text: "[C_LogoutTransition] 退出过渡",
+        link: `${UNIAPP}/components/logout-transition`,
+      },
+      {
+        text: "[C_EnvironmentBadge] 环境角标",
+        link: `${UNIAPP}/components/environment-badge`,
+      },
     ],
   },
   {
