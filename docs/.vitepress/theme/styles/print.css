@@ -1,0 +1,106 @@
+/* ═══════════ 打印样式：文档导出 PDF 场景 ═══════════
+   隐藏导航/侧栏/大纲/评论区/演示 iframe 工具栏，
+   代码块白底黑字保证墨水友好，表格去溢出 */
+
+@media print {
+  /* 隐藏屏幕专用 UI */
+  .VPNav,
+  .VPSidebar,
+  .VPDocAside,
+  .VPLocalNavOutline,
+  .VPSocialLinks,
+  .VPFooter,
+  .giscus-comment,
+  .VPDocFooter .prev-next,
+  .demo-iframe-toolbar,
+  .demo-iframe-open,
+  .VPContentFooterPager,
+  .vp-doc .demo-iframe-container {
+    display: none !important;
+  }
+
+  /* 演示 iframe 打印时保留占位说明 */
+  .demo-iframe-body {
+    height: auto !important;
+    aspect-ratio: auto !important;
+    min-height: 0 !important;
+  }
+  .demo-iframe-body::after {
+    content: '〔 组件在线演示：请访问文档站查看 〕';
+    display: block;
+    padding: 24px;
+    text-align: center;
+    color: #666;
+    font-size: 13px;
+    border: 1px dashed #ccc;
+    border-radius: 8px;
+  }
+  .demo-iframe-body iframe { display: none !important; }
+
+  /* 布局回归单栏全宽 */
+  .VPContent,
+  .VPDoc,
+  .VPDoc .container,
+  .VPDoc.has-aside .content,
+  .VPDoc.has-aside .content-container {
+    display: block !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  body {
+    background: #fff !important;
+    color: #111 !important;
+  }
+
+  .vp-doc {
+    font-size: 12pt;
+    line-height: 1.65;
+  }
+
+  /* 代码块：白底黑字，保留等宽 */
+  .vp-doc div[class*="language-"] {
+    background: #f7f7f8 !important;
+    color: #1f2328 !important;
+    border: 1px solid #e5e7eb;
+    break-inside: avoid;
+  }
+  .vp-doc div[class*="language-"] * {
+    color: #1f2328 !important;
+    background: transparent !important;
+    text-shadow: none !important;
+  }
+  .vp-doc div[class*="language-"] .line-numbers {
+    display: none !important;
+  }
+
+  /* 标题不与内容断裂 */
+  .vp-doc h1, .vp-doc h2, .vp-doc h3 {
+    break-after: avoid;
+    color: #111 !important;
+  }
+  .vp-doc img {
+    break-inside: avoid;
+    max-width: 100% !important;
+  }
+  .vp-doc table {
+    break-inside: avoid;
+    border-color: #d1d5db !important;
+  }
+  .vp-doc table * {
+    color: #111 !important;
+    background: transparent !important;
+  }
+
+  /* 链接打印出 URL（外部链接） */
+  .vp-doc a[href^="http"]::after {
+    content: ' (' attr(href) ')';
+    font-size: 9pt;
+    color: #666;
+  }
+
+  @page {
+    margin: 18mm 16mm;
+  }
+}

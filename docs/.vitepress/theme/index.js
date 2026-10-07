@@ -10,9 +10,11 @@ import ImgWrap from "@components/ImgWrap.vue";
 import ImgPreview from "@components/ImgPreview.vue";
 import DemoIframe from "@components/DemoIframe.vue";
 import HomePage from "@components/HomePage.vue";
+import NotFound from "@components/NotFound.vue";
 import "./custom.css";
 import "./styles/home.css";
 import "./styles/newBadge.css";
+import "./styles/print.css";
 
 // 🤖 导入智能 NEW 标记处理模块
 import { initSmartNewBadgeProcessor } from "./modules/smartNewBadge.js";
@@ -33,6 +35,9 @@ export default {
 
   Layout: () => {
     return h(DefaultTheme.Layout, null, {
+      // 定制 404 页
+      "not-found": () => h(NotFound),
+
       // 在文档页面底部自动添加评论
       "doc-footer-before": () => {
         const { page, frontmatter } = useData();

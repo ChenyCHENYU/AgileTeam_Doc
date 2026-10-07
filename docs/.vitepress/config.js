@@ -148,7 +148,7 @@ export default defineConfig({
       ["meta", { property: "og:title", content: pageData.title || "AGILE TEAM" }],
       ["meta", { property: "og:description", content: description }],
       ["meta", { property: "og:url", content: url }],
-      ["meta", { property: "og:image", content: `${SITE_URL}/assets/img/robot.webp` }],
+      ["meta", { property: "og:image", content: `${SITE_URL}/assets/img/og-card.png` }],
       ["meta", { name: "twitter:card", content: "summary" }],
       ["link", { rel: "canonical", href: url }]
     );
