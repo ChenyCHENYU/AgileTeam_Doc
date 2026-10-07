@@ -1,5 +1,7 @@
 ---
 outline: "deep"
+description: "Naive UI（当前版本 2.44.1）是 Robot Admin 中使用的主要 UI 组件框架，用于提供高质量、高性能的用户界面，并具备全面的主题定制能力。此外，项目还通过 @"
+reviewAfter: "2027-04-07"
 ---
 
 # Robot Admin NaiveUI 集成详解

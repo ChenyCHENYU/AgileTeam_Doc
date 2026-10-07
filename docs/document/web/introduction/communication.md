@@ -604,7 +604,7 @@ export default defineComponent({
 
 ## ref / emits
 
-在学习 [响应式 API 之 ref](../introduction/component.md#响应式-api-之-ref-new) 的时候，了解到 `ref` 是可以用在 [DOM 元素与子组件](../introduction/component.md#dom-元素与子组件) 上面。
+在学习 [响应式 API 之 ref](../introduction/component/reactivity.md#响应式-api-之-ref-new) 的时候，了解到 `ref` 是可以用在 [DOM 元素与子组件](../introduction/component/reactivity.md#dom-元素与子组件) 上面。
 
 ### 父组件操作子组件 ~new
 
@@ -942,7 +942,7 @@ export default defineComponent({
 引用类型的数据，拿到后可以直接用，属性的值更新后，子孙组件也会被更新。
 
 :::warning
-由于不具备真正的响应性，`return` 给模板使用依然不会更新视图，如果涉及到视图的数据，请依然使用 [响应式 API](../introduction/component.md#响应式数据的变化-new) 。
+由于不具备真正的响应性，`return` 给模板使用依然不会更新视图，如果涉及到视图的数据，请依然使用 [响应式 API](../introduction/component/reactivity.md#响应式数据的变化-new) 。
 :::
 
 ### 基本类型的传递与接收
@@ -1074,7 +1074,7 @@ export default defineComponent({
 :::
 
 :::warning
-由于不具备真正的响应性，`return` 给模板使用依然不会更新视图，如果涉及到视图的数据，请依然使用 [响应式 API](../introduction/component.md#响应式数据的变化-new) 。
+由于不具备真正的响应性，`return` 给模板使用依然不会更新视图，如果涉及到视图的数据，请依然使用 [响应式 API](../introduction/component/reactivity.md#响应式数据的变化-new) 。
 :::
 
 ## 兄弟组件通信
@@ -1230,7 +1230,7 @@ export default defineComponent({
 })
 ```
 
-关于销毁的时机，可以参考 [组件的生命周期](../introduction/component.md#组件的生命周期-new) 。
+关于销毁的时机，可以参考 [组件的生命周期](../introduction/component/index.md#组件的生命周期-new) 。
 
 ### 调用监听事件 ~new
 
@@ -1289,7 +1289,7 @@ Vuex 是 Vue 生态里面非常重要的一个成员，运用于状态管理模�
 
 ### 在了解之前
 
-在对 Vue 3 里是否需要使用 Vuex 的问题上，带有一定的争议，大部分开发者在社区发表的评论都认为通过 [EventBus](#eventbus-new) 和 [provide / inject](#provide-inject) ，甚至 export 一个 [reactive](../introduction/component.md#响应式-api-之-reactive-new) 对象也足以满足大部分业务需求。
+在对 Vue 3 里是否需要使用 Vuex 的问题上，带有一定的争议，大部分开发者在社区发表的评论都认为通过 [EventBus](#eventbus-new) 和 [provide / inject](#provide-inject) ，甚至 export 一个 [reactive](../introduction/component/reactivity.md#响应式-api-之-reactive-new) 对象也足以满足大部分业务需求。
 
 见仁见智，根据自己的实际场景去看是否需要使用它。
 

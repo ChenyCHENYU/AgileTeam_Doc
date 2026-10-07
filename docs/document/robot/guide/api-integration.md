@@ -1,5 +1,6 @@
 ---
 outline: "deep"
+description: "Robot Admin 项目采用结构化方法实现 API 集成，使用 Axios 实现与后端服务的无缝通信。本文档将详细介绍 API 调用的组织方式、如何与端点交互以及扩展 API "
 ---
 
 # Robot Admin API 集成详解

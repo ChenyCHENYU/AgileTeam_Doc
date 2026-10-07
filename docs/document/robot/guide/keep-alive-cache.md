@@ -1,5 +1,6 @@
 ---
 outline: 'deep'
+description: "Robot Admin 采用 KeepAlive 缓存 + 预加载 双重优化策略，实现路由切换的极致性能体验。本文档将详细介绍如何通过极简配置，让页面再次访问时从 200-300m"
 ---
 
 # Robot Admin 路由性能优化详解

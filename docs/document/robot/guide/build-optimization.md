@@ -1,5 +1,6 @@
 ---
 outline: "deep"
+description: "构建优化对于现代 Vue 应用至关重要，以确保快速的开发体验和高效的生产部署。本指南解释了 Robot Admin 如何优化其构建过程以提高性能、减少包大小并增强开发者体验。"
 ---
 
 # Robot Admin 构建优化使用指南

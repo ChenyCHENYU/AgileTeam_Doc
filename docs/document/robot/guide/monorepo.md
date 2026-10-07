@@ -1,3 +1,7 @@
+---
+description: "📦 企业级 Monorepo 架构实践 - 基于 Bun Workspaces 的多应用管理平台完全手册"
+---
+
 # Robot Admin Monorepo 完整指南
 
 > **📦 企业级 Monorepo 架构实践** - 基于 Bun Workspaces 的多应用管理平台完全手册

@@ -1,5 +1,6 @@
 ---
 outline: "deep"
+description: "Robot_Admin 项目实现了一个全面的 TypeScript 类型系统，为整个应用程序提供了强类型支持。本文档探讨了项目中类型的组织、结构和使用方式，帮助你在开发过程中利用类"
 ---
 
 # Robot Admin TypeScript 类型系统使用指南

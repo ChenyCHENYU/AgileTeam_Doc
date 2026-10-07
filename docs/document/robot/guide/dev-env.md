@@ -1,5 +1,6 @@
 ---
 outline: "deep"
+description: "本指南将指导您设置 Robot Admin 项目的开发环境。通过 Bun 的毫秒级热重载和闪电般的依赖安装，您将体验到显著提升的开发速度。"
 ---
 
 # Robot Admin 开发环境搭建指南

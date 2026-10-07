@@ -1,5 +1,6 @@
 ---
 outline: "deep"
+description: "Robot_Admin 项目使用 Vite 作为其构建工具，以提供闪电般的开发体验和优化的生产构建。本文档解释了 Vite 在该项目中的配置方式，帮助您了解其功能以及如何在需要时进"
 ---
 
 # Robot Admin Vite 配置使用指南

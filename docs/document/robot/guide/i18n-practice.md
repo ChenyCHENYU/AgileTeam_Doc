@@ -1,3 +1,7 @@
+---
+description: "本文档基于 Robot Admin 项目实践，介绍如何使用 vite-auto-i18n-plugin + 自动生成脚本 实现路由标题的零维护国际化。相比传统手写翻译映射，这种方式"
+---
+
 # Robot Admin 国际化路由实践指南
 
 ::: tip 写在前面

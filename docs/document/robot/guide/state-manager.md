@@ -1,5 +1,6 @@
 ---
 outline: "deep"
+description: "状态管理是 Robot Admin 应用程序的关键组成部分，使用 Pinia（Vue 推荐的状态管理库）创建了一个模块化的状态管理系统。本文档将详细介绍状态管理的架构设计和使用方式"
 ---
 
 # Robot Admin 状态管理详解

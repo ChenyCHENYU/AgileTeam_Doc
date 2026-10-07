@@ -1,5 +1,6 @@
 ---
 outline: "deep"
+description: "Robot Admin 提供了一套全面的自定义 Vue Composition API 钩子，旨在简化应用程序中的常见任务。这些钩子封装了可重用的逻辑，使您的组件更加简洁和易于维护"
 ---
 
 # Robot Admin Vue Hooks 使用指南

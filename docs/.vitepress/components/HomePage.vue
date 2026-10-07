@@ -81,7 +81,7 @@ const roles = [
 </script>
 
 <template>
-  <div class="home" :class="{ dark: isDark }">
+  <main class="home" :class="{ dark: isDark }">
     <!-- ═══════════ Hero ═══════════ -->
     <section class="hero">
       <div class="hero-main">
@@ -193,7 +193,7 @@ const roles = [
         <a href="https://github.com/ChenyCHENYU/AgileTeam_Doc" target="_blank" rel="noopener">GitHub ↗</a>
       </p>
     </section>
-  </div>
+  </main>
 </template>
 
 <style scoped>

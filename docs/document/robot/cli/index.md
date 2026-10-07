@@ -1,3 +1,9 @@
+---
+outline: "deep"
+description: "Robot CLI 脚手架 — 60 秒创建项目，智能模板分类、搜索筛选、自动检测 bun/pnpm"
+reviewAfter: "2027-04-07"
+---
+
 # Robot CLI
 
 > 让项目搭建从此告别复制粘贴 ✨

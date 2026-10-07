@@ -1000,7 +1000,7 @@ Hello World from bar.
 
 常见的组件有：页头、页脚、导航栏、侧边栏… 甚至小到一个用户头像也可以抽离成组件，因为头像可能只是尺寸、圆角不同而已。
 
-每个组件都有自己的 “作用域” ， JavaScript 部分利用 [模块化](#了解模块化设计) 来实现作用域隔离， HTML 和 CSS 代码则借助 [Style Scoped](../introduction/component.md#style-scoped) 来生成独有的 hash ，避免全局污染，这些方案组合起来，使得组件与组件之间的代码不会互相影响。
+每个组件都有自己的 “作用域” ， JavaScript 部分利用 [模块化](#了解模块化设计) 来实现作用域隔离， HTML 和 CSS 代码则借助 [Style Scoped](../introduction/component/slots-styles.md#style-scoped) 来生成独有的 hash ，避免全局污染，这些方案组合起来，使得组件与组件之间的代码不会互相影响。
 
 ### 如何实现组件化
 
@@ -1022,7 +1022,7 @@ Hello World from bar.
 </style>
 ```
 
-在后面的 [单组件的编写](../introduction/component.md) 内容板块中，会详细介绍如何编写一个 Vue 组件。
+在后面的 [单组件的编写](../introduction/component/index.md) 内容板块中，会详细介绍如何编写一个 Vue 组件。
 
 ## 依赖包和插件
 

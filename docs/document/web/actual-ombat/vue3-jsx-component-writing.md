@@ -57,7 +57,7 @@ export default {
 </script>
 ```
 
-:eyes: 详细使用请回顾 [单组件的编写](../introduction/component#md) 内容板块。
+:eyes: 详细使用请回顾 [单组件的编写](../introduction/component/index.md) 内容板块。
 
 ### 组合式写法（推荐）
 
@@ -462,7 +462,7 @@ setup() {
 
 ### 类名绑定
 
-比较简单，不做赘述，Vue 绑定方式如果不了解，参考 [动态绑定 CSS](../introduction/component.md) 内容板块。
+比较简单，不做赘述，Vue 绑定方式如果不了解，参考 [动态绑定 CSS](../introduction/component/index.md) 内容板块。
 
 ```jsx
 // 直接使用JS模板字符串
@@ -480,7 +480,7 @@ const element = (
 
 ### style 样式绑定
 
-比较简单，直接看栗子，Vue 绑定方式如果不了解，参考 [动态绑定 CSS](../introduction/component.md) 内容板块。
+比较简单，直接看栗子，Vue 绑定方式如果不了解，参考 [动态绑定 CSS](../introduction/component/index.md) 内容板块。
 
 ```jsx
 const width = '100px'

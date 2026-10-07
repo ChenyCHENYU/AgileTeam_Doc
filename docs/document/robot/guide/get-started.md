@@ -1,5 +1,6 @@
 ---
 outline: "deep"
+description: "Bun 显著提升了安装和启动速度，因此强烈推荐用于此项目。相比传统包管理器，安装速度提升 3-5 倍！"
 ---
 
 # Robot Admin 快速上手指南

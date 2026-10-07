@@ -1,3 +1,7 @@
+---
+description: "本文档详细介绍 Robot Admin 项目的微前端架构方案，基于 @micro-zoe/micro-app (iframe 模式) 实现生产级微前端系统。通过本指南，你将了解如何"
+---
+
 # Robot Admin MicroApp 微前端架构指南
 
 ::: tip 写在前面

@@ -6,7 +6,7 @@ outline: 'deep'
 
 > 社区很多开发者刚上手 Vue 3.0 之后，都觉得开发过程似乎变得更繁琐了，Vue 官方团队进行了 3.2 版本升级，如果基于脚手架单组件编写方式开发，就可以享受到更高效率的开发体验。
 
-在了解 3.2 版本 `setup` 语法糖之前，需要对 Vue 3.0 的单组件有一定的了解，如果还处于完全没有接触过的阶段，先抽点时间了解 Vue3 [单组件的编写](../introduction/component.md)，熟悉它的前世，才能更好的读懂今生。
+在了解 3.2 版本 `setup` 语法糖之前，需要对 Vue 3.0 的单组件有一定的了解，如果还处于完全没有接触过的阶段，先抽点时间了解 Vue3 [单组件的编写](../introduction/component/index.md)，熟悉它的前世，才能更好的读懂今生。
 
 :::tip
 要体验以下新特性，请确保项目下 package.json 里的 [vue](https://www.npmjs.com/package/vue?activeTab=versions) 和 [@vue/compiler-sfc](https://www.npmjs.com/package/@vue/compiler-sfc?activeTab=versions) 都在 v3.1.4 版本以上，最好同步 npm 上当前最新的 @latest 版本，否则在编译过程中可能出现一些奇怪的问题（这两个依赖必须保持同样的版本号）。
@@ -24,7 +24,7 @@ outline: 'deep'
 
 在 Vue 3.0 的 .vue 组件里，遵循 SFC 规范要求（注：SFC，即 Single-File Component，.vue 单组件），标准的 setup 用法是，在 setup 里面定义的数据如果需要在 template 使用，都需要 return 出来。
 
-如果使用的是 TypeScript ，还需要借助 [defineComponent](../introduction/component.md#defineComponent-的作用) 来帮助对类型的自动推导。
+如果使用的是 TypeScript ，还需要借助 [defineComponent](../introduction/component/index.md#defineComponent-的作用) 来帮助对类型的自动推导。
 
 ```vue
 <!-- 标准组件格式 -->
@@ -509,7 +509,7 @@ export default ChildTSX
 
 ### ref 的通信方式变化
 
-在标准组件写法里，子组件的数据都是默认隐式暴露给父组件的，也就是父组件可以通过 `childComponent.value.foo` 这样的方式直接操作子组件的数据（参见：[DOM 元素与子组件 - 响应式 API 之 ref](../introduction/component.md#dom-元素与子组件)）。
+在标准组件写法里，子组件的数据都是默认隐式暴露给父组件的，也就是父组件可以通过 `childComponent.value.foo` 这样的方式直接操作子组件的数据（参见：[DOM 元素与子组件 - 响应式 API 之 ref](../introduction/component/reactivity.md#dom-元素与子组件)）。
 
 但在 `script-setup` 模式下，所有数据只是默认隐式 return 给 template 使用，不会暴露到组件外，所以父组件是无法直接通过挂载 ref 变量获取子组件的数据。
 

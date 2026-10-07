@@ -643,7 +643,7 @@ function isArticle(
 const ele: HTMLElement | null = document.querySelector('.main')
 ```
 
-最后这个使用场景在 Vue 单组件的 [DOM 元素与子组件](../introduction/component.md#dom-元素与子组件) 一节里也有相关的讲解。
+最后这个使用场景在 Vue 单组件的 [DOM 元素与子组件](../introduction/component/reactivity.md#dom-元素与子组件) 一节里也有相关的讲解。
 
 当决定使用联合类型的时候，大部分情况下可能需要对变量做一些类型判断再写逻辑，当然有时候也可以无所谓，就像第一个例子拼接字符串那样。
 
@@ -839,7 +839,7 @@ const obj: Obj = {
 
 #### 函数的重载
 
-在未来的实际开发中，可能会接触到一个 API 有多个 TS 类型的情况，比如 Vue 的 [watch API](../introduction/component.md#api-的-ts-类型) 。
+在未来的实际开发中，可能会接触到一个 API 有多个 TS 类型的情况，比如 Vue 的 [watch API](../introduction/component/watch-computed.md#api-的-ts-类型) 。
 
 Vue 的这个 watch API 在被调用时，需要接收一个数据源参数，当监听单个数据源时，它匹配了类型 1 ，当传入一个数组监听多个数据源时，它匹配了类型 2 。
 

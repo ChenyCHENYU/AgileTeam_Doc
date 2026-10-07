@@ -1,5 +1,6 @@
 ---
 outline: "deep"
+description: "自定义指令是 Vue.js 中的一项强大功能，允许你直接将特殊的响应式行为应用于 DOM 元素。Robot Admin 框架提供了一整套预构建的指令，让你可以轻松增强应用程序功能。"
 ---
 
 # Robot Admin 自定义指令使用指南

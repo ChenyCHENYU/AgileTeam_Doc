@@ -563,7 +563,7 @@ createApp(App)
 
 ##### 编写插件
 
-这里以一个 [自定义指令](../introduction/component.md#自定义指令) 为例，写一个用于管理自定义指令的插件，其中包含两个自定义指令：一个是判断是否有权限，一个是给文本高亮，文本高亮还支持一个插件选项。
+这里以一个 [自定义指令](../introduction/component/directives.md#自定义指令-new) 为例，写一个用于管理自定义指令的插件，其中包含两个自定义指令：一个是判断是否有权限，一个是给文本高亮，文本高亮还支持一个插件选项。
 
 ```ts{2,4-11,18}
 // src/plugins/directive.ts
@@ -725,7 +725,7 @@ app.mount('#app')
 
  ### 使用全局 API ~new
 
-要在 Vue 组件里使用，因为 Vue 3 的 [生命周期](../introduction/component.md#组件的生命周期-new) 无法取得实例的 `this` 来操作，需要通过全新的 [getCurrentInstance](https://v3.cn.vuejs.org/api/composition-api.html#getcurrentinstance) 组件来进行处理。
+要在 Vue 组件里使用，因为 Vue 3 的 [生命周期](../introduction/component/index.md#组件的生命周期-new) 无法取得实例的 `this` 来操作，需要通过全新的 [getCurrentInstance](https://v3.cn.vuejs.org/api/composition-api.html#getcurrentinstance) 组件来进行处理。
 
 ```ts
 // 导入 getCurrentInstance 组件
@@ -751,12 +751,12 @@ export default defineComponent({
 })
 ```
 
-由于使用了 [defineComponent](../introduction/component.md#defineComponent-的作用) ，它会帮自动推导 `getCurrentInstance()` 的类型为 `ComponentInternalInstance` 或 `null` 。
+由于使用了 [defineComponent](../introduction/component/index.md#defineComponent-的作用) ，它会帮自动推导 `getCurrentInstance()` 的类型为 `ComponentInternalInstance` 或 `null` 。
 
-所以如果的项目下的 TS 开启了 `--strictNullChecks` 选项，需要对实例变量做一层判断才能正确运行程序（可参考 [DOM 元素与子组件](../introduction/component.md#dom-元素与子组件) 一节）。
+所以如果的项目下的 TS 开启了 `--strictNullChecks` 选项，需要对实例变量做一层判断才能正确运行程序（可参考 [DOM 元素与子组件](../introduction/component/reactivity.md#dom-元素与子组件) 一节）。
 
 :::tip
-需要注意的是， `getCurrentInstance` 只能在 [setup](../introduction/component.md#全新的-setup-函数-new) 函数或者 Vue 3.0 的 [生命周期](../introduction/component.md#组件的生命周期-new) 钩子中调用。
+需要注意的是， `getCurrentInstance` 只能在 [setup](../introduction/component/index.md#全新的-setup-函数-new) 函数或者 Vue 3.0 的 [生命周期](../introduction/component/index.md#组件的生命周期-new) 钩子中调用。
 
 如需在 `setup` 或生命周期钩子外使用，需要先在 `setup` 中调用 `const app = getCurrentInstance();` 获取实例变量，然后再通过 `app` 变量去使用。
 ::: -->

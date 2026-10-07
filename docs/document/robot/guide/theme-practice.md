@@ -1,3 +1,7 @@
+---
+description: "本文档基于 Robot Admin 项目实践，介绍如何使用 Naive UI + CSS Variables + Design Tokens 实现高性能、易维护的主题系统。相比传统"
+---
+
 # Robot Admin 主题系统最佳实践指南
 
 ::: tip 写在前面

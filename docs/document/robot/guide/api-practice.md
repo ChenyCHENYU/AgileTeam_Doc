@@ -1,3 +1,7 @@
+---
+description: "本文档基于 Robot Admin 项目实践，介绍如何使用 OpenAPI + SDK 自动生成 的现代化接口管理方案。相比传统手写 API 层，这种方式能减少 70% 的重复代码"
+---
+
 # Robot Admin 接口调用实践指南
 
 ::: tip 写在前面

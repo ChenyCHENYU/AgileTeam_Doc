@@ -1,5 +1,7 @@
 ---
 outline: "deep"
+description: "理解 Robot Admin 的结构对于高效开发至关重要。本指南将带您深入了解构成该应用程序的关键目录和文件，解释它们的作用以及它们之间的关联。"
+reviewAfter: "2027-04-07"
 ---
 
 # Robot Admin 项目结构详解

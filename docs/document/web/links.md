@@ -1,5 +1,6 @@
 ---
 outline: 'deep'
+description: "存档一些会用到的在线文档链接，方便读者进行扩展阅读。"
 ---
 
 # 常用文档
@@ -26,7 +27,7 @@ outline: 'deep'
 
 ### 常用的 Web API 类型查询
 
-在 [DOM 元素与子组件](./introduction/component.md#dom-元素与子组件) 一节有提及到如何对 DOM 元素定义 TS 类型，拿出来放这里更方便查阅。
+在 [DOM 元素与子组件](./introduction/component/reactivity.md#dom-元素与子组件) 一节有提及到如何对 DOM 元素定义 TS 类型，拿出来放这里更方便查阅。
 
 点击阅读：[文档对象模型](https://developer.mozilla.org/zh-CN/docs/Web/API/Document_Object_Model)
 

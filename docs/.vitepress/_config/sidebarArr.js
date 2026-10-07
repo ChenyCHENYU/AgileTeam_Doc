@@ -151,7 +151,33 @@ export const ROBOT_GUIDE_DOC = [
       },
       {
         text: "规范化实践",
-        link: `${ROBOT}/guide/specification-practice`,
+        collapsed: false,
+        items: [
+          {
+            text: "总纲",
+            link: `${ROBOT}/guide/specification-practice/`,
+          },
+          {
+            text: "架构与文件组织",
+            link: `${ROBOT}/guide/specification-practice/architecture`,
+          },
+          {
+            text: "命名与代码风格",
+            link: `${ROBOT}/guide/specification-practice/code-style`,
+          },
+          {
+            text: "组件与样式开发",
+            link: `${ROBOT}/guide/specification-practice/component-dev`,
+          },
+          {
+            text: "TypeScript 与 Hooks",
+            link: `${ROBOT}/guide/specification-practice/typescript`,
+          },
+          {
+            text: "构建·Git·性能",
+            link: `${ROBOT}/guide/specification-practice/engineering`,
+          },
+        ],
       },
       {
         text: "Monorepo",
@@ -644,7 +670,29 @@ export const WEB_DOC = [
       },
       {
         text: "单组件的编写",
-        link: `${WEB}/introduction/component`,
+        collapsed: false,
+        items: [
+          {
+            text: "基础：setup 与生命周期",
+            link: `${WEB}/introduction/component/`,
+          },
+          {
+            text: "响应式 API",
+            link: `${WEB}/introduction/component/reactivity`,
+          },
+          {
+            text: "监听与计算",
+            link: `${WEB}/introduction/component/watch-computed`,
+          },
+          {
+            text: "指令",
+            link: `${WEB}/introduction/component/directives`,
+          },
+          {
+            text: "插槽与样式",
+            link: `${WEB}/introduction/component/slots-styles`,
+          },
+        ],
       },
       {
         text: "路由的使用",
