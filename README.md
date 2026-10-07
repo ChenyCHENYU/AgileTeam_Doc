@@ -123,7 +123,7 @@
 | [@robot-admin/naive-ui-components][components-url] | `v0.13.6` | 组件库独立包 | 54 组件 · 自动导入 · 独立发版 |
 | [@agile-team/robot-cli][cli-url] | `v3.2.0` | 脚手架 | 60s 建项 · 智能模板 · 多包管理器 |
 | Robot uniApp | `v1.8.0` | 跨端移动框架 | 33 组件 · wot-design-uni |
-| [@agile-team/mach-table-vue][machtable-url] | `v0.30.0` | 企业数据表格引擎 | 框架无关 · 虚拟化 · 编辑分组 — [平台文档][table-doc-url] |
+| [@agile-team/mach-table-vue][machtable-url] | [![npm][machtable-ver-badge]][machtable-url] [![npm][machtable-dt-badge]][machtable-url] | 企业数据表格引擎 | 框架无关 · 虚拟化 · 编辑分组 — [平台文档][table-doc-url] |
 | [@robot-h5/core][h5core-url] | `v1.2.0` | uniApp 核心能力 | Bridge 通信 · 20+ Hooks · 离线存储 |
 
 <details>
@@ -230,6 +230,8 @@ docs/
 [uniapp-url]: https://www.tzagileteam.com/uniapp/guide/overview
 [h5core-url]: https://www.npmjs.com/package/@robot-h5/core
 [machtable-url]: https://www.npmjs.com/package/@agile-team/mach-table-vue
+[machtable-ver-badge]: https://img.shields.io/npm/v/@agile-team/mach-table-vue?style=flat-square&color=18A058&label=mach-table
+[machtable-dt-badge]: https://img.shields.io/npm/dm/@agile-team/mach-table-vue?style=flat-square&color=18A058&label=downloads
 [table-doc-url]: https://www.tzagileteam.com/robot/components/table
 [po-url]: https://www.tzagileteam.com/po/standard/introduction
 [ui-url]: https://www.tzagileteam.com/ui/standard/introduction
