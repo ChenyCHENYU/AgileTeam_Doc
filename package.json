@@ -5,6 +5,7 @@
   "description": "Robtot Admin，前端文档，项目管理文档，团队管理文档，专业管理文档",
   "author": "CHENY <ycyplus@gmail.com>",
   "type": "module",
+  "packageManager": "bun@1.4.2",
   "scripts": {
     "dev": "vitepress dev docs",
     "build": "vitepress build docs --outDir dist",
@@ -27,9 +28,7 @@
   ],
   "dependencies": {
     "@giscus/vue": "^3.1.1",
-    "@robot-admin/naive-ui-components": "^0.13.6",
-    "@vercel/analytics": "^1.5.0",
-    "naive-ui": "^2.44.1"
+    "@vercel/analytics": "^1.5.0"
   },
   "devDependencies": {
     "sharp": "^0.35.5",
