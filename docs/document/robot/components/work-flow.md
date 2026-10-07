@@ -1,5 +1,6 @@
 ---
 outline: 'deep'
+description: "🔄 基于 Vue Flow 的可视化工作流设计器，让审批流程设计变得简单而直观"
 ---
 
 # C_WorkFlow 工作流设计器组件

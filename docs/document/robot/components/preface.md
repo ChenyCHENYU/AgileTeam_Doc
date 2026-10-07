@@ -1,5 +1,6 @@
 ---
 outline: "deep"
+description: "Robot Admin 组件库不仅仅是功能的集合，更是开发奔赴业务驱动的体现。我们相信好的组件应该让开发者专注于业务逻辑，而不是重复造轮子。"
 ---
 
 # 🚀 Robot Admin 组件库

@@ -1,5 +1,6 @@
 ---
 outline: 'deep'
+description: "📤 分片上传 · 断点续传 · 秒传校验 · 并发控制 — 让大文件上传不再焦虑"
 ---
 
 # C_Upload 增强型上传组件

@@ -1,5 +1,6 @@
 ---
 outline: 'deep'
+description: "🎨 侧边栏顶部 Logo 展示组件，支持视频动画和响应式折叠"
 ---
 
 # C_MenuTop 菜单顶部区域组件

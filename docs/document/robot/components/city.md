@@ -1,5 +1,6 @@
 ---
 outline: 'deep'
+description: "🏙️ 基于 Naive UI 的智能城市选择器，让城市选择变得简单而优雅"
 ---
 
 # C_City 城市选择器组件

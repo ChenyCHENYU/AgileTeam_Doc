@@ -1,5 +1,6 @@
 ---
 outline: "deep"
+description: "🏠 应用主布局框架，提供侧边栏、头部、内容区和底部的标准后台布局"
 ---
 
 # C_Layout 布局组件

@@ -1,5 +1,6 @@
 ---
 outline: 'deep'
+description: "📝 基于 WangEditor 的强大富文本编辑器，让内容创作变得简单而高效"
 ---
 
 # C_Editor 富文本编辑器组件

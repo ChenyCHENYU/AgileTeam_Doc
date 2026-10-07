@@ -1,5 +1,6 @@
 ---
 outline: "deep"
+description: "🔍 全屏图片预览组件，支持多图轮播、双指缩放（1x-3x）、长按保存和图片索引指示器。"
 ---
 
 # C_ImagePreview 图片预览

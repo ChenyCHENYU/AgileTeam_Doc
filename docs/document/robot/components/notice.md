@@ -1,5 +1,6 @@
 ---
 outline: 'deep'
+description: "🔔 消息分类 · WebSocket 推送 · 乐观更新 · 桌面通知 — 让消息触达零延迟"
 ---
 
 # C_NotificationCenter 企业级通知中心

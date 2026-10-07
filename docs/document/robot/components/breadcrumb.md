@@ -1,5 +1,6 @@
 ---
 outline: 'deep'
+description: "🍞 基于 NBreadcrumb 的智能面包屑导航，支持 自动 / 手动 双模式"
 ---
 
 # C_Breadcrumb 面包屑导航组件

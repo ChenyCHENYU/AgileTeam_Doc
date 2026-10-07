@@ -1,5 +1,6 @@
 ---
 outline: 'deep'
+description: "📊 基于 VTable-Gantt 的高性能甘特图组件，支持多种预设模式和丰富的自定义配置"
 ---
 
 # C_VTableGantt 甘特图组件

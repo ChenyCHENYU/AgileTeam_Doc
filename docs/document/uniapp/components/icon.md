@@ -1,5 +1,6 @@
 ---
 outline: "deep"
+description: "🎨 统一图标组件，聚合 UnoCSS 图标、wot-design-uni 图标、SVG 文件和图片四种来源，用一个组件处理所有图标场景。"
 ---
 
 # C_Icon 图标

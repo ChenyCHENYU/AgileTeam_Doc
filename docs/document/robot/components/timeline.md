@@ -1,5 +1,6 @@
 ---
 outline: "deep"
+description: "📅 垂直/水平多布局时间线，支持交替排列、加载更多与自定义连线样式"
 ---
 
 # C_Timeline 时间线组件

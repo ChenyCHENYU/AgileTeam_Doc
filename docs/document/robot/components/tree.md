@@ -1,5 +1,6 @@
 ---
 outline: 'deep'
+description: "🌳 功能强大的树形组件，支持多种预设模式和自定义配置"
 ---
 
 # C_Tree 树形组件

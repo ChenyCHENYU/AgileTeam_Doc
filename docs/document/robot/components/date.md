@@ -1,5 +1,6 @@
 ---
 outline: 'deep'
+description: "📅 基于 Naive UI 的智能日期选择器，让日期选择更智能、更便捷"
 ---
 
 # C_Date 日期选择器组件

@@ -1,5 +1,6 @@
 ---
 outline: 'deep'
+description: "🏷️ 路由感知的多标签页导航，内置 useTagsView 状态管理、持久化、右键菜单、i18n"
 ---
 
 # C_TagsView 标签页导航组件

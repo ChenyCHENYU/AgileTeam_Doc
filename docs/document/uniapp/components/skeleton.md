@@ -1,5 +1,6 @@
 ---
 outline: "deep"
+description: "💀 加载占位骨架屏组件，在内容加载完成前展示灰色占位块，避免页面空白，提升感知性能。"
 ---
 
 # C_Skeleton 骨架屏

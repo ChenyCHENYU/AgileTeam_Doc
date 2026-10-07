@@ -1,5 +1,6 @@
 ---
 outline: 'deep'
+description: "✍️ 基于 v-md-editor 的强大 Markdown 编辑器组件，让内容创作变得简单而优雅"
 ---
 
 # C_Markdown 编辑器组件

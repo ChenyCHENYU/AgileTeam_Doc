@@ -1,5 +1,6 @@
 ---
 outline: "deep"
+description: "🎯 配置化管理任何场景的按钮组，支持分组布局、下拉菜单、响应式控制"
 ---
 
 # C_ActionBar 操作按钮组

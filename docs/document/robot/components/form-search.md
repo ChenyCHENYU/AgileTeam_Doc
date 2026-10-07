@@ -1,5 +1,6 @@
 ---
 outline: 'deep'
+description: "🔍 基于 Naive UI 的高效搜索表单组件，让数据检索变得简单而优雅"
 ---
 
 # C_FormSearch 智能搜索组件

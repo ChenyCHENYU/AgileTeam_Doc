@@ -1,5 +1,6 @@
 ---
 outline: 'deep'
+description: "📂 零依赖的增强型折叠面板组件，支持三种样式变体、手风琴模式、懒渲染、状态持久化和编程控制"
 ---
 
 # C_CollapsePanel 折叠面板

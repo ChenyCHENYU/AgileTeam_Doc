@@ -1,5 +1,6 @@
 ---
 outline: "deep"
+description: "📊 基于 vue-barcode 的条形码生成组件，支持多种编码格式和自定义样式"
 ---
 
 # C_Barcode 条形码组件

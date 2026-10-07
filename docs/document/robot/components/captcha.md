@@ -1,5 +1,6 @@
 ---
 outline: 'deep'
+description: "🧩 基于 vue3-puzzle-vcode 的现代化拼图验证组件，提供优雅的人机验证体验"
 ---
 
 # C_Captcha 拼图验证码组件

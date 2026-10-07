@@ -1,5 +1,6 @@
 ---
 outline: "deep"
+description: "🎨 一键切换浅色/深色/跟随系统三种主题模式，配合 Naive UI 主题系统使用"
 ---
 
 # C_Theme 主题切换组件

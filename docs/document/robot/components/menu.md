@@ -1,5 +1,6 @@
 ---
 outline: 'deep'
+description: "🗂️ 基于 NMenu 的智能树形导航菜单，支持 路由适配 / 原生直传 双模式"
 ---
 
 # C_Menu 菜单组件

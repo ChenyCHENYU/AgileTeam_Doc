@@ -1,5 +1,6 @@
 ---
 outline: 'deep'
+description: "🖼️ 基于 [vue-cropper](https://github.com/xyxiao001/vue-cropper) 封装的 Vue 3 图片裁剪组件，支持自由/固定比例裁"
 ---
 
 # C_ImageCropper 图片裁剪

@@ -56,7 +56,7 @@ const onLoad = () => {
       </div>
 
       <!-- iframe 主体 -->
-      <div class="demo-iframe-body" :style="{ height: iframeHeight }">
+      <div class="demo-iframe-body" :style="{ '--demo-h': iframeHeight }">
         <div v-if="loading" class="demo-iframe-loading">
           <div class="spinner" />
           <span>加载演示中…</span>
@@ -144,6 +144,7 @@ const onLoad = () => {
 .demo-iframe-body {
   position: relative;
   width: 100%;
+  height: var(--demo-h, 700px);
   background: #fff;
 }
 
@@ -181,10 +182,13 @@ const onLoad = () => {
   }
 }
 
-/* 移动端适配 */
+/* 移动端适配：高度改为宽高比自适应，替代桌面端固定像素 */
 @media (max-width: 768px) {
   .demo-iframe-body {
-    min-height: 300px;
+    height: auto;
+    max-height: none;
+    aspect-ratio: 3 / 4;
+    min-height: 420px;
   }
 
   .demo-iframe-toolbar {

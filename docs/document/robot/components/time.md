@@ -1,5 +1,6 @@
 ---
 outline: 'deep'
+description: "⏰ 基于 Naive UI 的智能时间选择器，让时间选择更精确、更便捷"
 ---
 
 # C_Time 时间选择器组件

@@ -1,5 +1,6 @@
 ---
 outline: "deep"
+description: "通用插拔式登录面板，通过 features 开关控制功能模块，支持 CSS 变量主题定制。"
 ---
 
 # C_Login 登录组件

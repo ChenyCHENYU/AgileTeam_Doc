@@ -1,5 +1,6 @@
 ---
 outline: 'deep'
+description: "🎨 基于 Naive UI 的高效代码高亮组件，让代码展示变得专业而优雅"
 ---
 
 # C_Code 代码高亮组件

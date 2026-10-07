@@ -1,5 +1,6 @@
 ---
 outline: "deep"
+description: "⏳ 高精度倒计时组件，支持毫秒级渲染、自定义格式模板和手动控制（开始/暂停/重置），提供 slot 自定义展示 UI。"
 ---
 
 # C_CountDown 倒计时

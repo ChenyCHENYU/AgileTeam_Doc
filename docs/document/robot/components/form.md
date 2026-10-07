@@ -1,5 +1,6 @@
 ---
 outline: 'deep'
+description: "🚀 基于 Naive UI 的超强动态表单生成器，「薄 UI 壳 + 厚 Composable 引擎」架构，让表单开发变得前所未有的简单"
 ---
 
 # C_Form 智能表单组件

@@ -1,5 +1,6 @@
 ---
 outline: "deep"
+description: "🖱️ 全局右键上下文菜单，支持多级子菜单、禁用项与自动关闭"
 ---
 
 # C_ContextMenu 右键菜单组件

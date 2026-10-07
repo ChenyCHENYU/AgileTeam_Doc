@@ -1,5 +1,6 @@
 ---
 outline: "deep"
+description: "👥 叠加式头像组，支持溢出 +N、状态点、悬浮提示与堆叠方向"
 ---
 
 # C_AvatarGroup 头像组组件

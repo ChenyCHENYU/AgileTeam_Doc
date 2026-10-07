@@ -1,5 +1,6 @@
 ---
 outline: 'deep'
+description: "🗺️ 基于 [Leaflet](https://leafletjs.com/) 封装的通用地图组件，开箱即用，同时支持免费的 OpenStreetMap 和国内商业高德地图"
 ---
 
 # C_Map 地图组件

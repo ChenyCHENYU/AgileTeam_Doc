@@ -1,5 +1,6 @@
 ---
 outline: 'deep'
+description: "🔍 全局搜索面板，提供快速导航菜单搜索和历史记录功能"
 ---
 
 # C_GlobalSearch 搜索面板组件

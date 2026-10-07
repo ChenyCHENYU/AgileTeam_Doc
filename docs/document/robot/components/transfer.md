@@ -1,5 +1,6 @@
 ---
 outline: "deep"
+description: "🔀 双列表穿梭框，支持跨列表数据迁移、搜索筛选与全选"
 ---
 
 # C_Transfer 穿梭框组件

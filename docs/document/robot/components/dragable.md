@@ -1,5 +1,6 @@
 ---
 outline: 'deep'
+description: "🎯 基于 vue-draggable-plus 的强大拖拽组件，让排序和重组变得简单而优雅"
 ---
 
 # C_Draggable 拖拽组件

@@ -1,5 +1,6 @@
 ---
 outline: "deep"
+description: "📤 图片上传组件，支持拍照/相册选择、文件大小校验、上传进度展示和图片预览，v-model 直接绑定文件列表。"
 ---
 
 # C_Upload 上传

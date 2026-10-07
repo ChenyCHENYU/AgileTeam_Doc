@@ -1,5 +1,6 @@
 ---
 outline: 'deep'
+description: "📱 基于 [qrcode](https://github.com/soldair/node-qrcode) 封装的高性能二维码生成组件，支持 Canvas / SVG 双模式渲染"
 ---
 
 # C_QRCode 二维码组件

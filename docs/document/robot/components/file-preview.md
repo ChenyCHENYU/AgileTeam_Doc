@@ -1,5 +1,6 @@
 ---
 outline: 'deep'
+description: "📄 基于 Naive UI 的多格式文件预览组件，支持 PDF / Word / Excel 在线预览"
 ---
 
 # C_FilePreview 文件预览组件

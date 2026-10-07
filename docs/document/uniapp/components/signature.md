@@ -1,5 +1,6 @@
 ---
 outline: "deep"
+description: "✍️ Canvas 手写电子签名组件，支持撤销、清除和导出 PNG/JPG，适用于合同签署、工单确认等需要手写名字的场景。"
 ---
 
 # C_Signature 电子签名

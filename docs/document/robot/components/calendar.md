@@ -1,5 +1,6 @@
 ---
 outline: 'deep'
+description: "📅 基于 FullCalendar 的高效日历组件，让事件管理变得简单而优雅"
 ---
 
 # C_FullCalendar 全功能日历组件

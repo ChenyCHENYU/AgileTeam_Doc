@@ -1,5 +1,6 @@
 ---
 outline: "deep"
+description: "📋 轻量表单容器，提供统一的数据校验、错误提示和布局管理，通过 provide/inject 与表单项共享验证状态。"
 ---
 
 # C_Form 表单

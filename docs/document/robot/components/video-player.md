@@ -1,5 +1,6 @@
 ---
 outline: 'deep'
+description: "🎬 基于 [xgplayer（西瓜播放器）](https://h5player.bytedance.com/) 封装的教育场景视频播放器，专为在线课程、企业培训、知识库等场景设计"
 ---
 
 # C_VideoPlayer 视频播放器组件

@@ -1,5 +1,6 @@
 ---
 outline: 'deep'
+description: "🔗 基于 Naive UI 的三级联动选择器，让数据层级选择更简单、更直观"
 ---
 
 # C_Cascade 级联选择组件

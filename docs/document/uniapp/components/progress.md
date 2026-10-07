@@ -1,5 +1,6 @@
 ---
 outline: "deep"
+description: "📊 进度展示组件，支持线性进度条和圆形进度环两种形态，内置状态颜色映射和过渡动画。"
 ---
 
 # C_Progress 进度条

@@ -1,5 +1,6 @@
 ---
 outline: "deep"
+description: "🔘 悬浮操作按钮（FAB），固定于页面特定位置，支持拖拽移动，提供快捷的全局入口操作。"
 ---
 
 # C_FloatButton 浮动按钮

@@ -1,5 +1,6 @@
 ---
 outline: 'deep'
+description: "📊 基于 Naive UI 的多样化进度条组件，让进度展示更生动、更直观"
 ---
 
 # C_Progress 进度条组件

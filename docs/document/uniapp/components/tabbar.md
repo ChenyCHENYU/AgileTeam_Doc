@@ -1,5 +1,6 @@
 ---
 outline: "deep"
+description: "📍 底部标签导航栏，支持玻璃拟态（glass）和扁平简约（flat）两种视觉风格，内置安全区适配和 Fluent Color 多彩图标。"
 ---
 
 # C_Tabbar 底部导航

@@ -1,5 +1,6 @@
 ---
 outline: 'deep'
+description: "🚀 基于 Naive UI 的全能表格组件，「薄 UI 壳 + 厚 Composable 引擎」架构，让数据管理变得简单而强大"
 ---
 
 # C_Table 超级表格组件

@@ -1,5 +1,6 @@
 ---
 outline: "deep"
+description: "📋 具备上拉加载、下拉刷新和虚拟滚动的高性能列表容器，内置加载中/加载完毕/失败/空状态处理，配合 usePagination 几乎零配置。"
 ---
 
 # C_List 列表

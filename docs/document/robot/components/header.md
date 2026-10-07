@@ -1,5 +1,6 @@
 ---
 outline: 'deep'
+description: "🎯 应用顶部导航栏，集成面包屑、搜索、操作按钮和用户信息"
 ---
 
 # C_Header 头部组件

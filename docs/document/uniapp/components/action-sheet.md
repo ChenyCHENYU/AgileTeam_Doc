@@ -1,5 +1,6 @@
 ---
 outline: "deep"
+description: "📋 从底部弹出的操作菜单，支持图标、危险操作高亮和禁用状态，是移动端快捷操作的标准方式。"
 ---
 
 # C_ActionSheet 动作面板

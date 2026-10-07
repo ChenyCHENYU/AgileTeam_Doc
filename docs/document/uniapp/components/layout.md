@@ -1,5 +1,6 @@
 ---
 outline: "deep"
+description: "🏗️ 全局页面布局容器，集成 Header + Tabbar + 安全区适配，是所有页面的基础框架。"
 ---
 
 # C_Layout 页面布局

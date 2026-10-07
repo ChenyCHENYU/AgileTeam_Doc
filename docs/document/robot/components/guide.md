@@ -1,5 +1,6 @@
 ---
 outline: "deep"
+description: "🎯 基于 Driver.js 的新手引导组件，帮助用户快速了解系统功能"
 ---
 
 # C_Guide 功能引导组件

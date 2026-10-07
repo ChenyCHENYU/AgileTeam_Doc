@@ -1,5 +1,6 @@
 ---
 outline: "deep"
+description: "🌐 基于 NDropdown 的语言切换组件，支持自定义语言列表和 v-model 双向绑定"
 ---
 
 # C_Language 语言切换组件

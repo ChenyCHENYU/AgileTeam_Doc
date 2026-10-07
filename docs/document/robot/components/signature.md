@@ -1,5 +1,6 @@
 ---
 outline: 'deep'
+description: "✍️ 基于原生 Canvas 的高性能电子签名组件，让签名更流畅、更专业"
 ---
 
 # C_Signature 电子签名组件

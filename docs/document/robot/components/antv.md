@@ -1,5 +1,6 @@
 ---
 outline: 'deep'
+description: "📊 基于 AntV X6 的统一图编辑容器，支持 ER 图、BPMN 流程图、UML 类图三种专业图表类型"
 ---
 
 # C_AntV 图编辑引擎

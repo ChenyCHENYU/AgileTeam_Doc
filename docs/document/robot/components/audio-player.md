@@ -1,5 +1,6 @@
 ---
 outline: "deep"
+description: "🎵 带播放列表与封面展示的音频播放器，支持多种播放模式与主题外观"
 ---
 
 # C_AudioPlayer 音频播放器组件
