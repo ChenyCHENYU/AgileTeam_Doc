@@ -57,7 +57,7 @@ Robot uniApp 以 **UniApp** 为基础，实现真正的一码多端：
 
 ### 🧩 完整的组件系统
 
-框架内置 **33 个精心打造的跨端业务组件**，覆盖布局、数据展示、表单、反馈、媒体等五大分类：
+框架内置 **35 个精心打造的跨端业务组件**，覆盖布局、数据展示、表单、反馈、媒体等五大分类：
 
 ::: details 🏗️ 布局组件（4个）
 
@@ -175,7 +175,7 @@ Robot uniApp 以 **UniApp** 为基础，实现真正的一码多端：
   <div class="req-card">
     <div class="req-icon">🧩</div>
     <div class="req-title">组件文档</div>
-    <div class="req-desc">33 个组件完整 API</div>
+    <div class="req-desc">35 个组件完整 API</div>
     <a href="/uniapp/components/preface" class="req-badge">查看</a>
   </div>
   

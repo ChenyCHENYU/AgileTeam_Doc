@@ -123,7 +123,7 @@ Robot_uniApp/
 ├── src/
 │   ├── pages/          # 页面（对应路由）
 │   ├── components/     # 组件
-│   │   └── global/     # 33 个全局组件（easycom 自动注册）
+│   │   └── global/     # 35 个全局组件（easycom 自动注册）
 │   ├── composables/    # 组合式函数
 │   ├── stores/         # Pinia 状态管理
 │   ├── api/            # API 接口
@@ -248,5 +248,5 @@ console.log(userStore.nickname); // 'admin'
 
 - [项目结构详解](/uniapp/guide/project-structure) — 深入了解目录组织
 - [应用架构](/uniapp/guide/architecture) — 理解核心架构设计
-- [组件文档](/uniapp/components/preface) — 查看 33 个组件的完整 API
+- [组件文档](/uniapp/components/preface) — 查看 35 个组件的完整 API
 - [多端适配](/uniapp/guide/multi-platform) — 了解跨端开发技巧

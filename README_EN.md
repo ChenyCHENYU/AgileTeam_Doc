@@ -56,7 +56,10 @@
 | [@robot-admin/naive-ui-components][components-url] | `v0.13.6` | 54 components as standalone package with auto-import |
 | [@agile-team/mach-table-vue][machtable-url] | [![npm][machtable-ver-badge]][machtable-url] [![npm][machtable-dt-badge]][machtable-url] | Framework-agnostic enterprise data grid |
 | [@agile-team/robot-cli][cli-url] | `v3.2.0` | Scaffolding CLI |
-| Robot uniApp | `v1.8.0` | Cross-platform mobile framework (33 components) |
+| Robot_Uniapp | `v1.0.0` | Cross-platform mobile framework (35 components · wot-design-uni) |
+| [Robot_H5][roboth5-url] | `v1.8.0` | Mobile H5 app framework (Vue 3 · Vite 7 · Liquid Glass) |
+| [@robot-h5/core][h5core-url] | `v1.2.0` | H5 core package (Bridge · 20+ hooks · offline storage) |
+| Robot_Cloud | `v1.0.0` | Backend microservices (Spring Cloud Alibaba) |
 
 ## 🚀 Quick Start
 
@@ -96,6 +99,8 @@ See [CONTRIBUTING.md](./CONTRIBUTING.md) for the page structure spec.
 [docs-url]: https://www.tzagileteam.com
 [demo-url]: https://www.robotadmin.cn
 [machtable-url]: https://www.npmjs.com/package/@agile-team/mach-table-vue
+[h5core-url]: https://www.npmjs.com/package/@robot-h5/core
+[roboth5-url]: https://github.com/ChenyCHENYU/Robot_H5
 [machtable-ver-badge]: https://img.shields.io/npm/v/@agile-team/mach-table-vue?style=flat-square&color=18A058&label=mach-table
 [machtable-dt-badge]: https://img.shields.io/npm/dm/@agile-team/mach-table-vue?style=flat-square&color=18A058&label=downloads
 [blog-url]: https://yangchenyu.top

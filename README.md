@@ -52,19 +52,19 @@
         ┌────────────────────────────┼────────────────────────────┐
         │                            │                            │
 ┌───────▼────────┐          ┌────────▼────────┐          ┌────────▼────────┐
-│   Robot_Admin   │          │   Robot uniApp   │          │    工具链生态     │
-│  中后台主框架 v2.7 │          │  跨端框架 v1.8    │          │                  │
+│   Robot_Admin   │          │  Robot_Uniapp    │          │    工具链生态     │
+│  中后台主框架 v2.7 │          │  跨端框架 v1.0    │          │                  │
 │  Vue3·TS·Vite8  │          │  H5/小程序/App    │          │  · robot-cli 3.2 │
 └───────┬────────┘          └────────┬────────┘          │  · 8 个工程化插件  │
         │                            │                   └──────────────────┘
         └──────────┬─────────────────┘
                    │
      ┌─────────────▼──────────────┐
-     │ @robot-admin/naive-ui-     │      ┌─────────────────────┐
-     │ components  v0.13.6        │      │ @agile-team/        │
-     │ 54 组件 · 按需自动导入        │──────│ mach-table-vue      │
-     │ + @robot-h5/core  v1.2.0   │      │ v0.30.0 表格引擎      │
-     └────────────────────────────┘      └─────────────────────┘
+     │ @robot-admin/naive-ui-     │      ┌─────────────────────┐      ┌──────────────────┐
+     │ components  v0.13.6        │      │ @agile-team/        │      │ Robot_H5  v1.8    │
+     │ 54 组件 · 按需自动导入        │──────│ mach-table-vue      │      │ @robot-h5/core    │
+     └────────────────────────────┘      │ v0.30.0 表格引擎      │      │ Robot_Cloud v1.0  │
+                                         └─────────────────────┘      └──────────────────┘
 ```
 
 ## ✨ 核心特性
@@ -124,9 +124,11 @@
 | [Robot_Admin][demo-url] | `v2.7.0` | 中后台主框架 | Vue 3.5 · TS 5.8 · Vite 8 · UnoCSS · Pinia |
 | [@robot-admin/naive-ui-components][components-url] | `v0.13.6` | 组件库独立包 | 54 组件 · 自动导入 · 独立发版 |
 | [@agile-team/robot-cli][cli-url] | `v3.2.0` | 脚手架 | 60s 建项 · 智能模板 · 多包管理器 |
-| Robot uniApp | `v1.8.0` | 跨端移动框架 | 33 组件 · wot-design-uni |
+| Robot_Uniapp | `v1.0.0` | 跨端移动框架 | 35 组件 · wot-design-uni · H5/小程序/App |
 | [@agile-team/mach-table-vue][machtable-url] | [![npm][machtable-ver-badge]][machtable-url] [![npm][machtable-dt-badge]][machtable-url] | 企业数据表格引擎 | 框架无关 · 虚拟化 · 编辑分组 — [平台文档][table-doc-url] |
-| [@robot-h5/core][h5core-url] | `v1.2.0` | uniApp 核心能力 | Bridge 通信 · 20+ Hooks · 离线存储 |
+| [Robot_H5][roboth5-url] | `v1.8.0` | 移动端 H5 应用框架 | Vue 3 · Vite 7 · Liquid Glass · PDA 兼容 |
+| [@robot-h5/core][h5core-url] | `v1.2.0` | H5 核心能力包 | Bridge 通信 · 20+ Hooks · 离线存储 |
+| Robot_Cloud | `v1.0.0` | 后端微服务框架 | Spring Cloud Alibaba · 认证 / 系统管理 / 权限治理 |
 
 <details>
 <summary><b>🔌 8 个工程化插件</b></summary>
@@ -231,6 +233,7 @@ docs/
 [plugin-url]: https://www.tzagileteam.com/robot/plugin/console
 [uniapp-url]: https://www.tzagileteam.com/uniapp/guide/overview
 [h5core-url]: https://www.npmjs.com/package/@robot-h5/core
+[roboth5-url]: https://github.com/ChenyCHENYU/Robot_H5
 [machtable-url]: https://www.npmjs.com/package/@agile-team/mach-table-vue
 [machtable-ver-badge]: https://img.shields.io/npm/v/@agile-team/mach-table-vue?style=flat-square&color=18A058&label=mach-table
 [machtable-dt-badge]: https://img.shields.io/npm/dm/@agile-team/mach-table-vue?style=flat-square&color=18A058&label=downloads

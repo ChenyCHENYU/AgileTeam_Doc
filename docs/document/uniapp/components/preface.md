@@ -1,6 +1,6 @@
 ---
 outline: "deep"
-description: "33 个精心打造的移动端跨平台组件，覆盖 H5、微信小程序、App 三端"
+description: "35 个精心打造的移动端跨平台组件，覆盖 H5、微信小程序、App 三端"
 ---
 
 # 写在前面的话
@@ -11,7 +11,7 @@ description: "33 个精心打造的移动端跨平台组件，覆盖 H5、微信
       <span class="wave">🧩</span> Robot uniApp 组件库
     </h1>
     <p class="hero-subtitle">
-      33 个精心打造的移动端跨平台组件，覆盖 H5、微信小程序、App 三端
+      35 个精心打造的移动端跨平台组件，覆盖 H5、微信小程序、App 三端
     </p>
   </div>
 </div>

@@ -28,7 +28,7 @@ Robot_uniApp/
 │   │   ├── profile/                # 个人中心
 │   │   ├── settings/               # 设置页
 │   │   ├── robot/                  # 组件库演示总页
-│   │   ├── demo/                   # 33 个组件演示分页
+│   │   ├── demo/                   # 35 个组件演示分页
 │   │   ├── crud-list/              # CRUD 列表模板
 │   │   ├── detail/                 # 详情页模板
 │   │   ├── form-template/          # 表单页模板
@@ -41,7 +41,7 @@ Robot_uniApp/
 │   │   └── about/                  # 关于页
 │   │
 │   ├── 📁 components/              # 组件目录
-│   │   └── global/                 # ★ 全局组件（33 个，easycom 自动注册）
+│   │   └── global/                 # ★ 全局组件（35 个，easycom 自动注册）
 │   │       ├── C_Layout/           # 页面布局
 │   │       ├── C_Header/           # 导航头部
 │   │       ├── C_Tabbar/           # 底部导航
@@ -51,7 +51,7 @@ Robot_uniApp/
 │   │       ├── C_Form/             # 表单
 │   │       ├── C_Modal/            # 弹窗
 │   │       ├── C_Upload/           # 文件上传
-│   │       └── ...（共 33 个）
+│   │       └── ...（共 35 个）
 │   │
 │   ├── 📁 composables/             # ★ 组合式函数（Hooks）
 │   │   ├── index.ts                # 统一导出
@@ -103,7 +103,7 @@ Robot_uniApp/
 │   │   ├── http.ts                 # HTTP 相关类型
 │   │   ├── store.ts                # Store 状态类型
 │   │   ├── websocket.ts            # WebSocket 类型
-│   │   └── modules/                # 各组件类型定义（33 个）
+│   │   └── modules/                # 各组件类型定义（35 个）
 │   │
 │   ├── 📁 constants/               # 常量定义
 │   │   ├── index.ts                # 统一导出

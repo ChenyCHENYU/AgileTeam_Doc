@@ -5,7 +5,7 @@ const { isDark } = useData();
 
 const stats = [
   { num: "54", label: "生产级组件", sub: "表单引擎 · 虚拟表格 · 流程图" },
-  { num: "33", label: "跨端组件", sub: "H5 · 小程序 · App" },
+  { num: "35", label: "跨端组件", sub: "H5 · 小程序 · App" },
   { num: "8", label: "工程化插件", sub: "构建 · 环境 · 协作" },
   { num: "225+", label: "文档页面", sub: "本地全文搜索覆盖" },
   { num: "6", label: "大角色文档", sub: "产品到管理全覆盖" },
@@ -50,12 +50,30 @@ const ecosystem = [
   },
   {
     icon: "📱",
-    name: "Robot uniApp",
-    version: "v1.8.0",
-    desc: "跨端框架 + 核心能力包",
+    name: "Robot_Uniapp",
+    version: "v1.0.0",
+    desc: "跨端移动框架 · 35 组件 · wot-design-uni",
     link: "/uniapp/guide/overview",
     tag: "查看文档 →",
     span: 2,
+  },
+  {
+    icon: "💧",
+    name: "Robot_H5",
+    version: "v1.8.0",
+    desc: "移动端 H5 应用框架 · Liquid Glass 设计",
+    link: "https://github.com/ChenyCHENYU/Robot_H5",
+    tag: "GitHub ↗",
+    span: 2,
+  },
+  {
+    icon: "☁️",
+    name: "Robot_Cloud",
+    version: "v1.0.0",
+    desc: "后端微服务框架 · Spring Cloud Alibaba — 认证 / 系统管理 / 权限治理，为 Robot_Admin 提供服务端支撑",
+    link: "",
+    tag: "暂未开源",
+    span: 6,
   },
 ];
 
@@ -67,7 +85,7 @@ const categories = [
   { title: "媒体文件", count: "12", desc: "预览 · 裁剪 · 电子签名 · 播放", to: "/robot/components/file-preview" },
   { title: "交互业务", count: "12", desc: "聊天 · 登录 · 全局搜索 · 引导", to: "/robot/components/chat" },
   { title: "布局导航", count: "11", desc: "布局 · 菜单 · 标签页 · 面包屑", to: "/robot/components/layout" },
-  { title: "跨端组件", count: "33", desc: "H5 · 小程序 · App 一码多端", to: "/uniapp/components/preface" },
+  { title: "跨端组件", count: "35", desc: "H5 · 小程序 · App 一码多端", to: "/uniapp/components/preface" },
 ];
 
 const roles = [
@@ -125,14 +143,15 @@ const roles = [
         <p>框架 · 组件库 · 表格引擎 · 脚手架，全部独立发版、可单独引用</p>
       </header>
       <div class="eco-grid">
-        <a
+        <component
+          :is="e.link ? 'a' : 'div'"
           v-for="e in ecosystem"
           :key="e.name"
           class="eco-card"
           :class="'span-' + e.span"
-          :href="e.link"
-          :target="e.link.startsWith('http') ? '_blank' : undefined"
-          :rel="e.link.startsWith('http') ? 'noopener' : undefined"
+          :href="e.link || undefined"
+          :target="e.link && e.link.startsWith('http') ? '_blank' : undefined"
+          :rel="e.link && e.link.startsWith('http') ? 'noopener' : undefined"
         >
           <div class="eco-top">
             <span class="eco-name"><span class="eco-icon">{{ e.icon }}</span>{{ e.name }}</span>
@@ -140,7 +159,7 @@ const roles = [
           </div>
           <p class="eco-desc">{{ e.desc }}</p>
           <span class="eco-tag">{{ e.tag }}</span>
-        </a>
+        </component>
       </div>
     </section>
 
@@ -391,6 +410,7 @@ const roles = [
 }
 .eco-card.span-3 { grid-column: span 3; }
 .eco-card.span-2 { grid-column: span 2; }
+.eco-card.span-6 { grid-column: 1 / -1; }
 .eco-card:hover {
   transform: translateY(-3px);
   border-color: var(--line-strong);
@@ -530,6 +550,7 @@ const roles = [
   .stats { grid-template-columns: repeat(3, 1fr); gap: 22px; }
   .eco-grid { grid-template-columns: repeat(2, 1fr); }
   .eco-card.span-3, .eco-card.span-2 { grid-column: span 1; }
+  .eco-card.span-6 { grid-column: 1 / -1; }
   .cat-grid { grid-template-columns: repeat(2, 1fr); }
   .role-grid { grid-template-columns: 1fr; }
   .section { padding-top: 88px; }
