@@ -4,8 +4,8 @@
       "staticDistDir": "./dist",
       "url": [
         "/",
-        "/robot/guide/overview",
-        "/robot/components/table"
+        "/robot/guide/overview.html",
+        "/robot/components/table.html"
       ],
       "numberOfRuns": 1
     },

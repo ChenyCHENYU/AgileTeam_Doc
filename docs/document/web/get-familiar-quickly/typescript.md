@@ -47,7 +47,7 @@ TypeScript 的出现，在编译的时候就可以执行检查来避免掉这些
 
 ## Hello TypeScript
 
-将继续使用 [Hello Node](#hello-node) 这个 demo ，或者可以再建一个新 demo ，依然是在 `src` 文件夹下，创建一个 `ts` 文件夹归类本次的测试文件，然后创建一个 `index.ts` 文件在 `ts` 文件夹下。
+将继续使用 [Hello Node](../../web/get-familiar-quickly/guide.md#hello-node) 这个 demo ，或者可以再建一个新 demo ，依然是在 `src` 文件夹下，创建一个 `ts` 文件夹归类本次的测试文件，然后创建一个 `index.ts` 文件在 `ts` 文件夹下。
 
 :::tip
 TypeScript 语言对应的文件扩展名是 `.ts` 。
@@ -1354,7 +1354,7 @@ var greetings = (0, greet_1['default'])(['Petter', 'Tom', 'Jimmy'])
 console.log(greetings)
 ```
 
-这个代码风格有没有觉得似曾相识？是的，就是前面提到的 [CommonJS](#用-commonjs-设计模块) 模块代码。
+这个代码风格有没有觉得似曾相识？是的，就是前面提到的 [CommonJS](../../web/get-familiar-quickly/guide.md#用-commonjs-设计模块) 模块代码。
 
 其实在 [编译单个文件](#编译单个文件) 代码的时候，它也是 CommonJS ，只不过因为只有一个文件，没有涉及到模块化，所以第一眼看不出来。
 
@@ -1387,7 +1387,7 @@ Welcome, Petter!
 
 `--target` 选项的作用是控制编译后的 JavaScript 版本，可选的值目前有： `es3` ， `es5` ， `es6` ， `es2015` ， `es2016` ， `es2017` ， `es2018` ， `es2019` ， `es2020` ， `es2021` ， `es2022` ， `esnext` ，分别对应不同的 JS 规范（所以未来的可选值会根据 JS 规范一起增加）。
 
-之前编译出来的 JavaScript 是 [CommonJS 规范](#用-commonjs-设计模块) ，本次配置的是 `es6` ，这是支持 [ES Module 规范](#用-es-module-设计模块) 的版本。
+之前编译出来的 JavaScript 是 [CommonJS 规范](../../web/get-familiar-quickly/guide.md#用-commonjs-设计模块) ，本次配置的是 `es6` ，这是支持 [ES Module 规范](../../web/get-familiar-quickly/guide.md#用-es-module-设计模块) 的版本。
 
 :::tip
 通常还需要配置一个 `--module` 选项，用于决定编译后是 CJS 规范还是 ESM 规范，但如果缺省，会根据 `--target` 来决定。
@@ -1427,7 +1427,7 @@ console.log(greetings)
 
 在尝试 [编译单个文件](#编译单个文件) 和 [编译多个模块](#编译多个模块) 的时候，相信各位开发者应该没有太大的疑问，但是来到 [修改编译后的 JS 版本](#修改编译后的-js-版本) 这里，事情就开始变得复杂了起来，应该能感觉到编译的选项和测试成本都相应的增加了很多。
 
-事实上刚才编译的 JS 文件，因为涉及到模块化，是无法直接在 HTML 页面里使用的（单个文件可以，因为没有涉及模块），实际的项目中，需要借助 [构建工具](#工程化的构建工具) 来帮处理很多编译过程中的兼容性问题。
+事实上刚才编译的 JS 文件，因为涉及到模块化，是无法直接在 HTML 页面里使用的（单个文件可以，因为没有涉及模块），实际的项目中，需要借助 [构建工具](../../web/get-familiar-quickly/engineering.md#工程化的构建工具) 来帮处理很多编译过程中的兼容性问题。
 
 而刚才用到的诸如 `--target` 这样的选项，可以用更简单的方式来管理，类似于 package.json 项目清单， TypeScript 也有适用于项目的配置清单， [了解 tsconfig.json](#了解-tsconfig-json) 部分。
 

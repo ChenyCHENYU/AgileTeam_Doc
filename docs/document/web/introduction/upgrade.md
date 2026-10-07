@@ -61,7 +61,7 @@ npm install -g create-preset
 preset init hello-vue3 --template vue3-ts-vite
 ```
 
-这是一个基于 Vite + TypeScript + Vue 3 + Pinia 的项目启动模板，可以使用这个项目来练习后面的案例代码，创建完毕后可以直接跳到 [安装 VSCode](#安装-vscode) 和 [添加 VSCode 插件](#添加-vscode-插件) 进行了解。
+这是一个基于 Vite + TypeScript + Vue 3 + Pinia 的项目启动模板，可以使用这个项目来练习后面的案例代码，创建完毕后可以直接跳到 [安装 VSCode](../../web/coding-specification/codeing-tool.md#安装-vscode) 和 添加 VSCode 插件 进行了解。
 
 建议还是希望可以把 [使用 Vite 创建项目](#使用-vite-创建项目-new) 和 [使用 @vue/cli 创建项目](#使用-vue-cli-创建项目) 这两部分也熟悉一下，后续构建的实战项目和组件，将围绕 **Vite** 构建的项目展开介绍。
 
@@ -368,12 +368,12 @@ export default defineConfig({
 
 这里只需要写入与默认配置不同的选项即可，如果和默认配置一致，可以省略，完整的配置选项以及默认值可以在 Prettier 官网的 [Options Docs](https://prettier.io/docs/en/options.html) 查看。
 
-配合 VSCode 的 [VSCode Prettier](#vscode-prettier) 扩展，可以在编辑器里使用这个规则来格式化文件。
+配合 VSCode 的 [VSCode Prettier](../../web/coding-specification/codeing-tool.md#vscode-prettier) 扩展，可以在编辑器里使用这个规则来格式化文件。
 
 如果开启了 ESLint ，配合 ESLint 的代码提示，可以更方便的体验格式化，详见 [ESLint](#eslint) 的说明。
 
 :::tip
-配合 [VSCode Prettier 扩展](#vscode-prettier) ，这份配置直接在 VSCode 里生效，如果配合 ESLint 使用，需要安装 [prettier](https://www.npmjs.com/package/prettier) 依赖。
+配合 [VSCode Prettier 扩展](../../web/coding-specification/codeing-tool.md#vscode-prettier) ，这份配置直接在 VSCode 里生效，如果配合 ESLint 使用，需要安装 [prettier](https://www.npmjs.com/package/prettier) 依赖。
 :::
 
 ### ESLint

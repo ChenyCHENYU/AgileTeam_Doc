@@ -652,7 +652,7 @@ unsubscribe()
 
 ## 管理 getters ~new
 
-在 [状态树的结构](#状态树的结构) 了解过， Pinia 的 `getters` 是用来计算数据的。
+在 状态树的结构 了解过， Pinia 的 `getters` 是用来计算数据的。
 
 ### 给 Store 添加 getter
 
@@ -770,11 +770,11 @@ setTimeout(() => {
 
 ### 获取和更新 getter
 
-getter 和 state 都属于数据管理，读取和赋值的方法是一样的，请参考上方 [获取和更新 state](#获取和更新-state-new) 一节的内容。
+getter 和 state 都属于数据管理，读取和赋值的方法是一样的，请参考上方 获取和更新 state 一节的内容。
 
 ## 管理 actions ~new
 
-在 [状态树的结构](#状态树的结构) 提到了， Pinia 只需要用 `actions` 就可以解决各种数据操作，无需像 Vuex 一样区分为 `mutations / actions` 两大类。
+在 状态树的结构 提到了， Pinia 只需要用 `actions` 就可以解决各种数据操作，无需像 Vuex 一样区分为 `mutations / actions` 两大类。
 
 ### 给 Store 添加 action
 

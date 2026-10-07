@@ -17,7 +17,7 @@ Vue 3 的 Composition API 系列里，推出了一个全新的 `setup` 函数，
 :::tip
 通俗一点，使用 Vue 3 的生命周期的情况下，整个组件相关的业务代码，都可以丢到 `setup` 里编写。
 
-因为在 `setup` 之后，其他的生命周期才会被启用（点击了解：[组件的生命周期](#组件的生命周期-new)）。
+因为在 `setup` 之后，其他的生命周期才会被启用（点击了解：[组件的生命周期](./index.md#组件的生命周期-new)）。
 :::
 
 基本语法：
@@ -36,7 +36,7 @@ export default defineComponent({
 })
 ```
 
-这里写了一个 `defineComponent`，也是本次的新东西，可以了解 [defineComponent 的作用](#definecomponent-的作用) 。
+这里写了一个 `defineComponent`，也是本次的新东西，可以了解 [defineComponent 的作用](./index.md#definecomponent-的作用) 。
 
 :::warning
 使用 `setup` 的情况下，请牢记一点：不能再用 `this` 来获取 Vue 实例，也就是无法通过 `this.xxx` 、 `this.fn()` 这样来获取实例上的数据，或者执行实例上的方法。
@@ -55,7 +55,7 @@ export default defineComponent({
 
 **第一个参数 `props` ：**
 
-它是响应式的（只要不解构它，或者使用 [toRef / toRefs](#响应式-api-之-toref-与-torefs-new) 进行响应式数据转换），当传入新的 prop 时，它将被更新。
+它是响应式的（只要不解构它，或者使用 [toRef / toRefs](./reactivity.md#响应式-api-之-toref-与-torefs-new) 进行响应式数据转换），当传入新的 prop 时，它将被更新。
 
 **第二个参数 `context` ：**
 

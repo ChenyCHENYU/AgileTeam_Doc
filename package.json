@@ -1,8 +1,8 @@
 {
   "name": "agile-team-doc",
   "version": "3.1.0",
-  "homepage": "https://github.com/ChenyCHENYU/agile_team_doc",
-  "description": "Robtot Admin，前端文档，项目管理文档，团队管理文档，专业管理文档",
+  "homepage": "https://www.tzagileteam.com",
+  "description": "Robot Admin，前端文档，项目管理文档，团队管理文档，专业管理文档",
   "author": "CHENY <ycyplus@gmail.com>",
   "type": "module",
   "packageManager": "bun@1.4.2",
@@ -15,7 +15,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/ChenyCHENYU/agile_team_doc.git"
+    "url": "https://github.com/ChenyCHENYU/AgileTeam_Doc.git"
   },
   "keywords": [
     "vue3",

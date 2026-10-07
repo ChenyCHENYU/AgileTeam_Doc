@@ -534,7 +534,7 @@ Vue 组件在设计的时候，就想到了一个很优秀的解决方案，通�
 
 那么如果有一天有个需求，需要通过 `v-html` 来渲染 HTML 代码，那这里的样式岂不是凉凉了？当然不会！
 
-Vue 3 提供了一个 Composition API `useCssModule` 来帮助在 `setup` 函数里操作的 CSS Modules （对，只能在 [setup](#全新的-setup-函数-new) 或者 [script setup](../efficient.md#script-setup-new) 里使用）。
+Vue 3 提供了一个 Composition API `useCssModule` 来帮助在 `setup` 函数里操作的 CSS Modules （对，只能在 [setup](./index.md#全新的-setup-函数-new) 或者 [script setup](../efficient.md#script-setup-new) 里使用）。
 
 **基本用法：**
 

@@ -1168,7 +1168,7 @@ export function normalizeConfig<T extends Record<string, any>>(
 
 ### 3. 实现插件
 
-参考 [核心功能详解](#核心功能详解) 部分的完整代码实现每个插件。
+参考 核心功能详解 部分的完整代码实现每个插件。
 
 ### 4. 集成插件
 
@@ -2278,16 +2278,16 @@ touch src/axios/utils/helpers.ts
 touch src/axios/plugins/{index,request,cache,dedupe,cancel,retry,response}.ts
 
 # 2. 复制类型定义
-# 参考 [定义类型系统](#1-定义类型系统)
+# 参考 定义类型系统
 
 # 3. 实现工具函数
-# 参考 [实现工具函数](#2-实现工具函数)
+# 参考 实现工具函数
 
 # 4. 实现各个插件
-# 参考 [核心功能详解](#核心功能详解)
+# 参考 核心功能详解
 
 # 5. 集成插件
-# 参考 [集成插件](#4-集成插件)
+# 参考 集成插件
 
 # 6. 业务中使用
 import { getData } from '@/axios/request'

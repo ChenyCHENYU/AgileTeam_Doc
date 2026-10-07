@@ -1369,7 +1369,7 @@ export default defineComponent({
 :::tip :bell: Vuex =~> Pinia
 
 - 面向 Componsition API 而生的 Pinia ，更受 Vue 3 喜爱，已被钦定为官方推荐的新状态管理工具。
-- 若是全新的项目，建议直接上手 [Pinia](#pinia-new) ，无需再用 Vuex，关于 Pinia ，请了解 [全局状态的管理](pinia.md) 板块。
+- 若是全新的项目，建议直接上手 Pinia ，无需再用 Vuex，关于 Pinia ，请了解 [全局状态的管理](pinia.md) 板块。
 
 :::
 

@@ -137,7 +137,7 @@ export default defineComponent({
 
 ### VSCode Prettier
 
-这是 [Prettier](#prettier) 在 VSCode 的一个扩展，不论的项目有没有安装 Pretter 依赖，安装该扩展之后，单纯在 VSCode 也可以使用 Pretter 来进行代码格式化。
+这是 [Prettier](../../web/introduction/upgrade.md#prettier) 在 VSCode 的一个扩展，不论的项目有没有安装 Pretter 依赖，安装该扩展之后，单纯在 VSCode 也可以使用 Pretter 来进行代码格式化。
 
 点击下载：[Prettier - Code formatter](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
 
@@ -145,7 +145,7 @@ export default defineComponent({
 
 ### VSCode ESLint
 
-这是 [ESLint](#eslint) 在 VSCode 的一个扩展， TypeScript 项目基本都开了 ESLint ，编辑器也建议安装该扩展支持。
+这是 [ESLint](../../web/introduction/upgrade.md#eslint) 在 VSCode 的一个扩展， TypeScript 项目基本都开了 ESLint ，编辑器也建议安装该扩展支持。
 
 点击下载：[VSCode ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
 

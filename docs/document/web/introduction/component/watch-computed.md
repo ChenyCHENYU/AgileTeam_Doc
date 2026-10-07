@@ -218,7 +218,7 @@ export declare type WatchSource<T = any> = Ref<T> | ComputedRef<T> | (() => T)
 // ...
 ```
 
-可以看到能够用于监听的数据，是通过 [响应式 API](#响应式数据的变化-new) 定义的变量（ `Ref<T>` ），或者是一个 [计算数据](#数据的计算-new) （ `ComputedRef<T>` ），或者是一个 [getter 函数](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Functions/get) （ `() => T` ）。
+可以看到能够用于监听的数据，是通过 [响应式 API](./reactivity.md#响应式数据的变化-new) 定义的变量（ `Ref<T>` ），或者是一个 [计算数据](#数据的计算-new) （ `ComputedRef<T>` ），或者是一个 [getter 函数](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Functions/get) （ `() => T` ）。
 
 所以要想定义的 watch 能够做出预期的行为，数据源必须具备响应性或者是一个 getter ，如果只是通过 `let` 定义一个普通变量，然后去改变这个变量的值，这样是无法监听的。
 
@@ -393,7 +393,7 @@ export default defineComponent({
 什么情况下可能会用到批量监听呢？比如一个子组件有多个 props ，当有任意一个 prop 发生变化时，都需要执行初始化函数重置组件的状态，那么这个时候就可以用上这个功能啦！
 
 :::tip
-在适当的业务场景，也可以使用 [watchEffect](#watchEffect) 来完成批量监听，但请留意 [功能区别](#和-watch-的区别) 部分的说明。
+在适当的业务场景，也可以使用 watchEffect 来完成批量监听，但请留意 [功能区别](#和-watch-的区别) 部分的说明。
 :::
 
 #### 监听的选项
@@ -484,7 +484,7 @@ export default defineComponent({
 
 类似这种情况，需要把 `deep` 设置为 `true` 才可以触发监听。
 
-可以看到上面的例子特地用了 [ref API](#响应式-api-之-ref-new) ，这是因为通过 [reactive API](#响应式-api-之-reactive-new) 定义的对象无法将 `deep` 成功设置为 `false` （这一点在目前的官网文档未找到说明，最终是在 [watch API 的源码](https://github.com/vuejs/core/blob/main/packages/runtime-core/src/apiWatch.ts#L212) 上找到了答案）。
+可以看到上面的例子特地用了 [ref API](./reactivity.md#响应式-api-之-ref-new) ，这是因为通过 [reactive API](./reactivity.md#响应式-api-之-reactive-new) 定义的对象无法将 `deep` 成功设置为 `false` （这一点在目前的官网文档未找到说明，最终是在 [watch API 的源码](https://github.com/vuejs/core/blob/main/packages/runtime-core/src/apiWatch.ts#L212) 上找到了答案）。
 
 ```ts{4}
 // ...
@@ -591,7 +591,7 @@ export default defineComponent({
 | :----: | :------------------- | :----------------------------------------------------------------------------------------------------------- |
 | 'pre'  | 将在渲染前被调用     | 允许回调在模板运行前更新了其他值                                                                             |
 | 'sync' | 在渲染时被同步调用   | 目前来说没什么好处，可以了解但不建议用…                                                                      |
-| 'post' | 被推迟到渲染之后调用 | 如果要通过 ref 操作 [DOM 元素与子组件](#dom-元素与子组件) ，需要使用这个值来启用该选项，以达到预期的执行效果 |
+| 'post' | 被推迟到渲染之后调用 | 如果要通过 ref 操作 [DOM 元素与子组件](./reactivity.md#dom-元素与子组件) ，需要使用这个值来启用该选项，以达到预期的执行效果 |
 
 对于 `'pre'` 和 `'post'` ，回调使用队列进行缓冲。回调只被添加到队列中一次。
 
@@ -601,7 +601,7 @@ export default defineComponent({
 
 #### 停止监听
 
-如果在 [setup](#全新的-setup-函数-new) 或者 [script-setup](../efficient.md#script-setup-new) 里使用 watch 的话， [组件被卸载](#组件的生命周期-new) 的时候也会一起被停止，一般情况下不太需要关心如何停止监听。
+如果在 [setup](./index.md#全新的-setup-函数-new) 或者 [script-setup](../efficient.md#script-setup-new) 里使用 watch 的话， [组件被卸载](./index.md#组件的生命周期-new) 的时候也会一起被停止，一般情况下不太需要关心如何停止监听。
 
 不过有时候可能想要手动取消， Vue 3 也提供了方法。
 
@@ -887,7 +887,7 @@ export declare interface DebuggerOptions {
 
 ### watchPostEffect
 
-[watchEffect](#watchEffect) API 使用 `flush: 'post'` 选项时的别名，具体区别详见 [监听选项之 flush](#监听选项之-flush) 部分。
+watchEffect API 使用 `flush: 'post'` 选项时的别名，具体区别详见 [监听选项之 flush](#监听选项之-flush) 部分。
 
 :::tip
 Vue v3.2.0 及以上版本才支持该 API 。
@@ -895,7 +895,7 @@ Vue v3.2.0 及以上版本才支持该 API 。
 
 ### watchSyncEffect
 
-[watchEffect](#watchEffect) API 使用 `flush: 'sync'` 选项时的别名，具体区别详见 [监听选项之 flush](#监听选项之-flush) 部分。
+watchEffect API 使用 `flush: 'sync'` 选项时的别名，具体区别详见 [监听选项之 flush](#监听选项之-flush) 部分。
 
 :::tip
 Vue v3.2.0 及以上版本才支持该 API 。
@@ -906,7 +906,7 @@ Vue v3.2.0 及以上版本才支持该 API 。
 和 Vue 2.0 一样，数据的计算也是使用 `computed` API ，它可以通过现有的响应式数据，去通过计算得到新的响应式变量，用过 Vue 2.0 的开发者应该不会太陌生，但是在 Vue 3.0 ，在使用方式上也是变化非常大！
 
 :::tip
-这里的响应式数据，可以简单理解为通过 [ref](#响应式-api-之-ref-new) API 、 [reactive](#响应式-api-之-reactive-new) API 定义出来的数据，当然 Vuex 、Vue Router 等 Vue 数据也都具备响应式，可以戳 [响应式数据的变化](#响应式数据的变化-new) 了解。
+这里的响应式数据，可以简单理解为通过 [ref](./reactivity.md#响应式-api-之-ref-new) API 、 [reactive](./reactivity.md#响应式-api-之-reactive-new) API 定义出来的数据，当然 Vuex 、Vue Router 等 Vue 数据也都具备响应式，可以戳 [响应式数据的变化](./reactivity.md#响应式数据的变化-new) 了解。
 :::
 
 ### 用法变化
@@ -986,7 +986,7 @@ export default defineComponent({
 
 ### 类型定义
 
-之前说过，在 [defineComponent](#defineComponent-的作用) 里，会自动帮推导 Vue API 的类型，所以一般情况下，是不需要显式的去定义 `computed` 出来的变量类型的。
+之前说过，在 defineComponent 里，会自动帮推导 Vue API 的类型，所以一般情况下，是不需要显式的去定义 `computed` 出来的变量类型的。
 
 在确实需要手动指定的情况下，也可以导入它的类型然后定义：
 
