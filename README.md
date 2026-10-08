@@ -200,6 +200,7 @@ docs/
 - **CI**：GitHub Actions 全量构建校验（bun install → vitepress build → 死链检测）
 - **SEO**：sitemap + robots.txt + 页面级 og 标签与 canonical
 - **性能**：静态资源 immutable 缓存 · 图片 WebP 化 · 关键动画合成层优化
+- **内嵌文档**：`vercel.json` 的 CSP `frame-ancestors` 仅允许文档站自身、`robotadmin.cn` / `www.robotadmin.cn` 及本机 `localhost` / `127.0.0.1`（任意开发端口）嵌入；不使用禁止跨域嵌入的 `X-Frame-Options: SAMEORIGIN`。新增部署域名时须明确加入来源名单并运行 `bun run test`，响应头变更需部署文档站后才生效。
 - **CI**：全量构建校验（bun install → vitepress build → 死链检测 → 内容保鲜检查）
 
 ## 🤝 参与共建

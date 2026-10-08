@@ -13,6 +13,7 @@
     "dev": "vitepress dev docs",
     "build": "vitepress build docs --outDir dist",
     "preview": "vitepress preview docs",
+    "test": "bun test",
     "optimize:images": "bun scripts/optimize-images.mjs",
     "push": "git push origin main && git push gitee main"
   },

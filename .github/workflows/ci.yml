@@ -19,5 +19,8 @@ jobs:
       - name: Content freshness check
         run: bun scripts/check-freshness.mjs
 
+      - name: Embedding security policy check
+        run: bun run test
+
       - name: Build docs
         run: bun run build
