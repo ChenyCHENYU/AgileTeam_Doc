@@ -3,6 +3,7 @@ import { fileURLToPath, URL } from "node:url";
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import { head, nav, sidebar, socialLinks, search } from "./_config/index";
+import { LOADER_HTML } from "./_config/loadingHtml.js";
 
 const SITE_URL = "https://www.tzagileteam.com";
 const SRC_DIR = fileURLToPath(new URL("../document", import.meta.url));
@@ -129,6 +130,11 @@ export default defineConfig({
     darkModeSwitchLabel: "外观",
     lightModeSwitchTitle: "切换到浅色模式",
     darkModeSwitchTitle: "切换到深色模式",
+  },
+
+  // 首屏加载动画：注入到每个页面 HTML，水合后由主题淡出移除
+  async transformHtml(code) {
+    return code.replace(/<body([^>]*)>/, `<body$1>${LOADER_HTML}`);
   },
 
   // 每页 SEO：自动描述 + og 标签 + canonical

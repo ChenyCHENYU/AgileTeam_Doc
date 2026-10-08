@@ -1,6 +1,6 @@
 // .vitepress/theme/index.js
 import DefaultTheme from "vitepress/theme";
-import { h } from "vue";
+import { h, onMounted, defineComponent } from "vue";
 import { useData } from "vitepress";
 
 // 导入你的组件和样式
@@ -18,6 +18,7 @@ import "./styles/print.css";
 
 // 🤖 导入智能 NEW 标记处理模块
 import { initSmartNewBadgeProcessor } from "./modules/smartNewBadge.js";
+import { setupPageTransition, removeLoader } from "./modules/pageTransition.js";
 
 // 浏览器环境下初始化 Vercel Analytics
 if (typeof window !== "undefined") {
@@ -33,8 +34,13 @@ if (typeof window !== "undefined") {
 export default {
   extends: DefaultTheme,
 
-  Layout: () => {
-    return h(DefaultTheme.Layout, null, {
+  Layout: defineComponent({
+    setup() {
+      // 首屏加载屏在真实内容挂载后立即淡出
+      onMounted(() => removeLoader());
+
+      return () =>
+        h(DefaultTheme.Layout, null, {
       // 定制 404 页
       "not-found": () => h(NotFound),
 
@@ -57,8 +63,9 @@ export default {
           key: page.value.relativePath, // 确保页面切换时重新渲染
         });
       },
-    });
-  },
+        });
+    },
+  }),
 
   enhanceApp({ app, router }) {
     // 注册全局组件
@@ -70,21 +77,9 @@ export default {
     app.component("HomePage", HomePage);
 
     // 🤖 初始化智能 NEW 标记处理器
-    // 方式1: 使用默认配置
     initSmartNewBadgeProcessor(router);
 
-    // 方式2: 自定义配置（可选，注释掉上面一行，使用下面的配置）
-    /*
-    initSmartNewBadgeProcessor(router, {
-      defaultExpireDays: 45,  // 默认45天过期
-      badgeTypes: {
-        'new': 60,      // NEW 标记 60 天过期
-        'updated': 30,  // UPDATED 标记 30 天过期
-        'hot': 7,       // HOT 标记 7 天过期
-        'beta': 90      // BETA 标记 90 天过期
-      },
-      enableLogs: true  // 启用控制台日志
-    });
-    */
+    // 🎬 页面过渡：路由进度条 + 首屏加载屏移除（在 badge 之后接入以链式包裹其钩子）
+    setupPageTransition(router);
   },
 };
