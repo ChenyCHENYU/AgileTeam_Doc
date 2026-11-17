@@ -33,31 +33,34 @@
 
 | &nbsp; | &nbsp; | &nbsp; | &nbsp; |
 | :---: | :---: | :---: | :---: |
-| **55** | **35** | **8** | **225+** |
-| Production components | Cross-platform components | Engineering plugins | Doc pages |
-| Form engine · virtual table · flow charts | H5 / WeChat Mini Program / App | Build · env · collaboration | Six role tracks |
+| **63** | **35** | **8+8** | **270+** |
+| Production components | Cross-platform components | Plugins & packages | Doc pages |
+| Form engine · data pickers · flow charts | H5 / WeChat Mini Program / App | 8 plugins · 8 ecosystem packages | Six role tracks |
 
-**Performance baseline** — HMR <100ms · First paint <2s · Bundle <2MB
+**Performance baseline** — HMR <100ms · First paint <2s · Bundle <2MB · Mach dual engines (grid / report)
 
 ## ✨ Highlights
 
-- 🧩 **55 production-grade components** — form engine, virtual-scrolling table, flow charts, e-signature, fully typed
+- 🧩 **63 production-grade components** — form engine, data/user pickers, flow charts, e-signature, fully typed
+- ⚙️ **Mach dual engines** — `@agile-team/mach-table` data grid (Vue / React adapters) and `@agile-team/mach-report` report engine (PDF / Excel / industrial labels)
 - 📱 **One design system, every platform** — admin web and uniApp cross-platform (H5 / Mini Programs / iOS / Android)
-- ⚡ **60-second project bootstrap** — smart templates via CLI, bun / pnpm auto-detected
-- 🔌 **8 engineering plugins** — multi-env management, first-paint optimization, type cleaning, multi-repo push
+- ⚡ **60-second project bootstrap** — three-step CLI flow with non-interactive flags, bun / pnpm auto-detected
+- 🔌 **8 engineering plugins + 8 ecosystem packages** — request-core, dictionary, form-validate, file-utils, directives, layout, theme, git-standards
 - 📖 **Docs as team assets** — six role tracks: product / design / frontend / backend / QA / ops & management
-- 🌗 **Dark mode & full-text search** — 225+ pages, instant local search
+- 🌗 **Dark mode & full-text search** — 270+ pages, instant local search, in-site changelog auto-synced
 
 ## 📦 Ecosystem
 
 | Project | Version | Description |
 | --- | :---: | --- |
 | [Robot_Admin][demo-url] | `v2.7.0` | Admin framework (Vue 3.5 · TS 5.8 · Vite 8 · UnoCSS) |
-| [@robot-admin/naive-ui-components][components-url] | `v0.14.2` | 55 components as standalone package with auto-import |
-| [@agile-team/mach-table-vue][machtable-url] | [![npm][machtable-ver-badge]][machtable-url] [![npm][machtable-dt-badge]][machtable-url] | Framework-agnostic enterprise data grid |
-| [@agile-team/robot-cli][cli-url] | `v3.2.0` | Scaffolding CLI |
+| [@robot-admin/naive-ui-components][components-url] | `v0.40.5` | 63 components as standalone package with auto-import |
+| [robot-admin-packages][packages-url] | 8 packages | Shared-capability monorepo (request · dictionary · form-validate · file-utils · directives · layout · theme · git-standards) |
+| [@agile-team/mach-table][machtable-url] | [![npm][machtable-ver-badge]][machtable-url] [![npm][machtable-dt-badge]][machtable-url] | Framework-agnostic enterprise data grid (Vue / React adapters) |
+| [@agile-team/mach-report][machreport-url] | [![npm][machreport-ver-badge]][machreport-url] [![npm][machreport-dt-badge]][machreport-url] | Report engine (wide tables · Excel binding · PDF/XLSX/PNG · industrial labels) |
+| [@agile-team/robot-cli][cli-url] | `v3.3.0` | Scaffolding CLI (three-step flow · non-interactive flags · PC Full/Lite + H5) |
 | Robot_Uniapp | `v1.0.0` | Cross-platform mobile framework (35 components · wot-design-uni) |
-| [Robot_H5][roboth5-url] | `v1.8.0` | Mobile H5 app framework (Vue 3 · Vite 7 · Liquid Glass) |
+| [Robot_H5][roboth5-url] | `v1.8.0` | Mobile H5 app framework (Vue 3 · Vite 7 · Vant · 15 device hooks · wl-mbase) — [platform docs][roboth5-doc-url] |
 | [@robot-h5/core][h5core-url] | `v1.2.0` | H5 core package (Bridge · 20+ hooks · offline storage) |
 | Robot_Cloud | `v1.0.0-SNAPSHOT` | Backend microservices (Spring Cloud Alibaba) |
 
@@ -98,10 +101,15 @@ See [CONTRIBUTING.md](./CONTRIBUTING.md) for the page structure spec.
 [docs-badge]: https://img.shields.io/badge/docs-tzagileteam.com-6366f1?style=flat-square
 [docs-url]: https://www.tzagileteam.com
 [demo-url]: https://www.robotadmin.cn
-[machtable-url]: https://www.npmjs.com/package/@agile-team/mach-table-vue
+[roboth5-doc-url]: https://www.tzagileteam.com/h5/overview
+[machtable-url]: https://www.npmjs.com/package/@agile-team/mach-table
+[machreport-url]: https://www.npmjs.com/package/@agile-team/mach-report
+[packages-url]: https://github.com/ChenyCHENYU/robot-admin-packages
 [h5core-url]: https://www.npmjs.com/package/@robot-h5/core
 [roboth5-url]: https://github.com/ChenyCHENYU/Robot_H5
-[machtable-ver-badge]: https://img.shields.io/npm/v/@agile-team/mach-table-vue?style=flat-square&color=18A058&label=mach-table
-[machtable-dt-badge]: https://img.shields.io/npm/dm/@agile-team/mach-table-vue?style=flat-square&color=18A058&label=downloads
+[machtable-ver-badge]: https://img.shields.io/npm/v/@agile-team/mach-table?style=flat-square&color=18A058&label=mach-table
+[machtable-dt-badge]: https://img.shields.io/npm/dm/@agile-team/mach-table?style=flat-square&color=18A058&label=downloads
+[machreport-ver-badge]: https://img.shields.io/npm/v/@agile-team/mach-report?style=flat-square&color=18A058&label=mach-report
+[machreport-dt-badge]: https://img.shields.io/npm/dm/@agile-team/mach-report?style=flat-square&color=18A058&label=downloads
 [blog-url]: https://yangchenyu.top
 [github-url]: https://github.com/ChenyCHENYU

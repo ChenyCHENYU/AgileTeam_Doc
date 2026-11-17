@@ -213,6 +213,14 @@ export const ROBOT_COMPONENTS_DOC = [
         link: `${ROBOT}/components/cascade`,
       },
       {
+        text: "[C_Select] 选择器",
+        link: `${ROBOT}/components/select`,
+      },
+      {
+        text: "[C_AutoComplete] 自动完成",
+        link: `${ROBOT}/components/auto-complete`,
+      },
+      {
         text: "[C_Progress] 进度条",
         link: `${ROBOT}/components/progress`,
       },
@@ -239,6 +247,14 @@ export const ROBOT_COMPONENTS_DOC = [
       {
         text: "[C_FormModal] 弹窗表单",
         link: `${ROBOT}/components/form-modal`,
+      },
+      {
+        text: "[C_DataPicker] 数据选择器",
+        link: `${ROBOT}/components/data-picker`,
+      },
+      {
+        text: "[C_UserPicker] 人员选择",
+        link: `${ROBOT}/components/user-picker`,
       },
       {
         text: "[C_Table] 表格",
@@ -456,6 +472,22 @@ export const ROBOT_COMPONENTS_DOC = [
         text: "[C_PageLoading] 页面加载遮罩",
         link: `${ROBOT}/components/page-loading`,
       },
+      {
+        text: "[C_Density] 区域密度",
+        link: `${ROBOT}/components/density`,
+      },
+      {
+        text: "[C_BatchResult] 批量结果",
+        link: `${ROBOT}/components/batch-result`,
+      },
+      {
+        text: "[C_ErrorSummary] 错误汇总",
+        link: `${ROBOT}/components/error-summary`,
+      },
+      {
+        text: "[C_SectionNav] 锚点导航",
+        link: `${ROBOT}/components/section-nav`,
+      },
     ],
   },
 ];
@@ -507,7 +539,173 @@ export const ROBOT_PLUGIN_DOC = [
 ];
 
 
-export const ROBOT_CLI_DOC = [];
+export const ROBOT_PACKAGES_DOC = [
+  {
+    text: "生态包",
+    items: [
+      {
+        text: "总览",
+        link: `${ROBOT}/packages/preface`,
+      },
+      {
+        text: "[request-core] 请求与 CRUD",
+        link: `${ROBOT}/packages/request-core`,
+      },
+      {
+        text: "[dictionary] 字典管理",
+        link: `${ROBOT}/packages/dictionary`,
+      },
+      {
+        text: "[form-validate] 表单校验",
+        link: `${ROBOT}/packages/form-validate`,
+      },
+      {
+        text: "[file-utils] 文件工具集",
+        link: `${ROBOT}/packages/file-utils`,
+      },
+      {
+        text: "[directives] 交互指令",
+        link: `${ROBOT}/packages/directives`,
+      },
+      {
+        text: "[layout] 布局系统",
+        link: `${ROBOT}/packages/layout`,
+      },
+      {
+        text: "[theme] 主题系统",
+        link: `${ROBOT}/packages/theme`,
+      },
+      {
+        text: "[git-standards] Git 标准化",
+        link: `${ROBOT}/packages/git-standards`,
+      },
+    ],
+  },
+];
+
+export const ROBOT_CLI_DOC = [
+  {
+    text: "脚手架指南",
+    items: [
+      {
+        text: "robot-cli 使用指南",
+        link: `${ROBOT}/cli/index`,
+      },
+    ],
+  },
+];
+
+export const CHANGELOG_DOC = [
+  {
+    text: "站点",
+    items: [
+      {
+        text: "更新日志",
+        link: `/changelog`,
+      },
+    ],
+  },
+];
+
+export const H5_DOC = [
+  {
+    text: "Robot_H5 移动框架",
+    items: [
+      {
+        text: "框架概览",
+        link: `/h5/overview`,
+      },
+    ],
+  },
+];
+
+const MACH = "/mach";
+
+export const MACH_DOC = [
+  {
+    text: "Mach 生态",
+    items: [
+      {
+        text: "生态总览",
+        link: `${MACH}/preface`,
+      },
+    ],
+  },
+  {
+    text: "MachTable 表格引擎",
+    items: [
+      {
+        text: "介绍与快速开始",
+        link: `${MACH}/table`,
+      },
+      {
+        text: "Vue 接入",
+        link: `${MACH}/table-vue`,
+      },
+      {
+        text: "GridOptions 配置",
+        link: `${MACH}/table-grid-options`,
+      },
+      {
+        text: "列定义 ColDef",
+        link: `${MACH}/table-col-def`,
+      },
+      {
+        text: "GridApi 与事件",
+        link: `${MACH}/table-grid-api`,
+      },
+      {
+        text: "高级能力",
+        link: `${MACH}/table-advanced`,
+      },
+      {
+        text: "场景配方精选",
+        link: `${MACH}/table-recipes`,
+      },
+      {
+        text: "UI 库集成",
+        link: `${MACH}/table-integration`,
+      },
+    ],
+  },
+  {
+    text: "MachReport 报表引擎",
+    items: [
+      {
+        text: "介绍与快速开始",
+        link: `${MACH}/report`,
+      },
+      {
+        text: "Vue 组件",
+        link: `${MACH}/report-vue`,
+      },
+      {
+        text: "模板 DSL",
+        link: `${MACH}/report-template`,
+      },
+      {
+        text: "参数与数据",
+        link: `${MACH}/report-data`,
+      },
+      {
+        text: "编辑与填报",
+        link: `${MACH}/report-editing`,
+      },
+      {
+        text: "输出与导出",
+        link: `${MACH}/report-export`,
+      },
+      {
+        text: "工业标签",
+        link: `${MACH}/report-labels`,
+      },
+      {
+        text: "Node Runtime",
+        link: `${MACH}/report-server`,
+      },
+    ],
+  },
+];
 
 const UNIAPP = "/uniapp";
 

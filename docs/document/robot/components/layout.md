@@ -7,6 +7,10 @@ description: "🏠 应用主布局框架，提供侧边栏、头部、内容区�
 
 > 🏠 应用主布局框架，提供侧边栏、头部、内容区和底部的标准后台布局
 
+::: tip 📦 演进说明
+布局能力已从组件库收敛进生态包 [@robot-admin/layout](/robot/packages/layout)（v3.3.4）：`C_LayoutContainer` 提供 side / top / mix / mix-top / reverse-horizontal-mix / card 六种骨架与设置抽屉，`provideLayout()` 桥接宿主上下文。本页保留布局概念与插槽设计说明。
+:::
+
 ## ✨ 特性
 
 - **📱 响应式侧边栏**: 支持展开/折叠，自适应内容宽度

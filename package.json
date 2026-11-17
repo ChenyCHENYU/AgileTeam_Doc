@@ -1,6 +1,6 @@
 {
   "name": "agile-team-doc",
-  "version": "3.1.0",
+  "version": "3.2.0",
   "homepage": "https://www.tzagileteam.com",
   "description": "Robot Admin，前端文档，项目管理文档，团队管理文档，专业管理文档",
   "author": "CHENY <ycyplus@gmail.com>",
@@ -10,11 +10,13 @@
     "node": ">=24"
   },
   "scripts": {
-    "dev": "vitepress dev docs",
-    "build": "vitepress build docs --outDir dist",
+    "dev": "bun scripts/sync-changelog.mjs && vitepress dev docs",
+    "build": "bun scripts/sync-changelog.mjs && vitepress build docs --outDir dist",
     "preview": "vitepress preview docs",
     "test": "bun test",
     "optimize:images": "bun scripts/optimize-images.mjs",
+    "og:image": "bun scripts/generate-og-image.mjs",
+    "sync:changelog": "bun scripts/sync-changelog.mjs",
     "push": "git push origin main && git push gitee main"
   },
   "repository": {

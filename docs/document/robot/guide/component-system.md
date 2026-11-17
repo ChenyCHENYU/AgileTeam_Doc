@@ -48,7 +48,7 @@ src/components/
     └── ...
 ```
 
-此外，55 个业务组件已独立发布为 `@robot-admin/naive-ui-components` npm 包，通过 `RobotNaiveUiResolver` 实现自动导入，无需手动注册。
+此外，63 个业务组件已独立发布为 `@robot-admin/naive-ui-components` npm 包（v0.40.5），通过 `RobotNaiveUiResolver` 实现自动导入，无需手动注册。
 
 ### 命名约定规范
 
@@ -56,7 +56,7 @@ src/components/
 | ------------ | ------ | -------------------------- | -------------------------- |
 | **全局桥接组件** | `C_`   | `C_Header`, `C_Settings`   | 主项目中桥接组件库的组件 |
 | **局部组件** | `c_`   | `c_role`, `c_detail`       | 特定模块或功能的专用组件   |
-| **组件库组件** | `C_` | `C_Form`, `C_Table`, `C_Upload` | 55 个业务组件（自动导入） |
+| **组件库组件** | `C_` | `C_Form`, `C_Table`, `C_Upload` | 63 个业务组件（自动导入） |
 
 ::: warning ⚠️ 命名重要性
 严格遵循命名约定不仅有助于代码组织，更重要的是确保动态组件系统能够正确识别和加载组件。
@@ -147,7 +147,7 @@ C_ComponentName/
 
 ### 核心组件库
 
-Robot Admin 的组件体系基于 `@robot-admin/naive-ui-components`（v0.14.2），包含 55 个业务组件：
+Robot Admin 的组件体系基于 `@robot-admin/naive-ui-components`（v0.40.5），包含 63 个业务组件：
 
 <details>
 <summary><b>📊 数据展示组件</b></summary>
@@ -167,12 +167,26 @@ Robot Admin 的组件体系基于 `@robot-admin/naive-ui-components`（v0.14.2�
 
 - **`C_Form`** - 动态表单引擎，支持 8 种布局、脏检查、联动赋值、异步选项
 - **`C_FormSearch`** - 高级搜索表单组件
+- **`C_Select`** - 业务增强选择器，静态/远程数据源、多选与标签创建
+- **`C_AutoComplete`** - 自动完成，本地建议与远程数据源
+- **`C_DataPicker`** - 数据选择器，弹窗/内联/气泡三种形态的分页表格选数
+- **`C_UserPicker`** - 人员选择，字段映射与组织树过滤
 - **`C_Upload`** - 文件上传，支持多种格式和预览
 - **`C_Cascade`** - 地区级联选择
 - **`C_City`** - 城市选择器
 - **`C_Cron`** - Cron 表达式编辑器
 - **`C_Transfer`** - 穿梭框，跨列表数据迁移
 - **`C_Tree`** - 树形组件
+
+</details>
+
+<details>
+<summary><b>🧰 反馈与效率组件</b></summary>
+
+- **`C_Density`** - 区域密度，统一子树表单/表格默认密度档位
+- **`C_BatchResult`** - 批量操作结果清单与定向重试
+- **`C_ErrorSummary`** - 校验错误汇总，分页展示与定位
+- **`C_SectionNav`** - 长表单锚点导航，支持错误计数角标
 
 </details>
 

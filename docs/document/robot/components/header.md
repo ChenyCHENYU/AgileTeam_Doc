@@ -7,6 +7,10 @@ description: "🎯 应用顶部导航栏，集成面包屑、搜索、操作按�
 
 > 🎯 应用顶部导航栏，集成面包屑、搜索、操作按钮和用户信息
 
+::: tip 📦 演进说明
+头部区域已由生态包 [@robot-admin/layout](/robot/packages/layout) 的 `C_LayoutContainer` 业务插槽（`#header` 等）承接，面包屑（C_Breadcrumb）、全局搜索（C_GlobalSearch）、主题切换（C_Theme）等仍是独立组件。本页保留头部结构设计说明。
+:::
+
 ## ✨ 特性
 
 - **📐 双层结构**: 上层操作栏 + 下层标签页

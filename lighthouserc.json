@@ -5,7 +5,11 @@
       "url": [
         "/",
         "/robot/guide/overview.html",
-        "/robot/components/table.html"
+        "/robot/components/table.html",
+        "/mach/preface.html",
+        "/mach/table-grid-options.html",
+        "/mach/report-editing.html",
+        "/robot/packages/preface.html"
       ],
       "numberOfRuns": 1
     },

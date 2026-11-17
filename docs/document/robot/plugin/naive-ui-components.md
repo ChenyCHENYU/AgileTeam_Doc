@@ -1,8 +1,12 @@
-# @agile-team/naive-ui-components
+# @robot-admin/naive-ui-components
 
-> 让 Naive UI 组件开发不再重复造轮子 🎨
+> 让 Naive UI 组件开发不再重复造轮子 🎨 · v0.40.5 · 63 个业务组件
 
 专门解决 Vue3 + Naive UI 项目中那些让人头疼的组件复用问题。每次项目都要重写一遍图标组件？代码高亮总是配置不对？业务组件散落在各个项目里无法复用？这个组件库就是为了这些烦恼而生的。
+
+::: tip 📦 包名迁移说明
+包已从早期的 `@agile-team/naive-ui-components` 迁移为 **`@robot-admin/naive-ui-components`**。Robot Admin v2.7.0 已正式消费 v0.40.5（63 个 `C_*` 业务组件），完整组件文档见[组件文档](/robot/components/preface)，表单校验内核来自生态包 [@robot-admin/form-validate](/robot/packages/form-validate)。
+:::
 
 ## 🤔 为什么要做这个？
 
@@ -48,13 +52,14 @@
 ### 装个包
 
 ```bash
-npm install @agile-team/naive-ui-components
+npm install @robot-admin/naive-ui-components
 ```
 
 别忘了必需的依赖：
 
 ```bash
-npm install vue@^3.3.0 naive-ui@^2.35.0
+npm install vue@^3.5.3 naive-ui@^2.35.0
+# 可选：vue-router@^4.6.4 || ^5.3.1、sortablejs@^1.15.7（部分组件需要）
 ```
 
 ### 试试看
@@ -64,20 +69,20 @@ npm install vue@^3.3.0 naive-ui@^2.35.0
 ```typescript
 // main.ts
 import { createApp } from "vue";
-import NaiveUIComponents from "@agile-team/naive-ui-components";
-import "@agile-team/naive-ui-components/style";
+import NaiveUIComponents from "@robot-admin/naive-ui-components";
+import "@robot-admin/naive-ui-components/style";
 
 const app = createApp(App);
 app.use(NaiveUIComponents);
 app.mount("#app");
 ```
 
-**按需使用**
+**按需使用（推荐配合 RobotNaiveUiResolver 自动导入）**
 
 ```vue
 <script setup lang="ts">
-import { C_Icon, C_Code } from "@agile-team/naive-ui-components";
-import "@agile-team/naive-ui-components/style";
+import { C_Icon, C_Code } from "@robot-admin/naive-ui-components";
+import "@robot-admin/naive-ui-components/style";
 </script>
 
 <template>
@@ -134,22 +139,18 @@ console.log(fibonacci(10)); // 55
 
 ## 🛠️ 支持的组件
 
-目前提供这些常用组件：
+当前 **v0.40.5 共 63 个 `C_*` 业务组件**，按场景分组（完整清单见[组件文档](/robot/components/preface)）：
 
-### 🎨 基础组件
-
-| 组件       | 说明         | 主要功能                   |
-| ---------- | ------------ | -------------------------- |
-| **C_Icon** | 图标组件     | 支持 Iconify 全套图标库    |
-| **C_Code** | 代码高亮组件 | 多语言语法高亮、复制、行号 |
-
-### 📋 正在开发
-
-| 组件         | 说明     | 预计功能             |
-| ------------ | -------- | -------------------- |
-| **C_Table**  | 增强表格 | 自动分页、筛选、导出 |
-| **C_Form**   | 智能表单 | 自动验证、动态字段   |
-| **C_Upload** | 文件上传 | 拖拽、预览、进度显示 |
+| 分组 | 代表组件 |
+| ---- | -------- |
+| 表单输入 | C_Form · C_FormSearch · C_FormModal · C_Select · C_AutoComplete · C_DataPicker · C_UserPicker · C_Cascade · C_City |
+| 表格数据 | C_Table · C_VtableGantt · C_BatchResult · C_Timeline |
+| 可视化 | C_AntV · C_WorkFlow · C_OrgChart · C_Map · C_FullCalendar |
+| 编辑器 | C_Editor · C_Code · C_Markdown · C_FormulaEditor · C_Cron |
+| 媒体文件 | C_FilePreview · C_VideoPlayer · C_AudioPlayer · C_Upload · C_Signature |
+| 交互业务 | C_GlobalSearch · C_Chat · C_Login · C_NotificationCenter · C_ErrorSummary · C_SectionNav |
+| 布局导航 | C_Menu · C_Breadcrumb · C_TagsView · C_SplitPane · C_WaterFall |
+| 基础与反馈 | C_Icon · C_Loading · C_Skeleton · C_Theme · C_Density |
 
 ## 🎨 使用方式
 
@@ -165,15 +166,15 @@ app.use(NaiveUIComponents);
 **按需导入 - 适合小项目**
 
 ```vue
-// 只导入需要的组件 import { C_Icon, C_Code } from
-'@agile-team/naive-ui-components'
+// 只导入需要的组件
+import { C_Icon, C_Code } from "@robot-admin/naive-ui-components";
 ```
 
 **类型安全使用**
 
 ```vue
 <script setup lang="ts">
-import type { IconProps, CodeProps } from "@agile-team/naive-ui-components";
+import type { IconProps, CodeProps } from "@robot-admin/naive-ui-components";
 
 // 享受完整的类型提示
 const iconProps: IconProps = {
@@ -233,15 +234,15 @@ src/
 
 ```bash
 # 克隆仓库
-git clone https://github.com/your-username/naive-ui-components.git
-cd naive-ui-components && npm install
+git clone https://github.com/ChenyCHENYU/naive-ui-components.git
+cd naive-ui-components && bun install
 
 # 开发模式
-npm run dev              # 监听文件变化
-npm run playground       # 本地测试页面
+bun run dev              # 监听文件变化
+bun run playground       # 本地测试页面
 
 # 构建发布
-npm run build
+bun run build
 ```
 
 ### 添加新组件
@@ -359,7 +360,7 @@ A: 会的，我们会持续优化现有组件，并根据需求添加新组件�
 
 ```bash
 # 立即体验
-npm install @agile-team/naive-ui-components
+npm install @robot-admin/naive-ui-components
 
 # 查看完整文档
 # https://www.tzagileteam.com/robot/components/preface
@@ -369,12 +370,12 @@ npm install @agile-team/naive-ui-components
 
 ## 📎 相关链接
 
-[![npm version](https://img.shields.io/npm/v/@agile-team/naive-ui-components.svg)](https://www.npmjs.com/package/@agile-team/naive-ui-components)
-[![GitHub stars](https://img.shields.io/github/stars/ChenyCHENYU/naive-ui-components?style=social)](https://github.com/your-username/naive-ui-components)
+[![npm version](https://img.shields.io/npm/v/@robot-admin/naive-ui-components.svg)](https://www.npmjs.com/package/@robot-admin/naive-ui-components)
+[![GitHub stars](https://img.shields.io/github/stars/ChenyCHENYU/naive-ui-components?style=social)](https://github.com/ChenyCHENYU/naive-ui-components)
 
 如果这个组件库让你的开发变得更轻松，给个 star 支持一下吧 ⭐
 
-[📚 组件文档](https://www.tzagileteam.com/robot/components/preface) • [🏠 GitHub 仓库](https://github.com/ChenyCHENYU/naive-ui-components) • [📦 NPM 包](https://www.npmjs.com/package/@agile-team/naive-ui-components) • [🐛 问题反馈](https://github.com/ChenyCHENYU/naive-ui-components/issues)
+[📚 组件文档](https://www.tzagileteam.com/robot/components/preface) • [🏠 GitHub 仓库](https://github.com/ChenyCHENYU/naive-ui-components) • [📦 NPM 包](https://www.npmjs.com/package/@robot-admin/naive-ui-components) • [🐛 问题反馈](https://github.com/ChenyCHENYU/naive-ui-components/issues)
 
 ---
 

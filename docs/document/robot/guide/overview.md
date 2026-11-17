@@ -22,13 +22,13 @@ reviewAfter: "2027-04-07"
 该项目的核心理念围绕**开发者体验**和**性能**展开，使团队能够在创纪录的时间内构建复杂的管理面板，同时保持代码质量和可扩展性。
 :::
 
-**Robot Admin** 是一个基于 Vue 3.5、TypeScript 5.8、Naive UI 和 Vite 7 构建的开源企业级管理后台。它旨在通过提供健壮的架构、全面的组件和开箱即用的性能优化，简化业务管理系统的开发。
+**Robot Admin** 是一个基于 Vue 3.5、TypeScript 5.8、Naive UI 和 Vite 8 构建的开源企业级管理后台。它旨在通过提供健壮的架构、全面的组件和开箱即用的性能优化，简化业务管理系统的开发。
 
 ## 🎯 主要功能
 
 ### ⚡ 性能优先架构
 
-Robot Admin 利用 **Bun** 和 **Vite 7** 提供非凡的开发速度：
+Robot Admin 利用 **Bun** 和 **Vite 8** 提供非凡的开发速度：
 
 <div class="performance-grid">
   <div class="perf-card">
@@ -59,7 +59,7 @@ Robot Admin 利用 **Bun** 和 **Vite 7** 提供非凡的开发速度：
 
 ### 🧩 全面组件系统
 
-该框架包含 **55 个精心打造的业务组件**（已独立发布为 `@robot-admin/naive-ui-components`），专为企业应用设计：
+该框架包含 **63 个精心打造的业务组件**（已独立发布为 `@robot-admin/naive-ui-components` v0.40.5），专为企业应用设计：
 
 ::: details 🏗️ 核心 UI 组件
 

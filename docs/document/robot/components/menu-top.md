@@ -7,6 +7,10 @@ description: "🎨 侧边栏顶部 Logo 展示组件，支持视频动画和响�
 
 > 🎨 侧边栏顶部 Logo 展示组件，支持视频动画和响应式折叠
 
+::: tip 📦 演进说明
+侧边栏骨架（含 Logo 区）已由生态包 [@robot-admin/layout](/robot/packages/layout) 的布局骨架与品牌（`brand`）上下文承接。本页保留视觉设计说明。
+:::
+
 ## ✨ 特性
 
 - **🎬 视频 Logo**: 支持 WebM 格式视频作为动态 Logo

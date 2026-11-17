@@ -12,7 +12,7 @@ description: "Robot Admin 组件库不仅仅是功能的集合，更是开发奔
   </h1>
   <div class="hero-content">
     <p>- 当极致性能遇上保姆设计，当类型安全拥抱开发效率，你可以拥抱一下我</p>
-    <p>- 先提供 30+ 精心打磨的组件，让每一个都是生产级的高效武器</p>
+    <p>- 63 个精心打磨的业务组件（@robot-admin/naive-ui-components v0.40.5），让每一个都是生产级的高效武器</p>
     <p>- 我会持续维护和完善，最后，希望你用得愉快！</p>
   </div>
 </div>
@@ -57,13 +57,15 @@ Robot Admin 组件库不仅仅是功能的集合，更是开发奔赴业务驱�
 
 ## 📊 组件统计
 
-| 类别          | 数量 | 描述                          | 状态    |
-| ------------- | ---- | ----------------------------- | ------- |
-| 🏗️ 基础组件   | 12+  | 表单、表格、布局等核心组件    | ✅ 稳定 |
-| 🎨 展示组件   | 8+   | 图表、进度、标签等展示组件    | ✅ 稳定 |
-| ✏️ 编辑器     | 6+   | 富文本、代码、Markdown 编辑器 | ✅ 稳定 |
-| 🛠️ 功能组件   | 10+  | 上传、下载、导入导出等工具    | ✅ 稳定 |
-| 🎪 自定义指令 | 7+   | 防抖、节流、权限等实用指令    | ✅ 稳定 |
+组件库以独立 npm 包 [@robot-admin/naive-ui-components](https://www.npmjs.com/package/@robot-admin/naive-ui-components)（v0.40.5）发布，可通过 `RobotNaiveUiResolver` 实现按需自动导入。
+
+| 类别          | 数量 | 描述                                        | 状态    |
+| ------------- | ---- | ------------------------------------------- | ------- |
+| 🏗️ 基础组件   | 20   | 表单、选择器、表格、数据/人员选择器等核心   | ✅ 稳定 |
+| 🎨 展示组件   | 15   | 日历、甘特图、地图、瀑布流等插件级展示      | ✅ 稳定 |
+| ✏️ 编辑器     | 7    | 富文本、代码、Markdown、公式、工作流编辑器  | ✅ 稳定 |
+| 🛠️ 功能组件   | 21   | 上传、通知、搜索、批量结果、错误汇总等工具  | ✅ 稳定 |
+| 🎪 自定义指令 | 11   | 复制、防抖、节流、拖拽、权限、水印等        | ✅ 稳定 |
 
 ::: info 📈 持续更新
 我们每月都会新增 2-3 个组件，并不断优化现有组件的性能和功能。所有组件都经过**严格测试**，测试覆盖率达到 **85%+**。
@@ -99,15 +101,21 @@ Robot Admin 组件库不仅仅是功能的集合，更是开发奔赴业务驱�
 
 ## 🎯 自定义指令集合
 
-| 指令           | 功能描述         | 使用场景             |
-| -------------- | ---------------- | -------------------- |
-| `v-copy`       | 一键复制到剪贴板 | 复制文本、链接、代码 |
-| `v-watermark`  | 页面水印保护     | 防截图、版权保护     |
-| `v-draggable`  | 元素拖拽排序     | 列表排序、布局调整   |
-| `v-debounce`   | 防抖优化         | 搜索框、按钮防重复   |
-| `v-throttle`   | 节流控制         | 滚动事件、窗口缩放   |
-| `v-longpress`  | 长按触发         | 移动端交互、快捷操作 |
-| `v-permission` | 权限控制         | 按钮级权限管理       |
+指令体系由生态包 [@robot-admin/directives](/robot/packages/directives) 提供，共 **11 个指令**，支持逐指令子路径引入：
+
+| 指令              | 功能描述         | 使用场景             |
+| ----------------- | ---------------- | -------------------- |
+| `v-copy`          | 一键复制到剪贴板 | 复制文本、链接、代码 |
+| `v-watermark`     | 页面水印保护     | 防截图、版权保护     |
+| `v-drag`          | 元素拖拽         | 列表排序、布局调整   |
+| `v-debounce`      | 防抖优化         | 搜索框、按钮防重复   |
+| `v-throttle`      | 节流控制         | 滚动事件、窗口缩放   |
+| `v-longpress`     | 长按触发         | 移动端交互、快捷操作 |
+| `v-permission`    | 权限控制         | 按钮级权限管理       |
+| `v-lazy`          | 图片/背景懒加载  | 长页面性能优化       |
+| `v-loading`       | 加载反馈         | 区域加载状态         |
+| `v-tooltip`       | 焦点提示         | ARIA 提示、CSP nonce |
+| `v-click-outside` | 外部点击         | 弹层关闭、Shadow DOM |
 
 ::: warning 🔥 性能提示
 所有指令都经过**性能优化**，使用了事件委托和智能缓存，不会对页面性能造成影响。
@@ -138,7 +146,7 @@ Robot Admin 组件库不仅仅是功能的集合，更是开发奔赴业务驱�
 <div class="tech-card">
   <div class="tech-header">
     <span class="tech-icon">🎨</span>
-    <h4>Naive UI 2.41</h4>
+    <h4>Naive UI 2.44</h4>
     <span class="tech-badge">UI 框架</span>
   </div>
   <p>现代化的 Vue 3 组件库，提供丰富的基础组件和完整的主题定制系统</p>
@@ -176,8 +184,8 @@ const formConfig: FormConfig = {
 
 ```typescript [按需导入]
 // 组件按需导入示例
-import { C_Form, C_Table, C_Editor } from "@robot-admin/components";
-// 在项目中直接使用的话，已经配置了自动导入
+import { C_Form, C_Table, C_Editor } from "@robot-admin/naive-ui-components";
+// 在项目中直接使用的话，已经配置了自动导入（RobotNaiveUiResolver）
 
 // 自动 Tree Shaking，只打包使用的组件
 // 最终 Bundle 体积 < 2MB
@@ -190,13 +198,13 @@ import { C_Form, C_Table, C_Editor } from "@robot-admin/components";
 ::: code-group
 
 ```bash [NPM 安装]
-# 独立组件库（规划中）
-npm install @robot-admin/components
+# 独立组件库
+bun add @robot-admin/naive-ui-components
 ```
 
 ```bash [本地开发]
 # 克隆项目
-git clone https://github.com/ChenyCHENYU/robot_admin.git
+git clone https://github.com/ChenyCHENYU/Robot_Admin.git
 
 # 极速安装（推荐使用 Bun）
 bun install

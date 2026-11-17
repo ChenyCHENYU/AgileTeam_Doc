@@ -6,9 +6,11 @@ reviewAfter: "2027-04-07"
 
 # Robot CLI
 
-> 让项目搭建从此告别复制粘贴 ✨
+> 让项目搭建从此告别复制粘贴 ✨ · v3.3.0
 
-我写这个脚手架工具，为解决项目初始化时那些重复劳动的问题。每次新项目都要手动配置 `vite`、`webpack`、`eslint`、路由等等？复制老项目又担心带入历史包袱？这个工具就是为了这些烦恼而生的。
+我写这个脚手架工具，为解决项目初始化时那些重复劳动的问题。每次新项目都要手动配置 `vite`、`webpack`、`eslint`、路由等等？复制老项目又担心带入历史包袱？这个工具就是为了这些烦恼的。
+
+3.3.0 起，创建流程统一为 **选择项目与用途 → 产品与初始化设置 → 核对并创建** 三步，默认提供 **PC 与 H5** 两大入口；并支持 `--yes` / `--preset` 等非交互参数、生成 `ROBOT_PROJECT.md` 记录模板来源与运行要求。
 
 ## 🎯 为什么要做这个？
 
@@ -42,11 +44,13 @@ reviewAfter: "2027-04-07"
 
 简单说就是做了这几件事：
 
-- 🎯 **智能模板分类** - 推荐模板、分类浏览、关键词搜索
-- ⚡ **极速项目创建** - 一条命令创建完整项目架构
-- 📦 **现代包管理器** - 优先推荐 bun/pnpm，智能检测最佳选择
-- 🌐 **总是最新版本** - 每次创建都下载最新模板，无缓存困扰
-- 🎨 **友好用户界面** - 现代化终端交互，清晰进度提示
+- 🎯 **智能模板分类** - 分类浏览、关键词搜索，规划项需显式 `--all` 才展示
+- ⚡ **极速项目创建** - 三步流程创建完整项目架构（PC Full/Lite + H5）
+- 🤖 **非交互创建** - `--yes` / `--preset` / `--title` / `--author` / `--package-manager` / `--no-git` / `--advanced` 支持脚本与 CI 场景
+- 📝 **创建即留痕** - 生成 `ROBOT_PROJECT.md` 与 `.robot-cli/project.json`，记录模板来源、分支、包版本、预设、运行要求与缓存来源
+- 📦 **现代包管理器** - 优先推荐 bun/pnpm，智能检测最佳选择；下载后按 manifest 复验实际运行要求
+- 🌐 **24 小时模板缓存** - 过期先联网刷新，下载失败可回退旧缓存
+- 🎨 **友好用户界面** - 现代化终端交互，完成页分别报告 Git 提交与依赖安装结果
 
 ## 🚀 快速体验
 
@@ -65,8 +69,11 @@ robot create
 # 快速创建指定模板
 robot create my-vue-admin --template robot-admin
 
-# 查看所有模板
-robot list
+# 非交互创建（脚本 / CI）
+robot create my-vue-admin --template robot-admin --yes --package-manager bun
+
+# 查看所有模板（含规划项）
+robot list --all
 ```
 
 ## 🎭 使用演示
@@ -118,43 +125,47 @@ $ robot create my-blog --template robot-admin-base
 
 ## 📋 完整模板列表
 
-当然，模板在陆续补充中，欢迎参与共建。
+当然，模板在陆续补充中，欢迎参与共建。默认列表只展示可用模板，规划项需显式 `--all`。
 
 ### 🎨 前端项目
 
 #### Vue.js 生态
 
-| 模板名称           | 描述               | 特性                                            | 适用场景       |
-| ------------------ | ------------------ | ----------------------------------------------- | -------------- |
-| `robot-admin`      | 后台管理系统完整版 | Vue3 + TypeScript + Element Plus + 完整权限系统 | 企业级后台管理 |
-| `robot-admin-base` | 后台管理系统精简版 | Vue3 + TypeScript + Element Plus + 基础功能     | 快速原型开发   |
-| `robot-micro`      | 微前端架构         | MicroApp + Vue3 + 子应用示例                    | 大型项目拆分   |
+| 模板名称                   | 描述               | 特性                                            | 适用场景       |
+| -------------------------- | ------------------ | ----------------------------------------------- | -------------- |
+| `robot-admin`              | 后台管理系统完整版 | Vue3 + TypeScript + Naive UI + 完整权限系统     | 企业级后台管理 |
+| `robot-admin-base`         | 后台管理系统精简版 | 基础架构、核心功能、快速启动                    | 快速原型开发   |
+| `robot-monorepo`           | Monorepo 架构      | bun workspace + Monorepo 多包管理架构           | 多包工程       |
+| `robot-micro-app`          | 微前端架构         | 基于 MicroApp 的微前端架构方案                  | 大型项目拆分   |
+| `robot-module-federation`  | 模块联邦           | 基于 Vite Module Federation 的模块联邦方案      | 跨应用共享     |
 
 #### React.js 生态
 
-| 模板名称      | 描述             | 特性                                               | 适用场景         |
-| ------------- | ---------------- | -------------------------------------------------- | ---------------- |
-| `robot-react` | React 后台完整版 | React 18 + TypeScript + Ant Design + Redux Toolkit | React 技术栈后台 |
+| 模板名称          | 描述               | 特性                            | 适用场景         |
+| ----------------- | ------------------ | ------------------------------- | ---------------- |
+| `robot-react`     | React 后台完整版   | React 18 + TypeScript + Ant Design | React 技术栈后台 |
+| `robot-react-base` | React 后台精简版  | 基础 React + 核心功能           | 快速原型开发     |
 
 ### 📱 移动端项目
 
-| 模板名称       | 描述     | 特性                            | 适用场景             |
-| -------------- | -------- | ------------------------------- | -------------------- |
-| `robot-uniapp` | 多端应用 | uni-app + TypeScript + uView UI | 小程序/H5/App 一体化 |
+| 模板名称   | 描述              | 特性                                        | 适用场景           |
+| ---------- | ----------------- | ------------------------------------------- | ------------------ |
+| `robot-h5` | 企业 H5 / WebView | Vue3 + TypeScript + Liquid Glass 设计       | 企业移动端 / WebView |
 
 ### 🚀 后端项目
 
-| 模板名称     | 描述           | 特性                                | 适用场景        |
-| ------------ | -------------- | ----------------------------------- | --------------- |
-| `robot-nest` | 企业级 Node.js | NestJS + TypeScript + JWT + Swagger | 企业级 API 服务 |
-| `robot-koa3` | 轻量级 Node.js | Koa3 + TypeScript + 简洁架构        | 快速 API 开发   |
+| 模板名称           | 描述               | 特性                                | 适用场景        |
+| ------------------ | ------------------ | ----------------------------------- | --------------- |
+| `robot-nest`       | 企业级 Node.js     | NestJS + TypeScript + JWT + Swagger | 企业级 API 服务 |
+| `robot-nest-base`  | NestJS 精简版      | 基础 NestJS + 核心模块              | 快速 API 开发   |
+| `robot-nest-micro` | NestJS 微服务版    | 微服务架构 + gRPC + 服务发现        | 微服务后端      |
 
 ### 💻 桌面端项目
 
-| 模板名称         | 描述                   | 特性                         | 适用场景       |
-| ---------------- | ---------------------- | ---------------------------- | -------------- |
-| `robot-electron` | 跨平台桌面应用         | Electron + Vue3 + TypeScript | 桌面端工具应用 |
-| `robot-tauri`    | 轻量级桌面应用（备选） | Tauri + Vue3 + Rust 后端     | 高性能桌面应用 |
+| 模板名称             | 描述           | 特性                         | 适用场景       |
+| -------------------- | -------------- | ---------------------------- | -------------- |
+| `robot-electron`     | 跨平台桌面应用 | Electron + Vue3 + TypeScript | 桌面端工具应用 |
+| `robot-electron-base` | 桌面应用精简版 | 基础 Electron + 核心功能     | 快速原型开发   |
 
 ## 🎨 使用场景展示
 
@@ -173,7 +184,7 @@ cd admin-v2 && bun run dev
 
 ```bash
 # 我想试试微前端架构
-robot create micro-demo --template robot-micro
+robot create micro-demo --template robot-micro-app
 
 # 几分钟后就有一个完整的微前端示例项目
 ```
@@ -204,7 +215,7 @@ robot create
 ```bash
 robot create my-project --template robot-admin
 robot create my-api --template robot-nest
-robot create my-app --template robot-uniapp
+robot create my-app --template robot-h5
 ```
 
 #### 3. 跳过依赖安装
@@ -260,21 +271,20 @@ robot create my-project --pm bun      # 使用 bun
 
 ## 🎨 设计细节
 
-### 为什么选择"总是最新"策略
+### 24 小时模板缓存策略（3.3.0）
 
-Robot CLI 不使用本地缓存，每次创建项目都会下载最新版本的模板：
+Robot CLI 的模板缓存 24 小时有效：过期后先联网刷新，下载失败时可提示使用旧缓存继续创建；创建记录（`ROBOT_PROJECT.md` / `.robot-cli/project.json`）包含下载来源与缓存时间。
 
 **优势：**
 
-- ✅ **确保最新**: 总是获得最新的代码和依赖
-- ✅ **避免冲突**: 无需担心缓存过期或版本不一致
-- ✅ **简化维护**: 用户无需管理缓存，开发者无需考虑缓存策略
-- ✅ **减少错误**: 避免因缓存损坏导致的创建失败
+- ✅ **时效与可用平衡**: 日常创建享受缓存提速，断网仍可回退旧缓存
+- ✅ **来源可追溯**: 每个项目都记录模板来源、分支、包版本与缓存时间
+- ✅ **要求可复验**: 下载后根据 manifest 或 `package.json` 复验实际运行要求（如 PC main 要求 Node ≥22.18.0、Bun ≥1.4.2）
 
 **权衡：**
 
-- 需要网络连接
-- 首次下载稍慢（但模板都经过优化，通常很快）
+- 首次下载需要网络连接
+- 缓存过期后多一次联网刷新
 
 ### 模板命名规范
 

@@ -1,21 +1,22 @@
 <script setup>
 import { useData } from "vitepress";
+import { VERSIONS } from "../_config/versions";
 
 const { isDark } = useData();
 
 const stats = [
-  { num: "55", label: "生产级组件", sub: "表单引擎 · 虚拟表格 · 流程图" },
-  { num: "35", label: "跨端组件", sub: "H5 · 小程序 · App" },
-  { num: "8", label: "工程化插件", sub: "构建 · 环境 · 协作" },
-  { num: "225+", label: "文档页面", sub: "本地全文搜索覆盖" },
-  { num: "6", label: "大角色文档", sub: "产品到管理全覆盖" },
+  { num: VERSIONS.componentCount, label: "生产级组件", sub: "表单引擎 · 数据选择 · 流程图" },
+  { num: VERSIONS.uniappComponents, label: "跨端组件", sub: "H5 · 小程序 · App" },
+  { num: VERSIONS.machEngines, label: "Mach 自研引擎", sub: "数据表格 · 报表输出" },
+  { num: VERSIONS.docPages, label: "文档页面", sub: "本地全文搜索覆盖" },
+  { num: VERSIONS.roleTracks, label: "大角色文档", sub: "产品到管理全覆盖" },
 ];
 
 const ecosystem = [
   {
     icon: "🤖",
     name: "Robot_Admin",
-    version: "v2.7.0",
+    version: VERSIONS.robotAdmin,
     desc: "中后台主框架 · Vue 3.5 / TS 5.8 / Vite 8 / UnoCSS",
     link: "https://www.robotadmin.cn",
     tag: "在线演示 ↗",
@@ -24,35 +25,53 @@ const ecosystem = [
   {
     icon: "🧩",
     name: "naive-ui-components",
-    version: "v0.14.2",
-    desc: "55 个业务组件独立包 · 按需自动导入",
+    version: VERSIONS.naiveUiComponents,
+    desc: `${VERSIONS.componentCount} 个业务组件独立包 · 按需自动导入`,
     link: "https://www.npmjs.com/package/@robot-admin/naive-ui-components",
     tag: "npm ↗",
     span: 3,
   },
   {
     icon: "📊",
-    name: "mach-table-vue",
-    version: "v0.30.0",
-    desc: "企业数据表格引擎 · 框架无关",
-    link: "https://www.npmjs.com/package/@agile-team/mach-table-vue",
-    tag: "npm ↗",
+    name: "mach-table",
+    version: VERSIONS.machTable,
+    desc: "企业数据表格引擎 · Vue / React 双适配",
+    link: "/mach/table",
+    tag: "查看文档 →",
+    span: 2,
+  },
+  {
+    icon: "🖨️",
+    name: "mach-report",
+    version: VERSIONS.machReport,
+    desc: "报表引擎 · PDF / Excel / 工业标签",
+    link: "/mach/report",
+    tag: "查看文档 →",
     span: 2,
   },
   {
     icon: "⚡",
     name: "robot-cli",
-    version: "v3.2.0",
+    version: VERSIONS.robotCli,
     desc: "60 秒创建项目 · 智能模板",
     link: "https://www.npmjs.com/package/@agile-team/robot-cli",
     tag: "npm ↗",
     span: 2,
   },
   {
+    icon: "📦",
+    name: "robot-admin-packages",
+    version: `${VERSIONS.packagesCount} 个生态包`,
+    desc: "请求 · 字典 · 校验 · 文件 · 布局 · 主题",
+    link: "/robot/packages/preface",
+    tag: "查看文档 →",
+    span: 2,
+  },
+  {
     icon: "📱",
     name: "Robot_Uniapp",
-    version: "v1.0.0",
-    desc: "跨端移动框架 · 35 组件 · wot-design-uni",
+    version: VERSIONS.robotUniapp,
+    desc: `跨端移动框架 · ${VERSIONS.uniappComponents} 组件 · wot-design-uni`,
     link: "/uniapp/guide/overview",
     tag: "查看文档 →",
     span: 2,
@@ -60,16 +79,16 @@ const ecosystem = [
   {
     icon: "💧",
     name: "Robot_H5",
-    version: "v1.8.0",
-    desc: "移动端 H5 应用框架 · Liquid Glass 设计",
-    link: "https://github.com/ChenyCHENYU/Robot_H5",
-    tag: "GitHub ↗",
+    version: VERSIONS.robotH5,
+    desc: "移动端 H5 应用框架 · 15 设备 Hook · wl-mbase",
+    link: "/h5/overview",
+    tag: "查看文档 →",
     span: 2,
   },
   {
     icon: "☁️",
     name: "Robot_Cloud",
-    version: "v1.0.0-SNAPSHOT",
+    version: VERSIONS.robotCloud,
     desc: "后端微服务框架 · Spring Cloud Alibaba — 认证 / 系统管理 / 权限治理，为 Robot_Admin 提供服务端支撑",
     link: "",
     tag: "暂未开源",
@@ -78,14 +97,14 @@ const ecosystem = [
 ];
 
 const categories = [
-  { title: "表单输入", count: "12", desc: "表单引擎 · 级联 · 日期时间 · 上传 · 穿梭框", to: "/robot/components/form" },
-  { title: "表格数据", count: "6", desc: "超级表格 · 甘特图 · 拖拽排序 · 时间线", to: "/robot/components/table" },
+  { title: "表单输入", count: "16", desc: "表单引擎 · 选择器 · 数据/人员选择 · 级联", to: "/robot/components/form" },
+  { title: "表格数据", count: "7", desc: "超级表格 · 甘特图 · 批量结果 · 时间线", to: "/robot/components/table" },
   { title: "可视化", count: "5", desc: "流程图 · 工作流 · 组织架构 · 地图 · 日程", to: "/robot/components/antv" },
   { title: "编辑器", count: "4", desc: "富文本 · Markdown · 代码 · 公式", to: "/robot/components/editor" },
   { title: "媒体文件", count: "7", desc: "预览 · 播放 · 裁剪 · 电子签名 · 二维码", to: "/robot/components/file-preview" },
-  { title: "交互业务", count: "7", desc: "聊天 · 登录 · 全局搜索 · 验证码 · 通知中心", to: "/robot/components/chat" },
+  { title: "交互业务", count: "9", desc: "聊天 · 登录 · 全局搜索 · 错误汇总 · 锚点导航", to: "/robot/components/chat" },
   { title: "布局导航", count: "7", desc: "菜单 · 面包屑 · 标签 · 折叠/分割面板 · 瀑布流", to: "/robot/components/layout" },
-  { title: "基础与反馈", count: "7", desc: "图标 · 加载指示 · 骨架屏 · 主题 · 国际化", to: "/robot/components/loading" },
+  { title: "基础与反馈", count: "8", desc: "图标 · 密度 · 加载指示 · 骨架屏 · 主题", to: "/robot/components/loading" },
 ];
 
 const roles = [
@@ -111,12 +130,12 @@ const roles = [
           <span class="grad">文档与生态中心</span>
         </h1>
         <p class="tagline">
-          沉淀 55 个生产级组件、8 个工程化插件与六大角色协作文档 ——
+          沉淀 {{ VERSIONS.componentCount }} 个生产级组件、{{ VERSIONS.engineeringPlugins }} 个工程化插件、{{ VERSIONS.packagesCount }} 个生态包与 Mach 双引擎 ——
           从脚手架到交付验收，一套设计规范贯穿中后台与跨端移动。
         </p>
         <div class="actions">
           <a class="btn primary" href="/robot/guide/overview">开始阅读指南</a>
-          <a class="btn ghost" href="/robot/components/preface">浏览 55 个组件</a>
+          <a class="btn ghost" href="/robot/components/preface">浏览 {{ VERSIONS.componentCount }} 个组件</a>
           <a class="btn ghost ext" href="https://www.robotadmin.cn" target="_blank" rel="noopener">在线演示 ↗</a>
         </div>
         <div class="stack">
@@ -170,7 +189,7 @@ const roles = [
       <header class="sec-head">
         <span class="kicker">COMPONENTS</span>
         <h2>组件体系</h2>
-        <p>中后台 55 + 跨端 35 = 90 个组件，配套 TypeScript 类型与 API 文档，中后台组件支持在线演示</p>
+        <p>中后台 {{ VERSIONS.componentCount }} + 跨端 {{ VERSIONS.uniappComponents }} = {{ Number(VERSIONS.componentCount) + Number(VERSIONS.uniappComponents) }} 个组件，配套 TypeScript 类型与 API 文档，中后台组件支持在线演示</p>
       </header>
       <div class="cat-grid">
         <a v-for="c in categories" :key="c.title" class="cat-card" :href="c.to">

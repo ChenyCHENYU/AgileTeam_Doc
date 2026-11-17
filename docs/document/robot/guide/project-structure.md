@@ -101,7 +101,7 @@ src/
     ├── home/            # 首页（eager 加载）
     ├── dashboard/       # 数据大屏（eager 加载）
     ├── login/           # 登录页
-    ├── demo/            # 54 个功能演示
+    ├── demo/            # 63 个功能演示
     ├── preview/         # 32 个 iframe 预览路由
     ├── sys-manage/      # 系统管理
     └── error-page/      # 错误页
@@ -225,7 +225,7 @@ export const getAuthMenuListApi = () =>
 
 **Local 组件** - 特定功能模块的业务组件（c_ 小写前缀）
 
-**组件库** - 55 个业务组件已独立发布为 `@robot-admin/naive-ui-components`，支持按需自动导入
+**组件库** - 63 个业务组件已独立发布为 `@robot-admin/naive-ui-components`（v0.40.5），支持按需自动导入
 
 ## 📊 状态管理系统
 

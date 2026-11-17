@@ -6,20 +6,33 @@ export default [
       { text: "深度指南", link: "/robot/guide/overview" },
       { text: "组件文档", link: "/robot/components/preface" },
       { text: "插件文档", link: "/robot/plugin/console" },
+      { text: "生态包", link: "/robot/packages/preface" },
       { text: "脚手架-cli", link: "/robot/cli/index" },
     ],
   },
   {
     text: "Robot uniApp",
-    activeMatch: "^/uniapp/",
+    activeMatch: "^/(uniapp|h5)/",
     items: [
       { text: "深度指南", link: "/uniapp/guide/overview" },
       { text: "组件文档", link: "/uniapp/components/preface" },
+      { text: "Robot_H5 框架", link: "/h5/overview" },
+    ],
+  },
+  {
+    text: "Mach 生态",
+    activeMatch: "^/mach/",
+    items: [
+      { text: "生态总览", link: "/mach/preface" },
+      { text: "MachTable 表格引擎", link: "/mach/table" },
+      { text: "MachReport 报表引擎", link: "/mach/report" },
+      { text: "配置参考", link: "/mach/table-grid-options" },
+      { text: "编辑与填报", link: "/mach/report-editing" },
     ],
   },
   {
     text: "文档中心",
-    activeMatch: "^/(po|ui|web|rear-end|qc|op|manage)/",
+    activeMatch: "^/(po|ui|web|rear-end|qc|op|manage|changelog)/",
     items: [
       {
         text: "岗位文档",
@@ -37,7 +50,10 @@ export default [
       },
       {
         text: "管理",
-        items: [{ text: "👔 岗位职责", link: "/manage/job-responsibility/pm" }],
+        items: [
+          { text: "👔 岗位职责", link: "/manage/job-responsibility/pm" },
+          { text: "📋 更新日志", link: "/changelog" },
+        ],
       },
     ],
   },
