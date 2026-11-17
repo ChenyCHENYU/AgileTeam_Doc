@@ -8,6 +8,8 @@ reviewAfter: "2027-05-18"
 
 从仓库 33 篇 [recipes](https://github.com/ChenyCHENYU/MachTable/tree/main/docs/recipes) 中精选三个最高频的 B 端场景，给出可直接落地的完整代码。
 
+> 🔍 **检索关键词**：useMachTableQuery、MachTablePageRequest、bindings、retry、reload、resetPage、debounceMs、mode、manual、auto、allMatching、excludedKeys、saveBatch、savedRowIds、GridBatchSaveResult、resolveSaveConflict、saveDetailed、useMachTableEditing、guardBeforeUnload、treeData、childrenKey、isTreeRowExpandable、loadTreeChildren、treeLoading、treeChildrenLoaded、treeLoadError、force
+
 ## 一、远程查询、分页与跨页选择
 
 `useMachTableQuery`（`/workflows`）把 B 端列表最容易重复出错的部分收拢为一个类型安全控制器：请求分页、服务端排序/过滤、请求取消、乱序响应保护、加载/错误状态和跨页选择。

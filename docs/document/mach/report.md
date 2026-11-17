@@ -13,6 +13,8 @@ reviewAfter: "2027-05-16"
 
 [MachReport](https://github.com/ChenyCHENYU/MachReport) 是独立的 TypeScript 报表引擎与 Vue 3 预览组件，当前版本 **v2.26.1**。它把报表拆成"模板 + 数据 + 输出"三段：用 TypeScript DSL 或 JSON 定义模板，引擎 `paginateTemplate` 生成统一的 `RenderPlan`，再交给预览、打印、PDF、真 `.xlsx`、逐页 PNG 或 Word 兼容 `.doc` 输出。
 
+> 🔍 **检索关键词**：mach-report、ReportPreview、MachReportPreview、machReportPlugin、defineReport、defineLabelReport、createLocalFetcher、createReportSource、paginateTemplate、RenderPlan、createTableTemplate、createTemplate、createReportRuntime、renderPlanToXlsx、renderPlanToPdf、ReportLabelStudio、defineMachReportConfig、useMachReport、宽表、工业标签、填报
+
 ```text
 模板 + 数据 ── paginateTemplate ──┐
                                   ├─ RenderPlan ─┬─ Vue / DOM / Canvas

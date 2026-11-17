@@ -13,6 +13,8 @@ reviewAfter: "2027-05-16"
 
 [MachTable](https://github.com/ChenyCHENYU/MachTable) 为后台管理、工业台账、订单/工单、财务报表和低代码平台提供一套可组合的数据网格能力。它不追求堆叠相似 API，而是把高频复杂场景做成稳定、类型安全且可诊断的产品能力。当前版本 **v0.42.1**，Robot Admin 已正式安装并通过三浏览器验收。
 
+> 🔍 **检索关键词**：mach-table、mach-table-vue、mach-table-react、mach-table-xlsx、createGrid、createMachTablePreset、defineMachTableConfig、MachTablePlugin、list、detail、preset、ColDef、GridOptions、GridApi、useMachTable、useMachTableQuery、virtualization、行虚拟化、编辑、撤销重做、远程导出
+
 ## 能力矩阵
 
 | 维度 | 已具备的能力 |

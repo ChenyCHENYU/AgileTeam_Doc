@@ -8,6 +8,8 @@ reviewAfter: "2027-05-16"
 
 报表默认**只读**。Vue 预览传入 `editable` 后，双击可编辑的单元格即可输入；输入类型、计划更新、输出同步、保存失败和过期任务隔离由包内处理。
 
+> 🔍 **检索关键词**：editable、ReportEditingOptions、canEdit、validate、saveBatch、save、requireSource、fields、type、number、text、boolean、enum、date、label、hint、unit、required、min、max、precision、maxLength、trueLabel、falseLabel、options、createProviderEditing、cell-edit、resolveSaveConflict、reveal、guardChanges、beforeDiscard、confirmDiscard、pendingLocalChanges、cancelTask、task、excelImport、ExcelImportOptions、valueType
+
 ## 只需一个开关
 
 ```vue

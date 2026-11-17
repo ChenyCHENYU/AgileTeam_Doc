@@ -141,7 +141,7 @@ Robot_Admin v2.7.0 已正式消费 MachTable 0.42.1 并通过三浏览器回归�
 | [@agile-team/mach-report][machreport-url] | [![npm][machreport-ver-badge]][machreport-url] [![npm][machreport-dt-badge]][machreport-url] | 报表引擎 | 宽表/纸张 · Excel 绑定 · PDF/XLSX/PNG · 工业标签 — [平台文档][machreport-doc-url] |
 | [robot-admin-packages][packages-url] | 8 个生态包 | 公共能力 Monorepo | request-core · dictionary · form-validate · file-utils · directives · layout · theme · git-standards — [平台文档][packages-doc-url] |
 | [@agile-team/robot-cli][cli-url] | `v3.3.0` | 脚手架 | 三步建项 · 非交互参数 · PC Full/Lite + H5 |
-| Robot_Uniapp | `v1.0.0` | 跨端移动框架 | 35 组件 · wot-design-uni · H5/小程序/App |
+| Robot_Uniapp | `v1.7.2` | 跨端移动框架 | 35 组件 · wot-design-uni · H5/小程序/App |
 | [Robot_H5][roboth5-url] | `v1.8.0` | 移动 H5 应用框架 | Vue 3 · Vite 7 · Vant · 15 设备 Hook · wl-mbase — [平台文档][roboth5-doc-url] |
 | [@robot-h5/core][h5core-url] | `v1.2.0` | H5 核心能力包 | Bridge 通信 · 20+ Hooks · 离线存储 |
 | Robot_Cloud | `v1.0.0-SNAPSHOT` | 后端微服务框架 | Spring Cloud Alibaba · 认证 / 系统管理 / 权限治理 |
@@ -238,6 +238,7 @@ docs/
 - **SEO**：sitemap + robots.txt + 页面级 og 标签（含 1200×630 分享卡）与 canonical
 - **内容保鲜**：版本敏感页面带 `reviewAfter` 复审日期，过期即 CI 失败；生态版本集中于 `_config/versions.js` 事实源
 - **CHANGELOG 自动同步**：`bun run build` 前自动生成站内更新日志页
+- **og 分享卡**：`bun run og:image` 重绘（读 versions.js）；刻意不挂进 CI 构建——分享卡含中文文字渲染，依赖本机字体，CI Linux 环境会出豆腐块
 - **性能**：静态资源 immutable 缓存 · 图片 WebP 化 · 关键动画合成层优化
 - **内嵌文档**：`vercel.json` 的 CSP `frame-ancestors` 仅允许文档站自身、`robotadmin.cn` / `www.robotadmin.cn` 及本机 `localhost` / `127.0.0.1`（任意开发端口）嵌入；不使用禁止跨域嵌入的 `X-Frame-Options: SAMEORIGIN`。新增部署域名时须明确加入来源名单并运行 `bun run test`，响应头变更需部署文档站后才生效。
 

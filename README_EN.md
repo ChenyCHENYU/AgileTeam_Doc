@@ -59,7 +59,7 @@
 | [@agile-team/mach-table][machtable-url] | [![npm][machtable-ver-badge]][machtable-url] [![npm][machtable-dt-badge]][machtable-url] | Framework-agnostic enterprise data grid (Vue / React adapters) |
 | [@agile-team/mach-report][machreport-url] | [![npm][machreport-ver-badge]][machreport-url] [![npm][machreport-dt-badge]][machreport-url] | Report engine (wide tables · Excel binding · PDF/XLSX/PNG · industrial labels) |
 | [@agile-team/robot-cli][cli-url] | `v3.3.0` | Scaffolding CLI (three-step flow · non-interactive flags · PC Full/Lite + H5) |
-| Robot_Uniapp | `v1.0.0` | Cross-platform mobile framework (35 components · wot-design-uni) |
+| Robot_Uniapp | `v1.7.2` | Cross-platform mobile framework (35 components · wot-design-uni) |
 | [Robot_H5][roboth5-url] | `v1.8.0` | Mobile H5 app framework (Vue 3 · Vite 7 · Vant · 15 device hooks · wl-mbase) — [platform docs][roboth5-doc-url] |
 | [@robot-h5/core][h5core-url] | `v1.2.0` | H5 core package (Bridge · 20+ hooks · offline storage) |
 | Robot_Cloud | `v1.0.0-SNAPSHOT` | Backend microservices (Spring Cloud Alibaba) |

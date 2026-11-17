@@ -86,6 +86,16 @@ description: "AGILE TEAM 文档站更新日志：版本特性、内容扩充与�
 - README / README_EN 全面重排：完整徽章墙（CI · License · 4 npm 动态徽章）、Mach 双引擎卡片区、
   更新日志与 H5 平台文档深链、工程化质量与项目结构说明刷新
 
+### 修正（第二轮深挖）
+
+- **搜索复核（含自我纠错）**：此前判定"表格内 camelCase API 名不入搜索索引"系大小写敏感 grep 误判——
+  实测 miniSearch 索引以小写存储、搜索框查询大小写不敏感（"rowKey" / "rowkey" 均返回 16 条一致结果），
+  API 检索功能正常。为 16 个 Mach 文档页保留新增的"检索关键词"段落，定位改为真实的附加价值：
+  中文检索词（宽表/工业标签/填报等）与页面 SEO 关键词增强
+- Robot_Uniapp 版本对齐 `v1.0.0 → v1.7.2`（与仓库 package.json 一致；wot-design-uni 1.14 /
+  TS 5.7.3 / Vite 5 / UnoCSS 66.5 核实无误），versions.js 与双 README 同步
+- README 工程化质量补充 og 分享卡重绘说明（`bun run og:image`，刻意不挂 CI——中文渲染依赖本机字体）
+
 ## [3.1.0] - 2026-10-07
 
 ### 新增

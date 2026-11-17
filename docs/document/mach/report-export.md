@@ -8,6 +8,8 @@ reviewAfter: "2027-05-16"
 
 一份 RenderPlan 统一输出到预览、打印、PDF、真 `.xlsx`、逐页 PNG 和 Word 兼容 `.doc`。Vue 预览工具栏按需动态加载导出引擎；原生与 Node 从子入口调用。
 
+> 🔍 **检索关键词**：exportAs、pdf、xlsx、excel、png、image、word、doc、html、renderPlanToXlsx、sheetMode、auto、pages、continuous、valueMode、raw、text、paperSize、sheetName、additionalSheets、maxImageBytes、writeRowsToXlsx、renderPlanToWorkbook、renderPlanToPdf、pdfFontUrl、checkPdfFont、invalidateFontCache、createFontBytesMeasurer、createCanvasMeasurer、customFontFaces、gzip、ttf、otf、fidelity、strict、warn、OutputFidelityError、onDiagnostic、unsupported-text、runLabelStream、imposeLabelSheets
+
 ## 导出格式与入口
 
 | 格式 | 入口 | 说明 |

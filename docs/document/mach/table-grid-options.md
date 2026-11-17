@@ -8,6 +8,8 @@ reviewAfter: "2027-05-16"
 
 `GridOptions<TData>` 是 Core、Vue 与 React 的统一配置契约。Vue 模板使用 kebab-case，React/TypeScript 使用 camelCase。建议用 `defineGridOptions<T>()` 或 `satisfies GridOptions<T>` 保留完整类型推断。
 
+> 🔍 **检索关键词**：columnDefs、rowData、rowKey、rowNumber、defaultColDef、columnTypes、initialState、size、theme、columnLayout、enableColumnResize、domLayout、maxBodyHeight、rowStyleRules、stripedRows、multiSort、manualSorting、manualFiltering、quickFilterText、advancedFilterModel、rowSelection、editType、singleClickEdit、rowEditValidator、undoStackSize、enableRangeSelection、fillHandle、contextMenu、treeData、childrenKey、loadTreeChildren、masterDetail、detailRowHeight、pinnedTopRowData、pagination、datasource、datasourceMode、blockSize、infiniteBufferRows、maxBlocksInCache、dataProcessor、persistence、loading、error、watermark、showSummary、statusBar、locale、suppressClipboard
+
 ```ts
 const options = defineGridOptions<Order>({
   rowKey: "id",

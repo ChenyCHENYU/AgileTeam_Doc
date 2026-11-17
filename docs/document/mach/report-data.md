@@ -8,6 +8,8 @@ reviewAfter: "2027-05-16"
 
 参数定义保存在 `ReportTemplate.params` 中。预览自动生成表单，浏览器、Worker 与服务端复用核心参数校验；使用侧只传模板与取数函数，不维护第二份表单和规则。
 
+> 🔍 **检索关键词**：ReportParamDef、text、number、date、month、year、dateRange、select、multiSelect、cascader、numberRange、minLength、maxLength、minItems、maxItems、options、optionsSource、dependsOn、defaultValue、required、loadParamOptions、ReportParamOptionsLoader、DatasetContract、columnsFromContract、datasetJsonSchema、rowKey、decimal、validateReportParams、reportParamsJsonSchema、parseReportDateRange、formatReportDateRange、reportDateDefault、formatReportParamSelection、parseReportCascaderPath、formatReportNumberRange、dataSchema、ReportProvider、query、revision、sourceToken、compareReportData、createReportPrefill
+
 ## 参数类型与值契约
 
 `params` 是 `Record<string, string>`——日期不转 JavaScript Date、不隐式转换时区、不补齐不完整日期。所有上下界包含边界；可选参数可完全清空。

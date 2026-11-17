@@ -6,6 +6,8 @@ reviewAfter: "2027-05-16"
 
 # MachTable 高级能力
 
+> 🔍 **检索关键词**：defineMachTableConfig、createMachTablePreset、defaultPreset、provideMachTableConfig、strict、onConfigWarning、useMachTableQuery、useMachTableEditing、guardBeforeUnload、saveDetailed、resolveConflict、createRemoteExportRequest、createRowOrderController、createImportPlan、summarizeRows、mountAdvancedFilterBuilder、mountChangeReview、persistence、rowStyleRules、dragColumn、dataProcessor、datasourceMode、getResolvedConfig、explainOption
+
 ## 场景预设与配置中心
 
 Vue 和 React 的 `<MachTable>` 默认使用 `list` 场景。普通页面只传列和数据，不需要配置文件；同页的小明细表选择 `detail`。

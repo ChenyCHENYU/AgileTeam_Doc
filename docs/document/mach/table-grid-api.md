@@ -8,6 +8,8 @@ reviewAfter: "2027-05-16"
 
 `createGrid()`、Vue `useMachTable()` 与 React `useMachTable()` 返回同一套领域化 API。根级只负责生命周期、配置、事件和批处理；表格命令按职责归入 **12 个只读领域**。API 与各领域对象均被冻结，不能被页面意外改写。
 
+> 🔍 **检索关键词**：batch、whenReady、getOption、updateOptions、destroy、setData、transact、transactAsync、flushTransactions、getCount、getById、forEachDisplayed、reorder、reload、purgeCache、setVisible、setPinned、setWidth、autoSize、openWorkbench、setRows、setById、selectAll、clear、startCell、startRow、getChanges、markSaved、rollback、save、undo、redo、setQuickText、setModel、setPage、setPageSize、setRowExpanded、loadTreeChildren、scrollToRow、refreshCells、refreshLayout、setOverlay、setPinnedRows、exportCsv、exportMatrix、importCsv、importMatrix、print、copyRange、getPerformance、gridReady、gridError、modelUpdated、selectionChanged、cellValueChanged、dirtyStateChanged、sortChanged、filterChanged、columnResized、rowDragEnd、paginationChanged、detailToggled、treeChildrenLoaded
+
 ```ts
 api.rows.transact({ update: changedRows });
 api.filtering.setQuickText("pending");

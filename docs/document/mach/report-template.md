@@ -8,6 +8,8 @@ reviewAfter: "2027-05-16"
 
 MachReport 的模板是纯数据（TypeScript DSL 构建或 JSON），引擎 `paginateTemplate` 将"模板 + 数据"分页为统一的 `RenderPlan`。页面与组件几何尺寸以**毫米**为单位。
 
+> 🔍 **检索关键词**：createTemplate、page、text、image、list、build、createTableTemplate、layout、wide、paper、landscape、columnWidthMm、columns、widthMm、flex、margins、title、titleStyle、dataset、params、listOptions、headerAlign、headerStyle、semanticRole、rowKey、headerGrid、paginateTemplate、maxPages、maxCells、RenderPlan、validateRenderPlan、RENDER_PLAN_SCHEMA_VERSION、defineReportTemplate、parseReportTemplate、serializeReportTemplate、createTemplateRegistry、diffReportTemplates、chartBinding、visual、paginateTemplatePages、countTemplatePages
+
 ## createTemplate()：自由布局
 
 ```ts

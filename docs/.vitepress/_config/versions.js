@@ -17,7 +17,7 @@ export const VERSIONS = {
   robotCli: "v3.3.0",
   packagesCount: "8",
   engineeringPlugins: "8",
-  robotUniapp: "v1.0.0",
+  robotUniapp: "v1.7.2",
   robotH5: "v1.8.0",
   h5Core: "v1.2.0",
   robotCloud: "v1.0.0-SNAPSHOT",

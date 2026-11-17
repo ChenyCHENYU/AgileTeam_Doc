@@ -8,6 +8,8 @@ reviewAfter: "2027-05-16"
 
 MachReport 的固定标签与宽表共用模板、渲染计划、数据来源和输出管线，适用于物料标签、包装标识、工艺卡、合格证及相邻的正反两版。
 
+> 🔍 **检索关键词**：ReportLabelStudio、createLabelTemplate、defineLabelReport、createCodeAssetRenderers、rows、schema、rowKey、fields、semanticRole、identity-field、brand、preset、material、paired、warehouse、modelValue、show-save、prepare、guardChanges、preview、print、canPrint、LabelStudioController、copies、pages、repeat、dataset、binding、field、format、prefix、suffix、emptyText、qrcode、barcode、errorCorrection、Code128、Code39、EAN、dpi、maxPages、resolvePlanAssets、data-contract、inspectReportTemplateCompatibility
+
 ## ReportLabelStudio 标识工作台
 
 图示"材料标识工作台"是 `/designer` 入口的包内组件，按需加载（普通报表不加载标签编码器）：

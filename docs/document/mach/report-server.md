@@ -8,6 +8,8 @@ reviewAfter: "2027-05-16"
 
 MachReport 的模板、参数、字段校验和分页核心不依赖 Vue。`/server` 提供无 HTTP 框架的运行时；`/server/node` 提供 Node 线程隔离；`/worker` 提供浏览器原生 Worker 适配。PDF、Excel 只在调用相应导出时加载。
 
+> 🔍 **检索关键词**：createReportRuntime、createProviderReport、describe、validate、prepare、export、exportPrepared、budget、maxRows、maxPages、maxCells、maxDurationMs、createReportTaskQueue、concurrency、maxQueued、enqueue、cancel、progress、createReportOpenApi、reportHttpError、MachReportClient、basePath、ReportDocumentStore、createMemoryReportDocumentStore、writeReportDocument、readReportDocumentPages、openFileReportDocumentStore、createReportDocumentSource、ReportDocumentPreview、createBrowserReportExecutor、serveReportWorker、createNodeReportExecutor、createReportJobService、openFileReportJobStore、runLabelStream、customFontFaces、stats、revisions
+
 ## 最小 Node 接入
 
 ```ts

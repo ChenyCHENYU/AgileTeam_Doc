@@ -8,6 +8,8 @@ reviewAfter: "2027-05-16"
 
 `/vue` 入口提供预览组件、插件、配置中心与父页面控制句柄；要求 Vue `^3.2.47`，样式 `import "@agile-team/mach-report/vue/style.css"` 引入一次。
 
+> 🔍 **检索关键词**：reportId、params、fetcher、paramDefs、showParams、autoLoad、height、showExport、showPrint、showPdfWindow、editable、excelImport、toolbar、interaction、emptyState、theme、assets、gapPx、preset、messages、loaded、error、warning、cell-edit、template-import、reload、print、exportAs、gotoPage、setParams、checkPdfFont、getPlan、getChanges、importExcel、useMachReport、PlanFetcher、defineMachReportConfig、provideMachReportConfig、createFetchRequest、canExport、pdfFont
+
 ## 组件 Props
 
 ```vue

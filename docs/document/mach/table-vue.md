@@ -8,6 +8,8 @@ reviewAfter: "2027-05-16"
 
 `@agile-team/mach-table-vue` 要求 **Vue ≥ 3.2**。规范组件名只有 `<MachTable>`；适配包自动依赖 Core，并重导出公共类型和能力。
 
+> 🔍 **检索关键词**：MachTable、MachTablePlugin、AsyncMachTablePlugin、preloadMachTable、MachTableToolbar、MachTableUiPlugin、defineVueColumns、defineVueTableConfig、defineMachTableConfig、createMachTablePreset、provideMachTableConfig、useMachTable、useMachTableQuery、useMachTableEditing、useMachTableController、vueCellRenderer、vueDetailRenderer、vueCellEditor、createElementPlusEditors、getApi、getResolvedConfig、explainOption、preset
+
 ```bash
 pnpm add @agile-team/mach-table-vue
 ```

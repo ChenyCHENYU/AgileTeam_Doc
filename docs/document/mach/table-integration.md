@@ -8,6 +8,8 @@ reviewAfter: "2027-05-16"
 
 MachTable 不依赖任何 UI 组件库，样式作用域 `.mach-root` 封闭，互不冲突。本页给出与 Naive UI（Robot Admin 体系）和 Element Plus 的官方集成路径。
 
+> 🔍 **检索关键词**：useThemeVars、n-config-provider、darkTheme、vueCellRenderer、NTag、NEllipsis、NSelect、NDatePicker、naiveEditor、createElementPlusEditors、ElSelect、ElDatePicker、ElInputNumber、vueCellEditor、ElConfigProvider、refreshLayout、mach-z-popup、mach-z-menu、C_Grid、renderType、appContext、themeVars、mach-primary
+
 ## Naive UI 集成
 
 ### 1. 主题桥接

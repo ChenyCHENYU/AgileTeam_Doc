@@ -8,6 +8,8 @@ reviewAfter: "2027-05-16"
 
 列描述符是 MachTable 声明式配置的核心。`columnDefs` 数组的元素为 `ColDef`（叶子列）或 `ColDefGroup`（表头分组）。
 
+> 🔍 **检索关键词**：colId、field、headerName、align、headerAlign、headerTooltip、headerClass、headerComponent、width、autoWidth、minWidth、maxWidth、flex、pinned、hide、sortable、resizable、movable、filter、filterParams、valueGetter、valueFormatter、valueSetter、valueParser、valueSerializer、status、cellRenderer、cellRendererParams、cellClass、cellStyle、tooltipValueGetter、wrapText、type、editable、cellEditor、cellEditorParams、validate、checkboxSelection、selectable、rowDrag、rowGroup、aggFunc、autoRowSpan、rowSpan、colSpan、autoHeight、initialSort、semanticRole、selectionColumn、indexColumn、dragColumn、actionsColumn、rowActionsColumn
+
 ## 标识与标题
 
 | 属性 | 类型 | 默认 | 说明 |
